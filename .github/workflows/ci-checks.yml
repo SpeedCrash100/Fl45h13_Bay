@@ -11,8 +11,8 @@ jobs:
     env:
       TEST: MAP
       MAP_PATH: ${{matrix.MAP_PATH}}
-      BYOND_MAJOR: 511
-      BYOND_MINOR: 1385
+      BYOND_MAJOR: 513
+      BYOND_MINOR: 1536
     steps:
       - uses: actions/checkout@v2
 
