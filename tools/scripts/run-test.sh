@@ -8,7 +8,6 @@
 # there are 4 test groups:
 # - ALL: Run all tests
 # - CODE: Run code quality checks
-# - WEB: Run tgui tests
 # - MAP: Run map tests (notably, only this one compiles!)
 #
 # Additionally, the MAP group requires an additional environent variable,
@@ -203,7 +202,7 @@ function run_code_tests {
     run_test_fail "no invalid spans" "grep -En \"<\s*span\s+class\s*=\s*('[^'>]+|[^'>]+')\s*>\" **/*.dm"
     run_test "code quality checks" "tools/scripts/check-paths.sh"
     run_test "indentation check" "awk -f tools/indentation.awk **/*.dm"
-    run_test "check changelog example unchanged" "md5sum -c - <<< '43bb81679d5ec79bdd211c89f33559c0 *html/changelogs/example.yml'"
+    run_test "check changelog example unchanged" "md5sum -c - <<< 'b5cc56278ad185ec8beaacb1461aaf7d *html/changelogs/example.yml'"
     run_test "check tags" "python3 tools/TagMatcher/tag-matcher.py ."
 #    run_test "check color hex" "python3 tools/ColorHexChecker/color-hex-checker.py ."
     run_test "check punctuation" "python3 tools/PunctuationChecker/punctuation-checker.py ."
