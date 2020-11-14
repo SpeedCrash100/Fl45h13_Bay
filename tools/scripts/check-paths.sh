@@ -34,14 +34,14 @@ exactly 150 "to_world uses" '\sto_world\('
 exactly 13 "to_world_log uses" '\sto_world_log\('
 exactly 1 "world<< uses" 'world<<|world[[:space:]]<<'
 exactly 47 "world.log<< uses" 'world.log<<|world.log[[:space:]]<<'
-exactly 739 "<< uses" '(?<!<)<<(?!<)' -P
-exactly 536 "incorrect indentations" '^( {4,})' -P
+exactly 745 "<< uses" '(?<!<)<<(?!<)' -P
+exactly 555 "incorrect indentations" '^( {4,})' -P
 exactly 32 "text2path uses" 'text2path'
 exactly 367 "update_icon() override" '/update_icon\((.*)\)'  -P
 exactly 2 "goto use" 'goto '
-exactly 859 "spawn uses" 'spawn\s*\(\s*(-\s*)?\d*\s*\)' -P
+exactly 858 "spawn uses" 'spawn\s*\(\s*(-\s*)?\d*\s*\)' -P
 exactly 513 "tag uses" '\stag = ' -P '**/*.dmm'
-exactly 283 "/global/ or /static/ vars defined" '/(global|static)/' -P
+exactly 289 "/global/ or /static/ vars defined" '/(global|static)/' -P
 # With the potential exception of << if you increase any of these numbers you're probably doing it wrong
 #
 #broken_files=0
