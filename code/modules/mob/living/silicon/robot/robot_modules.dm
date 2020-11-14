@@ -490,7 +490,7 @@ var/global/list/robot_modules = list(
 					"Drone - Service" = "drone-service",
 					"Drone - Hydro" = "drone-hydro",
 					"Eyebot" = "eyebot-standard"
-				  	)
+					)
 
 /obj/item/weapon/robot_module/clerical/butler/New()
 	src.modules += new /obj/item/device/flash(src)

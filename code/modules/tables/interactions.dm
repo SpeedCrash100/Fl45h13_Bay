@@ -106,7 +106,7 @@
 					for(var/obj/item/weapon/material/shard/S in L)
 						if(S.sharp && prob(50))
 							M.visible_message("<span class='danger'>\The [S] slices into [M]'s face!</span>",
-							                  "<span class='danger'>\The [S] slices into your face!</span>")
+											  "<span class='danger'>\The [S] slices into your face!</span>")
 							M.standard_weapon_hit_effects(S, G.assailant, S.force*2, blocked, BP_HEAD) //standard weapon hit effects include damage and embedding
 				else
 					G.affecting.forceMove(src.loc)

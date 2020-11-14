@@ -621,9 +621,9 @@
 	sound_env = LARGE_SOFTFLOOR
 
 /area/library
- 	name = "\improper Library"
- 	icon_state = "library"
- 	sound_env = LARGE_SOFTFLOOR
+	name = "\improper Library"
+	icon_state = "library"
+	sound_env = LARGE_SOFTFLOOR
 
 /area/chapel/office
 	name = "\improper Chapel Office"

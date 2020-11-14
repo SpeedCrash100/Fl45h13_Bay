@@ -196,11 +196,11 @@ swapmap
 		  z
 		  areas	// list of areas, not including default
 		  [each z; 1 to depth]
-		    [each y; 1 to height]
-		      [each x; 1 to width]
-		        type	// of turf
-		        AREA    // if non-default; saved as a number (index into areas list)
-		        vars    // all other changed vars
+			[each y; 1 to height]
+			  [each x; 1 to width]
+				type	// of turf
+				AREA    // if non-default; saved as a number (index into areas list)
+				vars    // all other changed vars
 	 */
 	Write(savefile/S)
 		var/x
@@ -403,8 +403,8 @@ swapmap
 	// probably not an area
 	proc/Contains(turf/T)
 		return (T && T.x>=x1 && T.x<=x2\
-		          && T.y>=y1 && T.y<=y2\
-		          && T.z>=z1 && T.z<=z2)
+				  && T.y>=y1 && T.y<=y2\
+				  && T.z>=z1 && T.z<=z2)
 
 	proc/InUse()
 		for(var/turf/T in AllTurfs())

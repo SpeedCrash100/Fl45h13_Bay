@@ -179,13 +179,13 @@
 							}
 
 							function addSubmitEvent(form, input) {
-							    input.onkeydown = function(e) {
-							        e = e || window.event;
-							        if (e.keyCode == 13) {
-							            form.submit();
-							            return false;
-							        }
-							    };
+								input.onkeydown = function(e) {
+									e = e || window.event;
+									if (e.keyCode == 13) {
+										form.submit();
+										return false;
+									}
+								};
 							}
 
 							window.onload = function(){

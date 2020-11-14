@@ -319,10 +319,10 @@ var/last_message_id = 0
 
 
 /proc/is_relay_online()
-    for(var/obj/machinery/bluespacerelay/M in machines)
-        if(M.stat == 0)
-            return 1
-    return 0
+	for(var/obj/machinery/bluespacerelay/M in machines)
+		if(M.stat == 0)
+			return 1
+	return 0
 
 /proc/call_shuttle_proc(var/mob/user, var/emergency)
 	if (!ticker || !evacuation_controller)

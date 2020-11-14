@@ -539,7 +539,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 	if (!ui)
 		// the ui does not exist, so we'll create a new() one
-	        // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
+			// for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
 		ui = new(user, src, ui_key, "pda.tmpl", title, 520, 400, state = inventory_state)
 		// when the ui is first opened this is the data it will use
 
@@ -1321,11 +1321,11 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		// Anything that is left in the page. just tack it on to the end as is
 		formatted_scan=formatted_scan+raw_scan
 
-    	// If there is something in there already, pad it out.
+		// If there is something in there already, pad it out.
 		if (length(note)>0)
 			note = note + "<br><br>"
 
-    	// Store the scanned document to the notes
+		// Store the scanned document to the notes
 		note = "Scanned Document. Edit to restore previous notes/delete scan.<br>----------<br>" + formatted_scan + "<br>"
 		// notehtml ISN'T set to allow user to get their old notes back. A better implementation would add a "scanned documents"
 		// feature to the PDA, which would better convey the availability of the feature, but this will work for now.

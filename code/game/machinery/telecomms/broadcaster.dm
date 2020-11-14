@@ -75,7 +75,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 
 	   /** #### - Artificial Broadcast - #### **/
-	   			// (Imitates a mob)
+				// (Imitates a mob)
 
 		if(signal.data["type"] == 2)
 
@@ -274,7 +274,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
   /* ###### Organize the receivers into categories for displaying the message ###### */
 
-  	// Understood the message:
+	// Understood the message:
 	var/list/heard_masked 	= list() // masked name or no real name
 	var/list/heard_normal 	= list() // normal message
 
@@ -385,7 +385,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	 /* ###### Send the message ###### */
 
 
-	  	/* --- Process all the mobs that heard a masked voice (understood) --- */
+		/* --- Process all the mobs that heard a masked voice (understood) --- */
 
 		if (length(heard_masked))
 			for (var/mob/R in heard_masked)

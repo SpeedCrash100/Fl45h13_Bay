@@ -79,7 +79,7 @@ var/datum/mil_branches/mil_branches = new()
 
 
 	var/list/ranks // Associative list of full rank names to the corresponding
-	               // /datum/mil_rank objects. These are all ranks available to the branch.
+				   // /datum/mil_rank objects. These are all ranks available to the branch.
 
 	var/list/spawn_ranks // Ranks which the player can choose for spawning
 
@@ -138,6 +138,6 @@ var/datum/mil_branches/mil_branches = new()
 /datum/mil_rank
 	var/name = "Unknown"
 	var/name_short = "N/A" // Abbreviation of the name. Should be null if the
-	                       // rank doesn't usually serve as a prefix to the individual's name.
+						   // rank doesn't usually serve as a prefix to the individual's name.
 	var/list/accessory		//type of accesory that will be equipped by job code with this rank
 	var/sort_order = 0 // A numerical equivalent of the rank used to indicate its order when compared to other datums: eg e-1 = 1, o-1 = 11
