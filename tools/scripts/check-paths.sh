@@ -35,7 +35,8 @@ exactly 13 "to_world_log uses" '\sto_world_log\('
 exactly 1 "world<< uses" 'world<<|world[[:space:]]<<'
 exactly 47 "world.log<< uses" 'world.log<<|world.log[[:space:]]<<'
 exactly 745 "<< uses" '(?<!<)<<(?!<)' -P
-exactly 555 "incorrect indentations" '^( {4,})' -P
+exactly 2 "trailing whitespaces" '[ \t]+$' -P
+exactly 0 "incorrect indentations" '^( {4,})' -P
 exactly 32 "text2path uses" 'text2path'
 exactly 367 "update_icon() override" '/update_icon\((.*)\)'  -P
 exactly 2 "goto use" 'goto '
