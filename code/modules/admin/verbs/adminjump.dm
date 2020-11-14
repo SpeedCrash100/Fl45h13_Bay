@@ -27,7 +27,7 @@
 		return
 	if(!config.allow_admin_jump)
 		return alert("Admin jumping disabled")
-		
+
 	log_and_message_admins("jumped to [T.x],[T.y],[T.z] in [T.loc]")
 	mob.jumpTo(T)
 	feedback_add_details("admin_verb","JT") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

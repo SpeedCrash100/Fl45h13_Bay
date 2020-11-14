@@ -450,7 +450,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 		for(var/obj/machinery/power/P in T1)
 			if(!P.connect_to_network()) //can't find a node cable on a the turf to connect to
 				P.disconnect_from_network() //remove from current network
-                
+
     powernet = null // And finally null the powernet var.
 
 ///////////////////////////////////////////////

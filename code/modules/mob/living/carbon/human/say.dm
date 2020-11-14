@@ -5,7 +5,7 @@
 			alt_name = "(as [get_id_name("Unknown")])"
 		else
 			name = get_id_name("Unknown")
-		
+
 	message = sanitize(message)
 	..(message, alt_name = alt_name, speaking = language)
 

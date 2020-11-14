@@ -136,7 +136,7 @@
 
 	if(!affected)
 		return 0
-	
+
 	if(affected.robotic >= ORGAN_ROBOT)
 		return 0
 

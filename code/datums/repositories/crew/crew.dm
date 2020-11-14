@@ -63,7 +63,7 @@ var/global/datum/repository/crew/crew_repository = new()
 				else
 					blood_result = "normal"
 				pressure += " ([blood_result])"
-				
+
 				var/true_pulse = H.pulse()
 				var/pulse_span = "good"
 				switch(true_pulse)

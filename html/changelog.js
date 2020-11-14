@@ -75,7 +75,7 @@ function filterchanges(type){
 	$('ul.changes li').each(function(){
 		if(!type || $(this).hasClass(type)){
 			$(this).show();
-		}		
+		}
 		else {
 			$(this).hide();
 		}

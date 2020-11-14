@@ -61,10 +61,10 @@
 
 		src.last_use = world.time
 		reagents.splash(M, min(reagents.total_volume, spray_amount))
-		
+
 		user.visible_message("<span class='notice'>\The [user] sprays \the [M] with \the [src].</span>")
 		playsound(src.loc, 'sound/effects/extinguish.ogg', 75, 1, -3)
-		
+
 		return 1 // No afterattack
 	return ..()
 

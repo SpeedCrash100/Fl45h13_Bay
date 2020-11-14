@@ -99,7 +99,7 @@
 	name = "marble brick"
 	icon_state = "sheet-marble"
 	default_type = "marble"
-	
+
 /obj/item/stack/material/marble/ten
 	amount = 10
 

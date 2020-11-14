@@ -48,7 +48,7 @@
 		if(S.zone) S.zone.rebuild()
 
 	var/turf/simulated/W = new N( locate(src.x, src.y, src.z) )
-	
+
 	W.opaque_counter = opaque_counter
 
 	if(ispath(N, /turf/simulated))

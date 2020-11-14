@@ -56,7 +56,7 @@
 	else if(strength < 1)
 		invisibility = 101
 		set_density(0)
-	
+
 	if (density != old_density)
 		update_nearby_tiles()
 

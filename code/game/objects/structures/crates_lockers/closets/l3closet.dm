@@ -60,7 +60,7 @@
 	icon_state = "bio_security"
 	icon_closed = "bio_security"
 	icon_opened = "bio_securityopen"
-	
+
 	will_contain = list(
 		/obj/item/clothing/suit/bio_suit/security,
 		/obj/item/clothing/head/bio_hood/security,
@@ -117,7 +117,7 @@
 	icon_state = "bio_command"
 	icon_closed = "bio_command"
 	icon_opened = "bio_commandopen"
-	
+
 	will_contain = list(
 		/obj/item/clothing/suit/bio_suit/cmo,
 		/obj/item/clothing/head/bio_hood/cmo,

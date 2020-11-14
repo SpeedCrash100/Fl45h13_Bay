@@ -36,10 +36,10 @@
 	set name = "Rotate"
 	set category = "Object"
 	set src in oview(1)
-	
+
 	if(usr.incapacitated())
 		return
-    
+
 	if (src.anchored)
 		to_chat(usr, "It is fastened to the floor!")
 		return 0

@@ -2,47 +2,47 @@
 {{if data.error}}
 	<h2>Download Error</h2>
 	<div class="itemLabel">
-		Information: 
+		Information:
 	</div>
 	<div class="itemContent">
 		{{:data.error}}
 	</div>
 	<div class="itemLabel">
-		Reset Program: 
+		Reset Program:
 	</div>
 	<div class="itemContent">
 		{{:helper.link("RESET", null, {'PRG_reseterror' : 1})}}
-	</div>	
+	</div>
 {{else data.downloadname}}
 	<h2>Download Running</h2>
 	<i>Please wait...</i>
 	<div class="item">
 		<div class="itemLabel">
-			File name: 
+			File name:
 		</div>
 		<div class="itemContent">
 			{{:data.downloadname}}
 		</div>
 		<div class="itemLabel">
-			File description: 
+			File description:
 		</div>
 		<div class="itemContent">
 			{{:data.downloaddesc}}
 		</div>
 		<div class="itemLabel">
-			File size: 
+			File size:
 		</div>
 		<div class="itemContent">
 			{{:data.downloadcompletion}}GQ / {{:data.downloadsize}}GQ
 		</div>
 		<div class="itemLabel">
-			Transfer Rate: 
+			Transfer Rate:
 		</div>
 		<div class="itemContent">
 			{{:data.downloadspeed}} GQ/s
 		</div>
 		<div class="itemLabel">
-			Download progress: 
+			Download progress:
 		</div>
 		<div class="itemContent">
 			{{:helper.displayBar(data.downloadcompletion, 0, data.downloadsize, 'good')}}
@@ -51,7 +51,7 @@
 {{else}}
 	<h2>Primary software repository</h2>
 	<div class="itemLabel">
-		Hard drive: 
+		Hard drive:
 	</div>
 	<div class="itemContent">
 		{{:helper.displayBar(data.disk_used, 0, data.disk_size, 'good')}}
@@ -60,29 +60,29 @@
 	{{for data.downloadable_programs}}
 		<div class = "item">
 			<div class="itemLabel">
-				File name: 
+				File name:
 			</div>
 			<div class="itemContent">
 				{{:value.filename}} ({{:value.size}} GQ)
 			</div>
 			<div class="itemLabel">
-				Program name: 
+				Program name:
 			</div>
 			<div class="itemContent">
 				{{:value.filedesc}}
-			</div>		
+			</div>
 			<div class="itemLabel">
-				Description: 
+				Description:
 			</div>
 			<div class="itemContent">
 				{{:value.fileinfo}}
-			</div>	
+			</div>
 			<div class="itemLabel">
-				File controls: 
+				File controls:
 			</div>
 			<div class="itemContent">
 				{{:helper.link("DOWNLOAD", null, {'PRG_downloadfile' : value.filename})}}
-			</div>	
+			</div>
 		</div>
 	{{/for}}
 	{{if data.hackedavailable}}
@@ -91,29 +91,29 @@
 		{{for data.hacked_programs}}
 			<div class = "item">
 				<div class="itemLabel">
-					File name: 
+					File name:
 				</div>
 				<div class="itemContent">
 					{{:value.filename}} ({{:value.size}} GQ)
 				</div>
 				<div class="itemLabel">
-					Program name: 
+					Program name:
 				</div>
 				<div class="itemContent">
 					{{:value.filedesc}}
-				</div>		
+				</div>
 				<div class="itemLabel">
-					Description: 
+					Description:
 				</div>
 				<div class="itemContent">
 					{{:value.fileinfo}}
 				</div>
 				<div class="itemLabel">
-					File controls: 
+					File controls:
 				</div>
 				<div class="itemContent">
 					{{:helper.link("DOWNLOAD", null, {'PRG_downloadfile' : value.filename})}}
-				</div>	
+				</div>
 			</div>
 		{{/for}}
 	{{/if}}

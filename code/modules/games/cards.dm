@@ -320,7 +320,7 @@
 	if(deck_list.len)
 		var/obj/item/weapon/deck/the_deck = pick(deck_list)
 		var/datum/playingcard/the_card = length(the_deck.cards) ? pick(the_deck.cards) : null
-		
+
 		if(the_card)
 			cards += the_card
 			the_deck.cards -= the_card

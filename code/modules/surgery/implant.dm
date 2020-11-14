@@ -198,7 +198,7 @@
 		exposed = 1
 	if(affected.robotic >= ORGAN_ROBOT && affected.hatch == 3)
 		exposed = 1
-	
+
 	var/find_prob = 0
 	var/list/loot = list()
 	if(exposed)

@@ -221,7 +221,7 @@ datum/unit_test/species_organ_lists_update/start_test()
 		for(var/O in test_subject.internal_organs)
 			if(!test_internal_organ(test_subject, O))
 				failcount++
-		
+
 		for(var/O in test_subject.organs)
 			if(!test_external_organ(test_subject, O))
 				failcount++

@@ -252,4 +252,4 @@
 	name = "\improper Pest Control Crate"
 	cost = 10
 	containername = "\improper Pest Control Crate"
-	
+

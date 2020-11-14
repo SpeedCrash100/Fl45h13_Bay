@@ -144,7 +144,7 @@
 		return 1
 	if(get_dir(O.loc, target) == dir)
 		return 0
-	return 1 
+	return 1
 
 
 /obj/structure/window/hitby(AM as mob|obj)

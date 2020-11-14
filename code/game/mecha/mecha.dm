@@ -717,7 +717,7 @@
 			else
 				to_chat(user, "You were unable to attach [W] to [src]")
 		return
-	
+
 	var/obj/item/weapon/card/id/id_card = W.GetIdCard()
 	if(id_card)
 		if(add_req_access || maint_access)
