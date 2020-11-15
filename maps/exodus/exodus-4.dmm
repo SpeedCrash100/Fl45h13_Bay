@@ -151,7 +151,7 @@
 /turf/simulated/floor/tiled,
 /area/derelict/ship)
 "au" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/derelict/ship)
 "av" = (
@@ -1552,7 +1552,7 @@
 /turf/space,
 /area/turret_protected/tcomsat/starboard)
 "dL" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/turret_protected/tcomsat/starboard)
 "dM" = (

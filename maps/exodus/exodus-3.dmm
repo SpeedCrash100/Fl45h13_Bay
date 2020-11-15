@@ -1801,7 +1801,7 @@
 	},
 /area/centcom/evac)
 "iA" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/syndicate_mothership/ninja)
 "iB" = (
@@ -2874,7 +2874,7 @@
 	},
 /area/syndicate_mothership)
 "lF" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/syndicate_station/start)
 "lG" = (
@@ -4684,7 +4684,7 @@
 /turf/simulated/floor/shuttle/red,
 /area/skipjack_station/start)
 "pP" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/skipjack_station/start)
 "pQ" = (
@@ -5803,7 +5803,7 @@
 /turf/simulated/floor/shuttle/darkred,
 /area/syndicate_station/start)
 "sG" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/shuttle/red,
 /area/skipjack_station/start)
 "sH" = (
@@ -13210,7 +13210,7 @@
 	},
 /area/wizard_station)
 "IX" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -15441,7 +15441,7 @@
 /turf/simulated/floor/shuttle/white,
 /area/shuttle/escape/centcom)
 "NS" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 4;
@@ -16766,7 +16766,7 @@
 	},
 /area/rescue_base/base)
 "Qh" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 4;
@@ -16901,7 +16901,7 @@
 	},
 /area/rescue_base/base)
 "Qw" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 4;
@@ -17769,7 +17769,7 @@
 /turf/simulated/floor/shuttle/red,
 /area/rescue_base/start)
 "RX" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/rescue_base/start)
 "RY" = (
@@ -18676,7 +18676,7 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/merchant/home)
 "Uu" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor,
 /area/merchant_station)
 "Uv" = (
@@ -18954,7 +18954,7 @@
 /turf/simulated/floor/tiled,
 /area/merchant_station)
 "Va" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/structure/cable/blue{
 	d1 = 1;
 	d2 = 2;
@@ -19082,7 +19082,7 @@
 /turf/simulated/floor/airless,
 /area/merchant_station)
 "Vq" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/structure/cable/blue{
 	d1 = 4;
 	d2 = 8;

@@ -196,7 +196,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/sub/fore)
 "aA" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/maintenance/sub/fore)
@@ -465,7 +465,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/sub/port)
 "bj" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/maintenance/sub/port)
@@ -978,7 +978,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/sub/fore)
 "cD" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/wall,
 /area/maintenance/sub/starboard)
 "cE" = (
@@ -1022,7 +1022,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/sub/central)
 "cK" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/maintenance/sub/starboard)
@@ -1692,7 +1692,7 @@
 /turf/simulated/floor/reinforced,
 /area/maintenance/sub/starboard)
 "en" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -1978,7 +1978,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/sub/central)
 "eR" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/structure/cable/green{
 	d2 = 4;
 	icon_state = "0-4"
@@ -2263,7 +2263,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/sub/starboard)
 "ft" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/structure/cable/green{
 	d2 = 8;
 	icon_state = "0-8"
@@ -3085,7 +3085,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/sub/starboard)
 "hd" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/maintenance/sub/aft)
@@ -3492,7 +3492,7 @@
 /area/engineering/atmos)
 "ia" = (
 /obj/machinery/door/firedoor/border_only,
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "ib" = (
@@ -3838,7 +3838,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "iG" = (
@@ -3851,7 +3851,7 @@
 	icon_state = "intact";
 	dir = 6
 	},
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "iH" = (
@@ -3864,7 +3864,7 @@
 	icon_state = "map";
 	dir = 4
 	},
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "iI" = (
@@ -3872,7 +3872,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "iJ" = (
@@ -3881,7 +3881,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "iK" = (
@@ -3889,7 +3889,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "iL" = (
@@ -3898,7 +3898,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/green,
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "iM" = (
@@ -3909,7 +3909,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow{
 	dir = 8
 	},
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "iN" = (
@@ -3920,7 +3920,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 10
 	},
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "iO" = (
@@ -3928,7 +3928,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "iP" = (
@@ -3936,7 +3936,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow{
 	dir = 8
 	},
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "iQ" = (
@@ -3944,7 +3944,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 10
 	},
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "iR" = (
@@ -4011,7 +4011,7 @@
 "iY" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "iZ" = (
@@ -5930,7 +5930,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "nh" = (
@@ -5941,7 +5941,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "ni" = (
@@ -5955,7 +5955,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "nj" = (
@@ -5969,7 +5969,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "nk" = (
@@ -5981,7 +5981,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/green,
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "nl" = (
@@ -5990,7 +5990,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "nm" = (
@@ -6001,7 +6001,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "nn" = (
@@ -6013,7 +6013,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "no" = (
@@ -6025,7 +6025,7 @@
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/red,
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "np" = (

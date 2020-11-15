@@ -923,7 +923,7 @@
 /turf/simulated/floor/reinforced/oxygen,
 /area/constructionsite/atmospherics)
 "cp" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4

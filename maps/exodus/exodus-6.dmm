@@ -30,7 +30,7 @@
 /turf/simulated/floor/asteroid,
 /area/mine/unexplored)
 "ai" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/outpost/research/hallway)
@@ -2062,7 +2062,7 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/hallway)
 "ex" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/outpost/research/disposal)
@@ -2170,7 +2170,7 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/lab)
 "eL" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -2223,7 +2223,7 @@
 /turf/simulated/wall/r_wall,
 /area/outpost/research/dock)
 "eS" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/outpost/research/dock)
@@ -2266,7 +2266,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/research/disposal)
 "eY" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/outpost/research/hallway)
 "eZ" = (
@@ -2458,7 +2458,7 @@
 /turf/unsimulated/mask,
 /area/mine/unexplored)
 "fw" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/outpost/research/anomaly_analysis)
@@ -2789,7 +2789,7 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/eva)
 "gg" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/outpost/research/eva)
@@ -3018,7 +3018,7 @@
 /area/outpost/research/medical)
 "gH" = (
 /obj/structure/disposalpipe/segment,
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/outpost/research/eva)
 "gI" = (
@@ -3099,7 +3099,7 @@
 	id = "anomaly_isolation_lockdown";
 	name = "Anomalous Isolation Lockdown Shutters"
 	},
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/outpost/research/isolation_monitoring)
 "gP" = (
@@ -4037,7 +4037,7 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/hallway)
 "ir" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/camera/network/research_outpost{
 	c_tag = "Research Outpost Expedition Airlock";
@@ -4404,7 +4404,7 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/anomaly_analysis)
 "iZ" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -4490,7 +4490,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/research/isolation_monitoring)
 "ji" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/camera/network/mining{
 	c_tag = "Mining Outpost North - Airlock"
@@ -4561,12 +4561,12 @@
 /turf/simulated/floor/tiled,
 /area/outpost/research/isolation_monitoring)
 "jq" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/outpost/mining_north)
 "jr" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -5153,7 +5153,7 @@
 /turf/simulated/wall,
 /area/mine/unexplored)
 "kE" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/storage)
@@ -5657,7 +5657,7 @@
 /area/outpost/research/isolation_monitoring)
 "lM" = (
 /obj/machinery/door/firedoor/border_only,
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/outpost/research/hallway)
 "lN" = (
@@ -6163,7 +6163,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/research/isolation_monitoring)
 "mM" = (
-/obj/effect/wingrille_spawn/reinforced_phoron,
+/obj/effect/wingrille_spawn/reinforced_phoron/full,
 /obj/machinery/door/blast/regular/open{
 	dir = 8;
 	id = "isolationA"
@@ -6172,7 +6172,7 @@
 /area/outpost/research/isolation_a)
 "mN" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
-/obj/effect/wingrille_spawn/reinforced_phoron,
+/obj/effect/wingrille_spawn/reinforced_phoron/full,
 /obj/machinery/door/blast/regular/open{
 	dir = 8;
 	id = "isolationA"
@@ -6222,7 +6222,7 @@
 /turf/simulated/floor/tiled/airless,
 /area/mine/explored)
 "mV" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
@@ -6230,7 +6230,7 @@
 /turf/simulated/floor/tiled/airless,
 /area/mine/explored)
 "mX" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/power)
@@ -6307,7 +6307,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/research/emergency_storage)
 "nf" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4;
 	icon_state = "intact";
@@ -6322,7 +6322,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/power)
@@ -6349,7 +6349,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
@@ -6359,25 +6359,25 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
 "nl" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
 "nm" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
 "nn" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green,
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/atmospherics)
@@ -6396,12 +6396,12 @@
 /area/outpost/research/isolation_c)
 "np" = (
 /obj/machinery/atmospherics/pipe/simple/visible/blue,
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/atmospherics)
 "nq" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/dorms)
@@ -6472,7 +6472,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/research/power)
 "nz" = (
-/obj/effect/wingrille_spawn/reinforced_phoron,
+/obj/effect/wingrille_spawn/reinforced_phoron/full,
 /obj/machinery/door/blast/regular/open{
 	dir = 8;
 	id = "isolationB"
@@ -6481,7 +6481,7 @@
 /area/outpost/research/isolation_b)
 "nA" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
-/obj/effect/wingrille_spawn/reinforced_phoron,
+/obj/effect/wingrille_spawn/reinforced_phoron/full,
 /obj/machinery/door/blast/regular/open{
 	dir = 8;
 	id = "isolationB"
@@ -7004,7 +7004,7 @@
 	},
 /area/mine/explored)
 "oG" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/outpost/mining_west)
@@ -7348,7 +7348,7 @@
 /turf/simulated/floor,
 /area/outpost/mining_north)
 "pa" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/west_hall)
@@ -7455,7 +7455,7 @@
 	},
 /area/mine/explored)
 "pi" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/eva)
@@ -7617,7 +7617,7 @@
 	},
 /area/mine/explored)
 "pz" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/camera/network/mining{
 	c_tag = "Mining Outpost West - Airlock";
@@ -7626,7 +7626,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_west)
 "pA" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/east_hall)
@@ -7682,7 +7682,7 @@
 	},
 /area/mine/explored)
 "pE" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -7935,7 +7935,7 @@
 /turf/simulated/floor/wood,
 /area/outpost/engineering/meeting)
 "qd" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor,
 /area/outpost/mining_main/eva)
@@ -8038,7 +8038,7 @@
 	},
 /area/mine/explored)
 "qp" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -8249,7 +8249,7 @@
 /turf/simulated/floor/asteroid,
 /area/mine/explored)
 "qL" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
@@ -8367,7 +8367,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/hallway)
 "qU" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/camera/network/mining{
 	c_tag = "Mining Outpost Airlock East";
@@ -8873,7 +8873,7 @@
 /turf/simulated/floor/wood,
 /area/outpost/engineering/meeting)
 "rS" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/medbay)
@@ -8912,11 +8912,11 @@
 /turf/simulated/floor/carpet,
 /area/outpost/engineering/meeting)
 "rY" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor,
 /area/outpost/mining_main/refinery)
 "rZ" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/camera/network/mining{
 	c_tag = "Mining Outpost Airlock West";
@@ -8925,7 +8925,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/west_hall)
 "sa" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/refinery)
@@ -8975,7 +8975,7 @@
 /turf/simulated/floor/wood,
 /area/outpost/engineering/meeting)
 "sh" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
@@ -9138,7 +9138,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/hallway)
 "sx" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
@@ -9564,7 +9564,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/east_hall)
@@ -9972,7 +9972,7 @@
 /area/outpost/engineering/hallway)
 "tF" = (
 /obj/machinery/door/firedoor/border_only,
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/outpost/research/medical)
 "tG" = (
@@ -9989,7 +9989,7 @@
 /obj/effect/floor_decal/corner/purple{
 	dir = 1
 	},
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/outpost/research/medical)
 "tI" = (
@@ -10378,7 +10378,7 @@
 "ur" = (
 /obj/structure/sign/greencross,
 /obj/machinery/door/firedoor/border_only,
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/outpost/research/medical)
 "us" = (
@@ -10441,7 +10441,7 @@
 	c_tag = "Research Outpost Medbay";
 	dir = 1
 	},
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /turf/simulated/floor/plating,
 /area/outpost/research/medical)
 "ux" = (
@@ -10859,7 +10859,7 @@
 /turf/simulated/floor/reinforced,
 /area/outpost/research/isolation_c)
 "vr" = (
-/obj/effect/wingrille_spawn/reinforced_phoron,
+/obj/effect/wingrille_spawn/reinforced_phoron/full,
 /obj/machinery/door/blast/regular/open{
 	dir = 8;
 	id = "isolationC"
@@ -10903,7 +10903,7 @@
 /area/outpost/engineering/hallway)
 "vu" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
-/obj/effect/wingrille_spawn/reinforced_phoron,
+/obj/effect/wingrille_spawn/reinforced_phoron/full,
 /obj/machinery/door/blast/regular/open{
 	dir = 8;
 	id = "isolationC"
@@ -12735,13 +12735,13 @@
 	},
 /area/mine/explored)
 "zi" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/structure/sign/warning/docking_area,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/east_hall)
 "zj" = (
-/obj/effect/wingrille_spawn/reinforced,
+/obj/effect/wingrille_spawn/reinforced/full,
 /obj/structure/sign/warning/airlock,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
