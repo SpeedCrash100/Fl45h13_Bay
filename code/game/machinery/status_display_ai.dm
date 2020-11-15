@@ -60,6 +60,7 @@ var/list/ai_status_emotions = list(
 	name = "AI display"
 	anchored = 1
 	density = 0
+	layer = ABOVE_WINDOW_LAYER
 
 	var/mode = 0	// 0 = Blank
 					// 1 = AI emoticon

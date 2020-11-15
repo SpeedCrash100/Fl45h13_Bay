@@ -904,7 +904,6 @@
 /obj/machinery/access_button{
 	command = "cycle_exterior";
 	frequency = 1379;
-	layer = 7;
 	master_tag = "brig_solar_airlock";
 	name = "exterior access button";
 	pixel_x = 25;
@@ -994,7 +993,6 @@
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	frequency = 1379;
 	id_tag = "brig_solar_airlock";
-	layer = 7;
 	pixel_x = 0;
 	pixel_y = -25;
 	req_access = list(13);
@@ -1006,7 +1004,6 @@
 /obj/machinery/airlock_sensor{
 	frequency = 1379;
 	id_tag = "brig_solar_sensor";
-	layer = 7;
 	pixel_x = 12;
 	pixel_y = -25
 	},
@@ -1048,7 +1045,6 @@
 /obj/machinery/access_button{
 	command = "cycle_interior";
 	frequency = 1379;
-	layer = 7;
 	master_tag = "brig_solar_airlock";
 	name = "interior access button";
 	pixel_x = -25;
@@ -60391,7 +60387,6 @@
 /obj/machinery/access_button{
 	command = "cycle_exterior";
 	frequency = 1379;
-	layer = 7;
 	master_tag = "incinerator_access_control";
 	name = "Incinerator airlock control";
 	pixel_x = 10;
@@ -61820,7 +61815,6 @@
 	},
 /obj/machinery/airlock_sensor/airlock_exterior{
 	id_tag = "eng_al_ext_snsr";
-	layer = 7;
 	master_tag = "engine_room_airlock";
 	pixel_y = -22;
 	req_access = list(10)
@@ -62319,7 +62313,6 @@
 /obj/machinery/access_button{
 	command = "cycle_exterior";
 	frequency = 1379;
-	layer = 7;
 	master_tag = "robotics_solar_airlock";
 	name = "exterior access button";
 	pixel_x = 25;
@@ -62370,7 +62363,6 @@
 	frequency = 1379;
 	id_tag = "robotics_solar_airlock";
 	tag_interior_door = "robotics_solar_inner";
-	layer = 7;
 	pixel_x = 0;
 	pixel_y = -25;
 	req_access = list(13);
@@ -62379,7 +62371,6 @@
 /obj/machinery/airlock_sensor{
 	frequency = 1379;
 	id_tag = "robotics_solar_sensor";
-	layer = 7;
 	pixel_x = 12;
 	pixel_y = -25
 	},
@@ -62521,7 +62512,6 @@
 /obj/machinery/access_button{
 	command = "cycle_interior";
 	frequency = 1379;
-	layer = 7;
 	master_tag = "robotics_solar_airlock";
 	name = "interior access button";
 	pixel_x = -25;
