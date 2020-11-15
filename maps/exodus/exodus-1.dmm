@@ -80,7 +80,6 @@
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	frequency = 1379;
 	id_tag = "sub_sec_airlock";
-	layer = 7;
 	pixel_x = 0;
 	pixel_y = -25;
 	req_access = list(13);
@@ -92,7 +91,6 @@
 /obj/machinery/airlock_sensor{
 	frequency = 1379;
 	id_tag = "sub_sec_sensor";
-	layer = 7;
 	pixel_x = 12;
 	pixel_y = -25
 	},
@@ -112,7 +110,6 @@
 /obj/machinery/access_button{
 	command = "cycle_exterior";
 	frequency = 1379;
-	layer = 7;
 	master_tag = "sub_sec_airlock";
 	name = "exterior access button";
 	pixel_x = -25;
@@ -1378,7 +1375,6 @@
 /obj/machinery/access_button{
 	command = "cycle_exterior";
 	frequency = 1379;
-	layer = 7;
 	master_tag = "sub_cargo_airlock";
 	name = "exterior access button";
 	pixel_x = 25;
@@ -1403,7 +1399,6 @@
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	frequency = 1379;
 	id_tag = "sub_cargo_airlock";
-	layer = 7;
 	pixel_x = 0;
 	pixel_y = -25;
 	req_access = list(13);
@@ -1415,7 +1410,6 @@
 /obj/machinery/airlock_sensor{
 	frequency = 1379;
 	id_tag = "sub_cargo_sensor";
-	layer = 7;
 	pixel_x = 12;
 	pixel_y = -25
 	},
@@ -1444,7 +1438,6 @@
 /obj/machinery/access_button{
 	command = "cycle_interior";
 	frequency = 1379;
-	layer = 7;
 	master_tag = "sub_cargo_airlock";
 	name = "interior access button";
 	pixel_x = -25;
@@ -2145,7 +2138,6 @@
 /obj/machinery/access_button{
 	command = "cycle_exterior";
 	frequency = 1379;
-	layer = 7;
 	master_tag = "sub_research_airlock";
 	name = "exterior access button";
 	pixel_x = 25;
@@ -2170,7 +2162,6 @@
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	frequency = 1379;
 	id_tag = "sub_research_airlock";
-	layer = 7;
 	pixel_x = 0;
 	pixel_y = -25;
 	req_access = list(13);
@@ -2182,7 +2173,6 @@
 /obj/machinery/airlock_sensor{
 	frequency = 1379;
 	id_tag = "sub_research_sensor";
-	layer = 7;
 	pixel_x = 12;
 	pixel_y = -25
 	},
@@ -5011,7 +5001,6 @@
 /obj/machinery/access_button{
 	command = "cycle_interior";
 	frequency = 1379;
-	layer = 7;
 	master_tag = "sub_engineering_airlock";
 	name = "interior access button";
 	pixel_x = 25;
@@ -5044,7 +5033,6 @@
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	frequency = 1379;
 	id_tag = "sub_engineering_airlock";
-	layer = 7;
 	pixel_x = 0;
 	pixel_y = -25;
 	req_access = list(13);
@@ -5056,7 +5044,6 @@
 /obj/machinery/airlock_sensor{
 	frequency = 1379;
 	id_tag = "sub_engineering_sensor";
-	layer = 7;
 	pixel_x = 12;
 	pixel_y = -25
 	},
@@ -5073,7 +5060,6 @@
 /obj/machinery/access_button{
 	command = "cycle_exterior";
 	frequency = 1379;
-	layer = 7;
 	master_tag = "sub_engineering_airlock";
 	name = "exterior access button";
 	pixel_x = -25;
