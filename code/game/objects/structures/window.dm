@@ -526,7 +526,7 @@
 		animate(src, color="#FFFFFF", time=5)
 		set_opacity(0)
 	else
-		animate(src, color="#222222", time=5)
+		animate(src, color="#646464", time=5)
 		set_opacity(1)
 
 /obj/structure/window/reinforced/crescent/attack_hand()
