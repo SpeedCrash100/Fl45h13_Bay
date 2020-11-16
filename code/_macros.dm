@@ -72,15 +72,24 @@
 
 #define random_id(key,min_id,max_id) uniqueness_repository.Generate(/datum/uniqueness_generator/id_random, key, min_id, max_id)
 
-#define to_chat(target, message)                            target << message
-#define to_world(message)                                   world << message
-#define to_world_log(message)                               world.log << message
-#define sound_to(target, sound)                             target << sound
-#define to_file(file_entry, source_var)                     file_entry << source_var
-#define from_file(file_entry, target_var)                   file_entry >> target_var
-#define show_browser(target, browser_content, browser_name) target << browse(browser_content, browser_name)
-#define show_image(target, image)                           target << image
-#define send_rsc(target, rsc_content, rsc_name)             target << browse_rsc(rsc_content, rsc_name)
+/// General I/O helpers
+#define to_target(target, payload)            target << (payload)
+#define from_target(target, receiver)         target >> (receiver)
+
+/// Common use
+#define legacy_chat(target, message)          to_target(target, message)
+#define to_world(message)                     to_chat(world, message)
+#define to_world_log(message)                 to_target(world.log, message)
+#define sound_to(target, sound)               to_target(target, sound)
+#define image_to(target, image)               to_target(target, image)
+#define show_browser(target, content, title)  to_target(target, browse(content, title))
+#define close_browser(target, title)          to_target(target, browse(null, title))
+#define send_rsc(target, content, title)      to_target(target, browse_rsc(content, title))
+#define send_link(target, url)                to_target(target, link(url))
+#define send_output(target, msg, control)     to_target(target, output(msg, control))
+#define to_file(handle, value)                to_target(handle, value)
+#define to_save(handle, value)                to_target(handle, value) //semantics
+#define from_save(handle, target_var)         from_target(handle, target_var)
 
 #define MAP_IMAGE_PATH "nano/images/[using_map.path]/"
 
@@ -121,7 +130,3 @@
 #define LAZYCLEARLIST(L) if(L) L.Cut()
 // Reads L or an empty list if L is not a list.  Note: Does NOT assign, L may be an expression.
 #define SANITIZE_LIST(L) ( islist(L) ? L : list() )
-
-//Currently used in SDQL2 stuff
-#define send_output(target, msg, control) target << output(msg, control)
-#define send_link(target, url) target << link(url)
