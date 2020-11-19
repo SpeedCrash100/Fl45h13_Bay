@@ -13,7 +13,7 @@
 	if(!S)					return 0
 	S.cd = "/"
 
-	S["version"] >> savefile_version
+	from_save(S["version"], savefile_version)
 	player_setup.load_preferences(S)
 	loaded_preferences = S
 	return 1

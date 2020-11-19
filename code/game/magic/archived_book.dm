@@ -81,22 +81,22 @@ datum/archived_book/New(var/path)
 	var/savefile/F = new(path)
 
 	var/version
-	F["version"] >> version
+	from_save(F["version"], version)
 
 	if (isnull(version) || version < BOOK_VERSION_MIN || version > BOOK_VERSION_MAX)
 		fdel(path)
 		to_chat(usr, "What book?")
 		return 0
 
-	F["author"] >> author
-	F["title"] >> title
-	F["category"] >> category
-	F["id"] >> id
-	F["dat"] >> dat
+	from_save(F["author"], author)
+	from_save(F["title"], title)
+	from_save(F["category"], category)
+	from_save(F["id"], id)
+	from_save(F["dat"], dat)
 
-	F["author_real"] >> author_real
-	F["author_key"] >> author_key
-	F["photos"] >> photos
+	from_save(F["author_real"], author_real)
+	from_save(F["author_key"], author_key)
+	from_save(F["photos"], photos)
 	if(!photos)
 		photos = new()
 

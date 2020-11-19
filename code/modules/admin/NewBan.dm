@@ -126,8 +126,8 @@ var/savefile/Banlist
 	var/id
 
 	Banlist.cd = "/base/[foldername]"
-	Banlist["key"] >> key
-	Banlist["id"] >> id
+	from_save(Banlist["key"], key)
+	from_save(Banlist["id"], id)
 	Banlist.cd = "/base"
 
 	if (!Banlist.dir.Remove(foldername)) return 0

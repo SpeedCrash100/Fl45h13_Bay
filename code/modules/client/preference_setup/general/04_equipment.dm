@@ -7,9 +7,9 @@
 	sort_order = 4
 
 /datum/category_item/player_setup_item/general/equipment/load_character(var/savefile/S)
-	S["all_underwear"]          >> pref.all_underwear
-	S["all_underwear_metadata"] >> pref.all_underwear_metadata
-	S["backbag"]                >> pref.backbag
+	from_save(S["all_underwear"], pref.all_underwear)
+	from_save(S["all_underwear_metadata"], pref.all_underwear_metadata)
+	from_save(S["backbag"], pref.backbag)
 
 /datum/category_item/player_setup_item/general/equipment/save_character(var/savefile/S)
 	to_file(S["all_underwear"], pref.all_underwear)

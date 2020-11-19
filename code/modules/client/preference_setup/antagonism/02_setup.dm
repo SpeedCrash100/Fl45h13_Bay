@@ -5,8 +5,8 @@ var/global/list/uplink_locations = list("PDA", "Headset", "None")
 	sort_order = 2
 
 /datum/category_item/player_setup_item/antagonism/basic/load_character(var/savefile/S)
-	S["uplinklocation"] >> pref.uplinklocation
-	S["exploit_record"] >> pref.exploit_record
+	from_save(S["uplinklocation"], pref.uplinklocation)
+	from_save(S["exploit_record"], pref.exploit_record)
 
 /datum/category_item/player_setup_item/antagonism/basic/save_character(var/savefile/S)
 	to_file(S["uplinklocation"], pref.uplinklocation)

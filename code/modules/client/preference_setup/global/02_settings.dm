@@ -7,10 +7,10 @@
 	sort_order = 2
 
 /datum/category_item/player_setup_item/player_global/settings/load_preferences(var/savefile/S)
-	S["lastchangelog"]        >> pref.lastchangelog
-	S["default_slot"]	      >> pref.default_slot
-	S["preferences"]          >> pref.preferences_enabled
-	S["preferences_disabled"] >> pref.preferences_disabled
+	from_save(S["lastchangelog"], pref.lastchangelog)
+	from_save(S["default_slot"], pref.default_slot)
+	from_save(S["preferences"], pref.preferences_enabled)
+	from_save(S["preferences_disabled"], pref.preferences_disabled)
 
 /datum/category_item/player_setup_item/player_global/settings/save_preferences(var/savefile/S)
 	to_file(S["lastchangelog"], pref.lastchangelog)

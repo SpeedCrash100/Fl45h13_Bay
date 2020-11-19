@@ -237,7 +237,7 @@ var/global/floorIsLava = 0
 	dat += "<B>Player notes</B><HR>"
 	var/savefile/S=new("data/player_notes.sav")
 	var/list/note_keys
-	S >> note_keys
+	from_save(S, note_keys)
 
 	if(filter_term)
 		for(var/t in note_keys)
@@ -264,7 +264,7 @@ var/global/floorIsLava = 0
 /datum/admins/proc/player_has_info(var/key as text)
 	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
 	var/list/infos
-	info >> infos
+	from_save(info, infos)
 	if(!infos || !infos.len) return 0
 	else return 1
 
@@ -290,7 +290,7 @@ var/global/floorIsLava = 0
 
 	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
 	var/list/infos
-	info >> infos
+	from_save(info, infos)
 	if(!infos)
 		dat += "No information found on the given key.<br>"
 	else

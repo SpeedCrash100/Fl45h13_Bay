@@ -8,17 +8,17 @@
 	sort_order = 1
 
 /datum/category_item/player_setup_item/occupation/load_character(var/savefile/S)
-	S["alternate_option"]	>> pref.alternate_option
-	S["job_high"]	>> pref.job_high
-	S["job_medium"]	>> pref.job_medium
-	S["job_low"]	>> pref.job_low
+	from_save(S["alternate_option"], pref.alternate_option)
+	from_save(S["job_high"], pref.job_high)
+	from_save(S["job_medium"], pref.job_medium)
+	from_save(S["job_low"], pref.job_low)
 	if(!pref.job_medium)
 		pref.job_medium = list()
 	if(!pref.job_low)
 		pref.job_low = list()
-	S["player_alt_titles"]	>> pref.player_alt_titles
-	S["char_branch"] 			>> pref.char_branch
-	S["char_rank"] 				>> pref.char_rank
+	from_save(S["player_alt_titles"], pref.player_alt_titles)
+	from_save(S["char_branch"], pref.char_branch)
+	from_save(S["char_rank"], pref.char_rank)
 
 /datum/category_item/player_setup_item/occupation/save_character(var/savefile/S)
 	to_file(S["alternate_option"], pref.alternate_option)

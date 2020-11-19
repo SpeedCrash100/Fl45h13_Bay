@@ -162,9 +162,9 @@ var/savefile/Banlistjob
 	var/id
 	var/rank
 	Banlistjob.cd = "/base/[foldername]"
-	Banlistjob["key"] >> key
-	Banlistjob["id"] >> id
-	Banlistjob["rank"] >> rank
+	from_save(Banlistjob["key"], key)
+	from_save(Banlistjob["id"], id)
+	from_save(Banlistjob["rank"], rank)
 	Banlistjob.cd = "/base"
 
 	if (!Banlistjob.dir.Remove(foldername)) return 0

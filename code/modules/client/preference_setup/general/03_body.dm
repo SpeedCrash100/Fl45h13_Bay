@@ -9,27 +9,27 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	sort_order = 3
 
 /datum/category_item/player_setup_item/general/body/load_character(var/savefile/S)
-	S["species"]			>> pref.species
-	S["hair_red"]			>> pref.r_hair
-	S["hair_green"]			>> pref.g_hair
-	S["hair_blue"]			>> pref.b_hair
-	S["facial_red"]			>> pref.r_facial
-	S["facial_green"]		>> pref.g_facial
-	S["facial_blue"]		>> pref.b_facial
-	S["skin_tone"]			>> pref.s_tone
-	S["skin_red"]			>> pref.r_skin
-	S["skin_green"]			>> pref.g_skin
-	S["skin_blue"]			>> pref.b_skin
-	S["hair_style_name"]	>> pref.h_style
-	S["facial_style_name"]	>> pref.f_style
-	S["eyes_red"]			>> pref.r_eyes
-	S["eyes_green"]			>> pref.g_eyes
-	S["eyes_blue"]			>> pref.b_eyes
-	S["b_type"]				>> pref.b_type
-	S["disabilities"]		>> pref.disabilities
-	S["organ_data"]			>> pref.organ_data
-	S["rlimb_data"]			>> pref.rlimb_data
-	S["has_cortical_stack"] >> pref.has_cortical_stack
+	from_save(S["species"], pref.species)
+	from_save(S["hair_red"], pref.r_hair)
+	from_save(S["hair_green"], pref.g_hair)
+	from_save(S["hair_blue"], pref.b_hair)
+	from_save(S["facial_red"], pref.r_facial)
+	from_save(S["facial_green"], pref.g_facial)
+	from_save(S["facial_blue"], pref.b_facial)
+	from_save(S["skin_tone"], pref.s_tone)
+	from_save(S["skin_red"], pref.r_skin)
+	from_save(S["skin_green"], pref.g_skin)
+	from_save(S["skin_blue"], pref.b_skin)
+	from_save(S["hair_style_name"], pref.h_style)
+	from_save(S["facial_style_name"], pref.f_style)
+	from_save(S["eyes_red"], pref.r_eyes)
+	from_save(S["eyes_green"], pref.g_eyes)
+	from_save(S["eyes_blue"], pref.b_eyes)
+	from_save(S["b_type"], pref.b_type)
+	from_save(S["disabilities"], pref.disabilities)
+	from_save(S["organ_data"], pref.organ_data)
+	from_save(S["rlimb_data"], pref.rlimb_data)
+	from_save(S["has_cortical_stack"], pref.has_cortical_stack)
 	pref.preview_icon = null
 
 /datum/category_item/player_setup_item/general/body/save_character(var/savefile/S)

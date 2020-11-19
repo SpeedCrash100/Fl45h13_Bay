@@ -258,14 +258,14 @@ swapmap
 			z1=locorner.z
 		if(!defarea) defarea=new world.area
 		if(!_id)
-			S["id"] >> id
+			from_save(S["id"], id)
 		else
 			var/dummy
-			S["id"] >> dummy
-		S["z"] >> z2		// these are depth,
-		S["y"] >> y2		//   		 height,
-		S["x"] >> x2		//			 width
-		S["areas"] >> areas
+			from_save(S["id"], dummy)
+		from_save(S["z"], z2)		// these are depth,
+		from_save(S["y"], y2)		//   		 height,
+		from_save(S["x"], x2)		//			 width
+		from_save(S["areas"], areas)
 		locked=1
 		AllocateSwapMap()	// adjust x1,y1,z1 - x2,y2,z2 coords
 		var/oldcd=S.cd
@@ -276,12 +276,12 @@ swapmap
 				for(x=x1,x<=x2,++x)
 					S.cd="[x-x1+1]"
 					var/tp
-					S["type"]>>tp
+					from_save(S["type"], tp)
 					var/turf/T=locate(x,y,z)
 					T.loc.contents-=T
 					T=new tp(locate(x,y,z))
 					if("AREA" in S.dir)
-						S["AREA"]>>n
+						from_save(S["AREA"], n)
 						var/area/A=areas[n]
 						A.contents+=T
 					else defarea.contents+=T
@@ -455,14 +455,14 @@ atom
 	Write(savefile/S)
 		for(var/V in vars-"x"-"y"-"z"-"contents"-"icon"-"overlays"-"underlays")
 			if(issaved(vars[V]))
-				if(vars[V]!=initial(vars[V])) 
+				if(vars[V]!=initial(vars[V]))
 					to_file(S[V], vars[V])
-				else 
+				else
 					S.dir.Remove(V)
 		if(icon!=initial(icon))
 			if(swapmaps_iconcache && swapmaps_iconcache[icon])
 				to_file(S["icon"], swapmaps_iconcache[icon])
-			else 
+			else
 				to_file(S["icon"], icon)
 		// do not save mobs with keys; do save other mobs
 		var/mob/M
@@ -484,7 +484,7 @@ atom
 		// replace it from the cache list
 		if(!icon && ("icon" in S.dir))
 			var/ic
-			S["icon"]>>ic
+			from_save(S["icon"], ic)
 			if(istext(ic)) icon=swapmaps_iconcache[ic]
 		if(l && contents!=l)
 			contents+=l
@@ -550,7 +550,7 @@ proc/SwapMaps_Load(id)
 		if(text)
 			S=new
 			S.ImportText("/",file("map_[id].txt"))
-		S >> M
+		from_save(S, M)
 		while(M.locked) sleep(1)
 		M.mode=text
 	return M
@@ -594,7 +594,7 @@ proc/SwapMaps_CreateFromTemplate(template_id)
 		S=new
 		S.ImportText("/",file("map_[template_id].txt"))
 	/*
-		This hacky workaround is needed because S >> M will create a brand new
+		This hacky workaround is needed because from_save(S, M will create a brand new)
 		M to fill with data. There's no way to control the Read() process
 		properly otherwise. The //.0 path should always match the map, however.
 	 */
@@ -621,7 +621,7 @@ proc/SwapMaps_LoadChunk(chunk_id,turf/locorner)
 		S=new
 		S.ImportText("/",file("map_[chunk_id].txt"))
 	/*
-		This hacky workaround is needed because S >> M will create a brand new
+		This hacky workaround is needed because from_save(S, M will create a brand new)
 		M to fill with data. There's no way to control the Read() process
 		properly otherwise. The //.0 path should always match the map, however.
 	 */
@@ -675,7 +675,7 @@ proc/SwapMaps_GetSize(id)
 	var/x
 	var/y
 	var/z
-	S["x"] >> x
-	S["y"] >> y
-	S["z"] >> z
+	from_save(S["x"], x)
+	from_save(S["y"], y)
+	from_save(S["z"], z)
 	return list(x,y,z)

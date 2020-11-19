@@ -3,7 +3,7 @@
 	sort_order = 5
 
 /datum/category_item/player_setup_item/player_global/ooc/load_preferences(var/savefile/S)
-	S["ignored_players"]	>> pref.ignored_players
+	from_save(S["ignored_players"], pref.ignored_players)
 
 
 /datum/category_item/player_setup_item/player_global/ooc/save_preferences(var/savefile/S)

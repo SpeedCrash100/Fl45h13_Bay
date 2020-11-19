@@ -6,12 +6,12 @@ datum/preferences
 	sort_order = 1
 
 /datum/category_item/player_setup_item/general/basic/load_character(var/savefile/S)
-	S["real_name"]				>> pref.real_name
-	S["name_is_always_random"]	>> pref.be_random_name
-	S["gender"]					>> pref.gender
-	S["age"]					>> pref.age
-	S["spawnpoint"]				>> pref.spawnpoint
-	S["OOC_Notes"]				>> pref.metadata
+	from_save(S["real_name"], pref.real_name)
+	from_save(S["name_is_always_random"], pref.be_random_name)
+	from_save(S["gender"], pref.gender)
+	from_save(S["age"], pref.age)
+	from_save(S["spawnpoint"], pref.spawnpoint)
+	from_save(S["OOC_Notes"], pref.metadata)
 
 /datum/category_item/player_setup_item/general/basic/save_character(var/savefile/S)
 	to_file(S["real_name"], pref.real_name)

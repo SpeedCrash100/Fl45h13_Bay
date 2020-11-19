@@ -45,7 +45,7 @@
 	if(!F) return //Not everyone has a pai savefile.
 
 	var/version = null
-	F["version"] >> version
+	from_save(F["version"], version)
 
 	if (isnull(version) || version != 1)
 		fdel(path)
@@ -53,8 +53,8 @@
 			alert(user, "Your savefile was incompatible with this version and was deleted.")
 		return 0
 
-	F["name"] >> src.name
-	F["description"] >> src.description
-	F["role"] >> src.role
-	F["comments"] >> src.comments
+	from_save(F["name"], src.name)
+	from_save(F["description"], src.description)
+	from_save(F["role"], src.role)
+	from_save(F["comments"], src.comments)
 	return 1

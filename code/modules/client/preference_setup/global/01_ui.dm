@@ -6,11 +6,11 @@
 	sort_order = 1
 
 /datum/category_item/player_setup_item/player_global/ui/load_preferences(var/savefile/S)
-	S["UI_style"]		>> pref.UI_style
-	S["UI_style_color"]	>> pref.UI_style_color
-	S["UI_style_alpha"]	>> pref.UI_style_alpha
-	S["ooccolor"]		>> pref.ooccolor
-	S["clientfps"]		>> pref.clientfps
+	from_save(S["UI_style"], pref.UI_style)
+	from_save(S["UI_style_color"], pref.UI_style_color)
+	from_save(S["UI_style_alpha"], pref.UI_style_alpha)
+	from_save(S["ooccolor"], pref.ooccolor)
+	from_save(S["clientfps"], pref.clientfps)
 
 /datum/category_item/player_setup_item/player_global/ui/save_preferences(var/savefile/S)
 	to_file(S["UI_style"], pref.UI_style)

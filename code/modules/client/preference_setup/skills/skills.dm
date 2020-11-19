@@ -3,8 +3,8 @@
 	sort_order = 1
 
 /datum/category_item/player_setup_item/skills/load_character(var/savefile/S)
-	S["skills"]					>> pref.skills
-	S["used_skillpoints"]		>> pref.used_skillpoints
+	from_save(S["skills"], pref.skills)
+	from_save(S["used_skillpoints"], pref.used_skillpoints)
 
 /datum/category_item/player_setup_item/skills/save_character(var/savefile/S)
 	to_file(S["skills"], 				pref.skills)
