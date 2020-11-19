@@ -89,7 +89,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	. = list()
 	if(!pref.preview_icon)
 		pref.update_preview_icon()
-	user << browse_rsc(pref.preview_icon, "previewicon.png")
+	send_rsc(user, pref.preview_icon, "previewicon.png")
 
 	var/mob_species = all_species[pref.species]
 	. += "<table><tr style='vertical-align:top'><td><b>Body</b> "
@@ -560,7 +560,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	dat += "<td width = 400>[current_species.blurb]</td>"
 	dat += "<td width = 200 align='center'>"
 	if("preview" in icon_states(current_species.get_icobase()))
-		usr << browse_rsc(icon(current_species.get_icobase(),"preview"), "species_preview_[current_species.name].png")
+		send_rsc(usr, icon(current_species.get_icobase(),"preview"), "species_preview_[current_species.name].png")
 		dat += "<img src='species_preview_[current_species.name].png' width='64px' height='64px'><br/><br/>"
 	dat += "<b>Language:</b> [current_species.language]<br/>"
 	dat += "<small>"

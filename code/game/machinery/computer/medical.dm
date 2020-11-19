@@ -82,8 +82,8 @@
 				if(4.0)
 					var/icon/front = active1.fields["photo_front"]
 					var/icon/side = active1.fields["photo_side"]
-					user << browse_rsc(front, "front.png")
-					user << browse_rsc(side, "side.png")
+					send_rsc(user, front, "front.png")
+					send_rsc(user, side, "side.png")
 					dat += "<CENTER><B>Medical Record</B></CENTER><BR>"
 					if ((istype(src.active1, /datum/data/record) && data_core.general.Find(src.active1)))
 						dat += "<table><tr><td>Name: [active1.fields["name"]] \

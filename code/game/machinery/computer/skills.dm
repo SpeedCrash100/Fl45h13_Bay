@@ -98,8 +98,8 @@
 
 						var/mil_rank_text = ""
 
-						user << browse_rsc(front, "front.png")
-						user << browse_rsc(side, "side.png")
+						send_rsc(user, front, "front.png")
+						send_rsc(user, side, "side.png")
 						if(using_map.flags & MAP_HAS_BRANCH)
 							mil_rank_text += "Branch: <a href='?src=\ref[src];choice=Edit Field;field=mil_branch'>[active1.fields["mil_branch"] || "None"]</a><br>\n"
 						if(using_map.flags & MAP_HAS_RANK)
