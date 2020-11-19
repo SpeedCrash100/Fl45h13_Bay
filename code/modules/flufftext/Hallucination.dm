@@ -351,7 +351,7 @@ proc/check_panel(mob/M)
 	var/obj/effect/overlay/O = new/obj/effect/overlay(target.loc)
 	O.name = "blood"
 	var/image/I = image('icons/effects/blood.dmi',O,"floor[rand(1,7)]",O.dir,1)
-	target << I
+	image_to(target, I)
 	spawn(300)
 		qdel(O)
 	return

@@ -34,8 +34,8 @@
 				if( copytext(line,1,12) == "ExitAddress" )
 					var/cleaned = copytext(line,13,length(line)-19)
 					if(!cleaned)	continue
-					F[cleaned] << 1
-			F["last_update"] << world.realtime
+					to_file(F[cleaned], 1)
+			to_file(F["last_update"], world.realtime)
 			log_misc("ToR data updated!")
 			if(usr)	to_chat(usr, "ToRban updated.")
 			return 1

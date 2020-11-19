@@ -19,19 +19,19 @@
 		S["flavour_texts_robot_[module]"] >> pref.flavour_texts_robot[module]
 
 /datum/category_item/player_setup_item/general/flavor/save_character(var/savefile/S)
-	S["flavor_texts_general"]	<< pref.flavor_texts["general"]
-	S["flavor_texts_head"]		<< pref.flavor_texts["head"]
-	S["flavor_texts_face"]		<< pref.flavor_texts["face"]
-	S["flavor_texts_eyes"]		<< pref.flavor_texts["eyes"]
-	S["flavor_texts_torso"]		<< pref.flavor_texts["torso"]
-	S["flavor_texts_arms"]		<< pref.flavor_texts["arms"]
-	S["flavor_texts_hands"]		<< pref.flavor_texts["hands"]
-	S["flavor_texts_legs"]		<< pref.flavor_texts["legs"]
-	S["flavor_texts_feet"]		<< pref.flavor_texts["feet"]
+	to_file(S["flavor_texts_general"], pref.flavor_texts["general"])
+	to_file(S["flavor_texts_head"], pref.flavor_texts["head"])
+	to_file(S["flavor_texts_face"], pref.flavor_texts["face"])
+	to_file(S["flavor_texts_eyes"], pref.flavor_texts["eyes"])
+	to_file(S["flavor_texts_torso"], pref.flavor_texts["torso"])
+	to_file(S["flavor_texts_arms"], pref.flavor_texts["arms"])
+	to_file(S["flavor_texts_hands"], pref.flavor_texts["hands"])
+	to_file(S["flavor_texts_legs"], pref.flavor_texts["legs"])
+	to_file(S["flavor_texts_feet"], pref.flavor_texts["feet"])
 
-	S["flavour_texts_robot_Default"] << pref.flavour_texts_robot["Default"]
+	to_file(S["flavour_texts_robot_Default"], pref.flavour_texts_robot["Default"])
 	for(var/module in robot_module_types)
-		S["flavour_texts_robot_[module]"] << pref.flavour_texts_robot[module]
+		to_file(S["flavour_texts_robot_[module]"], pref.flavour_texts_robot[module])
 
 /datum/category_item/player_setup_item/general/flavor/sanitize_character()
 	return

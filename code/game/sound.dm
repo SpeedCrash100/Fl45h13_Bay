@@ -155,7 +155,7 @@ var/const/FALLOFF_SOUNDS = 0.5
 			var/area/A = get_area(src)
 			S.environment = A.sound_env
 
-	src << S
+	sound_to(src, S)
 
 /client/proc/playtitlemusic()
 	if(is_preference_enabled(/datum/client_preference/play_lobby_music))

@@ -21,13 +21,13 @@
 	S["char_rank"] 				>> pref.char_rank
 
 /datum/category_item/player_setup_item/occupation/save_character(var/savefile/S)
-	S["alternate_option"]	<< pref.alternate_option
-	S["job_high"]	<< pref.job_high
-	S["job_medium"]	<< pref.job_medium
-	S["job_low"]	<< pref.job_low
-	S["player_alt_titles"]	<< pref.player_alt_titles
-	S["char_branch"] 			<< pref.char_branch
-	S["char_rank"] 				<< pref.char_rank
+	to_file(S["alternate_option"], pref.alternate_option)
+	to_file(S["job_high"], pref.job_high)
+	to_file(S["job_medium"], pref.job_medium)
+	to_file(S["job_low"], pref.job_low)
+	to_file(S["player_alt_titles"], pref.player_alt_titles)
+	to_file(S["char_branch"], pref.char_branch)
+	to_file(S["char_rank"], pref.char_rank)
 
 /datum/category_item/player_setup_item/occupation/sanitize_character()
 	pref.alternate_option	= sanitize_integer(pref.alternate_option, 0, 2, initial(pref.alternate_option))
