@@ -24,7 +24,7 @@
 
 	switch(alert("View (in game) or Download?", path, "View", "Download"))
 		if ("View")
-			src << browse("<pre style='word-wrap: break-word;'>[html_encode(file2text(file(path)))]</pre>", list2params(list("window" = "viewfile.[path]")))
+			show_browser(src, "<pre style='word-wrap: break-word;'>[html_encode(file2text(file(path)))]</pre>", list2params(list("window" = "viewfile.[path]")))
 		if ("Download")
 			to_chat(src, "Attempting to send [path], this may take a fair few minutes if the file is very large.")
 			src << ftp(file(path))

@@ -46,7 +46,7 @@ datum/controller/vote
 			else
 				for(var/client/C in voting)
 					if(C)
-						C << browse(vote.interface(C),"window=vote")
+						show_browser(C, vote.interface(C), "window=vote")
 
 				voting.Cut()
 
@@ -554,4 +554,4 @@ datum/controller/vote/proc/is_addantag_allowed(var/automatic)
 	set name = "Vote"
 
 	if(vote)
-		src << browse(vote.interface(client),"window=vote")
+		show_browser(src, vote.interface(client), "window=vote")

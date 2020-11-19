@@ -608,4 +608,4 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		dat += "\[<a href='?src=\ref[src];set_species=[pref.species_preview]'>select</a>\]"
 	dat += "</center></body>"
 
-	user << browse(dat, "window=species;size=700x400")
+	show_browser(user, dat, "window=species;size=700x400")

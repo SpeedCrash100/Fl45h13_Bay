@@ -37,7 +37,7 @@
 			var/mob/M = monster[i]
 			var/name = capitalize(initial(M.name))
 			dat += "<BR><a href='byond://?src=\ref[src];path=[monster[i]]'>[name]</a> - [monster_info[i]]</BR>"
-	user << browse(dat,"window=monstermanual")
+	show_browser(user, dat, "window=monstermanual")
 	onclose(user,"monstermanual")
 
 /obj/item/weapon/monster_manual/Topic(href, href_list)

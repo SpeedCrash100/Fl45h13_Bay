@@ -279,7 +279,7 @@
 		dat += "- <A href='?src=\ref[src];strengthdown=1'>--</A>|<A href='?src=\ref[src];strengthup=1'>++</A><BR><BR>"
 
 
-	user << browse(dat, "window=AMcontrol;size=420x500")
+	show_browser(user, dat, "window=AMcontrol;size=420x500")
 	onclose(user, "AMcontrol")
 	return
 

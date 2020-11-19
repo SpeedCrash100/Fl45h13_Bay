@@ -85,7 +85,7 @@
 	else
 		dat += "No local gravity generator detected!"
 
-	user << browse(dat, "window=gravgen")
+	show_browser(user, dat, "window=gravgen")
 	onclose(user, "gravgen")
 
 
