@@ -3,9 +3,9 @@
 	sort_order = 1
 
 /datum/category_item/player_setup_item/antagonism/candidacy/load_character(var/savefile/S)
-	from_file(S["be_special"],           pref.be_special_role)
-	from_file(S["sometimes_be_special"], pref.sometimes_be_special_role)
-	from_file(S["never_be_special"],     pref.never_be_special_role)
+	from_save(S["be_special"],           pref.be_special_role)
+	from_save(S["sometimes_be_special"], pref.sometimes_be_special_role)
+	from_save(S["never_be_special"],     pref.never_be_special_role)
 
 /datum/category_item/player_setup_item/antagonism/candidacy/save_character(var/savefile/S)
 	to_file(S["be_special"],             pref.be_special_role)
