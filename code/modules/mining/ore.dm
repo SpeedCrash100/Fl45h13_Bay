@@ -13,7 +13,7 @@
 			ensure_ore_data_initialised()
 			ore = ores_by_type[ore]
 			if(ore.ore != type)
-				world.log << "[src] ([src.type]) had ore type [ore.type] but that type does not have [src.type] set as its ore item!"
+				to_world_log("[src] ([src.type]) had ore type [ore.type] but that type does not have [src.type] set as its ore item!")
 			update_ore()
 
 	proc/update_ore()
