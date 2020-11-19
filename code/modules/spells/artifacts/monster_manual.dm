@@ -43,7 +43,7 @@
 /obj/item/weapon/monster_manual/Topic(href, href_list)
 	..()
 	if(!Adjacent(usr))
-		usr << browse(null,"window=monstermanual")
+		close_browser(usr, "window=monstermanual")
 		return
 	if(href_list["temp"])
 		temp = null
@@ -79,4 +79,4 @@
 	if(Adjacent(usr))
 		src.interact(usr)
 	else
-		usr << browse(null,"window=monstermanual")
+		close_browser(usr, "window=monstermanual")

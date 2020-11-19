@@ -350,7 +350,7 @@
 	if (href_list["mach_close"])
 		var/t1 = text("window=[]", href_list["mach_close"])
 		unset_machine()
-		src << browse(null, t1)
+		close_browser(src, t1)
 
 	if(href_list["item"])
 		handle_strip(href_list["item"],usr,locate(href_list["holder"]))
@@ -617,7 +617,7 @@
 	if (href_list["flavor_change"])
 		switch(href_list["flavor_change"])
 			if("done")
-				src << browse(null, "window=flavor_changes")
+				close_browser(src, "window=flavor_changes")
 				return
 			if("general")
 				var/msg = sanitize(input(usr,"Update the general description of your character. This will be shown regardless of clothing, and may include OOC notes and preferences.","Flavor Text",html_decode(flavor_texts[href_list["flavor_change"]])) as message, extra = 0)

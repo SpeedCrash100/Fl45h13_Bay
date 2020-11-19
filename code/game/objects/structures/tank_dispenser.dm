@@ -115,6 +115,6 @@
 		add_fingerprint(usr)
 		updateUsrDialog()
 	else
-		usr << browse(null, "window=dispenser")
+		close_browser(usr, "window=dispenser")
 		return
 	return

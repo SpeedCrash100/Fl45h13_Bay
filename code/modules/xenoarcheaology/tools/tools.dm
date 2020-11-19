@@ -226,7 +226,7 @@
 			qdel(current)
 	else if(href_list["close"])
 		usr.unset_machine()
-		usr << browse(null, "window=depth_scanner")
+		close_browser(usr, "window=depth_scanner")
 
 	updateSelfDialog()
 
@@ -323,6 +323,6 @@
 
 	else if(href_list["close"])
 		usr.unset_machine()
-		usr << browse(null, "window=locater")
+		close_browser(usr, "window=locater")
 
 	updateSelfDialog()

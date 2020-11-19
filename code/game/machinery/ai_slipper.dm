@@ -42,7 +42,7 @@
 			if (locked)
 				if (user.machine==src)
 					user.unset_machine()
-					user << browse(null, "window=ai_slipper")
+					close_browser(user, "window=ai_slipper")
 			else
 				if (user.machine==src)
 					src.attack_hand(usr)
@@ -61,7 +61,7 @@
 		if (!istype(user, /mob/living/silicon))
 			to_chat(user, text("Too far away."))
 			user.unset_machine()
-			user << browse(null, "window=ai_slipper")
+			close_browser(user, "window=ai_slipper")
 			return
 
 	user.set_machine(src)

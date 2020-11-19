@@ -68,7 +68,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 
 /obj/machinery/librarypubliccomp/Topic(href, href_list)
 	if(..())
-		usr << browse(null, "window=publiclibrary")
+		close_browser(usr, "window=publiclibrary")
 		onclose(usr, "publiclibrary")
 		return
 
@@ -254,7 +254,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 
 /obj/machinery/librarycomp/Topic(href, href_list)
 	if(..())
-		usr << browse(null, "window=library")
+		close_browser(usr, "window=library")
 		onclose(usr, "library")
 		return
 
@@ -429,7 +429,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 
 /obj/machinery/libraryscanner/Topic(href, href_list)
 	if(..())
-		usr << browse(null, "window=scanner")
+		close_browser(usr, "window=scanner")
 		onclose(usr, "scanner")
 		return
 

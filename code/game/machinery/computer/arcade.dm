@@ -177,7 +177,7 @@
 
 	if (href_list["close"])
 		usr.unset_machine()
-		usr << browse(null, "window=arcade")
+		close_browser(usr, "window=arcade")
 
 	else if (href_list["newgame"]) //Reset everything
 		temp = "New Round"

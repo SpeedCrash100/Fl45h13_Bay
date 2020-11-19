@@ -1141,7 +1141,7 @@
 			src.occupant.client.eye = src.occupant.client.mob
 			src.occupant.client.perspective = MOB_PERSPECTIVE
 		*/
-		src.occupant << browse(null, "window=exosuit")
+		close_browser(src.occupant, "window=exosuit")
 		if(istype(mob_container, /obj/item/device/mmi))
 			var/obj/item/device/mmi/mmi = mob_container
 			if(mmi.brainmob)
@@ -1576,7 +1576,7 @@
 		if(!in_range(src, usr))	return
 		add_req_access = 0
 		var/mob/user = filter.getMob("user")
-		user << browse(null,"window=exosuit_add_access")
+		close_browser(user, "window=exosuit_add_access")
 		return
 	if(href_list["dna_lock"])
 		if(usr != src.occupant)	return

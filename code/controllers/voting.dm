@@ -41,7 +41,7 @@ datum/controller/vote
 				result()
 				for(var/client/C in voting)
 					if(C)
-						C << browse(null,"window=vote")
+						close_browser(C, "window=vote")
 				reset()
 			else
 				for(var/client/C in voting)
@@ -491,7 +491,7 @@ datum/controller/vote
 			switch(href_list["vote"])
 				if("close")
 					voting -= usr.client
-					usr << browse(null, "window=vote")
+					close_browser(usr, "window=vote")
 					return
 				if("cancel")
 					if(usr.client.holder)

@@ -75,7 +75,7 @@
 
 /obj/item/device/assembly/infra/Topic(href, href_list, state = physical_state)
 	if(..())
-		usr << browse(null, "window=infra")
+		close_browser(usr, "window=infra")
 		onclose(usr, "infra")
 		return 1
 
@@ -87,7 +87,7 @@
 		update_icon()
 
 	if(href_list["close"])
-		usr << browse(null, "window=infra")
+		close_browser(usr, "window=infra")
 		return
 
 	if(usr)

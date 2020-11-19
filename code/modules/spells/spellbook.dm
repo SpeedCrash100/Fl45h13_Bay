@@ -165,7 +165,7 @@ var/list/artefact_feedback = list(/obj/structure/closet/wizard/armor = 		"HS",
 		return
 
 	if(!H.contents.Find(src))
-		H << browse(null,"window=spellbook")
+		close_browser(H, "window=spellbook")
 		return
 
 	if(href_list["lock"])

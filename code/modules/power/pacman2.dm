@@ -117,7 +117,7 @@
 			if (get_dist(src, user) > 1 )
 				if (!istype(user, /mob/living/silicon/ai))
 					user.machine = null
-					user << browse(null, "window=port_gen")
+					close_browser(user, "window=port_gen")
 					return
 
 			user.machine = src
@@ -161,7 +161,7 @@
 					power_output++
 					src.updateUsrDialog()
 			if (href_list["action"] == "close")
-				usr << browse(null, "window=port_gen")
+				close_browser(usr, "window=port_gen")
 				usr.machine = null
 
 /obj/machinery/power/port_gen/pacman2/emag_act(var/remaining_uses, var/mob/user)

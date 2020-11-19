@@ -108,7 +108,7 @@
 			dat += "Scan card to reset access code <a href='?src=\ref[src];choice=reset'>\[------\]</a>"
 		user << browse(dat,"window=eftpos")
 	else
-		user << browse(null,"window=eftpos")
+		close_browser(user, "window=eftpos")
 
 /obj/item/device/eftpos/attackby(obj/item/O as obj, user as mob)
 

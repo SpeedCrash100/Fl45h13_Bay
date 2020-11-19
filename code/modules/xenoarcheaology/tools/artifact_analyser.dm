@@ -121,7 +121,7 @@
 
 	if(href_list["close"])
 		usr.unset_machine(src)
-		usr << browse(null, "window=artanalyser")
+		close_browser(usr, "window=artanalyser")
 
 	updateDialog()
 

@@ -1067,7 +1067,7 @@ FIRE ALARM
 
 		src.add_fingerprint(usr)
 	else
-		usr << browse(null, "window=firealarm")
+		close_browser(usr, "window=firealarm")
 		return
 	return
 
@@ -1220,6 +1220,6 @@ Just a object used in constructing fire alarms
 
 		add_fingerprint(usr)
 	else
-		usr << browse(null, "window=partyalarm")
+		close_browser(usr, "window=partyalarm")
 		return
 	return

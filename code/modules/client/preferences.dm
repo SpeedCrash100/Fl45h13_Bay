@@ -441,5 +441,5 @@
 	panel.open()
 
 /datum/preferences/proc/close_load_dialog(mob/user)
-	user << browse(null, "window=saves")
+	close_browser(user, "window=saves")
 	panel.close()

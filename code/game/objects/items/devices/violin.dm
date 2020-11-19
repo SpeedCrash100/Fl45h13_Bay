@@ -295,7 +295,7 @@
 /obj/item/device/violin/Topic(href, href_list)
 
 	if(!in_range(src, usr) || issilicon(usr) || !isliving(usr) || !usr.canmove || usr.restrained())
-		usr << browse(null, "window=violin;size=700x300")
+		close_browser(usr, "window=violin;size=700x300")
 		onclose(usr, "violin")
 		return
 

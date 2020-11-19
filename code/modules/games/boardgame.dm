@@ -63,7 +63,7 @@ obj/item/weapon/board/attackby(obj/item/I as obj, mob/user as mob)
 
 /obj/item/weapon/board/interact(mob/user as mob)
 	if(user.is_physically_disabled() || (!isAI(user) && !user.Adjacent(src))) //can't see if you arent conscious. If you are not an AI you can't see it unless you are next to it, either.
-		user << browse(null, "window=boardgame")
+		close_browser(user, "window=boardgame")
 		user.unset_machine()
 		return
 
@@ -105,7 +105,7 @@ obj/item/weapon/board/attackby(obj/item/I as obj, mob/user as mob)
 /obj/item/weapon/board/Topic(href, href_list)
 	if(!usr.Adjacent(src))
 		usr.unset_machine()
-		usr << browse(null, "window=boardgame")
+		close_browser(usr, "window=boardgame")
 		return
 
 	if(!usr.incapacitated()) //you can't move pieces if you can't move

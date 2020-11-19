@@ -78,7 +78,7 @@
 	Topic(href, href_list)
 		..()
 		if( href_list["close"] )
-			usr << browse(null, "window=camcircuit")
+			close_browser(usr, "window=camcircuit")
 			usr.machine = null
 			return
 		else if(href_list["net"])
