@@ -83,7 +83,6 @@
 #define to_world_log(message)                 to_target(world.log, message)
 #define sound_to(target, sound)               to_target(target, sound)
 #define image_to(target, image)               to_target(target, image)
-#define show_browser(target, content, title)  to_target(target, browse(content, title))
 #define close_browser(target, title)          to_target(target, browse(null, title))
 #define send_rsc(target, content, title)      to_target(target, browse_rsc(content, title))
 #define send_link(target, url)                to_target(target, link(url))
@@ -131,3 +130,9 @@
 #define LAZYCLEARLIST(L) if(L) L.Cut()
 // Reads L or an empty list if L is not a list.  Note: Does NOT assign, L may be an expression.
 #define SANITIZE_LIST(L) ( islist(L) ? L : list() )
+
+/proc/show_browser(target, content, title)
+	if(findtext(content, "<html>"))
+		if(!findtext(content, "UTF-8"))
+			content = replacetext(content, "<html>", "<html><meta charset='UTF-8'>")
+	to_target(target, browse(content, title))
