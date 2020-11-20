@@ -7,8 +7,8 @@
 	from_save(S["relations_info"], pref.relations_info)
 
 /datum/category_item/player_setup_item/relations/save_character(var/savefile/S)
-	to_file(S["relations"], pref.relations)
-	to_file(S["relations_info"], pref.relations_info)
+	to_save(S["relations"], pref.relations)
+	to_save(S["relations_info"], pref.relations_info)
 
 /datum/category_item/player_setup_item/relations/sanitize_character()
 	if(!pref.relations)

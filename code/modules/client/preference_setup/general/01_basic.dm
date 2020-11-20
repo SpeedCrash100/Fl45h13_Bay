@@ -14,12 +14,12 @@ datum/preferences
 	from_save(S["OOC_Notes"], pref.metadata)
 
 /datum/category_item/player_setup_item/general/basic/save_character(var/savefile/S)
-	to_file(S["real_name"], pref.real_name)
-	to_file(S["name_is_always_random"], pref.be_random_name)
-	to_file(S["gender"], pref.gender)
-	to_file(S["age"], pref.age)
-	to_file(S["spawnpoint"], pref.spawnpoint)
-	to_file(S["OOC_Notes"], pref.metadata)
+	to_save(S["real_name"], pref.real_name)
+	to_save(S["name_is_always_random"], pref.be_random_name)
+	to_save(S["gender"], pref.gender)
+	to_save(S["age"], pref.age)
+	to_save(S["spawnpoint"], pref.spawnpoint)
+	to_save(S["OOC_Notes"], pref.metadata)
 
 /datum/category_item/player_setup_item/general/basic/sanitize_character()
 	var/datum/species/S = all_species[pref.species ? pref.species : SPECIES_HUMAN]

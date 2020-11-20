@@ -219,11 +219,11 @@ swapmap
 		areas-=defarea
 		InitializeSwapMaps()
 		locked=1
-		to_file(S["id"], id)
-		to_file(S["z"], z2-z1+1)
-		to_file(S["y"], y2-y1+1)
-		to_file(S["x"], x2-x1+1)
-		to_file(S["areas"], areas)
+		to_save(S["id"], id)
+		to_save(S["z"], z2-z1+1)
+		to_save(S["y"], y2-y1+1)
+		to_save(S["x"], x2-x1+1)
+		to_save(S["areas"], areas)
 		for(n in 1 to areas.len) areas[areas[n]]=n
 		var/oldcd=S.cd
 		for(z=z1,z<=z2,++z)
@@ -233,8 +233,8 @@ swapmap
 				for(x=x1,x<=x2,++x)
 					S.cd="[x-x1+1]"
 					var/turf/T=locate(x,y,z)
-					to_file(S["type"], T.type)
-					if(T.loc!=defarea) to_file(S["AREA"], areas[T.loc])
+					to_save(S["type"], T.type)
+					if(T.loc!=defarea) to_save(S["AREA"], areas[T.loc])
 					T.Write(S)
 					S.cd=".."
 				S.cd=".."
@@ -382,7 +382,7 @@ swapmap
 	proc/Save()
 		if(id==src) return 0
 		var/savefile/S=mode?(new):new("map_[id].sav")
-		to_file(S, src)
+		to_save(S, src)
 		while(locked) sleep(1)
 		if(mode)
 			fdel("map_[id].txt")
@@ -456,25 +456,25 @@ atom
 		for(var/V in vars-"x"-"y"-"z"-"contents"-"icon"-"overlays"-"underlays")
 			if(issaved(vars[V]))
 				if(vars[V]!=initial(vars[V]))
-					to_file(S[V], vars[V])
+					to_save(S[V], vars[V])
 				else
 					S.dir.Remove(V)
 		if(icon!=initial(icon))
 			if(swapmaps_iconcache && swapmaps_iconcache[icon])
-				to_file(S["icon"], swapmaps_iconcache[icon])
+				to_save(S["icon"], swapmaps_iconcache[icon])
 			else
-				to_file(S["icon"], icon)
+				to_save(S["icon"], icon)
 		// do not save mobs with keys; do save other mobs
 		var/mob/M
 		for(M in src) if(M.key) break
-		if(overlays.len) to_file(S["overlays"], overlays)
-		if(underlays.len) to_file(S["underlays"], underlays)
+		if(overlays.len) to_save(S["overlays"], overlays)
+		if(underlays.len) to_save(S["underlays"], underlays)
 		if(contents.len && !isarea(src))
 			var/list/l=contents
 			if(M)
 				l=l.Copy()
 				for(M in src) if(M.key) l-=M
-			if(l.len) to_file(S["contents"], l)
+			if(l.len) to_save(S["contents"], l)
 			if(l!=contents) qdel(l)
 	Read(savefile/S)
 		var/list/l

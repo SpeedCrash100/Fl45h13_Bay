@@ -309,10 +309,10 @@
 		ban_unban_log_save("[key_name(usr)] edited [banned_key]'s ban. Reason: [reason] Duration: [duration]")
 		log_and_message_admins("edited [banned_key]'s ban. Reason: [reason] Duration: [duration]")
 		Banlist.cd = "/base/[banfolder]"
-		to_file(Banlist["reason"], reason)
-		to_file(Banlist["temp"], temp)
-		to_file(Banlist["minutes"], minutes)
-		to_file(Banlist["bannedby"], usr.ckey)
+		to_save(Banlist["reason"], reason)
+		to_save(Banlist["temp"], temp)
+		to_save(Banlist["minutes"], minutes)
+		to_save(Banlist["bannedby"], usr.ckey)
 		Banlist.cd = "/base"
 		feedback_inc("ban_edit",1)
 		unbanpanel()

@@ -13,10 +13,10 @@
 	from_save(S["preferences_disabled"], pref.preferences_disabled)
 
 /datum/category_item/player_setup_item/player_global/settings/save_preferences(var/savefile/S)
-	to_file(S["lastchangelog"], pref.lastchangelog)
-	to_file(S["default_slot"], pref.default_slot)
-	to_file(S["preferences"], pref.preferences_enabled)
-	to_file(S["preferences_disabled"], pref.preferences_disabled)
+	to_save(S["lastchangelog"], pref.lastchangelog)
+	to_save(S["default_slot"], pref.default_slot)
+	to_save(S["preferences"], pref.preferences_enabled)
+	to_save(S["preferences_disabled"], pref.preferences_disabled)
 
 /datum/category_item/player_setup_item/player_global/settings/sanitize_preferences()
 	// Ensure our preferences are lists.

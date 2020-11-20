@@ -53,7 +53,7 @@ datum/admins/proc/notes_gethtml(var/ckey)
 		notesfile.eof = -2		//Move to the start of the buffer and then erase.
 
 		for( var/note in noteslist )
-			to_file(notesfile, note)
+			to_save(notesfile, note)
 	else
 		notesfile.cd = "/"
 		if(alert(usr,"Are you sure you want to remove all their notes?","Confirmation","No","Yes - Remove all notes") == "Yes - Remove all notes")
@@ -104,7 +104,7 @@ datum/admins/proc/notes_gethtml(var/ckey)
 	P.timestamp = "[copytext(full_date,1,day_loc)][day_string][copytext(full_date,day_loc+2)]"
 
 	infos += P
-	to_file(info, infos)
+	to_save(info, infos)
 
 	message_staff("<span class='notice'>[P.author] has edited [key]'s notes.</span>")
 	log_admin("[P.author] has edited [key]'s notes.")
@@ -117,7 +117,7 @@ datum/admins/proc/notes_gethtml(var/ckey)
 	from_save(note_list, note_keys)
 	if(!note_keys) note_keys = list()
 	if(!note_keys.Find(key)) note_keys += key
-	to_file(note_list, note_keys)
+	to_save(note_list, note_keys)
 	del(note_list) // savefile, so NOT qdel
 
 
@@ -129,7 +129,7 @@ datum/admins/proc/notes_gethtml(var/ckey)
 
 	var/datum/player_info/item = infos[index]
 	infos.Remove(item)
-	to_file(info, infos)
+	to_save(info, infos)
 
 	message_staff("<span class='notice'>[key_name_admin(usr)] deleted one of [key]'s notes.</span>")
 	log_admin("[key_name(usr)] deleted one of [key]'s notes.")

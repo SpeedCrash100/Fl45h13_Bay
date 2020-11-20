@@ -12,9 +12,9 @@
 	from_save(S["backbag"], pref.backbag)
 
 /datum/category_item/player_setup_item/general/equipment/save_character(var/savefile/S)
-	to_file(S["all_underwear"], pref.all_underwear)
-	to_file(S["all_underwear_metadata"], pref.all_underwear_metadata)
-	to_file(S["backbag"], pref.backbag)
+	to_save(S["all_underwear"], pref.all_underwear)
+	to_save(S["all_underwear_metadata"], pref.all_underwear_metadata)
+	to_save(S["backbag"], pref.backbag)
 
 /datum/category_item/player_setup_item/general/equipment/sanitize_character()
 	if(!istype(pref.all_underwear))

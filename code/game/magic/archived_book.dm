@@ -110,16 +110,16 @@ datum/archived_book/New(var/path)
 datum/archived_book/proc/save()
 	var/savefile/F = new(book_mgr.path(id))
 
-	to_file(F["version"], BOOK_VERSION_MAX)
-	to_file(F["author"], author)
-	to_file(F["title"], title)
-	to_file(F["category"], category)
-	to_file(F["id"], id)
-	to_file(F["dat"], dat)
+	to_save(F["version"], BOOK_VERSION_MAX)
+	to_save(F["author"], author)
+	to_save(F["title"], title)
+	to_save(F["category"], category)
+	to_save(F["id"], id)
+	to_save(F["dat"], dat)
 
-	to_file(F["author_real"], author_real)
-	to_file(F["author_key"], author_key)
-	to_file(F["photos"], photos)
+	to_save(F["author_real"], author_real)
+	to_save(F["author_key"], author_key)
+	to_save(F["photos"], photos)
 
 #undef BOOK_VERSION_MIN
 #undef BOOK_VERSION_MAX

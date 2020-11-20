@@ -9,8 +9,8 @@ var/global/list/uplink_locations = list("PDA", "Headset", "None")
 	from_save(S["exploit_record"], pref.exploit_record)
 
 /datum/category_item/player_setup_item/antagonism/basic/save_character(var/savefile/S)
-	to_file(S["uplinklocation"], pref.uplinklocation)
-	to_file(S["exploit_record"], pref.exploit_record)
+	to_save(S["uplinklocation"], pref.uplinklocation)
+	to_save(S["exploit_record"], pref.exploit_record)
 
 /datum/category_item/player_setup_item/antagonism/basic/sanitize_character()
 	pref.uplinklocation	= sanitize_inlist(pref.uplinklocation, uplink_locations, initial(pref.uplinklocation))
