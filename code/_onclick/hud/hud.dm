@@ -272,12 +272,14 @@ datum/hud/New(mob/owner)
 	hud_used.persistant_inventory_update()
 	update_action_buttons()
 
-/mob/proc/add_click_catcher()
+/mob/proc/generate_clickcatcher()
 	if(!client.void)
-		client.void = create_click_catcher()
+		client.void = new()
 	if(!client.screen)
 		client.screen = list()
-	client.screen |= client.void
+	client.screen += client.void
 
-/mob/new_player/add_click_catcher()
-	return
+/mob/proc/apply_clickcatcher()
+	generate_clickcatcher()
+	var/list/actualview = getviewsize(client.view)
+	client.void.UpdateGreed(actualview[1],actualview[2])
