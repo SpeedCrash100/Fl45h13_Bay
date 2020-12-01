@@ -1353,6 +1353,8 @@
 			return global.tertiary_mode;
 		if("text_tag_icons")
 			return global.text_tag_icons;
+		if("tgs")
+			return global.tgs;
 		if("tick_multiplier")
 			return global.tick_multiplier;
 		if("ticker")
@@ -2822,6 +2824,8 @@
 			global.tertiary_mode=newval;
 		if("text_tag_icons")
 			global.text_tag_icons=newval;
+		if("tgs")
+			global.tgs=newval;
 		if("tick_multiplier")
 			global.tick_multiplier=newval;
 		if("ticker")
@@ -3614,6 +3618,7 @@
 	"telecomms_list",
 	"tertiary_mode",
 	"text_tag_icons",
+	"tgs",
 	"tick_multiplier",
 	"ticker",
 	"tickerProcess",

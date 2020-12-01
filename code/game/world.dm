@@ -79,6 +79,8 @@
 	if(byond_version < RECOMMENDED_VERSION)
 		world.log << "Your server's byond version does not meet the recommended requirements for this server. Please update BYOND"
 
+	TgsNew(minimum_required_security_level = TGS_SECURITY_TRUSTED)
+
 	config.post_load()
 
 	if(config && config.server_name != null && config.server_suffix && world.port > 0)
@@ -139,12 +141,15 @@
 		if(config.ToRban)
 			ToRban_autoupdate()
 
+	TgsInitializationComplete()
+
 #undef RECOMMENDED_VERSION
 
 var/world_topic_spam_protect_ip = "0.0.0.0"
 var/world_topic_spam_protect_time = world.timeofday
 
 /world/Topic(T, addr, master, key)
+	TGS_TOPIC	//redirect to server tools if necessary
 	diary << "TOPIC: \"[T]\", from:[addr], master:[master], key:[key][log_end]"
 
 	if (T == "ping")
@@ -485,6 +490,8 @@ var/world_topic_spam_protect_time = world.timeofday
 		*/
 
 	processScheduler.stop()
+
+	TgsReboot()
 
 	if(config.server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
 		for(var/client/C in clients)
