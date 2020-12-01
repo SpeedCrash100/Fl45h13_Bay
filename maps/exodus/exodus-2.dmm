@@ -22707,13 +22707,6 @@
 /obj/machinery/space_heater,
 /turf/simulated/floor/plating,
 /area/maintenance/library)
-"aQM" = (
-/obj/machinery/light,
-/obj/effect/floor_decal/corner/blue{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/primary/central_one)
 "aQN" = (
 /obj/structure/sign/warning/high_voltage{
 	pixel_y = -32
@@ -22721,6 +22714,7 @@
 /obj/effect/floor_decal/corner/blue{
 	dir = 8
 	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/central_one)
 "aQO" = (
@@ -24631,7 +24625,15 @@
 /turf/simulated/floor/plating,
 /area/medical/patient_a)
 "aUM" = (
-/obj/item/weapon/circuitboard/mecha/gygax/main,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/corner/blue{
+	dir = 5
+	},
+/obj/item/modular_computer/console/preset/command,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "aUN" = (
@@ -70212,6 +70214,25 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
+"imq" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/starboard)
+"nHk" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/corner/yellow{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/aft)
 
 (1,1,1) = {"
 aaa
@@ -98892,7 +98913,7 @@ bMq
 bQM
 bSe
 bTp
-bNJ
+nHk
 bPp
 bNJ
 bYV
@@ -99113,7 +99134,7 @@ aKA
 aKA
 aKA
 aPz
-aQM
+aQI
 azE
 aUM
 aVT
@@ -104520,7 +104541,7 @@ bbo
 aSS
 aDm
 aZz
-bdV
+imq
 bid
 bbn
 aZz
