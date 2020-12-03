@@ -31,6 +31,30 @@
 	show_browser(src, file(RULES_FILE), "window=rules;size=480x320")
 #undef RULES_FILE
 
+/client/verb/github()
+	set name = "GitHub"
+	set desc = "Visit the GitHub repository."
+	set hidden = 1
+	if( config.githuburl )
+		if(alert("This will open GitHub in your browser. Are you sure?",,"Yes","No")=="No")
+			return
+		send_link(src, config.githuburl)
+	else
+		to_chat(src, "<span class='warning'>The github URL is not set in the server configuration.</span>")
+	return
+
+/client/verb/bugreport()
+	set name = "Bug Report"
+	set desc = "Visit the GitHub repository to report an issue or bug."
+	set hidden = 1
+	if( config.issuereporturl )
+		if(alert("This will open GitHub in your browser. Are you sure?",,"Yes","No")=="No")
+			return
+		send_link(src, config.issuereporturl)
+	else
+		to_chat(src, "<span class='warning'>The issue report URL is not set in the server configuration.</span>")
+	return
+
 /client/verb/hotkeys_help()
 	set name = "hotkeys-help"
 	set category = "OOC"
