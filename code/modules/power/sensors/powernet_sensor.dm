@@ -44,7 +44,7 @@
 
 // Proc: process()
 // Parameters: None
-// Description: This has to be here because we need sensors to remain in Machines list.
+// Description: This has to be here because we need sensors to remain in GLOB.machines list.
 /obj/machinery/power/sensor/process()
 	return 1
 

@@ -119,8 +119,8 @@
 							continue
 						dat += "<br><a href='?src=\ref[src];vir=[Dt]'>[Dis.name]</a>"
 					*/
-					for (var/ID in virusDB)
-						var/datum/data/record/v = virusDB[ID]
+					for (var/ID in GLOB.virusDB)
+						var/datum/data/record/v = GLOB.virusDB[ID]
 						dat += "<br><a href='?src=\ref[src];vir=\ref[v]'>[v.fields["name"]]</a>"
 
 					dat += "<br><a href='?src=\ref[src];screen=1'>Back</a>"
@@ -341,14 +341,14 @@
 					if("vir_name")
 						var/datum/data/record/v = locate(href_list["edit_vir"])
 						if (v)
-							var/t1 = sanitize(input("Please input pathogen name:", "VirusDB", v.fields["name"], null)  as text)
+							var/t1 = sanitize(input("Please input pathogen name:", "GLOB.virusDB", v.fields["name"], null)  as text)
 							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active1 != a1))
 								return
 							v.fields["name"] = t1
 					if("vir_desc")
 						var/datum/data/record/v = locate(href_list["edit_vir"])
 						if (v)
-							var/t1 = sanitize(input("Please input information about pathogen:", "VirusDB", v.fields["description"], null)  as message)
+							var/t1 = sanitize(input("Please input information about pathogen:", "GLOB.virusDB", v.fields["description"], null)  as message)
 							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active1 != a1))
 								return
 							v.fields["description"] = t1

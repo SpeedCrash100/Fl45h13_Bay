@@ -162,7 +162,7 @@
 
 /obj/item/weapon/gun/energy/staff/animate
 	name = "staff of animation"
-	desc = "An artefact that spits bolts of life-force which causes objects which are hit by it to animate and come to life! This magic doesn't affect machines."
+	desc = "An artefact that spits bolts of life-force which causes objects which are hit by it to animate and come to life! This magic doesn't affect GLOB.machines."
 	projectile_type = /obj/item/projectile/animate
 	max_shots = 10
 

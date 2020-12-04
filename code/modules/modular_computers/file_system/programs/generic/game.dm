@@ -13,7 +13,7 @@
 	nanomodule_path = /datum/nano_module/arcade_classic/	// Path of relevant nano module. The nano module is defined further in the file.
 	var/picked_enemy_name
 
-// Blatantly stolen and shortened version from arcade machines. Generates a random enemy name
+// Blatantly stolen and shortened version from arcade GLOB.machines. Generates a random enemy name
 /datum/computer_file/program/game/proc/random_enemy_name()
 	var/name_part1 = pick("the Automatic ", "Farmer ", "Lord ", "Professor ", "the Cuban ", "the Evil ", "the Dread King ", "the Space ", "Lord ", "the Great ", "Duke ", "General ")
 	var/name_part2 = pick("Melonoid", "Murdertron", "Sorcerer", "Ruin", "Jeff", "Ectoplasm", "Crushulon", "Uhangoid", "Vhakoid", "Peteoid", "Slime", "Lizard Man", "Unicorn")

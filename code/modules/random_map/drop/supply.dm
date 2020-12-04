@@ -52,7 +52,7 @@
 				if(!adding_loot_type)
 					break
 				chosen_loot_types |= adding_loot_type
-		choice = alert("Do you wish to add structures or machines?",,"No","Yes")
+		choice = alert("Do you wish to add structures or GLOB.machines?",,"No","Yes")
 		if(choice == "Yes")
 			while(1)
 				var/adding_loot_type = input("Select a new loot path. Cancel to finish.", "Loot Selection", null) as null|anything in typesof(/obj) - typesof(/obj/item)

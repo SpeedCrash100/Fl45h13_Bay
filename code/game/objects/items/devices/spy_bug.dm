@@ -24,10 +24,10 @@
 	..()
 	radio = new(src)
 	camera = new(src)
-	listening_objects += src
+	GLOB.listening_objects += src
 
 /obj/item/device/spy_bug/Destroy()
-	listening_objects -= src
+	GLOB.listening_objects -= src
 	return ..()
 
 /obj/item/device/spy_bug/examine(mob/user)
@@ -68,10 +68,10 @@
 
 /obj/item/device/spy_monitor/New()
 	radio = new(src)
-	listening_objects += src
+	GLOB.listening_objects += src
 
 /obj/item/device/spy_monitor/Destroy()
-	listening_objects -= src
+	GLOB.listening_objects -= src
 	return ..()
 
 /obj/item/device/spy_monitor/examine(mob/user)

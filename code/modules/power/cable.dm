@@ -92,13 +92,13 @@ var/list/possible_cable_coil_colours
 
 	var/turf/T = src.loc			// hide if turf is not intact
 	if(level==1) hide(!T.is_plating())
-	cable_list += src //add it to the global cable list
+	GLOB.cable_list += src //add it to the global cable list
 
 
 /obj/structure/cable/Destroy()     // called when a cable is deleted
 	if(powernet)
 		cut_cable_from_powernet()  // update the powernets
-	cable_list -= src              // remove it from global cable list
+	GLOB.cable_list -= src              // remove it from global cable list
 	. = ..()                       // then go ahead and delete the cable
 
 
@@ -326,7 +326,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 		newPN.add_cable(src)
 
 	//first let's add turf cables to our powernet
-	//then we'll connect machines on turf with a node cable is present
+	//then we'll connect GLOB.machines on turf with a node cable is present
 	for(var/AM in loc)
 		if(istype(AM,/obj/structure/cable))
 			var/obj/structure/cable/C = AM
@@ -344,17 +344,17 @@ obj/structure/cable/proc/cableColor(var/colorC)
 			if(N.terminal.powernet == powernet)
 				continue
 
-			to_connect += N.terminal //we'll connect the machines after all cables are merged
+			to_connect += N.terminal //we'll connect the GLOB.machines after all cables are merged
 
-		else if(istype(AM,/obj/machinery/power)) //other power machines
+		else if(istype(AM,/obj/machinery/power)) //other power GLOB.machines
 			var/obj/machinery/power/M = AM
 
 			if(M.powernet == powernet)
 				continue
 
-			to_connect += M //we'll connect the machines after all cables are merged
+			to_connect += M //we'll connect the GLOB.machines after all cables are merged
 
-	//now that cables are done, let's connect found machines
+	//now that cables are done, let's connect found GLOB.machines
 	for(var/obj/machinery/power/PM in to_connect)
 		if(!PM.connect_to_network())
 			PM.disconnect_from_network() //if we somehow can't connect the machine to the new powernet, remove it from the old nonetheless
@@ -368,7 +368,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	. = list()	// this will be a list of all connected power objects
 	var/turf/T
 
-	// Handle standard cables in adjacent turfs
+	// Handle standard cables in adjacent GLOB.turfs
 	for(var/cable_dir in list(d1, d2))
 		if(cable_dir == 0)
 			continue
@@ -415,7 +415,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 		var/datum/powernet/PN = new()
 		propagate_network(powerlist[1],PN) //propagates the new powernet beginning at the source cable
 
-		if(PN.is_empty()) //can happen with machines made nodeless when smoothing cables
+		if(PN.is_empty()) //can happen with GLOB.machines made nodeless when smoothing cables
 			qdel(PN)
 
 // cut the cable's powernet at this cable and updates the powergrid
@@ -445,7 +445,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	var/datum/powernet/newPN = new()// creates a new powernet...
 	propagate_network(P_list[1], newPN)//... and propagates it to the other side of the cable
 
-	// Disconnect machines connected to nodes
+	// Disconnect GLOB.machines connected to nodes
 	if(d1 == 0) // if we cut a node (O-X) cable
 		for(var/obj/machinery/power/P in T1)
 			if(!P.connect_to_network()) //can't find a node cable on a the turf to connect to

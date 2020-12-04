@@ -186,7 +186,7 @@
 	Southwest = 10<br>\
 	<br>\
 	Pulsing the 'step towards dir' activator pin will cause the machine to move a meter in that direction, assuming it is not \
-	being held, or anchored in some way.  It should be noted that heavy machines will be unable to move."
+	being held, or anchored in some way.  It should be noted that heavy GLOB.machines will be unable to move."
 	complexity = 20
 	inputs = list("dir num")
 	outputs = list()

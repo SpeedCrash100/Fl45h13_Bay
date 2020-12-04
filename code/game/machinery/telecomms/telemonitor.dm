@@ -3,7 +3,7 @@
 
 /*
 	Telecomms monitor tracks the overall trafficing of a telecommunications network
-	and displays a heirarchy of linked machines.
+	and displays a heirarchy of linked GLOB.machines.
 */
 
 
@@ -12,7 +12,7 @@
 	icon_screen = "comm_monitor"
 
 	var/screen = 0				// the screen number:
-	var/list/machinelist = list()	// the machines located by the computer
+	var/list/machinelist = list()	// the GLOB.machines located by the computer
 	var/obj/machinery/telecomms/SelectedMachine
 
 	var/network = "NULL"		// the network to probe

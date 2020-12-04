@@ -1,6 +1,6 @@
 /obj/item/frame
 	name = "frame"
-	desc = "Used for building machines."
+	desc = "Used for building GLOB.machines."
 	icon = 'icons/obj/monitors.dmi'
 	icon_state = "fire_bitem"
 	flags = CONDUCT

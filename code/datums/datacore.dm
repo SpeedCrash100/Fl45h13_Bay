@@ -61,7 +61,7 @@
 
 		if(OOC)
 			var/active = 0
-			for(var/mob/M in player_list)
+			for(var/mob/M in GLOB.player_list)
 				if(M.real_name == name && M.client && M.client.inactivity <= 10 * 60 * 10)
 					active = 1
 					break
@@ -105,10 +105,10 @@
 			misc[name] = rank
 
 	// Synthetics don't have actual records, so we will pull them from here.
-	for(var/mob/living/silicon/ai/ai in mob_list)
+	for(var/mob/living/silicon/ai/ai in GLOB.mob_list)
 		bot[ai.name] = "Artificial Intelligence"
 
-	for(var/mob/living/silicon/robot/robot in mob_list)
+	for(var/mob/living/silicon/robot/robot in GLOB.mob_list)
 		// No combat/syndicate cyborgs, no drones.
 		if(robot.module && robot.module.hide_on_manifest)
 			continue
@@ -187,7 +187,7 @@
 
 /datum/datacore/proc/manifest()
 	spawn()
-		for(var/mob/living/carbon/human/H in player_list)
+		for(var/mob/living/carbon/human/H in GLOB.player_list)
 			manifest_inject(H)
 		return
 

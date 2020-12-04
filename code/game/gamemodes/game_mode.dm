@@ -1,5 +1,5 @@
 var/global/antag_add_finished // Used in antag type voting.
-var/global/list/additional_antag_types = list()
+GLOBAL_LIST_EMPTY(additional_antag_types)
 
 /datum/game_mode
 	var/name = "invalid"
@@ -104,9 +104,9 @@ var/global/list/additional_antag_types = list()
 			to_chat(usr, "Cannot remove core mode antag type.")
 			return
 		var/datum/antagonist/antag = all_antag_types()[href_list["remove_antag_type"]]
-		if(antag_templates && antag_templates.len && antag && (antag in antag_templates) && (antag.id in additional_antag_types))
+		if(antag_templates && antag_templates.len && antag && (antag in antag_templates) && (antag.id in GLOB.additional_antag_types))
 			antag_templates -= antag
-			additional_antag_types -= antag.id
+			GLOB.additional_antag_types -= antag.id
 			message_admins("Admin [key_name_admin(usr)] removed [antag.role_text] template from game mode.")
 	else if(href_list["add_antag_type"])
 		var/choice = input("Which type do you wish to add?") as null|anything in all_antag_types()
@@ -152,7 +152,7 @@ var/global/list/additional_antag_types = list()
 // Returns 0 if the mode can start and a message explaining the reason why it can't otherwise.
 /datum/game_mode/proc/startRequirements()
 	var/playerC = 0
-	for(var/mob/new_player/player in player_list)
+	for(var/mob/new_player/player in GLOB.player_list)
 		if((player.client)&&(player.ready))
 			playerC++
 
@@ -324,7 +324,7 @@ var/global/list/additional_antag_types = list()
 	var/escaped_humans = 0
 	var/escaped_total = 0
 
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(M.client)
 			clients++
 			if(M.stat != DEAD)
@@ -378,7 +378,7 @@ var/global/list/additional_antag_types = list()
 
 	// If this is being called post-roundstart then it doesn't care about ready status.
 	if(ticker && ticker.current_state == GAME_STATE_PLAYING)
-		for(var/mob/player in player_list)
+		for(var/mob/player in GLOB.player_list)
 			if(!player.client)
 				continue
 			if(istype(player, /mob/new_player))
@@ -388,7 +388,7 @@ var/global/list/additional_antag_types = list()
 				candidates += player.mind
 	else
 		// Assemble a list of active players without jobbans.
-		for(var/mob/new_player/player in player_list)
+		for(var/mob/new_player/player in GLOB.player_list)
 			if( player.client && player.ready )
 				players += player
 
@@ -415,7 +415,7 @@ var/global/list/additional_antag_types = list()
 
 /datum/game_mode/proc/num_players()
 	. = 0
-	for(var/mob/new_player/P in player_list)
+	for(var/mob/new_player/P in GLOB.player_list)
 		if(P.client && P.ready)
 			. ++
 
@@ -435,10 +435,10 @@ var/global/list/additional_antag_types = list()
 			if(antag)
 				antag_templates |= antag
 
-	if(additional_antag_types && additional_antag_types.len)
+	if(GLOB.additional_antag_types && GLOB.additional_antag_types.len)
 		if(!antag_templates)
 			antag_templates = list()
-		for(var/antag_type in additional_antag_types)
+		for(var/antag_type in GLOB.additional_antag_types)
 			var/datum/antagonist/antag = all_antag_types[antag_type]
 			if(antag)
 				antag_templates |= antag
@@ -454,7 +454,7 @@ var/global/list/additional_antag_types = list()
 //////////////////////////
 proc/display_roundstart_logout_report()
 	var/msg = "<span class='notice'><b>Roundstart logout report</b>\n\n"
-	for(var/mob/living/L in mob_list)
+	for(var/mob/living/L in GLOB.mob_list)
 
 		if(L.ckey)
 			var/found = 0
@@ -478,7 +478,7 @@ proc/display_roundstart_logout_report()
 					continue //Dead
 
 			continue //Happy connected client
-		for(var/mob/observer/ghost/D in mob_list)
+		for(var/mob/observer/ghost/D in GLOB.mob_list)
 			if(D.mind && (D.mind.original == L || D.mind.current == L))
 				if(L.stat == DEAD)
 					msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (Dead)\n"
@@ -493,12 +493,12 @@ proc/display_roundstart_logout_report()
 
 	msg += "</span>" // close the span from right at the top
 
-	for(var/mob/M in mob_list)
+	for(var/mob/M in GLOB.mob_list)
 		if(M.client && M.client.holder)
 			to_chat(M, msg)
 proc/get_nt_opposed()
 	var/list/dudes = list()
-	for(var/mob/living/carbon/human/man in player_list)
+	for(var/mob/living/carbon/human/man in GLOB.player_list)
 		if(man.client)
 			if(man.client.prefs.nanotrasen_relation == COMPANY_OPPOSED)
 				dudes += man

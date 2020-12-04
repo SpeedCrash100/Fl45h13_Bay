@@ -46,12 +46,12 @@
 	src.uplink_owner = owner
 	world_uplinks += src
 	uses = telecrystals
-	processing_objects += src
+	GLOB.processing_objects += src
 
 /obj/item/device/uplink/Destroy()
 	uplink_owner = null
 	world_uplinks -= src
-	processing_objects -= src
+	GLOB.processing_objects -= src
 	return ..()
 
 /obj/item/device/uplink/process()

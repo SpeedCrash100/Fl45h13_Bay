@@ -209,7 +209,7 @@
 		var/list/valid_turfs = list()
 		open_turfs |= origin_turf
 
-		// Flood fill to get affected turfs.
+		// Flood fill to get affected GLOB.turfs.
 		while(open_turfs.len)
 			var/turf/T = pick(open_turfs)
 			open_turfs -= T

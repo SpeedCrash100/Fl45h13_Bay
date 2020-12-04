@@ -5,7 +5,7 @@
 	monstrous code file is. Sit down, boys and girls, while I tell you the tale.
 
 
-	The machines defined in this file were designed to be compatible with any radio
+	The GLOB.machines defined in this file were designed to be compatible with any radio
 	signals, provided they use subspace transmission. Currently they are only used for
 	headsets, but they can eventually be outfitted for real COMPUTER networks. This
 	is just a skeleton, ladies and gentlemen.
@@ -16,7 +16,7 @@
 var/global/list/obj/machinery/telecomms/telecomms_list = list()
 
 /obj/machinery/telecomms
-	var/list/links = list() // list of machines this machine is linked to
+	var/list/links = list() // list of GLOB.machines this machine is linked to
 	var/traffic = 0 // value increases as traffic increases
 	var/netspeed = 5 // how much traffic to lose per tick (50 gigabytes/second * netspeed)
 	var/list/autolinkers = list() // list of text/number values to link with
@@ -25,7 +25,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 
 	var/list/freq_listening = list() // list of frequencies to tune into: if none, will listen to all
 
-	var/machinetype = 0 // just a hacky way of preventing alike machines from pairing
+	var/machinetype = 0 // just a hacky way of preventing alike GLOB.machines from pairing
 	var/toggled = 1 	// Is it toggled on
 	var/on = 1
 	var/integrity = 100 // basically HP, loses integrity by heat
@@ -55,7 +55,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	if(netlag > signal.data["slow"])
 		signal.data["slow"] = netlag
 	*/
-// Loop through all linked machines and send the signal or copy.
+// Loop through all linked GLOB.machines and send the signal or copy.
 	for(var/obj/machinery/telecomms/machine in links)
 		if(filter && !istype( machine, filter ))
 			continue
@@ -125,7 +125,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 
 /obj/machinery/telecomms/initialize()
 	if(autolinkers.len)
-		// Links nearby machines
+		// Links nearby GLOB.machines
 		if(!long_range_link)
 			for(var/obj/machinery/telecomms/T in orange(20, src))
 				add_link(T)
@@ -183,7 +183,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 		if(!(stat & EMPED))
 			stat |= EMPED
 			var/duration = (300 * 10)/severity
-			spawn(rand(duration - 20, duration + 20)) // Takes a long time for the machines to reboot.
+			spawn(rand(duration - 20, duration + 20)) // Takes a long time for the GLOB.machines to reboot.
 				stat &= ~EMPED
 	..()
 

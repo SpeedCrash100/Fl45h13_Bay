@@ -12,7 +12,7 @@
 
 /obj/machinery/computer/helm/initialize()
 	..()
-	linked = map_sectors["[z]"]
+	linked = GLOB.map_sectors["[z]"]
 	get_known_sectors()
 
 /obj/machinery/computer/helm/proc/get_known_sectors()

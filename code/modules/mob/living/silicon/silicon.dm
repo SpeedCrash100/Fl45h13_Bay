@@ -30,14 +30,14 @@
 	#define MED_HUD 2 //Medical HUD mode
 
 /mob/living/silicon/New()
-	silicon_mob_list |= src
+	GLOB.silicon_mob_list |= src
 	..()
 	add_language(LANGUAGE_GALCOM)
 	init_id()
 	init_subsystems()
 
 /mob/living/silicon/Destroy()
-	silicon_mob_list -= src
+	GLOB.silicon_mob_list -= src
 	for(var/datum/alarm_handler/AH in alarm_manager.all_handlers)
 		AH.unregister_alarm(src)
 	return ..()

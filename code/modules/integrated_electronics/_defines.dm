@@ -24,8 +24,8 @@
 	var/list/activators = list()
 	var/next_use = 0 //Uses world.time
 	var/removable = 1 //Whether this part can be removed from the assembly it is in.
-	var/complexity = 1 //This acts as a limitation on building machines, more resource-intensive components cost more 'space'.
-	var/size = 1       //This acts as a limitation on building machines, physically larger units take up more actual space.
+	var/complexity = 1 //This acts as a limitation on building GLOB.machines, more resource-intensive components cost more 'space'.
+	var/size = 1       //This acts as a limitation on building GLOB.machines, physically larger units take up more actual space.
 	var/cooldown_per_use = 1 SECOND
 	var/category = /obj/item/integrated_circuit // Used by the toolsets to filter out category types
 

@@ -10,7 +10,7 @@ you can build newer (and better?) devices (which you can also, eventually, decon
 A brief overview is below. For more details, see the related files.
 
 ////////////Game Use/////////////
-The major research and development is performed using a combination of four machines:
+The major research and development is performed using a combination of four GLOB.machines:
 - R&D Console: A computer console that allows you to manipulate the other devices that are linked to it and view/manipulate the
 technologies you have researched so far.
 - Protolathe: Used to make new hand-held devices and parts for larger devices. All metals and reagents as raw materials.

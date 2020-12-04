@@ -207,7 +207,7 @@ var/list/gamemode_cache = list()
 	var/dsay_allowed = 1
 	var/aooc_allowed = 1
 
-	var/starlight = 0	// Whether space turfs have ambient light or not
+	var/starlight = 0	// Whether space GLOB.turfs have ambient light or not
 
 	var/list/ert_species = list(SPECIES_HUMAN)
 

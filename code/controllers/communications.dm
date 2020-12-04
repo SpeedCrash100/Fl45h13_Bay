@@ -191,7 +191,7 @@ var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, MED_FREQ, SEC_FREQ, SCI
 /* filters */
 //When devices register with the radio controller, they might register under a certain filter.
 //Other devices can then choose to send signals to only those devices that belong to a particular filter.
-//This is done for performance, so we don't send signals to lots of machines unnecessarily.
+//This is done for performance, so we don't send signals to lots of GLOB.machines unnecessarily.
 
 //This filter is special because devices belonging to default also recieve signals sent to any other filter.
 var/const/RADIO_DEFAULT = "radio_default"
@@ -275,7 +275,7 @@ var/global/datum/controller/radio/radio_controller
 		for (var/next_filter in devices)
 			send_to_filter(source, signal, next_filter, start_point, range)
 
-//Sends a signal to all machines belonging to a given filter. Should be called by post_signal()
+//Sends a signal to all GLOB.machines belonging to a given filter. Should be called by post_signal()
 /datum/radio_frequency/proc/send_to_filter(obj/source, datum/signal/signal, var/filter, var/turf/start_point = null, var/range = null)
 	if (range && !start_point)
 		return

@@ -18,7 +18,7 @@ var/decl/observ/dir_set/dir_set_event = new()
 	. = ..()
 
 	// Listen to the parent if possible.
-	if(. && istype(dir_changer.loc, /atom/movable))	// We don't care about registering to turfs.
+	if(. && istype(dir_changer.loc, /atom/movable))	// We don't care about registering to GLOB.turfs.
 		register(dir_changer.loc, dir_changer, /atom/proc/recursive_dir_set)
 
 /*********************

@@ -1,6 +1,6 @@
 /datum/event/brand_intelligence
 	announceWhen	= 21
-	endWhen			= 1000	//Ends when all vending machines are subverted anyway.
+	endWhen			= 1000	//Ends when all vending GLOB.machines are subverted anyway.
 
 	var/list/obj/machinery/vending/vendingMachines = list()
 	var/list/obj/machinery/vending/infectedVendingMachines = list()
@@ -8,11 +8,11 @@
 
 
 /datum/event/brand_intelligence/announce()
-	command_announcement.Announce("Rampant brand intelligence has been detected aboard the [station_name()]. The origin is believed to be \a \"[initial(originMachine.name)]\" type. Fix it, before it spreads to other vending machines.", "Machine Learning Alert")
+	command_announcement.Announce("Rampant brand intelligence has been detected aboard the [station_name()]. The origin is believed to be \a \"[initial(originMachine.name)]\" type. Fix it, before it spreads to other vending GLOB.machines.", "Machine Learning Alert")
 
 
 /datum/event/brand_intelligence/start()
-	for(var/obj/machinery/vending/V in machines)
+	for(var/obj/machinery/vending/V in GLOB.machines)
 		if(isNotStationLevel(V.z))	continue
 		vendingMachines.Add(V)
 

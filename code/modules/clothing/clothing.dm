@@ -169,7 +169,7 @@
 SEE_SELF  // can see self, no matter what
 SEE_MOBS  // can see all mobs, no matter what
 SEE_OBJS  // can see all objs, no matter what
-SEE_TURFS // can see all turfs (and areas), no matter what
+SEE_TURFS // can see all GLOB.turfs (and areas), no matter what
 SEE_PIXELS// if an object is located on an unlit area, but some of its pixels are
 		  // in a lit area (via pixel_x, y or smooth movement), can see those pixels
 BLIND     // can't see anything
@@ -332,8 +332,8 @@ BLIND     // can't see anything
 		var/mob/living/carbon/human/user_human = user_mob
 		bodytype = user_human.species.get_bodytype(user_human)
 	var/cache_key = "[light_overlay]_[bodytype]"
-	if(on && light_overlay_cache[cache_key] && slot == slot_head_str)
-		ret.overlays |= light_overlay_cache[cache_key]
+	if(on && GLOB.light_overlay_cache[cache_key] && slot == slot_head_str)
+		ret.overlays |= GLOB.light_overlay_cache[cache_key]
 	return ret
 
 /obj/item/clothing/head/attack_self(mob/user)
@@ -402,17 +402,17 @@ BLIND     // can't see anything
 	if(on)
 
 		// Generate object icon.
-		if(!light_overlay_cache["[light_overlay]_icon"])
-			light_overlay_cache["[light_overlay]_icon"] = image("icon" = 'icons/obj/light_overlays.dmi', "icon_state" = "[light_overlay]")
-		overlays |= light_overlay_cache["[light_overlay]_icon"]
+		if(!GLOB.light_overlay_cache["[light_overlay]_icon"])
+			GLOB.light_overlay_cache["[light_overlay]_icon"] = image("icon" = 'icons/obj/light_overlays.dmi', "icon_state" = "[light_overlay]")
+		overlays |= GLOB.light_overlay_cache["[light_overlay]_icon"]
 
 		// Generate and cache the on-mob icon, which is used in update_inv_head().
 		var/cache_key = "[light_overlay][H ? "_[H.species.get_bodytype(H)]" : ""]"
-		if(!light_overlay_cache[cache_key])
+		if(!GLOB.light_overlay_cache[cache_key])
 			var/use_icon = 'icons/mob/light_overlays.dmi'
 			if(H && sprite_sheets && sprite_sheets[H.species.get_bodytype(H)])
 				use_icon = sprite_sheets[H.species.get_bodytype(H)]
-			light_overlay_cache[cache_key] = image("icon" = use_icon, "icon_state" = "[light_overlay]")
+			GLOB.light_overlay_cache[cache_key] = image("icon" = use_icon, "icon_state" = "[light_overlay]")
 
 	if(H)
 		H.update_inv_head()

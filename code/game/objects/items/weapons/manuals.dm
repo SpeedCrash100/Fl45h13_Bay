@@ -520,7 +520,7 @@
 				If their reliability is high enough, it'll also advance their related technologies.
 
 				<h2>Circuit Imprinter</h2>
-				This machine, along with the Protolathe, is used to actually produce new devices. The Circuit Imprinter takes glass and various chemicals (depends on the design) to produce new circuit boards to build new machines or computers. It can even be used to print AI modules.
+				This machine, along with the Protolathe, is used to actually produce new devices. The Circuit Imprinter takes glass and various chemicals (depends on the design) to produce new circuit boards to build new GLOB.machines or computers. It can even be used to print AI modules.
 
 				<h2>Protolathe</h2>
 				This machine is an advanced form of the Autolathe that produce non-circuit designs. Unlike the Autolathe, it can use processed metal, glass, solid phoron, silver, gold, and diamonds along with a variety of chemicals to produce devices.
@@ -533,7 +533,7 @@
 				Once the device reaches a certain minimum reliability, you'll gain technological advancements from it.
 
 				<h2>Building a Better Machine</h2>
-				Many machines produced from circuit boards inserted into a machine frames require a variety of parts to construct. These are parts like capacitors, batteries, matter bins, and so forth. As your knowledge of science improves, more advanced versions are unlocked.
+				Many GLOB.machines produced from circuit boards inserted into a machine frames require a variety of parts to construct. These are parts like capacitors, batteries, matter bins, and so forth. As your knowledge of science improves, more advanced versions are unlocked.
 				If you use these parts when constructing something, its attributes may be improved.
 				For example, if you use an advanced matter bin when constructing an autolathe (rather than a regular one), it'll hold more materials. Experiment around with stock parts of various qualities to see how they affect the end results! Be warned, however:
 				Tier 3 and higher stock parts don't have 100% reliability and their low reliability may affect the reliability of the end machine.
@@ -579,7 +579,7 @@
 				<h2><a name="Equipment">Cyborg Related Equipment</h2>
 
 				<h3>Exosuit Fabricator</h3>
-				The Exosuit Fabricator is the most important piece of equipment related to cyborgs. It allows the construction of the core cyborg parts. Without these machines, cyborgs cannot be built. It seems that they may also benefit from advanced research techniques.
+				The Exosuit Fabricator is the most important piece of equipment related to cyborgs. It allows the construction of the core cyborg parts. Without these GLOB.machines, cyborgs cannot be built. It seems that they may also benefit from advanced research techniques.
 
 				<h3>Cyborg Recharging Station</h3>
 				This useful piece of equipment will suck power out of the power systems to charge a cyborg's power cell back up to full charge.
@@ -1288,9 +1288,9 @@
 				<I>How to actually make hardsuits fit you.</I><BR>
 				There's a variety of equipment that can modify hardsuits to fit species that can't fit into them, making life quite a bit easier.<BR><BR>
 
-				The first piece of equipment is a suit cycler. This is a large machine resembling the storage pods that are in place in some places. These are machines that will automatically tailor a suit to certain specifications.
+				The first piece of equipment is a suit cycler. This is a large machine resembling the storage pods that are in place in some places. These are GLOB.machines that will automatically tailor a suit to certain specifications.
 				The largest uses of them are for their cleaning functions and their ability to tailor suits for a species. Do not enter them physically. You will die from any of the functions being activated, and it will be painful.
-				These machines can both tailor a suit between species, and between types. This means you can convert engineering hardsuits to atmospherics, or the other way. This is useful. Use it if you can.<BR><BR>
+				These GLOB.machines can both tailor a suit between species, and between types. This means you can convert engineering hardsuits to atmospherics, or the other way. This is useful. Use it if you can.<BR><BR>
 
 				There's also modification kits that let you modify suits yourself. These are extremely difficult to use unless you understand the actual construction of the suit. I do not reccomend using them unless no other option is available.
 

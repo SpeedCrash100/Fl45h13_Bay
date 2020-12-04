@@ -84,7 +84,7 @@
 	while(valid_turfs.len)
 		T = pick(valid_turfs)
 		valid_turfs -= T
-		// Try to move us to the turf. If all turfs fail for some reason we will stay on this tile.
+		// Try to move us to the turf. If all GLOB.turfs fail for some reason we will stay on this tile.
 		if(src.Move(T))
 			return
 

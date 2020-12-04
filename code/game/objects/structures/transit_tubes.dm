@@ -339,7 +339,7 @@ obj/structure/ex_act(severity)
 
 		// If the pod is no longer in a tube, move in a line until stopped or slowed to a halt.
 		//  /turf/inertial_drift appears to only work on mobs, and re-implementing some of the
-		//  logic allows a gradual slowdown and eventual stop when passing over non-space turfs.
+		//  logic allows a gradual slowdown and eventual stop when passing over non-space GLOB.turfs.
 		if(!current_tube && last_delay <= 10)
 			do
 				sleep(last_delay)
@@ -440,7 +440,7 @@ obj/structure/ex_act(severity)
 
 
 // Initialize dirs by searching for tubes that do/might connect
-//  on nearby turfs. Create corner pieces if nessecary.
+//  on nearby GLOB.turfs. Create corner pieces if nessecary.
 // Pick two directions, preferring tubes that already connect
 //  to loc, or other auto tubes if there aren't enough connections.
 /obj/structure/transit_tube/proc/init_dirs_automatic()

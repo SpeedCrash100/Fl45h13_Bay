@@ -26,13 +26,13 @@ Class Variables:
 		 ENVIRON:3 -- Environment Channel
 
    component_parts (list)
-	  A list of component parts of machine used by frame based machines.
+	  A list of component parts of machine used by frame based GLOB.machines.
 
    panel_open (num)
 	  Whether the panel is open
 
    uid (num)
-	  Unique id of machine across all machines.
+	  Unique id of machine across all GLOB.machines.
 
    gl_uid (global num)
 	  Next uid value in sequence
@@ -120,13 +120,13 @@ Class Procs:
 	if(d)
 		set_dir(d)
 	if(!machinery_sort_required && ticker)
-		dd_insertObjectList(machines, src)
+		dd_insertObjectList(GLOB.machines, src)
 	else
-		machines += src
+		GLOB.machines += src
 		machinery_sort_required = 1
 
 /obj/machinery/Destroy()
-	machines -= src
+	GLOB.machines -= src
 	if(component_parts)
 		for(var/atom/A in component_parts)
 			if(A.loc == src) // If the components are inside the machine, delete them.
@@ -218,7 +218,7 @@ Class Procs:
 /obj/machinery/attack_ai(mob/user as mob)
 	if(isrobot(user))
 		// For some reason attack_robot doesn't work
-		// This is to stop robots from using cameras to remotely control machines.
+		// This is to stop robots from using cameras to remotely control GLOB.machines.
 		if(user.client && user.client.eye == user)
 			return src.attack_hand(user)
 	else
@@ -251,7 +251,7 @@ Class Procs:
 
 	return ..()
 
-/obj/machinery/proc/RefreshParts() //Placeholder proc for machines that are built using frames.
+/obj/machinery/proc/RefreshParts() //Placeholder proc for GLOB.machines that are built using frames.
 	return
 
 /obj/machinery/proc/assign_uid()

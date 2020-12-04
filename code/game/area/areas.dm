@@ -28,7 +28,7 @@
 		power_light = 0
 		power_equip = 0
 		power_environ = 0
-	power_change()		// all machines set to current power level, also updates lighting icon
+	power_change()		// all GLOB.machines set to current power level, also updates lighting icon
 
 /area/proc/get_contents()
 	return contents

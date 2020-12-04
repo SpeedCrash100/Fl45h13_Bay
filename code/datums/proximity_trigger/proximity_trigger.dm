@@ -1,20 +1,20 @@
 /*
-* Informs a given owner about objects entering relevant turfs.
+* Informs a given owner about objects entering relevant GLOB.turfs.
 * How to use:
 * Supply:
-*	* holder           - The atom which wish to be informed of entered turfs
+*	* holder           - The atom which wish to be informed of entered GLOB.turfs
 *	* on_turf_entered  - The proc to call when a turf has been entered. The object which entered the turf is supplied.
 *		NOTE: The holder itself will call this proc if its turf changes, even if it enters a turf that isn't seen.
-*	* on_turfs_changed - The proc to call if the turfs being listened to have changed. The previous and new list of seen turfs is supplied.
+*	* on_turfs_changed - The proc to call if the GLOB.turfs being listened to have changed. The previous and new list of seen GLOB.turfs is supplied.
 *	* range            - The effective range of the proximity detector. Small values strongly recommended. Can be changed later by calling set_range()
 *	* proximity_flags  - Various minor special cases, see the PROXIMITY_* flags below.
 *	* proc_owner       - Optional. holder used if unset. The owner instance of the procs supplied above.
 *
-* Call register_turfs() to begin listening to relevant turfs.
+* Call register_turfs() to begin listening to relevant GLOB.turfs.
 * Call unregister_turfs() to stop listening. No argument is required.
 */
 
-var/const/PROXIMITY_EXCLUDE_HOLDER_TURF = 1 // When acquiring turfs to monitor, excludes the turf the holder itself is currently in.
+var/const/PROXIMITY_EXCLUDE_HOLDER_TURF = 1 // When acquiring GLOB.turfs to monitor, excludes the turf the holder itself is currently in.
 
 /datum/proximity_trigger
 	var/atom/holder
@@ -76,7 +76,7 @@ var/const/PROXIMITY_EXCLUDE_HOLDER_TURF = 1 // When acquiring turfs to monitor, 
 /datum/proximity_trigger/proc/register_turfs()
 	if(ismovable(holder))
 		moved_event.register(holder, src, /datum/proximity_trigger/proc/on_holder_moved)
-	dir_set_event.register(holder, src, /datum/proximity_trigger/proc/register_turfs) // Changing direction might alter the relevant turfs
+	dir_set_event.register(holder, src, /datum/proximity_trigger/proc/register_turfs) // Changing direction might alter the relevant GLOB.turfs
 
 	var/list/new_turfs = acquire_relevant_turfs()
 	if(listequal(turfs_in_range, new_turfs))

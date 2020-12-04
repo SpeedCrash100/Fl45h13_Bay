@@ -105,7 +105,7 @@
 
 	//add the account
 	M.transaction_log.Add(T)
-	all_money_accounts.Add(M)
+	GLOB.all_money_accounts.Add(M)
 
 	return M
 
@@ -128,6 +128,6 @@
 		return D
 
 /proc/get_account(var/account_number)
-	for(var/datum/money_account/D in all_money_accounts)
+	for(var/datum/money_account/D in GLOB.all_money_accounts)
 		if(D.account_number == account_number)
 			return D

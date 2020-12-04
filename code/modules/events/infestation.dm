@@ -77,7 +77,7 @@
 
 	var/list/vermin_turfs = get_area_turfs(location, list(/proc/not_turf_contains_dense_objects, /proc/IsTurfAtmosSafe))
 	if(!vermin_turfs.len)
-		log_debug("Vermin infestation failed to find viable turfs in \the [location].")
+		log_debug("Vermin infestation failed to find viable GLOB.turfs in \the [location].")
 		return
 	return vermin_turfs
 

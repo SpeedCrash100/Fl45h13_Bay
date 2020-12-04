@@ -5,7 +5,7 @@
 /*
 
 Overview:
-	Connections are made between turfs by air_master.connect(). They represent a single point where two zones converge.
+	Connections are made between GLOB.turfs by air_master.connect(). They represent a single point where two zones converge.
 
 Class Vars:
 	A - Always a simulated turf.

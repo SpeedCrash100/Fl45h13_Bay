@@ -9,7 +9,7 @@ Class Vars:
 	invalid - True if the zone has been erased and is no longer eligible for processing.
 	needs_update - True if the zone has been added to the update list.
 	edges - A list of edges that connect to this zone.
-	air - The gas mixture that any turfs in this zone will return. Values are per-tile with a group multiplier.
+	air - The gas mixture that any GLOB.turfs in this zone will return. Values are per-tile with a group multiplier.
 
 Class Procs:
 	add(turf/simulated/T)

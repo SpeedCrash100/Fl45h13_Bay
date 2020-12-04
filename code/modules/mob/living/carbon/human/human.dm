@@ -38,7 +38,7 @@
 	hud_list[SPECIALROLE_HUD] = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
 	hud_list[STATUS_HUD_OOC]  = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudhealthy")
 
-	human_mob_list |= src
+	GLOB.human_mob_list |= src
 	..()
 
 	if(dna)
@@ -48,7 +48,7 @@
 	make_blood()
 
 /mob/living/carbon/human/Destroy()
-	human_mob_list -= src
+	GLOB.human_mob_list -= src
 	for(var/organ in organs)
 		qdel(organ)
 	return ..()
@@ -1406,7 +1406,7 @@
 	return
 
 //generates realistic-ish pulse output based on preset levels
-/mob/living/carbon/human/proc/get_pulse(var/method)	//method 0 is for hands, 1 is for machines, more accurate
+/mob/living/carbon/human/proc/get_pulse(var/method)	//method 0 is for hands, 1 is for GLOB.machines, more accurate
 	var/temp = 0
 	switch(pulse())
 		if(PULSE_NONE)
@@ -1422,7 +1422,7 @@
 		if(PULSE_THREADY)
 			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
 	return "[method ? temp : temp + rand(-10, 10)]"
-//			output for machines^	^^^^^^^output for people^^^^^^^^^
+//			output for GLOB.machines^	^^^^^^^output for people^^^^^^^^^
 
 /mob/living/carbon/human/proc/pulse()
 	var/obj/item/organ/internal/heart/H = internal_organs_by_name["heart"]

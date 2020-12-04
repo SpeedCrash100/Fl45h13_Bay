@@ -199,7 +199,7 @@
 		T.ex_act(hitpwr)
 
 //process getting 'hit' by colliding with a dense object
-//or randomly when ramming turfs
+//or randomly when ramming GLOB.turfs
 /obj/effect/meteor/proc/get_hit()
 	hits--
 	if(hits <= 0)
@@ -223,7 +223,7 @@
 
 /obj/effect/meteor/proc/meteor_effect()
 	if(heavy)
-		for(var/mob/M in player_list)
+		for(var/mob/M in GLOB.player_list)
 			var/turf/T = get_turf(M)
 			if(!T || T.z != src.z)
 				continue

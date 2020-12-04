@@ -10,10 +10,10 @@ datum/pipeline
 	var/alert_pressure = 0
 
 	New()
-		processing_objects += src
+		GLOB.processing_objects += src
 
 	Destroy()
-		processing_objects -= src
+		GLOB.processing_objects -= src
 		qdel_null(network)
 
 		if(air && air.volume)

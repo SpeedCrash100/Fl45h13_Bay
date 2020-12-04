@@ -42,7 +42,7 @@
 	for(var/ore in machine.ores_processing)
 
 		if(!machine.ores_stored[ore] && !show_all_ores) continue
-		var/ore/O = ore_data[ore]
+		var/ore/O = GLOB.ore_data[ore]
 		if(!O) continue
 		dat += "<tr><td width = 40><b>[capitalize(O.display_name)]</b></td><td width = 30>[machine.ores_stored[ore]]</td><td width = 100>"
 		if(machine.ores_processing[ore])
@@ -125,7 +125,7 @@
 			alloy_data += new alloytype()
 
 	ensure_ore_data_initialised()
-	for(var/ore in ore_data)
+	for(var/ore in GLOB.ore_data)
 		ores_processing[ore] = 0
 		ores_stored[ore] = 0
 
@@ -168,7 +168,7 @@
 
 		if(ores_stored[metal] > 0 && ores_processing[metal] != 0)
 
-			var/ore/O = ore_data[metal]
+			var/ore/O = GLOB.ore_data[metal]
 
 			if(!O) continue
 

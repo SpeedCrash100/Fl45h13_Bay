@@ -365,7 +365,7 @@ What a mess.*/
 					if("rank")
 						if (has_write_access)
 							var/list/options = list("<h5>Position:</h5><ul>")
-							for(var/rank in joblist)
+							for(var/rank in GLOB.joblist)
 								options += "<li><a href='?src=\ref[src];choice=Change Rank;rank=[rank]'>[rank]</a></li>"
 							options += "</ul>"
 
@@ -412,7 +412,7 @@ What a mess.*/
 						if ("Change Rank")
 							if(has_write_access)
 								active1.fields["rank"] = href_list["rank"]
-								if(href_list["rank"] in joblist)
+								if(href_list["rank"] in GLOB.joblist)
 									active1.fields["real_rank"] = href_list["real_rank"]
 
 								if(PDA_Manifest.len)

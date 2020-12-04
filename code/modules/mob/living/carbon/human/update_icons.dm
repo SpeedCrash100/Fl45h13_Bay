@@ -4,9 +4,9 @@
 	TODO: Proper documentation
 	icon_key is [species.race_key][g][husk][fat][hulk][skeleton][s_tone]
 */
-var/global/list/human_icon_cache = list()
-var/global/list/tail_icon_cache = list() //key is [species.race_key][r_skin][g_skin][b_skin]
-var/global/list/light_overlay_cache = list()
+GLOBAL_LIST_EMPTY(human_icon_cache)
+GLOBAL_LIST_EMPTY(tail_icon_cache) //key is [species.race_key][r_skin][g_skin][b_skin]
+GLOBAL_LIST_EMPTY(light_overlay_cache)
 
 /proc/overlay_image(icon,icon_state,color,flags)
 	var/image/ret = image(icon,icon_state)
@@ -189,7 +189,7 @@ Please contact me on #coderbus IRC. ~Carn x
 		M.Translate(0, 16*(size_multiplier-1))
 	transform = M
 
-var/global/list/damage_icon_parts = list()
+GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 //DAMAGE OVERLAYS
 //constructs damage icon for each organ from mask * damage field and saves it in our overlays_ lists
@@ -224,13 +224,13 @@ var/global/list/damage_icon_parts = list()
 		var/icon/DI
 		var/use_colour = ((O.robotic >= ORGAN_ROBOT) ? SYNTH_BLOOD_COLOUR : O.species.get_blood_colour(src))
 		var/cache_index = "[O.damage_state]/[O.icon_name]/[use_colour]/[species.get_bodytype(src)]"
-		if(damage_icon_parts[cache_index] == null)
+		if(GLOB.damage_icon_parts[cache_index] == null)
 			DI = new /icon(species.get_damage_overlays(src), O.damage_state)			// the damage icon for whole human
 			DI.Blend(new /icon(species.get_damage_mask(src), O.icon_name), ICON_MULTIPLY)	// mask with this organ's pixels
 			DI.Blend(use_colour, ICON_MULTIPLY)
-			damage_icon_parts[cache_index] = DI
+			GLOB.damage_icon_parts[cache_index] = DI
 		else
-			DI = damage_icon_parts[cache_index]
+			DI = GLOB.damage_icon_parts[cache_index]
 
 		standing_image.overlays += DI
 
@@ -296,8 +296,8 @@ var/global/list/damage_icon_parts = list()
 	icon_key = "[icon_key][husk ? 1 : 0][fat ? 1 : 0][hulk ? 1 : 0][skeleton ? 1 : 0]"
 
 	var/icon/base_icon
-	if(human_icon_cache[icon_key])
-		base_icon = human_icon_cache[icon_key]
+	if(GLOB.human_icon_cache[icon_key])
+		base_icon = GLOB.human_icon_cache[icon_key]
 	else
 		//BEGIN CACHED ICON GENERATION.
 		var/obj/item/organ/external/chest = get_organ(BP_CHEST)
@@ -339,7 +339,7 @@ var/global/list/damage_icon_parts = list()
 			husk_over.Blend(mask, ICON_ADD)
 			base_icon.Blend(husk_over, ICON_OVERLAY)
 
-		human_icon_cache[icon_key] = base_icon
+		GLOB.human_icon_cache[icon_key] = base_icon
 
 	//END CACHED ICON GENERATION.
 	stand_icon.Blend(base_icon,ICON_OVERLAY)
@@ -648,7 +648,7 @@ var/global/list/damage_icon_parts = list()
 
 /mob/living/carbon/human/proc/get_tail_icon()
 	var/icon_key = "[species.get_race_key(src)][r_skin][g_skin][b_skin][r_hair][g_hair][b_hair]"
-	var/icon/tail_icon = tail_icon_cache[icon_key]
+	var/icon/tail_icon = GLOB.tail_icon_cache[icon_key]
 	if(!tail_icon)
 		//generate a new one
 		var/species_tail_anim = species.get_tail_animation(src)
@@ -661,7 +661,7 @@ var/global/list/damage_icon_parts = list()
 			var/icon/hair_icon = icon('icons/effects/species.dmi', "[species.get_tail(src)]_[use_species_tail]")
 			hair_icon.Blend(rgb(r_hair, g_hair, b_hair), ICON_ADD)
 			tail_icon.Blend(hair_icon, ICON_OVERLAY)
-		tail_icon_cache[icon_key] = tail_icon
+		GLOB.tail_icon_cache[icon_key] = tail_icon
 
 	return tail_icon
 

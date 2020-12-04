@@ -40,14 +40,14 @@
 			qdel(src)
 
 	..()
-	processing_objects += src
-	for(var/obj/machinery/power/singularity_beacon/singubeacon in machines)
+	GLOB.processing_objects += src
+	for(var/obj/machinery/power/singularity_beacon/singubeacon in GLOB.machines)
 		if(singubeacon.active)
 			target = singubeacon
 			break
 
 /obj/singularity/Destroy()
-	processing_objects -= src
+	GLOB.processing_objects -= src
 	..()
 
 /obj/singularity/attack_hand(mob/user as mob)
@@ -139,7 +139,7 @@
 			if(chained)
 				overlays = "chain_s1"
 			visible_message("<span class='notice'>The singularity has shrunk to a rather pitiful size.</span>")
-		if (STAGE_TWO) //1 to 3 does not check for the turfs if you put the gens right next to a 1x1 then its going to eat them.
+		if (STAGE_TWO) //1 to 3 does not check for the GLOB.turfs if you put the gens right next to a 1x1 then its going to eat them.
 			name = "gravitational singularity"
 			desc = "A gravitational singularity."
 			current_size = STAGE_TWO
@@ -457,7 +457,7 @@
 	return
 
 /obj/singularity/proc/pulse()
-	for(var/obj/machinery/power/rad_collector/R in rad_collectors)
+	for(var/obj/machinery/power/rad_collector/R in GLOB.rad_collectors)
 		if (get_dist(R, src) <= 15) //Better than using orange() every process.
 			R.receive_pulse(energy)
 

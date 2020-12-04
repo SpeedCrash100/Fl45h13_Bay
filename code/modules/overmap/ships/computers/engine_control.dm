@@ -9,7 +9,7 @@
 
 /obj/machinery/computer/engines/initialize()
 	..()
-	linked = map_sectors["[z]"]
+	linked = GLOB.map_sectors["[z]"]
 
 /obj/machinery/computer/engines/attack_hand(var/mob/user as mob)
 	if(..())

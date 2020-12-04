@@ -187,12 +187,12 @@
 	return res
 
 
-var/global/list/virusDB = list()
+GLOBAL_LIST_EMPTY(virusDB)
 
 /datum/disease2/disease/proc/name()
 	.= "stamm #[add_zero("[uniqueID]", 4)]"
-	if ("[uniqueID]" in virusDB)
-		var/datum/data/record/V = virusDB["[uniqueID]"]
+	if ("[uniqueID]" in GLOB.virusDB)
+		var/datum/data/record/V = GLOB.virusDB["[uniqueID]"]
 		.= V.fields["name"]
 
 /datum/disease2/disease/proc/get_basic_info()
@@ -220,7 +220,7 @@ var/global/list/virusDB = list()
 	return r
 
 /datum/disease2/disease/proc/addToDB()
-	if ("[uniqueID]" in virusDB)
+	if ("[uniqueID]" in GLOB.virusDB)
 		return 0
 	var/datum/data/record/v = new()
 	v.fields["id"] = uniqueID
@@ -228,7 +228,7 @@ var/global/list/virusDB = list()
 	v.fields["description"] = get_info()
 	v.fields["antigen"] = antigens2string(antigen)
 	v.fields["spread type"] = spreadtype
-	virusDB["[uniqueID]"] = v
+	GLOB.virusDB["[uniqueID]"] = v
 	return 1
 
 

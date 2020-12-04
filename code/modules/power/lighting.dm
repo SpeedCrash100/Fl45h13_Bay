@@ -12,12 +12,12 @@
 #define LIGHT_BULB_TEMPERATURE 400 //K - used value for a 60W bulb
 #define LIGHTING_POWER_FACTOR 5		//5W per luminosity * range
 
-var/global/list/light_type_cache = list()
+GLOBAL_LIST_EMPTY(light_type_cache)
 /proc/get_light_type_instance(var/light_type)
-	. = light_type_cache[light_type]
+	. = GLOB.light_type_cache[light_type]
 	if(!.)
 		. = new light_type
-		light_type_cache[light_type] = .
+		GLOB.light_type_cache[light_type] = .
 
 /obj/machinery/light_construct
 	name = "light fixture frame"

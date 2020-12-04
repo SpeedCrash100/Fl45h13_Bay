@@ -28,7 +28,7 @@
 
 /obj/item/weapon/gun/magnetic/New()
 	..()
-	processing_objects |= src
+	GLOB.processing_objects |= src
 
 /obj/item/weapon/gun/magnetic/Destroy()
 	qdel_null(cell)

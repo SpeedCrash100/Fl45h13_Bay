@@ -30,7 +30,7 @@
 // VEEEEERY limited version for mining borgs. Basically only for swapping cells and upgrading the drills.
 /obj/item/weapon/gripper/miner
 	name = "drill maintenance gripper"
-	desc = "A simple grasping tool for the maintenance of heavy drilling machines."
+	desc = "A simple grasping tool for the maintenance of heavy drilling GLOB.machines."
 	icon_state = "gripper-mining"
 
 	can_hold = list(
@@ -120,7 +120,7 @@
 
 /obj/item/weapon/gripper/no_use/loader //This is used to disallow building with metal.
 	name = "sheet loader"
-	desc = "A specialized loading device, designed to pick up and insert sheets of materials inside machines."
+	desc = "A specialized loading device, designed to pick up and insert sheets of materials inside GLOB.machines."
 	icon_state = "gripper-sheet"
 
 	can_hold = list(
@@ -270,7 +270,7 @@
 
 	if(!proximity) return //Not adjacent.
 
-	//We only want to deal with using this on turfs. Specific items aren't important.
+	//We only want to deal with using this on GLOB.turfs. Specific items aren't important.
 	var/turf/T = get_turf(target)
 	if(!istype(T))
 		return

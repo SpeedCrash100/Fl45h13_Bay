@@ -47,7 +47,7 @@
 
 /*
 	Simple heuristic for determining if removing the turf from it's zone will not partition the zone (A very bad thing).
-	Instead of analyzing the entire zone, we only check the nearest 3x3 turfs surrounding the src turf.
+	Instead of analyzing the entire zone, we only check the nearest 3x3 GLOB.turfs surrounding the src turf.
 	This implementation may produce false negatives but it (hopefully) will not produce any false postiives.
 */
 
@@ -72,7 +72,7 @@
 			if(connected_dirs && (dir & reverse_dir[connected_dirs]) == dir)
 				unconnected_dirs &= ~dir //they are, so unflag the cardinals in question
 
-	//it is safe to remove src from the zone if all cardinals are connected by corner turfs
+	//it is safe to remove src from the zone if all cardinals are connected by corner GLOB.turfs
 	return !unconnected_dirs
 
 //helper for can_safely_remove_from_zone()
@@ -229,7 +229,7 @@
 /turf/proc/post_update_air_properties()
 	if(connections) connections.update_all()
 
-/turf/assume_air(datum/gas_mixture/giver) //use this for machines to adjust air
+/turf/assume_air(datum/gas_mixture/giver) //use this for GLOB.machines to adjust air
 	return 0
 
 /turf/proc/assume_gas(gasid, moles, temp = 0)

@@ -2,7 +2,7 @@ var/global/list/datum/pipe_network/pipe_networks = list()
 
 datum/pipe_network
 	var/list/datum/gas_mixture/gases = list() //All of the gas_mixtures continuously connected in this network
-	var/volume = 0	//caches the total volume for atmos machines to use in gas calculations
+	var/volume = 0	//caches the total volume for atmos GLOB.machines to use in gas calculations
 
 	var/list/obj/machinery/atmospherics/normal_members = list()
 	var/list/datum/pipeline/line_members = list()

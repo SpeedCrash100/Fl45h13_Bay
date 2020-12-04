@@ -200,7 +200,7 @@
 
 	return p
 
-//If need_toner is 0, the copies will still be lightened when low on toner, however it will not be prevented from printing. TODO: Implement print queues for fax machines and get rid of need_toner
+//If need_toner is 0, the copies will still be lightened when low on toner, however it will not be prevented from printing. TODO: Implement print queues for fax GLOB.machines and get rid of need_toner
 /obj/machinery/photocopier/proc/bundlecopy(var/obj/item/weapon/paper_bundle/bundle, var/need_toner=1)
 	var/obj/item/weapon/paper_bundle/p = new /obj/item/weapon/paper_bundle (src)
 	for(var/obj/item/weapon/W in bundle.pages)

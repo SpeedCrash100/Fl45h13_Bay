@@ -256,7 +256,7 @@
 		var/list/sensors = list()
 		var/obj/machinery/power/sensor/MS = null
 
-		for(var/obj/machinery/power/sensor/S in machines)
+		for(var/obj/machinery/power/sensor/S in GLOB.machines)
 			sensors.Add(list(list("name_tag" = S.name_tag)))
 			if(S.name_tag == selected_sensor)
 				MS = S
@@ -347,7 +347,7 @@
 		var/mulebotsData[0]
 		var/count = 0
 
-		for(var/mob/living/bot/mulebot/M in living_mob_list_)
+		for(var/mob/living/bot/mulebot/M in GLOB.living_mob_list_)
 			if(!M.on)
 				continue
 			++count

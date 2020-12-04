@@ -65,14 +65,14 @@
 	if(target || !linked_god)
 		return
 	cycles_before_converted = initial(cycles_before_converted)
-	processing_objects |= src
+	GLOB.processing_objects |= src
 	target = L
 	destroyed_event.register(L,src,/obj/structure/deity/altar/proc/remove_target)
 	moved_event.register(L, src, /obj/structure/deity/altar/proc/remove_target)
 	death_event.register(L, src, /obj/structure/deity/altar/proc/remove_target)
 
 /obj/structure/deity/altar/proc/remove_target()
-	processing_objects -= src
+	GLOB.processing_objects -= src
 	destroyed_event.unregister(target, src)
 	moved_event.unregister(target, src)
 	death_event.unregister(target, src)

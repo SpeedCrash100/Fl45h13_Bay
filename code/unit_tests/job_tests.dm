@@ -38,7 +38,7 @@
 		log_bad("Sanity Check - Missing HUD icon: hudcentcom")
 		failed_sanity_checks++
 
-	for (var/job in joblist)
+	for (var/job in GLOB.joblist)
 		var/hud_icon_state = "hud[ckey(job)]"
 		if(!(hud_icon_state in job_huds))
 			log_bad("[job] - Missing HUD icon: [hud_icon_state]")

@@ -18,8 +18,8 @@
 			return 0
 	return 1
 
-// Picks a turf without a mob from the given list of turfs, if one exists.
-// If no such turf exists, picks any random turf from the given list of turfs.
+// Picks a turf without a mob from the given list of GLOB.turfs, if one exists.
+// If no such turf exists, picks any random turf from the given list of GLOB.turfs.
 /proc/pick_mobless_turf_if_exists(var/list/start_turfs)
 	if(!start_turfs.len)
 		return null

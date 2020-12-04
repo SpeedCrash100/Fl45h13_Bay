@@ -27,9 +27,9 @@ dmm_suite{
 		if(!((ckeyEx(map_name)==map_name) && ckeyEx(map_name))){
 			CRASH("Invalid text supplied to proc save_map, invalid characters or empty string.")
 			}
-		//Check for valid turfs.
+		//Check for valid GLOB.turfs.
 		if(!isturf(t1) || !isturf(t2)){
-			CRASH("Invalid arguments supplied to proc save_map, arguments were not turfs.")
+			CRASH("Invalid arguments supplied to proc save_map, arguments were not GLOB.turfs.")
 			}
 		var/file_text = write_map(t1,t2,flags)
 		if(fexists("[map_name].dmm")){
@@ -40,9 +40,9 @@ dmm_suite{
 		return saved_map
 		}
 	write_map(var/turf/t1 as turf, var/turf/t2 as turf, var/flags as num){
-		//Check for valid turfs.
+		//Check for valid GLOB.turfs.
 		if(!isturf(t1) || !isturf(t2)){
-			CRASH("Invalid arguments supplied to proc write_map, arguments were not turfs.")
+			CRASH("Invalid arguments supplied to proc write_map, arguments were not GLOB.turfs.")
 			}
 		var/turf/nw = locate(min(t1.x,t2.x),max(t1.y,t2.y),min(t1.z,t2.z))
 		var/turf/se = locate(max(t1.x,t2.x),min(t1.y,t2.y),max(t1.z,t2.z))

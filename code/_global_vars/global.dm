@@ -5,19 +5,19 @@
 
 // Items that ask to be called every cycle.
 var/global/datum/datacore/data_core = null
-var/global/list/machines                 = list()
-var/global/list/processing_objects       = list()
-var/global/list/processing_power_items   = list()
-var/global/list/active_diseases          = list()
-var/global/list/med_hud_users            = list() // List of all entities using a medical HUD.
-var/global/list/sec_hud_users            = list() // List of all entities using a security HUD.
-var/global/list/hud_icon_reference       = list()
-var/global/list/traders                  = list() //List of all nearby traders
 
-var/global/list/listening_objects         = list() // List of objects that need to be able to hear, used to avoid recursive searching through contents.
+GLOBAL_LIST_EMPTY(processing_objects)
+GLOBAL_LIST_EMPTY(processing_power_items)
+// GLOBAL_LIST_EMPTY(active_diseases)
+GLOBAL_LIST_EMPTY(med_hud_users) // List of all entities using a medical HUD.
+GLOBAL_LIST_EMPTY(sec_hud_users) // List of all entities using a security HUD.
+GLOBAL_LIST_EMPTY(hud_icon_reference)
+GLOBAL_LIST_EMPTY(traders) //List of all nearby GLOB.traders
+
+GLOBAL_LIST_EMPTY(listening_objects) // List of objects that need to be able to hear, used to avoid recursive searching through contents.
 
 
-var/global/list/global_mutations  = list() // List of hidden mutation things.
+// GLOBAL_LIST_EMPTY(global_mutations) // List of hidden mutation things.
 
 var/global/datum/universal_state/universe = new
 

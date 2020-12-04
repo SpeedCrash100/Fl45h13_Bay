@@ -46,7 +46,7 @@
 
 /obj/item/weapon/implant/explosive/initialize()
 	..()
-	listening_objects += src
+	GLOB.listening_objects += src
 	set_frequency(frequency)
 
 /obj/item/weapon/implant/explosive/Topic(href, href_list)
@@ -172,7 +172,7 @@
 
 /obj/item/weapon/implant/explosive/Destroy()
 	removed()
-	listening_objects -= src
+	GLOB.listening_objects -= src
 	return ..()
 
 /obj/item/weapon/implanter/explosive

@@ -215,7 +215,7 @@
 	var/atom/movable/M = new type(location)
 	playsound(location, 'sound/effects/teleport.ogg', 50, 1)
 
-	disposition += rand(compliment_increase,compliment_increase*3) //Traders like it when you trade with them
+	disposition += rand(compliment_increase,compliment_increase*3) //GLOB.traders like it when you trade with them
 
 	return M
 

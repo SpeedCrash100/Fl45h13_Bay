@@ -227,7 +227,7 @@ datum/controller/vote
 
 						var/antag_type = antag_names_to_ids()[.[1]]
 						if(ticker.current_state < GAME_STATE_SETTING_UP)
-							additional_antag_types |= antag_type
+							GLOB.additional_antag_types |= antag_type
 						else
 							spawn(0) // break off so we don't hang the vote process
 								var/list/antag_choices = list(all_antag_types()[antag_type], all_antag_types()[antag_names_to_ids()[.[2]]], all_antag_types()[antag_names_to_ids()[.[3]]])
@@ -344,7 +344,7 @@ datum/controller/vote
 					var/list/all_antag_types = all_antag_types()
 					for(var/antag_type in all_antag_types)
 						var/datum/antagonist/antag = all_antag_types[antag_type]
-						if(!(antag.id in additional_antag_types) && antag.is_votable())
+						if(!(antag.id in GLOB.additional_antag_types) && antag.is_votable())
 							choices.Add(antag.role_text)
 					choices.Add("Random")
 					if(!auto_add_antag)

@@ -18,7 +18,7 @@
 	return 1
 
 /datum/job/ai/is_position_available()
-	return (empty_playable_ai_cores.len != 0)
+	return (GLOB.empty_playable_ai_cores.len != 0)
 
 /datum/job/cyborg
 	title = "Cyborg"

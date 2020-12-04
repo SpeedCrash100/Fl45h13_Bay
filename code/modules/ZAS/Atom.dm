@@ -27,7 +27,7 @@
 
 		return 1
 
-//Convenience function for atoms to update turfs they occupy
+//Convenience function for atoms to update GLOB.turfs they occupy
 /atom/movable/proc/update_nearby_tiles(need_rebuild)
 	if(!air_master)
 		return 0

@@ -117,7 +117,7 @@ client/proc/display_admin_reports()
 	show_browser(usr, output, "window=news;size=600x400")
 
 
-client/proc/Report(mob/M as mob in mob_list)
+client/proc/Report(mob/M as mob in GLOB.mob_list)
 	set category = "Admin"
 	if(!src.holder)
 		return

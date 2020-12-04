@@ -3,7 +3,7 @@
 // Tracks precooked food to stop deep fried baked grilled grilled grilled diona nymph cereal.
 /obj/item/weapon/reagent_containers/food/snacks/var/list/cooked
 
-// Root type for cooking machines. See following files for specific implementations.
+// Root type for cooking GLOB.machines. See following files for specific implementations.
 /obj/machinery/cooker
 	name = "cooker"
 	desc = "You shouldn't be seeing this!"

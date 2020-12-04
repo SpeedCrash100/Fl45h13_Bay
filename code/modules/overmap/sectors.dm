@@ -29,7 +29,7 @@ var/list/points_of_interest = list()
 
 	map_z = GetConnectedZlevels(z)
 	for(var/zlevel in map_z)
-		map_sectors["[zlevel]"] = src
+		GLOB.map_sectors["[zlevel]"] = src
 
 	start_x = start_x || rand(OVERMAP_EDGE, using_map.overmap_size - OVERMAP_EDGE)
 	start_y = start_y || rand(OVERMAP_EDGE, using_map.overmap_size - OVERMAP_EDGE)
@@ -46,7 +46,7 @@ var/list/points_of_interest = list()
 		using_map.station_levels |= map_z
 		using_map.contact_levels |= map_z
 
-	for(var/obj/machinery/computer/shuttle_control/explore/console in machines)
+	for(var/obj/machinery/computer/shuttle_control/explore/console in GLOB.machines)
 		if(console.z in map_z)
 			if(!landing_areas)
 				landing_areas = list()
@@ -62,7 +62,7 @@ var/list/points_of_interest = list()
 
 /obj/effect/overmap/sector/initialize()
 	..()
-	for(var/obj/machinery/computer/helm/H in machines)
+	for(var/obj/machinery/computer/helm/H in GLOB.machines)
 		H.get_known_sectors()
 
 /proc/build_overmap()

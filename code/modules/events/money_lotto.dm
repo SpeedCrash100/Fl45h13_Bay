@@ -5,8 +5,8 @@
 
 /datum/event/money_lotto/start()
 	winner_sum = pick(5000, 10000, 50000, 100000, 500000, 1000000, 1500000)
-	if(all_money_accounts.len)
-		var/datum/money_account/D = pick(all_money_accounts)
+	if(GLOB.all_money_accounts.len)
+		var/datum/money_account/D = pick(GLOB.all_money_accounts)
 		winner_name = D.owner_name
 		if(!D.suspended)
 			var/datum/transaction/T = new("Nyx Daily Grand Slam -Stellar- Lottery", "Winner!", winner_sum, "Biesel TCD Terminal #[rand(111,333)]")

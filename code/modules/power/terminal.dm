@@ -33,7 +33,7 @@
 	else
 		reset_plane_and_layer()
 
-// Needed so terminals are not removed from machines list.
+// Needed so terminals are not removed from GLOB.machines list.
 // Powernet rebuilds need this to work properly.
 /obj/machinery/power/terminal/process()
 	return 1

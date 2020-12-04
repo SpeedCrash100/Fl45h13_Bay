@@ -1,7 +1,7 @@
 /var/total_lighting_corners = 0
 /var/datum/lighting_corner/dummy/dummy_lighting_corner = new
 // Because we can control each corner of every lighting overlay.
-// And corners get shared between multiple turfs (unless you're on the corners of the map, then 1 corner doesn't).
+// And corners get shared between multiple GLOB.turfs (unless you're on the corners of the map, then 1 corner doesn't).
 // For the record: these should never ever ever be deleted, even if the turf doesn't have dynamic lighting.
 
 // This list is what the code that assigns corners listens to, the order in this list is the order in which corners are added to the /turf/corners list.

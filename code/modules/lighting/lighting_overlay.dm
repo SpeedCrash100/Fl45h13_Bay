@@ -20,7 +20,7 @@
 	var/needs_update = FALSE
 
 /atom/movable/lighting_overlay/New(var/atom/loc, var/no_update = FALSE)
-	var/turf/T = loc //If this runtimes atleast we'll know what's creating overlays outside of turfs.
+	var/turf/T = loc //If this runtimes atleast we'll know what's creating overlays outside of GLOB.turfs.
 	if(T.dynamic_lighting)
 		. = ..()
 		verbs.Cut()

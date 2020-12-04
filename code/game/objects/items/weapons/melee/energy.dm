@@ -191,10 +191,10 @@
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
 
-	processing_objects |= src
+	GLOB.processing_objects |= src
 
 /obj/item/weapon/melee/energy/blade/Destroy()
-	processing_objects -= src
+	GLOB.processing_objects -= src
 	..()
 
 /obj/item/weapon/melee/energy/blade/get_storage_cost()

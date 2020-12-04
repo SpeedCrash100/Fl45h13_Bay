@@ -51,7 +51,7 @@
 
 /obj/item/device/radio/intercom/New()
 	..()
-	processing_objects += src
+	GLOB.processing_objects += src
 
 /obj/item/device/radio/intercom/department/medbay/New()
 	..()
@@ -94,7 +94,7 @@
 	internal_channels[num2text(RAID_FREQ)] = list(access_syndicate)
 
 /obj/item/device/radio/intercom/Destroy()
-	processing_objects -= src
+	GLOB.processing_objects -= src
 	return ..()
 
 /obj/item/device/radio/intercom/attack_ai(mob/user as mob)

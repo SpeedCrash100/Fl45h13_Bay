@@ -9,7 +9,7 @@ var/list/ship_engines = list()
 	..()
 	holder = _holder
 	ship_engines += src
-	var/obj/effect/overmap/ship/S = map_sectors["[holder.z]"]
+	var/obj/effect/overmap/ship/S = GLOB.map_sectors["[holder.z]"]
 	if(istype(S))
 		S.engines |= src
 
@@ -43,7 +43,7 @@ var/list/ship_engines = list()
 /datum/ship_engine/Destroy()
 	..()
 	ship_engines -= src
-	var/obj/effect/overmap/ship/S = map_sectors["[holder.z]"]
+	var/obj/effect/overmap/ship/S = GLOB.map_sectors["[holder.z]"]
 	if(istype(S))
 		S.engines -= src
 	holder = null

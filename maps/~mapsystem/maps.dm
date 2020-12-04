@@ -123,9 +123,9 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 	set background = 1
 	set waitfor = 0
 
-	for(var/turf/simulated/mineral/M in turfs)
+	for(var/turf/simulated/mineral/M in GLOB.turfs)
 		M.update_icon()
-	for(var/turf/simulated/floor/asteroid/M in turfs)
+	for(var/turf/simulated/floor/asteroid/M in GLOB.turfs)
 		M.updateMineralOverlays()
 
 /datum/map/proc/get_network_access(var/network)

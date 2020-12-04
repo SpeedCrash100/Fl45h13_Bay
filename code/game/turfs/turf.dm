@@ -34,7 +34,7 @@
 		spawn( 0 )
 			src.Entered(AM)
 			return
-	turfs += src
+	GLOB.turfs += src
 
 	if(dynamic_lighting)
 		luminosity = 0
@@ -48,7 +48,7 @@
 	return
 
 /turf/Destroy()
-	turfs -= src
+	GLOB.turfs -= src
 	remove_cleanables()
 	..()
 	return QDEL_HINT_IWILLGC

@@ -122,7 +122,7 @@ About the Holder:
 			Transfers [amount] reagents to the mob's appropriate holder, depending on [type]. Ignores protection.
 
 		trans_to_turf(var/turf/target, var/amount = 1, var/multiplier = 1, var/copy = 0)
-			Turfs don't currently have any reagents. Puts [amount] reagents into a temporary holder, calls touch_turf(target) from it, and deletes it.
+			GLOB.turfs don't currently have any reagents. Puts [amount] reagents into a temporary holder, calls touch_turf(target) from it, and deletes it.
 
 		trans_to_obj(var/turf/target, var/amount = 1, var/multiplier = 1, var/copy = 0)
 			If target has reagents, transfers [amount] to it. Otherwise, same as trans_to_turf().
@@ -209,7 +209,7 @@ About Reagents:
 			How reagent reacts with objects.
 
 		touch_turf(var/turf/T)
-			How reagent reacts with turfs.
+			How reagent reacts with GLOB.turfs.
 
 		on_mob_life(var/mob/living/carbon/M, var/alien, var/location)
 			Makes necessary checks and calls one of affect procs.

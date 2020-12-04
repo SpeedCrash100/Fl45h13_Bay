@@ -1,7 +1,7 @@
 /*
 The overmap system allows adding new maps to the big 'galaxy' map.
 There's overmap zlevel, that looks like a map. On it, token objects (overmap objects) are moved, representing ship movement etc.
-No actual turfs are moved, you would need exploration shuttles or teleports to move atoms between different sectors/ships.
+No actual GLOB.turfs are moved, you would need exploration shuttles or teleports to move atoms between different sectors/ships.
 Unless stated otherwise, you just need to place any of things below somewhere on the map and they'll handle the rest.
 
 *************************************************************

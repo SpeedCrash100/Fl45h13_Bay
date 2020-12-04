@@ -397,8 +397,8 @@
 	if (prob(mineralChance) && !mineral)
 		var/mineral_name = pickweight(mineralSpawnChanceList) //temp mineral name
 		mineral_name = lowertext(mineral_name)
-		if (mineral_name && (mineral_name in ore_data))
-			mineral = ore_data[mineral_name]
+		if (mineral_name && (mineral_name in GLOB.ore_data))
+			mineral = GLOB.ore_data[mineral_name]
 			UpdateMineral()
 
 	. = ..()

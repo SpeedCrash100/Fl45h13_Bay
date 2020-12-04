@@ -35,7 +35,7 @@
 		return ..()
 	return 1 //doesn't require an external power source
 
-// common helper procs for all power machines
+// common helper procs for all power GLOB.machines
 /obj/machinery/power/drain_power(var/drain_check, var/surge, var/amount = 0)
 	if(drain_check)
 		return 1
@@ -67,7 +67,7 @@
 	else
 		return 0
 
-/obj/machinery/power/proc/disconnect_terminal() // machines without a terminal will just return, no harm no fowl.
+/obj/machinery/power/proc/disconnect_terminal() // GLOB.machines without a terminal will just return, no harm no fowl.
 	return
 
 // returns true if the area has power on given channel (or doesn't require power), defaults to power_channel.
@@ -77,7 +77,7 @@
 	if(!src.loc)
 		return 0
 
-	//Don't do this. It allows machines that set use_power to 0 when off (many machines) to
+	//Don't do this. It allows GLOB.machines that set use_power to 0 when off (many GLOB.machines) to
 	//be turned on again and used after a power failure because they never gain the NOPOWER flag.
 	//if(!use_power)
 	//	return 1
@@ -134,7 +134,7 @@
 	return 1
 
 // attach a wire to a power machine - leads from the turf you are standing on
-//almost never called, overwritten by all power machines but terminal and generator
+//almost never called, overwritten by all power GLOB.machines but terminal and generator
 /obj/machinery/power/attackby(obj/item/weapon/W, mob/user)
 
 	if(istype(W, /obj/item/stack/cable_coil))
@@ -159,7 +159,7 @@
 // Powernet handling helpers
 //////////////////////////////////////////
 
-//returns all the cables WITHOUT a powernet in neighbors turfs,
+//returns all the cables WITHOUT a powernet in neighbors GLOB.turfs,
 //pointing towards the turf the machine is located at
 /obj/machinery/power/proc/get_connections()
 
@@ -178,7 +178,7 @@
 				. += C
 	return .
 
-//returns all the cables in neighbors turfs,
+//returns all the cables in neighbors GLOB.turfs,
 //pointing towards the turf the machine is located at
 /obj/machinery/power/proc/get_marked_connections()
 
@@ -245,7 +245,7 @@
 		qdel(PN)
 	powernets.Cut()
 
-	for(var/obj/structure/cable/PC in cable_list)
+	for(var/obj/structure/cable/PC in GLOB.cable_list)
 		if(!PC.powernet)
 			var/datum/powernet/NewPN = new()
 			NewPN.add_cable(PC)
@@ -274,12 +274,12 @@
 
 		else if(P.anchored && istype(P,/obj/machinery/power))
 			var/obj/machinery/power/M = P
-			found_machines |= M //we wait until the powernet is fully propagates to connect the machines
+			found_machines |= M //we wait until the powernet is fully propagates to connect the GLOB.machines
 
 		else
 			continue
 
-	//now that the powernet is set, connect found machines to it
+	//now that the powernet is set, connect found GLOB.machines to it
 	for(var/obj/machinery/power/PM in found_machines)
 		if(!PM.connect_to_network()) //couldn't find a node on its turf...
 			PM.disconnect_from_network() //... so disconnect if already on a powernet
@@ -305,7 +305,7 @@
 
 	if(!net2) return net1
 
-	for(var/obj/machinery/power/Node in net2.nodes) //merge power machines
+	for(var/obj/machinery/power/Node in net2.nodes) //merge power GLOB.machines
 		if(!Node.connect_to_network())
 			Node.disconnect_from_network() //if somehow we can't connect the machine to the new powernet, disconnect it from the old nonetheless
 

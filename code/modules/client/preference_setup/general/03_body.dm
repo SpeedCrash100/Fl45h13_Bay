@@ -68,8 +68,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	pref.r_skin			= sanitize_integer(pref.r_skin, 0, 255, initial(pref.r_skin))
 	pref.g_skin			= sanitize_integer(pref.g_skin, 0, 255, initial(pref.g_skin))
 	pref.b_skin			= sanitize_integer(pref.b_skin, 0, 255, initial(pref.b_skin))
-	pref.h_style		= sanitize_inlist(pref.h_style, hair_styles_list, initial(pref.h_style))
-	pref.f_style		= sanitize_inlist(pref.f_style, facial_hair_styles_list, initial(pref.f_style))
+	pref.h_style		= sanitize_inlist(pref.h_style, GLOB.hair_styles_list, initial(pref.h_style))
+	pref.f_style		= sanitize_inlist(pref.f_style, GLOB.facial_hair_styles_list, initial(pref.f_style))
 	pref.r_eyes			= sanitize_integer(pref.r_eyes, 0, 255, initial(pref.r_eyes))
 	pref.g_eyes			= sanitize_integer(pref.g_eyes, 0, 255, initial(pref.g_eyes))
 	pref.b_eyes			= sanitize_integer(pref.b_eyes, 0, 255, initial(pref.b_eyes))
@@ -256,26 +256,26 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 			//grab one of the valid hair styles for the newly chosen species
 			var/list/valid_hairstyles = list()
-			for(var/hairstyle in hair_styles_list)
-				var/datum/sprite_accessory/S = hair_styles_list[hairstyle]
+			for(var/hairstyle in GLOB.hair_styles_list)
+				var/datum/sprite_accessory/S = GLOB.hair_styles_list[hairstyle]
 				if(pref.gender == MALE && S.gender == FEMALE)
 					continue
 				if(pref.gender == FEMALE && S.gender == MALE)
 					continue
 				if(!(mob_species.get_bodytype() in S.species_allowed))
 					continue
-				valid_hairstyles[hairstyle] = hair_styles_list[hairstyle]
+				valid_hairstyles[hairstyle] = GLOB.hair_styles_list[hairstyle]
 
 			if(valid_hairstyles.len)
 				pref.h_style = pick(valid_hairstyles)
 			else
 				//this shouldn't happen
-				pref.h_style = hair_styles_list["Bald"]
+				pref.h_style = GLOB.hair_styles_list["Bald"]
 
 			//grab one of the valid facial hair styles for the newly chosen species
 			var/list/valid_facialhairstyles = list()
-			for(var/facialhairstyle in facial_hair_styles_list)
-				var/datum/sprite_accessory/S = facial_hair_styles_list[facialhairstyle]
+			for(var/facialhairstyle in GLOB.facial_hair_styles_list)
+				var/datum/sprite_accessory/S = GLOB.facial_hair_styles_list[facialhairstyle]
 				if(pref.gender == MALE && S.gender == FEMALE)
 					continue
 				if(pref.gender == FEMALE && S.gender == MALE)
@@ -283,13 +283,13 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 				if(!(mob_species.get_bodytype() in S.species_allowed))
 					continue
 
-				valid_facialhairstyles[facialhairstyle] = facial_hair_styles_list[facialhairstyle]
+				valid_facialhairstyles[facialhairstyle] = GLOB.facial_hair_styles_list[facialhairstyle]
 
 			if(valid_facialhairstyles.len)
 				pref.f_style = pick(valid_facialhairstyles)
 			else
 				//this shouldn't happen
-				pref.f_style = facial_hair_styles_list["Shaved"]
+				pref.f_style = GLOB.facial_hair_styles_list["Shaved"]
 
 			//reset hair colour and skin colour
 			pref.r_hair = 0//hex2num(copytext(new_hair, 2, 4))
@@ -314,12 +314,12 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	else if(href_list["hair_style"])
 		var/list/valid_hairstyles = list()
-		for(var/hairstyle in hair_styles_list)
-			var/datum/sprite_accessory/S = hair_styles_list[hairstyle]
+		for(var/hairstyle in GLOB.hair_styles_list)
+			var/datum/sprite_accessory/S = GLOB.hair_styles_list[hairstyle]
 			if(!(mob_species.get_bodytype() in S.species_allowed))
 				continue
 
-			valid_hairstyles[hairstyle] = hair_styles_list[hairstyle]
+			valid_hairstyles[hairstyle] = GLOB.hair_styles_list[hairstyle]
 
 		var/new_h_style = input(user, "Choose your character's hair style:", "Character Preference", pref.h_style)  as null|anything in valid_hairstyles
 		if(new_h_style && CanUseTopic(user))
@@ -366,8 +366,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	else if(href_list["facial_style"])
 		var/list/valid_facialhairstyles = list()
-		for(var/facialhairstyle in facial_hair_styles_list)
-			var/datum/sprite_accessory/S = facial_hair_styles_list[facialhairstyle]
+		for(var/facialhairstyle in GLOB.facial_hair_styles_list)
+			var/datum/sprite_accessory/S = GLOB.facial_hair_styles_list[facialhairstyle]
 			if(pref.gender == MALE && S.gender == FEMALE)
 				continue
 			if(pref.gender == FEMALE && S.gender == MALE)
@@ -375,7 +375,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			if(!(mob_species.get_bodytype() in S.species_allowed))
 				continue
 
-			valid_facialhairstyles[facialhairstyle] = facial_hair_styles_list[facialhairstyle]
+			valid_facialhairstyles[facialhairstyle] = GLOB.facial_hair_styles_list[facialhairstyle]
 
 		var/new_f_style = input(user, "Choose your character's facial-hair style:", "Character Preference", pref.f_style)  as null|anything in valid_facialhairstyles
 		if(new_f_style && has_flag(mob_species, HAS_HAIR_COLOR) && CanUseTopic(user))

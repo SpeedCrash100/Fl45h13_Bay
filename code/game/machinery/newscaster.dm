@@ -179,7 +179,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	for(var/obj/machinery/newscaster/NEWSCASTER in allCasters) // Let's give it an appropriate unit number
 		src.unit_no++
 	src.update_icon() //for any custom ones on the map...
-	..()                                //I just realised the newscasters weren't in the global machines list. The superconstructor call will tend to that
+	..()                                //I just realised the newscasters weren't in the global GLOB.machines list. The superconstructor call will tend to that
 
 /obj/machinery/newscaster/Destroy()
 	allCasters -= src
@@ -958,7 +958,7 @@ obj/item/weapon/newspaper/attackby(obj/item/weapon/W as obj, mob/user as mob)
 
 //Removed for now so these aren't even checked every tick. Left this here in-case Agouri needs it later.
 ///obj/machinery/newscaster/process()       //Was thinking of doing the icon update through process, but multiple iterations per second does not
-//	return                                  //bode well with a newscaster network of 10+ machines. Let's just return it, as it's added in the machines list.
+//	return                                  //bode well with a newscaster network of 10+ GLOB.machines. Let's just return it, as it's added in the GLOB.machines list.
 
 /obj/machinery/newscaster/proc/newsAlert(var/news_call)   //This isn't Agouri's work, for it is ugly and vile.
 	var/turf/T = get_turf(src)                      //Who the fuck uses spawn(600) anyway, jesus christ

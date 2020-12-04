@@ -66,7 +66,7 @@
 //Corporation Second Red Cross Society - 26th century Red Cross reborn as a dominating economic force in biomedical science (research and materials).
 //Corporation Blue Industries - High tech and high energy research, in particular into the mysteries of bluespace manipulation and power generation.
 //Corporation Kusanagi Robotics - Founded by robotics legend Kaito Kusanagi in the 2070s, they have been on the forefront of mechanical augmentation and robotics development ever since.
-//Corporation Free traders - Not so much a corporation as a loose coalition of spacers, Free Traders are a roving band of smugglers, traders and fringe elements following a rigid (if informal) code of loyalty and honour. Mistrusted by most corporations, they are tolerated because of their uncanny ability to smell out a profit.
+//Corporation Free GLOB.traders - Not so much a corporation as a loose coalition of spacers, Free GLOB.traders are a roving band of smugglers, GLOB.traders and fringe elements following a rigid (if informal) code of loyalty and honour. Mistrusted by most corporations, they are tolerated because of their uncanny ability to smell out a profit.
 
 //---- Descriptions of destination types
 //Space stations can be purpose built for a number of different things, but generally require regular shipments of essential supplies.
@@ -83,7 +83,7 @@ var/global/datum/money_account/station_account
 var/global/list/datum/money_account/department_accounts = list()
 var/global/num_financial_terminals = 1
 var/global/next_account_number = 0
-var/global/list/all_money_accounts = list()
+GLOBAL_LIST_EMPTY(all_money_accounts)
 var/global/economy_init = 0
 
 /proc/setup_economy()
@@ -127,7 +127,7 @@ var/global/economy_init = 0
 
 		//add the account
 		station_account.transaction_log.Add(T)
-		all_money_accounts.Add(station_account)
+		GLOB.all_money_accounts.Add(station_account)
 
 /proc/create_department_account(department)
 	next_account_number = rand(111111, 999999)
@@ -145,6 +145,6 @@ var/global/economy_init = 0
 
 	//add the account
 	department_account.transaction_log.Add(T)
-	all_money_accounts.Add(department_account)
+	GLOB.all_money_accounts.Add(department_account)
 
 	department_accounts[department] = department_account

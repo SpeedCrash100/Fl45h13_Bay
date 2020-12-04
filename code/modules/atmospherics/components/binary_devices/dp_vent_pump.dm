@@ -127,7 +127,7 @@
 			if (node2 && (environment.temperature || air2.temperature))
 				var/transfer_moles = calculate_transfer_moles(environment, air2, pressure_delta, (network2)? network2.volume : 0)
 
-				//limit flow rate from turfs
+				//limit flow rate from GLOB.turfs
 				transfer_moles = min(transfer_moles, environment.total_moles*air2.volume/environment.volume)	//group_multiplier gets divided out here
 				power_draw = pump_gas(src, environment, air2, transfer_moles, power_rating)
 

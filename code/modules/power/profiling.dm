@@ -4,8 +4,8 @@ var/global/enable_power_update_profiling = 0
 
 var/global/power_profiled_time = 0
 var/global/power_last_profile_time = 0
-var/global/list/power_update_requests_by_machine = list()
-var/global/list/power_update_requests_by_area = list()
+GLOBAL_LIST_EMPTY(power_update_requests_by_machine)
+GLOBAL_LIST_EMPTY(power_update_requests_by_area)
 
 /proc/log_power_update_request(area/A, obj/machinery/M)
 	if (!enable_power_update_profiling)
@@ -48,8 +48,8 @@ var/global/list/power_update_requests_by_area = list()
 	feedback_add_details("admin_verb","APUP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/view_power_update_stats_machines()
-	set name = "View Area Power Update Statistics By Machines"
-	set desc = "See which types of machines are triggering area power updates."
+	set name = "View Area Power Update Statistics By GLOB.machines"
+	set desc = "See which types of GLOB.machines are triggering area power updates."
 	set category = "Debug"
 
 	if(!check_rights(R_DEBUG))	return

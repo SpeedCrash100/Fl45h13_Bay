@@ -11,7 +11,7 @@
 
 /obj/item/device/tvcamera/New()
 	..()
-	listening_objects += src
+	GLOB.listening_objects += src
 
 /obj/item/device/tvcamera/examine()
 	. = ..()
@@ -82,7 +82,7 @@
 		H.update_inv_l_hand()
 
 /obj/item/device/tvcamera/Destroy()
-	listening_objects -= src
+	GLOB.listening_objects -= src
 	qdel(camera)
 	qdel(radio)
 	camera = null

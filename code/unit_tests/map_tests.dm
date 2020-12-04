@@ -95,7 +95,7 @@
 			dirs_checked.Add(combined_dir)
 
 	if(bad_tests)
-		fail("\[[bad_tests] / [wire_test_count]\] Some turfs had overlapping wires going the same direction.")
+		fail("\[[bad_tests] / [wire_test_count]\] Some GLOB.turfs had overlapping wires going the same direction.")
 	else
 		pass("All \[[wire_test_count]\] wires had no overlapping cables going the same direction.")
 
@@ -201,11 +201,11 @@ datum/unit_test/correct_allowed_spawn_test/start_test()
 	for(var/spawn_name in using_map.allowed_spawns)
 		var/datum/spawnpoint/spawnpoint = spawntypes[spawn_name]
 		if(!spawnpoint.turfs.len)
-			log_unit_test("Map allows spawning in [spawn_name], but [spawn_name] has no associated spawn turfs.")
+			log_unit_test("Map allows spawning in [spawn_name], but [spawn_name] has no associated spawn GLOB.turfs.")
 			failed = TRUE
 
 	if(failed)
-		fail("Some of the entries in allowed_spawns have no spawnpoint turfs.")
+		fail("Some of the entries in allowed_spawns have no spawnpoint GLOB.turfs.")
 	else
 		pass("All entries in allowed_spawns have spawnpoints.")
 
@@ -263,7 +263,7 @@ datum/unit_test/ladder_check/start_test()
 	var/safe_landmarks = 0
 	var/space_landmarks = 0
 
-	for(var/lm in landmarks_list)
+	for(var/lm in GLOB.landmarks_list)
 		var/obj/effect/landmark/landmark = lm
 		if(istype(landmark, /obj/effect/landmark/test/safe_turf))
 			log_debug("Safe landmark found: [log_info_line(landmark)]")
@@ -293,12 +293,12 @@ datum/unit_test/ladder_check/start_test()
 /datum/unit_test/cryopod_comp_check/start_test()
 	var/pass = TRUE
 
-	for(var/obj/machinery/cryopod/C in machines)
+	for(var/obj/machinery/cryopod/C in GLOB.machines)
 		if(!C.control_computer)
 			log_bad("[get_area(C)] lacks a cryopod control computer while holding a cryopod.")
 			pass = FALSE
 
-	for(var/obj/machinery/computer/cryopod/C in machines)
+	for(var/obj/machinery/computer/cryopod/C in GLOB.machines)
 		if(!(locate(/obj/machinery/cryopod) in get_area(C)))
 			log_bad("[get_area(C)] lacks a cryopod while holding a control computer.")
 			pass = FALSE
@@ -318,7 +318,7 @@ datum/unit_test/ladder_check/start_test()
 /datum/unit_test/camera_nil_c_tag_check/start_test()
 	var/pass = TRUE
 
-	for(var/obj/machinery/camera/C in machines)
+	for(var/obj/machinery/camera/C in GLOB.machines)
 		if(!C.c_tag)
 			log_bad("Following camera does not have a c_tag set: [log_info_line(C)]")
 			pass = FALSE
@@ -337,7 +337,7 @@ datum/unit_test/ladder_check/start_test()
 
 /datum/unit_test/camera_unique_c_tag_check/start_test()
 	var/cameras_by_ctag = list()
-	for(var/obj/machinery/camera/C in machines)
+	for(var/obj/machinery/camera/C in GLOB.machines)
 		if(!C.c_tag)
 			continue
 		group_by(cameras_by_ctag, C.c_tag, C)

@@ -75,7 +75,7 @@
 		if(src.product_slogans)
 			src.slogan_list += splittext(src.product_slogans, ";")
 
-			// So not all machines speak at the exact same time.
+			// So not all GLOB.machines speak at the exact same time.
 			// The first time this machine says something will be at slogantime + this random value,
 			// so if slogantime is 10 minutes, it will say it at somewhere between 10 and 20 minutes after the machine is crated.
 			src.last_slogan = world.time + rand(0, slogan_delay)
@@ -235,7 +235,7 @@
 	else
 		cashmoney.update_icon()
 
-	// Vending machines have no idea who paid with cash
+	// Vending GLOB.machines have no idea who paid with cash
 	credit_purchase("(cash)")
 	return 1
 
@@ -400,7 +400,7 @@
 
 	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
 		if ((href_list["vend"]) && (src.vend_ready) && (!currently_vending))
-			if((!allowed(usr)) && !emagged && scan_id)	//For SECURE VENDING MACHINES YEAH
+			if((!allowed(usr)) && !emagged && scan_id)	//For SECURE VENDING GLOB.machines YEAH
 				to_chat(usr, "<span class='warning'>Access denied.</span>")//Unless emagged of course
 				flick(icon_deny,src)
 				return
@@ -436,7 +436,7 @@
 		nanomanager.update_uis(src)
 
 /obj/machinery/vending/proc/vend(var/datum/stored_items/vending_products/R, mob/user)
-	if((!allowed(usr)) && !emagged && scan_id)	//For SECURE VENDING MACHINES YEAH
+	if((!allowed(usr)) && !emagged && scan_id)	//For SECURE VENDING GLOB.machines YEAH
 		to_chat(usr, "<span class='warning'>Access denied.</span>")//Unless emagged of course
 		flick(src.icon_deny,src)
 		return

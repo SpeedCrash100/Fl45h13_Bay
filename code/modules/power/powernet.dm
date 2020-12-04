@@ -1,6 +1,6 @@
 /datum/powernet
 	var/list/cables = list()	// all cables & junctions
-	var/list/nodes = list()		// all connected machines
+	var/list/nodes = list()		// all connected GLOB.machines
 
 	var/load = 0				// the current load on the powernet, increased by each machine at processing
 	var/newavail = 0			// what available power was gathered last tick, then becomes...
@@ -35,7 +35,7 @@
 	return ..()
 
 //Returns the amount of excess power (before refunding to SMESs) from last tick.
-//This is for machines that might adjust their power consumption using this data.
+//This is for GLOB.machines that might adjust their power consumption using this data.
 /datum/powernet/proc/last_surplus()
 	return max(avail - load, 0)
 
@@ -119,7 +119,7 @@
 
 		perapc = avail/numapc + perapc_excess
 
-	// At this point, all other machines have finished using power. Anything left over may be used up to charge SMESs.
+	// At this point, all other GLOB.machines have finished using power. Anything left over may be used up to charge SMESs.
 	if(inputting.len && smes_demand)
 		var/smes_input_percentage = between(0, (netexcess / smes_demand) * 100, 100)
 		for(var/obj/machinery/power/smes/S in inputting)

@@ -63,7 +63,7 @@ What is the naming convention for planes or layers?
 #define CLICKCATCHER_PLANE -99
 #define SPACE_PLANE -98
 
-#define BELOW_TURF_PLANE             -22 // objects that are below turfs. Useful for asteroid smoothing or other such magic.
+#define BELOW_TURF_PLANE             -22 // objects that are below GLOB.turfs. Useful for asteroid smoothing or other such magic.
 	// TURF_LAYER 2
 
 #define PLATING_PLANE                -21
@@ -83,7 +83,7 @@ What is the naming convention for planes or layers?
 
 	#define BASE_TURF_LAYER -999
 
-#define ABOVE_TURF_PLANE              -18 // For items which should appear above turfs but below other objects and hiding mobs, eg: wires & pipes
+#define ABOVE_TURF_PLANE              -18 // For items which should appear above GLOB.turfs but below other objects and hiding mobs, eg: wires & pipes
 
 	#define HOLOMAP_LAYER               1 // NOTE: ENSURE this is equal to the one at ABOVE_PLATING_PLANE!
 	#define DECAL_LAYER                 2

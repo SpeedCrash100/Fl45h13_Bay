@@ -43,12 +43,12 @@ var/list/sector_shuttles = list()
 	return get_dist(current_location, destination) <= range
 
 /datum/shuttle/ferry/overmap/proc/update_location()
-	current_location = map_sectors["[location ? area_offsite.z : area_station.z]"]
+	current_location = GLOB.map_sectors["[location ? area_offsite.z : area_station.z]"]
 
 /datum/shuttle/ferry/overmap/proc/set_destination_area(area/A)
 	if(!A)
 		return
-	destination = map_sectors["[A.z]"]
+	destination = GLOB.map_sectors["[A.z]"]
 	if(location)
 		area_offsite = get_location_area(location)
 		area_station = A

@@ -6,7 +6,7 @@
 									//if excavation hits var/excavation_required exactly, it's contained find is extracted cleanly without the ore
 	var/prob_delicate = 90			//probability it requires an active suspension field to not insta-crumble
 	var/dissonance_spread = 1		//proportion of the tile that is affected by this find
-									//used in conjunction with analysis machines to determine correct suspension field type
+									//used in conjunction with analysis GLOB.machines to determine correct suspension field type
 
 /datum/find/New(var/digsite, var/exc_req)
 	excavation_required = exc_req

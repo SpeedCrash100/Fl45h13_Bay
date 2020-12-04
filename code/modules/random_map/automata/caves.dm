@@ -37,7 +37,7 @@
 	if(final_iter)
 		ore_turfs -= target_cell
 
-// Create ore turfs.
+// Create ore GLOB.turfs.
 /datum/random_map/automata/cave_system/cleanup()
 	var/ore_count = round(map.len/20)
 	while((ore_count>0) && (ore_turfs.len>0))
