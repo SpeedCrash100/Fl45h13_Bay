@@ -16,14 +16,13 @@ var/list/hidden_skill_types = list(\
 
 
 proc/setup_skills()
-	if(SKILLS == null)
-		SKILLS = list()
+	if(GLOB.SKILLS.len == 0)
 		for(var/T in (typesof(/datum/skill)-hidden_skill_types))
 			var/datum/skill/S = new T
 			if(S.ID != "none")
-				if(!SKILLS.Find(S.field))
-					SKILLS[S.field] = list()
-				var/list/L = SKILLS[S.field]
+				if(!GLOB.SKILLS.Find(S.field))
+					GLOB.SKILLS[S.field] = list()
+				var/list/L = GLOB.SKILLS[S.field]
 				L += S
 
 mob/living/carbon/human/proc/GetSkillClass(points)
@@ -31,7 +30,7 @@ mob/living/carbon/human/proc/GetSkillClass(points)
 
 proc/show_skill_window(var/mob/user, var/mob/living/carbon/human/M)
 	if(!istype(M)) return
-	if(SKILLS == null)
+	if(GLOB.SKILLS.len == 0)
 		setup_skills()
 
 	if(!M.skills || M.skills.len == 0)
@@ -42,10 +41,10 @@ proc/show_skill_window(var/mob/user, var/mob/living/carbon/human/M)
 	HTML += "<b>Select your Skills</b><br>"
 	HTML += "Current skill level: <b>[M.GetSkillClass(M.used_skillpoints)]</b> ([M.used_skillpoints])<br>"
 	HTML += "<table>"
-	for(var/V in SKILLS)
+	for(var/V in GLOB.SKILLS)
 		HTML += "<tr><th colspan = 5><b>[V]</b>"
 		HTML += "</th></tr>"
-		for(var/datum/skill/S in SKILLS[V])
+		for(var/datum/skill/S in GLOB.SKILLS[V])
 			var/level = M.skills[S.ID]
 			HTML += "<tr style='text-align:left;'>"
 			HTML += "<th>[S.name]</th>"
@@ -100,7 +99,7 @@ mob/living/carbon/human/verb/show_skills()
 /datum/skill/medical
 	field = "Medical"
 
-var/global/list/SKILLS = null
+GLOBAL_LIST_EMPTY(SKILLS)
 
 // ONLY SKILL DEFINITIONS BELOW THIS LINE
 // Category: Secondary

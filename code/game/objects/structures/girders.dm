@@ -131,7 +131,7 @@
 		to_chat(user, "<span class='notice'>There isn't enough material here to construct a wall.</span>")
 		return 0
 
-	var/material/M = name_to_material[S.default_type]
+	var/material/M = GLOB.name_to_material[S.default_type]
 	if(!istype(M))
 		return 0
 
@@ -172,7 +172,7 @@
 		to_chat(user, "<span class='notice'>There isn't enough material here to reinforce the girder.</span>")
 		return 0
 
-	var/material/M = name_to_material[S.default_type]
+	var/material/M = GLOB.name_to_material[S.default_type]
 	if(!istype(M) || M.integrity < 50)
 		to_chat(user, "You cannot reinforce \the [src] with that; it is too soft.")
 		return 0

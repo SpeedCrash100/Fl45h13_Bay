@@ -73,7 +73,7 @@
 	log_and_message_admins("jumped to coordinates [tx], [ty], [tz]")
 
 /proc/sorted_client_keys()
-	return sortKey(clients.Copy())
+	return sortKey(GLOB.clients.Copy())
 
 /client/proc/jumptokey(client/C in sorted_client_keys())
 	set category = "Admin"

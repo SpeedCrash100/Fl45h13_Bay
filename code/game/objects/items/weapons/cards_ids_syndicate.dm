@@ -187,20 +187,21 @@
 	// Always update the UI, or buttons will spin indefinitely
 	nanomanager.update_uis(src)
 
-/var/global/list/id_card_states
+GLOBAL_LIST_EMPTY(id_card_states) 
+
 /proc/id_card_states()
-	if(!id_card_states)
-		id_card_states = list()
+	if(!GLOB.id_card_states)
+		GLOB.id_card_states = list()
 		for(var/path in typesof(/obj/item/weapon/card/id))
 			var/obj/item/weapon/card/id/ID = path
 			var/datum/card_state/CS = new()
 			CS.icon_state = initial(ID.icon_state)
 			CS.item_state = initial(ID.item_state)
 			CS.name = initial(ID.name) + " - " + initial(ID.icon_state)
-			id_card_states += CS
-		id_card_states = dd_sortedObjectList(id_card_states)
+			GLOB.id_card_states += CS
+		GLOB.id_card_states = dd_sortedObjectList(GLOB.id_card_states)
 
-	return id_card_states
+	return GLOB.id_card_states
 
 /datum/card_state
 	var/name

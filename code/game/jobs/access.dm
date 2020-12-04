@@ -95,47 +95,48 @@
 			L += A.id
 	return L
 
-/var/list/priv_all_access
+GLOBAL_LIST_EMPTY(priv_all_access)
+
 /proc/get_all_accesses()
-	if(!priv_all_access)
-		priv_all_access = get_access_ids()
+	if(!GLOB.priv_all_access)
+		GLOB.priv_all_access = get_access_ids()
 
-	return priv_all_access.Copy()
+	return GLOB.priv_all_access.Copy()
 
-/var/list/priv_station_access
+GLOBAL_LIST_EMPTY(priv_station_access) 
 /proc/get_all_station_access()
-	if(!priv_station_access)
-		priv_station_access = get_access_ids(ACCESS_TYPE_STATION)
+	if(!GLOB.priv_station_access)
+		GLOB.priv_station_access = get_access_ids(ACCESS_TYPE_STATION)
 
-	return priv_station_access.Copy()
+	return GLOB.priv_station_access.Copy()
 
-/var/list/priv_centcom_access
+GLOBAL_LIST_EMPTY(priv_centcom_access) 
 /proc/get_all_centcom_access()
-	if(!priv_centcom_access)
-		priv_centcom_access = get_access_ids(ACCESS_TYPE_CENTCOM)
+	if(!GLOB.priv_centcom_access)
+		GLOB.priv_centcom_access = get_access_ids(ACCESS_TYPE_CENTCOM)
 
-	return priv_centcom_access.Copy()
+	return GLOB.priv_centcom_access.Copy()
 
-/var/list/priv_syndicate_access
+GLOBAL_LIST_EMPTY(priv_syndicate_access) 
 /proc/get_all_syndicate_access()
-	if(!priv_syndicate_access)
-		priv_syndicate_access = get_access_ids(ACCESS_TYPE_SYNDICATE)
+	if(!GLOB.priv_syndicate_access)
+		GLOB.priv_syndicate_access = get_access_ids(ACCESS_TYPE_SYNDICATE)
 
-	return priv_syndicate_access.Copy()
+	return GLOB.priv_syndicate_access.Copy()
 
-/var/list/priv_region_access
+GLOBAL_LIST_EMPTY(priv_region_access) 
 /proc/get_region_accesses(var/code)
 	if(code == ACCESS_REGION_ALL)
 		return get_all_station_access()
 
-	if(!priv_region_access)
-		priv_region_access = list()
+	if(!GLOB.priv_region_access)
+		GLOB.priv_region_access = list()
 		for(var/datum/access/A in get_all_access_datums())
-			if(!priv_region_access["[A.region]"])
-				priv_region_access["[A.region]"] = list()
-			priv_region_access["[A.region]"] += A.id
+			if(!GLOB.priv_region_access["[A.region]"])
+				GLOB.priv_region_access["[A.region]"] = list()
+			GLOB.priv_region_access["[A.region]"] += A.id
 
-	var/list/region = priv_region_access["[code]"]
+	var/list/region = GLOB.priv_region_access["[code]"]
 	return region.Copy()
 
 /proc/get_region_accesses_name(var/code)

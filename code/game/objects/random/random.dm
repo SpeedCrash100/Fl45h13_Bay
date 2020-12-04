@@ -1073,8 +1073,7 @@ something, make sure it's not in one of the other lists.*/
 /*
 	Selects one spawn point out of a group of points with the same ID and asks it to generate its items
 */
-var/list/multi_point_spawns
-
+GLOBAL_LIST_EMPTY(multi_point_spawns) 
 /obj/random_multi
 	name = "random object spawn point"
 	desc = "This item type is used to spawn random objects at round-start. Only one spawn point for a given group id is selected."
@@ -1088,19 +1087,19 @@ var/list/multi_point_spawns
 	..()
 	weight = max(1, round(weight))
 
-	if(!multi_point_spawns)
-		multi_point_spawns = list()
-	var/list/spawnpoints = multi_point_spawns[id]
+	if(!GLOB.multi_point_spawns)
+		GLOB.multi_point_spawns = list()
+	var/list/spawnpoints = GLOB.multi_point_spawns[id]
 	if(!spawnpoints)
 		spawnpoints = list()
-		multi_point_spawns[id] = spawnpoints
+		GLOB.multi_point_spawns[id] = spawnpoints
 	spawnpoints[src] = weight
 
 /obj/random_multi/Destroy()
-	var/list/spawnpoints = multi_point_spawns[id]
+	var/list/spawnpoints = GLOB.multi_point_spawns[id]
 	spawnpoints -= src
 	if(!spawnpoints.len)
-		multi_point_spawns -= id
+		GLOB.multi_point_spawns -= id
 	. = ..()
 
 /obj/random_multi/proc/generate_items()
@@ -1113,8 +1112,8 @@ var/list/multi_point_spawns
 	new item_path(loc)
 
 /hook/roundstart/proc/generate_multi_spawn_items()
-	for(var/id in multi_point_spawns)
-		var/list/spawn_points = multi_point_spawns[id]
+	for(var/id in GLOB.multi_point_spawns)
+		var/list/spawn_points = GLOB.multi_point_spawns[id]
 		var/obj/random_multi/rm = pickweight(spawn_points)
 		rm.generate_items()
 		for(var/entry in spawn_points)
@@ -1126,21 +1125,21 @@ var/list/multi_point_spawns
 	id = "Captain's spare id"
 	item_path = /obj/item/weapon/card/id/captains_spare
 
-var/list/random_junk_
-var/list/random_useful_
+GLOBAL_LIST_EMPTY(random_junk_) 
+GLOBAL_LIST_EMPTY(random_useful_) 
 /proc/get_random_useful_type()
-	if(!random_useful_)
-		random_useful_ = list()
-		random_useful_ += /obj/item/weapon/pen/crayon/random
-		random_useful_ += /obj/item/weapon/pen
-		random_useful_ += /obj/item/weapon/pen/blue
-		random_useful_ += /obj/item/weapon/pen/red
-		random_useful_ += /obj/item/weapon/pen/multi
-		random_useful_ += /obj/item/weapon/storage/box/matches
-		random_useful_ += /obj/item/stack/material/cardboard
-		random_useful_ += /obj/item/weapon/storage/fancy/cigarettes
-		random_useful_ += /obj/item/weapon/deck/cards
-	return pick(random_useful_)
+	if(!GLOB.random_useful_)
+		GLOB.random_useful_ = list()
+		GLOB.random_useful_ += /obj/item/weapon/pen/crayon/random
+		GLOB.random_useful_ += /obj/item/weapon/pen
+		GLOB.random_useful_ += /obj/item/weapon/pen/blue
+		GLOB.random_useful_ += /obj/item/weapon/pen/red
+		GLOB.random_useful_ += /obj/item/weapon/pen/multi
+		GLOB.random_useful_ += /obj/item/weapon/storage/box/matches
+		GLOB.random_useful_ += /obj/item/stack/material/cardboard
+		GLOB.random_useful_ += /obj/item/weapon/storage/fancy/cigarettes
+		GLOB.random_useful_ += /obj/item/weapon/deck/cards
+	return pick(GLOB.random_useful_)
 
 /proc/get_random_junk_type()
 	if(prob(20)) // Misc. clutter
@@ -1148,23 +1147,23 @@ var/list/random_useful_
 
 	// 80% chance that we reach here
 	if(prob(95)) // Misc. junk
-		if(!random_junk_)
-			random_junk_ = subtypesof(/obj/item/trash)
-			random_junk_ += typesof(/obj/item/weapon/cigbutt)
-			random_junk_ += /obj/effect/decal/cleanable/spiderling_remains
-			random_junk_ += /obj/item/remains/mouse
-			random_junk_ += /obj/item/remains/robot
-			random_junk_ += /obj/item/weapon/paper/crumpled
-			random_junk_ += /obj/item/inflatable/torn
-			random_junk_ += /obj/effect/decal/cleanable/molten_item
-			random_junk_ += /obj/item/weapon/material/shard
-			random_junk_ += /obj/item/weapon/hand/missing_card
+		if(!GLOB.random_junk_)
+			GLOB.random_junk_ = subtypesof(/obj/item/trash)
+			GLOB.random_junk_ += typesof(/obj/item/weapon/cigbutt)
+			GLOB.random_junk_ += /obj/effect/decal/cleanable/spiderling_remains
+			GLOB.random_junk_ += /obj/item/remains/mouse
+			GLOB.random_junk_ += /obj/item/remains/robot
+			GLOB.random_junk_ += /obj/item/weapon/paper/crumpled
+			GLOB.random_junk_ += /obj/item/inflatable/torn
+			GLOB.random_junk_ += /obj/effect/decal/cleanable/molten_item
+			GLOB.random_junk_ += /obj/item/weapon/material/shard
+			GLOB.random_junk_ += /obj/item/weapon/hand/missing_card
 
-			random_junk_ -= /obj/item/trash/plate
-			random_junk_ -= /obj/item/trash/snack_bowl
-			random_junk_ -= /obj/item/trash/syndi_cakes
-			random_junk_ -= /obj/item/trash/tray
-		return pick(random_junk_)
+			GLOB.random_junk_ -= /obj/item/trash/plate
+			GLOB.random_junk_ -= /obj/item/trash/snack_bowl
+			GLOB.random_junk_ -= /obj/item/trash/syndi_cakes
+			GLOB.random_junk_ -= /obj/item/trash/tray
+		return pick(GLOB.random_junk_)
 
 	// Misc. actually useful stuff or perhaps even food
 	// 4% chance that we reach here

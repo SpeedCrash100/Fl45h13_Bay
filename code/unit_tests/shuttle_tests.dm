@@ -107,7 +107,7 @@
 		if(istype(shuttle, /datum/shuttle/ferry))
 			var/datum/shuttle/ferry/f = shuttle
 			group_by(shuttle_areas, f.area_station.type, SHUTTLE_NAME_AID(f))
-			if(!(f in sector_shuttles))
+			if(!(f in GLOB.sector_shuttles))
 				group_by(shuttle_areas, f.area_offsite.type, SHUTTLE_NAME_AID(f))
 		else if(istype(shuttle, /datum/shuttle/multi_shuttle))
 			var/datum/shuttle/multi_shuttle/ms = shuttle

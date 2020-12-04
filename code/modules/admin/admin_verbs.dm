@@ -21,7 +21,7 @@ var/list/admin_verbs_admin = list(
 	/datum/admins/proc/force_antag_latespawn, //Force a specific template to try a latespawn proc,
 	/datum/admins/proc/toggleenter,		//toggles whether people can join the current game,
 	/datum/admins/proc/toggleguests,	//toggles whether guests can join the current game,
-	/datum/admins/proc/announce,		//priority announce something to all clients.,
+	/datum/admins/proc/announce,		//priority announce something to all GLOB.clients.,
 	/client/proc/colorooc,				//allows us to set a custom colour for everythign we say in ooc,
 	/client/proc/admin_ghost,			//allows us to ghost/reenter body at will,
 	/client/proc/toggle_view_range,		//changes how far we can see,
@@ -524,12 +524,12 @@ var/list/admin_verbs_mentor = list(
 	if(!check_rights(R_ADMIN))	return
 
 	if(!warned_ckey || !istext(warned_ckey))	return
-	if(warned_ckey in admin_datums)
+	if(warned_ckey in GLOB.admin_datums)
 		to_chat(usr, "<font color='red'>Error: warn(): You can't warn admins.</font>")
 		return
 
 	var/datum/preferences/D
-	var/client/C = directory[warned_ckey]
+	var/client/C = GLOB.directory[warned_ckey]
 	if(C)	D = C.prefs
 	else	D = SScharacter_setup.preferences_datums[warned_ckey]
 
@@ -763,7 +763,7 @@ var/list/admin_verbs_mentor = list(
 	if(!H) return
 
 	if(!H.client)
-		to_chat(usr, "Only mobs with clients can alter their own appearance.")
+		to_chat(usr, "Only mobs with GLOB.clients can alter their own appearance.")
 		return
 
 	switch(alert("Do you wish for [H] to be allowed to select non-whitelisted races?","Alter Mob Appearance","Yes","No","Cancel"))

@@ -1,4 +1,4 @@
-var/list/flooring_cache = list()
+GLOBAL_LIST_EMPTY(flooring_cache)
 
 /turf/simulated/floor/update_icon(var/update_neighbors)
 
@@ -85,8 +85,8 @@ var/list/flooring_cache = list()
 			F.update_icon()
 
 /turf/simulated/floor/proc/get_flooring_overlay(var/cache_key, var/icon_base, var/icon_dir = 0)
-	if(!flooring_cache[cache_key])
+	if(!GLOB.flooring_cache[cache_key])
 		var/image/I = image(icon = flooring.icon, icon_state = icon_base, dir = icon_dir)
 		I.turf_decal_layerise()
-		flooring_cache[cache_key] = I
-	return flooring_cache[cache_key]
+		GLOB.flooring_cache[cache_key] = I
+	return GLOB.flooring_cache[cache_key]

@@ -123,7 +123,7 @@ obj/machinery/gateway/centerstation/process()
 		M.set_dir(SOUTH)
 		return
 	else
-		var/obj/effect/landmark/dest = pick(awaydestinations)
+		var/obj/effect/landmark/dest = pick(GLOB.awaydestinations)
 		if(dest)
 			M.loc = dest.loc
 			M.set_dir(SOUTH)

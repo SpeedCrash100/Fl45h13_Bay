@@ -13,7 +13,7 @@
 	var/health = 100
 	var/breakout = 0 //if someone is currently breaking out. mutex
 	var/storage_capacity = 2 * MOB_MEDIUM //This is so that someone can't pack hundreds of items in a locker/crate
-							  //then open it in a populated area to crash clients.
+							  //then open it in a populated area to crash GLOB.clients.
 	var/open_sound = 'sound/effects/locker_open.ogg'
 	var/close_sound = 'sound/effects/locker_close.ogg'
 

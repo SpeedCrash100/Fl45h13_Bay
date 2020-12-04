@@ -73,7 +73,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 	prometheans = src
 
 /datum/species/shapeshifter/promethean/hug(var/mob/living/carbon/human/H,var/mob/living/target)
-	var/datum/gender/G = gender_datums[target.gender]
+	var/datum/gender/G = GLOB.gender_datums[target.gender]
 	H.visible_message("<span class='notice'>\The [H] glomps [target] to make [G.him] feel better!</span>", \
 					"<span class='notice'>You glomps [target] to make [G.him] feel better!</span>")
 	H.apply_stored_shock_to(target)
@@ -137,11 +137,11 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 /datum/species/shapeshifter/promethean/get_additional_examine_text(var/mob/living/carbon/human/H)
 
-	if(!stored_shock_by_ref["\ref[H]"])
+	if(!GLOB.stored_shock_by_ref["\ref[H]"])
 		return
-	var/datum/gender/G = gender_datums[H.gender]
+	var/datum/gender/G = GLOB.gender_datums[H.gender]
 
-	switch(stored_shock_by_ref["\ref[H]"])
+	switch(GLOB.stored_shock_by_ref["\ref[H]"])
 		if(1 to 10)
 			return "[G.He] [G.is] flickering gently with a little electrical activity."
 		if(11 to 20)

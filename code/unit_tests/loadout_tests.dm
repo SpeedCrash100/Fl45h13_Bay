@@ -3,8 +3,8 @@ datum/unit_test/loadout_test_shall_have_name_cost_path
 
 datum/unit_test/loadout_test_shall_have_name_cost_path/start_test()
 	var/failed = 0
-	for(var/gear_name in gear_datums)
-		var/datum/gear/G = gear_datums[gear_name]
+	for(var/gear_name in GLOB.gear_datums)
+		var/datum/gear/G = GLOB.gear_datums[gear_name]
 
 		if(!G.display_name)
 			log_unit_test("[G]: Missing display name.")
@@ -27,8 +27,8 @@ datum/unit_test/loadout_test_shall_have_valid_icon_states
 
 datum/unit_test/loadout_test_shall_have_valid_icon_states/start_test()
 	var/failed = FALSE
-	for(var/gear_name in gear_datums)
-		var/datum/gear/G = gear_datums[gear_name]
+	for(var/gear_name in GLOB.gear_datums)
+		var/datum/gear/G = GLOB.gear_datums[gear_name]
 		if(!type_has_valid_icon_state(G.path))
 			var/atom/A = G.path
 			log_unit_test("[G] - [G.path]: Did not find the icon state '[initial(A.icon_state)]' in the icon '[initial(A.icon)]'.")

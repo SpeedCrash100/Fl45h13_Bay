@@ -61,31 +61,31 @@
 			return 1
 	return 0
 
-var/list/all_antag_types_
-var/list/all_antag_spawnpoints_
-var/list/antag_names_to_ids_
+GLOBAL_LIST_EMPTY(all_antag_types_)
+GLOBAL_LIST_EMPTY(all_antag_spawnpoints_) 
+GLOBAL_LIST_EMPTY(antag_names_to_ids_) 
 
 /proc/all_antag_types()
 	populate_antag_type_list()
-	return all_antag_types_
+	return GLOB.all_antag_types_
 
 /proc/all_antag_spawnpoints()
 	populate_antag_type_list()
-	return all_antag_spawnpoints_
+	return GLOB.all_antag_spawnpoints_
 
 /proc/antag_names_to_ids()
 	populate_antag_type_list()
-	return antag_names_to_ids_
+	return GLOB.antag_names_to_ids_
 
 /proc/populate_antag_type_list()
-	if(all_antag_types_ || all_antag_spawnpoints_ || antag_names_to_ids_)
+	if(GLOB.all_antag_types_ || GLOB.all_antag_spawnpoints_ || GLOB.antag_names_to_ids_)
 		return
-	all_antag_types_ = list()
-	all_antag_spawnpoints_ = list()
-	antag_names_to_ids_ = list()
+	GLOB.all_antag_types_ = list()
+	GLOB.all_antag_spawnpoints_ = list()
+	GLOB.antag_names_to_ids_ = list()
 
 	for(var/antag_type in subtypesof(/datum/antagonist))
 		var/datum/antagonist/A = new antag_type
-		all_antag_types_[A.id] = A
-		all_antag_spawnpoints_[A.landmark_id] = list()
-		antag_names_to_ids_[A.role_text] = A.id
+		GLOB.all_antag_types_[A.id] = A
+		GLOB.all_antag_spawnpoints_[A.landmark_id] = list()
+		GLOB.antag_names_to_ids_[A.role_text] = A.id

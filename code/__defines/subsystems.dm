@@ -36,7 +36,7 @@
 #define TIMER_OVERRIDE			(1<<1)
 
 /**
-  * Timing should be based on how timing progresses on clients, not the server.
+  * Timing should be based on how timing progresses on GLOB.clients, not the server.
   *
   * Tracking this is more expensive,
   * should only be used in conjuction with things that have to progress client side, such as

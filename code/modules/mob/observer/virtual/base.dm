@@ -1,4 +1,4 @@
-var/list/all_virtual_listeners = list()
+GLOBAL_LIST_EMPTY(all_virtual_listeners)
 
 /mob/observer/virtual
 	icon = 'icons/mob/virtual.dmi'
@@ -24,13 +24,13 @@ var/list/all_virtual_listeners = list()
 	moved_event.register(host, src, /atom/movable/proc/move_to_turf_or_null)
 
 	GLOB.mob_list -= src
-	all_virtual_listeners += src
+	GLOB.all_virtual_listeners += src
 
 	updateicon()
 
 /mob/observer/virtual/Destroy()
 	moved_event.unregister(host, src, /atom/movable/proc/move_to_turf_or_null)
-	all_virtual_listeners -= src
+	GLOB.all_virtual_listeners -= src
 	host = null
 	return ..()
 

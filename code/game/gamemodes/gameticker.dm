@@ -93,7 +93,7 @@ var/global/datum/controller/gameticker/ticker
 			var/list/weighted_modes = list()
 			for(var/datum/game_mode/GM in runnable_modes)
 				weighted_modes[GM.config_tag] = config.probabilities[GM.config_tag]
-			src.mode = gamemode_cache[pickweight(weighted_modes)]
+			src.mode = GLOB.gamemode_cache[pickweight(weighted_modes)]
 	else
 		src.mode = config.pick_mode(master_mode)
 
@@ -341,7 +341,7 @@ var/global/datum/controller/gameticker/ticker
 
 
 			spawn(50)
-				if(config.allow_map_switching && config.auto_map_vote && all_maps.len > 1)
+				if(config.allow_map_switching && config.auto_map_vote && GLOB.all_maps.len > 1)
 					vote.automap()
 					while(vote.time_remaining)
 						sleep(50)

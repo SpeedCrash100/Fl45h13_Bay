@@ -32,23 +32,23 @@ var/global/ntnrc_uid = 0
 /datum/ntnet_conversation/proc/add_client(var/datum/computer_file/program/chatclient/C)
 	if(!istype(C))
 		return
-	clients.Add(C)
+	GLOB.clients.Add(C)
 	add_status_message("[C.username] has joined the channel.")
 	// No operator, so we assume the channel was empty. Assign this user as operator.
 	if(!operator)
 		changeop(C)
 
 /datum/ntnet_conversation/proc/remove_client(var/datum/computer_file/program/chatclient/C)
-	if(!istype(C) || !(C in clients))
+	if(!istype(C) || !(C in GLOB.clients))
 		return
-	clients.Remove(C)
+	GLOB.clients.Remove(C)
 	add_status_message("[C.username] has left the channel.")
 
 	// Channel operator left, pick new operator
 	if(C == operator)
 		operator = null
-		if(clients.len)
-			var/datum/computer_file/program/chatclient/newop = pick(clients)
+		if(GLOB.clients.len)
+			var/datum/computer_file/program/chatclient/newop = pick(GLOB.clients)
 			changeop(newop)
 
 

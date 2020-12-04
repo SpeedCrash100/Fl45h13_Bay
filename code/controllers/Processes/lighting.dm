@@ -1,12 +1,12 @@
 /var/lighting_overlays_initialised = FALSE
 
-/var/list/lighting_update_lights    = list()    // List of lighting sources  queued for update.
-/var/list/lighting_update_corners   = list()    // List of lighting corners  queued for update.
-/var/list/lighting_update_overlays  = list()    // List of lighting overlays queued for update.
+GLOBAL_LIST_EMPTY(lighting_update_lights)    // List of lighting sources  queued for update.
+GLOBAL_LIST_EMPTY(lighting_update_corners)    // List of lighting corners  queued for update.
+GLOBAL_LIST_EMPTY(lighting_update_overlays)    // List of lighting overlays queued for update.
 
-/var/list/lighting_update_lights_old    = list()    // List of lighting sources  currently being updated.
-/var/list/lighting_update_corners_old   = list()    // List of lighting corners  currently being updated.
-/var/list/lighting_update_overlays_old  = list()    // List of lighting overlays currently being updated.
+GLOBAL_LIST_EMPTY(lighting_update_lights_old)    // List of lighting sources  currently being updated.
+GLOBAL_LIST_EMPTY(lighting_update_corners_old)    // List of lighting corners  currently being updated.
+GLOBAL_LIST_EMPTY(lighting_update_overlays_old)    // List of lighting overlays currently being updated.
 
 
 /datum/controller/process/lighting
@@ -34,9 +34,9 @@
 
 /datum/controller/process/lighting/doWork(roundstart)
 
-	lighting_update_lights_old = lighting_update_lights //We use a different list so any additions to the update lists during a delay from scheck() don't cause things to be cut from the list without being updated.
-	lighting_update_lights = list()
-	for(var/datum/light_source/L in lighting_update_lights_old)
+	GLOB.lighting_update_lights_old = GLOB.lighting_update_lights //We use a different list so any additions to the update lists during a delay from scheck() don't cause things to be cut from the list without being updated.
+	GLOB.lighting_update_lights = list()
+	for(var/datum/light_source/L in GLOB.lighting_update_lights_old)
 
 		if(L.check() || L.destroyed || L.force_update)
 			L.remove_lum()
@@ -52,9 +52,9 @@
 
 		SCHECK
 
-	lighting_update_corners_old = lighting_update_corners //Same as above.
-	lighting_update_corners = list()
-	for(var/A in lighting_update_corners_old)
+	GLOB.lighting_update_corners_old = GLOB.lighting_update_corners //Same as above.
+	GLOB.lighting_update_corners = list()
+	for(var/A in GLOB.lighting_update_corners_old)
 		var/datum/lighting_corner/C = A
 
 		C.update_overlays()
@@ -63,18 +63,18 @@
 
 		SCHECK
 
-	lighting_update_overlays_old = lighting_update_overlays //Same as above.
-	lighting_update_overlays = list()
+	GLOB.lighting_update_overlays_old = GLOB.lighting_update_overlays //Same as above.
+	GLOB.lighting_update_overlays = list()
 
-	for(var/A in lighting_update_overlays_old)
+	for(var/A in GLOB.lighting_update_overlays_old)
 		var/atom/movable/lighting_overlay/O = A
 		O.update_overlay()
 		O.needs_update = 0
 		SCHECK
 
-	stats_queues["Source"] += lighting_update_lights_old.len
-	stats_queues["Corner"] += lighting_update_corners_old.len
-	stats_queues["Overlay"] += lighting_update_overlays_old.len
+	stats_queues["Source"] += GLOB.lighting_update_lights_old.len
+	stats_queues["Corner"] += GLOB.lighting_update_corners_old.len
+	stats_queues["Overlay"] += GLOB.lighting_update_overlays_old.len
 
 	if(next_stats_update <= world.time)
 		next_stats_update = world.time + update_stats_every

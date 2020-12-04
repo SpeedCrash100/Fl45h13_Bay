@@ -10,8 +10,8 @@ var/datum/controller/process/chemistry/chemistryProcess
 	schedule_interval = 20 // every 2 seconds
 	chemistryProcess = src
 	active_holders = list()
-	chemical_reactions = chemical_reactions_list
-	chemical_reagents = chemical_reagents_list
+	chemical_reactions = GLOB.chemical_reactions_list
+	chemical_reagents = GLOB.chemical_reagents_list
 
 /datum/controller/process/chemistry/statProcess()
 	..()

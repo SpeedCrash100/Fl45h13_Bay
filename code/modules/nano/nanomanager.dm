@@ -30,7 +30,7 @@
 		for(var/filename in filenames)
 			if(copytext(filename, length(filename)) != "/") // filenames which end in "/" are actually directories, which we want to ignore
 				if(fexists(path + filename))
-					asset_files.Add(fcopy_rsc(path + filename)) // add this file to asset_files for sending to clients when they connect
+					asset_files.Add(fcopy_rsc(path + filename)) // add this file to asset_files for sending to GLOB.clients when they connect
 
 	return
 

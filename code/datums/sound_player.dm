@@ -5,7 +5,7 @@ var/decl/sound_player/sound_player = new()
 
 	Due to how the BYOND sound engine works a sound datum must be played on a specific channel for updates to work properly.
 	If a channel is not assigned it will just result in a new sound effect playing, even if re-using the same datum instance.
-	We also use the channel to play a null-sound on Stop(), just in case BYOND clients don't like having a large nuber, albeit stopped, looping sounds.
+	We also use the channel to play a null-sound on Stop(), just in case BYOND GLOB.clients don't like having a large nuber, albeit stopped, looping sounds.
 
 	As such there is a maximum limit of 1024 sound sources, with further limitations due to some channels already being potentially in use.
 	However, multiple sources may share the same sound_id and there is a best-effort attempt to play the closest source where possible.

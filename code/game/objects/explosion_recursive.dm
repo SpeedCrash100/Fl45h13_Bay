@@ -2,7 +2,7 @@
 
 
 
-var/list/explosion_turfs = list()
+GLOBAL_LIST_EMPTY(explosion_turfs)
 
 var/explosion_in_progress = 0
 
@@ -19,9 +19,9 @@ proc/explosion_rec(turf/epicenter, power, shaped)
 	if(!epicenter) return
 
 	explosion_in_progress = 1
-	explosion_turfs = list()
+	GLOB.explosion_turfs = list()
 
-	explosion_turfs[epicenter] = power
+	GLOB.explosion_turfs[epicenter] = power
 
 	//This steap handles the gathering of GLOB.turfs which will be ex_act() -ed in the next step. It also ensures each turf gets the maximum possible amount of power dealt to it.
 	for(var/direction in cardinal)
@@ -38,13 +38,13 @@ proc/explosion_rec(turf/epicenter, power, shaped)
 		T.explosion_spread(adj_power, direction)
 
 	//This step applies the ex_act effects for the explosion, as planned in the previous step.
-	for(var/spot in explosion_turfs)
+	for(var/spot in GLOB.explosion_turfs)
 		var/turf/T = spot
-		if(explosion_turfs[T] <= 0) continue
+		if(GLOB.explosion_turfs[T] <= 0) continue
 		if(!T) continue
 
 		//Wow severity looks confusing to calculate... Fret not, I didn't leave you with any additional instructions or help. (just kidding, see the line under the calculation)
-		var/severity = 4 - round(max(min( 3, ((explosion_turfs[T] - T.explosion_resistance) / (max(3,(power/3)))) ) ,1), 1)								//sanity			effective power on tile				divided by either 3 or one third the total explosion power
+		var/severity = 4 - round(max(min( 3, ((GLOB.explosion_turfs[T] - T.explosion_resistance) / (max(3,(power/3)))) ) ,1), 1)								//sanity			effective power on tile				divided by either 3 or one third the total explosion power
 								//															One third because there are three power levels and I
 								//															want each one to take up a third of the crater
 		var/x = T.x
@@ -57,7 +57,7 @@ proc/explosion_rec(turf/epicenter, power, shaped)
 			var/atom/movable/AM = atom_movable
 			if(AM && AM.simulated)	AM.ex_act(severity)
 
-	explosion_turfs.Cut()
+	GLOB.explosion_turfs.Cut()
 	explosion_in_progress = 0
 
 
@@ -67,9 +67,9 @@ proc/explosion_rec(turf/epicenter, power, shaped)
 	if(power <= 0)
 		return
 
-	if(explosion_turfs[src] >= power)
+	if(GLOB.explosion_turfs[src] >= power)
 		return //The turf already sustained and spread a power greated than what we are dealing with. No point spreading again.
-	explosion_turfs[src] = power
+	GLOB.explosion_turfs[src] = power
 
 /*	sleep(2)
 	var/obj/effect/debugging/M = locate() in src

@@ -1,7 +1,7 @@
 //===================================================================================
 //Overmap object representing zlevel(s)
 //===================================================================================
-var/list/points_of_interest = list()
+GLOBAL_LIST_EMPTY(points_of_interest)
 
 /obj/effect/overmap
 	name = "map object"
@@ -52,7 +52,7 @@ var/list/points_of_interest = list()
 				landing_areas = list()
 			landing_areas |= console.shuttle_area
 
-	points_of_interest += name
+	GLOB.points_of_interest += name
 
 /obj/effect/overmap/sector
 	name = "generic sector"

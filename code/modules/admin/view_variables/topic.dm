@@ -470,7 +470,7 @@
 		var/mob/H = locate(href_list["fix_nano"])
 
 		if(!istype(H) || !H.client)
-			to_chat(usr, "This can only be done on mobs with clients")
+			to_chat(usr, "This can only be done on mobs with GLOB.clients")
 			return
 
 		nanomanager.close_uis(H)
@@ -524,7 +524,7 @@
 
 	else if(href_list["call_proc"])
 		var/datum/D = locate(href_list["call_proc"])
-		if(istype(D) || istype(D, /client)) // can call on clients too, not just datums
+		if(istype(D) || istype(D, /client)) // can call on GLOB.clients too, not just datums
 			callproc_targetpicked(1, D)
 
 	if(href_list["datumrefresh"])

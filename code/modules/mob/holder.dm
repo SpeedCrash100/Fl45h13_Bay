@@ -1,4 +1,4 @@
-var/list/holder_mob_icon_cache = list()
+GLOBAL_LIST_EMPTY(holder_mob_icon_cache)
 
 //Helper object for picking dionaea (and other creatures) up.
 /obj/item/weapon/holder
@@ -188,7 +188,7 @@ var/list/holder_mob_icon_cache = list()
 
 		for(var/cache_entry in generate_for_slots)
 			var/cache_key = "[owner.species]-[cache_entry]-[skin_colour]-[hair_colour]"
-			if(!holder_mob_icon_cache[cache_key])
+			if(!GLOB.holder_mob_icon_cache[cache_key])
 
 				// Generate individual icons.
 				var/icon/mob_icon = icon(icon, "[species_name]_holder_[cache_entry]_base")
@@ -203,8 +203,8 @@ var/list/holder_mob_icon_cache = list()
 				mob_icon.Blend(hair_icon, ICON_OVERLAY)
 
 				// Add to the cache.
-				holder_mob_icon_cache[cache_key] = mob_icon
-			item_icons[cache_entry] = holder_mob_icon_cache[cache_key]
+				GLOB.holder_mob_icon_cache[cache_key] = mob_icon
+			item_icons[cache_entry] = GLOB.holder_mob_icon_cache[cache_key]
 
 	// Handle the rest of sync().
 	..(M)

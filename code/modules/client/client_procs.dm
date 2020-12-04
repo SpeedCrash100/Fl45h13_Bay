@@ -52,7 +52,7 @@
 	//Admin PM
 	if(href_list["priv_msg"])
 		var/client/C = locate(href_list["priv_msg"])
-		if(ismob(C)) 		//Old stuff can feed-in mobs instead of clients
+		if(ismob(C)) 		//Old stuff can feed-in mobs instead of GLOB.clients
 			var/mob/M = C
 			C = M.client
 		cmd_admin_pm(C,null)
@@ -122,13 +122,13 @@
 		to_chat(src, "<span class='warning'>You are running an older version of BYOND than the server and may experience issues.</span>")
 		to_chat(src, "<span class='warning'>It is recommended that you update to at least [DM_VERSION] at http://www.byond.com/download/.</span>")
 	to_chat(src, "<span class='warning'>If the title screen is black, resources are still downloading. Please be patient until the title screen appears.</span>")
-	clients += src
-	directory[ckey] = src
+	GLOB.clients += src
+	GLOB.directory[ckey] = src
 
 	//Admin Authorisation
-	holder = admin_datums[ckey]
+	holder = GLOB.admin_datums[ckey]
 	if(holder)
-		admins += src
+		GLOB.admins += src
 		holder.owner = src
 
 	//preferences datum - also holds some persistant data for the client (because we may as well keep these datums to a minimum)
@@ -181,9 +181,9 @@
 /client/Del()
 	if(holder)
 		holder.owner = null
-		admins -= src
-	directory -= ckey
-	clients -= src
+		GLOB.admins -= src
+	GLOB.directory -= ckey
+	GLOB.clients -= src
 	return ..()
 
 /client/Destroy()
@@ -259,7 +259,7 @@
 	var/admin_rank = "Player"
 	if(src.holder)
 		admin_rank = src.holder.rank
-		for(var/client/C in clients)
+		for(var/client/C in GLOB.clients)
 			if(C.staffwarn)
 				C.mob.send_staffwarn(src, "is connected", 0)
 
@@ -324,7 +324,7 @@
 		'html/images/talisman.png'
 		)
 
-	spawn (10) //removing this spawn causes all clients to not get verbs.
+	spawn (10) //removing this spawn causes all GLOB.clients to not get verbs.
 		//Precache the client with all other assets slowly, so as to not block other browse() calls
 		getFilesSlow(src, asset_cache.cache, register_asset = FALSE)
 

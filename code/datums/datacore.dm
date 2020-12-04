@@ -71,34 +71,34 @@
 
 			//cael - to prevent multiple appearances of a player/job combination, add a continue after each line
 		var/department = 0
-		if(real_rank in command_positions)
+		if(real_rank in GLOB.command_positions)
 			heads[name] = rank
 			department = 1
-		if(real_rank in support_positions)
+		if(real_rank in GLOB.support_positions)
 			spt[name] = rank
 			department = 1
-		if(real_rank in security_positions)
+		if(real_rank in GLOB.security_positions)
 			sec[name] = rank
 			department = 1
-		if(real_rank in engineering_positions)
+		if(real_rank in GLOB.engineering_positions)
 			eng[name] = rank
 			department = 1
-		if(real_rank in medical_positions)
+		if(real_rank in GLOB.medical_positions)
 			med[name] = rank
 			department = 1
-		if(real_rank in science_positions)
+		if(real_rank in GLOB.science_positions)
 			sci[name] = rank
 			department = 1
-		if(real_rank in cargo_positions)
+		if(real_rank in GLOB.cargo_positions)
 			car[name] = rank
 			department = 1
-		if(real_rank in civilian_positions)
+		if(real_rank in GLOB.civilian_positions)
 			civ[name] = rank
 			department = 1
-		if(real_rank in service_positions)
+		if(real_rank in GLOB.service_positions)
 			srv[name] = rank
 			department = 1
-		if(real_rank in supply_positions)
+		if(real_rank in GLOB.supply_positions)
 			sup[name] = rank
 			department = 1
 		if(!department && !(name in heads))
@@ -335,8 +335,8 @@
 	return M
 
 /datum/datacore/proc/ResetPDAManifest()
-	if(PDA_Manifest.len)
-		PDA_Manifest.Cut()
+	if(GLOB.PDA_Manifest.len)
+		GLOB.PDA_Manifest.Cut()
 
 /proc/find_general_record(field, value)
 	return find_record(field, value, data_core.general)

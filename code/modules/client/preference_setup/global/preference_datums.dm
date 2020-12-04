@@ -1,15 +1,15 @@
-var/list/_client_preferences
-var/list/_client_preferences_by_key
-var/list/_client_preferences_by_type
+GLOBAL_LIST_EMPTY(_client_preferences) 
+GLOBAL_LIST_EMPTY(_client_preferences_by_key) 
+GLOBAL_LIST_EMPTY(_client_preferences_by_type) 
 
 /proc/get_client_preferences()
-	if(!_client_preferences)
-		_client_preferences = list()
+	if(!GLOB._client_preferences)
+		GLOB._client_preferences = list()
 		for(var/ct in subtypesof(/datum/client_preference))
 			var/datum/client_preference/client_type = ct
 			if(initial(client_type.description))
-				_client_preferences += new client_type()
-	return _client_preferences
+				GLOB._client_preferences += new client_type()
+	return GLOB._client_preferences
 
 /proc/get_client_preference(var/datum/client_preference/preference)
 	if(istype(preference))
@@ -19,20 +19,20 @@ var/list/_client_preferences_by_type
 	return get_client_preference_by_key(preference)
 
 /proc/get_client_preference_by_key(var/preference)
-	if(!_client_preferences_by_key)
-		_client_preferences_by_key = list()
+	if(!GLOB._client_preferences_by_key)
+		GLOB._client_preferences_by_key = list()
 		for(var/ct in get_client_preferences())
 			var/datum/client_preference/client_pref = ct
-			_client_preferences_by_key[client_pref.key] = client_pref
-	return _client_preferences_by_key[preference]
+			GLOB._client_preferences_by_key[client_pref.key] = client_pref
+	return GLOB._client_preferences_by_key[preference]
 
 /proc/get_client_preference_by_type(var/preference)
-	if(!_client_preferences_by_type)
-		_client_preferences_by_type = list()
+	if(!GLOB._client_preferences_by_type)
+		GLOB._client_preferences_by_type = list()
 		for(var/ct in get_client_preferences())
 			var/datum/client_preference/client_pref = ct
-			_client_preferences_by_type[client_pref.type] = client_pref
-	return _client_preferences_by_type[preference]
+			GLOB._client_preferences_by_type[client_pref.type] = client_pref
+	return GLOB._client_preferences_by_type[preference]
 
 /datum/client_preference
 	var/description

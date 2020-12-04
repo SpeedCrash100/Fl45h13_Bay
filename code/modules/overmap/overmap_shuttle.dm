@@ -1,4 +1,4 @@
-var/list/sector_shuttles = list()
+GLOBAL_LIST_EMPTY(sector_shuttles)
 
 /datum/shuttle/ferry/overmap
 	warmup_time = 10
@@ -14,7 +14,7 @@ var/list/sector_shuttles = list()
 	set_destination_area(shuttle_area)
 	update_location()
 	shuttle_size = area_station.get_dimensions()
-	sector_shuttles += src
+	GLOB.sector_shuttles += src
 
 /datum/shuttle/ferry/overmap/move(var/area/origin,var/area/destination)
 	..()

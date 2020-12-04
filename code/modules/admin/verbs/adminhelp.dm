@@ -90,7 +90,7 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 
 	var/admin_number_afk = 0
 
-	for(var/client/X in admins)
+	for(var/client/X in GLOB.admins)
 		if((R_ADMIN|R_MOD|R_MENTOR) & X.holder.rights)
 			if(X.is_afk())
 				admin_number_afk++
@@ -102,10 +102,10 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 				to_chat(X, msg)
 	//show it to the person adminhelping too
 	to_chat(src, "<font color='blue'>PM to-<b>Staff </b>: [original_msg]</font>")
-	var/admin_number_present = admins.len - admin_number_afk
+	var/admin_number_present = GLOB.admins.len - admin_number_afk
 	log_admin("HELP: [key_name(src)]: [original_msg] - heard by [admin_number_present] non-AFK admins.")
 	if(admin_number_present <= 0)
-		adminmsg2adminirc(src, null, "[html_decode(original_msg)] - !![admin_number_afk ? "All admins AFK ([admin_number_afk])" : "No admins online"]!!")
+		adminmsg2adminirc(src, null, "[html_decode(original_msg)] - !![admin_number_afk ? "All GLOB.admins AFK ([admin_number_afk])" : "No admins online"]!!")
 	else
 		adminmsg2adminirc(src, null, "[html_decode(original_msg)]")
 	admin_pm_repository.store_pm(src, null, original_msg)

@@ -30,25 +30,25 @@ var/global/datum/controller/occupations/job_master
 			occupations_by_type[job.type] = job
 			if(!setup_titles) continue
 			if(job.department_flag & COM)
-				command_positions |= job.title
+				GLOB.command_positions |= job.title
 			if(job.department_flag & SPT)
-				support_positions |= job.title
+				GLOB.support_positions |= job.title
 			if(job.department_flag & SEC)
-				security_positions |= job.title
+				GLOB.security_positions |= job.title
 			if(job.department_flag & ENG)
-				engineering_positions += job.title
+				GLOB.engineering_positions += job.title
 			if(job.department_flag & MED)
-				medical_positions |= job.title
+				GLOB.medical_positions |= job.title
 			if(job.department_flag & SCI)
-				science_positions |= job.title
+				GLOB.science_positions |= job.title
 			if(job.department_flag & SUP)
-				supply_positions |= job.title
+				GLOB.supply_positions |= job.title
 			if(job.department_flag & SRV)
-				service_positions |= job.title
+				GLOB.service_positions |= job.title
 			if(job.department_flag & CRG)
-				cargo_positions |= job.title
+				GLOB.cargo_positions |= job.title
 			if(job.department_flag & CIV)
-				civilian_positions |= job.title
+				GLOB.civilian_positions |= job.title
 			if(job.department_flag & MSC)
 				nonhuman_positions |= job.title
 
@@ -147,7 +147,7 @@ var/global/datum/controller/occupations/job_master
 			if(istype(job, GetJob("Assistant"))) // We don't want to give him assistant, that's boring!
 				continue
 
-			if(job.title in command_positions) //If you want a command position, select it!
+			if(job.title in GLOB.command_positions) //If you want a command position, select it!
 				continue
 
 			if(jobban_isbanned(player, job.title))
@@ -177,7 +177,7 @@ var/global/datum/controller/occupations/job_master
 	///This proc is called before the level loop of DivideOccupations() and will try to select a head, ignoring ALL non-head preferences for every level until it locates a head or runs out of levels to check
 	proc/FillHeadPosition()
 		for(var/level = 1 to 3)
-			for(var/command_position in command_positions)
+			for(var/command_position in GLOB.command_positions)
 				var/datum/job/job = GetJob(command_position)
 				if(!job)	continue
 				var/list/candidates = FindOccupationCandidates(job, level)
@@ -217,7 +217,7 @@ var/global/datum/controller/occupations/job_master
 
 	///This proc is called at the start of the level loop of DivideOccupations() and will cause head jobs to be checked before any other jobs of the same level
 	proc/CheckHeadPositions(var/level)
-		for(var/command_position in command_positions)
+		for(var/command_position in GLOB.command_positions)
 			var/datum/job/job = GetJob(command_position)
 			if(!job)	continue
 			var/list/candidates = FindOccupationCandidates(job, level)
@@ -355,7 +355,7 @@ var/global/datum/controller/occupations/job_master
 			var/list/custom_equip_leftovers = list()
 			if(H.client.prefs.gear && H.client.prefs.gear.len && job.title != "Cyborg" && job.title != "AI")
 				for(var/thing in H.client.prefs.gear)
-					var/datum/gear/G = gear_datums[thing]
+					var/datum/gear/G = GLOB.gear_datums[thing]
 					if(G)
 						var/permitted
 						if(G.allowed_roles)
@@ -404,7 +404,7 @@ var/global/datum/controller/occupations/job_master
 							H.equip_to_slot_or_del(new accessory_path(src), slot_tie)
 			//If some custom items could not be equipped before, try again now.
 			for(var/thing in custom_equip_leftovers)
-				var/datum/gear/G = gear_datums[thing]
+				var/datum/gear/G = GLOB.gear_datums[thing]
 				if(G.slot in custom_equip_slots)
 					spawn_in_storage += thing
 				else
@@ -469,7 +469,7 @@ var/global/datum/controller/occupations/job_master
 
 			//Deferred item spawning.
 			for(var/thing in spawn_in_storage)
-				var/datum/gear/G = gear_datums[thing]
+				var/datum/gear/G = GLOB.gear_datums[thing]
 				var/metadata = H.client.prefs.gear[G.display_name]
 				var/item = G.spawn_item(null, metadata)
 
@@ -637,7 +637,7 @@ var/global/datum/controller/occupations/job_master
 				to_chat(H, "<span class='warning'>Your chosen spawnpoint ([C.prefs.spawnpoint]) is unavailable for the current map. Spawning you at one of the enabled spawn points instead. To resolve this error head to your character's setup and choose a different spawn point.</span>")
 			spawnpos = null
 		else
-			spawnpos = spawntypes[spawnpoint]
+			spawnpos = GLOB.spawntypes[spawnpoint]
 
 	if(spawnpos && !spawnpos.check_job_spawning(rank))
 		if(H)
@@ -647,7 +647,7 @@ var/global/datum/controller/occupations/job_master
 	if(!spawnpos)
 		// Step through all spawnpoints and pick first appropriate for job
 		for(var/spawntype in using_map.allowed_spawns)
-			var/datum/spawnpoint/candidate = spawntypes[spawntype]
+			var/datum/spawnpoint/candidate = GLOB.spawntypes[spawntype]
 			if(candidate.check_job_spawning(rank))
 				spawnpos = candidate
 				break
@@ -655,7 +655,7 @@ var/global/datum/controller/occupations/job_master
 	if(!spawnpos)
 		// Pick at random from all the (wrong) spawnpoints, just so we have one
 		warning("Could not find an appropriate spawnpoint for job [rank].")
-		spawnpos = spawntypes[pick(using_map.allowed_spawns)]
+		spawnpos = GLOB.spawntypes[pick(using_map.allowed_spawns)]
 
 	return spawnpos
 

@@ -1,8 +1,6 @@
 /client
 	control_freak = CONTROL_FREAK_ALL | CONTROL_FREAK_MACROS | CONTROL_FREAK_SKIN
 
-var/list/registered_macros_by_ckey_
-
 // Disables click and double-click macros, as per http://www.byond.com/forum/?post=2219001
 /mob/verb/DisableClick(argu = null as anything, sec = "" as text,number1 = 0 as num, number2 = 0 as num)
 	set name = ".click"
@@ -22,9 +20,9 @@ var/list/registered_macros_by_ckey_
 	log_and_message_admins("attempted to use the disabled [macro] macro.")
 
 /proc/get_registered_macros()
-	if(!registered_macros_by_ckey_)
-		registered_macros_by_ckey_ = list()
-	return registered_macros_by_ckey_
+	if(!GLOB.registered_macros_by_ckey_)
+		GLOB.registered_macros_by_ckey_ = list()
+	return GLOB.registered_macros_by_ckey_
 
 /proc/is_macro_use_registered(var/ckey, var/macro)
 	var/list/registered_macros = get_registered_macros()[ckey]

@@ -48,7 +48,7 @@
 			if(dam > maxdam && (maxdam == 0 || prob(50)) )
 				damaged_organ = E
 				maxdam = dam
-		var/datum/gender/T = gender_datums[H.get_gender()]
+		var/datum/gender/T = GLOB.gender_datums[H.get_gender()]
 		if(damaged_organ)
 			if(damaged_organ.status & ORGAN_BLEEDING)
 				H.custom_emote("clutches [T.his] [damaged_organ.name], trying to stop the blood.")

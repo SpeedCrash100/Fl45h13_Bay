@@ -42,14 +42,14 @@ var/decl/hierarchy/supply_pack/cargo_supply_packs	// Non-category supply packs
 //NEW NOTE: Do NOT set the price of any crates below 7 points. Doing so allows infinite points.
 */
 
-var/list/supply_methods_
+GLOBAL_LIST_EMPTY(supply_methods_) 
 /proc/get_supply_method(var/method_type)
-	if(!supply_methods_)
-		supply_methods_ = list()
-	. = supply_methods_[method_type]
+	if(!GLOB.supply_methods_)
+		GLOB.supply_methods_ = list()
+	. = GLOB.supply_methods_[method_type]
 	if(!.)
 		. = new method_type()
-		supply_methods_[method_type] = .
+		GLOB.supply_methods_[method_type] = .
 
 /decl/supply_method/proc/spawn_contents(var/decl/hierarchy/supply_pack/sp, var/location)
 	if(!sp || !location)

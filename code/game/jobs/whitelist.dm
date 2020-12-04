@@ -1,6 +1,6 @@
 #define WHITELISTFILE "data/whitelist.txt"
 
-var/list/whitelist = list()
+GLOBAL_LIST_EMPTY(whitelist)
 
 /hook/startup/proc/loadWhitelist()
 	if(config.usewhitelist)
@@ -8,15 +8,16 @@ var/list/whitelist = list()
 	return 1
 
 /proc/load_whitelist()
-	whitelist = file2list(WHITELISTFILE)
-	if(!whitelist.len)	whitelist = null
+	GLOB.whitelist = file2list(WHITELISTFILE)
+	if(!GLOB.whitelist.len)	
+		GLOB.whitelist = null
 
 /proc/check_whitelist(mob/M /*, var/rank*/)
-	if(!whitelist)
+	if(!GLOB.whitelist)
 		return 0
-	return ("[M.ckey]" in whitelist)
+	return ("[M.ckey]" in GLOB.whitelist)
 
-/var/list/alien_whitelist = list()
+GLOBAL_LIST_EMPTY(alien_whitelist)
 
 /hook/startup/proc/loadAlienWhitelist()
 	if(config.usealienwhitelist)
@@ -32,7 +33,7 @@ var/list/whitelist = list()
 		log_misc("Failed to load config/alienwhitelist.txt")
 		return 0
 	else
-		alien_whitelist = splittext(text, "\n")
+		GLOB.alien_whitelist = splittext(text, "\n")
 		return 1
 /proc/load_alienwhitelistSQL()
 	var/DBQuery/query = dbcon_old.NewQuery("SELECT * FROM whitelist")
@@ -42,11 +43,11 @@ var/list/whitelist = list()
 	else
 		while(query.NextRow())
 			var/list/row = query.GetRowData()
-			if(alien_whitelist[row["ckey"]])
-				var/list/A = alien_whitelist[row["ckey"]]
+			if(GLOB.alien_whitelist[row["ckey"]])
+				var/list/A = GLOB.alien_whitelist[row["ckey"]]
 				A.Add(row["race"])
 			else
-				alien_whitelist[row["ckey"]] = list(row["race"])
+				GLOB.alien_whitelist[row["ckey"]] = list(row["race"])
 	return 1
 
 /proc/is_species_whitelisted(mob/M, var/species_name)
@@ -77,19 +78,19 @@ var/list/whitelist = list()
 	return 0
 
 /proc/whitelist_lookup(var/item, var/ckey)
-	if(!alien_whitelist)
+	if(!GLOB.alien_whitelist)
 		return 0
 
 	if(config.usealienwhitelistSQL)
 		//SQL Whitelist
-		if(!(ckey in alien_whitelist))
+		if(!(ckey in GLOB.alien_whitelist))
 			return 0;
-		var/list/whitelisted = alien_whitelist[ckey]
+		var/list/whitelisted = GLOB.alien_whitelist[ckey]
 		if(lowertext(item) in whitelisted)
 			return 1
 	else
 		//Config File Whitelist
-		for(var/s in alien_whitelist)
+		for(var/s in GLOB.alien_whitelist)
 			if(findtext(s,"[ckey] - [item]"))
 				return 1
 			if(findtext(s,"[ckey] - All"))

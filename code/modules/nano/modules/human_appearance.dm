@@ -95,7 +95,7 @@
 	if(!owner || !owner.species)
 		return
 
-	generate_data(check_whitelist, whitelist, blacklist)
+	generate_data(check_whitelist, GLOB.whitelist, blacklist)
 	var/list/data = host.initial_data()
 
 	data["specimen"] = owner.species.name
@@ -164,7 +164,7 @@
 	if(!owner)
 		return
 	if(!valid_species.len)
-		valid_species = owner.generate_valid_species(check_whitelist, whitelist, blacklist)
+		valid_species = owner.generate_valid_species(check_whitelist, GLOB.whitelist, blacklist)
 	if(!valid_hairstyles.len || !valid_facial_hairstyles.len)
 		valid_hairstyles = owner.generate_valid_hairstyles(check_gender = 0)
 		valid_facial_hairstyles = owner.generate_valid_facial_hairstyles()

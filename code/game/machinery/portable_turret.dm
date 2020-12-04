@@ -148,15 +148,14 @@
 			eshot_sound = 'sound/weapons/Laser.ogg'
 			egun = 1
 
-var/list/turret_icons
-
+GLOBAL_LIST_EMPTY(turret_icons) 
 /obj/machinery/porta_turret/update_icon()
-	if(!turret_icons)
-		turret_icons = list()
-		turret_icons["open"] = image(icon, "openTurretCover")
+	if(!GLOB.turret_icons)
+		GLOB.turret_icons = list()
+		GLOB.turret_icons["open"] = image(icon, "openTurretCover")
 
 	underlays.Cut()
-	underlays += turret_icons["open"]
+	underlays += GLOB.turret_icons["open"]
 
 	if(stat & BROKEN)
 		icon_state = "destroyed_target_prism"

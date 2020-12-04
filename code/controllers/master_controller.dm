@@ -65,7 +65,7 @@ datum/controller/game_controller/proc/setup_objects()
 	initialization_stage |= INITIALIZATION_HAS_BEGUN
 
 	report_progress("Initializing turbolifts")
-	for(var/thing in turbolifts)
+	for(var/thing in GLOB.turbolifts)
 		var/obj/turbolift_map_holder/lift = thing
 		if(!QDELETED(lift))
 			lift.initialize()

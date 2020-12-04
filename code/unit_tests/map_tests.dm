@@ -199,7 +199,7 @@ datum/unit_test/correct_allowed_spawn_test/start_test()
 	var/failed = FALSE
 
 	for(var/spawn_name in using_map.allowed_spawns)
-		var/datum/spawnpoint/spawnpoint = spawntypes[spawn_name]
+		var/datum/spawnpoint/spawnpoint = GLOB.spawntypes[spawn_name]
 		if(!spawnpoint.turfs.len)
 			log_unit_test("Map allows spawning in [spawn_name], but [spawn_name] has no associated spawn GLOB.turfs.")
 			failed = TRUE

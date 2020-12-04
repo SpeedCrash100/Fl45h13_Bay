@@ -1,8 +1,8 @@
 var/list/obj/machinery/photocopier/faxmachine/allfaxes = list()
 var/list/admin_departments = list("[using_map.boss_name]", "Colonial Marshal Service", "[using_map.boss_short] Supply") + using_map.map_admin_faxes
-var/list/alldepartments = list()
+GLOBAL_LIST_EMPTY(alldepartments)
 
-var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
+GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 
 /obj/machinery/photocopier/faxmachine
 	name = "fax machine"
@@ -25,8 +25,8 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	..()
 	allfaxes += src
 	if(!destination) destination = "[using_map.boss_name]"
-	if( !(("[department]" in alldepartments) || ("[department]" in admin_departments)) )
-		alldepartments |= department
+	if( !(("[department]" in GLOB.alldepartments) || ("[department]" in admin_departments)) )
+		GLOB.alldepartments |= department
 
 /obj/machinery/photocopier/faxmachine/attack_hand(mob/user as mob)
 	user.set_machine(src)
@@ -119,7 +119,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 
 	if(href_list["dept"])
 		var/lastdestination = destination
-		destination = input(usr, "Which department?", "Choose a department", "") as null|anything in (alldepartments + admin_departments)
+		destination = input(usr, "Which department?", "Choose a department", "") as null|anything in (GLOB.alldepartments + admin_departments)
 		if(!destination) destination = lastdestination
 
 	if(href_list["auth"])
@@ -193,7 +193,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 		return
 
 	rcvdcopy.loc = null //hopefully this shouldn't cause trouble
-	adminfaxes += rcvdcopy
+	GLOB.adminfaxes += rcvdcopy
 
 	//message badmins that a fax has arrived
 	if (destination == using_map.boss_name)
@@ -217,7 +217,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	msg += "(<a href='?_src_=holder;FaxReply=\ref[sender];originfax=\ref[src];replyorigin=[reply_type]'>REPLY</a>)</b>: "
 	msg += "Receiving '[sent.name]' via secure connection ... <a href='?_src_=holder;AdminFaxView=\ref[sent]'>view message</a></span>"
 
-	for(var/client/C in admins)
+	for(var/client/C in GLOB.admins)
 		if(check_rights((R_ADMIN|R_MOD),0,C))
 			to_chat(C, msg)
 			sound_to(C, 'sound/machines/dotprinter.ogg')

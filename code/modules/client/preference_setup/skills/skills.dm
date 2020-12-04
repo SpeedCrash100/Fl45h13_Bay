@@ -11,7 +11,7 @@
 	to_save(S["used_skillpoints"], 		pref.used_skillpoints)
 
 /datum/category_item/player_setup_item/skills/sanitize_character()
-	if(SKILLS == null)				setup_skills()
+	if(GLOB.SKILLS.len == 0)				setup_skills()
 	if(!pref.skills)				pref.skills = list()
 	if(!pref.skills.len)			pref.ZeroSkills()
 	if(pref.used_skillpoints < 0)	pref.used_skillpoints = 0
@@ -21,10 +21,10 @@
 	. += "<b>Select your Skills</b><br>"
 	. += "Current skill level: <b>[pref.GetSkillClass(pref.used_skillpoints)]</b> ([pref.used_skillpoints])<br>"
 	. += "<table>"
-	for(var/V in SKILLS)
+	for(var/V in GLOB.SKILLS)
 		. += "<tr><th colspan = 5><b>[V]</b>"
 		. += "</th></tr>"
-		for(var/datum/skill/S in SKILLS[V])
+		for(var/datum/skill/S in GLOB.SKILLS[V])
 			var/level = pref.skills[S.ID]
 			. += "<tr style='text-align:left;'>"
 			. += "<th><a href='?src=\ref[src];skillinfo=\ref[S]'>[S.name]</a></th>"

@@ -39,7 +39,7 @@
 		<td><b>Remaining</b></td>
 		</tr>"}
 
-	for(var/obj/machinery/fusion_fuel_injector/I in fuel_injectors)
+	for(var/obj/machinery/fusion_fuel_injector/I in GLOB.fuel_injectors)
 		if(!id_tag || !I.id_tag || I.id_tag != id_tag || get_dist(src, I) > scan_range)
 			continue
 

@@ -1,7 +1,7 @@
 // These are objects that destroy themselves and add themselves to the
 // decal list of the floor under them. Use them rather than distinct icon_states
 // when mapping in interesting floor designs.
-var/list/floor_decals = list()
+GLOBAL_LIST_EMPTY(floor_decals)
 
 /obj/effect/floor_decal
 	name = "floor decal"
@@ -21,7 +21,7 @@ var/list/floor_decals = list()
 	if(istype(T, /turf/simulated/floor) || istype(T, /turf/unsimulated/floor))
 		plane = T.is_plating() ? ABOVE_PLATING_PLANE : ABOVE_TURF_PLANE
 		var/cache_key = "[alpha]-[color]-[dir]-[icon_state]-[plane]-[layer]"
-		if(!floor_decals[cache_key])
+		if(!GLOB.floor_decals[cache_key])
 			var/image/I = image(icon = src.icon, icon_state = src.icon_state, dir = src.dir)
 			if(plane == ABOVE_PLATING_PLANE)
 				I.plating_decal_layerise()
@@ -29,10 +29,10 @@ var/list/floor_decals = list()
 				I.turf_decal_layerise()
 			I.color = src.color
 			I.alpha = src.alpha
-			floor_decals[cache_key] = I
+			GLOB.floor_decals[cache_key] = I
 		if(!T.decals) T.decals = list()
-		T.decals |= floor_decals[cache_key]
-		T.overlays |= floor_decals[cache_key]
+		T.decals |= GLOB.floor_decals[cache_key]
+		T.overlays |= GLOB.floor_decals[cache_key]
 	qdel(src)
 	return
 

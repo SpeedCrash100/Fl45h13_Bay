@@ -121,14 +121,14 @@
 	return FALSE
 
 /*
-* Filter logs with one or more missing clients
+* Filter logs with one or more missing GLOB.clients
 */
 /attack_filter/no_client
 	var/filter_missing_clients = TRUE
 
 /attack_filter/no_client/get_html()
 	. = list()
-	. += "Must have clients: "
+	. += "Must have GLOB.clients: "
 	if(filter_missing_clients)
 		. += "<span class='linkOn'>Yes</span><a href='?src=\ref[src];no=1'>No</a>"
 	else

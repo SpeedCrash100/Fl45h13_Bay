@@ -281,7 +281,7 @@
 /**
   * Forces a hard reboot of DreamDaemon by ending the process.
   *
-  * Unlike del(world) clients will try to reconnect.
+  * Unlike del(world) GLOB.clients will try to reconnect.
   * If TGS has not requested a [TGS_REBOOT_MODE_SHUTDOWN] DreamDaemon will be launched again
   */
 /world/proc/TgsEndProcess()

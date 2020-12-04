@@ -9,7 +9,7 @@
 		var/list/reagent_list = json_decode(initial(rd.initial_reagents))
 		var/total_ratio = 0
 		for(var/reagent in reagent_list)
-			if(!(reagent in chemical_reagents_list))
+			if(!(reagent in GLOB.chemical_reagents_list))
 				bad_reagents |= dispenser_type
 				log_bad("[dispenser_type]: The reagent '[reagent]' is invalid.")
 

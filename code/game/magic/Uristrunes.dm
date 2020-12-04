@@ -1,9 +1,8 @@
 
-var/list/word_to_uristrune_table = null
+GLOBAL_LIST_EMPTY(word_to_uristrune_table)
 
 /proc/word_to_uristrune_bit(word)
-	if(word_to_uristrune_table == null)
-		word_to_uristrune_table = list()
+	if(GLOB.word_to_uristrune_table.len == 0)
 
 		var/bit = 1
 		var/list/words = list("ire", "ego", "nahlizet", "certum", "veri", "jatkaa", "mgar", "balaq", "karazet", "geeri")
@@ -11,12 +10,12 @@ var/list/word_to_uristrune_table = null
 		while(length(words))
 			var/w = pick(words)
 
-			word_to_uristrune_table[w] = bit
+			GLOB.word_to_uristrune_table[w] = bit
 
 			words -= w
 			bit <<= 1
 
-	return word_to_uristrune_table[word]
+	return GLOB.word_to_uristrune_table[word]
 
 
 
@@ -57,7 +56,7 @@ var/list/word_to_uristrune_table = null
 	return get_uristrune(bits, animated)
 
 
-var/list/uristrune_cache = list()
+GLOBAL_LIST_EMPTY(uristrune_cache)
 
 /proc/get_uristrune(symbol_bits, animated = 0)
 	var/lookup = "[symbol_bits]-[animated]"

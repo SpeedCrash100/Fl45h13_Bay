@@ -326,7 +326,7 @@ GLOBAL_LIST_EMPTY(additional_antag_types)
 
 	for(var/mob/M in GLOB.player_list)
 		if(M.client)
-			clients++
+			GLOB.clients++
 			if(M.stat != DEAD)
 				surviving_total++
 				if(ishuman(M))
@@ -347,7 +347,7 @@ GLOBAL_LIST_EMPTY(additional_antag_types)
 		text += "There were <b>no survivors</b> (<b>[ghosts] ghosts</b>)."
 	to_world(text)
 
-	if(clients > 0)
+	if(GLOB.clients > 0)
 		feedback_set("round_end_clients",clients)
 	if(ghosts > 0)
 		feedback_set("round_end_ghosts",ghosts)
@@ -458,7 +458,7 @@ proc/display_roundstart_logout_report()
 
 		if(L.ckey)
 			var/found = 0
-			for(var/client/C in clients)
+			for(var/client/C in GLOB.clients)
 				if(C.ckey == L.ckey)
 					found = 1
 					break

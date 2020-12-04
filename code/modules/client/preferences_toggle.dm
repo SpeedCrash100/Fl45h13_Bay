@@ -1,16 +1,15 @@
-var/list/client_preference_stats_
-
+GLOBAL_LIST_EMPTY(client_preference_stats_) 
 /proc/client_preference_stats_for_usr(var/mob/user = usr)
 	. = list()
 	if(!user)
 		return
-	if(!client_preference_stats_)
-		client_preference_stats_ = list()
+	if(!GLOB.client_preference_stats_)
+		GLOB.client_preference_stats_ = list()
 		for(var/datum/client_preference/client_pref in get_client_preferences())
-			client_preference_stats_[client_pref.description] = new /stat_client_preference(null, client_pref)
+			GLOB.client_preference_stats_[client_pref.description] = new /stat_client_preference(null, client_pref)
 
-	for(var/client_pref_description in client_preference_stats_)
-		var/stat_client_preference/scp = client_preference_stats_[client_pref_description]
+	for(var/client_pref_description in GLOB.client_preference_stats_)
+		var/stat_client_preference/scp = GLOB.client_preference_stats_[client_pref_description]
 		if(scp.client_preference.may_toggle(user))
 			scp.update_name(user)
 			.[client_pref_description] = scp
@@ -31,7 +30,7 @@ var/list/client_preference_stats_
 		return
 	var/list/preferences = client_preference_stats_for_usr(src)
 	for(var/client_preference_description in preferences)
-		var/stat_client_preference/scp = client_preference_stats_[client_preference_description]
+		var/stat_client_preference/scp = GLOB.client_preference_stats_[client_preference_description]
 		stat(scp.client_preference.description, scp)
 
 /stat_client_preference

@@ -28,7 +28,7 @@
 
 	VARS:
 
-	swapmaps_iconcache
+	GLOB.swapmaps_iconcache
 		An associative list of icon files with names, like
 		'player.dmi' = "player"
 	swapmaps_mode
@@ -460,8 +460,8 @@ atom
 				else
 					S.dir.Remove(V)
 		if(icon!=initial(icon))
-			if(swapmaps_iconcache && swapmaps_iconcache[icon])
-				to_save(S["icon"], swapmaps_iconcache[icon])
+			if(GLOB.swapmaps_iconcache && GLOB.swapmaps_iconcache[icon])
+				to_save(S["icon"], GLOB.swapmaps_iconcache[icon])
 			else
 				to_save(S["icon"], icon)
 		// do not save mobs with keys; do save other mobs
@@ -485,7 +485,7 @@ atom
 		if(!icon && ("icon" in S.dir))
 			var/ic
 			from_save(S["icon"], ic)
-			if(istext(ic)) icon=swapmaps_iconcache[ic]
+			if(istext(ic)) icon=GLOB.swapmaps_iconcache[ic]
 		if(l && contents!=l)
 			contents+=l
 			qdel(l)
@@ -497,7 +497,7 @@ atom
 //     'monster.dmi'="monster",\
 //     ...
 //     'item.dmi'="item")
-var/list/swapmaps_iconcache
+GLOBAL_LIST_EMPTY(swapmaps_iconcache) 
 
 // preferred mode; sav or text
 var/const/SWAPMAPS_SAV=0
@@ -519,16 +519,16 @@ proc/InitializeSwapMaps()
 	swapmaps_compiled_maxz=world.maxz
 	swapmaps_loaded=list()
 	swapmaps_byname=list()
-	if(swapmaps_iconcache)
-		for(var/V in swapmaps_iconcache)
+	if(GLOB.swapmaps_iconcache)
+		for(var/V in GLOB.swapmaps_iconcache)
 			// reverse-associate everything
 			// so you can look up an icon file by name or vice-versa
-			swapmaps_iconcache[swapmaps_iconcache[V]]=V
+			GLOB.swapmaps_iconcache[GLOB.swapmaps_iconcache[V]]=V
 
 proc/SwapMaps_AddIconToCache(name,icon)
-	if(!swapmaps_iconcache) swapmaps_iconcache=list()
-	swapmaps_iconcache[name]=icon
-	swapmaps_iconcache[icon]=name
+	if(!GLOB.swapmaps_iconcache) GLOB.swapmaps_iconcache=list()
+	GLOB.swapmaps_iconcache[name]=icon
+	GLOB.swapmaps_iconcache[icon]=name
 
 proc/SwapMaps_Find(id)
 	InitializeSwapMaps()

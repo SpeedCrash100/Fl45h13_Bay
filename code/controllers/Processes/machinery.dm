@@ -32,14 +32,14 @@
 		SCHECK
 
 /datum/controller/process/machinery/proc/internal_process_power()
-	for(last_object in powernets)
+	for(last_object in GLOB.powernets)
 		var/datum/powernet/powerNetwork = last_object
 		if(istype(powerNetwork) && !QDELETED(powerNetwork))
 			powerNetwork.reset()
 			SCHECK
 			continue
 
-		powernets.Remove(powerNetwork)
+		GLOB.powernets.Remove(powerNetwork)
 
 /datum/controller/process/machinery/proc/internal_process_power_drain()
 	// Currently only used by powersinks. These items get priority processed before machinery
@@ -62,6 +62,6 @@
 /datum/controller/process/machinery/statProcess()
 	..()
 	stat(null, "[GLOB.machines.len] GLOB.machines")
-	stat(null, "[powernets.len] powernets")
+	stat(null, "[GLOB.powernets.len] GLOB.powernets")
 	stat(null, "[pipe_networks.len] pipenets")
 	stat(null, "[GLOB.processing_power_items.len] power item\s")

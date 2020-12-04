@@ -1,11 +1,11 @@
-var/list/spawntypes = list()
+GLOBAL_LIST_EMPTY(spawntypes)
 
 /proc/populate_spawn_points()
-	spawntypes = list()
+	GLOB.spawntypes = list()
 	for(var/type in typesof(/datum/spawnpoint)-/datum/spawnpoint)
 		var/datum/spawnpoint/S = new type()
 		if((S.display_name in using_map.allowed_spawns) || S.always_visible)
-			spawntypes[S.display_name] = S
+			GLOB.spawntypes[S.display_name] = S
 
 /datum/spawnpoint
 	var/msg          //Message to display on the arrivals computer.
@@ -30,7 +30,7 @@ var/list/spawntypes = list()
 
 /datum/spawnpoint/arrivals/New()
 	..()
-	GLOB.turfs = latejoin
+	GLOB.turfs = GLOB.latejoin
 
 /datum/spawnpoint/gateway
 	display_name = "Gateway"
@@ -38,7 +38,7 @@ var/list/spawntypes = list()
 
 /datum/spawnpoint/gateway/New()
 	..()
-	GLOB.turfs = latejoin_gateway
+	GLOB.turfs = GLOB.latejoin_gateway
 
 /datum/spawnpoint/cryo
 	display_name = "Cryogenic Storage"
@@ -47,7 +47,7 @@ var/list/spawntypes = list()
 
 /datum/spawnpoint/cryo/New()
 	..()
-	GLOB.turfs = latejoin_cryo
+	GLOB.turfs = GLOB.latejoin_cryo
 
 /datum/spawnpoint/cyborg
 	display_name = "Cyborg Storage"
@@ -56,7 +56,7 @@ var/list/spawntypes = list()
 
 /datum/spawnpoint/cyborg/New()
 	..()
-	GLOB.turfs = latejoin_cyborg
+	GLOB.turfs = GLOB.latejoin_cyborg
 
 /datum/spawnpoint/default
 	display_name = DEFAULT_SPAWNPOINT_ID

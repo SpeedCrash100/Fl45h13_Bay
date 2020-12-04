@@ -26,9 +26,9 @@
 
 	var/list/msg = list("<span class='info'>*---------*\nThis is ")
 
-	var/datum/gender/T = gender_datums[get_gender()]
+	var/datum/gender/T = GLOB.gender_datums[get_gender()]
 	if(skipjumpsuit && skipface) //big suits/masks/helmets make it hard to tell their gender
-		T = gender_datums[PLURAL]
+		T = GLOB.gender_datums[PLURAL]
 	else
 		if(icon)
 			msg += "\icon[icon] " //fucking BYOND: this should stop dreamseeker crashing if we -somehow- examine somebody before their icon is generated

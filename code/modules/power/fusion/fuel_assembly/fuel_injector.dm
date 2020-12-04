@@ -1,4 +1,4 @@
-var/list/fuel_injectors = list()
+GLOBAL_LIST_EMPTY(fuel_injectors)
 
 /obj/machinery/fusion_fuel_injector
 	name = "fuel injector"
@@ -18,14 +18,14 @@ var/list/fuel_injectors = list()
 
 /obj/machinery/fusion_fuel_injector/New()
 	..()
-	fuel_injectors += src
+	GLOB.fuel_injectors += src
 	tag = null
 
 /obj/machinery/fusion_fuel_injector/Destroy()
 	if(cur_assembly)
 		cur_assembly.forceMove(get_turf(src))
 		cur_assembly = null
-	fuel_injectors -= src
+	GLOB.fuel_injectors -= src
 	return ..()
 
 /obj/machinery/fusion_fuel_injector/mapped

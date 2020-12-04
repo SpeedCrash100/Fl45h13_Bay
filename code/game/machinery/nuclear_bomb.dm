@@ -364,7 +364,7 @@ var/bomb_set
 
 /obj/item/weapon/disk/nuclear/New()
 	..()
-	nuke_disks |= src
+	GLOB.nuke_disks |= src
 
 /obj/item/weapon/disk/nuclear/initialize()
 	..()
@@ -381,8 +381,8 @@ var/bomb_set
 
 /obj/item/weapon/disk/nuclear/Destroy()
 	moved_event.unregister(src, src, /obj/item/weapon/disk/nuclear/proc/check_z_level)
-	nuke_disks -= src
-	if(!nuke_disks.len)
+	GLOB.nuke_disks -= src
+	if(!GLOB.nuke_disks.len)
 		var/turf/T = pick_area_turf(/area/maintenance, list(/proc/is_station_turf, /proc/not_turf_contains_dense_objects))
 		if(T)
 			var/obj/D = new /obj/item/weapon/disk/nuclear(T)

@@ -10,7 +10,7 @@
 	var/icon_state = "black"
 	var/list/obfuscation_images = list()
 	var/static/icon/obfuscation_underlay
-	// There is an exploit were clients can memory-edit their local version of the static images, allowing them to see everything. This is a minor attempt to make that more difficult.
+	// There is an exploit were GLOB.clients can memory-edit their local version of the static images, allowing them to see everything. This is a minor attempt to make that more difficult.
 
 /datum/obfuscation/Destroy()
 	obfuscation_images.Cut()

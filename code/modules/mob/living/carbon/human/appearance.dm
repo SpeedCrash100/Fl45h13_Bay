@@ -147,7 +147,7 @@
 				continue
 			if(!is_alien_whitelisted(src, current_species))
 				continue
-		if(whitelist.len && !(current_species_name in whitelist))
+		if(GLOB.whitelist.len && !(current_species_name in GLOB.whitelist))
 			continue
 		if(blacklist.len && (current_species_name in blacklist))
 			continue

@@ -1,4 +1,4 @@
-var/list/limb_icon_cache = list()
+GLOBAL_LIST_EMPTY(limb_icon_cache)
 
 /obj/item/organ/external/set_dir()
 	return
@@ -17,7 +17,7 @@ var/list/limb_icon_cache = list()
 	s_col = null
 	h_col = list(human.r_hair, human.g_hair, human.b_hair)
 	if(robotic >= ORGAN_ROBOT)
-		var/datum/robolimb/franchise = all_robolimbs[model]
+		var/datum/robolimb/franchise = GLOB.all_robolimbs[model]
 		if(!(franchise && franchise.skintone))
 			return
 	if(species && human.species && species.name != human.species.name)
@@ -32,7 +32,7 @@ var/list/limb_icon_cache = list()
 	s_col = null
 	h_col = list(dna.GetUIValue(DNA_UI_HAIR_R),dna.GetUIValue(DNA_UI_HAIR_G),dna.GetUIValue(DNA_UI_HAIR_B))
 	if(robotic >= ORGAN_ROBOT)
-		var/datum/robolimb/franchise = all_robolimbs[model]
+		var/datum/robolimb/franchise = GLOB.all_robolimbs[model]
 		if(!(franchise && franchise.skintone))
 			return
 	if(!isnull(dna.GetUIValue(DNA_UI_SKIN_TONE)) && (species.appearance_flags & HAS_SKIN_TONE))
@@ -79,11 +79,11 @@ var/list/limb_icon_cache = list()
 
 	if(body_hair && islist(h_col) && h_col.len >= 3)
 		var/cache_key = "[body_hair]-[icon_name]-[h_col[1]][h_col[2]][h_col[3]]"
-		if(!limb_icon_cache[cache_key])
+		if(!GLOB.limb_icon_cache[cache_key])
 			var/icon/I = icon(species.get_icobase(owner), "[icon_name]_[body_hair]")
 			I.Blend(rgb(h_col[1],h_col[2],h_col[3]), ICON_ADD)
-			limb_icon_cache[cache_key] = I
-		mob_icon.Blend(limb_icon_cache[cache_key], ICON_OVERLAY)
+			GLOB.limb_icon_cache[cache_key] = I
+		mob_icon.Blend(GLOB.limb_icon_cache[cache_key], ICON_OVERLAY)
 
 	if(model)
 		icon_cache_key += "_model_[model]"
@@ -110,9 +110,9 @@ var/list/robot_hud_colours = list("#FFFFFF","#CCCCCC","#AAAAAA","#888888","#6666
 	// This looks convoluted, but it's this way to avoid icon proc calls.
 	if(!hud_damage_image)
 		var/cache_key = "dambase-[icon_cache_key]"
-		if(!icon_cache_key || !limb_icon_cache[cache_key])
-			limb_icon_cache[cache_key] = icon(get_icon(), null, SOUTH)
-		var/image/temp = image(limb_icon_cache[cache_key])
+		if(!icon_cache_key || !GLOB.limb_icon_cache[cache_key])
+			GLOB.limb_icon_cache[cache_key] = icon(get_icon(), null, SOUTH)
+		var/image/temp = image(GLOB.limb_icon_cache[cache_key])
 		if(species)
 			// Calculate the required colour matrix.
 			var/r = 0.30 * species.health_hud_intensity

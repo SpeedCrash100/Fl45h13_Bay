@@ -22,7 +22,7 @@ If d1 = dir1 and d2 = dir2, it's a full X-X cable, getting from dir1 to dir2
 By design, d1 is the smallest direction and d2 is the highest
 */
 
-var/list/possible_cable_coil_colours
+GLOBAL_LIST_EMPTY(possible_cable_coil_colours) 
 
 /obj/structure/cable
 	level = 1
@@ -523,7 +523,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 
 /obj/item/stack/cable_coil/update_icon()
 	if (!color)
-		color = possible_cable_coil_colours[pick(possible_cable_coil_colours)]
+		color = GLOB.possible_cable_coil_colours[pick(GLOB.possible_cable_coil_colours)]
 	if(amount == 1)
 		icon_state = "coil1"
 		name = "cable piece"
@@ -538,10 +538,10 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	if(!selected_color)
 		return
 
-	var/final_color = possible_cable_coil_colours[selected_color]
+	var/final_color = GLOB.possible_cable_coil_colours[selected_color]
 	if(!final_color)
 		selected_color = "Red"
-		final_color = possible_cable_coil_colours[selected_color]
+		final_color = GLOB.possible_cable_coil_colours[selected_color]
 	color = final_color
 	to_chat(user, "<span class='notice'>You change \the [src]'s color to [lowertext(selected_color)].</span>")
 
@@ -586,7 +586,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	set name = "Change Colour"
 	set category = "Object"
 
-	var/selected_type = input("Pick new colour.", "Cable Colour", null, null) as null|anything in possible_cable_coil_colours
+	var/selected_type = input("Pick new colour.", "Cable Colour", null, null) as null|anything in GLOB.possible_cable_coil_colours
 	set_cable_color(selected_type, usr)
 
 // Items usable on a cable coil :
@@ -815,5 +815,5 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	color = COLOR_WHITE
 
 /obj/item/stack/cable_coil/random/New()
-	color = possible_cable_coil_colours[pick(possible_cable_coil_colours)]
+	color = GLOB.possible_cable_coil_colours[pick(GLOB.possible_cable_coil_colours)]
 	..()

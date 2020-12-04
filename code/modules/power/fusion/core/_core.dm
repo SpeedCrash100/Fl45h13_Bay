@@ -2,7 +2,7 @@
 	TODO README
 */
 
-var/list/fusion_cores = list()
+GLOBAL_LIST_EMPTY(fusion_cores)
 
 #define MAX_FIELD_STR 1000
 #define MIN_FIELD_STR 1
@@ -28,14 +28,14 @@ var/list/fusion_cores = list()
 /obj/machinery/power/fusion_core/initialize()
 	. = ..()
 	connect_to_network()
-	fusion_cores += src
+	GLOB.fusion_cores += src
 
 /obj/machinery/power/fusion_core/Destroy()
 	for(var/obj/machinery/computer/fusion_core_control/FCC in GLOB.machines)
 		FCC.connected_devices -= src
 		if(FCC.cur_viewed_device == src)
 			FCC.cur_viewed_device = null
-	fusion_cores -= src
+	GLOB.fusion_cores -= src
 	return ..()
 
 /obj/machinery/power/fusion_core/process()

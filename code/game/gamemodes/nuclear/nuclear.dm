@@ -2,7 +2,7 @@
 	MERCENARY ROUNDTYPE
 */
 
-var/list/nuke_disks = list()
+GLOBAL_LIST_EMPTY(nuke_disks)
 
 /datum/game_mode/nuclear
 	name = "Mercenary"
@@ -21,7 +21,7 @@ var/list/nuke_disks = list()
 
 //checks if L has a nuke disk on their person
 /datum/game_mode/nuclear/proc/check_mob(mob/living/L)
-	for(var/obj/item/weapon/disk/nuclear/N in nuke_disks)
+	for(var/obj/item/weapon/disk/nuclear/N in GLOB.nuke_disks)
 		if(N.storage_depth(L) >= 0)
 			return 1
 	return 0

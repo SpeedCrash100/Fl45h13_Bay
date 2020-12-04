@@ -186,7 +186,7 @@ var/world_topic_spam_protect_time = world.timeofday
 			var/list/players = list()
 			var/list/admins = list()
 
-			for(var/client/C in clients)
+			for(var/client/C in GLOB.clients)
 				if(C.holder)
 					if(C.is_stealthed())
 						continue
@@ -201,7 +201,7 @@ var/world_topic_spam_protect_time = world.timeofday
 			var/n = 0
 			var/admins = 0
 
-			for(var/client/C in clients)
+			for(var/client/C in GLOB.clients)
 				if(C.holder)
 					if(C.is_stealthed())
 						continue	//so stealthmins aren't revealed by the hub
@@ -219,8 +219,8 @@ var/world_topic_spam_protect_time = world.timeofday
 		var/list/positions = list()
 
 		// We rebuild the list in the format external tools expect
-		for(var/dept in PDA_Manifest)
-			var/list/dept_list = PDA_Manifest[dept]
+		for(var/dept in GLOB.PDA_Manifest)
+			var/list/dept_list = GLOB.PDA_Manifest[dept]
 			if(dept_list.len > 0)
 				positions[dept] = list()
 				for(var/list/person in dept_list)
@@ -381,7 +381,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		var/client/C
 		var/req_ckey = ckey(input["adminmsg"])
 
-		for(var/client/K in clients)
+		for(var/client/K in GLOB.clients)
 			if(K.ckey == req_ckey)
 				C = K
 				break
@@ -403,7 +403,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		sound_to(C, 'sound/effects/adminhelp.ogg')
 		to_chat(C, message)
 
-		for(var/client/A in admins)
+		for(var/client/A in GLOB.admins)
 			if(A != C)
 				to_chat(A, amessage)
 		return "Message Successful"
@@ -467,7 +467,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		var/target = ckey(input["target"])
 
 		var/client/C
-		for(var/client/K in clients)
+		for(var/client/K in GLOB.clients)
 			if(K.ckey == target)
 				C = K
 				break
@@ -494,7 +494,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	TgsReboot()
 
 	if(config.server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
-		for(var/client/C in clients)
+		for(var/client/C in GLOB.clients)
 			to_chat(C, link("byond://[config.server]"))
 
 	if(config.wait_for_sigusr1_reboot && reason != 3)
@@ -562,11 +562,11 @@ var/world_topic_spam_protect_time = world.timeofday
 					continue
 
 				var/title = "Moderator"
-				var/rights = admin_ranks[title]
+				var/rights = GLOB.admin_ranks[title]
 
 				var/ckey = copytext(line, 1, length(line)+1)
 				var/datum/admins/D = new /datum/admins(title, rights, ckey)
-				D.associate(directory[ckey])
+				D.associate(GLOB.directory[ckey])
 
 /world/proc/load_mentors()
 	if(config.admin_legacy_system)
@@ -582,11 +582,11 @@ var/world_topic_spam_protect_time = world.timeofday
 					continue
 
 				var/title = "Mentor"
-				var/rights = admin_ranks[title]
+				var/rights = GLOB.admin_ranks[title]
 
 				var/ckey = copytext(line, 1, length(line)+1)
 				var/datum/admins/D = new /datum/admins(title, rights, ckey)
-				D.associate(directory[ckey])
+				D.associate(GLOB.directory[ckey])
 
 /world/proc/update_status()
 	var/s = ""

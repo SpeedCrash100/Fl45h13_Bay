@@ -47,7 +47,7 @@
 
 /obj/machinery/autolathe/proc/update_recipe_list()
 	if(!machine_recipes)
-		machine_recipes = autolathe_recipes
+		machine_recipes = GLOB.autolathe_recipes
 
 /obj/machinery/autolathe/interact(mob/user as mob)
 
@@ -223,7 +223,7 @@
 
 	if(href_list["change_category"])
 
-		var/choice = input("Which category do you wish to display?") as null|anything in autolathe_categories+"All"
+		var/choice = input("Which category do you wish to display?") as null|anything in GLOB.autolathe_categories+"All"
 		if(!choice) return
 		show_category = choice
 

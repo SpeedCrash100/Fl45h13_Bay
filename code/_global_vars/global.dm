@@ -21,7 +21,7 @@ GLOBAL_LIST_EMPTY(listening_objects) // List of objects that need to be able to 
 
 var/global/datum/universal_state/universe = new
 
-var/global/list/global_map = null
+GLOBAL_LIST_EMPTY(global_map)
 
 // Noises made when hit while typing.
 var/list/hit_appends = list("-OOF", "-ACK", "-UGH", "-HRNK", "-HURGH", "-GLORF")
@@ -42,32 +42,32 @@ var/secret_force_mode = "secret"   // if this is anything but "secret", the secr
 
 var/host = null //only here until check @ code\modules\ghosttrap\trap.dm:112 is fixed
 
-var/list/jobMax        = list()
-var/list/bombers       = list()
-var/list/admin_log     = list()
-var/list/lastsignalers = list() // Keeps last 100 signals here in format: "[src] used \ref[src] @ location [src.loc]: [freq]/[code]"
-var/list/lawchanges    = list() // Stores who uploaded laws to which silicon-based lifeform, and what the law was.
-var/list/reg_dna       = list()
+// GLOBAL_LIST_EMPTY(jobMax)
+GLOBAL_LIST_EMPTY(bombers)
+GLOBAL_LIST_EMPTY(admin_log)
+GLOBAL_LIST_EMPTY(lastsignalers) // Keeps last 100 signals here in format: "[src] used \ref[src] @ location [src.loc]: [freq]/[code]"
+GLOBAL_LIST_EMPTY(lawchanges) // Stores who uploaded laws to which silicon-based lifeform, and what the law was.
+GLOBAL_LIST_EMPTY(reg_dna)
 
-var/list/monkeystart     = list()
-var/list/wizardstart     = list()
-var/list/newplayer_start = list()
+GLOBAL_LIST_EMPTY(monkeystart)
+// GLOBAL_LIST_EMPTY(wizardstart)
+GLOBAL_LIST_EMPTY(newplayer_start)
 
 //Spawnpoints.
-var/list/latejoin         = list()
-var/list/latejoin_gateway = list()
-var/list/latejoin_cryo    = list()
-var/list/latejoin_cyborg  = list()
+GLOBAL_LIST_EMPTY(latejoin)
+GLOBAL_LIST_EMPTY(latejoin_gateway)
+GLOBAL_LIST_EMPTY(latejoin_cryo)
+GLOBAL_LIST_EMPTY(latejoin_cyborg)
 
-var/list/prisonwarp         = list() // Prisoners go to these
-var/list/xeno_spawn         = list() // Aliens spawn at at these.
-var/list/tdome1             = list()
-var/list/tdome2             = list()
-var/list/tdomeobserve       = list()
-var/list/tdomeadmin         = list()
-var/list/prisonsecuritywarp = list() // Prison security goes to these.
-var/list/prisonwarped       = list() // List of players already warped.
-var/list/ninjastart         = list()
+GLOBAL_LIST_EMPTY(prisonwarp) // Prisoners go to these
+GLOBAL_LIST_EMPTY(xeno_spawn) // Aliens spawn at at these.
+GLOBAL_LIST_EMPTY(tdome1)
+GLOBAL_LIST_EMPTY(tdome2)
+GLOBAL_LIST_EMPTY(tdomeobserve)
+GLOBAL_LIST_EMPTY(tdomeadmin)
+GLOBAL_LIST_EMPTY(prisonsecuritywarp) // Prison security goes to these.
+GLOBAL_LIST_EMPTY(prisonwarped) // List of players already warped.
+// GLOBAL_LIST_EMPTY(ninjastart)
 
 var/list/cardinal    = list(NORTH, SOUTH, EAST, WEST)
 var/list/cardinalz   = list(NORTH, SOUTH, EAST, WEST, UP, DOWN)
@@ -85,12 +85,12 @@ var/list/bitflags = list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096
 var/datum/configuration/config      = null
 var/datum/sun/sun                   = null
 
-var/list/combatlog = list()
-var/list/IClog     = list()
-var/list/OOClog    = list()
-var/list/adminlog  = list()
+// GLOBAL_LIST_EMPTY(combatlog)
+// GLOBAL_LIST_EMPTY(IClog)
+// GLOBAL_LIST_EMPTY(OOClog)
+// GLOBAL_LIST_EMPTY(adminlog)
 
-var/list/powernets = list()
+GLOBAL_LIST_EMPTY(powernets)
 
 var/Debug2 = 0
 
@@ -101,7 +101,7 @@ var/join_motd = null
 var/datum/nanomanager/nanomanager		= new() // NanoManager, the manager for Nano UIs.
 var/datum/event_manager/event_manager	= new() // Event Manager, the manager for events.
 
-var/list/awaydestinations = list() // Away missions. A list of landmarks that the warpgate can take you to.
+GLOBAL_LIST_EMPTY(awaydestinations) // Away missions. A list of landmarks that the warpgate can take you to.
 
 // MySQL configuration
 var/sqladdress = "localhost"
@@ -137,7 +137,7 @@ var/DBConnection/dbcon     = new() // Feedback    database (New database)
 var/DBConnection/dbcon_old = new() // /tg/station database (Old database) -- see the files in the SQL folder for information on what goes where.
 
 // Reference list for disposal sort junctions. Filled up by sorting junction's New()
-/var/list/tagger_locations = list()
+GLOBAL_LIST_EMPTY(tagger_locations)
 
 // Added for Xenoarchaeology, might be useful for other stuff.
 var/global/list/alphabet_uppercase = list("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z")
@@ -179,3 +179,5 @@ GLOBAL_DATUM_INIT(global_announcer, /obj/item/device/radio/announcer, new)
 GLOBAL_DATUM_INIT(global_headset, /obj/item/device/radio/announcer/subspace, new)
 
 var/list/station_departments = list("Command", "Medical", "Engineering", "Science", "Security", "Cargo", "Civilian")
+
+GLOBAL_LIST_EMPTY(registered_macros_by_ckey_) 

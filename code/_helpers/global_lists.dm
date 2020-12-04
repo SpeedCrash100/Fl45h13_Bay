@@ -1,11 +1,11 @@
-var/list/clients = list()							//list of all clients
-var/list/admins = list()							//list of all clients whom are admins
-var/list/directory = list()							//list of all ckeys with associated client
+GLOBAL_LIST_EMPTY(clients)							//list of all GLOB.clients
+GLOBAL_LIST_EMPTY(admins)							//list of all GLOB.clients whom are admins
+GLOBAL_LIST_EMPTY(directory)							//list of all ckeys with associated client
 
 //Since it didn't really belong in any other category, I'm putting this here
 //This is for procs to replace all the goddamn 'in world's that are chilling around the code
 
-GLOBAL_LIST_EMPTY(player_list)				//List of all mobs **with clients attached**. Excludes /mob/new_player
+GLOBAL_LIST_EMPTY(player_list)				//List of all mobs **with GLOB.clients attached**. Excludes /mob/new_player
 GLOBAL_LIST_EMPTY(mob_list)					//List of all mobs, including clientless
 GLOBAL_LIST_EMPTY(human_mob_list)				//List of all human mobs and sub-types, including clientless
 GLOBAL_LIST_EMPTY(silicon_mob_list)			//List of all silicon mobs, including clientless
@@ -13,8 +13,8 @@ GLOBAL_LIST_EMPTY(living_mob_list_)			//List of all alive mobs, including client
 GLOBAL_LIST_EMPTY(dead_mob_list_)				//List of all dead mobs, including clientless. Excludes /mob/new_player
 
 GLOBAL_LIST_EMPTY(cable_list)					//Index for all cables, so that powernets don't have to look through the entire world all the time
-var/global/list/chemical_reactions_list				//list of all /datum/chemical_reaction datums. Used during chemical reactions
-var/global/list/chemical_reagents_list				//list of all /datum/reagent datums indexed by reagent id. Used by chemistry stuff
+GLOBAL_LIST_EMPTY(chemical_reactions_list) // list of all /datum/chemical_reaction datums. Used during chemical reactions
+GLOBAL_LIST_EMPTY(chemical_reagents_list) // list of all /datum/reagent datums indexed by reagent id. Used by chemistry stuff
 GLOBAL_LIST_EMPTY(landmarks_list)				//list of all landmarks created
 GLOBAL_LIST_EMPTY(surgery_steps)				//list of all surgery steps  |BS12
 GLOBAL_LIST_EMPTY(side_effects)				//list of all medical sideeffects types by thier names |BS12
@@ -33,8 +33,7 @@ var/global/list/language_keys[0]					// Table of say codes for all languages
 var/global/list/whitelisted_species = list(SPECIES_HUMAN) // Species that require a whitelist check.
 var/global/list/playable_species = list(SPECIES_HUMAN)    // A list of ALL playable species, whitelisted, latejoin or otherwise.
 
-var/list/mannequins_
-
+GLOBAL_LIST_EMPTY(mannequins_) 
 // Posters
 GLOBAL_LIST_EMPTY(poster_designs)
 
@@ -102,7 +101,7 @@ var/global/list/string_slot_flags = list(
 //////////////////////////
 
 /hook/global_init/proc/populateGlobalLists()
-	possible_cable_coil_colours = sortAssoc(list(
+	GLOB.possible_cable_coil_colours = sortAssoc(list(
 		"Yellow" = COLOR_YELLOW,
 		"Green" = COLOR_LIME,
 		"Pink" = COLOR_PINK,
@@ -115,12 +114,12 @@ var/global/list/string_slot_flags = list(
 	return 1
 
 /proc/get_mannequin(var/ckey)
-	if(!mannequins_)
-		mannequins_ = new()
-	. = mannequins_[ckey]
+	if(!GLOB.mannequins_)
+		GLOB.mannequins_ = new()
+	. = GLOB.mannequins_[ckey]
 	if(!.)
 		. = new/mob/living/carbon/human/dummy/mannequin()
-		mannequins_[ckey] = .
+		GLOB.mannequins_[ckey] = .
 
 /hook/global_init/proc/makeDatumRefLists()
 	var/list/paths
@@ -205,10 +204,10 @@ var/global/list/string_slot_flags = list(
 /* // Uncomment to debug chemical reaction list.
 /client/verb/debug_chemical_list()
 
-	for (var/reaction in chemical_reactions_list)
-		. += "chemical_reactions_list\[\"[reaction]\"\] = \"[chemical_reactions_list[reaction]]\"\n"
-		if(islist(chemical_reactions_list[reaction]))
-			var/list/L = chemical_reactions_list[reaction]
+	for (var/reaction in GLOB.chemical_reactions_list)
+		. += "GLOB.chemical_reactions_list\[\"[reaction]\"\] = \"[GLOB.chemical_reactions_list[reaction]]\"\n"
+		if(islist(GLOB.chemical_reactions_list[reaction]))
+			var/list/L = GLOB.chemical_reactions_list[reaction]
 			for(var/t in L)
 				. += "    has: [t]\n"
 	log_debug(.)

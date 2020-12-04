@@ -1,5 +1,5 @@
 //list used to cache empty zlevels to avoid nedless map bloat
-var/list/cached_space = list()
+GLOBAL_LIST_EMPTY(cached_space)
 
 //Space stragglers go here
 
@@ -32,9 +32,9 @@ proc/get_deepspace(x,y)
 	var/obj/effect/overmap/sector/temporary/res = locate(x,y,using_map.overmap_z)
 	if(istype(res))
 		return res
-	else if(cached_space.len)
-		res = cached_space[cached_space.len]
-		cached_space -= res
+	else if(GLOB.cached_space.len)
+		res = GLOB.cached_space[GLOB.cached_space.len]
+		GLOB.cached_space -= res
 		res.x = x
 		res.y = y
 		return res
@@ -104,4 +104,4 @@ proc/overmap_spacetravel(var/turf/space/T, var/atom/movable/A)
 		if (source.can_die())
 			testing("Caching [M] for future use")
 			source.loc = null
-			cached_space += source
+			GLOB.cached_space += source

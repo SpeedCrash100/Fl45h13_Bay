@@ -143,13 +143,13 @@
 		save_character()
 
 /datum/preferences/proc/ZeroSkills(var/forced = 0)
-	for(var/V in SKILLS) for(var/datum/skill/S in SKILLS[V])
+	for(var/V in GLOB.SKILLS) for(var/datum/skill/S in GLOB.SKILLS[V])
 		if(!skills.Find(S.ID) || forced)
 			skills[S.ID] = SKILL_NONE
 
 /datum/preferences/proc/CalculateSkillPoints()
 	used_skillpoints = 0
-	for(var/V in SKILLS) for(var/datum/skill/S in SKILLS[V])
+	for(var/V in GLOB.SKILLS) for(var/datum/skill/S in GLOB.SKILLS[V])
 		var/multiplier = 1
 		switch(skills[S.ID])
 			if(SKILL_NONE)

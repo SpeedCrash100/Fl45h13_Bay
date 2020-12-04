@@ -111,7 +111,7 @@
 			(<a href='?_src_=vars;datummass=\ref[src];varnamemass=[varname]'>M</a>)
 			"}
 
-// No mass editing of clients
+// No mass editing of GLOB.clients
 /client/make_view_variables_variable_entry(varname, value)
 	return {"
 			(<a href='?_src_=vars;datumedit=\ref[src];varnameedit=[varname]'>E</a>)

@@ -16,7 +16,7 @@
 
 /obj/effect/overmap/ship/initialize()
 	..()
-	for(var/datum/ship_engine/E in ship_engines)
+	for(var/datum/ship_engine/E in GLOB.ship_engines)
 		if (E.holder.z in map_z)
 			engines |= E
 	for(var/obj/machinery/computer/engines/E in GLOB.machines)

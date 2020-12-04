@@ -43,7 +43,7 @@
 
 /mob/proc/maybe_send_staffwarns(var/action)
 	if(client.staffwarn)
-		for(var/client/C in admins)
+		for(var/client/C in GLOB.admins)
 			send_staffwarn(C, action)
 
 /mob/proc/send_staffwarn(var/client/C, var/action, var/noise = 1)

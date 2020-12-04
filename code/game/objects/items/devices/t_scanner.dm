@@ -39,7 +39,7 @@
 /obj/item/device/t_scanner/process()
 	if(!on) return
 
-	//handle clients changing
+	//handle GLOB.clients changing
 	var/client/loc_client = null
 	if(ismob(src.loc))
 		var/mob/M = src.loc

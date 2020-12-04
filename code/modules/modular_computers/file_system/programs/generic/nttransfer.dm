@@ -14,9 +14,9 @@ var/global/nttransfer_uid = 0
 
 	var/error = ""										// Error screen
 	var/server_password = ""							// Optional password to download the file.
-	var/datum/computer_file/provided_file = null		// File which is provided to clients.
+	var/datum/computer_file/provided_file = null		// File which is provided to GLOB.clients.
 	var/datum/computer_file/downloaded_file = null		// File which is being downloaded
-	var/list/connected_clients = list()					// List of connected clients.
+	var/list/connected_clients = list()					// List of connected GLOB.clients.
 	var/datum/computer_file/program/nttransfer/remote	// Client var, specifies who are we downloading from.
 	var/download_completion = 0							// Download progress in GQ
 	var/actual_netspeed = 0								// Displayed in the UI, this is the actual transfer speed.
@@ -33,7 +33,7 @@ var/global/nttransfer_uid = 0
 	if(provided_file)
 		for(var/datum/computer_file/program/nttransfer/C in connected_clients)
 			// Transfer speed is limited by device which uses slower connectivity.
-			// We can have multiple clients downloading at same time, but let's assume we use some sort of multicast transfer
+			// We can have multiple GLOB.clients downloading at same time, but let's assume we use some sort of multicast transfer
 			// so they can all run on same speed.
 			C.actual_netspeed = min(C.ntnet_speed, ntnet_speed)
 			C.download_completion += C.actual_netspeed
@@ -47,7 +47,7 @@ var/global/nttransfer_uid = 0
 	if(downloaded_file) // Client mode, clean up variables for next use
 		finalize_download()
 
-	if(provided_file) // Server mode, disconnect all clients
+	if(provided_file) // Server mode, disconnect all GLOB.clients
 		for(var/datum/computer_file/program/nttransfer/P in connected_clients)
 			P.crash_download("Connection terminated by remote server")
 		downloaded_file = null

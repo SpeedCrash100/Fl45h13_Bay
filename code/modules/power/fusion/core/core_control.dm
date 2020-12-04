@@ -75,10 +75,10 @@
 	else
 
 		connected_devices.Cut()
-		for(var/obj/machinery/power/fusion_core/C in fusion_cores)
+		for(var/obj/machinery/power/fusion_core/C in GLOB.fusion_cores)
 			if(C.id_tag == id_tag && get_dist(src, C) <= scan_range)
 				connected_devices += C
-		for(var/obj/machinery/power/fusion_core/C in gyrotrons)
+		for(var/obj/machinery/power/fusion_core/C in GLOB.gyrotrons)
 			if(C.id_tag == id_tag && get_dist(src, C) <= scan_range)
 				connected_devices += C
 

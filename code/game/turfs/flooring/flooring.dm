@@ -1,11 +1,10 @@
-var/list/flooring_types
-
+GLOBAL_LIST_EMPTY(flooring_types) 
 /proc/get_flooring_data(var/flooring_path)
-	if(!flooring_types)
-		flooring_types = list()
-	if(!flooring_types["[flooring_path]"])
-		flooring_types["[flooring_path]"] = new flooring_path
-	return flooring_types["[flooring_path]"]
+	if(!GLOB.flooring_types)
+		GLOB.flooring_types = list()
+	if(!GLOB.flooring_types["[flooring_path]"])
+		GLOB.flooring_types["[flooring_path]"] = new flooring_path
+	return GLOB.flooring_types["[flooring_path]"]
 
 // State values:
 // [icon_base]: initial base icon_state without edges or corners.

@@ -141,16 +141,16 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 //These datums are used to populate the asset cache, the proc "register()" does this.
 
 //all of our asset datums, used for referring to these later
-/var/global/list/asset_datums = list()
+GLOBAL_LIST_EMPTY(asset_datums)
 
 //get a assetdatum or make a new one
 /proc/get_asset_datum(var/type)
-	if (!(type in asset_datums))
+	if (!(type in GLOB.asset_datums))
 		return new type()
-	return asset_datums[type]
+	return GLOB.asset_datums[type]
 
 /datum/asset/New()
-	asset_datums[type] = src
+	GLOB.asset_datums[type] = src
 
 /datum/asset/proc/register()
 	return
@@ -268,7 +268,7 @@ var/decl/asset_cache/asset_cache = new()
 		var/datum/asset/A = new type()
 		A.register()
 
-	for(var/client/C in clients)
+	for(var/client/C in GLOB.clients)
 		// Doing this to a client too soon after they've connected can cause issues, also the proc we call sleeps.
 		spawn(10)
 			getFilesSlow(C, asset_cache.cache, FALSE)
