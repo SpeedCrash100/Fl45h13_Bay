@@ -56,6 +56,7 @@
 #include "code\_global_vars\global.dm"
 #include "code\_global_vars\logging.dm"
 #include "code\_global_vars\objects.dm"
+#include "code\_global_vars\radio.dm"
 #include "code\_helpers\_global_objects.dm"
 #include "code\_helpers\areas.dm"
 #include "code\_helpers\atmospherics.dm"

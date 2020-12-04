@@ -275,20 +275,20 @@
 	else
 		alert_msg = null
 	if(alert_msg)
-		if(!global_announcer)
-			global_announcer = new
+		if(!GLOB.global_announcer)
+			GLOB.global_announcer = new
 			log_debug("The Global Announcer was deleted, or missing.")
-		global_announcer.autosay(alert_msg, "Supermatter Monitor", "Engineering")
+		GLOB.global_announcer.autosay(alert_msg, "Supermatter Monitor", "Engineering")
 		//Public alerts
 		if((damage > emergency_point) && !public_alert)
-			global_announcer.autosay("WARNING: SUPERMATTER CRYSTAL DELAMINATION IMMINENT!", "Supermatter Monitor")
+			GLOB.global_announcer.autosay("WARNING: SUPERMATTER CRYSTAL DELAMINATION IMMINENT!", "Supermatter Monitor")
 			public_alert = 1
 			for(var/mob/M in GLOB.player_list)
 				var/turf/T = get_turf(M)
 				if(T && (T.z in using_map.station_levels) && !istype(M,/mob/new_player) && !isdeaf(M))
 					sound_to(M, 'sound/ambience/matteralarm.ogg')
 		else if(safe_warned && public_alert)
-			global_announcer.autosay(alert_msg, "Supermatter Monitor")
+			GLOB.global_announcer.autosay(alert_msg, "Supermatter Monitor")
 			public_alert = 0
 
 

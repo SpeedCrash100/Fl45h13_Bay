@@ -175,7 +175,7 @@ var/static/list/scarySounds = list(
 var/max_explosion_range = 14
 
 // Announcer intercom, because too much stuff creates an intercom for one message then hard del()s it. Also headset, for things that should be affected by comms outages.
-var/global/obj/item/device/radio/announcer/global_announcer = new
-var/global/obj/item/device/radio/announcer/subspace/global_headset = new
+GLOBAL_DATUM_INIT(global_announcer, /obj/item/device/radio/announcer, new)
+GLOBAL_DATUM_INIT(global_headset, /obj/item/device/radio/announcer/subspace, new)
 
 var/list/station_departments = list("Command", "Medical", "Engineering", "Science", "Security", "Cargo", "Civilian")

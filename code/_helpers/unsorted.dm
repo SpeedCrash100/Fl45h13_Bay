@@ -1136,19 +1136,19 @@ var/list/WALLITEMS = list(
 			colour += temp_col
 	return "#[colour]"
 
-var/mob/dview/dview_mob = new
+GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 //Version of view() which ignores darkness, because BYOND doesn't have it.
 /proc/dview(var/range = world.view, var/center, var/invis_flags = 0)
 	if(!center)
 		return
 
-	dview_mob.loc = center
+	GLOB.dview_mob.loc = center
 
-	dview_mob.see_invisible = invis_flags
+	GLOB.dview_mob.see_invisible = invis_flags
 
-	. = view(range, dview_mob)
-	dview_mob.loc = null
+	. = view(range, GLOB.dview_mob)
+	GLOB.dview_mob.loc = null
 
 /mob/dview
 	invisibility = 101

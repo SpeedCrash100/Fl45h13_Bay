@@ -427,8 +427,6 @@
 			return global.deep_inventory_state;
 		if("default_ai_icon")
 			return global.default_ai_icon;
-		if("default_internal_channels")
-			return global.default_internal_channels;
 		if("default_material_composition")
 			return global.default_material_composition;
 		if("default_medbay_channels")
@@ -471,8 +469,6 @@
 			return global.dreams;
 		if("dummy_lighting_corner")
 			return global.dummy_lighting_corner;
-		if("dview_mob")
-			return global.dview_mob;
 		if("economic_species_modifier")
 			return global.economic_species_modifier;
 		if("economy_init")
@@ -603,10 +599,6 @@
 			return global.ghost_sightless_images;
 		if("ghost_traps")
 			return global.ghost_traps;
-		if("global_announcer")
-			return global.global_announcer;
-		if("global_headset")
-			return global.global_headset;
 		if("global_hud")
 			return global.global_hud;
 		if("global_huds")
@@ -1035,8 +1027,6 @@
 			return global.rune_list;
 		if("rustle_sound")
 			return global.rustle_sound;
-		if("same_wires")
-			return global.same_wires;
 		if("scarySounds")
 			return global.scarySounds;
 		if("scheduler")
@@ -1307,8 +1297,6 @@
 			return global.whitelist;
 		if("whitelisted_species")
 			return global.whitelisted_species;
-		if("wireColours")
-			return global.wireColours;
 		if("wirelessProcess")
 			return global.wirelessProcess;
 		if("wizard_first")
@@ -1768,8 +1756,6 @@
 			global.deep_inventory_state=newval;
 		if("default_ai_icon")
 			global.default_ai_icon=newval;
-		if("default_internal_channels")
-			global.default_internal_channels=newval;
 		if("default_material_composition")
 			global.default_material_composition=newval;
 		if("default_medbay_channels")
@@ -1812,8 +1798,6 @@
 			global.dreams=newval;
 		if("dummy_lighting_corner")
 			global.dummy_lighting_corner=newval;
-		if("dview_mob")
-			global.dview_mob=newval;
 		if("economic_species_modifier")
 			global.economic_species_modifier=newval;
 		if("economy_init")
@@ -1944,10 +1928,6 @@
 			global.ghost_sightless_images=newval;
 		if("ghost_traps")
 			global.ghost_traps=newval;
-		if("global_announcer")
-			global.global_announcer=newval;
-		if("global_headset")
-			global.global_headset=newval;
 		if("global_hud")
 			global.global_hud=newval;
 		if("global_huds")
@@ -2376,8 +2356,6 @@
 			global.rune_list=newval;
 		if("rustle_sound")
 			global.rustle_sound=newval;
-		if("same_wires")
-			global.same_wires=newval;
 		if("scarySounds")
 			global.scarySounds=newval;
 		if("scheduler")
@@ -2648,8 +2626,6 @@
 			global.whitelist=newval;
 		if("whitelisted_species")
 			global.whitelisted_species=newval;
-		if("wireColours")
-			global.wireColours=newval;
 		if("wirelessProcess")
 			global.wirelessProcess=newval;
 		if("wizard_first")
@@ -2895,7 +2871,6 @@
 	"decls_repository",
 	"deep_inventory_state",
 	"default_ai_icon",
-	"default_internal_channels",
 	"default_material_composition",
 	"default_medbay_channels",
 	"default_mobloc",
@@ -2917,7 +2892,6 @@
 	"doppler_arrays",
 	"dreams",
 	"dummy_lighting_corner",
-	"dview_mob",
 	"economic_species_modifier",
 	"economy_init",
 	"engineering_positions",
@@ -2983,8 +2957,6 @@
 	"ghost_master",
 	"ghost_sightless_images",
 	"ghost_traps",
-	"global_announcer",
-	"global_headset",
 	"global_hud",
 	"global_huds",
 	"global_listen_count",
@@ -3199,7 +3171,6 @@
 	"roundstart_hour",
 	"rune_list",
 	"rustle_sound",
-	"same_wires",
 	"scarySounds",
 	"scheduler",
 	"science_positions",
@@ -3335,7 +3306,6 @@
 	"weighted_randomevent_locations",
 	"whitelist",
 	"whitelisted_species",
-	"wireColours",
 	"wirelessProcess",
 	"wizard_first",
 	"wizard_second",
