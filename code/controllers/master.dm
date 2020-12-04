@@ -90,6 +90,9 @@ var/datum/controller/master/Master = new
 				_subsystems += new I
 		Master = src
 
+	if(!GLOB)
+		new /datum/controller/global_vars
+
 /datum/controller/master/Destroy()
 	..()
 	// Tell qdel() to Del() this object.

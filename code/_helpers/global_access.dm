@@ -43,6 +43,8 @@
 			return global.Failsafe;
 		if("GLASSESBLOCK")
 			return global.GLASSESBLOCK;
+		if("GLOB")
+			return global.GLOB;
 		if("HALLUCINATIONBLOCK")
 			return global.HALLUCINATIONBLOCK;
 		if("HEADACHEBLOCK")
@@ -1131,8 +1133,6 @@
 			return global.roundstart_hour;
 		if("rune_list")
 			return global.rune_list;
-		if("runtime_diary")
-			return global.runtime_diary;
 		if("rustle_sound")
 			return global.rustle_sound;
 		if("same_wires")
@@ -1514,6 +1514,8 @@
 			global.Failsafe=newval;
 		if("GLASSESBLOCK")
 			global.GLASSESBLOCK=newval;
+		if("GLOB")
+			global.GLOB=newval;
 		if("HALLUCINATIONBLOCK")
 			global.HALLUCINATIONBLOCK=newval;
 		if("HEADACHEBLOCK")
@@ -2602,8 +2604,6 @@
 			global.roundstart_hour=newval;
 		if("rune_list")
 			global.rune_list=newval;
-		if("runtime_diary")
-			global.runtime_diary=newval;
 		if("rustle_sound")
 			global.rustle_sound=newval;
 		if("same_wires")
@@ -2963,6 +2963,7 @@
 	"FIREBLOCK",
 	"Failsafe",
 	"GLASSESBLOCK",
+	"GLOB",
 	"HALLUCINATIONBLOCK",
 	"HEADACHEBLOCK",
 	"HULKBLOCK",
@@ -3507,7 +3508,6 @@
 	"round_start_time",
 	"roundstart_hour",
 	"rune_list",
-	"runtime_diary",
 	"rustle_sound",
 	"same_wires",
 	"scarySounds",

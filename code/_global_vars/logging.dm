@@ -1,1 +1,1 @@
-var/runtime_diary = null
+GLOBAL_VAR_INIT(runtime_diary, null)

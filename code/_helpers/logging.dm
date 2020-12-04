@@ -105,7 +105,7 @@
 //This replaces world.log so it displays both in DD and the file
 /proc/log_world(text)
 	if(config && config.log_runtime)
-		to_world_log(runtime_diary)
+		to_world_log(GLOB.runtime_diary)
 		to_world_log(text)
 	to_world_log(null)
 	to_world_log(text)
