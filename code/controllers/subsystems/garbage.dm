@@ -1,6 +1,7 @@
 
 SUBSYSTEM_DEF(garbage)
 	name = "Garbage"
+	init_order = INIT_ORDER_GARBAGE
 	priority = 15
 	wait = 5
 	flags = SS_POST_FIRE_TIMING|SS_BACKGROUND|SS_NO_INIT

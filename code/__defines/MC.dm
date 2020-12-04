@@ -55,6 +55,9 @@
 /// This flag overrides SS_KEEP_TIMING
 #define SS_POST_FIRE_TIMING 64
 
+// Run Shutdown() on server shutdown so the SS can finalize state.
+#define SS_NEEDS_SHUTDOWN 128
+
 //! SUBSYSTEM STATES
 #define SS_IDLE 0		/// aint doing shit.
 #define SS_QUEUED 1		/// queued to run
@@ -62,6 +65,11 @@
 #define SS_PAUSED 3		/// paused by mc_tick_check
 #define SS_SLEEPING 4	/// fire() slept.
 #define SS_PAUSING 5 	/// in the middle of pausing
+
+// Subsystem init-states, used for the initialization MC panel.
+#define SS_INITSTATE_NONE 0
+#define SS_INITSTATE_STARTED 1
+#define SS_INITSTATE_DONE 2
 
 //It's timed solution
 #define SUBSYSTEM_DEF(X) var/datum/controller/subsystem/##X/SS##X;\
