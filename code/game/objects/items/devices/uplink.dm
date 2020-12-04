@@ -251,7 +251,7 @@
 /obj/item/device/radio/headset/uplink
 	traitor_frequency = 1445
 
-/obj/item/device/radio/headset/uplink/New()
+/obj/item/device/radio/headset/uplink/Initialize()
 	..()
 	hidden_uplink = new(src)
 
