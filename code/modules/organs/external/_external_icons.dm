@@ -100,8 +100,8 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 // amount to represent the obfuscation of being in agonizing pain.
 
 // Global scope, used in code below.
-var/list/flesh_hud_colours = list("#00FF00","#AAFF00","#FFFF00","#FFAA00","#FF0000","#AA0000","#660000")
-var/list/robot_hud_colours = list("#FFFFFF","#CCCCCC","#AAAAAA","#888888","#666666","#444444","#222222","#000000")
+GLOBAL_LIST_INIT(flesh_hud_colours, list("#00FF00","#AAFF00","#FFFF00","#FFAA00","#FF0000","#AA0000","#660000"))
+GLOBAL_LIST_INIT(robot_hud_colours, list("#FFFFFF","#CCCCCC","#AAAAAA","#888888","#666666","#444444","#222222","#000000"))
 
 /obj/item/organ/external/proc/get_damage_hud_image()
 

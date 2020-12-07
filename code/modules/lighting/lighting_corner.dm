@@ -5,7 +5,7 @@
 // For the record: these should never ever ever be deleted, even if the turf doesn't have dynamic lighting.
 
 // This list is what the code that assigns corners listens to, the order in this list is the order in which corners are added to the /turf/corners list.
-/var/list/LIGHTING_CORNER_DIAGONAL = list(NORTHEAST, SOUTHEAST, SOUTHWEST, NORTHWEST)
+GLOBAL_LIST_INIT(LIGHTING_CORNER_DIAGONAL, list(NORTHEAST, SOUTHEAST, SOUTHWEST, NORTHWEST))
 
 /datum/lighting_corner
 	var/list/turf/masters                 = list()
@@ -56,7 +56,7 @@
 			T.corners = list(null, null, null, null)
 
 		masters[T]   = diagonal
-		i            = LIGHTING_CORNER_DIAGONAL.Find(turn(diagonal, 180))
+		i            = GLOB.LIGHTING_CORNER_DIAGONAL.Find(turn(diagonal, 180))
 		T.corners[i] = src
 
 	// Now the horizontal one.
@@ -66,7 +66,7 @@
 			T.corners = list(null, null, null, null)
 
 		masters[T]   = ((T.x > x) ? EAST : WEST) | ((T.y > y) ? NORTH : SOUTH) // Get the dir based on coordinates.
-		i            = LIGHTING_CORNER_DIAGONAL.Find(turn(masters[T], 180))
+		i            = GLOB.LIGHTING_CORNER_DIAGONAL.Find(turn(masters[T], 180))
 		T.corners[i] = src
 
 	// And finally the vertical one.
@@ -76,7 +76,7 @@
 			T.corners = list(null, null, null, null)
 
 		masters[T]   = ((T.x > x) ? EAST : WEST) | ((T.y > y) ? NORTH : SOUTH) // Get the dir based on coordinates.
-		i            = LIGHTING_CORNER_DIAGONAL.Find(turn(masters[T], 180))
+		i            = GLOB.LIGHTING_CORNER_DIAGONAL.Find(turn(masters[T], 180))
 		T.corners[i] = src
 
 	update_active()

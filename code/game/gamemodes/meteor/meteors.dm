@@ -4,7 +4,7 @@
 //Meteor groups, used for various random events and the Meteor gamemode.
 
 // Dust, used by space dust event and during earliest stages of meteor mode.
-/var/list/meteors_dust = list(/obj/effect/meteor/dust)
+GLOBAL_LIST_INIT(meteors_dust, list(/obj/effect/meteor/dust))
 
 // Standard meteors, used during early stages of the meteor gamemode.
 /var/list/meteors_normal = list(\

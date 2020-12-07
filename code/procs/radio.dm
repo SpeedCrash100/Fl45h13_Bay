@@ -12,7 +12,7 @@
 	var/freq_text
 
 	// the name of the channel
-	if(display_freq in ANTAG_FREQS)
+	if(display_freq in GLOB.ANTAG_FREQS)
 		freq_text = "#unkn"
 	else
 		for(var/channel in radiochannels)

@@ -30,8 +30,8 @@ GLOBAL_LIST_EMPTY(turfs)						//list of all GLOB.turfs
 var/global/list/all_species[0]
 var/global/list/all_languages[0]
 var/global/list/language_keys[0]					// Table of say codes for all languages
-var/global/list/whitelisted_species = list(SPECIES_HUMAN) // Species that require a whitelist check.
-var/global/list/playable_species = list(SPECIES_HUMAN)    // A list of ALL playable species, whitelisted, latejoin or otherwise.
+GLOBAL_LIST_INIT(whitelisted_species, list(SPECIES_HUMAN)) // Species that require a whitelist check.
+GLOBAL_LIST_INIT(playable_species, list(SPECIES_HUMAN))    // A list of ALL playable species, whitelisted, latejoin or otherwise.
 
 GLOBAL_LIST_EMPTY(mannequins_) 
 // Posters
@@ -52,8 +52,8 @@ GLOBAL_LIST_EMPTY(facial_hair_styles_female_list)
 
 var/datum/category_collection/underwear/global_underwear = new()
 
-var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Brown Satchel", "Messenger Bag", "Black Satchel")
-var/global/list/exclude_jobs = list(/datum/job/ai,/datum/job/cyborg)
+GLOBAL_LIST_INIT(backbaglist, list("Nothing", "Backpack", "Satchel", "Brown Satchel", "Messenger Bag", "Black Satchel"))
+GLOBAL_LIST_INIT(exclude_jobs, list(/datum/job/ai,/datum/job/cyborg))
 
 // Visual nets
 var/list/datum/visualnet/visual_nets = list()
@@ -64,7 +64,7 @@ var/global/list/rune_list = new()
 GLOBAL_LIST_EMPTY(endgame_exits)
 GLOBAL_LIST_EMPTY(endgame_safespawns)
 
-var/global/list/syndicate_access = list(access_maint_tunnels, access_syndicate, access_external_airlocks)
+GLOBAL_LIST_INIT(syndicate_access, list(access_maint_tunnels, access_syndicate, access_external_airlocks))
 
 // Strings which corraspond to bodypart covering flags, useful for outputting what something covers.
 var/global/list/string_part_flags = list(

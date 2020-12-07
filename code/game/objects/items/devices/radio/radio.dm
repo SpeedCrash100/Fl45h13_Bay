@@ -488,7 +488,7 @@ var/global/list/default_medbay_channels = list(
 		var/turf/position = get_turf(src)
 		if(!position || !(position.z in level))
 			return -1
-	if(freq in ANTAG_FREQS)
+	if(freq in GLOB.ANTAG_FREQS)
 		if(!(src.syndie))//Checks to see if it's allowed on that frequency, based on the encryption keys
 			return -1
 	if (!on)

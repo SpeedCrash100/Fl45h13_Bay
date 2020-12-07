@@ -96,7 +96,7 @@
 		if(corners[i]) // Already have a corner on this direction.
 			continue
 
-		corners[i] = new /datum/lighting_corner(src, LIGHTING_CORNER_DIAGONAL[i])
+		corners[i] = new /datum/lighting_corner(src, GLOB.LIGHTING_CORNER_DIAGONAL[i])
 
 /turf/proc/handle_opacity_change(var/atom/opacity_changer)
 	if(opacity_changer)

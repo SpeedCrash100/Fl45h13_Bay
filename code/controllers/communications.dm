@@ -144,23 +144,23 @@ var/list/radiochannels = list(
 )
 
 // central command channels, i.e deathsquid & response teams
-var/list/CENT_FREQS = list(ERT_FREQ, DTH_FREQ)
+GLOBAL_LIST_INIT(CENT_FREQS, list(ERT_FREQ, DTH_FREQ))
 
 // Antag channels, i.e. Syndicate
-var/list/ANTAG_FREQS = list(SYND_FREQ, RAID_FREQ)
+GLOBAL_LIST_INIT(ANTAG_FREQS, list(SYND_FREQ, RAID_FREQ))
 
 //Department channels, arranged lexically
-var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, MED_FREQ, SEC_FREQ, SCI_FREQ, SRV_FREQ, SUP_FREQ, ENT_FREQ)
+GLOBAL_LIST_INIT(DEPT_FREQS, list(AI_FREQ, COMM_FREQ, ENG_FREQ, MED_FREQ, SEC_FREQ, SCI_FREQ, SRV_FREQ, SUP_FREQ, ENT_FREQ))
 
 #define TRANSMISSION_WIRE	0
 #define TRANSMISSION_RADIO	1
 
 /proc/frequency_span_class(var/frequency)
 	// Antags!
-	if (frequency in ANTAG_FREQS)
+	if (frequency in GLOB.ANTAG_FREQS)
 		return "syndradio"
 	// centcomm channels (deathsquid and ert)
-	if(frequency in CENT_FREQS)
+	if(frequency in GLOB.CENT_FREQS)
 		return "centradio"
 	// command channel
 	if(frequency == COMM_FREQ)
@@ -183,7 +183,7 @@ var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, MED_FREQ, SEC_FREQ, SCI
 		return "srvradio"
 	if(frequency == ENT_FREQ) //entertainment
 		return "entradio"
-	if(frequency in DEPT_FREQS)
+	if(frequency in GLOB.DEPT_FREQS)
 		return "deptradio"
 
 	return "radio"

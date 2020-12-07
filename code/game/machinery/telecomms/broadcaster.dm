@@ -145,7 +145,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 		var/datum/radio_frequency/connection = signal.data["connection"]
 
-		if(connection.frequency in ANTAG_FREQS) // if antag broadcast, just
+		if(connection.frequency in GLOB.ANTAG_FREQS) // if antag broadcast, just
 			Broadcast_Message(signal.data["connection"], signal.data["mob"],
 							  signal.data["vmask"], signal.data["vmessage"],
 							  signal.data["radio"], signal.data["message"],
@@ -255,7 +255,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	// --- Broadcast to antag radios! ---
 
 	else if(data == 3)
-		for(var/antag_freq in ANTAG_FREQS)
+		for(var/antag_freq in GLOB.ANTAG_FREQS)
 			var/datum/radio_frequency/antag_connection = radio_controller.return_frequency(antag_freq)
 			for (var/obj/item/device/radio/R in antag_connection.devices["[RADIO_CHAT]"])
 				if(R.receive_range(antag_freq, level) > -1)
@@ -458,7 +458,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	// --- Broadcast to antag radios! ---
 
 	else if(data == 3)
-		for(var/freq in ANTAG_FREQS)
+		for(var/freq in GLOB.ANTAG_FREQS)
 			var/datum/radio_frequency/antag_connection = radio_controller.return_frequency(freq)
 			for (var/obj/item/device/radio/R in antag_connection.devices["[RADIO_CHAT]"])
 				var/turf/position = get_turf(R)

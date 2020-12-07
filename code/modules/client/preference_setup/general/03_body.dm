@@ -1,4 +1,4 @@
-var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-")
+GLOBAL_LIST_INIT(valid_bloodtypes, list("A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"))
 
 /datum/preferences
 	var/has_cortical_stack = TRUE

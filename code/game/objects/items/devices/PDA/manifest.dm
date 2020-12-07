@@ -7,10 +7,10 @@ name updates also zero the list; although they are not in data_core, synths are 
 */
 
 GLOBAL_LIST_EMPTY(PDA_Manifest)
-/var/list/acting_rank_prefixes = list("acting", "temporary", "interim", "provisional")
+GLOBAL_LIST_INIT(acting_rank_prefixes, list("acting", "temporary", "interim", "provisional"))
 
 /proc/make_list_rank(rank)
-	for(var/prefix in acting_rank_prefixes)
+	for(var/prefix in GLOB.acting_rank_prefixes)
 		if(findtext(rank, "[prefix] ", 1, 2+length(prefix)))
 			return copytext(rank, 2+length(prefix))
 	return rank
