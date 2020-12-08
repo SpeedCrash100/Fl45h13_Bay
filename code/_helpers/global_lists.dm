@@ -188,9 +188,9 @@ var/global/list/string_slot_flags = list(
 		all_species[S.name] = S
 
 		if(!(S.spawn_flags & SPECIES_IS_RESTRICTED))
-			playable_species += S.name
+			GLOB.playable_species += S.name
 		if(S.spawn_flags & SPECIES_IS_WHITELISTED)
-			whitelisted_species += S.name
+			GLOB.whitelisted_species += S.name
 
 	//Posters
 	paths = typesof(/datum/poster) - /datum/poster

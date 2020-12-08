@@ -266,7 +266,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 		var/ss_runlevels = SS.runlevels
 		var/added_to_any = FALSE
-		for(var/I in 1 to bitflags.len)
+		for(var/I in 1 to GLOB.bitflags.len)
 			if(ss_runlevels & GLOB.bitflags[I])
 				while(runlevel_sorted_subsystems.len < I)
 					runlevel_sorted_subsystems += list(list())

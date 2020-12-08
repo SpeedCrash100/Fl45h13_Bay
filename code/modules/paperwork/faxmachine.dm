@@ -1,5 +1,5 @@
 var/list/obj/machinery/photocopier/faxmachine/allfaxes = list()
-GLOBAL_LIST_INIT(admin_departments, list("[using_map.boss_name]", "Colonial Marshal Service", "[using_map.boss_short] Supply")) + using_map.map_admin_faxes
+GLOBAL_LIST_INIT(admin_departments, list("[using_map.boss_name]", "Colonial Marshal Service", "[using_map.boss_short] Supply") + using_map.map_admin_faxes)
 GLOBAL_LIST_EMPTY(alldepartments)
 
 GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins

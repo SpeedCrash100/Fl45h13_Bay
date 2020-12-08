@@ -1,5 +1,5 @@
 /world/TgsNew(datum/tgs_event_handler/event_handler, minimum_required_security_level = TGS_SECURITY_ULTRASAFE)
-	var/current_api = TGS_READ_GLOBAL(GLOB.tgs)
+	var/current_api = TGS_READ_GLOBAL(tgs)
 	if(current_api)
 		TGS_ERROR_LOG("API datum already set (\ref[current_api] ([current_api]))! Was TgsNew() called more than once?")
 		return
@@ -57,11 +57,11 @@
 
 	var/datum/tgs_api/new_api = new api_datum(event_handler, version)
 
-	TGS_WRITE_GLOBAL(GLOB.tgs, new_api)
+	TGS_WRITE_GLOBAL(tgs, new_api)
 
 	var/result = new_api.OnWorldNew(minimum_required_security_level)
 	if(!result || result == TGS_UNIMPLEMENTED)
-		TGS_WRITE_GLOBAL(GLOB.tgs, null)
+		TGS_WRITE_GLOBAL(tgs, null)
 		TGS_ERROR_LOG("Failed to activate API!")
 
 /world/TgsMaximumAPIVersion()
@@ -71,51 +71,51 @@
 	return new /datum/tgs_version("3.2.x")
 
 /world/TgsInitializationComplete()
-	var/datum/tgs_api/api = TGS_READ_GLOBAL(GLOB.tgs)
+	var/datum/tgs_api/api = TGS_READ_GLOBAL(tgs)
 	if(api)
 		api.OnInitializationComplete()
 
 /world/proc/TgsTopic(T)
-	var/datum/tgs_api/api = TGS_READ_GLOBAL(GLOB.tgs)
+	var/datum/tgs_api/api = TGS_READ_GLOBAL(tgs)
 	if(api)
 		var/result = api.OnTopic(T)
 		if(result != TGS_UNIMPLEMENTED)
 			return result
 
 /world/TgsRevision()
-	var/datum/tgs_api/api = TGS_READ_GLOBAL(GLOB.tgs)
+	var/datum/tgs_api/api = TGS_READ_GLOBAL(tgs)
 	if(api)
 		var/result = api.Revision()
 		if(result != TGS_UNIMPLEMENTED)
 			return result
 
 /world/TgsReboot()
-	var/datum/tgs_api/api = TGS_READ_GLOBAL(GLOB.tgs)
+	var/datum/tgs_api/api = TGS_READ_GLOBAL(tgs)
 	if(api)
 		api.OnReboot()
 
 /world/TgsAvailable()
-	return TGS_READ_GLOBAL(GLOB.tgs) != null
+	return TGS_READ_GLOBAL(tgs) != null
 
 /world/TgsVersion()
-	var/datum/tgs_api/api = TGS_READ_GLOBAL(GLOB.tgs)
+	var/datum/tgs_api/api = TGS_READ_GLOBAL(tgs)
 	if(api)
 		return api.version
 
 /world/TgsApiVersion()
-	var/datum/tgs_api/api = TGS_READ_GLOBAL(GLOB.tgs)
+	var/datum/tgs_api/api = TGS_READ_GLOBAL(tgs)
 	if(api)
 		return api.ApiVersion()
 
 /world/TgsInstanceName()
-	var/datum/tgs_api/api = TGS_READ_GLOBAL(GLOB.tgs)
+	var/datum/tgs_api/api = TGS_READ_GLOBAL(tgs)
 	if(api)
 		var/result = api.InstanceName()
 		if(result != TGS_UNIMPLEMENTED)
 			return result
 
 /world/TgsTestMerges()
-	var/datum/tgs_api/api = TGS_READ_GLOBAL(GLOB.tgs)
+	var/datum/tgs_api/api = TGS_READ_GLOBAL(tgs)
 	if(api)
 		var/result = api.TestMerges()
 		if(result != TGS_UNIMPLEMENTED)
@@ -123,12 +123,12 @@
 	return list()
 
 /world/TgsEndProcess()
-	var/datum/tgs_api/api = TGS_READ_GLOBAL(GLOB.tgs)
+	var/datum/tgs_api/api = TGS_READ_GLOBAL(tgs)
 	if(api)
 		api.EndProcess()
 
 /world/TgsChatChannelInfo()
-	var/datum/tgs_api/api = TGS_READ_GLOBAL(GLOB.tgs)
+	var/datum/tgs_api/api = TGS_READ_GLOBAL(tgs)
 	if(api)
 		var/result = api.ChatChannelInfo()
 		if(result != TGS_UNIMPLEMENTED)
@@ -136,21 +136,21 @@
 	return list()
 
 /world/TgsChatBroadcast(message, list/channels)
-	var/datum/tgs_api/api = TGS_READ_GLOBAL(GLOB.tgs)
+	var/datum/tgs_api/api = TGS_READ_GLOBAL(tgs)
 	if(api)
 		api.ChatBroadcast(message, channels)
 
 /world/TgsTargetedChatBroadcast(message, admin_only)
-	var/datum/tgs_api/api = TGS_READ_GLOBAL(GLOB.tgs)
+	var/datum/tgs_api/api = TGS_READ_GLOBAL(tgs)
 	if(api)
 		api.ChatTargetedBroadcast(message, admin_only)
 
 /world/TgsChatPrivateMessage(message, datum/tgs_chat_user/user)
-	var/datum/tgs_api/api = TGS_READ_GLOBAL(GLOB.tgs)
+	var/datum/tgs_api/api = TGS_READ_GLOBAL(tgs)
 	if(api)
 		api.ChatPrivateMessage(message, user)
 
 /world/TgsSecurityLevel()
-	var/datum/tgs_api/api = TGS_READ_GLOBAL(GLOB.tgs)
+	var/datum/tgs_api/api = TGS_READ_GLOBAL(tgs)
 	if(api)
 		api.SecurityLevel()

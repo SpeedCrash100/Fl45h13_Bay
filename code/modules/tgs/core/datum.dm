@@ -1,4 +1,4 @@
-TGS_DEFINE_AND_SET_GLOBAL(GLOB.tgs, null)
+TGS_DEFINE_AND_SET_GLOBAL(tgs, null)
 
 /datum/tgs_api
 	var/datum/tgs_version/version

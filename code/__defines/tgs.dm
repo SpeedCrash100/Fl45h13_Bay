@@ -244,7 +244,7 @@
 
 /// User definable chat command
 /datum/tgs_chat_command
-	/// The string to trigger this command on a chat bot. e.g `@bot name ...` or `!GLOB.tgs name ...`
+	/// The string to trigger this command on a chat bot. e.g `@bot name ...` or `!tgs name ...`
 	var/name = ""
 	/// The help text displayed for this command
 	var/help_text = ""

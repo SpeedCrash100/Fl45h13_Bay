@@ -67,7 +67,7 @@
 /datum/game_mode/meteor/proc/get_meteor_types()
 	switch(meteor_severity)
 		if(1 to 3)
-			return meteors_dust
+			return GLOB.meteors_dust
 		if(4 to 6)
 			return meteors_normal
 		if(7 to 9)
