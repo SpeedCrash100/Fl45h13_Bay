@@ -275,7 +275,7 @@
 	extended_desc = "If a valid teleporter console is supplied as input then its selected teleporter beacon will be used as destination point, \
 					and if not an undefined destination point is selected. \
 					Rift direction is a cardinal value determening in which direction the rift will be opened, relative the local north. \
-					A direction value of 0 will open the rift on top of the assembly, and any other non-cardinal values will open the rift in the assembly's current facing."
+					A direction value of 0 will open the rift on top of the assembly, and any other non-GLOB.cardinal values will open the rift in the assembly's current facing."
 	icon_state = "bluespace"
 	complexity = 25
 	size = 3
@@ -296,7 +296,7 @@
 		playsound(src, 'sound/effects/sparks2.ogg', 50, 1)
 		return
 
-	if(isnum(step_dir) && (!step_dir || (step_dir in cardinal)))
+	if(isnum(step_dir) && (!step_dir || (step_dir in GLOB.cardinal)))
 		rift_location = get_step(rift_location, step_dir) || rift_location
 	else
 		rift_location = get_step(rift_location, dir) || rift_location

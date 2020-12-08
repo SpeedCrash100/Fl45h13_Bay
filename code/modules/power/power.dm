@@ -168,7 +168,7 @@
 	var/cdir
 	var/turf/T
 
-	for(var/card in cardinal)
+	for(var/card in GLOB.cardinal)
 		T = get_step(loc,card)
 		cdir = get_dir(T,loc)
 
@@ -187,7 +187,7 @@
 	var/cdir
 	var/turf/T
 
-	for(var/card in cardinal)
+	for(var/card in GLOB.cardinal)
 		T = get_step(loc,card)
 		cdir = get_dir(T,loc)
 

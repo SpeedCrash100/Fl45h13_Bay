@@ -56,7 +56,7 @@ GLOBAL_LIST_INIT(valid_bloodtypes, list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	to_save(S["has_cortical_stack"], pref.has_cortical_stack)
 
 /datum/category_item/player_setup_item/general/body/sanitize_character(var/savefile/S)
-	if(!pref.species || !(pref.species in playable_species))
+	if(!pref.species || !(pref.species in GLOB.playable_species))
 		pref.species = SPECIES_HUMAN
 	pref.r_hair			= sanitize_integer(pref.r_hair, 0, 255, initial(pref.r_hair))
 	pref.g_hair			= sanitize_integer(pref.g_hair, 0, 255, initial(pref.g_hair))
@@ -228,14 +228,14 @@ GLOBAL_LIST_INIT(valid_bloodtypes, list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		return TOPIC_REFRESH
 
 	else if(href_list["blood_type"])
-		var/new_b_type = input(user, "Choose your character's blood-type:", "Character Preference") as null|anything in valid_bloodtypes
+		var/new_b_type = input(user, "Choose your character's blood-type:", "Character Preference") as null|anything in GLOB.valid_bloodtypes
 		if(new_b_type && CanUseTopic(user))
 			pref.b_type = new_b_type
 			return TOPIC_REFRESH
 
 	else if(href_list["show_species"])
 		// Actual whitelist checks are handled elsewhere, this is just for accessing the preview window.
-		var/choice = input("Which species would you like to look at?") as null|anything in playable_species
+		var/choice = input("Which species would you like to look at?") as null|anything in GLOB.playable_species
 		if(!choice) return
 		pref.species_preview = choice
 		SetSpecies(preference_mob())

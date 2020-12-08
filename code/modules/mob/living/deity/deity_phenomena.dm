@@ -5,7 +5,7 @@
 
 /mob/living/deity/New()
 	..()
-	for(var/intent in intents) //Just in case we somehow remove/add a new intent #futureproofing
+	for(var/intent in GLOB.intents) //Just in case we somehow remove/add a new intent #futureproofing
 		populate_intent(intent)
 	set_phenomena(add_phenomena(/datum/phenomena/communicate), I_HELP, "shift")
 	set_phenomena(add_phenomena(/datum/phenomena/punish), I_HELP, "control")
@@ -70,7 +70,7 @@
 	set category = "Godhood"
 
 	var/dat = "<h3>Phenomena Configuration</h3><br><br>"
-	for(var/intent in intents)
+	for(var/intent in GLOB.intents)
 		dat += "<b>[capitalize(intent)]</b><br>"
 		var/list/intent_list = intent_phenomenas[intent]
 		if(!intent_list)

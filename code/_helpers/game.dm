@@ -496,13 +496,13 @@ datum/projectile_data
 	return mixedcolor
 
 /**
-* Gets the highest and lowest pressures from the tiles in cardinal directions
+* Gets the highest and lowest pressures from the tiles in GLOB.cardinal directions
 * around us, then checks the difference.
 */
 /proc/getOPressureDifferential(var/turf/loc)
 	var/minp=16777216;
 	var/maxp=0;
-	for(var/dir in cardinal)
+	for(var/dir in GLOB.cardinal)
 		var/turf/simulated/T=get_turf(get_step(loc,dir))
 		var/cp=0
 		if(T && istype(T) && T.zone)
@@ -523,7 +523,7 @@ datum/projectile_data
 
 /proc/getCardinalAirInfo(var/turf/loc, var/list/stats=list("temperature"))
 	var/list/temps = new/list(4)
-	for(var/dir in cardinal)
+	for(var/dir in GLOB.cardinal)
 		var/direction
 		switch(dir)
 			if(NORTH)

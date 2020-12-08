@@ -157,7 +157,7 @@ var/global/list/string_slot_flags = list(
 
 	//List of job. I can't believe this was calculated multiple times per tick!
 	paths = typesof(/datum/job)-/datum/job
-	paths -= exclude_jobs
+	paths -= GLOB.exclude_jobs
 	for(var/T in paths)
 		var/datum/job/J = new T
 		GLOB.joblist[J.title] = J

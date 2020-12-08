@@ -150,7 +150,7 @@ var/global/vs_control/vsc = new
 		if("Numeric")
 			newvar = input(user,"Enter a number:","Settings",newvar) as num
 		if("Bit Flag")
-			var/flag = input(user,"Toggle which bit?","Settings") in bitflags
+			var/flag = input(user,"Toggle which bit?","Settings") in GLOB.bitflags
 			flag = text2num(flag)
 			if(newvar & flag)
 				newvar &= ~flag

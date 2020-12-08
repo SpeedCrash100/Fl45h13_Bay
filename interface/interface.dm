@@ -84,8 +84,8 @@ Hotkey-Mode: (hotkey-mode must be on)
 \tx = swap-hand
 \tz = activate held object (or y)
 \tj = toggle-aiming-mode
-\tf = cycle-intents-left
-\tg = cycle-intents-right
+\tf = cycle-GLOB.intents-left
+\tg = cycle-GLOB.intents-right
 \t1 = help-intent
 \t2 = disarm-intent
 \t3 = grab-intent
@@ -105,8 +105,8 @@ Any-Mode: (hotkey doesn't need to be on)
 \tCtrl+r = throw
 \tCtrl+x = swap-hand
 \tCtrl+z = activate held object (or Ctrl+y)
-\tCtrl+f = cycle-intents-left
-\tCtrl+g = cycle-intents-right
+\tCtrl+f = cycle-GLOB.intents-left
+\tCtrl+g = cycle-GLOB.intents-right
 \tCtrl+1 = help-intent
 \tCtrl+2 = disarm-intent
 \tCtrl+3 = grab-intent
@@ -116,7 +116,7 @@ Any-Mode: (hotkey doesn't need to be on)
 \tF3 = say
 \tF4 = emote
 \tDEL = pull
-\tINS = cycle-intents-right
+\tINS = cycle-GLOB.intents-right
 \tHOME = drop
 \tPGUP = swap-hand
 \tPGDN = activate held object
@@ -134,8 +134,8 @@ Hotkey-Mode: (hotkey-mode must be on)
 \tt = say
 \tx = cycle active modules
 \tz = activate held object (or y)
-\tf = cycle-intents-left
-\tg = cycle-intents-right
+\tf = cycle-GLOB.intents-left
+\tg = cycle-GLOB.intents-right
 \t1 = activate module 1
 \t2 = activate module 2
 \t3 = activate module 3
@@ -154,8 +154,8 @@ Any-Mode: (hotkey doesn't need to be on)
 \tCtrl+q = unequip active module
 \tCtrl+x = cycle active modules
 \tCtrl+z = activate held object (or Ctrl+y)
-\tCtrl+f = cycle-intents-left
-\tCtrl+g = cycle-intents-right
+\tCtrl+f = cycle-GLOB.intents-left
+\tCtrl+g = cycle-GLOB.intents-right
 \tCtrl+1 = activate module 1
 \tCtrl+2 = activate module 2
 \tCtrl+3 = activate module 3

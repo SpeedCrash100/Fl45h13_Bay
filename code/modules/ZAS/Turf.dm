@@ -58,9 +58,9 @@
 	var/unconnected_dirs = check_dirs
 
 	#ifdef MULTIZAS
-	var/to_check = cornerdirsz
+	var/to_check = GLOB.cornerdirsz
 	#else
-	var/to_check = cornerdirs
+	var/to_check = GLOB.cornerdirs
 	#endif
 
 	for(var/dir in to_check)
@@ -80,9 +80,9 @@
 	. = 0
 	if(istype(T) && T.zone)
 		#ifdef MULTIZAS
-		var/to_check = cardinalz
+		var/to_check = GLOB.cardinalz
 		#else
-		var/to_check = cardinal
+		var/to_check = GLOB.cardinal
 		#endif
 		for(var/dir in to_check)
 			var/turf/simulated/other = get_step(T, dir)

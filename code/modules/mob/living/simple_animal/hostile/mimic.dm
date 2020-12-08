@@ -63,7 +63,7 @@ GLOBAL_LIST_INIT(protected_objects, list(/obj/structure/table, /obj/structure/ca
 
 /mob/living/simple_animal/hostile/mimic/proc/CopyObject(var/obj/O, var/mob/living/creator)
 
-	if((istype(O, /obj/item) || istype(O, /obj/structure)) && !is_type_in_list(O, protected_objects))
+	if((istype(O, /obj/item) || istype(O, /obj/structure)) && !is_type_in_list(O, GLOB.protected_objects))
 		O.forceMove(src)
 		copy_of = weakref(O)
 		appearance = O

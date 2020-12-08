@@ -42,7 +42,7 @@
 		if(!(underwear_metadata in pref.all_underwear))
 			pref.all_underwear_metadata -= underwear_metadata
 
-	pref.backbag = sanitize_integer(pref.backbag, 1, backbaglist.len, initial(pref.backbag))
+	pref.backbag = sanitize_integer(pref.backbag, 1, GLOB.backbaglist.len, initial(pref.backbag))
 
 /datum/category_item/player_setup_item/general/equipment/content()
 	. = list()
@@ -57,7 +57,7 @@
 				. += " <a href='?src=\ref[src];underwear=[UWC.name];tweak=\ref[gt]'>[gt.get_contents(get_metadata(UWC.name, gt))]</a>"
 
 		. += "<br>"
-	. += "Backpack Type: <a href='?src=\ref[src];change_backpack=1'><b>[backbaglist[pref.backbag]]</b></a><br>"
+	. += "Backpack Type: <a href='?src=\ref[src];change_backpack=1'><b>[GLOB.backbaglist[pref.backbag]]</b></a><br>"
 
 	return jointext(.,null)
 
@@ -79,9 +79,9 @@
 
 /datum/category_item/player_setup_item/general/equipment/OnTopic(var/href,var/list/href_list, var/mob/user)
 	if(href_list["change_backpack"])
-		var/new_backbag = input(user, "Choose your character's style of bag:", "Character Preference", backbaglist[pref.backbag]) as null|anything in backbaglist
+		var/new_backbag = input(user, "Choose your character's style of bag:", "Character Preference", GLOB.backbaglist[pref.backbag]) as null|anything in GLOB.backbaglist
 		if(!isnull(new_backbag) && CanUseTopic(user))
-			pref.backbag = backbaglist.Find(new_backbag)
+			pref.backbag = GLOB.backbaglist.Find(new_backbag)
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 	else if(href_list["change_underwear"])
 		var/datum/category_group/underwear/UWC = global_underwear.categories_by_name[href_list["change_underwear"]]

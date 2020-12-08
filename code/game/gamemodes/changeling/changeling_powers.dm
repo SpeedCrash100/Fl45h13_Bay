@@ -18,8 +18,8 @@ GLOBAL_LIST_INIT(possible_changeling_IDs, list("Alpha","Beta","Gamma","Delta","E
 
 /datum/changeling/New()
 	..()
-	if(possible_changeling_IDs.len)
-		changelingID = pick(possible_changeling_IDs)
+	if(GLOB.possible_changeling_IDs.len)
+		changelingID = pick(GLOB.possible_changeling_IDs)
 		possible_changeling_IDs -= changelingID
 		changelingID = "[changelingID]"
 	else

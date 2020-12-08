@@ -16,7 +16,7 @@
 	var/speed = 1
 
 /obj/machinery/r_n_d/protolathe/New()
-	materials = default_material_composition.Copy()
+	materials = GLOB.default_material_composition.Copy()
 	..()
 	component_parts = list()
 	component_parts += new /obj/item/weapon/circuitboard/protolathe(src)

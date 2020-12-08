@@ -25,7 +25,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 	..()
 	allfaxes += src
 	if(!destination) destination = "[using_map.boss_name]"
-	if( !(("[department]" in GLOB.alldepartments) || ("[department]" in admin_departments)) )
+	if( !(("[department]" in GLOB.alldepartments) || ("[department]" in GLOB.admin_departments)) )
 		GLOB.alldepartments |= department
 
 /obj/machinery/photocopier/faxmachine/attack_hand(mob/user as mob)
@@ -83,7 +83,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 /obj/machinery/photocopier/faxmachine/Topic(href, href_list)
 	if(href_list["send"])
 		if(copyitem)
-			if (destination in admin_departments)
+			if (destination in GLOB.admin_departments)
 				send_admin_fax(usr, destination)
 			else
 				sendfax(destination)
@@ -119,7 +119,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 
 	if(href_list["dept"])
 		var/lastdestination = destination
-		destination = input(usr, "Which department?", "Choose a department", "") as null|anything in (GLOB.alldepartments + admin_departments)
+		destination = input(usr, "Which department?", "Choose a department", "") as null|anything in (GLOB.alldepartments + GLOB.admin_departments)
 		if(!destination) destination = lastdestination
 
 	if(href_list["auth"])

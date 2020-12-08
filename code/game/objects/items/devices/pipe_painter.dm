@@ -9,7 +9,7 @@
 /obj/item/device/pipe_painter/New()
 	..()
 	modes = new()
-	for(var/C in pipe_colors)
+	for(var/C in GLOB.pipe_colors)
 		modes += "[C]"
 	mode = pick(modes)
 
@@ -21,7 +21,7 @@
 		return
 	var/obj/machinery/atmospherics/pipe/P = A
 
-	P.change_color(pipe_colors[mode])
+	P.change_color(GLOB.pipe_colors[mode])
 
 /obj/item/device/pipe_painter/attack_self(mob/user as mob)
 	mode = input("Which colour do you want to use?", "Pipe painter", mode) in modes
