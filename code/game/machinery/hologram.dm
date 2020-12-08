@@ -29,7 +29,7 @@ Possible to do for anyone motivated enough:
 #define RANGE_BASED 4
 #define AREA_BASED 6
 
-var/const/HOLOPAD_MODE = RANGE_BASED
+GLOBAL_VAR_CONST(HOLOPAD_MODE, RANGE_BASED)
 
 /obj/machinery/hologram/holopad
 	name = "\improper AI holopad"

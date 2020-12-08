@@ -3,9 +3,9 @@
 	holder_type = /obj/machinery/autolathe
 	wire_count = 6
 
-var/const/AUTOLATHE_HACK_WIRE = 1
-var/const/AUTOLATHE_SHOCK_WIRE = 2
-var/const/AUTOLATHE_DISABLE_WIRE = 4
+GLOBAL_VAR_CONST(AUTOLATHE_HACK_WIRE, 1)
+GLOBAL_VAR_CONST(AUTOLATHE_SHOCK_WIRE, 2)
+GLOBAL_VAR_CONST(AUTOLATHE_DISABLE_WIRE, 4)
 
 /datum/wires/autolathe/GetInteractWindow()
 	var/obj/machinery/autolathe/A = holder

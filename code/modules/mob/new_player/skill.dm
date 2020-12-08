@@ -1,7 +1,7 @@
-var/const/SKILL_NONE = 0
-var/const/SKILL_BASIC = 1
-var/const/SKILL_ADEPT = 2
-var/const/SKILL_EXPERT = 3
+GLOBAL_VAR_CONST(SKILL_NONE, 0)
+GLOBAL_VAR_CONST(SKILL_BASIC, 1)
+GLOBAL_VAR_CONST(SKILL_ADEPT, 2)
+GLOBAL_VAR_CONST(SKILL_EXPERT, 3)
 
 // Specific skill typepaths that won't show up on the skills panel.
 // This is used to hide the category subtypes, without having to use special variable.

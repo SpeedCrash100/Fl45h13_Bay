@@ -1,6 +1,6 @@
-var/const/NETWORK_COMMAND = "Command"
-var/const/NETWORK_ENGINE  = "Engine"
-var/const/NETWORK_ENGINEERING_OUTPOST = "Engineering Outpost"
+GLOBAL_VAR_CONST(NETWORK_COMMAND, "Command")
+GLOBAL_VAR_CONST(NETWORK_ENGINE, "Engine")
+GLOBAL_VAR_CONST(NETWORK_ENGINEERING_OUTPOST, "Engineering Outpost")
 
 /datum/map/proc/get_shared_network_access(var/network)
 	switch(network)

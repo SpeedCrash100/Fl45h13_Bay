@@ -373,9 +373,9 @@
 		qdel_null(click_handlers)
 	. = ..()
 
-var/const/CLICK_HANDLER_NONE                 = 0
-var/const/CLICK_HANDLER_REMOVE_ON_MOB_LOGOUT = 1
-var/const/CLICK_HANDLER_ALL                  = (~0)
+GLOBAL_VAR_CONST(CLICK_HANDLER_NONE, 0)
+GLOBAL_VAR_CONST(CLICK_HANDLER_REMOVE_ON_MOB_LOGOUT, 1)
+GLOBAL_VAR_CONST(CLICK_HANDLER_ALL, (~0))
 
 /datum/click_handler
 	var/mob/user

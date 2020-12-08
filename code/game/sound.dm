@@ -72,7 +72,7 @@ GLOBAL_LIST_INIT(button_sound, list('sound/machines/button1.ogg','sound/machines
 			if(T && T.z == turf_source.z)
 				M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff, is_global)
 
-var/const/FALLOFF_SOUNDS = 0.5
+GLOBAL_VAR_CONST(FALLOFF_SOUNDS, 0.5)
 
 /mob/proc/playsound_local(var/turf/turf_source, soundin, vol as num, vary, frequency, falloff, is_global)
 	if(!src.client || ear_deaf > 0)	return

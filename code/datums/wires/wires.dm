@@ -165,10 +165,10 @@
 // Example of use:
 /*
 
-var/const/BOLTED= 1
-var/const/SHOCKED = 2
-var/const/SAFETY = 4
-var/const/POWER = 8
+GLOBAL_VAR_CONST(BOLTED, 1)
+GLOBAL_VAR_CONST(SHOCKED, 2)
+GLOBAL_VAR_CONST(SAFETY, 4)
+GLOBAL_VAR_CONST(POWER, 8)
 
 /datum/wires/door/UpdateCut(var/index, var/mended)
 	var/obj/machinery/door/airlock/A = holder

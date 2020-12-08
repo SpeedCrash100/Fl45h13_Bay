@@ -1,4 +1,4 @@
-var/const/NO_CLIENT_CKEY = "*no ckey*"
+GLOBAL_VAR_CONST(NO_CLIENT_CKEY, "*no ckey*")
 
 var/repository/client/client_repository = new()
 

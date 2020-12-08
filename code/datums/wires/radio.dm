@@ -2,9 +2,9 @@
 	holder_type = /obj/item/device/radio
 	wire_count = 3
 
-var/const/WIRE_SIGNAL = 1
-var/const/WIRE_RECEIVE = 2
-var/const/WIRE_TRANSMIT = 4
+GLOBAL_VAR_CONST(WIRE_SIGNAL, 1)
+GLOBAL_VAR_CONST(WIRE_RECEIVE, 2)
+GLOBAL_VAR_CONST(WIRE_TRANSMIT, 4)
 
 /datum/wires/radio/CanUse(var/mob/living/L)
 	var/obj/item/device/radio/R = holder

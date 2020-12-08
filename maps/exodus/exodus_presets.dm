@@ -1,9 +1,9 @@
-var/const/NETWORK_CIVILIAN_EAST       = "Civilian East"
-var/const/NETWORK_CIVILIAN_WEST       = "Civilian West"
-var/const/NETWORK_MAINTENANCE         = "Maintenance Deck"
-var/const/NETWORK_PRISON              = "Prison"
-var/const/NETWORK_RESEARCH_OUTPOST    = "Research Outpost"
-var/const/NETWORK_TELECOM             = "Tcomsat"
+GLOBAL_VAR_CONST(NETWORK_CIVILIAN_EAST, "Civilian East")
+GLOBAL_VAR_CONST(NETWORK_CIVILIAN_WEST, "Civilian West")
+GLOBAL_VAR_CONST(NETWORK_MAINTENANCE, "Maintenance Deck")
+GLOBAL_VAR_CONST(NETWORK_PRISON, "Prison")
+GLOBAL_VAR_CONST(NETWORK_RESEARCH_OUTPOST, "Research Outpost")
+GLOBAL_VAR_CONST(NETWORK_TELECOM, "Tcomsat")
 
 /datum/map/exodus/get_network_access(var/network)
 	switch(network)

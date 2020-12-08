@@ -3,11 +3,11 @@
 	holder_type = /mob/living/silicon/robot
 	wire_count = 5
 
-var/const/BORG_WIRE_LAWCHECK = 1
-var/const/BORG_WIRE_MAIN_POWER = 2 // The power wires do nothing whyyyyyyyyyyyyy
-var/const/BORG_WIRE_LOCKED_DOWN = 4
-var/const/BORG_WIRE_AI_CONTROL = 8
-var/const/BORG_WIRE_CAMERA = 16
+GLOBAL_VAR_CONST(BORG_WIRE_LAWCHECK, 1)
+GLOBAL_VAR_CONST(BORG_WIRE_MAIN_POWER, 2) //  The power wires do nothing whyyyyyyyyyyyyy
+GLOBAL_VAR_CONST(BORG_WIRE_LOCKED_DOWN, 4)
+GLOBAL_VAR_CONST(BORG_WIRE_AI_CONTROL, 8)
+GLOBAL_VAR_CONST(BORG_WIRE_CAMERA, 16)
 
 /datum/wires/robot/GetInteractWindow()
 
