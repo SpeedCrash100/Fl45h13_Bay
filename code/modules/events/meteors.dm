@@ -20,7 +20,7 @@
 /datum/event/meteor_wave/announce()
 	switch(severity)
 		if(EVENT_LEVEL_MAJOR)
-			using_map.meteors_detected_announcement()
+			GLOB.using_map.meteors_detected_announcement()
 		else
 			command_announcement.Announce("The [station_name()] is now in a meteor shower.", "[station_name()] Sensor Array")
 
@@ -28,7 +28,7 @@
 	// Begin sending the alarm signals to shield diffusers so the field is already regenerated (if it exists) by the time actual meteors start flying around.
 	if(alarmWhen < activeFor)
 		for(var/obj/machinery/shield_diffuser/SD in GLOB.machines)
-			if(SD.z in using_map.station_levels)
+			if(SD.z in GLOB.using_map.station_levels)
 				SD.meteor_alarm(10)
 
 	if(waves && activeFor >= next_meteor)

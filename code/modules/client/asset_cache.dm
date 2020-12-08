@@ -233,7 +233,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 					register_asset(filename, fcopy_rsc(path + filename))
 
 	var/list/mapnames = list()
-	for(var/z in using_map.map_levels)
+	for(var/z in GLOB.using_map.map_levels)
 		mapnames += map_image_file_name(z)
 
 	var/list/filenames = flist(MAP_IMAGE_PATH)

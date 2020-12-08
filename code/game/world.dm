@@ -67,7 +67,7 @@
 #define RECOMMENDED_VERSION 511
 /world/New()
 	//set window title
-	name = "[server_name] - [using_map.full_name]"
+	name = "[server_name] - [GLOB.using_map.full_name]"
 
 	//logs
 	var/date_string = time2text(world.realtime, "YYYY/MM-Month/DD-Day")
@@ -110,8 +110,8 @@
 	plant_controller = new()
 
 	if(config.generate_map)
-		if(using_map.perform_map_generation())
-			using_map.refresh_mining_turfs()
+		if(GLOB.using_map.perform_map_generation())
+			GLOB.using_map.refresh_mining_turfs()
 
 	// Create autolathe recipes, as above.
 	populate_lathe_recipes()
@@ -177,7 +177,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		s["players"] = 0
 		s["stationtime"] = stationtime2text()
 		s["roundduration"] = roundduration2text()
-		s["map"] = using_map.full_name
+		s["map"] = GLOB.using_map.full_name
 
 		if(input["status"] == "2")
 			var/list/players = list()

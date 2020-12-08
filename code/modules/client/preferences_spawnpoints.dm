@@ -4,7 +4,7 @@ GLOBAL_LIST_EMPTY(spawntypes)
 	GLOB.spawntypes = list()
 	for(var/type in typesof(/datum/spawnpoint)-/datum/spawnpoint)
 		var/datum/spawnpoint/S = new type()
-		if((S.display_name in using_map.allowed_spawns) || S.always_visible)
+		if((S.display_name in GLOB.using_map.allowed_spawns) || S.always_visible)
 			GLOB.spawntypes[S.display_name] = S
 
 /datum/spawnpoint

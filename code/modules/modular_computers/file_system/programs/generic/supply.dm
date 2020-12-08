@@ -50,7 +50,7 @@
 		if(3)// Shuttle monitoring and control
 			var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
 			if(istype(shuttle))
-				data["shuttle_location"] = shuttle.at_station() ? using_map.name : "Remote location"
+				data["shuttle_location"] = shuttle.at_station() ? GLOB.using_map.name : "Remote location"
 			else
 				data["shuttle_location"] = "No Connection"
 			data["shuttle_status"] = get_shuttle_status()
@@ -247,7 +247,7 @@
 		return
 
 	var/t = ""
-	t += "<h3>[using_map.station_name] Supply Requisition Reciept</h3><hr>"
+	t += "<h3>[GLOB.using_map.station_name] Supply Requisition Reciept</h3><hr>"
 	t += "INDEX: #[O.ordernum]<br>"
 	t += "REQUESTED BY: [O.orderedby]<br>"
 	t += "RANK: [O.orderedrank]<br>"
@@ -261,7 +261,7 @@
 
 /datum/nano_module/supply/proc/print_summary(var/mob/user)
 	var/t = ""
-	t += "<center><BR><b><large>[using_map.station_name]</large></b><BR><i>[station_date]</i><BR><i>Export overview<field></i></center><hr>"
+	t += "<center><BR><b><large>[GLOB.using_map.station_name]</large></b><BR><i>[station_date]</i><BR><i>Export overview<field></i></center><hr>"
 	for(var/source in point_source_descriptions)
 		t += "[point_source_descriptions[source]]: [supply_controller.point_sources[source] || 0]<br>"
 	print_text(t, user)
