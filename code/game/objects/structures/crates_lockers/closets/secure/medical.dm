@@ -7,7 +7,7 @@
 	icon_opened = "medicalopen"
 	icon_broken = "medicalbroken"
 	icon_off = "medicaloff"
-	req_access = list(access_medical_equip)
+	req_access = list(GLOB.access_medical_equip)
 
 
 	New()
@@ -38,7 +38,7 @@
 	icon_opened = "medicalopen"
 	icon_broken = "medicalbroken"
 	icon_off = "medicaloff"
-	req_access = list(access_surgery)
+	req_access = list(GLOB.access_surgery)
 
 
 	New()
@@ -55,7 +55,7 @@
 
 /obj/structure/closet/secure_closet/medical3
 	name = "medical doctor's locker"
-	req_access = list(access_medical_equip)
+	req_access = list(GLOB.access_medical_equip)
 	icon_state = "securemed1"
 	icon_closed = "securemed"
 	icon_locked = "securemed1"
@@ -111,7 +111,7 @@
 	icon_opened = "medicalopen"
 	icon_broken = "medicalbroken"
 	icon_off = "medicaloff"
-	req_access = list(access_medical_equip)
+	req_access = list(GLOB.access_medical_equip)
 
 /obj/structure/closet/secure_closet/paramedic/New()
 	..()
@@ -138,7 +138,7 @@
 
 /obj/structure/closet/secure_closet/CMO
 	name = "chief medical officer's locker"
-	req_access = list(access_cmo)
+	req_access = list(GLOB.access_cmo)
 	icon_state = "cmosecure1"
 	icon_closed = "cmosecure"
 	icon_locked = "cmosecure1"
@@ -192,7 +192,7 @@
 	icon_opened = "medicalopen"
 	icon_broken = "medicalbroken"
 	icon_off = "medicaloff"
-	req_access = list(access_chemistry)
+	req_access = list(GLOB.access_chemistry)
 
 
 	New()
@@ -226,12 +226,12 @@
 	anchored = 1
 	density = 0
 	wall_mounted = 1
-	req_access = list(access_medical_equip)
+	req_access = list(GLOB.access_medical_equip)
 
 
 /obj/structure/closet/secure_closet/counselor
 	name = "counselor's locker"
-	req_access = list(access_psychiatrist,access_chapel_office)
+	req_access = list(GLOB.access_psychiatrist,GLOB.access_chapel_office)
 	icon_state = "chaplainsecure1"
 	icon_closed = "chaplainsecure"
 	icon_locked = "chaplainsecure1"
@@ -274,7 +274,7 @@
 	icon_opened = "secureviroopen"
 	icon_broken = "securevirobroken"
 	icon_off = "securevirooff"
-	req_access = list(access_virology)
+	req_access = list(GLOB.access_virology)
 
 
 /obj/structure/closet/secure_closet/virology/New()

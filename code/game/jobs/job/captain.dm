@@ -4,7 +4,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	title = "Captain"
 	department = "Command"
 	head_position = 1
-	department_flag = COM
+	department_flag = GLOB.COM
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
@@ -31,7 +31,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 /datum/job/hop
 	title = "Head of Personnel"
 	head_position = 1
-	department_flag = COM|CIV
+	department_flag = GLOB.COM|GLOB.CIV
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
@@ -42,18 +42,18 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	economic_modifier = 10
 	ideal_character_age = 50
 
-	access = list(access_security, access_sec_doors, access_brig, access_forensics_lockers,
-						access_medical, access_engine, access_change_ids, access_ai_upload, access_eva, access_heads,
-						access_all_personal_lockers, access_maint_tunnels, access_bar, access_janitor, access_construction, access_morgue,
-						access_crematorium, access_kitchen, access_cargo, access_cargo_bot, access_mailsorting, access_qm, access_hydroponics, access_lawyer,
-						access_chapel_office, access_library, access_research, access_mining, access_heads_vault, access_mining_station,
-						access_hop, access_RC_announce, access_keycard_auth, access_gateway)
-	minimal_access = list(access_security, access_sec_doors, access_brig, access_forensics_lockers,
-						access_medical, access_engine, access_change_ids, access_ai_upload, access_eva, access_heads,
-						access_all_personal_lockers, access_maint_tunnels, access_bar, access_janitor, access_construction, access_morgue,
-						access_crematorium, access_kitchen, access_cargo, access_cargo_bot, access_mailsorting, access_qm, access_hydroponics, access_lawyer,
-						access_chapel_office, access_library, access_research, access_mining, access_heads_vault, access_mining_station,
-						access_hop, access_RC_announce, access_keycard_auth, access_gateway)
+	access = list(GLOB.access_security, GLOB.access_sec_doors, GLOB.access_brig, GLOB.access_forensics_lockers,
+						GLOB.access_medical, GLOB.access_engine, GLOB.access_change_ids, GLOB.access_ai_upload, GLOB.access_eva, GLOB.access_heads,
+						GLOB.access_all_personal_lockers, GLOB.access_maint_tunnels, GLOB.access_bar, GLOB.access_janitor, GLOB.access_construction, GLOB.access_morgue,
+						GLOB.access_crematorium, GLOB.access_kitchen, GLOB.access_cargo, GLOB.access_cargo_bot, GLOB.access_mailsorting, GLOB.access_qm, GLOB.access_hydroponics, GLOB.access_lawyer,
+						GLOB.access_chapel_office, GLOB.access_library, GLOB.access_research, GLOB.access_mining, GLOB.access_heads_vault, GLOB.access_mining_station,
+						GLOB.access_hop, GLOB.access_RC_announce, GLOB.access_keycard_auth, GLOB.access_gateway)
+	minimal_access = list(GLOB.access_security, GLOB.access_sec_doors, GLOB.access_brig, GLOB.access_forensics_lockers,
+						GLOB.access_medical, GLOB.access_engine, GLOB.access_change_ids, GLOB.access_ai_upload, GLOB.access_eva, GLOB.access_heads,
+						GLOB.access_all_personal_lockers, GLOB.access_maint_tunnels, GLOB.access_bar, GLOB.access_janitor, GLOB.access_construction, GLOB.access_morgue,
+						GLOB.access_crematorium, GLOB.access_kitchen, GLOB.access_cargo, GLOB.access_cargo_bot, GLOB.access_mailsorting, GLOB.access_qm, GLOB.access_hydroponics, GLOB.access_lawyer,
+						GLOB.access_chapel_office, GLOB.access_library, GLOB.access_research, GLOB.access_mining, GLOB.access_heads_vault, GLOB.access_mining_station,
+						GLOB.access_hop, GLOB.access_RC_announce, GLOB.access_keycard_auth, GLOB.access_gateway)
 
 	outfit_type = /decl/hierarchy/outfit/job/hop
 	announced = 1

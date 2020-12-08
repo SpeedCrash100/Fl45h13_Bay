@@ -73,7 +73,7 @@
 GLOBAL_VAR_CONST(NO_EMAG_ACT, -50)
 /obj/item/weapon/card/emag/resolve_attackby(atom/A, mob/user)
 	var/used_uses = A.emag_act(uses, user, src)
-	if(used_uses == NO_EMAG_ACT)
+	if(used_uses == GLOB.NO_EMAG_ACT)
 		return ..(A, user)
 
 	uses -= used_uses
@@ -174,10 +174,10 @@ GLOBAL_VAR_CONST(NO_EMAG_ACT, -50)
 	..()
 	id_card.age = age
 
-	if(GLOB.using_map.flags & MAP_HAS_BRANCH)
+	if(GLOB.using_map.flags & GLOB.MAP_HAS_BRANCH)
 		id_card.military_branch = char_branch
 
-	if(GLOB.using_map.flags & MAP_HAS_RANK)
+	if(GLOB.using_map.flags & GLOB.MAP_HAS_RANK)
 		id_card.military_rank = char_rank
 
 /obj/item/weapon/card/id/proc/dat()
@@ -186,9 +186,9 @@ GLOBAL_VAR_CONST(NO_EMAG_ACT, -50)
 	dat += text("Sex: []</A><BR>\n", sex)
 	dat += text("Age: []</A><BR>\n", age)
 
-	if(GLOB.using_map.flags & MAP_HAS_BRANCH)
+	if(GLOB.using_map.flags & GLOB.MAP_HAS_BRANCH)
 		dat += text("Branch: []</A><BR>\n", military_branch ? military_branch.name : "\[UNSET\]")
-	if(GLOB.using_map.flags & MAP_HAS_RANK)
+	if(GLOB.using_map.flags & GLOB.MAP_HAS_RANK)
 		dat += text("Rank: []</A><BR>\n", military_rank ? military_rank.name : "\[UNSET\]")
 
 	dat += text("Assignment: []</A><BR>\n", assignment)
@@ -243,7 +243,7 @@ GLOBAL_VAR_CONST(NO_EMAG_ACT, -50)
 	desc = "An ID straight from the Syndicate."
 	registered_name = "Syndicate"
 	assignment = "Syndicate Overlord"
-	access = list(access_syndicate, access_external_airlocks)
+	access = list(GLOB.access_syndicate, GLOB.access_external_airlocks)
 
 /obj/item/weapon/card/id/captains_spare
 	name = "captain's spare ID"
@@ -265,7 +265,7 @@ GLOBAL_VAR_CONST(NO_EMAG_ACT, -50)
 	assignment = "Synthetic"
 
 /obj/item/weapon/card/id/synthetic/New()
-	access = get_all_station_access() + access_synth
+	access = get_all_station_access() + GLOB.access_synth
 	..()
 
 /obj/item/weapon/card/id/centcom
@@ -428,5 +428,5 @@ GLOBAL_VAR_CONST(NO_EMAG_ACT, -50)
 	name = "identification card"
 	desc = "A card issued to Merchants, indicating their right to sell and buy goods."
 	icon_state = "trader"
-	access = list(access_merchant)
+	access = list(GLOB.access_merchant)
 

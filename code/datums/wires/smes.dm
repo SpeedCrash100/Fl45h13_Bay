@@ -27,33 +27,33 @@ GLOBAL_VAR_CONST(SMES_WIRE_FAILSAFES, 16) //  Cut to disable failsafes, mend to 
 /datum/wires/smes/UpdateCut(var/index, var/mended)
 	var/obj/machinery/power/smes/buildable/S = holder
 	switch(index)
-		if(SMES_WIRE_RCON)
+		if(GLOB.SMES_WIRE_RCON)
 			S.RCon = mended
-		if(SMES_WIRE_INPUT)
+		if(GLOB.SMES_WIRE_INPUT)
 			S.input_cut = !mended
-		if(SMES_WIRE_OUTPUT)
+		if(GLOB.SMES_WIRE_OUTPUT)
 			S.output_cut = !mended
-		if(SMES_WIRE_GROUNDING)
+		if(GLOB.SMES_WIRE_GROUNDING)
 			S.grounding = mended
-		if(SMES_WIRE_FAILSAFES)
+		if(GLOB.SMES_WIRE_FAILSAFES)
 			S.safeties_enabled = mended
 
 
 /datum/wires/smes/UpdatePulsed(var/index)
 	var/obj/machinery/power/smes/buildable/S = holder
 	switch(index)
-		if(SMES_WIRE_RCON)
+		if(GLOB.SMES_WIRE_RCON)
 			if(S.RCon)
 				S.RCon = 0
 				spawn(10)
 					S.RCon = 1
-		if(SMES_WIRE_INPUT)
+		if(GLOB.SMES_WIRE_INPUT)
 			S.toggle_input()
-		if(SMES_WIRE_OUTPUT)
+		if(GLOB.SMES_WIRE_OUTPUT)
 			S.toggle_output()
-		if(SMES_WIRE_GROUNDING)
+		if(GLOB.SMES_WIRE_GROUNDING)
 			S.grounding = 0
-		if(SMES_WIRE_FAILSAFES)
+		if(GLOB.SMES_WIRE_FAILSAFES)
 			if(S.safeties_enabled)
 				S.safeties_enabled = 0
 				spawn(10)

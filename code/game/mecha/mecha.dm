@@ -64,7 +64,7 @@
 	var/internal_damage = 0 //contains bitflags
 
 	var/list/operation_req_access = list()//required access level for mecha operation
-	var/list/internals_req_access = list(access_engine,access_robotics)//required access level to open cell compartment
+	var/list/internals_req_access = list(GLOB.access_engine,GLOB.access_robotics)//required access level to open cell compartment
 
 	var/datum/global_iterator/pr_int_temp_processor //normalizes internal air mixture temperature
 	var/datum/global_iterator/pr_inertial_movement //controls intertial movement in spesss
@@ -1210,8 +1210,8 @@
 						.hidden {display: none;}
 						</style>
 						<script language='javascript' type='text/javascript'>
-						[js_byjax]
-						[js_dropdowns]
+						[GLOB.js_byjax]
+						[GLOB.js_dropdowns]
 						function ticker() {
 							setInterval(function(){
 								window.location='byond://?src=\ref[src]&update_content=1';
@@ -1472,7 +1472,7 @@
 	if(href_list["rfreq"])
 		if(usr != src.occupant)	return
 		var/new_frequency = (radio.frequency + filter.getNum("rfreq"))
-		if ((radio.frequency < PUBLIC_LOW_FREQ || radio.frequency > PUBLIC_HIGH_FREQ))
+		if ((radio.frequency < GLOB.PUBLIC_LOW_FREQ || radio.frequency > GLOB.PUBLIC_HIGH_FREQ))
 			new_frequency = sanitize_frequency(new_frequency)
 		radio.set_frequency(new_frequency)
 		send_byjax(src.occupant,"exosuit.browser","rfreq","[format_frequency(radio.frequency)]")

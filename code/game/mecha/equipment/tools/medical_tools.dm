@@ -114,7 +114,7 @@
 				<head>
 				<title>[occupant] statistics</title>
 				<script language='javascript' type='text/javascript'>
-				[js_byjax]
+				[GLOB.js_byjax]
 				</script>
 				<style>
 				h3 {margin-bottom:2px;font-size:14px;}
@@ -363,7 +363,7 @@
 						<head>
 						<title>Reagent Synthesizer</title>
 						<script language='javascript' type='text/javascript'>
-						[js_byjax]
+						[GLOB.js_byjax]
 						</script>
 						<style>
 						h3 {margin-bottom:2px;font-size:14px;}

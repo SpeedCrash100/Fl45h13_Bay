@@ -64,7 +64,7 @@ var/global/list/rune_list = new()
 GLOBAL_LIST_EMPTY(endgame_exits)
 GLOBAL_LIST_EMPTY(endgame_safespawns)
 
-GLOBAL_LIST_INIT(syndicate_access, list(access_maint_tunnels, access_syndicate, access_external_airlocks))
+GLOBAL_LIST_INIT(syndicate_access, list(access_maint_tunnels, GLOB.access_syndicate, GLOB.access_external_airlocks))
 
 // Strings which corraspond to bodypart covering flags, useful for outputting what something covers.
 var/global/list/string_part_flags = list(

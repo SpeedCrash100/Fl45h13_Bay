@@ -216,7 +216,7 @@
 	return ""
 
 /*
-// Add an option to the processor to switch processing mode. (COMPRESS -> UNCOMPRESS or UNCOMPRESS -> COMPRESS)
+// Add an option to the processor to switch processing mode. (GLOB.COMPRESS -> UNCOMPRESS or UNCOMPRESS -> GLOB.COMPRESS)
 /obj/machinery/telecomms/processor/Options_Menu()
 	var/dat = "<br>Processing Mode: <A href='?src=\ref[src];process=1'>[process_mode ? "UNCOMPRESS" : "COMPRESS"]</a>"
 	return dat

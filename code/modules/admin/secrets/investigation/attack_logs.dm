@@ -149,9 +149,9 @@
 /attack_filter/no_client/filter_attack(var/datum/attack_log/al)
 	if(!filter_missing_clients)
 		return FALSE
-	if(al.attacker && al.attacker.client.ckey == NO_CLIENT_CKEY)
+	if(al.attacker && al.attacker.client.ckey == GLOB.NO_CLIENT_CKEY)
 		return TRUE
-	if(al.victim && al.victim.client.ckey == NO_CLIENT_CKEY)
+	if(al.victim && al.victim.client.ckey == GLOB.NO_CLIENT_CKEY)
 		return TRUE
 	return FALSE
 
@@ -185,9 +185,9 @@
 	. = list()
 	for(var/log in attack_log_repository.attack_logs_)
 		var/datum/attack_log/al = log
-		if(check_attacker && al.attacker && al.attacker.client.ckey != NO_CLIENT_CKEY)
+		if(check_attacker && al.attacker && al.attacker.client.ckey != GLOB.NO_CLIENT_CKEY)
 			. |= al.attacker.client.ckey
-		if(check_victim && al.victim && al.victim.client.ckey != NO_CLIENT_CKEY)
+		if(check_victim && al.victim && al.victim.client.ckey != GLOB.NO_CLIENT_CKEY)
 			. |= al.victim.client.ckey
 	. = sortList(.)
 	. += "*ANY*"

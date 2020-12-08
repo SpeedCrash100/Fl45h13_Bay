@@ -14,7 +14,7 @@
 
 /obj/structure/closet/secure_closet/freezer/kitchen
 	name = "kitchen cabinet"
-	req_access = list(access_kitchen)
+	req_access = list(GLOB.access_kitchen)
 
 	New()
 		..()
@@ -78,7 +78,7 @@
 	icon_opened = "fridgeopen"
 	icon_broken = "fridgebroken"
 	icon_off = "fridgebroken"
-	req_access = list(access_heads_vault)
+	req_access = list(GLOB.access_heads_vault)
 
 /obj/structure/closet/secure_closet/freezer/money/New()
 	..()

@@ -180,7 +180,7 @@
 
 /obj/item/device/flash/synthetic
 	name = "synthetic flash"
-	desc = "When a problem arises, SCIENCE is the solution."
+	desc = "When a problem arises, GLOB.SCIENCE is the solution."
 	icon_state = "sflash"
 	origin_tech = list(TECH_MAGNET = 2, TECH_COMBAT = 1)
 

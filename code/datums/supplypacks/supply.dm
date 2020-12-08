@@ -82,4 +82,4 @@
 	cost = 15
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Shaft miner equipment"
-	access = access_mining
+	access = GLOB.access_mining

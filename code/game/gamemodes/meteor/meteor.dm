@@ -46,14 +46,14 @@
 		command_announcement.Announce(start_text, alert_title)
 		for(var/obj/machinery/shield_diffuser/SD in GLOB.machines)
 			SD.meteor_alarm(INFINITY)
-		next_wave = round_duration_in_ticks + (meteor_wave_delay * time_between_waves_minutes)
+		next_wave = round_duration_in_ticks + (GLOB.meteor_wave_delay * time_between_waves_minutes)
 	if((round_duration_in_ticks >= METEOR_FAILSAFE_THRESHOLD) && (meteor_severity < 15) && !failsafe_triggered)
 		log_and_message_admins("Meteor mode severity failsafe triggered: Severity forced to 15.")
 		meteor_severity = 15
 		failsafe_triggered = 1
 
 	if(round_duration_in_ticks >= next_wave)
-		next_wave = round_duration_in_ticks + (meteor_wave_delay * time_between_waves_minutes)
+		next_wave = round_duration_in_ticks + (GLOB.meteor_wave_delay * time_between_waves_minutes)
 		// Starts as barely noticeable dust impact, ends as barrage of most severe meteor types the code has to offer. Have fun.
 		spawn()
 			spawn_meteors(meteor_severity, get_meteor_types(), pick(GLOB.cardinal))

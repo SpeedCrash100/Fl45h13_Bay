@@ -16,7 +16,7 @@ var/warrant_uid = 0
 	program_icon_state = "warrant"
 	requires_ntnet = 1
 	available_on_ntnet = 1
-	required_access = access_security
+	required_access = GLOB.access_security
 	usage_flags = PROGRAM_ALL
 	nanomodule_path = /datum/nano_module/program/digitalwarrant/
 
@@ -83,7 +83,7 @@ var/warrant_uid = 0
 	if(!istype(user))
 		return
 	var/obj/item/weapon/card/id/I = user.GetIdCard()
-	if(!istype(I) || !I.registered_name || !(access_security in I.access))
+	if(!istype(I) || !I.registered_name || !(GLOB.access_security in I.access))
 		to_chat(user, "Authentication error: Unable to locate ID with apropriate access to allow this operation.")
 		return
 

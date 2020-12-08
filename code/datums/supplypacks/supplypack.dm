@@ -34,7 +34,7 @@ var/decl/hierarchy/supply_pack/cargo_supply_packs	// Non-category supply packs
 	return sm.spawn_contents(src, location)
 
 /*
-//SUPPLY PACKS
+//GLOB.SUPPLY PACKS
 //NOTE: only secure crate types use the access var (and are lockable)
 //NOTE: hidden packs only show up when the computer has been hacked.
 //ANOTER NOTE: Contraband is obtainable through modified supplycomp circuitboards.

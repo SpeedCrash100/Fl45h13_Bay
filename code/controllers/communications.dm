@@ -125,32 +125,32 @@ GLOBAL_VAR_CONST(MED_I_FREQ, 1485)
 GLOBAL_VAR_CONST(SEC_I_FREQ, 1475)
 
 var/list/radiochannels = list(
-	"Common"		= PUB_FREQ,
-	"Science"		= SCI_FREQ,
-	"Command"		= COMM_FREQ,
-	"Medical"		= MED_FREQ,
-	"Engineering"	= ENG_FREQ,
-	"Security" 		= SEC_FREQ,
-	"Response Team" = ERT_FREQ,
-	"Special Ops" 	= DTH_FREQ,
-	"Mercenary" 	= SYND_FREQ,
-	"Raider"		= RAID_FREQ,
-	"Supply" 		= SUP_FREQ,
-	"Service" 		= SRV_FREQ,
-	"AI Private"	= AI_FREQ,
-	"Entertainment" = ENT_FREQ,
-	"Medical(I)"	= MED_I_FREQ,
-	"Security(I)"	= SEC_I_FREQ
+	"Common"		= GLOB.PUB_FREQ,
+	"Science"		= GLOB.SCI_FREQ,
+	"Command"		= GLOB.COMM_FREQ,
+	"Medical"		= GLOB.MED_FREQ,
+	"Engineering"	= GLOB.ENG_FREQ,
+	"Security" 		= GLOB.SEC_FREQ,
+	"Response Team" = GLOB.ERT_FREQ,
+	"Special Ops" 	= GLOB.DTH_FREQ,
+	"Mercenary" 	= GLOB.SYND_FREQ,
+	"Raider"		= GLOB.RAID_FREQ,
+	"Supply" 		= GLOB.SUP_FREQ,
+	"Service" 		= GLOB.SRV_FREQ,
+	"AI Private"	= GLOB.AI_FREQ,
+	"Entertainment" = GLOB.ENT_FREQ,
+	"Medical(I)"	= GLOB.MED_I_FREQ,
+	"Security(I)"	= GLOB.SEC_I_FREQ
 )
 
 // central command channels, i.e deathsquid & response teams
-GLOBAL_LIST_INIT(CENT_FREQS, list(ERT_FREQ, DTH_FREQ))
+GLOBAL_LIST_INIT(CENT_FREQS, list(ERT_FREQ, GLOB.DTH_FREQ))
 
 // Antag channels, i.e. Syndicate
-GLOBAL_LIST_INIT(ANTAG_FREQS, list(SYND_FREQ, RAID_FREQ))
+GLOBAL_LIST_INIT(ANTAG_FREQS, list(SYND_FREQ, GLOB.RAID_FREQ))
 
 //Department channels, arranged lexically
-GLOBAL_LIST_INIT(DEPT_FREQS, list(AI_FREQ, COMM_FREQ, ENG_FREQ, MED_FREQ, SEC_FREQ, SCI_FREQ, SRV_FREQ, SUP_FREQ, ENT_FREQ))
+GLOBAL_LIST_INIT(DEPT_FREQS, list(AI_FREQ, GLOB.COMM_FREQ, GLOB.ENG_FREQ, GLOB.MED_FREQ, GLOB.SEC_FREQ, GLOB.SCI_FREQ, GLOB.SRV_FREQ, GLOB.SUP_FREQ, GLOB.ENT_FREQ))
 
 #define TRANSMISSION_WIRE	0
 #define TRANSMISSION_RADIO	1
@@ -163,25 +163,25 @@ GLOBAL_LIST_INIT(DEPT_FREQS, list(AI_FREQ, COMM_FREQ, ENG_FREQ, MED_FREQ, SEC_FR
 	if(frequency in GLOB.CENT_FREQS)
 		return "centradio"
 	// command channel
-	if(frequency == COMM_FREQ)
+	if(frequency == GLOB.COMM_FREQ)
 		return "comradio"
 	// AI private channel
-	if(frequency == AI_FREQ)
+	if(frequency == GLOB.AI_FREQ)
 		return "airadio"
 	// department radio formatting (poorly optimized, ugh)
-	if(frequency == SEC_FREQ)
+	if(frequency == GLOB.SEC_FREQ)
 		return "secradio"
-	if (frequency == ENG_FREQ)
+	if (frequency == GLOB.ENG_FREQ)
 		return "engradio"
-	if(frequency == SCI_FREQ)
+	if(frequency == GLOB.SCI_FREQ)
 		return "sciradio"
-	if(frequency == MED_FREQ)
+	if(frequency == GLOB.MED_FREQ)
 		return "medradio"
-	if(frequency == SUP_FREQ) // cargo
+	if(frequency == GLOB.SUP_FREQ) // cargo
 		return "supradio"
-	if(frequency == SRV_FREQ) // service
+	if(frequency == GLOB.SRV_FREQ) // service
 		return "srvradio"
-	if(frequency == ENT_FREQ) //entertainment
+	if(frequency == GLOB.ENT_FREQ) //entertainment
 		return "entradio"
 	if(frequency in GLOB.DEPT_FREQS)
 		return "deptradio"
@@ -269,7 +269,7 @@ var/global/datum/controller/radio/radio_controller
 			return 0
 	if (filter)
 		send_to_filter(source, signal, filter, start_point, range)
-		send_to_filter(source, signal, RADIO_DEFAULT, start_point, range)
+		send_to_filter(source, signal, GLOB.RADIO_DEFAULT, start_point, range)
 	else
 		//Broadcast the signal to everyone!
 		for (var/next_filter in devices)
@@ -294,7 +294,7 @@ var/global/datum/controller/radio/radio_controller
 
 /datum/radio_frequency/proc/add_listener(obj/device as obj, var/filter as text|null)
 	if (!filter)
-		filter = RADIO_DEFAULT
+		filter = GLOB.RADIO_DEFAULT
 	//log_admin("add_listener(device=[device],filter=[filter]) frequency=[frequency]")
 	var/list/obj/devices_line = devices[filter]
 	if (!devices_line)

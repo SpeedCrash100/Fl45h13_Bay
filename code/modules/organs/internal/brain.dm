@@ -172,7 +172,7 @@
 			var/blood_volume = owner.get_effective_blood_volume()
 
 			if(owner.is_asystole()) // Heart is missing or isn't beating and we're not breathing (hardcrit)
-				blood_volume = min(blood_volume, BLOOD_VOLUME_SURVIVE)
+				blood_volume = min(blood_volume, GLOB.BLOOD_VOLUME_SURVIVE)
 				owner.Paralyse(3)
 
 			else if(owner.should_have_organ(BP_LUNGS))
@@ -185,29 +185,29 @@
 			//Effects of bloodloss
 			switch(blood_volume)
 
-				if(BLOOD_VOLUME_SAFE to INFINITY)
+				if(GLOB.BLOOD_VOLUME_SAFE to INFINITY)
 					if((damage%damage_threshold_value)>=1 || (damage && owner.chem_effects[CE_BRAIN_REGEN]))
 						damage--
-				if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
+				if(GLOB.BLOOD_VOLUME_OKAY to GLOB.BLOOD_VOLUME_SAFE)
 					if(prob(1))
 						to_chat(owner, "<span class='warning'>You feel [pick("dizzy","woozy","faint")]...</span>")
 					if(!past_damage_threshold(2))
 						take_damage(1)
-				if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
+				if(GLOB.BLOOD_VOLUME_BAD to GLOB.BLOOD_VOLUME_OKAY)
 					owner.eye_blurry = max(owner.eye_blurry,6)
 					if(!past_damage_threshold(4))
 						take_damage(1)
 					if(prob(15))
 						owner.Paralyse(rand(1,3))
 						to_chat(owner, "<span class='warning'>You feel extremely [pick("dizzy","woozy","faint")]...</span>")
-				if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
+				if(GLOB.BLOOD_VOLUME_SURVIVE to GLOB.BLOOD_VOLUME_BAD)
 					owner.eye_blurry = max(owner.eye_blurry,6)
 					if(!past_damage_threshold(6))
 						take_damage(1)
 					if(prob(15))
 						owner.Paralyse(3,5)
 						to_chat(owner, "<span class='warning'>You feel extremely [pick("dizzy","woozy","faint")]...</span>")
-				if(-(INFINITY) to BLOOD_VOLUME_SURVIVE) // Also see heart.dm, being below this point puts you into cardiac arrest.
+				if(-(INFINITY) to GLOB.BLOOD_VOLUME_SURVIVE) // Also see heart.dm, being below this point puts you into cardiac arrest.
 					owner.eye_blurry = max(owner.eye_blurry,6)
 					take_damage(1)
 	..()

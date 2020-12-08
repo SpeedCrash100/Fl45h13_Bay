@@ -667,7 +667,7 @@
 
 	glass_name = "cup of tea"
 	glass_desc = "Tasty black tea, it has antioxidants, it's good for you!"
-	glass_special = list(DRINK_VAPOR)
+	glass_special = list(GLOB.DRINK_VAPOR)
 
 /datum/reagent/drink/tea/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
@@ -685,7 +685,7 @@
 
 	glass_name = "iced tea"
 	glass_desc = "No relation to a certain rap artist/ actor."
-	glass_special = list(DRINK_ICE)
+	glass_special = list(GLOB.DRINK_ICE)
 
 /datum/reagent/drink/coffee
 	name = "Coffee"
@@ -702,7 +702,7 @@
 
 	glass_name = "coffee"
 	glass_desc = "Don't drop it, or you'll send scalding liquid and glass shards everywhere."
-	glass_special = list(DRINK_VAPOR)
+	glass_special = list(GLOB.DRINK_VAPOR)
 
 /datum/reagent/drink/coffee/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
@@ -743,7 +743,7 @@
 
 	glass_name = "iced coffee"
 	glass_desc = "A drink to perk you up and refresh you!"
-	glass_special = list(DRINK_ICE)
+	glass_special = list(GLOB.DRINK_ICE)
 
 /datum/reagent/drink/coffee/soy_latte
 	name = "Soy Latte"
@@ -787,7 +787,7 @@
 
 	glass_name = "hot chocolate"
 	glass_desc = "Made with love! And cocoa beans."
-	glass_special = list(DRINK_VAPOR)
+	glass_special = list(GLOB.DRINK_VAPOR)
 
 /datum/reagent/drink/sodawater
 	name = "Soda Water"
@@ -801,7 +801,7 @@
 
 	glass_name = "soda water"
 	glass_desc = "Soda water. Why not make a scotch and soda?"
-	glass_special = list(DRINK_FIZZ)
+	glass_special = list(GLOB.DRINK_FIZZ)
 
 /datum/reagent/drink/grapesoda
 	name = "Grape Soda"
@@ -813,7 +813,7 @@
 
 	glass_name = "grape soda"
 	glass_desc = "Looks like a delicious drink!"
-	glass_special = list(DRINK_FIZZ)
+	glass_special = list(GLOB.DRINK_FIZZ)
 
 /datum/reagent/drink/tonic
 	name = "Tonic Water"
@@ -839,7 +839,7 @@
 
 	glass_name = "lemonade"
 	glass_desc = "Oh the nostalgia..."
-	glass_special = list(DRINK_FIZZ)
+	glass_special = list(GLOB.DRINK_FIZZ)
 
 /datum/reagent/drink/kiraspecial
 	name = "Kira Special"
@@ -851,7 +851,7 @@
 
 	glass_name = "Kira Special"
 	glass_desc = "Long live the guy who everyone had mistaken for a girl. Baka!"
-	glass_special = list(DRINK_FIZZ)
+	glass_special = list(GLOB.DRINK_FIZZ)
 
 /datum/reagent/drink/brownstar
 	name = "Brown Star"
@@ -919,7 +919,7 @@
 
 	glass_name = "Nuka-Cola"
 	glass_desc = "Don't cry, Don't raise your eye, It's only nuclear wasteland"
-	glass_special = list(DRINK_FIZZ)
+	glass_special = list(GLOB.DRINK_FIZZ)
 
 /datum/reagent/drink/nuka_cola/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
@@ -951,7 +951,7 @@
 
 	glass_name = "Space Cola"
 	glass_desc = "A glass of refreshing Space Cola"
-	glass_special = list(DRINK_FIZZ)
+	glass_special = list(GLOB.DRINK_FIZZ)
 
 /datum/reagent/drink/spacemountainwind
 	name = "Mountain Wind"
@@ -965,7 +965,7 @@
 
 	glass_name = "Space Mountain Wind"
 	glass_desc = "Space Mountain Wind. As you know, there are no mountains in space, only wind."
-	glass_special = list(DRINK_FIZZ)
+	glass_special = list(GLOB.DRINK_FIZZ)
 
 /datum/reagent/drink/dr_gibb
 	name = "Dr. Gibb"
@@ -989,7 +989,7 @@
 
 	glass_name = "Space-up"
 	glass_desc = "Space-up. It helps keep your cool."
-	glass_special = list(DRINK_FIZZ)
+	glass_special = list(GLOB.DRINK_FIZZ)
 
 /datum/reagent/drink/lemon_lime
 	name = "Lemon Lime"
@@ -1001,7 +1001,7 @@
 
 	glass_name = "lemon lime soda"
 	glass_desc = "A tangy substance made of 0.5% natural citrus!"
-	glass_special = list(DRINK_FIZZ)
+	glass_special = list(GLOB.DRINK_FIZZ)
 
 /datum/reagent/drink/doctor_delight
 	name = "The Doctor's Delight"
@@ -1073,7 +1073,7 @@
 
 	glass_name = "ice"
 	glass_desc = "Generally, you're supposed to put something else in there too..."
-	glass_icon = DRINK_ICON_NOISY
+	glass_icon = GLOB.DRINK_ICON_NOISY
 
 /datum/reagent/drink/nothing
 	name = "Nothing"
@@ -1722,7 +1722,7 @@
 
 	glass_name = "iced beer"
 	glass_desc = "A beer so frosty, the air around it freezes."
-	glass_special = list(DRINK_ICE)
+	glass_special = list(GLOB.DRINK_ICE)
 
 /datum/reagent/ethanol/irishcarbomb
 	name = "Irish Car Bomb"
@@ -1849,7 +1849,7 @@
 
 	glass_name = "Neurotoxin"
 	glass_desc = "A drink that is guaranteed to knock you silly."
-	glass_icon = DRINK_ICON_NOISY
+	glass_icon = GLOB.DRINK_ICON_NOISY
 	glass_special = list("neuroright")
 
 /datum/reagent/ethanol/neurotoxin/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)

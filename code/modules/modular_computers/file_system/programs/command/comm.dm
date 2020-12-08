@@ -9,7 +9,7 @@
 	program_icon_state = "comm"
 	nanomodule_path = /datum/nano_module/program/comm
 	extended_desc = "Used to effect command and control. Can relay long-range communications. This program can not be run on tablet computers."
-	required_access = access_heads
+	required_access = GLOB.access_heads
 	requires_ntnet = 1
 	size = 12
 	usage_flags = PROGRAM_CONSOLE | PROGRAM_LAPTOP

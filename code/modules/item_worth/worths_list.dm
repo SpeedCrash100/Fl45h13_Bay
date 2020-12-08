@@ -122,7 +122,7 @@ var/list/worths = list(
 					/obj/item/weapon/portable_destructive_analyzer = 780,
 					/obj/item/weapon/inflatable_dispenser = 300,
 					/obj/item/weapon/matter_decompiler = 400,
-//COMPUTER HARDWARE,
+//GLOB.COMPUTER HARDWARE,
 					/obj/item/weapon/computer_hardware/battery_module/advanced = 110,
 					/obj/item/weapon/computer_hardware/battery_module/super = 150,
 					/obj/item/weapon/computer_hardware/battery_module/ultra = 190,

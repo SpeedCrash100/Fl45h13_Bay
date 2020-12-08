@@ -29,27 +29,27 @@ var/global/datum/controller/occupations/job_master
 			occupations += job
 			occupations_by_type[job.type] = job
 			if(!setup_titles) continue
-			if(job.department_flag & COM)
+			if(job.department_flag & GLOB.COM)
 				GLOB.command_positions |= job.title
-			if(job.department_flag & SPT)
+			if(job.department_flag & GLOB.SPT)
 				GLOB.support_positions |= job.title
-			if(job.department_flag & SEC)
+			if(job.department_flag & GLOB.SEC)
 				GLOB.security_positions |= job.title
-			if(job.department_flag & ENG)
+			if(job.department_flag & GLOB.ENG)
 				GLOB.engineering_positions += job.title
-			if(job.department_flag & MED)
+			if(job.department_flag & GLOB.MED)
 				GLOB.medical_positions |= job.title
-			if(job.department_flag & SCI)
+			if(job.department_flag & GLOB.SCI)
 				GLOB.science_positions |= job.title
-			if(job.department_flag & SUP)
+			if(job.department_flag & GLOB.SUP)
 				GLOB.supply_positions |= job.title
-			if(job.department_flag & SRV)
+			if(job.department_flag & GLOB.SRV)
 				GLOB.service_positions |= job.title
-			if(job.department_flag & CRG)
+			if(job.department_flag & GLOB.CRG)
 				GLOB.cargo_positions |= job.title
-			if(job.department_flag & CIV)
+			if(job.department_flag & GLOB.CIV)
 				GLOB.civilian_positions |= job.title
-			if(job.department_flag & MSC)
+			if(job.department_flag & GLOB.MSC)
 				nonhuman_positions |= job.title
 
 		return 1
@@ -327,7 +327,7 @@ var/global/datum/controller/occupations/job_master
 		for(var/mob/new_player/player in unassigned)
 			if(player.client.prefs.alternate_option == BE_ASSISTANT)
 				Debug("AC2 Assistant located, Player: [player]")
-				if(GLOB.using_map.flags & MAP_HAS_BRANCH)
+				if(GLOB.using_map.flags & GLOB.MAP_HAS_BRANCH)
 					var/datum/mil_branch/branch = mil_branches.get_branch(player.get_branch_pref())
 					AssignRole(player, branch.assistant_job)
 				else

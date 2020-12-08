@@ -144,10 +144,10 @@ var/datum/antagonist/traitor/traitors
 	if(istype(R,/obj/item/device/radio))
 		// generate list of radio freqs
 		var/obj/item/device/radio/target_radio = R
-		var/freq = PUBLIC_LOW_FREQ
+		var/freq = GLOB.PUBLIC_LOW_FREQ
 		var/list/freqlist = list()
-		while (freq <= PUBLIC_HIGH_FREQ)
-			if (freq < 1451 || freq > PUB_FREQ)
+		while (freq <= GLOB.PUBLIC_HIGH_FREQ)
+			if (freq < 1451 || freq > GLOB.PUB_FREQ)
 				freqlist += freq
 			freq += 2
 			if ((freq % 2) == 0)

@@ -27,7 +27,7 @@
 
 	ACQUIRE_VIRTUAL_OR_TURF(center_vmob)
 	for(var/mob/observer/virtual/v_mob in range(hearing_range, center_vmob))
-		if(v_mob.abilities & VIRTUAL_ABILITY_HEAR)
+		if(v_mob.abilities & GLOB.VIRTUAL_ABILITY_HEAR)
 			. |= v_mob.host
 
 /proc/viewers_in_range(var/atom/movable/center_vmob)
@@ -35,7 +35,7 @@
 
 	ACQUIRE_VIRTUAL_OR_TURF(center_vmob)
 	for(var/mob/observer/virtual/v_mob in range(world.view, center_vmob))
-		if(v_mob.abilities & VIRTUAL_ABILITY_SEE)
+		if(v_mob.abilities & GLOB.VIRTUAL_ABILITY_SEE)
 			. |= v_mob.host
 
 /***************
@@ -51,7 +51,7 @@
 
 	ACQUIRE_VIRTUAL_OR_TURF(heard_vmob)
 	for(var/mob/observer/virtual/v_mob in hearers(range, heard_vmob))
-		if(v_mob.abilities & VIRTUAL_ABILITY_HEAR)
+		if(v_mob.abilities & GLOB.VIRTUAL_ABILITY_HEAR)
 			. |= v_mob.host
 
 /***************
@@ -75,7 +75,7 @@
 		return
 
 	for(var/mob/observer/virtual/seeing_v_mob in viewers(world.view, viewed_atom))
-		if(!(seeing_v_mob.abilities & VIRTUAL_ABILITY_SEE))
+		if(!(seeing_v_mob.abilities & GLOB.VIRTUAL_ABILITY_SEE))
 			continue
 		var/atom/movable/host = seeing_v_mob.host
 		if(host.virtual_can_see_turf(T))

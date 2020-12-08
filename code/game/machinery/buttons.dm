@@ -213,7 +213,7 @@
 
 /obj/machinery/button/toggle/valve/initialize()
 	..()
-	radio_connection = radio_controller.add_object(src, frequency, RADIO_ATMOSIA)
+	radio_connection = radio_controller.add_object(src, frequency, GLOB.RADIO_ATMOSIA)
 
 /obj/machinery/button/toggle/valve/update_icon()
 	if(!active)
@@ -229,6 +229,6 @@
 	signal.frequency = frequency
 	signal.data["tag"] = id
 	signal.data["command"] = "valve_toggle"
-	radio_connection.post_signal(src, signal, filter = RADIO_ATMOSIA)
+	radio_connection.post_signal(src, signal, filter = GLOB.RADIO_ATMOSIA)
 	active = !active
 	update_icon()

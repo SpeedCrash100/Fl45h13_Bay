@@ -28,14 +28,14 @@
 			var/level = pref.skills[S.ID]
 			. += "<tr style='text-align:left;'>"
 			. += "<th><a href='?src=\ref[src];skillinfo=\ref[S]'>[S.name]</a></th>"
-			. += skill_to_button(S, "Untrained", level, SKILL_NONE)
+			. += skill_to_button(S, "Untrained", level, GLOB.SKILL_NONE)
 			// secondary skills don't have an amateur level
 			if(S.secondary)
 				. += "<th></th>"
 			else
-				. += skill_to_button(S, "Amateur", level, SKILL_BASIC)
-			. += skill_to_button(S, "Trained", level, SKILL_ADEPT)
-			. += skill_to_button(S, "Professional", level, SKILL_EXPERT)
+				. += skill_to_button(S, "Amateur", level, GLOB.SKILL_BASIC)
+			. += skill_to_button(S, "Trained", level, GLOB.SKILL_ADEPT)
+			. += skill_to_button(S, "Professional", level, GLOB.SKILL_EXPERT)
 			. += "</tr>"
 	. += "</table>"
 	. = jointext(.,null)

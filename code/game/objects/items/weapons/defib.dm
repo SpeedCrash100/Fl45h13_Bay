@@ -104,7 +104,7 @@
 /obj/item/weapon/defibrillator/emag_act(mob/user)
 	if(paddles)
 		return paddles.emag_act(user)
-	return NO_EMAG_ACT
+	return GLOB.NO_EMAG_ACT
 
 //Paddle stuff
 
@@ -278,7 +278,7 @@
 	if(!H.should_have_organ(BP_HEART))
 		return FALSE
 	var/obj/item/organ/internal/heart/heart = H.internal_organs_by_name[BP_HEART]
-	if(!heart || H.get_effective_blood_volume() < BLOOD_VOLUME_SURVIVE)
+	if(!heart || H.get_effective_blood_volume() < GLOB.BLOOD_VOLUME_SURVIVE)
 		return TRUE
 	return FALSE
 

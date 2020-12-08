@@ -145,24 +145,24 @@
 /datum/preferences/proc/ZeroSkills(var/forced = 0)
 	for(var/V in GLOB.SKILLS) for(var/datum/skill/S in GLOB.SKILLS[V])
 		if(!skills.Find(S.ID) || forced)
-			skills[S.ID] = SKILL_NONE
+			skills[S.ID] = GLOB.SKILL_NONE
 
 /datum/preferences/proc/CalculateSkillPoints()
 	used_skillpoints = 0
 	for(var/V in GLOB.SKILLS) for(var/datum/skill/S in GLOB.SKILLS[V])
 		var/multiplier = 1
 		switch(skills[S.ID])
-			if(SKILL_NONE)
+			if(GLOB.SKILL_NONE)
 				used_skillpoints += 0 * multiplier
-			if(SKILL_BASIC)
+			if(GLOB.SKILL_BASIC)
 				used_skillpoints += 1 * multiplier
-			if(SKILL_ADEPT)
+			if(GLOB.SKILL_ADEPT)
 				// secondary skills cost less
 				if(S.secondary)
 					used_skillpoints += 1 * multiplier
 				else
 					used_skillpoints += 3 * multiplier
-			if(SKILL_EXPERT)
+			if(GLOB.SKILL_EXPERT)
 				// secondary skills cost less
 				if(S.secondary)
 					used_skillpoints += 3 * multiplier

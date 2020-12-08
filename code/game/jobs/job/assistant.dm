@@ -1,7 +1,7 @@
 /datum/job/assistant
 	title = "Assistant"
 	department = "Civilian"
-	department_flag = CIV
+	department_flag = GLOB.CIV
 	faction = "Station"
 	total_positions = -1
 	spawn_positions = -1
@@ -15,6 +15,6 @@
 
 /datum/job/assistant/get_access()
 	if(config.assistant_maint)
-		return list(access_maint_tunnels)
+		return list(GLOB.access_maint_tunnels)
 	else
 		return list()

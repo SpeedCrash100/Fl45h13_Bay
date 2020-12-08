@@ -30,26 +30,26 @@ GLOBAL_VAR_CONST(VENDING_WIRE_IDSCAN, 8)
 /datum/wires/vending/UpdatePulsed(var/index)
 	var/obj/machinery/vending/V = holder
 	switch(index)
-		if(VENDING_WIRE_THROW)
+		if(GLOB.VENDING_WIRE_THROW)
 			V.shoot_inventory = !V.shoot_inventory
-		if(VENDING_WIRE_CONTRABAND)
+		if(GLOB.VENDING_WIRE_CONTRABAND)
 			V.categories ^= CAT_HIDDEN
-		if(VENDING_WIRE_ELECTRIFY)
+		if(GLOB.VENDING_WIRE_ELECTRIFY)
 			V.seconds_electrified = 30
-		if(VENDING_WIRE_IDSCAN)
+		if(GLOB.VENDING_WIRE_IDSCAN)
 			V.scan_id = !V.scan_id
 
 /datum/wires/vending/UpdateCut(var/index, var/mended)
 	var/obj/machinery/vending/V = holder
 	switch(index)
-		if(VENDING_WIRE_THROW)
+		if(GLOB.VENDING_WIRE_THROW)
 			V.shoot_inventory = !mended
-		if(VENDING_WIRE_CONTRABAND)
+		if(GLOB.VENDING_WIRE_CONTRABAND)
 			V.categories &= ~CAT_HIDDEN
-		if(VENDING_WIRE_ELECTRIFY)
+		if(GLOB.VENDING_WIRE_ELECTRIFY)
 			if(mended)
 				V.seconds_electrified = 0
 			else
 				V.seconds_electrified = -1
-		if(VENDING_WIRE_IDSCAN)
+		if(GLOB.VENDING_WIRE_IDSCAN)
 			V.scan_id = 1

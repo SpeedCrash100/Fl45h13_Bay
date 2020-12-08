@@ -50,10 +50,10 @@ var/const/Represents a special statement in the code triggered by a keyword.
 
 		kwReturn
 			Parse(n_Parser/nS_Parser/parser)
-				.=KW_PASS
+				.=GLOB.KW_PASS
 				if(istype(parser.curBlock, /node/BlockDefinition/GlobalBlock))
 					parser.errors+=new/scriptError/BadReturn(parser.curToken)
-					. = KW_WARN
+					. = GLOB.KW_WARN
 				var/node/statement/ReturnStatement/stmt=new
 				parser.NextToken()   //skip 'return' token
 				stmt.value=parser.ParseExpression()
@@ -61,79 +61,79 @@ var/const/Represents a special statement in the code triggered by a keyword.
 
 		kwIf
 			Parse(n_Parser/nS_Parser/parser)
-				.=KW_PASS
+				.=GLOB.KW_PASS
 				var/node/statement/IfStatement/stmt=new
 				parser.NextToken()  //skip 'if' token
 				stmt.cond=parser.ParseParenExpression()
 				if(!parser.CheckToken(")", /token/symbol))
-					return KW_FAIL
+					return GLOB.KW_FAIL
 				if(!parser.CheckToken("{", /token/symbol, skip=0)) //Token needs to be preserved for parse loop, so skip=0
-					return KW_ERR
+					return GLOB.KW_ERR
 				parser.curBlock.statements+=stmt
 				stmt.block=new
 				parser.AddBlock(stmt.block)
 
 		kwElse
 			Parse(n_Parser/nS_Parser/parser)
-				.=KW_PASS
+				.=GLOB.KW_PASS
 				var/list/L=parser.curBlock.statements
 				var/node/statement/IfStatement/stmt
 				if(L&&L.len) stmt=L[L.len] //Get the last statement in the current block
 				if(!stmt || !istype(stmt) || stmt.else_block) //Ensure that it is an if statement
 					parser.errors+=new/scriptError/ExpectedToken("if statement",parser.curToken)
-					return KW_FAIL
+					return GLOB.KW_FAIL
 				parser.NextToken()         //skip 'else' token
 				if(!parser.CheckToken("{", /token/symbol, skip=0))
-					return KW_ERR
+					return GLOB.KW_ERR
 				stmt.else_block=new()
 				parser.AddBlock(stmt.else_block)
 
 		kwWhile
 			Parse(n_Parser/nS_Parser/parser)
-				.=KW_PASS
+				.=GLOB.KW_PASS
 				var/node/statement/WhileLoop/stmt=new
 				parser.NextToken()  //skip 'while' token
 				stmt.cond=parser.ParseParenExpression()
 				if(!parser.CheckToken(")", /token/symbol))
-					return KW_FAIL
+					return GLOB.KW_FAIL
 				if(!parser.CheckToken("{", /token/symbol, skip=0))
-					return KW_ERR
+					return GLOB.KW_ERR
 				parser.curBlock.statements+=stmt
 				stmt.block=new
 				parser.AddBlock(stmt.block)
 
 		kwBreak
 			Parse(n_Parser/nS_Parser/parser)
-				.=KW_PASS
+				.=GLOB.KW_PASS
 				if(istype(parser.curBlock, /node/BlockDefinition/GlobalBlock))
 					parser.errors+=new/scriptError/BadToken(parser.curToken)
-					. = KW_WARN
+					. = GLOB.KW_WARN
 				var/node/statement/BreakStatement/stmt=new
 				parser.NextToken()   //skip 'break' token
 				parser.curBlock.statements+=stmt
 
 		kwContinue
 			Parse(n_Parser/nS_Parser/parser)
-				.=KW_PASS
+				.=GLOB.KW_PASS
 				if(istype(parser.curBlock, /node/BlockDefinition/GlobalBlock))
 					parser.errors+=new/scriptError/BadToken(parser.curToken)
-					. = KW_WARN
+					. = GLOB.KW_WARN
 				var/node/statement/ContinueStatement/stmt=new
 				parser.NextToken()   //skip 'break' token
 				parser.curBlock.statements+=stmt
 
 		kwDef
 			Parse(n_Parser/nS_Parser/parser)
-				.=KW_PASS
+				.=GLOB.KW_PASS
 				var/node/statement/FunctionDefinition/def=new
 				parser.NextToken() //skip 'def' token
 				if(!parser.options.IsValidID(parser.curToken.value))
 					parser.errors+=new/scriptError/InvalidID(parser.curToken)
-					return KW_FAIL
+					return GLOB.KW_FAIL
 				def.func_name=parser.curToken.value
 				parser.NextToken()
 				if(!parser.CheckToken("(", /token/symbol))
-					return KW_FAIL
+					return GLOB.KW_FAIL
 				for() //for now parameters can be separated by whitespace - they don't need a comma in between
 					if(istype(parser.curToken, /token/symbol))
 						switch(parser.curToken.value)
@@ -143,16 +143,16 @@ var/const/Represents a special statement in the code triggered by a keyword.
 								break
 							else
 								parser.errors+=new/scriptError/BadToken(parser.curToken)
-								return KW_ERR
+								return GLOB.KW_ERR
 
 					else if(istype(parser.curToken, /token/word))
 						def.parameters+=parser.curToken.value
 						parser.NextToken()
 					else
 						parser.errors+=new/scriptError/InvalidID(parser.curToken)
-						return KW_ERR
+						return GLOB.KW_ERR
 				if(!parser.CheckToken(")", /token/symbol))
-					return KW_FAIL
+					return GLOB.KW_FAIL
 
 				if(istype(parser.curToken, /token/end)) //Function prototype
 					parser.curBlock.statements+=def
@@ -163,4 +163,4 @@ var/const/Represents a special statement in the code triggered by a keyword.
 					parser.AddBlock(def.block)
 				else
 					parser.errors+=new/scriptError/BadToken(parser.curToken)
-					return KW_FAIL
+					return GLOB.KW_FAIL

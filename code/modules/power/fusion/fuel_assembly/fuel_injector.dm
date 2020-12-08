@@ -6,7 +6,7 @@ GLOBAL_LIST_EMPTY(fuel_injectors)
 	icon_state = "injector0"
 	density = 1
 	anchored = 0
-	req_access = list(access_engine)
+	req_access = list(GLOB.access_engine)
 	use_power = 1
 	idle_power_usage = 10
 	active_power_usage = 500

@@ -11,7 +11,7 @@ GLOBAL_LIST_EMPTY(all_virtual_listeners)
 
 	var/atom/movable/host
 	var/host_type = /atom/movable
-	var/abilities = VIRTUAL_ABILITY_HEAR|VIRTUAL_ABILITY_SEE
+	var/abilities = GLOB.VIRTUAL_ABILITY_HEAR|GLOB.VIRTUAL_ABILITY_SEE
 	var/list/broadcast_methods
 
 	var/static/list/overlay_icons
@@ -41,9 +41,9 @@ GLOBAL_LIST_EMPTY(all_virtual_listeners)
 			overlay_icons[i_state] = image(icon = icon, icon_state = i_state)
 	overlays.Cut()
 
-	if(abilities & VIRTUAL_ABILITY_HEAR)
+	if(abilities & GLOB.VIRTUAL_ABILITY_HEAR)
 		overlays += overlay_icons["hear"]
-	if(abilities & VIRTUAL_ABILITY_SEE)
+	if(abilities & GLOB.VIRTUAL_ABILITY_SEE)
 		overlays += overlay_icons["see"]
 
 /***********************

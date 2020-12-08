@@ -4,7 +4,7 @@
 	nanomodule_path = /datum/nano_module/rcon
 	program_icon_state = "generic"
 	extended_desc = "This program allows remote control of power distribution systems. This program can not be run on tablet computers."
-	required_access = access_engine
+	required_access = GLOB.access_engine
 	requires_ntnet = 1
 	network_destination = "RCON remote control system"
 	requires_ntnet_feature = NTNET_SYSTEMCONTROL

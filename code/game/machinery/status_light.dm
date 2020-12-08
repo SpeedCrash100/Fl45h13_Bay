@@ -12,7 +12,7 @@
 /obj/machinery/status_light/initialize()
 	..()
 	update_icon()
-	radio_connection = register_radio(src, frequency, frequency, RADIO_ATMOSIA)
+	radio_connection = register_radio(src, frequency, frequency, GLOB.RADIO_ATMOSIA)
 
 
 /obj/machinery/status_light/update_icon()

@@ -22,7 +22,7 @@ var/repository/client/client_repository = new()
 /datum/client_lite
 	var/name = "*no mob*"
 	var/key  = "*no key*"
-	var/ckey = NO_CLIENT_CKEY
+	var/ckey = GLOB.NO_CLIENT_CKEY
 	var/ref // If ref is unset but ckey is set that means the client wasn't logged in at the time
 
 /datum/client_lite/New(var/mob/M)
@@ -35,13 +35,13 @@ var/repository/client/client_repository = new()
 	ref = M.client ? any2ref(M.client) : ref
 
 /datum/client_lite/proc/key_name(var/pm_link = TRUE, var/check_if_offline = TRUE)
-	if(!ref && ckey != NO_CLIENT_CKEY)
+	if(!ref && ckey != GLOB.NO_CLIENT_CKEY)
 		var/client/C = client_by_ckey(ckey)
 		if(C)
 			ref = any2ref(C)
 
 	if(!ref)
-		if(ckey == NO_CLIENT_CKEY)
+		if(ckey == GLOB.NO_CLIENT_CKEY)
 			return "[key]/([name])"
 		else
 			return "[key]/([name]) (DC)"

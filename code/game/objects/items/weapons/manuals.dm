@@ -108,7 +108,7 @@
 				<br>
 				<li>The crystal structure of the supermatter will begin to liquefy if its temperature exceeds 5000K. This eventually results in a massive release of light, heat and radiation, disintegration of both the supermatter crystal and most of the surrounding area, and as as-of-yet poorly documented psychological effects on all animals within a 2km radius. Appropriate action should be taken to stabilize or eject the supermatter before such occurs.</li>
 				<br>
-				<h2>SUPERMATTER HANDLING</h2>
+				<h2>GLOB.SUPERMATTER HANDLING</h2>
 				<li>Do not expose supermatter to oxygen.</li>
 				<li>Do not <del>touch supermatter</del> <del>without gloves</del> <del>without exosuit protection</del> allow supermatter to contact any solid object apart from specially-designed supporting pallet.</li>
 				<li>Do not directly view supermatter without meson goggles.</li>
@@ -494,7 +494,7 @@
 				<body>
 
 				<h1>Science For Dummies</h1>
-				So you want to further SCIENCE? Good man/woman/thing! However, SCIENCE is a complicated process even though it's quite easy. For the most part, it's a three step process:
+				So you want to further SCIENCE? Good man/woman/thing! However, GLOB.SCIENCE is a complicated process even though it's quite easy. For the most part, it's a three step process:
 				<ol>
 					<li><b>Deconstruct</b> items in the Destructive Analyzer to advance technology or improve the design.</li>
 					<li><b>Build</b> unlocked designs in the Protolathe and Circuit Imprinter.</li>

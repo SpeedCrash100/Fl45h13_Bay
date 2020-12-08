@@ -41,14 +41,14 @@
 	var/mob/living/bot/secbot/active 	// the active bot; if null, show bot list
 	var/list/botstatus			// the status signal sent by the bot
 
-	var/control_freq = BOT_FREQ
+	var/control_freq = GLOB.BOT_FREQ
 
 	// create a new QM cartridge, and register to receive bot control & beacon message
 	New()
 		..()
 		spawn(5)
 			if(radio_controller)
-				radio_controller.add_object(src, control_freq, filter = RADIO_SECBOT)
+				radio_controller.add_object(src, control_freq, filter = GLOB.RADIO_SECBOT)
 
 	// receive radio signals
 	// can detect bot status signals
@@ -85,22 +85,22 @@
 
 			if("control")
 				active = locate(href_list["bot"])
-				post_signal(control_freq, "command", "bot_status", "active", active, s_filter = RADIO_SECBOT)
+				post_signal(control_freq, "command", "bot_status", "active", active, s_filter = GLOB.RADIO_SECBOT)
 
 			if("scanbots")		// find all bots
 				botlist = null
-				post_signal(control_freq, "command", "bot_status", s_filter = RADIO_SECBOT)
+				post_signal(control_freq, "command", "bot_status", s_filter = GLOB.RADIO_SECBOT)
 
 			if("botlist")
 				active = null
 
 			if("stop", "go")
-				post_signal(control_freq, "command", href_list["op"], "active", active, s_filter = RADIO_SECBOT)
-				post_signal(control_freq, "command", "bot_status", "active", active, s_filter = RADIO_SECBOT)
+				post_signal(control_freq, "command", href_list["op"], "active", active, s_filter = GLOB.RADIO_SECBOT)
+				post_signal(control_freq, "command", "bot_status", "active", active, s_filter = GLOB.RADIO_SECBOT)
 
 			if("summon")
-				post_signal(control_freq, "command", "summon", "active", active, "target", get_turf(PDA) , s_filter = RADIO_SECBOT)
-				post_signal(control_freq, "command", "bot_status", "active", active, s_filter = RADIO_SECBOT)
+				post_signal(control_freq, "command", "summon", "active", active, "target", get_turf(PDA) , s_filter = GLOB.RADIO_SECBOT)
+				post_signal(control_freq, "command", "bot_status", "active", active, s_filter = GLOB.RADIO_SECBOT)
 
 
 /obj/item/radio/integrated/beepsky/Destroy()
@@ -123,7 +123,7 @@
 		if(!radio_controller)
 			return
 
-		if (src.frequency < PUBLIC_LOW_FREQ || src.frequency > PUBLIC_HIGH_FREQ)
+		if (src.frequency < GLOB.PUBLIC_LOW_FREQ || src.frequency > GLOB.PUBLIC_HIGH_FREQ)
 			src.frequency = sanitize_frequency(src.frequency)
 
 		set_frequency(frequency)

@@ -48,14 +48,14 @@ proc/show_skill_window(var/mob/user, var/mob/living/carbon/human/M)
 			var/level = M.skills[S.ID]
 			HTML += "<tr style='text-align:left;'>"
 			HTML += "<th>[S.name]</th>"
-			HTML += "<th><font color=[(level == SKILL_NONE) ? "red" : "black"]>\[Untrained\]</font></th>"
+			HTML += "<th><font color=[(level == GLOB.SKILL_NONE) ? "red" : "black"]>\[Untrained\]</font></th>"
 			// secondary skills don't have an amateur level
 			if(S.secondary)
 				HTML += "<th></th>"
 			else
-				HTML += "<th><font color=[(level == SKILL_BASIC) ? "red" : "black"]>\[Amateur\]</font></th>"
-			HTML += "<th><font color=[(level == SKILL_ADEPT) ? "red" : "black"]>\[Trained\]</font></th>"
-			HTML += "<th><font color=[(level == SKILL_EXPERT) ? "red" : "black"]>\[Professional\]</font></th>"
+				HTML += "<th><font color=[(level == GLOB.SKILL_BASIC) ? "red" : "black"]>\[Amateur\]</font></th>"
+			HTML += "<th><font color=[(level == GLOB.SKILL_ADEPT) ? "red" : "black"]>\[Trained\]</font></th>"
+			HTML += "<th><font color=[(level == GLOB.SKILL_EXPERT) ? "red" : "black"]>\[Professional\]</font></th>"
 			HTML += "</tr>"
 	HTML += "</table>"
 

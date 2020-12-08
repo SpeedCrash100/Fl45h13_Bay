@@ -6,7 +6,7 @@
 //the print must be there for it to be complete.  (Prints are 32 digits)
 GLOBAL_VAR_CONST(FINGERPRINT_COMPLETE, 6)
 proc/is_complete_print(var/print)
-	return stringpercent(print) <= FINGERPRINT_COMPLETE
+	return stringpercent(print) <= GLOB.FINGERPRINT_COMPLETE
 
 atom/var/list/suit_fibers
 atom/var/var/list/fingerprints

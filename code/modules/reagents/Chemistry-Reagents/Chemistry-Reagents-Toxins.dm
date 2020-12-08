@@ -85,7 +85,7 @@
 	T.assume_gas("phoron", volume, T20C)
 	remove_self(volume)
 
-// Produced during deuterium synthesis. Super poisonous, SUPER flammable (doesn't need oxygen to burn).
+// Produced during deuterium synthesis. Super poisonous, GLOB.SUPER flammable (doesn't need oxygen to burn).
 /datum/reagent/toxin/phoron/oxygen
 	name = "Oxyphoron"
 	id = "oxyphoron"

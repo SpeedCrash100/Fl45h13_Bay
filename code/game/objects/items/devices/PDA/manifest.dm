@@ -42,12 +42,12 @@ GLOBAL_LIST_INIT(acting_rank_prefixes, list("acting", "temporary", "interim", "p
 		var/mil_branch = null
 		var/mil_rank = null
 
-		if(GLOB.using_map.flags & MAP_HAS_BRANCH && t.fields["mil_branch"] && t.fields["mil_branch"] != "None")
+		if(GLOB.using_map.flags & GLOB.MAP_HAS_BRANCH && t.fields["mil_branch"] && t.fields["mil_branch"] != "None")
 			var/datum/mil_branch/branch_datum = mil_branches.get_branch(t.fields["mil_branch"])
 			if(branch_datum)
 				mil_branch = list("full" = branch_datum.name, "short" = branch_datum.name_short)
 
-		if(GLOB.using_map.flags & MAP_HAS_RANK && t.fields["mil_rank"] && t.fields["mil_rank"] != "None")
+		if(GLOB.using_map.flags & GLOB.MAP_HAS_RANK && t.fields["mil_rank"] && t.fields["mil_rank"] != "None")
 			var/datum/mil_rank/mil_rank_datum = mil_branches.get_rank(t.fields["mil_branch"], t.fields["mil_rank"])
 			if(mil_rank_datum)
 				mil_rank = list("full" = mil_rank_datum.name, "short" = mil_rank_datum.name_short)

@@ -33,5 +33,5 @@ var/datum/antagonist/deathsquad/mercenary/commandos
 	player.equip_to_slot_or_del(new /obj/item/weapon/melee/energy/sword(player), slot_l_hand)
 
 	create_id("Commando", player)
-	create_radio(SYND_FREQ, player)
+	create_radio(GLOB.SYND_FREQ, player)
 	return 1

@@ -26,21 +26,21 @@ GLOBAL_VAR_CONST(SUIT_STORAGE_WIRE_LOCKED, 4)
 /datum/wires/suit_storage_unit/UpdatePulsed(var/index)
 	var/obj/machinery/suit_cycler/S = holder
 	switch(index)
-		if(SUIT_STORAGE_WIRE_SAFETY)
+		if(GLOB.SUIT_STORAGE_WIRE_SAFETY)
 			S.safeties = !S.safeties
-		if(SUIT_STORAGE_WIRE_ELECTRIFY)
+		if(GLOB.SUIT_STORAGE_WIRE_ELECTRIFY)
 			S.electrified = 30
-		if(SUIT_STORAGE_WIRE_LOCKED)
+		if(GLOB.SUIT_STORAGE_WIRE_LOCKED)
 			S.locked = !S.locked
 
 /datum/wires/suit_storage_unit/UpdateCut(var/index, var/mended)
 	var/obj/machinery/suit_cycler/S = holder
 	switch(index)
-		if(SUIT_STORAGE_WIRE_SAFETY)
+		if(GLOB.SUIT_STORAGE_WIRE_SAFETY)
 			S.safeties = mended
-		if(SUIT_STORAGE_WIRE_LOCKED)
+		if(GLOB.SUIT_STORAGE_WIRE_LOCKED)
 			S.locked = mended
-		if(SUIT_STORAGE_WIRE_ELECTRIFY)
+		if(GLOB.SUIT_STORAGE_WIRE_ELECTRIFY)
 			if(mended)
 				S.electrified = 0
 			else

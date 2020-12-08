@@ -2,14 +2,14 @@
 /datum/job/chaplain
 	title = "Chaplain"
 	department = "Civilian"
-	department_flag = CIV
+	department_flag = GLOB.CIV
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#515151"
-	access = list(access_morgue, access_chapel_office, access_crematorium, access_maint_tunnels)
-	minimal_access = list(access_morgue, access_chapel_office, access_crematorium)
+	access = list(GLOB.access_morgue, GLOB.access_chapel_office, GLOB.access_crematorium, GLOB.access_maint_tunnels)
+	minimal_access = list(GLOB.access_morgue, GLOB.access_chapel_office, GLOB.access_crematorium)
 	alt_titles = list("Counselor")
 	outfit_type = /decl/hierarchy/outfit/job/chaplain
 

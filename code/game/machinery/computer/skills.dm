@@ -7,12 +7,12 @@
 	icon_keyboard = "laptop_key"
 	icon_screen = "medlaptop"
 	light_color = "#00b000"
-	req_one_access = list(access_heads)
+	req_one_access = list(GLOB.access_heads)
 	circuit = /obj/item/weapon/circuitboard/skills
 
 	var/obj/item/weapon/card/id/scan = null
 	var/authenticated = null
-	var/write_access_all = list(access_change_ids)  // access levels required to
+	var/write_access_all = list(GLOB.access_change_ids)  // access levels required to
 	var/write_access_any = list()                   // make changes to rank or job
 	var/has_write_access = FALSE  // Is the authenticated user able to change jobs and ranks?
 
@@ -100,9 +100,9 @@
 
 						send_rsc(user, front, "front.png")
 						send_rsc(user, side, "side.png")
-						if(GLOB.using_map.flags & MAP_HAS_BRANCH)
+						if(GLOB.using_map.flags & GLOB.MAP_HAS_BRANCH)
 							mil_rank_text += "Branch: <a href='?src=\ref[src];choice=Edit Field;field=mil_branch'>[active1.fields["mil_branch"] || "None"]</a><br>\n"
-						if(GLOB.using_map.flags & MAP_HAS_RANK)
+						if(GLOB.using_map.flags & GLOB.MAP_HAS_RANK)
 							mil_rank_text += "Rank: <a href='?src=\ref[src];choice=Edit Field;field=mil_rank'>[active1.fields["mil_rank"] || "None"]</a><br>\n"
 						dat += "<table><tr><td>	\
 						Name: <A href='?src=\ref[src];choice=Edit Field;field=name'>[active1.fields["name"]]</A><BR> \

@@ -33,7 +33,7 @@ GLOBAL_LIST_EMPTY(mob_hat_cache)
 	braintype = "Drone"
 	lawupdate = 0
 	density = 1
-	req_access = list(access_engine, access_robotics)
+	req_access = list(GLOB.access_engine, GLOB.access_robotics)
 	integrated_light_power = 3
 	local_transmit = 1
 	possession_candidate = 1

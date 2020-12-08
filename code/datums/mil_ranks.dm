@@ -109,7 +109,7 @@ var/datum/mil_branches/mil_branches = new()
  *  Populate the global branches list from GLOB.using_map
  */
 /hook/startup/proc/populate_branches()
-	if(!(GLOB.using_map.flags & MAP_HAS_BRANCH) && !(GLOB.using_map.flags & MAP_HAS_RANK))
+	if(!(GLOB.using_map.flags & GLOB.MAP_HAS_BRANCH) && !(GLOB.using_map.flags & GLOB.MAP_HAS_RANK))
 		mil_branches.branches  = null
 		mil_branches.spawn_branches = null
 		return 1

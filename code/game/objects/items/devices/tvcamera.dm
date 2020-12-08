@@ -24,7 +24,7 @@
 	camera.status = FALSE
 	radio = new(src)
 	radio.listening = FALSE
-	radio.set_frequency(ENT_FREQ)
+	radio.set_frequency(GLOB.ENT_FREQ)
 	update_icon()
 
 /obj/item/device/tvcamera/hear_talk(mob/living/M, msg, var/verb="says", datum/language/speaking=null)

@@ -150,7 +150,7 @@ GLOBAL_VAR_CONST(enterloopsanity, 100)
 	var/objects = 0
 	if(A && (A.flags & PROXMOVE))
 		for(var/atom/movable/thing in range(1))
-			if(objects > enterloopsanity) break
+			if(objects > GLOB.enterloopsanity) break
 			objects++
 			spawn(0)
 				if(A)

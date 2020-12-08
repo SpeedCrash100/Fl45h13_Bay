@@ -238,7 +238,7 @@
 	item_state = "electronic"
 	origin_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 2, TECH_BLUESPACE = 3)
 	matter = list(DEFAULT_WALL_MATERIAL = 1000,"glass" = 500)
-	var/frequency = PUB_FREQ
+	var/frequency = GLOB.PUB_FREQ
 	var/scan_ticks = 0
 	var/obj/item/device/radio/target_radio
 

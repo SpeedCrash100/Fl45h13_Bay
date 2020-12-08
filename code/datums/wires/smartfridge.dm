@@ -30,22 +30,22 @@ GLOBAL_VAR_CONST(SMARTFRIDGE_WIRE_IDSCAN, 4)
 /datum/wires/smartfridge/UpdatePulsed(var/index)
 	var/obj/machinery/smartfridge/S = holder
 	switch(index)
-		if(SMARTFRIDGE_WIRE_THROW)
+		if(GLOB.SMARTFRIDGE_WIRE_THROW)
 			S.shoot_inventory = !S.shoot_inventory
-		if(SMARTFRIDGE_WIRE_ELECTRIFY)
+		if(GLOB.SMARTFRIDGE_WIRE_ELECTRIFY)
 			S.seconds_electrified = 30
-		if(SMARTFRIDGE_WIRE_IDSCAN)
+		if(GLOB.SMARTFRIDGE_WIRE_IDSCAN)
 			S.scan_id = !S.scan_id
 
 /datum/wires/smartfridge/UpdateCut(var/index, var/mended)
 	var/obj/machinery/smartfridge/S = holder
 	switch(index)
-		if(SMARTFRIDGE_WIRE_THROW)
+		if(GLOB.SMARTFRIDGE_WIRE_THROW)
 			S.shoot_inventory = !mended
-		if(SMARTFRIDGE_WIRE_ELECTRIFY)
+		if(GLOB.SMARTFRIDGE_WIRE_ELECTRIFY)
 			if(mended)
 				S.seconds_electrified = 0
 			else
 				S.seconds_electrified = -1
-		if(SMARTFRIDGE_WIRE_IDSCAN)
+		if(GLOB.SMARTFRIDGE_WIRE_IDSCAN)
 			S.scan_id = 1

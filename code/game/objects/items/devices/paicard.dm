@@ -269,9 +269,9 @@
 			to_chat(pai, "Supplemental Directives: <br>[pai.pai_laws]")
 	attack_self(usr)
 
-// 		WIRE_SIGNAL = 1
+// 		GLOB.WIRE_SIGNAL = 1
 //		WIRE_RECEIVE = 2
-//		WIRE_TRANSMIT = 4
+//		GLOB.WIRE_TRANSMIT = 4
 
 /obj/item/device/paicard/proc/setPersonality(mob/living/silicon/pai/personality)
 	src.pai = personality

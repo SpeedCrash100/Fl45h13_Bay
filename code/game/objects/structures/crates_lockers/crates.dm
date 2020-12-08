@@ -496,7 +496,7 @@
 	icon_closed = "biohazard"
 	open_sound = 'sound/items/Deconstruct.ogg'
 	close_sound = 'sound/items/Deconstruct.ogg'
-	req_access = list(access_xenobiology)
+	req_access = list(GLOB.access_xenobiology)
 
 /obj/structure/closet/crate/secure/biohazard/blanks
 	will_contain = list(/mob/living/carbon/human/blank/, /obj/item/usedcryobag)

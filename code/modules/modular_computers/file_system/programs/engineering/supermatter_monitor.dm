@@ -5,7 +5,7 @@
 	program_icon_state = "smmon_0"
 	extended_desc = "This program connects to specially calibrated supermatter sensors to provide information on the status of supermatter-based engines."
 	ui_header = "smmon_0.gif"
-	required_access = access_engine
+	required_access = GLOB.access_engine
 	requires_ntnet = 1
 	network_destination = "supermatter monitoring system"
 	size = 5

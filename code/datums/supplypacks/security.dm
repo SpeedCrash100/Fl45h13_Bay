@@ -37,7 +37,7 @@
 	cost = 40
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "\improper Weapons crate"
-	access = access_security
+	access = GLOB.access_security
 
 /decl/hierarchy/supply_pack/security/flareguns
 	name = "Flare guns crate"
@@ -48,7 +48,7 @@
 	cost = 25
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "\improper Flare gun crate"
-	access = access_security
+	access = GLOB.access_security
 
 /decl/hierarchy/supply_pack/security/eweapons
 	name = "Advanced Energy Weapons crate"
@@ -59,7 +59,7 @@
 	cost = 125
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "\improper Advanced Energy Weapons crate"
-	access = access_heads
+	access = GLOB.access_heads
 
 /decl/hierarchy/supply_pack/security/armor
 	num_contained = 5
@@ -75,7 +75,7 @@
 	cost = 40
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Armor crate"
-	access = access_security
+	access = GLOB.access_security
 	supply_method = /decl/supply_method/randomized
 
 /decl/hierarchy/supply_pack/security/riot
@@ -92,7 +92,7 @@
 	cost = 60
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Riot gear crate"
-	access = access_armory
+	access = GLOB.access_armory
 
 /decl/hierarchy/supply_pack/security/energyweapons
 	name = "Energy weapons crate"
@@ -100,7 +100,7 @@
 	cost = 50
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper energy weapons crate"
-	access = access_armory
+	access = GLOB.access_armory
 
 /decl/hierarchy/supply_pack/security/shotgun
 	name = "Shotgun crate"
@@ -111,7 +111,7 @@
 	cost = 65
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Shotgun crate"
-	access = access_armory
+	access = GLOB.access_armory
 
 /decl/hierarchy/supply_pack/security/erifle
 	name = "Energy marksman crate"
@@ -120,7 +120,7 @@
 	cost = 90
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Energy marksman crate"
-	access = access_armory
+	access = GLOB.access_armory
 
 /decl/hierarchy/supply_pack/security/shotgunammo
 	name = "Ballistic ammunition crate"
@@ -129,7 +129,7 @@
 	cost = 60
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper ballistic ammunition crate"
-	access = access_armory
+	access = GLOB.access_armory
 
 /decl/hierarchy/supply_pack/security/ionweapons
 	name = "Electromagnetic weapons crate"
@@ -138,7 +138,7 @@
 	cost = 50
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper electromagnetic weapons crate"
-	access = access_armory
+	access = GLOB.access_armory
 
 /decl/hierarchy/supply_pack/security/automatic
 	name = "Automatic weapon crate"
@@ -148,7 +148,7 @@
 	cost = 90
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Automatic weapon crate"
-	access = access_armory
+	access = GLOB.access_armory
 	supply_method = /decl/supply_method/randomized
 
 /decl/hierarchy/supply_pack/security/autoammo
@@ -160,7 +160,7 @@
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Automatic weapon ammunition crate"
-	access = access_armory
+	access = GLOB.access_armory
 	supply_method = /decl/supply_method/randomized
 
 /decl/hierarchy/supply_pack/security/expenergy
@@ -170,7 +170,7 @@
 	cost = 50
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Experimental energy gear crate"
-	access = access_armory
+	access = GLOB.access_armory
 
 /decl/hierarchy/supply_pack/security/exparmor
 	name = "Experimental armor crate"
@@ -181,7 +181,7 @@
 	cost = 35
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Experimental armor crate"
-	access = access_armory
+	access = GLOB.access_armory
 
 /decl/hierarchy/supply_pack/security/securitybarriers
 	name = "Security barrier crate"
@@ -196,7 +196,7 @@
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper wall shield generators crate"
-	access = access_teleporter
+	access = GLOB.access_teleporter
 
 /decl/hierarchy/supply_pack/security/holster
 	name = "Holster crate"
@@ -208,7 +208,7 @@
 	cost = 15
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Holster crate"
-	access = access_security
+	access = GLOB.access_security
 	supply_method = /decl/supply_method/randomized
 
 /decl/hierarchy/supply_pack/security/securityextragear
@@ -218,7 +218,7 @@
 	cost = 25
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Security surplus equipment"
-	access = access_security
+	access = GLOB.access_security
 
 /decl/hierarchy/supply_pack/security/detectivegear
 	name = "Forensic investigation equipment"
@@ -241,7 +241,7 @@
 	cost = 50
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Forensic equipment"
-	access = access_forensics_lockers
+	access = GLOB.access_forensics_lockers
 
 /decl/hierarchy/supply_pack/security/detectiveclothes
 	name = "Investigation apparel"
@@ -259,7 +259,7 @@
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Investigation clothing"
-	access = access_forensics_lockers
+	access = GLOB.access_forensics_lockers
 
 /decl/hierarchy/supply_pack/security/officergear
 	name = "Officer equipment"
@@ -286,7 +286,7 @@
 	cost = 30
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Officer equipment"
-	access = access_brig
+	access = GLOB.access_brig
 
 /decl/hierarchy/supply_pack/security/wardengear
 	name = "Warden equipment"
@@ -308,7 +308,7 @@
 	cost = 45
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Warden equipment"
-	access = access_armory
+	access = GLOB.access_armory
 
 /decl/hierarchy/supply_pack/security/headofsecgear
 	name = "Head of security equipment"
@@ -327,7 +327,7 @@
 	cost = 65
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Head of security equipment"
-	access = access_hos
+	access = GLOB.access_hos
 
 /decl/hierarchy/supply_pack/security/securityclothing
 	name = "Security uniform crate"
@@ -345,7 +345,7 @@
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Security uniform crate"
-	access = access_security
+	access = GLOB.access_security
 
 /decl/hierarchy/supply_pack/security/navybluesecurityclothing
 	name = "Navy blue security uniform crate"
@@ -366,7 +366,7 @@
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Navy blue security uniform crate"
-	access = access_security
+	access = GLOB.access_security
 
 /decl/hierarchy/supply_pack/security/corporatesecurityclothing
 	name = "Corporate security uniform crate"
@@ -384,7 +384,7 @@
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Corporate security uniform crate"
-	access = access_security
+	access = GLOB.access_security
 
 /decl/hierarchy/supply_pack/security/securitybiosuit
 	name = "Security biohazard gear"
@@ -398,7 +398,7 @@
 	cost = 35
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Security biohazard gear"
-	access = access_security
+	access = GLOB.access_security
 
 /decl/hierarchy/supply_pack/security/tactical
 	name = "Tactical suits"
@@ -413,7 +413,7 @@
 	cost = 45
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Tactical Suit Locker"
-	access = access_armory
+	access = GLOB.access_armory
 
 /decl/hierarchy/supply_pack/security/practicelasers
 	name = "Practice Laser Carbines"
@@ -421,4 +421,4 @@
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Practice laser carbine crate"
-	access = access_brig
+	access = GLOB.access_brig

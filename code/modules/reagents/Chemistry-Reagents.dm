@@ -31,7 +31,7 @@
 	var/color_weight = 1
 	var/flags = 0
 
-	var/glass_icon = DRINK_ICON_DEFAULT
+	var/glass_icon = GLOB.DRINK_ICON_DEFAULT
 	var/glass_name = "something"
 	var/glass_desc = "It's a glass of... what, exactly?"
 	var/list/glass_special = null // null equivalent to list()

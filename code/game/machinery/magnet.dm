@@ -38,7 +38,7 @@
 
 		spawn(10)	// must wait for map loading to finish
 			if(radio_controller)
-				radio_controller.add_object(src, freq, RADIO_MAGNETS)
+				radio_controller.add_object(src, freq, GLOB.RADIO_MAGNETS)
 
 		spawn()
 			magnetic_process()
@@ -232,7 +232,7 @@
 
 		spawn(45)	// must wait for map loading to finish
 			if(radio_controller)
-				radio_connection = radio_controller.add_object(src, frequency, RADIO_MAGNETS)
+				radio_connection = radio_controller.add_object(src, frequency, GLOB.RADIO_MAGNETS)
 
 
 		if(path) // check for default path
@@ -310,7 +310,7 @@
 
 			// Broadcast the signal
 
-			radio_connection.post_signal(src, signal, filter = RADIO_MAGNETS)
+			radio_connection.post_signal(src, signal, filter = GLOB.RADIO_MAGNETS)
 
 			spawn(1)
 				updateUsrDialog() // pretty sure this increases responsiveness
@@ -377,7 +377,7 @@
 
 			// Broadcast the signal
 			spawn()
-				radio_connection.post_signal(src, signal, filter = RADIO_MAGNETS)
+				radio_connection.post_signal(src, signal, filter = GLOB.RADIO_MAGNETS)
 
 			if(speed == 10)
 				sleep(1)

@@ -64,7 +64,7 @@
 	cost = 60
 	containername = "\improper Phoron gas canister crate"
 	containertype = /obj/structure/closet/crate/secure/large
-	access = access_atmospherics
+	access = GLOB.access_atmospherics
 
 /decl/hierarchy/supply_pack/atmospherics/canister_sleeping_agent
 	name = "N2O gas canister"
@@ -72,7 +72,7 @@
 	cost = 40
 	containername = "\improper N2O gas canister crate"
 	containertype = /obj/structure/closet/crate/secure/large
-	access = access_atmospherics
+	access = GLOB.access_atmospherics
 
 /decl/hierarchy/supply_pack/atmospherics/canister_carbon_dioxide
 	name = "Carbon dioxide gas canister"
@@ -80,4 +80,4 @@
 	cost = 40
 	containername = "\improper CO2 canister crate"
 	containertype = /obj/structure/closet/crate/secure/large
-	access = access_atmospherics
+	access = GLOB.access_atmospherics

@@ -219,7 +219,7 @@
 				visible_message("<span class='danger'><font size='2'>The singularity has grown out of control!</font></span>")
 			else
 				visible_message("<span class='warning'>The singularity miraculously reduces in size and loses its supermatter properties.</span>")
-		if(STAGE_SUPER)//SUPERSINGULO
+		if(STAGE_SUPER)//GLOB.SUPERSINGULO
 			name = "super gravitational singularity"
 			desc = "A gravitational singularity with the properties of supermatter. <b>It has the power to destroy worlds.</b>"
 			current_size = STAGE_SUPER

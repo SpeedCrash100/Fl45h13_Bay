@@ -236,7 +236,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 	if(data == 1)
 
-		for (var/obj/item/device/radio/intercom/R in connection.devices["[RADIO_CHAT]"])
+		for (var/obj/item/device/radio/intercom/R in connection.devices["[GLOB.RADIO_CHAT]"])
 			if(R.receive_range(display_freq, level) > -1)
 				radios += R
 
@@ -244,7 +244,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 	else if(data == 2)
 
-		for (var/obj/item/device/radio/R in connection.devices["[RADIO_CHAT]"])
+		for (var/obj/item/device/radio/R in connection.devices["[GLOB.RADIO_CHAT]"])
 
 			if(istype(R, /obj/item/device/radio/headset))
 				continue
@@ -257,7 +257,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	else if(data == 3)
 		for(var/antag_freq in GLOB.ANTAG_FREQS)
 			var/datum/radio_frequency/antag_connection = radio_controller.return_frequency(antag_freq)
-			for (var/obj/item/device/radio/R in antag_connection.devices["[RADIO_CHAT]"])
+			for (var/obj/item/device/radio/R in antag_connection.devices["[GLOB.RADIO_CHAT]"])
 				if(R.receive_range(antag_freq, level) > -1)
 					radios += R
 
@@ -265,7 +265,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 	else
 
-		for (var/obj/item/device/radio/R in connection.devices["[RADIO_CHAT]"])
+		for (var/obj/item/device/radio/R in connection.devices["[GLOB.RADIO_CHAT]"])
 			if(R.receive_range(display_freq, level) > -1)
 				radios += R
 
@@ -355,27 +355,27 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		//BR.messages_admin += blackbox_admin_msg
 		if(istype(blackbox))
 			switch(display_freq)
-				if(PUB_FREQ)
+				if(GLOB.PUB_FREQ)
 					blackbox.msg_common += blackbox_msg
-				if(SCI_FREQ)
+				if(GLOB.SCI_FREQ)
 					blackbox.msg_science += blackbox_msg
-				if(COMM_FREQ)
+				if(GLOB.COMM_FREQ)
 					blackbox.msg_command += blackbox_msg
-				if(MED_FREQ)
+				if(GLOB.MED_FREQ)
 					blackbox.msg_medical += blackbox_msg
-				if(ENG_FREQ)
+				if(GLOB.ENG_FREQ)
 					blackbox.msg_engineering += blackbox_msg
-				if(SEC_FREQ)
+				if(GLOB.SEC_FREQ)
 					blackbox.msg_security += blackbox_msg
-				if(DTH_FREQ)
+				if(GLOB.DTH_FREQ)
 					blackbox.msg_deathsquad += blackbox_msg
-				if(SYND_FREQ)
+				if(GLOB.SYND_FREQ)
 					blackbox.msg_syndicate += blackbox_msg
-				if(RAID_FREQ)
+				if(GLOB.RAID_FREQ)
 					blackbox.msg_raider += blackbox_msg
-				if(SUP_FREQ)
+				if(GLOB.SUP_FREQ)
 					blackbox.msg_cargo += blackbox_msg
-				if(SRV_FREQ)
+				if(GLOB.SRV_FREQ)
 					blackbox.msg_service += blackbox_msg
 				else
 					blackbox.messages += blackbox_msg
@@ -437,7 +437,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	// --- Broadcast only to intercom devices ---
 
 	if(data == 1)
-		for (var/obj/item/device/radio/intercom/R in connection.devices["[RADIO_CHAT]"])
+		for (var/obj/item/device/radio/intercom/R in connection.devices["[GLOB.RADIO_CHAT]"])
 			var/turf/position = get_turf(R)
 			if(position && position.z == level)
 				receive |= R.send_hear(display_freq, level)
@@ -446,7 +446,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	// --- Broadcast only to intercoms and station-bounced radios ---
 
 	else if(data == 2)
-		for (var/obj/item/device/radio/R in connection.devices["[RADIO_CHAT]"])
+		for (var/obj/item/device/radio/R in connection.devices["[GLOB.RADIO_CHAT]"])
 
 			if(istype(R, /obj/item/device/radio/headset))
 				continue
@@ -460,7 +460,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	else if(data == 3)
 		for(var/freq in GLOB.ANTAG_FREQS)
 			var/datum/radio_frequency/antag_connection = radio_controller.return_frequency(freq)
-			for (var/obj/item/device/radio/R in antag_connection.devices["[RADIO_CHAT]"])
+			for (var/obj/item/device/radio/R in antag_connection.devices["[GLOB.RADIO_CHAT]"])
 				var/turf/position = get_turf(R)
 				if(position && position.z == level)
 					receive |= R.send_hear(freq)
@@ -469,7 +469,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	// --- Broadcast to ALL radio devices ---
 
 	else
-		for (var/obj/item/device/radio/R in connection.devices["[RADIO_CHAT]"])
+		for (var/obj/item/device/radio/R in connection.devices["[GLOB.RADIO_CHAT]"])
 			var/turf/position = get_turf(R)
 			if(position && position.z == level)
 				receive |= R.send_hear(display_freq)
@@ -532,27 +532,27 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		//BR.messages_admin += blackbox_admin_msg
 		if(istype(blackbox))
 			switch(display_freq)
-				if(PUB_FREQ)
+				if(GLOB.PUB_FREQ)
 					blackbox.msg_common += blackbox_msg
-				if(SCI_FREQ)
+				if(GLOB.SCI_FREQ)
 					blackbox.msg_science += blackbox_msg
-				if(COMM_FREQ)
+				if(GLOB.COMM_FREQ)
 					blackbox.msg_command += blackbox_msg
-				if(MED_FREQ)
+				if(GLOB.MED_FREQ)
 					blackbox.msg_medical += blackbox_msg
-				if(ENG_FREQ)
+				if(GLOB.ENG_FREQ)
 					blackbox.msg_engineering += blackbox_msg
-				if(SEC_FREQ)
+				if(GLOB.SEC_FREQ)
 					blackbox.msg_security += blackbox_msg
-				if(DTH_FREQ)
+				if(GLOB.DTH_FREQ)
 					blackbox.msg_deathsquad += blackbox_msg
-				if(SYND_FREQ)
+				if(GLOB.SYND_FREQ)
 					blackbox.msg_syndicate += blackbox_msg
-				if(RAID_FREQ)
+				if(GLOB.RAID_FREQ)
 					blackbox.msg_raider += blackbox_msg
-				if(SUP_FREQ)
+				if(GLOB.SUP_FREQ)
 					blackbox.msg_cargo += blackbox_msg
-				if(SRV_FREQ)
+				if(GLOB.SRV_FREQ)
 					blackbox.msg_service += blackbox_msg
 				else
 					blackbox.messages += blackbox_msg
@@ -614,7 +614,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		"done" = 0,
 		"level" = pos ? pos.z : 0 // The level it is being broadcasted at.
 	)
-	signal.frequency = PUB_FREQ// Common channel
+	signal.frequency = GLOB.PUB_FREQ// Common channel
 
   //#### Sending the signal to all subspace receivers ####//
 	for(var/obj/machinery/telecomms/receiver/R in telecomms_list)

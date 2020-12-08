@@ -1,8 +1,8 @@
 // Access check is of the type requires one. These have been carefully selected to avoid allowing the janitor to see channels he shouldn't
 var/global/list/default_medbay_channels = list(
-	num2text(PUB_FREQ) = list(),
-	num2text(MED_FREQ) = list(access_medical_equip),
-	num2text(MED_I_FREQ) = list(access_medical_equip)
+	num2text(GLOB.PUB_FREQ) = list(),
+	num2text(GLOB.MED_FREQ) = list(GLOB.access_medical_equip),
+	num2text(GLOB.MED_I_FREQ) = list(GLOB.access_medical_equip)
 )
 
 /obj/item/device/radio
@@ -14,7 +14,7 @@ var/global/list/default_medbay_channels = list(
 
 	var/on = 1 // 0 for off
 	var/last_transmission
-	var/frequency = PUB_FREQ //common chat
+	var/frequency = GLOB.PUB_FREQ //common chat
 	var/traitor_frequency = 0 //tune to frequency to unlock traitor supplies
 	var/canhear_range = 3 // the range which mobs can hear this radio from
 	var/datum/wires/radio/wires = null
@@ -41,7 +41,7 @@ var/global/list/default_medbay_channels = list(
 	proc/set_frequency(new_frequency)
 		radio_controller.remove_object(src, frequency)
 		frequency = new_frequency
-		radio_connection = radio_controller.add_object(src, frequency, RADIO_CHAT)
+		radio_connection = radio_controller.add_object(src, frequency, GLOB.RADIO_CHAT)
 
 /obj/item/device/radio/Initialize()
 	. = ..()
@@ -62,12 +62,12 @@ var/global/list/default_medbay_channels = list(
 
 /obj/item/device/radio/initialize()
 
-	if(frequency < RADIO_LOW_FREQ || frequency > RADIO_HIGH_FREQ)
-		frequency = sanitize_frequency(frequency, RADIO_LOW_FREQ, RADIO_HIGH_FREQ)
+	if(frequency < GLOB.RADIO_LOW_FREQ || frequency > GLOB.RADIO_HIGH_FREQ)
+		frequency = sanitize_frequency(frequency, GLOB.RADIO_LOW_FREQ, GLOB.RADIO_HIGH_FREQ)
 	set_frequency(frequency)
 
 	for (var/ch_name in channels)
-		secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
+		secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  GLOB.RADIO_CHAT)
 
 /obj/item/device/radio/attack_self(mob/user as mob)
 	user.set_machine(src)
@@ -90,8 +90,8 @@ var/global/list/default_medbay_channels = list(
 	data["freq"] = format_frequency(frequency)
 	data["rawfreq"] = num2text(frequency)
 
-	data["mic_cut"] = (wires.IsIndexCut(WIRE_TRANSMIT) || wires.IsIndexCut(WIRE_SIGNAL))
-	data["spk_cut"] = (wires.IsIndexCut(WIRE_RECEIVE) || wires.IsIndexCut(WIRE_SIGNAL))
+	data["mic_cut"] = (wires.IsIndexCut(GLOB.WIRE_TRANSMIT) || wires.IsIndexCut(GLOB.WIRE_SIGNAL))
+	data["spk_cut"] = (wires.IsIndexCut(GLOB.WIRE_RECEIVE) || wires.IsIndexCut(GLOB.WIRE_SIGNAL))
 
 	var/list/chanlist = list_channels(user)
 	if(islist(chanlist) && chanlist.len)
@@ -159,10 +159,10 @@ var/global/list/default_medbay_channels = list(
 			"}
 
 /obj/item/device/radio/proc/ToggleBroadcast()
-	broadcasting = !broadcasting && !(wires.IsIndexCut(WIRE_TRANSMIT) || wires.IsIndexCut(WIRE_SIGNAL))
+	broadcasting = !broadcasting && !(wires.IsIndexCut(GLOB.WIRE_TRANSMIT) || wires.IsIndexCut(GLOB.WIRE_SIGNAL))
 
 /obj/item/device/radio/proc/ToggleReception()
-	listening = !listening && !(wires.IsIndexCut(WIRE_RECEIVE) || wires.IsIndexCut(WIRE_SIGNAL))
+	listening = !listening && !(wires.IsIndexCut(GLOB.WIRE_RECEIVE) || wires.IsIndexCut(GLOB.WIRE_SIGNAL))
 
 /obj/item/device/radio/CanUseTopic()
 	if(!on)
@@ -183,7 +183,7 @@ var/global/list/default_medbay_channels = list(
 
 	else if (href_list["freq"])
 		var/new_frequency = (frequency + text2num(href_list["freq"]))
-		if ((new_frequency < PUBLIC_LOW_FREQ || new_frequency > PUBLIC_HIGH_FREQ))
+		if ((new_frequency < GLOB.PUBLIC_LOW_FREQ || new_frequency > GLOB.PUBLIC_HIGH_FREQ))
 			new_frequency = sanitize_frequency(new_frequency)
 		set_frequency(new_frequency)
 		if(hidden_uplink)
@@ -264,7 +264,7 @@ var/global/list/default_medbay_channels = list(
 
 	//  Uncommenting this. To the above comment:
 	// 	The permacell radios aren't suppose to be able to transmit, this isn't a bug and this "fix" is just making radio wires useless. -Giacom
-	if(wires.IsIndexCut(WIRE_TRANSMIT)) // The device has to have all its wires and shit intact
+	if(wires.IsIndexCut(GLOB.WIRE_TRANSMIT)) // The device has to have all its wires and shit intact
 		return 0
 
 	if(!radio_connection)
@@ -480,7 +480,7 @@ var/global/list/default_medbay_channels = list(
 	// what the range is in which mobs will hear the radio
 	// returns: -1 if can't receive, range otherwise
 
-	if (wires.IsIndexCut(WIRE_RECEIVE))
+	if (wires.IsIndexCut(GLOB.WIRE_RECEIVE))
 		return -1
 	if(!listening)
 		return -1
@@ -645,7 +645,7 @@ var/global/list/default_medbay_channels = list(
 			src.name = "broken radio"
 			return
 
-		secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
+		secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  GLOB.RADIO_CHAT)
 
 	return
 
@@ -722,7 +722,7 @@ var/global/list/default_medbay_channels = list(
 	channels = op
 	if(radio_controller)
 		for (var/ch_name in op)
-			secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
+			secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  GLOB.RADIO_CHAT)
 	return
 
 /obj/item/device/radio/off
@@ -754,7 +754,7 @@ var/global/list/default_medbay_channels = list(
 	name = "phone"
 
 /obj/item/device/radio/phone/medbay
-	frequency = MED_I_FREQ
+	frequency = GLOB.MED_I_FREQ
 
 /obj/item/device/radio/phone/medbay/Initialize()
 	..()

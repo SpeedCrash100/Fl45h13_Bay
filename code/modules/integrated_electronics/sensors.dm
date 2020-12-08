@@ -102,7 +102,7 @@
 	max_range = 7
 	sensitivity = 0
 	icon_state = "sensor_ir"
-	proximity_trigger = list(/datum/proximity_trigger/line = PROXIMITY_EXCLUDE_HOLDER_TURF)
+	proximity_trigger = list(/datum/proximity_trigger/line = GLOB.PROXIMITY_EXCLUDE_HOLDER_TURF)
 	inputs = list("active", "range" = 7, "visible beam" = FALSE)
 
 	var/current_beam_visibility = FALSE

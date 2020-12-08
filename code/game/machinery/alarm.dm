@@ -41,7 +41,7 @@
 	idle_power_usage = 80
 	active_power_usage = 1000 //For heating/cooling rooms. 1000 joules equates to about 1 degree every 2 seconds for a single tile of air.
 	power_channel = ENVIRON
-	req_one_access = list(access_atmospherics, access_engine_equip)
+	req_one_access = list(GLOB.access_atmospherics, GLOB.access_engine_equip)
 	clicksound = "button"
 	clickvol = 30
 
@@ -95,7 +95,7 @@
 
 /obj/machinery/alarm/server/New()
 	..()
-	req_access = list(access_rd, access_atmospherics, access_engine_equip)
+	req_access = list(GLOB.access_rd, GLOB.access_atmospherics, GLOB.access_engine_equip)
 	TLV["temperature"] =	list(T0C-26, T0C, T0C+30, T0C+40) // K
 	target_temperature = T0C+10
 
@@ -377,7 +377,7 @@
 /obj/machinery/alarm/proc/set_frequency(new_frequency)
 	radio_controller.remove_object(src, frequency)
 	frequency = new_frequency
-	radio_connection = radio_controller.add_object(src, frequency, RADIO_TO_AIRALARM)
+	radio_connection = radio_controller.add_object(src, frequency, GLOB.RADIO_TO_AIRALARM)
 
 /obj/machinery/alarm/proc/send_signal(var/target, var/list/command)//sends signal 'command' to 'target'. Returns 0 if no radio connection, 1 otherwise
 	if(!radio_connection)
@@ -391,7 +391,7 @@
 	signal.data["tag"] = target
 	signal.data["sigtype"] = "command"
 
-	radio_connection.post_signal(src, signal, RADIO_FROM_AIRALARM)
+	radio_connection.post_signal(src, signal, GLOB.RADIO_FROM_AIRALARM)
 //			log_debug(text("Signal [] Broadcasted to []", command, target))
 
 	return 1
@@ -780,7 +780,7 @@
 					to_chat(user, "It does nothing")
 					return
 				else
-					if(allowed(usr) && !wires.IsIndexCut(AALARM_WIRE_IDSCAN))
+					if(allowed(usr) && !wires.IsIndexCut(GLOB.AALARM_WIRE_IDSCAN))
 						locked = !locked
 						to_chat(user, "<span class='notice'>You [ locked ? "lock" : "unlock"] the Air Alarm interface.</span>")
 					else

@@ -1,7 +1,7 @@
 GLOBAL_VAR_CONST(GHOST_IMAGE_NONE, 0)
 GLOBAL_VAR_CONST(GHOST_IMAGE_DARKNESS, 1)
 GLOBAL_VAR_CONST(GHOST_IMAGE_SIGHTLESS, 2)
-GLOBAL_VAR_CONST(GHOST_IMAGE_ALL, ~GHOST_IMAGE_NONE)
+GLOBAL_VAR_CONST(GHOST_IMAGE_ALL, ~GLOB.GHOST_IMAGE_NONE)
 
 /mob/observer
 	density = 0
@@ -13,7 +13,7 @@ GLOBAL_VAR_CONST(GHOST_IMAGE_ALL, ~GHOST_IMAGE_NONE)
 	simulated = FALSE
 	stat = DEAD
 	status_flags = GODMODE
-	var/ghost_image_flag = GHOST_IMAGE_DARKNESS
+	var/ghost_image_flag = GLOB.GHOST_IMAGE_DARKNESS
 	var/image/ghost_image = null //this mobs ghost image, for deleting and stuff
 
 /mob/observer/New()
@@ -23,9 +23,9 @@ GLOBAL_VAR_CONST(GHOST_IMAGE_ALL, ~GHOST_IMAGE_NONE)
 	ghost_image.layer = layer
 	ghost_image.appearance = src
 	ghost_image.appearance_flags = RESET_ALPHA
-	if(ghost_image_flag & GHOST_IMAGE_DARKNESS)
+	if(ghost_image_flag & GLOB.GHOST_IMAGE_DARKNESS)
 		ghost_darkness_images |= ghost_image //so ghosts can see the eye when they disable darkness
-	if(ghost_image_flag & GHOST_IMAGE_SIGHTLESS)
+	if(ghost_image_flag & GLOB.GHOST_IMAGE_SIGHTLESS)
 		ghost_sightless_images |= ghost_image //so ghosts can see the eye when they disable ghost sight
 	updateallghostimages()
 

@@ -405,7 +405,7 @@
 
 	glass_name = "sugar"
 	glass_desc = "The organic compound commonly known as table sugar and sometimes called saccharose. This white, odorless, crystalline powder has a pleasing, sweet taste."
-	glass_icon = DRINK_ICON_NOISY
+	glass_icon = GLOB.DRINK_ICON_NOISY
 
 /datum/reagent/sugar/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.nutrition += removed * 3

@@ -28,11 +28,11 @@ GLOBAL_VAR_CONST(AUTOLATHE_DISABLE_WIRE, 4)
 /datum/wires/autolathe/UpdateCut(index, mended)
 	var/obj/machinery/autolathe/A = holder
 	switch(index)
-		if(AUTOLATHE_HACK_WIRE)
+		if(GLOB.AUTOLATHE_HACK_WIRE)
 			A.hacked = !mended
-		if(AUTOLATHE_SHOCK_WIRE)
+		if(GLOB.AUTOLATHE_SHOCK_WIRE)
 			A.shocked = !mended
-		if(AUTOLATHE_DISABLE_WIRE)
+		if(GLOB.AUTOLATHE_DISABLE_WIRE)
 			A.disabled = !mended
 
 /datum/wires/autolathe/UpdatePulsed(index)
@@ -40,19 +40,19 @@ GLOBAL_VAR_CONST(AUTOLATHE_DISABLE_WIRE, 4)
 		return
 	var/obj/machinery/autolathe/A = holder
 	switch(index)
-		if(AUTOLATHE_HACK_WIRE)
+		if(GLOB.AUTOLATHE_HACK_WIRE)
 			A.hacked = !A.hacked
 			spawn(50)
 				if(A && !IsIndexCut(index))
 					A.hacked = 0
 					Interact(usr)
-		if(AUTOLATHE_SHOCK_WIRE)
+		if(GLOB.AUTOLATHE_SHOCK_WIRE)
 			A.shocked = !A.shocked
 			spawn(50)
 				if(A && !IsIndexCut(index))
 					A.shocked = 0
 					Interact(usr)
-		if(AUTOLATHE_DISABLE_WIRE)
+		if(GLOB.AUTOLATHE_DISABLE_WIRE)
 			A.disabled = !A.disabled
 			spawn(50)
 				if(A && !IsIndexCut(index))

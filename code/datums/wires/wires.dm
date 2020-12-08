@@ -173,12 +173,12 @@ GLOBAL_VAR_CONST(POWER, 8)
 /datum/wires/door/UpdateCut(var/index, var/mended)
 	var/obj/machinery/door/airlock/A = holder
 	switch(index)
-		if(BOLTED)
+		if(GLOB.BOLTED)
 		if(!mended)
 			A.bolt()
-	if(SHOCKED)
+	if(GLOB.SHOCKED)
 		A.shock()
-	if(SAFETY )
+	if(GLOB.SAFETY )
 		A.safety()
 
 */

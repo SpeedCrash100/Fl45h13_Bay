@@ -71,7 +71,7 @@
 	var/radio_key_type = null
 	var/spawn_sound = 'sound/voice/liveagain.ogg'
 	var/pitch_toggle = 1
-	var/list/req_access = list(access_robotics)
+	var/list/req_access = list(GLOB.access_robotics)
 	var/ident = 0
 	var/viewalerts = 0
 	var/modtype = "Default"
@@ -122,7 +122,7 @@
 		camera = new /obj/machinery/camera(src)
 		camera.c_tag = real_name
 		camera.replace_networks(list(NETWORK_EXODUS,NETWORK_ROBOTS))
-		if(wires.IsIndexCut(BORG_WIRE_CAMERA))
+		if(wires.IsIndexCut(GLOB.BORG_WIRE_CAMERA))
 			camera.status = 0
 
 	..() // Laws, among other things, are initialized in parent New()

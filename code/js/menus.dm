@@ -1,4 +1,4 @@
-GLOBAL_VAR_CONST(js_dropdowns, {")
+GLOBAL_VAR_CONST(js_dropdowns, {"
 function dropdowns() {
 	var divs = document.getElementsByTagName('div');
 	var headers = new Array();
@@ -34,4 +34,4 @@ function dropdowns() {
 		}
 	}
 }
-"}
+"})

@@ -146,7 +146,7 @@ GLOBAL_VAR_CONST(PROXIMITY_EXCLUDE_HOLDER_TURF, 1) //  When acquiring GLOB.turfs
 
 /datum/proximity_trigger/proc/acquire_relevant_turfs()
 	. = turf_selection.get_turfs(holder, range_)
-	if(proximity_flags & PROXIMITY_EXCLUDE_HOLDER_TURF)
+	if(proximity_flags & GLOB.PROXIMITY_EXCLUDE_HOLDER_TURF)
 		. -= get_turf(holder)
 
 

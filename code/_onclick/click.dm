@@ -384,11 +384,11 @@ GLOBAL_VAR_CONST(CLICK_HANDLER_ALL, (~0))
 /datum/click_handler/New(var/mob/user)
 	..()
 	src.user = user
-	if(flags & (CLICK_HANDLER_REMOVE_ON_MOB_LOGOUT))
+	if(flags & (GLOB.CLICK_HANDLER_REMOVE_ON_MOB_LOGOUT))
 		logged_out_event.register(user, src, /datum/click_handler/proc/OnMobLogout)
 
 /datum/click_handler/Destroy()
-	if(flags & (CLICK_HANDLER_REMOVE_ON_MOB_LOGOUT))
+	if(flags & (GLOB.CLICK_HANDLER_REMOVE_ON_MOB_LOGOUT))
 		logged_out_event.unregister(user, src, /datum/click_handler/proc/OnMobLogout)
 	user = null
 	. = ..()
@@ -444,7 +444,7 @@ GLOBAL_VAR_CONST(CLICK_HANDLER_ALL, (~0))
 	RemoveClickHandler(click_handlers.Top())
 
 /mob/proc/PushClickHandler(var/datum/click_handler/new_click_handler_type)
-	if((initial(new_click_handler_type.flags) & CLICK_HANDLER_REMOVE_ON_MOB_LOGOUT) && !client)
+	if((initial(new_click_handler_type.flags) & GLOB.CLICK_HANDLER_REMOVE_ON_MOB_LOGOUT) && !client)
 		return FALSE
 	if(!click_handlers)
 		click_handlers = new()

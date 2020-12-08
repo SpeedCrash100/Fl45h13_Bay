@@ -53,7 +53,7 @@
 
 /obj/structure/closet/secure_closet/xenoarchaeologist
 	name = "Xenoarchaeologist Locker"
-	req_access = list(access_xenoarch)
+	req_access = list(GLOB.access_xenoarch)
 	icon_state = "secureres1"
 	icon_closed = "secureres"
 	icon_locked = "secureres1"
@@ -106,7 +106,7 @@
 	new /obj/item/taperoll/research(src)
 
 /obj/machinery/alarm/isolation
-	req_one_access = list(access_research, access_atmospherics, access_engine_equip)
+	req_one_access = list(GLOB.access_research, GLOB.access_atmospherics, GLOB.access_engine_equip)
 
 /obj/machinery/alarm/monitor/isolation
-	req_one_access = list(access_research, access_atmospherics, access_engine_equip)
+	req_one_access = list(GLOB.access_research, GLOB.access_atmospherics, GLOB.access_engine_equip)

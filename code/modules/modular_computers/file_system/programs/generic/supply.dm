@@ -24,7 +24,7 @@
 
 /datum/nano_module/supply/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, state = default_state)
 	var/list/data = host.initial_data()
-	var/is_admin = check_access(user, access_cargo)
+	var/is_admin = check_access(user, GLOB.access_cargo)
 	if(!category_names || !category_contents)
 		generate_categories()
 
@@ -133,7 +133,7 @@
 		print_summary(user)
 
 	// Items requiring cargo access go below this entry. Other items go above.
-	if(!check_access(access_cargo))
+	if(!check_access(GLOB.access_cargo))
 		return 1
 
 	if(href_list["launch_shuttle"])
