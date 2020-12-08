@@ -1,5 +1,5 @@
 var/list/obj/machinery/photocopier/faxmachine/allfaxes = list()
-GLOBAL_LIST_INIT(admin_departments, list("[GLOB.using_map.boss_name]", "Colonial Marshal Service", "[GLOB.using_map.boss_short] Supply") + GLOB.using_map.map_admin_faxes)
+// GLOBAL_LIST_INIT(admin_departments, list("[GLOB.using_map.boss_name]", "Colonial Marshal Service", "[GLOB.using_map.boss_short] Supply") + GLOB.using_map.map_admin_faxes)
 GLOBAL_LIST_EMPTY(alldepartments)
 
 GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
@@ -21,11 +21,16 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 	var/department = "Unknown" // our department
 	var/destination = null // the department we're sending to
 
-/obj/machinery/photocopier/faxmachine/New()
-	..()
+	var/static/list/admin_departments = list()
+
+/obj/machinery/photocopier/faxmachine/Initialize(mapload, ...)
+	. = ..()
 	allfaxes += src
+
+	if(admin_departments.len == 0) 
+		admin_departments = list("[GLOB.using_map.boss_name]", "Colonial Marshal Service", "[GLOB.using_map.boss_short] Supply") + GLOB.using_map.map_admin_faxes
 	if(!destination) destination = "[GLOB.using_map.boss_name]"
-	if( !(("[department]" in GLOB.alldepartments) || ("[department]" in GLOB.admin_departments)) )
+	if( !(("[department]" in GLOB.alldepartments) || ("[department]" in admin_departments)) )
 		GLOB.alldepartments |= department
 
 /obj/machinery/photocopier/faxmachine/attack_hand(mob/user as mob)
@@ -83,7 +88,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 /obj/machinery/photocopier/faxmachine/Topic(href, href_list)
 	if(href_list["send"])
 		if(copyitem)
-			if (destination in GLOB.admin_departments)
+			if (destination in admin_departments)
 				send_admin_fax(usr, destination)
 			else
 				sendfax(destination)
@@ -119,7 +124,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 
 	if(href_list["dept"])
 		var/lastdestination = destination
-		destination = input(usr, "Which department?", "Choose a department", "") as null|anything in (GLOB.alldepartments + GLOB.admin_departments)
+		destination = input(usr, "Which department?", "Choose a department", "") as null|anything in (GLOB.alldepartments + admin_departments)
 		if(!destination) destination = lastdestination
 
 	if(href_list["auth"])
