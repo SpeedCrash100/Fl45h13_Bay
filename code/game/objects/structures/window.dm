@@ -383,14 +383,14 @@
 	for(var/obj/structure/window/W in orange(src, 1))
 		W.update_icon()
 
-//Updates the availabiliy of the rotation verbs
+//Updates the availabiliy of the rotation GLOB.verbs
 /obj/structure/window/proc/update_verbs()
 	if(anchored)
-		verbs -= /obj/structure/window/proc/rotate
-		verbs -= /obj/structure/window/proc/revrotate
+		GLOB.verbs -= /obj/structure/window/proc/rotate
+		GLOB.verbs -= /obj/structure/window/proc/revrotate
 	else
-		verbs += /obj/structure/window/proc/rotate
-		verbs += /obj/structure/window/proc/revrotate
+		GLOB.verbs += /obj/structure/window/proc/rotate
+		GLOB.verbs += /obj/structure/window/proc/revrotate
 
 //merges adjacent full-tile windows into one (blatant ripoff from game/smoothwall.dm)
 /obj/structure/window/update_icon()

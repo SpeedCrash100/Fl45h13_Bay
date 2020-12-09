@@ -60,7 +60,7 @@ var/list/datum/visualnet/visual_nets = list()
 var/datum/visualnet/camera/cameranet = new()
 
 // Runes
-var/global/list/rune_list = new()
+GLOBAL_LIST_EMPTY(rune_list)
 GLOBAL_LIST_EMPTY(endgame_exits)
 GLOBAL_LIST_EMPTY(endgame_safespawns)
 

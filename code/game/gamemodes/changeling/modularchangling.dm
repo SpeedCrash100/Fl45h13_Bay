@@ -1,6 +1,6 @@
 // READ: Don't use the apostrophe in name or desc. Causes script errors.
 
-var/list/powers = typesof(/datum/power/changeling) - /datum/power/changeling	//needed for the badmin verb for now
+GLOBAL_LIST_INIT(powers, typesof(/datum/power/changeling) - /datum/power/changeling)	//needed for the badmin verb for now
 var/list/datum/power/changeling/powerinstances = list()
 
 /datum/power			//Could be used by other antags too
@@ -185,7 +185,7 @@ var/list/datum/power/changeling/powerinstances = list()
 	src = usr.mind.changeling
 
 	if(!powerinstances.len)
-		for(var/P in powers)
+		for(var/P in GLOB.powers)
 			powerinstances += new P()
 
 	var/dat = "<html><head><title>Changling Evolution Menu</title></head>"
@@ -441,7 +441,7 @@ var/list/datum/power/changeling/powerinstances = list()
 	</body></html>
 	"}
 
-	show_browser(usr, dat, "window=powers;size=900x480")
+	show_browser(usr, dat, "window=GLOB.powers;size=900x480")
 
 
 /datum/changeling/Topic(href, href_list)

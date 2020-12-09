@@ -52,7 +52,7 @@ GLOBAL_VAR_INIT(command_name, null)
 	return "[pick("Gilese","GSC", "Luyten", "GJ", "HD", "SCGECO")][prob(10) ? " Eridani" : ""] [rand(100,999)]"
 
 /proc/generate_planet_name()
-	return "[capitalize(pick(last_names))]-[pick("Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta", "Eta", "Theta", "Iota", "Kappa", "Lambda", "Mu", "Nu", "Xi", "Omicron", "Pi", "Rho", "Sigma", "Tau", "Upsilon", "Phi", "Chi", "Psi", "Omega")]"
+	return "[capitalize(pick(GLOB.last_names))]-[pick("Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta", "Eta", "Theta", "Iota", "Kappa", "Lambda", "Mu", "Nu", "Xi", "Omicron", "Pi", "Rho", "Sigma", "Tau", "Upsilon", "Phi", "Chi", "Psi", "Omega")]"
 
 /proc/generate_planet_type()
 	return pick("terrestial planet", "ice planet", "dwarf planet", "desert planet", "ocean planet", "lava planet", "gas giant", "forest planet")
@@ -212,9 +212,9 @@ var/syndicate_code_response//Code response for traitors.
 						if(names.len&&prob(70))
 							code_phrase += pick(names)
 						else
-							code_phrase += pick(pick(first_names_male,first_names_female))
+							code_phrase += pick(pick(GLOB.first_names_male,GLOB.first_names_female))
 							code_phrase += " "
-							code_phrase += pick(last_names)
+							code_phrase += pick(GLOB.last_names)
 					if(2)
 						code_phrase += pick(GLOB.joblist)//Returns a job.
 				safety -= 1
@@ -230,9 +230,9 @@ var/syndicate_code_response//Code response for traitors.
 					if(1)
 						code_phrase += pick(nouns)
 					if(2)
-						code_phrase += pick(adjectives)
+						code_phrase += pick(GLOB.adjectives)
 					if(3)
-						code_phrase += pick(verbs)
+						code_phrase += pick(GLOB.verbs)
 		if(words==1)
 			code_phrase += "."
 		else

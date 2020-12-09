@@ -40,7 +40,7 @@
 			created[src] = argument_list
 
 	// if(atom_flags & ATOM_FLAG_CLIMBABLE)
-	// 	verbs += /atom/proc/climb_on
+	// 	GLOB.verbs += /atom/proc/climb_on
 
 //Called after New if the map is being loaded. mapload = TRUE
 //Called from base of New if the map is not being loaded. mapload = FALSE
@@ -427,7 +427,7 @@ its easier to just keep the beam vertical.
 /atom/New()
 	..()
 	if(flags & OBJ_CLIMBABLE)
-		verbs += /atom/proc/climb_on
+		GLOB.verbs += /atom/proc/climb_on
 
 /atom/proc/climb_on()
 

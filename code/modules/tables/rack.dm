@@ -11,8 +11,8 @@
 
 /obj/structure/table/rack/New()
 	..()
-	verbs -= /obj/structure/table/verb/do_flip
-	verbs -= /obj/structure/table/proc/do_put
+	GLOB.verbs -= /obj/structure/table/verb/do_flip
+	GLOB.verbs -= /obj/structure/table/proc/do_put
 
 /obj/structure/table/rack/initialize()
 	auto_align()

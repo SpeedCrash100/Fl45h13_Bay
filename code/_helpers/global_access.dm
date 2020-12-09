@@ -27,8 +27,6 @@
 			return global._preloader;
 		if("actor")
 			return global.actor;
-		if("adjectives")
-			return global.adjectives;
 		if("admin_pm_repository")
 			return global.admin_pm_repository;
 		if("admin_secrets")
@@ -37,8 +35,6 @@
 			return global.admin_state;
 		if("ai_icons")
 			return global.ai_icons;
-		if("ai_names")
-			return global.ai_names;
 		if("air_alarm_topic")
 			return global.air_alarm_topic;
 		if("air_blocked")
@@ -103,18 +99,12 @@
 			return global.cargo_supply_pack_root;
 		if("cargo_supply_packs")
 			return global.cargo_supply_packs;
-		if("channel_to_radio_key")
-			return global.channel_to_radio_key;
 		if("chemistryProcess")
 			return global.chemistryProcess;
 		if("client_repository")
 			return global.client_repository;
-		if("clown_names")
-			return global.clown_names;
 		if("command_announcement")
 			return global.command_announcement;
-		if("commando_names")
-			return global.commando_names;
 		if("commandos")
 			return global.commandos;
 		if("config")
@@ -143,8 +133,6 @@
 			return global.death_event;
 		if("deathsquad")
 			return global.deathsquad;
-		if("debug_verbs")
-			return global.debug_verbs;
 		if("decls_repository")
 			return global.decls_repository;
 		if("deep_inventory_state")
@@ -183,10 +171,6 @@
 			return global.exited_event;
 		if("fire_alarm")
 			return global.fire_alarm;
-		if("first_names_female")
-			return global.first_names_female;
-		if("first_names_male")
-			return global.first_names_male;
 		if("fluidtrack_cache")
 			return global.fluidtrack_cache;
 		if("follow_repository")
@@ -253,8 +237,6 @@
 			return global.jobban_runonce;
 		if("language_keys")
 			return global.language_keys;
-		if("last_names")
-			return global.last_names;
 		if("life_event")
 			return global.life_event;
 		if("list_of_ais")
@@ -301,10 +283,6 @@
 			return global.nanomanager;
 		if("news_network")
 			return global.news_network;
-		if("ninja_names")
-			return global.ninja_names;
-		if("ninja_titles")
-			return global.ninja_titles;
 		if("ninjas")
 			return global.ninjas;
 		if("ntnet_global")
@@ -327,8 +305,6 @@
 			return global.power_alarm;
 		if("powerinstances")
 			return global.powerinstances;
-		if("powers")
-			return global.powers;
 		if("priority_announcement")
 			return global.priority_announcement;
 		if("priv_all_access_datums")
@@ -359,8 +335,6 @@
 			return global.robot_inventory;
 		if("roundstart_hour")
 			return global.roundstart_hour;
-		if("rune_list")
-			return global.rune_list;
 		if("scarySounds")
 			return global.scarySounds;
 		if("scheduler")
@@ -383,8 +357,6 @@
 			return global.sortInstance;
 		if("sound_player")
 			return global.sound_player;
-		if("spells")
-			return global.spells;
 		if("splatter_cache")
 			return global.splatter_cache;
 		if("sqladdress")
@@ -461,8 +433,6 @@
 			return global.uplink_purchase_repository;
 		if("vendor_account")
 			return global.vendor_account;
-		if("verbs")
-			return global.verbs;
 		if("visual_nets")
 			return global.visual_nets;
 		if("vote")
@@ -473,10 +443,6 @@
 			return global.wax_recipes;
 		if("wirelessProcess")
 			return global.wirelessProcess;
-		if("wizard_first")
-			return global.wizard_first;
-		if("wizard_second")
-			return global.wizard_second;
 		if("wizards")
 			return global.wizards;
 		if("world_uplinks")
@@ -516,8 +482,6 @@
 			global._preloader=newval;
 		if("actor")
 			global.actor=newval;
-		if("adjectives")
-			global.adjectives=newval;
 		if("admin_pm_repository")
 			global.admin_pm_repository=newval;
 		if("admin_secrets")
@@ -526,8 +490,6 @@
 			global.admin_state=newval;
 		if("ai_icons")
 			global.ai_icons=newval;
-		if("ai_names")
-			global.ai_names=newval;
 		if("air_alarm_topic")
 			global.air_alarm_topic=newval;
 		if("air_blocked")
@@ -592,18 +554,12 @@
 			global.cargo_supply_pack_root=newval;
 		if("cargo_supply_packs")
 			global.cargo_supply_packs=newval;
-		if("channel_to_radio_key")
-			global.channel_to_radio_key=newval;
 		if("chemistryProcess")
 			global.chemistryProcess=newval;
 		if("client_repository")
 			global.client_repository=newval;
-		if("clown_names")
-			global.clown_names=newval;
 		if("command_announcement")
 			global.command_announcement=newval;
-		if("commando_names")
-			global.commando_names=newval;
 		if("commandos")
 			global.commandos=newval;
 		if("config")
@@ -632,8 +588,6 @@
 			global.death_event=newval;
 		if("deathsquad")
 			global.deathsquad=newval;
-		if("debug_verbs")
-			global.debug_verbs=newval;
 		if("decls_repository")
 			global.decls_repository=newval;
 		if("deep_inventory_state")
@@ -672,10 +626,6 @@
 			global.exited_event=newval;
 		if("fire_alarm")
 			global.fire_alarm=newval;
-		if("first_names_female")
-			global.first_names_female=newval;
-		if("first_names_male")
-			global.first_names_male=newval;
 		if("fluidtrack_cache")
 			global.fluidtrack_cache=newval;
 		if("follow_repository")
@@ -742,8 +692,6 @@
 			global.jobban_runonce=newval;
 		if("language_keys")
 			global.language_keys=newval;
-		if("last_names")
-			global.last_names=newval;
 		if("life_event")
 			global.life_event=newval;
 		if("list_of_ais")
@@ -790,10 +738,6 @@
 			global.nanomanager=newval;
 		if("news_network")
 			global.news_network=newval;
-		if("ninja_names")
-			global.ninja_names=newval;
-		if("ninja_titles")
-			global.ninja_titles=newval;
 		if("ninjas")
 			global.ninjas=newval;
 		if("ntnet_global")
@@ -816,8 +760,6 @@
 			global.power_alarm=newval;
 		if("powerinstances")
 			global.powerinstances=newval;
-		if("powers")
-			global.powers=newval;
 		if("priority_announcement")
 			global.priority_announcement=newval;
 		if("priv_all_access_datums")
@@ -848,8 +790,6 @@
 			global.robot_inventory=newval;
 		if("roundstart_hour")
 			global.roundstart_hour=newval;
-		if("rune_list")
-			global.rune_list=newval;
 		if("scarySounds")
 			global.scarySounds=newval;
 		if("scheduler")
@@ -872,8 +812,6 @@
 			global.sortInstance=newval;
 		if("sound_player")
 			global.sound_player=newval;
-		if("spells")
-			global.spells=newval;
 		if("splatter_cache")
 			global.splatter_cache=newval;
 		if("sqladdress")
@@ -950,8 +888,6 @@
 			global.uplink_purchase_repository=newval;
 		if("vendor_account")
 			global.vendor_account=newval;
-		if("verbs")
-			global.verbs=newval;
 		if("visual_nets")
 			global.visual_nets=newval;
 		if("vote")
@@ -962,10 +898,6 @@
 			global.wax_recipes=newval;
 		if("wirelessProcess")
 			global.wirelessProcess=newval;
-		if("wizard_first")
-			global.wizard_first=newval;
-		if("wizard_second")
-			global.wizard_second=newval;
 		if("wizards")
 			global.wizards=newval;
 		if("world_uplinks")
@@ -991,12 +923,10 @@
 	"_all_globals",
 	"_preloader",
 	"actor",
-	"adjectives",
 	"admin_pm_repository",
 	"admin_secrets",
 	"admin_state",
 	"ai_icons",
-	"ai_names",
 	"air_alarm_topic",
 	"air_blocked",
 	"air_master",
@@ -1029,12 +959,9 @@
 	"captain_announcement",
 	"cargo_supply_pack_root",
 	"cargo_supply_packs",
-	"channel_to_radio_key",
 	"chemistryProcess",
 	"client_repository",
-	"clown_names",
 	"command_announcement",
-	"commando_names",
 	"commandos",
 	"config",
 	"conscious_state",
@@ -1049,7 +976,6 @@
 	"dbcon_old",
 	"death_event",
 	"deathsquad",
-	"debug_verbs",
 	"decls_repository",
 	"deep_inventory_state",
 	"default_ai_icon",
@@ -1069,8 +995,6 @@
 	"event_manager",
 	"exited_event",
 	"fire_alarm",
-	"first_names_female",
-	"first_names_male",
 	"fluidtrack_cache",
 	"follow_repository",
 	"forced_ambiance_list",
@@ -1104,7 +1028,6 @@
 	"jobban_keylist",
 	"jobban_runonce",
 	"language_keys",
-	"last_names",
 	"life_event",
 	"list_of_ais",
 	"lobby_image",
@@ -1128,8 +1051,6 @@
 	"moved_event",
 	"nanomanager",
 	"news_network",
-	"ninja_names",
-	"ninja_titles",
 	"ninjas",
 	"ntnet_global",
 	"opacity_set_event",
@@ -1141,7 +1062,6 @@
 	"plant_controller",
 	"power_alarm",
 	"powerinstances",
-	"powers",
 	"priority_announcement",
 	"priv_all_access_datums",
 	"priv_all_access_datums_id",
@@ -1157,7 +1077,6 @@
 	"revs",
 	"robot_inventory",
 	"roundstart_hour",
-	"rune_list",
 	"scarySounds",
 	"scheduler",
 	"security_announcement_down",
@@ -1169,7 +1088,6 @@
 	"sight_set_event",
 	"sortInstance",
 	"sound_player",
-	"spells",
 	"splatter_cache",
 	"sqladdress",
 	"sqldb",
@@ -1208,14 +1126,11 @@
 	"uplink",
 	"uplink_purchase_repository",
 	"vendor_account",
-	"verbs",
 	"visual_nets",
 	"vote",
 	"vsc",
 	"wax_recipes",
 	"wirelessProcess",
-	"wizard_first",
-	"wizard_second",
 	"wizards",
 	"world_uplinks",
 	"xenomorphs",

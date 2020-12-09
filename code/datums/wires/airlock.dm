@@ -57,7 +57,7 @@ GLOBAL_VAR_CONST(AIRLOCK_WIRE_LIGHT, 2048)
 		if(GLOB.AIRLOCK_WIRE_MAIN_POWER1, GLOB.AIRLOCK_WIRE_MAIN_POWER2)
 
 			if(!mended)
-				//Cutting either one disables the main door power, but unless backup power is also cut, the backup power re-powers the door in 10 seconds. While unpowered, the door may be crowbarred open, but bolts-raising will not work. Cutting these wires may electocute the user.
+				//Cutting either one disables the main door power, but unless backup power is also cut, the backup power re-GLOB.powers the door in 10 seconds. While unpowered, the door may be crowbarred open, but bolts-raising will not work. Cutting these wires may electocute the user.
 				A.loseMainPower()
 				A.shock(usr, 50)
 			else

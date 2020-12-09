@@ -150,8 +150,8 @@
 /mob/living/simple_animal/familiar/pet/mouse/New()
 	..()
 
-	verbs += /mob/living/proc/ventcrawl
-	verbs += /mob/living/proc/hide
+	GLOB.verbs += /mob/living/proc/ventcrawl
+	GLOB.verbs += /mob/living/proc/hide
 
 /mob/living/simple_animal/familiar/pet/cat
 	name = "black cat"

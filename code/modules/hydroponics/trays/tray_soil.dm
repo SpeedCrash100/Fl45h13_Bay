@@ -14,9 +14,9 @@
 
 /obj/machinery/portable_atmospherics/hydroponics/soil/New()
 	..()
-	verbs -= /obj/machinery/portable_atmospherics/hydroponics/verb/close_lid_verb
-	verbs -= /obj/machinery/portable_atmospherics/hydroponics/verb/remove_label
-	verbs -= /obj/machinery/portable_atmospherics/hydroponics/verb/setlight
+	GLOB.verbs -= /obj/machinery/portable_atmospherics/hydroponics/verb/close_lid_verb
+	GLOB.verbs -= /obj/machinery/portable_atmospherics/hydroponics/verb/remove_label
+	GLOB.verbs -= /obj/machinery/portable_atmospherics/hydroponics/verb/setlight
 
 /obj/machinery/portable_atmospherics/hydroponics/soil/CanPass()
 	return 1

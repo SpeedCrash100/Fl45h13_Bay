@@ -66,8 +66,8 @@
 	use_to_pickup = 1
 	New()
 		..()
-		//verbs -= /obj/item/weapon/storage/verb/quick_empty
-		//verbs += /obj/item/weapon/storage/sheetsnatcher/quick_empty
+		//GLOB.verbs -= /obj/item/weapon/storage/verb/quick_empty
+		//GLOB.verbs += /obj/item/weapon/storage/sheetsnatcher/quick_empty
 
 	can_be_inserted(obj/item/W, mob/user, stop_messages = 0)
 		if(!istype(W,/obj/item/stack/material))

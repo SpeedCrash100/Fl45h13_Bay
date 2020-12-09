@@ -326,5 +326,5 @@
 		organ.rejuvenate(1)
 		organ.max_damage *= 5
 		organ.min_broken_damage *= 5
-	verbs += /mob/living/proc/breath_death
-	verbs += /mob/living/proc/consume
+	GLOB.verbs += /mob/living/proc/breath_death
+	GLOB.verbs += /mob/living/proc/consume

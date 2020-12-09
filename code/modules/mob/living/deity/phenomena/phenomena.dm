@@ -30,7 +30,7 @@
 
 	if(flags & PHENOMENA_NEAR_STRUCTURE)
 		if(!linked.near_structure(target))
-			to_chat(linked, "<span class='warning'>\The [target] needs to be near a holy structure for your powers to work!</span>")
+			to_chat(linked, "<span class='warning'>\The [target] needs to be near a holy structure for your GLOB.powers to work!</span>")
 			return 0
 
 	if(isliving(target))

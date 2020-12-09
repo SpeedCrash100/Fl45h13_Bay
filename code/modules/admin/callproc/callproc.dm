@@ -197,7 +197,7 @@
 	set name = "Cancel Callproc Select"
 	set category = "Admin"
 
-	verbs -= /client/proc/cancel_callproc_select
+	GLOB.verbs -= /client/proc/cancel_callproc_select
 	if(holder && holder.callproc && holder.callproc.waiting_for_click)
 		holder.callproc.waiting_for_click = 0
 		holder.callproc.do_args()
@@ -208,7 +208,7 @@
 			holder.callproc.arguments += A
 
 		holder.callproc.waiting_for_click = 0
-		verbs -= /client/proc/cancel_callproc_select
+		GLOB.verbs -= /client/proc/cancel_callproc_select
 		holder.callproc.do_args()
 	else
 		return ..()

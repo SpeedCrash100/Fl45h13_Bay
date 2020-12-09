@@ -12,9 +12,9 @@
 
 		B.detatch()
 
-		verbs -= /mob/living/carbon/proc/release_control
-		verbs -= /mob/living/carbon/proc/punish_host
-		verbs -= /mob/living/carbon/proc/spawn_larvae
+		GLOB.verbs -= /mob/living/carbon/proc/release_control
+		GLOB.verbs -= /mob/living/carbon/proc/punish_host
+		GLOB.verbs -= /mob/living/carbon/proc/spawn_larvae
 
 	else
 		to_chat(src, "<span class='danger'>ERROR NO BORER OR BRAINMOB DETECTED IN THIS MOB, THIS IS A BUG !</span>")

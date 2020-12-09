@@ -23,7 +23,7 @@
 	..()
 	owner = newowner
 	loc = null
-	verbs.Cut()
+	GLOB.verbs.Cut()
 
 /obj/aiming_overlay/proc/toggle_permission(var/perm)
 

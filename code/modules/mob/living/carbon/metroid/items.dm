@@ -123,7 +123,7 @@
 
 /obj/item/weapon/slimepotion
 	name = "docility potion"
-	desc = "A potent chemical mix that will nullify a slime's powers, causing it to become docile and tame."
+	desc = "A potent chemical mix that will nullify a slime's GLOB.powers, causing it to become docile and tame."
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle19"
 
@@ -157,7 +157,7 @@
 
 /obj/item/weapon/slimepotion2
 	name = "advanced docility potion"
-	desc = "A potent chemical mix that will nullify a slime's powers, causing it to become docile and tame. This one is meant for adult slimes."
+	desc = "A potent chemical mix that will nullify a slime's GLOB.powers, causing it to become docile and tame. This one is meant for adult slimes."
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle19"
 

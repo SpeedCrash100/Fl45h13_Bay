@@ -661,7 +661,7 @@
 					stat(A)
 
 
-// facing verbs
+// facing GLOB.verbs
 /mob/proc/canface()
 	if(!canmove)						return 0
 	if(anchored)						return 0
