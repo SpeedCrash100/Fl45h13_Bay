@@ -153,9 +153,9 @@ swapmap
 			y1=min(x:y,y:y);y2=max(x:y,y:y)
 			z1=min(x:z,y:z);z2=max(x:z,y:z)
 			InitializeSwapMaps()
-			if(z2>swapmaps_compiled_maxz ||\
-			   y2>swapmaps_compiled_maxy ||\
-			   x2>swapmaps_compiled_maxx)
+			if(z2>GLOB.swapmaps_compiled_maxz ||\
+			   y2>GLOB.swapmaps_compiled_maxy ||\
+			   x2>GLOB.swapmaps_compiled_maxx)
 				qdel(src)
 			return
 		x2=x?(x):world.maxx
@@ -167,11 +167,11 @@ swapmap
 		// a temporary datum for a chunk can be deleted outright
 		// for others, some cleanup is necessary
 		if(!ischunk)
-			swapmaps_loaded-=src
-			swapmaps_byname-=id
-			if(z2>swapmaps_compiled_maxz ||\
-			   y2>swapmaps_compiled_maxy ||\
-			   x2>swapmaps_compiled_maxx)
+			GLOB.swapmaps_loaded-=src
+			GLOB.swapmaps_byname-=id
+			if(z2>GLOB.swapmaps_compiled_maxz ||\
+			   y2>GLOB.swapmaps_compiled_maxy ||\
+			   x2>GLOB.swapmaps_compiled_maxx)
 				var/list/areas=new
 				for(var/atom/A in block(locate(x1,y1,z1),locate(x2,y2,z2)))
 					for(var/obj/O in A) qdel(O)
@@ -313,11 +313,11 @@ swapmap
 		world.maxx=max(x2,world.maxx)	// stretch x/y if necessary
 		world.maxy=max(y2,world.maxy)
 		if(!ischunk)
-			if(world.maxz<=swapmaps_compiled_maxz)
-				z1=swapmaps_compiled_maxz+1
+			if(world.maxz<=GLOB.swapmaps_compiled_maxz)
+				z1=GLOB.swapmaps_compiled_maxz+1
 				x1=1;y1=1
 			else
-				var/list/l=ConsiderRegion(1,1,world.maxx,world.maxy,swapmaps_compiled_maxz+1)
+				var/list/l=ConsiderRegion(1,1,world.maxx,world.maxy,GLOB.swapmaps_compiled_maxz+1)
 				x1=l[1]
 				y1=l[2]
 				z1=l[3]
@@ -327,14 +327,14 @@ swapmap
 		z2+=z1-1
 		world.maxz=max(z2,world.maxz)	// stretch z if necessary
 		if(!ischunk)
-			swapmaps_loaded[src]=null
-			swapmaps_byname[id]=src
+			GLOB.swapmaps_loaded[src]=null
+			GLOB.swapmaps_byname[id]=src
 
 	proc/ConsiderRegion(X1,Y1,X2,Y2,Z1,Z2)
 		while(1)
 			var/nextz=0
 			var/swapmap/M
-			for(M in swapmaps_loaded)
+			for(M in GLOB.swapmaps_loaded)
 				if(M.z2<Z1 || (Z2 && M.z1>Z2) || M.z1>=Z1+z2 ||\
 				   M.x1>X2 || M.x2<X1 || M.x1>=X1+x2 ||\
 				   M.y1>Y2 || M.y2<Y1 || M.y1>=Y1+y2) continue
@@ -363,10 +363,10 @@ swapmap
 				Y1=1;Y2=world.maxy
 
 	proc/CutXYZ()
-		var/mx=swapmaps_compiled_maxx
-		var/my=swapmaps_compiled_maxy
-		var/mz=swapmaps_compiled_maxz
-		for(var/swapmap/M in swapmaps_loaded)	// may not include src
+		var/mx=GLOB.swapmaps_compiled_maxx
+		var/my=GLOB.swapmaps_compiled_maxy
+		var/mz=GLOB.swapmaps_compiled_maxz
+		for(var/swapmap/M in GLOB.swapmaps_loaded)	// may not include src
 			mx=max(mx,M.x2)
 			my=max(my,M.y2)
 			mz=max(mz,M.z2)
@@ -391,9 +391,9 @@ swapmap
 
 	// this will not delete existing savefiles for this map
 	proc/SetID(newid)
-		swapmaps_byname-=id
+		GLOB.swapmaps_byname-=id
 		id=newid
-		swapmaps_byname[id]=src
+		GLOB.swapmaps_byname[id]=src
 
 	proc/AllTurfs(z)
 		if(isnum(z) && (z<z1 || z>z2)) return null
@@ -504,21 +504,21 @@ GLOBAL_VAR_CONST(SWAPMAPS_SAV, 0)
 GLOBAL_VAR_CONST(SWAPMAPS_TEXT, 1)
 GLOBAL_VAR_INIT(swapmaps_mode, GLOB.SWAPMAPS_SAV) 
 
-var/swapmaps_compiled_maxx
-var/swapmaps_compiled_maxy
-var/swapmaps_compiled_maxz
-var/swapmaps_initialized
-var/swapmaps_loaded
-var/swapmaps_byname
+GLOBAL_VAR(swapmaps_compiled_maxx)
+GLOBAL_VAR(swapmaps_compiled_maxy)
+GLOBAL_VAR(swapmaps_compiled_maxz)
+GLOBAL_VAR(swapmaps_initialized)
+GLOBAL_VAR(swapmaps_loaded)
+GLOBAL_VAR(swapmaps_byname)
 
 proc/InitializeSwapMaps()
-	if(swapmaps_initialized) return
-	swapmaps_initialized=1
-	swapmaps_compiled_maxx=world.maxx
-	swapmaps_compiled_maxy=world.maxy
-	swapmaps_compiled_maxz=world.maxz
-	swapmaps_loaded=list()
-	swapmaps_byname=list()
+	if(GLOB.swapmaps_initialized) return
+	GLOB.swapmaps_initialized=1
+	GLOB.swapmaps_compiled_maxx=world.maxx
+	GLOB.swapmaps_compiled_maxy=world.maxy
+	GLOB.swapmaps_compiled_maxz=world.maxz
+	GLOB.swapmaps_loaded=list()
+	GLOB.swapmaps_byname=list()
 	if(GLOB.swapmaps_iconcache)
 		for(var/V in GLOB.swapmaps_iconcache)
 			// reverse-associate everything
@@ -532,11 +532,11 @@ proc/SwapMaps_AddIconToCache(name,icon)
 
 proc/SwapMaps_Find(id)
 	InitializeSwapMaps()
-	return swapmaps_byname[id]
+	return GLOB.swapmaps_byname[id]
 
 proc/SwapMaps_Load(id)
 	InitializeSwapMaps()
-	var/swapmap/M=swapmaps_byname[id]
+	var/swapmap/M=GLOB.swapmaps_byname[id]
 	if(!M)
 		var/savefile/S
 		var/text=0
@@ -557,18 +557,18 @@ proc/SwapMaps_Load(id)
 
 proc/SwapMaps_Save(id)
 	InitializeSwapMaps()
-	var/swapmap/M=swapmaps_byname[id]
+	var/swapmap/M=GLOB.swapmaps_byname[id]
 	if(M) M.Save()
 	return M
 
 proc/SwapMaps_Save_All()
 	InitializeSwapMaps()
-	for(var/swapmap/M in swapmaps_loaded)
+	for(var/swapmap/M in GLOB.swapmaps_loaded)
 		if(M) M.Save()
 
 proc/SwapMaps_Unload(id)
 	InitializeSwapMaps()
-	var/swapmap/M=swapmaps_byname[id]
+	var/swapmap/M=GLOB.swapmaps_byname[id]
 	if(!M) return	// return silently from an error
 	M.Unload()
 	return 1

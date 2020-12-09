@@ -172,7 +172,7 @@ GLOBAL_LIST_EMPTY(flooring_types)
 	new /obj/effect/overlay/cult/cultfloor(src)
 
 /decl/flooring/reinforced/cult/on_remove()
-	cult.remove_cultiness(CULTINESS_PER_TURF)
+	GLOB.cult.remove_cultiness(CULTINESS_PER_TURF)
 
 /decl/flooring/reinforced/shuttle
 	name = "floor"

@@ -215,8 +215,8 @@
 	set_frequency(new_freq.data)
 
 /obj/item/integrated_circuit/input/signaler/Destroy()
-	if(radio_controller)
-		radio_controller.remove_object(src,frequency)
+	if(GLOB.radio_controller)
+		GLOB.radio_controller.remove_object(src,frequency)
 	. = ..()
 
 /obj/item/integrated_circuit/input/signaler/on_data_written()
@@ -239,14 +239,14 @@
 	radio_connection.post_signal(src, create_signal())
 
 /obj/item/integrated_circuit/input/signaler/proc/set_frequency(var/new_frequency)
-	if(!radio_controller)
+	if(!GLOB.radio_controller)
 		sleep(20)
-	if(!radio_controller)
+	if(!GLOB.radio_controller)
 		return
 
-	radio_controller.remove_object(src, frequency)
+	GLOB.radio_controller.remove_object(src, frequency)
 	frequency = new_frequency
-	radio_connection = radio_controller.add_object(src, new_frequency, GLOB.RADIO_CHAT)
+	radio_connection = GLOB.radio_controller.add_object(src, new_frequency, GLOB.RADIO_CHAT)
 
 /obj/item/integrated_circuit/input/signaler/proc/signal_good(var/datum/signal/signal)
 	if(!signal)

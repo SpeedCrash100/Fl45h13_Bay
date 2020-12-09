@@ -5,7 +5,7 @@
 #define EVAC_COOLDOWN   4
 #define EVAC_COMPLETE   5
 
-var/datum/evacuation_controller/evacuation_controller
+GLOBAL_DATUM(evacuation_controller, /datum/evacuation_controller)
 
 /datum/evacuation_controller
 
@@ -63,8 +63,8 @@ var/datum/evacuation_controller/evacuation_controller
 	emergency_evacuation = _emergency_evac
 
 	var/evac_prep_delay_multiplier = 1
-	if(ticker && ticker.mode)
-		evac_prep_delay_multiplier = ticker.mode.shuttle_delay
+	if(GLOB.ticker && GLOB.ticker.mode)
+		evac_prep_delay_multiplier = GLOB.ticker.mode.shuttle_delay
 
 	var/additional_delay
 	if(_emergency_evac)
@@ -131,7 +131,7 @@ var/datum/evacuation_controller/evacuation_controller
 		evac_waiting.Announce(replacetext(GLOB.using_map.emergency_shuttle_docked_message, "%ETD%", "[estimated_time] minute\s"), new_sound = sound('sound/effects/Evacuation.ogg', volume = 35))
 	else
 		priority_announcement.Announce(replacetext(replacetext(GLOB.using_map.shuttle_docked_message, "%dock_name%", "[GLOB.using_map.dock_name]"),  "%ETD%", "[estimated_time] minute\s"))
-	if(config.announce_shuttle_dock_to_irc)
+	if(GLOB.config.announce_shuttle_dock_to_irc)
 		send2mainirc("The shuttle has docked with the station. It will depart in approximately [estimated_time] minute\s.")
 
 /datum/evacuation_controller/proc/launch_evacuation()

@@ -42,7 +42,7 @@
 	set category = "Fun"
 	set name = "Make Robot"
 
-	if(!ticker)
+	if(!GLOB.ticker)
 		alert("Wait until the game starts")
 		return
 	if(istype(M, /mob/living/carbon/human))
@@ -57,7 +57,7 @@
 	set category = "Fun"
 	set name = "Make Simple Animal"
 
-	if(!ticker)
+	if(!GLOB.ticker)
 		alert("Wait until the game starts")
 		return
 
@@ -105,7 +105,7 @@
 	set category = "Fun"
 	set name = "Make slime"
 
-	if(!ticker)
+	if(!GLOB.ticker)
 		alert("Wait until the game starts")
 		return
 	if(ishuman(M))
@@ -122,7 +122,7 @@
 	set category = "Fun"
 	set name = "Make Monkey"
 
-	if(!ticker)
+	if(!GLOB.ticker)
 		alert("Wait until the game starts")
 		return
 	if(istype(M, /mob/living/carbon/human))
@@ -137,7 +137,7 @@
 	set category = "Fun"
 	set name = "Make Changeling"
 
-	if(!ticker)
+	if(!GLOB.ticker)
 		alert("Wait until the game starts")
 		return
 	if(istype(M, /mob/living/carbon/human))
@@ -157,7 +157,7 @@
 
 	to_chat(usr, "Ruby Mode disabled. Command aborted.")
 	return
-	if(!ticker)
+	if(!GLOB.ticker)
 		alert("Wait until the game starts.")
 		return
 	if(istype(M, /mob/living/carbon/human))
@@ -175,7 +175,7 @@
 	if(!cultwords["travel"])
 		runerandom()
 	if(M)
-		if(M.mind in ticker.mode.cult)
+		if(M.mind in GLOB.ticker.mode.cult)
 			return
 		else
 			if(alert("Spawn that person a tome?",,"Yes","No")=="Yes")
@@ -236,16 +236,16 @@
 	set category = "Server"
 	set name = "Toggle Aliens"
 
-	config.aliens_allowed = !config.aliens_allowed
-	log_admin("[key_name(src)] has turned aliens [config.aliens_allowed ? "on" : "off"].")
-	message_admins("[key_name_admin(src)] has turned aliens [config.aliens_allowed ? "on" : "off"].", 0)
+	GLOB.config.aliens_allowed = !GLOB.config.aliens_allowed
+	log_admin("[key_name(src)] has turned aliens [GLOB.config.aliens_allowed ? "on" : "off"].")
+	message_admins("[key_name_admin(src)] has turned aliens [GLOB.config.aliens_allowed ? "on" : "off"].", 0)
 	feedback_add_details("admin_verb","TAL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_grantfullaccess(var/mob/M in GLOB.mob_list)
 	set category = "Admin"
 	set name = "Grant Full Access"
 
-	if (!ticker)
+	if (!GLOB.ticker)
 		alert("Wait until the game starts")
 		return
 	if (istype(M, /mob/living/carbon/human))
@@ -480,7 +480,7 @@
 
 // DNA2 - Admin Hax
 /client/proc/cmd_admin_toggle_block(var/mob/M,var/block)
-	if(!ticker)
+	if(!GLOB.ticker)
 		alert("Wait until the game starts")
 		return
 	if(istype(M, /mob/living/carbon))

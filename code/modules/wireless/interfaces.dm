@@ -74,12 +74,12 @@
 //-------------------------------
 /datum/wifi/receiver/New()
 	..()
-	if(wirelessProcess)
-		wirelessProcess.add_device(src)
+	if(GLOB.wirelessProcess)
+		GLOB.wirelessProcess.add_device(src)
 
 /datum/wifi/receiver/Destroy()
-	if(wirelessProcess)
-		wirelessProcess.remove_device(src)
+	if(GLOB.wirelessProcess)
+		GLOB.wirelessProcess.remove_device(src)
 	return ..()
 
 //-------------------------------
@@ -94,7 +94,7 @@
 
 /datum/wifi/sender/proc/send_connection_request()
 	var/datum/connection_request/C = new(src, id)
-	wirelessProcess.add_request(C)
+	GLOB.wirelessProcess.add_request(C)
 
 /datum/wifi/sender/proc/activate(mob/living/user)
 	return

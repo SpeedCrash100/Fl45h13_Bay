@@ -1,4 +1,4 @@
-var/global/datum/controller/process/ticker/tickerProcess
+GLOBAL_DATUM(tickerProcess, /datum/controller/process/ticker)
 
 /datum/controller/process/ticker
 	var/lastTickerTimeDuration
@@ -10,14 +10,14 @@ var/global/datum/controller/process/ticker/tickerProcess
 
 	lastTickerTime = world.timeofday
 
-	if(!ticker)
-		ticker = new
+	if(!GLOB.ticker)
+		GLOB.ticker = new
 
-	tickerProcess = src
+	GLOB.tickerProcess = src
 
 	spawn(0)
-		if(ticker)
-			ticker.pregame()
+		if(GLOB.ticker)
+			GLOB.ticker.pregame()
 
 /datum/controller/process/ticker/doWork()
 	var/currentTime = world.timeofday
@@ -29,10 +29,10 @@ var/global/datum/controller/process/ticker/tickerProcess
 
 	lastTickerTime = currentTime
 
-	ticker.process()
+	GLOB.ticker.process()
 
 /datum/controller/process/ticker/proc/getLastTickerTimeDuration()
 	return lastTickerTimeDuration
 
 /world/proc/has_round_started()
-	return (ticker && ticker.current_state >= GAME_STATE_PLAYING)
+	return (GLOB.ticker && GLOB.ticker.current_state >= GAME_STATE_PLAYING)

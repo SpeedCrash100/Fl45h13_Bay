@@ -38,7 +38,7 @@
 
 /mob/living/silicon/Destroy()
 	GLOB.silicon_mob_list -= src
-	for(var/datum/alarm_handler/AH in alarm_manager.all_handlers)
+	for(var/datum/alarm_handler/AH in GLOB.alarm_manager.all_handlers)
 		AH.unregister_alarm(src)
 	return ..()
 
@@ -129,8 +129,8 @@
 
 // this function displays the shuttles ETA in the status panel if the shuttle has been called
 /mob/living/silicon/proc/show_emergency_shuttle_eta()
-	if(evacuation_controller)
-		var/eta_status = evacuation_controller.get_status_panel_eta()
+	if(GLOB.evacuation_controller)
+		var/eta_status = GLOB.evacuation_controller.get_status_panel_eta()
 		if(eta_status)
 			stat(null, eta_status)
 
@@ -147,8 +147,8 @@
 /mob/living/silicon/proc/show_station_manifest()
 	var/dat
 	dat += "<h4>Crew Manifest</h4>"
-	if(data_core)
-		dat += data_core.get_manifest(1) // make it monochrome
+	if(GLOB.data_core)
+		dat += GLOB.data_core.get_manifest(1) // make it monochrome
 	dat += "<br>"
 	show_browser(src, dat, "window=airoster")
 	onclose(src, "airoster")
@@ -323,10 +323,10 @@
 
 
 /mob/living/silicon/proc/is_traitor()
-	return mind && (mind in traitors.current_antagonists)
+	return mind && (mind in GLOB.traitors.current_antagonists)
 
 /mob/living/silicon/proc/is_malf()
-	return mind && (mind in malf.current_antagonists)
+	return mind && (mind in GLOB.malf.current_antagonists)
 
 /mob/living/silicon/proc/is_malf_or_traitor()
 	return is_traitor() || is_malf()
@@ -346,8 +346,8 @@
 	//Handle job slot/tater cleanup.
 	var/job = mind.assigned_role
 
-	job_master.FreeRole(job)
-	data_core.ResetPDAManifest()
+	GLOB.job_master.FreeRole(job)
+	GLOB.data_core.ResetPDAManifest()
 
 	if(mind.objectives.len)
 		qdel(mind.objectives)

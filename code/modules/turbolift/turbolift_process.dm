@@ -1,11 +1,11 @@
-var/datum/controller/process/turbolift/turbolift_controller
+GLOBAL_DATUM(turbolift_controller, /datum/controller/process/turbolift)
 
 /datum/controller/process/turbolift
 	var/list/moving_lifts = list()
 
 /datum/controller/process/turbolift/New()
 	..()
-	turbolift_controller = src
+	GLOB.turbolift_controller = src
 
 /datum/controller/process/turbolift/setup()
 	name = "turbolift controller"

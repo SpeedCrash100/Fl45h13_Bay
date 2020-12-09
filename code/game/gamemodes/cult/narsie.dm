@@ -54,9 +54,9 @@ GLOBAL_LIST_EMPTY(narsie_list)
 		GLOB.narsie_cometh = 1
 
 		spawn(10 SECONDS)
-			if(evacuation_controller)
-				evacuation_controller.call_evacuation(null, TRUE, 1)
-				evacuation_controller.evac_no_return = 0 // Cannot recall
+			if(GLOB.evacuation_controller)
+				GLOB.evacuation_controller.call_evacuation(null, TRUE, 1)
+				GLOB.evacuation_controller.evac_no_return = 0 // Cannot recall
 
 /obj/singularity/narsie/process()
 	eat()
@@ -269,7 +269,7 @@ GLOBAL_LIST_EMPTY(narsie_list)
 
 /obj/singularity/narsie/proc/pickcultist() //Narsie rewards his cultists with being devoured first, then picks a ghost to follow. --NEO
 	var/list/cultists = list()
-	for(var/datum/mind/cult_nh_mind in cult.current_antagonists)
+	for(var/datum/mind/cult_nh_mind in GLOB.cult.current_antagonists)
 		if(!cult_nh_mind.current)
 			continue
 		if(cult_nh_mind.current.stat)

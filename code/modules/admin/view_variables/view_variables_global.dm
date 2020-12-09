@@ -1,4 +1,4 @@
-/var/decl/global_vars/global_vars_
+GLOBAL_DATUM(global_vars_, /decl/global_vars)
 
 /decl/global_vars/get_view_variables_header()
 	return "<b>Global Variables</b>"
@@ -46,6 +46,6 @@
 	set category = "Debug"
 	set name = "View Global Variables"
 
-	if(!global_vars_)
-		global_vars_ = new()
-	debug_variables(global_vars_)
+	if(!GLOB.global_vars_)
+		GLOB.global_vars_ = new()
+	debug_variables(GLOB.global_vars_)

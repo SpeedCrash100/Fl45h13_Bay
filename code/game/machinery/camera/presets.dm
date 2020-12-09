@@ -104,7 +104,7 @@
 	assembly.upgrades.Add(new /obj/item/device/assembly/prox_sensor(assembly))
 	setPowerUsage()
 	if(!(src in GLOB.machines))
-		if(!GLOB.machinery_sort_required && ticker)
+		if(!GLOB.machinery_sort_required && GLOB.ticker)
 			dd_insertObjectList(GLOB.machines, src)
 		else
 			GLOB.machines += src

@@ -746,7 +746,7 @@
 
 /obj/item/weapon/rig/emp_act(severity_class)
 	//set malfunctioning
-	if(emp_protection < 30) //for ninjas, really.
+	if(emp_protection < 30) //for GLOB.ninjas, really.
 		malfunctioning += 10
 		if(malfunction_delay <= 0)
 			malfunction_delay = max(malfunction_delay, round(30/severity_class))

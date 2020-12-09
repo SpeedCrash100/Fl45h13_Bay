@@ -21,19 +21,19 @@
 	..()
 	if(_name)
 		src.name = _name
-	if(src.name in shuttle_controller.shuttles)
+	if(src.name in GLOB.shuttle_controller.shuttles)
 		CRASH("A shuttle with the name '[name]' is already defined.")
-	shuttle_controller.shuttles[src.name] = src
+	GLOB.shuttle_controller.shuttles[src.name] = src
 	if(flags & SHUTTLE_FLAGS_PROCESS)
-		shuttle_controller.process_shuttles += src
+		GLOB.shuttle_controller.process_shuttles += src
 	if(flags & SHUTTLE_FLAGS_SUPPLY)
 		if(supply_controller.shuttle)
 			CRASH("A supply shuttle is already defined.")
 		supply_controller.shuttle = src
 
 /datum/shuttle/Destroy()
-	shuttle_controller.shuttles -= src.name
-	shuttle_controller.process_shuttles -= src
+	GLOB.shuttle_controller.shuttles -= src.name
+	GLOB.shuttle_controller.process_shuttles -= src
 	if(supply_controller.shuttle == src)
 		supply_controller.shuttle = null
 	. = ..()

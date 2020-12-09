@@ -1,4 +1,4 @@
-var/datum/antagonist/ninja/ninjas
+GLOBAL_DATUM(ninjas, /datum/antagonist/ninja)
 
 /datum/antagonist/ninja
 	id = MODE_NINJA
@@ -21,10 +21,10 @@ var/datum/antagonist/ninja/ninjas
 
 /datum/antagonist/ninja/New()
 	..()
-	ninjas = src
+	GLOB.ninjas = src
 
 /datum/antagonist/ninja/attempt_random_spawn()
-	if(config.ninjas_allowed) ..()
+	if(GLOB.config.ninjas_allowed) ..()
 
 /datum/antagonist/ninja/create_objectives(var/datum/mind/ninja)
 

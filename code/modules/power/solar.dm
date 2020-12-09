@@ -99,16 +99,16 @@ GLOBAL_LIST_EMPTY(solars_list)
 
 //calculates the fraction of the sunlight that the panel recieves
 /obj/machinery/power/solar/proc/update_solar_exposure()
-	if(!sun)
+	if(!GLOB.sun)
 		return
 	if(obscured)
 		sunfrac = 0
 		return
 
 	//find the smaller angle between the direction the panel is facing and the direction of the sun (the sign is not important here)
-	var/p_angle = min(abs(adir - sun.angle), 360 - abs(adir - sun.angle))
+	var/p_angle = min(abs(adir - GLOB.sun.angle), 360 - abs(adir - GLOB.sun.angle))
 
-	if(p_angle > 90)			// if facing more than 90deg from sun, zero output
+	if(p_angle > 90)			// if facing more than 90deg from GLOB.sun, zero output
 		sunfrac = 0
 		return
 
@@ -118,7 +118,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 /obj/machinery/power/solar/process()//TODO: remove/add this from GLOB.machines to save on processing as needed ~Carn PRIORITY
 	if(stat & BROKEN)
 		return
-	if(!sun || !control) //if there's no sun or the panel is not linked to a solar control computer, no need to proceed
+	if(!GLOB.sun || !control) //if there's no sun or the panel is not linked to a solar control computer, no need to proceed
 		return
 
 	if(powernet)
@@ -180,8 +180,8 @@ GLOBAL_LIST_EMPTY(solars_list)
 	var/turf/T = null
 
 	for(var/i = 1 to 20)		// 20 steps is enough
-		ax += sun.dx	// do step
-		ay += sun.dy
+		ax += GLOB.sun.dx	// do step
+		ay += GLOB.sun.dy
 
 		T = locate( round(ax,0.5),round(ay,0.5),z)
 
@@ -342,7 +342,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 				cdir = targetdir //...the current direction is the targetted one (and rotates panels to it)
 		if(2) // auto-tracking
 			if(connected_tracker)
-				connected_tracker.set_angle(sun.angle)
+				connected_tracker.set_angle(GLOB.sun.angle)
 
 	set_panels(cdir)
 	updateDialog()
@@ -375,7 +375,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 /obj/machinery/power/solar_control/interact(mob/user)
 
 	var/t = "<B><span class='highlight'>Generated power</span></B> : [round(lastgen)] W<BR>"
-	t += "<B><span class='highlight'>Star Orientation</span></B>: [sun.angle]&deg ([angle2text(sun.angle)])<BR>"
+	t += "<B><span class='highlight'>Star Orientation</span></B>: [GLOB.sun.angle]&deg ([angle2text(GLOB.sun.angle)])<BR>"
 	t += "<B><span class='highlight'>Array Orientation</span></B>: [rate_control(src,"cdir","[cdir]&deg",1,15)] ([angle2text(cdir)])<BR>"
 	t += "<B><span class='highlight'>Tracking:</span></B><div class='statusDisplay'>"
 	switch(track)
@@ -477,7 +477,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 		track = text2num(href_list["track"])
 		if(track == 2)
 			if(connected_tracker)
-				connected_tracker.set_angle(sun.angle)
+				connected_tracker.set_angle(GLOB.sun.angle)
 				set_panels(cdir)
 		else if (track == 1) //begin manual tracking
 			src.targetdir = src.cdir
@@ -487,7 +487,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 	if(href_list["search_connected"])
 		src.search_for_connected()
 		if(connected_tracker && track == 2)
-			connected_tracker.set_angle(sun.angle)
+			connected_tracker.set_angle(GLOB.sun.angle)
 		src.set_panels(cdir)
 
 	interact(usr)
@@ -530,7 +530,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 /obj/machinery/power/solar_control/autostart/initialize()
 	search_for_connected()
 	if(connected_tracker && track == 2)
-		connected_tracker.set_angle(sun.angle)
+		connected_tracker.set_angle(GLOB.sun.angle)
 		set_panels(cdir)
 //
 // MISC

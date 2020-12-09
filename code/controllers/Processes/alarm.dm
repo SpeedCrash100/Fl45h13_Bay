@@ -7,7 +7,7 @@
 /var/global/datum/alarm_handler/power/power_alarm			= new()
 
 // Alarm Manager, the manager for alarms.
-var/datum/controller/process/alarm/alarm_manager
+GLOBAL_DATUM(alarm_manager, /datum/controller/process/alarm)
 
 /datum/controller/process/alarm
 	var/list/datum/alarm/all_handlers
@@ -16,7 +16,7 @@ var/datum/controller/process/alarm/alarm_manager
 	name = "alarm"
 	schedule_interval = 20 // every 2 seconds
 	all_handlers = list(atmosphere_alarm, camera_alarm, fire_alarm, motion_alarm, power_alarm)
-	alarm_manager = src
+	GLOB.alarm_manager = src
 
 /datum/controller/process/alarm/doWork()
 	for(last_object in all_handlers)

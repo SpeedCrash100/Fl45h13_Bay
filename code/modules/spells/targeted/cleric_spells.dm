@@ -1,6 +1,6 @@
 /spell/targeted/heal_target
 	name = "Cure Light Wounds"
-	desc = "a rudimentary spell used mainly by wizards to heal papercuts. Does not require wizard garb."
+	desc = "a rudimentary spell used mainly by GLOB.wizards to heal papercuts. Does not require wizard garb."
 	feedback = "CL"
 	school = "transmutation"
 	charge_max = 200

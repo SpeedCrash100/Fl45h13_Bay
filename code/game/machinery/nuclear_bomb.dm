@@ -1,4 +1,4 @@
-var/bomb_set
+GLOBAL_VAR(bomb_set)
 
 /obj/machinery/nuclearbomb
 	name = "\improper Nuclear Fission Explosive"
@@ -287,7 +287,7 @@ var/bomb_set
 				if (!timing && !safety)
 					timing = 1
 					log_and_message_admins("activated the detonation countdown of \the [src]")
-					bomb_set++ //There can still be issues with this resetting when there are multiple bombs. Not a big deal though for Nuke/N
+					GLOB.bomb_set++ //There can still be issues with this resetting when there are multiple bombs. Not a big deal though for Nuke/N
 					update_icon()
 				else
 					secure_device()
@@ -320,7 +320,7 @@ var/bomb_set
 	if(timing <= 0)
 		return
 
-	bomb_set--
+	GLOB.bomb_set--
 	safety = TRUE
 	timing = 0
 	timeleft = clamp(timeleft, 120, 600)
@@ -372,7 +372,7 @@ var/bomb_set
 	moved_event.register(src, src, /obj/item/weapon/disk/nuclear/proc/check_z_level)
 
 /obj/item/weapon/disk/nuclear/proc/check_z_level()
-	if(!(ticker && istype(ticker.mode, /datum/game_mode/nuclear)))
+	if(!(GLOB.ticker && istype(GLOB.ticker.mode, /datum/game_mode/nuclear)))
 		moved_event.unregister(src, src, /obj/item/weapon/disk/nuclear/proc/check_z_level) // However, when we are certain unregister if necessary
 		return
 	var/turf/T = get_turf(src)

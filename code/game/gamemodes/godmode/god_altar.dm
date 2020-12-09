@@ -44,7 +44,7 @@
 	cycles_before_converted--
 	if(!cycles_before_converted)
 		src.visible_message("For one thundering moment, \the [target] cries out in pain before going limp and broken.")
-		godcult.add_antagonist_mind(target.mind,1,"a servant of [src]. Your loyalty may be faulty, but you know that it now has control over you...", "Servant of [src]", specific_god=linked_god)
+		GLOB.godcult.add_antagonist_mind(target.mind,1,"a servant of [src]. Your loyalty may be faulty, but you know that it now has control over you...", "Servant of [src]", specific_god=linked_god)
 		remove_target()
 		return
 

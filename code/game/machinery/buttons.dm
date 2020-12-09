@@ -213,7 +213,7 @@
 
 /obj/machinery/button/toggle/valve/initialize()
 	..()
-	radio_connection = radio_controller.add_object(src, frequency, GLOB.RADIO_ATMOSIA)
+	radio_connection = GLOB.radio_controller.add_object(src, frequency, GLOB.RADIO_ATMOSIA)
 
 /obj/machinery/button/toggle/valve/update_icon()
 	if(!active)

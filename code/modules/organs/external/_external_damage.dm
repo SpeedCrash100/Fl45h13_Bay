@@ -64,7 +64,7 @@
 	// push them faster into paincrit though, as the additional damage is converted into shock.
 
 	var/datum/wound/created_wound
-	if(is_damageable(brute + burn) || !config.limbs_can_break)
+	if(is_damageable(brute + burn) || !GLOB.config.limbs_can_break)
 		if(brute)
 			if(can_cut)
 				//need to check sharp again here so that blunt damage that was strong enough to break skin doesn't give puncture wounds
@@ -82,14 +82,14 @@
 	else
 		//If there are still hurties to dispense
 		if (spillover)
-			owner.shock_stage += spillover * config.organ_damage_spillover_multiplier
+			owner.shock_stage += spillover * GLOB.config.organ_damage_spillover_multiplier
 
 	// sync the organ's damage with its wounds
 	src.update_damages()
 	owner.updatehealth() //droplimb will call updatehealth() again if it does end up being called
 	//If limb took enough damage, try to cut or tear it off
 	if(owner && loc == owner && !is_stump())
-		if(!cannot_amputate && config.limbs_can_break && (brute_dam + burn_dam + brute + burn + spillover) >= (max_damage * config.organ_health_multiplier))
+		if(!cannot_amputate && GLOB.config.limbs_can_break && (brute_dam + burn_dam + brute + burn + spillover) >= (max_damage * GLOB.config.organ_health_multiplier))
 			//organs can come off in three cases
 			//1. If the damage source is edge_eligible and the brute damage dealt exceeds the edge threshold, then the organ is cut off.
 			//2. If the damage amount dealt exceeds the disintegrate threshold, the organ is completely obliterated.

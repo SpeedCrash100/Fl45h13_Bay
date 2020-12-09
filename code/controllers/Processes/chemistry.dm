@@ -1,4 +1,4 @@
-var/datum/controller/process/chemistry/chemistryProcess
+GLOBAL_DATUM(chemistryProcess, /datum/controller/process/chemistry)
 
 /datum/controller/process/chemistry
 	var/list/active_holders
@@ -8,7 +8,7 @@ var/datum/controller/process/chemistry/chemistryProcess
 /datum/controller/process/chemistry/setup()
 	name = "chemistry"
 	schedule_interval = 20 // every 2 seconds
-	chemistryProcess = src
+	GLOB.chemistryProcess = src
 	active_holders = list()
 	chemical_reactions = GLOB.chemical_reactions_list
 	chemical_reagents = GLOB.chemical_reagents_list

@@ -1,4 +1,4 @@
-var/datum/antagonist/ert/ert
+GLOBAL_DATUM(ert, /datum/antagonist/ert)
 
 /datum/antagonist/ert
 	id = MODE_ERT
@@ -31,7 +31,7 @@ var/datum/antagonist/ert/ert
 /datum/antagonist/ert/New()
 	..()
 	leader_welcome_text = "As leader of the Emergency Response Team, you answer only to [GLOB.using_map.boss_name], and have authority to override the Captain where it is necessary to achieve your mission goals. It is recommended that you attempt to cooperate with the captain where possible, however."
-	ert = src
+	GLOB.ert = src
 
 /datum/antagonist/ert/greet(var/datum/mind/player)
 	if(!..())

@@ -4,7 +4,7 @@
   * Pretty much pokes the MC to make sure it's still alive.
  **/
 
-var/datum/controller/failsafe/Failsafe
+GLOBAL_DATUM(Failsafe, /datum/controller/failsafe)
 
 /datum/controller/failsafe // This thing pretty much just keeps poking the master controller
 	name = "Failsafe"
@@ -24,15 +24,15 @@ var/datum/controller/failsafe/Failsafe
 
 /datum/controller/failsafe/New()
 	// Highlander-style: there can only be one! Kill off the old and replace it with the new.
-	if(Failsafe != src)
-		if(istype(Failsafe))
-			qdel(Failsafe)
-	Failsafe = src
+	if(GLOB.Failsafe != src)
+		if(istype(GLOB.Failsafe))
+			qdel(GLOB.Failsafe)
+	GLOB.Failsafe = src
 	Initialize()
 
 /datum/controller/failsafe/Initialize()
 	set waitfor = 0
-	Failsafe.Loop()
+	GLOB.Failsafe.Loop()
 	if(!QDELETED(src))
 		qdel(src) //when Loop() returns, we delete ourselves and let the mc recreate us
 
@@ -99,4 +99,4 @@ var/datum/controller/failsafe/Failsafe
 	if(!statclick)
 		statclick = new/obj/effect/statclick/debug(null, "Initializing...", src)
 
-	stat("Failsafe Controller:", statclick.update("Defcon: [defcon_pretty()] (Interval: [Failsafe.processing_interval] | Iteration: [Failsafe.master_iteration])"))
+	stat("Failsafe Controller:", statclick.update("Defcon: [defcon_pretty()] (Interval: [GLOB.Failsafe.processing_interval] | Iteration: [GLOB.Failsafe.master_iteration])"))

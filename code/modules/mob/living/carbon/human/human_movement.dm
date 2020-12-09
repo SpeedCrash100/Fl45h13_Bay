@@ -57,7 +57,7 @@
 	if(mRun in mutations)
 		tally = 0
 
-	return (tally+config.human_delay)
+	return (tally+GLOB.config.human_delay)
 
 /mob/living/carbon/human/Allow_Spacemove(var/check_drift = 0)
 	//Can we act?

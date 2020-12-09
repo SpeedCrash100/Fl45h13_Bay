@@ -24,10 +24,10 @@ datum/controller/game_controller/New()
 			qdel(master_controller)
 		master_controller = src
 
-	if(!job_master)
-		job_master = new /datum/controller/occupations()
-		job_master.SetupOccupations(setup_titles=1)
-		job_master.LoadJobs("config/jobs.txt")
+	if(!GLOB.job_master)
+		GLOB.job_master = new /datum/controller/occupations()
+		GLOB.job_master.SetupOccupations(setup_titles=1)
+		GLOB.job_master.LoadJobs("config/jobs.txt")
 		admin_notice("<span class='danger'>Job setup complete</span>", R_DEBUG)
 
 datum/controller/game_controller/proc/setup()
@@ -38,7 +38,7 @@ datum/controller/game_controller/proc/setup()
 	setupgenetics()
 	SetupXenoarch()
 
-	transfer_controller = new
+	GLOB.transfer_controller = new
 
 	report_progress("Initializations complete")
 	GLOB.initialization_stage |= INITIALIZATION_COMPLETE

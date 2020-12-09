@@ -33,8 +33,8 @@
 	to_chat(usr, "\[3/5\] - All ZAS Zones removed.")
 
 	var/list/unsorted_overlays = list()
-	for(var/id in gas_data.tile_overlay)
-		unsorted_overlays |= gas_data.tile_overlay[id]
+	for(var/id in GLOB.gas_data.tile_overlay)
+		unsorted_overlays |= GLOB.gas_data.tile_overlay[id]
 
 	for(var/turf/simulated/T in world)
 		T.air = null
@@ -43,10 +43,10 @@
 
 	to_chat(usr, "\[4/5\] - All GLOB.turfs reset to roundstart values.")
 
-	qdel(air_master)
-	air_master = new
-	air_master.Setup()
-	spawn air_master.Start()
+	qdel(GLOB.air_master)
+	GLOB.air_master = new
+	GLOB.air_master.Setup()
+	spawn GLOB.air_master.Start()
 
 	to_chat(usr, "\[5/5\] - ZAS Rebooted")
 	to_world("<span class = 'danger'>Atmosphere restart completed in <b>[(world.timeofday - current_time)/10]</b> seconds.</span>")

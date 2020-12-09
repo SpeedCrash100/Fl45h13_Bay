@@ -28,14 +28,14 @@
 
 	return wtime + (time_offset + wusage) * world.tick_lag
 
-var/roundstart_hour
+GLOBAL_VAR(roundstart_hour)
 GLOBAL_VAR_INIT(station_date, "") 
 GLOBAL_VAR_INIT(next_station_date_change, 1 DAY) 
 
 #define duration2stationtime(time) time2text(station_time_in_ticks + time, "hh:mm")
-#define worldtime2stationtime(time) time2text(roundstart_hour HOURS + time, "hh:mm")
+#define worldtime2stationtime(time) time2text(GLOB.roundstart_hour HOURS + time, "hh:mm")
 #define round_duration_in_ticks (GLOB.round_start_time ? world.time - GLOB.round_start_time : 0)
-#define station_time_in_ticks (roundstart_hour HOURS + round_duration_in_ticks)
+#define station_time_in_ticks (GLOB.roundstart_hour HOURS + round_duration_in_ticks)
 
 /proc/stationtime2text()
 	return time2text(station_time_in_ticks, "hh:mm")
@@ -94,11 +94,11 @@ GLOBAL_VAR_INIT(round_start_time, 0)
 
 //Can be useful for things dependent on process timing
 /proc/process_schedule_interval(var/process_name)
-	var/datum/controller/process/process = processScheduler.getProcess(process_name)
+	var/datum/controller/process/process = GLOB.processScheduler.getProcess(process_name)
 	return process.schedule_interval
 
 /hook/startup/proc/set_roundstart_hour()
-	roundstart_hour = pick(2,7,12,17)
+	GLOB.roundstart_hour = pick(2,7,12,17)
 	return 1
 
 GLOBAL_VAR_INIT(midnight_rollovers, 0) 

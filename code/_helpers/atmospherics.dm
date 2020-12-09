@@ -31,7 +31,7 @@
 			else
 				. += "<span class='warning'>Pressure: [round(pressure,0.1)] kPa</span>"
 			for(var/mix in mixture.gas)
-				. += "<span class='notice'>[gas_data.name[mix]]: [round((mixture.gas[mix] / total_moles) * 100)]%</span>"
+				. += "<span class='notice'>[GLOB.gas_data.name[mix]]: [round((mixture.gas[mix] / total_moles) * 100)]%</span>"
 			. += "<span class='notice'>Temperature: [round(mixture.temperature-T0C)]&deg;C / [round(mixture.temperature)]K</span>"
 			return
 	. += "<span class='warning'>\The [target] has no gases!</span>"

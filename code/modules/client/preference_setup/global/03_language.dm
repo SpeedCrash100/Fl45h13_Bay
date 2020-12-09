@@ -10,7 +10,7 @@
 
 /datum/category_item/player_setup_item/player_global/language/sanitize_preferences()
 	if(isnull(pref.language_prefixes) || !pref.language_prefixes.len)
-		pref.language_prefixes = config.language_prefixes.Copy()
+		pref.language_prefixes = GLOB.config.language_prefixes.Copy()
 
 /datum/category_item/player_setup_item/player_global/language/content(var/mob/user)
 	. += "<b>Language Keys</b><br>"
@@ -40,7 +40,7 @@
 			return TOPIC_REFRESH
 
 	else if(href_list["reset_prefix"])
-		pref.language_prefixes = config.language_prefixes.Copy()
+		pref.language_prefixes = GLOB.config.language_prefixes.Copy()
 		return TOPIC_REFRESH
 
 	return ..()

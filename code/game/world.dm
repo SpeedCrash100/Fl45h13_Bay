@@ -81,13 +81,13 @@ GLOBAL_VAR_INIT(game_id, null)
 
 	TgsNew(minimum_required_security_level = TGS_SECURITY_TRUSTED)
 
-	config.post_load()
+	GLOB.config.post_load()
 
-	if(config && config.server_name != null && config.server_suffix && world.port > 0)
+	if(GLOB.config && GLOB.config.server_name != null && GLOB.config.server_suffix && world.port > 0)
 		// dumb and hardcoded but I don't care~
-		config.server_name += " #[(world.port % 1000) / 100]"
+		GLOB.config.server_name += " #[(world.port % 1000) / 100]"
 
-	if(config && config.log_runtime)
+	if(GLOB.config && GLOB.config.log_runtime)
 		var/runtime_log = file("data/logs/runtime/[date_string]_[time2text(world.timeofday, "hh:mm")]_[GLOB.game_id].log")
 		to_file(runtime_log, "Game [GLOB.game_id] starting up at [time2text(world.timeofday, "hh:mm.ss")]")
 		log = runtime_log
@@ -109,7 +109,7 @@ GLOBAL_VAR_INIT(game_id, null)
 	// Set up roundstart seed list.
 	plant_controller = new()
 
-	if(config.generate_map)
+	if(GLOB.config.generate_map)
 		if(GLOB.using_map.perform_map_generation())
 			GLOB.using_map.refresh_mining_turfs()
 
@@ -119,14 +119,14 @@ GLOBAL_VAR_INIT(game_id, null)
 	// Create robolimbs for chargen.
 	populate_robolimb_list()
 
-	processScheduler = new
+	GLOB.processScheduler = new
 	master_controller = new /datum/controller/game_controller()
 
 	Master.Initialize(10, FALSE)
 
 	spawn(1)
-		processScheduler.deferSetupFor(/datum/controller/process/ticker)
-		processScheduler.setup()
+		GLOB.processScheduler.deferSetupFor(/datum/controller/process/ticker)
+		GLOB.processScheduler.setup()
 		master_controller.setup()
 #ifdef UNIT_TEST
 		initialize_unit_tests()
@@ -135,7 +135,7 @@ GLOBAL_VAR_INIT(game_id, null)
 
 
 	spawn(2000)		//so we aren't adding to the round-start lag
-		if(config.ToRban)
+		if(GLOB.config.ToRban)
 			ToRban_autoupdate()
 
 	TgsInitializationComplete()
@@ -167,10 +167,10 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 		var/list/s = list()
 		s["version"] = GLOB.game_version
 		s["mode"] = PUBLIC_GAME_MODE
-		s["respawn"] = config.abandon_allowed
-		s["enter"] = config.enter_allowed
-		s["vote"] = config.allow_vote_mode
-		s["ai"] = config.allow_ai
+		s["respawn"] = GLOB.config.abandon_allowed
+		s["enter"] = GLOB.config.enter_allowed
+		s["vote"] = GLOB.config.allow_vote_mode
+		s["ai"] = GLOB.config.allow_ai
 		s["host"] = host ? host : null
 
 		// This is dumb, but spacestation13.com's banners break if player count isn't the 8th field of the reply, so... this has to go here.
@@ -212,7 +212,7 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 		return list2params(s)
 
 	else if(T == "manifest")
-		data_core.get_manifest_list()
+		GLOB.data_core.get_manifest_list()
 		var/list/positions = list()
 
 		// We rebuild the list in the format external tools expect
@@ -245,7 +245,7 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 
 	else if(copytext(T,1,5) == "laws")
 		var/input[] = params2list(T)
-		if(input["key"] != config.comms_password)
+		if(input["key"] != GLOB.config.comms_password)
 			if(GLOB.world_topic_spam_protect_ip == addr && abs(GLOB.world_topic_spam_protect_time - world.time) < 50)
 
 				spawn(50)
@@ -295,7 +295,7 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 
 	else if(copytext(T,1,5) == "info")
 		var/input[] = params2list(T)
-		if(input["key"] != config.comms_password)
+		if(input["key"] != GLOB.config.comms_password)
 			if(GLOB.world_topic_spam_protect_ip == addr && abs(GLOB.world_topic_spam_protect_time - world.time) < 50)
 
 				spawn(50)
@@ -363,7 +363,7 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 
 
 		var/input[] = params2list(T)
-		if(input["key"] != config.comms_password)
+		if(input["key"] != GLOB.config.comms_password)
 			if(GLOB.world_topic_spam_protect_ip == addr && abs(GLOB.world_topic_spam_protect_time - world.time) < 50)
 
 				spawn(50)
@@ -413,7 +413,7 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 				2. validationkey = the key the bot has, it should match the gameservers commspassword in it's configuration.
 		*/
 		var/input[] = params2list(T)
-		if(input["key"] != config.comms_password)
+		if(input["key"] != GLOB.config.comms_password)
 			if(GLOB.world_topic_spam_protect_ip == addr && abs(GLOB.world_topic_spam_protect_time - world.time) < 50)
 
 				spawn(50)
@@ -428,7 +428,7 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 
 	else if(copytext(T,1,4) == "age")
 		var/input[] = params2list(T)
-		if(input["key"] != config.comms_password)
+		if(input["key"] != GLOB.config.comms_password)
 			if(GLOB.world_topic_spam_protect_ip == addr && abs(GLOB.world_topic_spam_protect_time - world.time) < 50)
 				spawn(50)
 					GLOB.world_topic_spam_protect_time = world.time
@@ -449,9 +449,9 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 
 	else if(copytext(T,1,14) == "placepermaban")
 		var/input[] = params2list(T)
-		if(!config.ban_comms_password)
+		if(!GLOB.config.ban_comms_password)
 			return "Not enabled"
-		if(input["bankey"] != config.ban_comms_password)
+		if(input["bankey"] != GLOB.config.ban_comms_password)
 			if(GLOB.world_topic_spam_protect_ip == addr && abs(GLOB.world_topic_spam_protect_time - world.time) < 50)
 				spawn(50)
 					GLOB.world_topic_spam_protect_time = world.time
@@ -486,15 +486,15 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 
 		*/
 
-	processScheduler.stop()
+	GLOB.processScheduler.stop()
 
 	TgsReboot()
 
-	if(config.server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
+	if(GLOB.config.server)	//if you set a server location in GLOB.config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
 		for(var/client/C in GLOB.clients)
-			to_chat(C, link("byond://[config.server]"))
+			to_chat(C, link("byond://[GLOB.config.server]"))
 
-	if(config.wait_for_sigusr1_reboot && reason != 3)
+	if(GLOB.config.wait_for_sigusr1_reboot && reason != 3)
 		text2file("foo", "reboot_called")
 		to_world("<span class=danger>World reboot waiting for external scripts. Please be patient.</span>")
 		return
@@ -533,11 +533,11 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 
 
 /proc/load_configuration()
-	config = new /datum/configuration()
-	config.load("config/config.txt")
-	config.load("config/game_options.txt","game_options")
-	config.loadsql("config/dbconfig.txt")
-	config.loadforumsql("config/forumdbconfig.txt")
+	GLOB.config = new /datum/configuration()
+	GLOB.config.load("config/config.txt")
+	GLOB.config.load("config/game_options.txt","game_options")
+	GLOB.config.loadsql("config/dbconfig.txt")
+	GLOB.config.loadforumsql("config/forumdbconfig.txt")
 
 /hook/startup/proc/loadMods()
 	world.load_mods()
@@ -545,7 +545,7 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 	return 1
 
 /world/proc/load_mods()
-	if(config.admin_legacy_system)
+	if(GLOB.config.admin_legacy_system)
 		var/text = file2text("config/moderators.txt")
 		if (!text)
 			error("Failed to load config/mods.txt")
@@ -566,7 +566,7 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 				D.associate(GLOB.directory[ckey])
 
 /world/proc/load_mentors()
-	if(config.admin_legacy_system)
+	if(GLOB.config.admin_legacy_system)
 		var/text = file2text("config/mentors.txt")
 		if (!text)
 			error("Failed to load config/mentors.txt")
@@ -588,8 +588,8 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 /world/proc/update_status()
 	var/s = ""
 
-	if (config && config.server_name)
-		s += "<b>[config.server_name]</b> &#8212; "
+	if (GLOB.config && GLOB.config.server_name)
+		s += "<b>[GLOB.config.server_name]</b> &#8212; "
 
 	s += "<b>[station_name()]</b>";
 	s += " ("
@@ -601,21 +601,21 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 
 	var/list/features = list()
 
-	if(ticker)
+	if(GLOB.ticker)
 		if(GLOB.master_mode)
 			features += GLOB.master_mode
 	else
 		features += "<b>STARTING</b>"
 
-	if (!config.enter_allowed)
+	if (!GLOB.config.enter_allowed)
 		features += "closed"
 
-	features += config.abandon_allowed ? "respawn" : "no respawn"
+	features += GLOB.config.abandon_allowed ? "respawn" : "no respawn"
 
-	if (config && config.allow_vote_mode)
+	if (GLOB.config && GLOB.config.allow_vote_mode)
 		features += "vote"
 
-	if (config && config.allow_ai)
+	if (GLOB.config && GLOB.config.allow_ai)
 		features += "AI allowed"
 
 	var/n = 0
@@ -629,8 +629,8 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 		features += "~[n] player"
 
 
-	if (config && config.hostedby)
-		features += "hosted by <b>[config.hostedby]</b>"
+	if (GLOB.config && GLOB.config.hostedby)
+		features += "hosted by <b>[GLOB.config.hostedby]</b>"
 
 	if (features)
 		s += ": [jointext(features, ", ")]"

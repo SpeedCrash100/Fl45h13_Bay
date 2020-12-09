@@ -165,6 +165,6 @@ turf/Entered(obj/item/I)
 		if(!env)
 			return
 		for(var/g in env.gas)
-			if(gas_data.flags[g] & XGM_GAS_CONTAMINANT && env.gas[g] > gas_data.overlay_limit[g] + 1)
+			if(GLOB.gas_data.flags[g] & XGM_GAS_CONTAMINANT && env.gas[g] > GLOB.gas_data.overlay_limit[g] + 1)
 				I.contaminate()
 				break

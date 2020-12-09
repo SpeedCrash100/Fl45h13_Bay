@@ -39,9 +39,9 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	var/list/datum/radio_frequency/secure_radio_connections = new
 
 	proc/set_frequency(new_frequency)
-		radio_controller.remove_object(src, frequency)
+		GLOB.radio_controller.remove_object(src, frequency)
 		frequency = new_frequency
-		radio_connection = radio_controller.add_object(src, frequency, GLOB.RADIO_CHAT)
+		radio_connection = GLOB.radio_controller.add_object(src, frequency, GLOB.RADIO_CHAT)
 
 /obj/item/device/radio/Initialize()
 	. = ..()
@@ -53,10 +53,10 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	qdel(wires)
 	GLOB.listening_objects -= src
 	wires = null
-	if(radio_controller)
-		radio_controller.remove_object(src, frequency)
+	if(GLOB.radio_controller)
+		GLOB.radio_controller.remove_object(src, frequency)
 		for (var/ch_name in channels)
-			radio_controller.remove_object(src, GLOB.radiochannels[ch_name])
+			GLOB.radio_controller.remove_object(src, GLOB.radiochannels[ch_name])
 	return ..()
 
 
@@ -67,7 +67,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	set_frequency(frequency)
 
 	for (var/ch_name in channels)
-		secure_radio_connections[ch_name] = radio_controller.add_object(src, GLOB.radiochannels[ch_name],  GLOB.RADIO_CHAT)
+		secure_radio_connections[ch_name] = GLOB.radio_controller.add_object(src, GLOB.radiochannels[ch_name],  GLOB.RADIO_CHAT)
 
 /obj/item/device/radio/attack_self(mob/user as mob)
 	user.set_machine(src)
@@ -587,7 +587,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 
 			for(var/ch_name in channels)
-				radio_controller.remove_object(src, GLOB.radiochannels[ch_name])
+				GLOB.radio_controller.remove_object(src, GLOB.radiochannels[ch_name])
 				secure_radio_connections[ch_name] = null
 
 
@@ -639,13 +639,13 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 			src.syndie = 1
 
 	for (var/ch_name in src.channels)
-		if(!radio_controller)
-			sleep(30) // Waiting for the radio_controller to be created.
-		if(!radio_controller)
+		if(!GLOB.radio_controller)
+			sleep(30) // Waiting for the GLOB.radio_controller to be created.
+		if(!GLOB.radio_controller)
 			src.name = "broken radio"
 			return
 
-		secure_radio_connections[ch_name] = radio_controller.add_object(src, GLOB.radiochannels[ch_name],  GLOB.RADIO_CHAT)
+		secure_radio_connections[ch_name] = GLOB.radio_controller.add_object(src, GLOB.radiochannels[ch_name],  GLOB.RADIO_CHAT)
 
 	return
 
@@ -715,14 +715,14 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		ui.open()
 
 /obj/item/device/radio/proc/config(op)
-	if(radio_controller)
+	if(GLOB.radio_controller)
 		for (var/ch_name in channels)
-			radio_controller.remove_object(src, GLOB.radiochannels[ch_name])
+			GLOB.radio_controller.remove_object(src, GLOB.radiochannels[ch_name])
 	secure_radio_connections = new
 	channels = op
-	if(radio_controller)
+	if(GLOB.radio_controller)
 		for (var/ch_name in op)
-			secure_radio_connections[ch_name] = radio_controller.add_object(src, GLOB.radiochannels[ch_name],  GLOB.RADIO_CHAT)
+			secure_radio_connections[ch_name] = GLOB.radio_controller.add_object(src, GLOB.radiochannels[ch_name],  GLOB.RADIO_CHAT)
 	return
 
 /obj/item/device/radio/off

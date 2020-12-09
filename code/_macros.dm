@@ -1,4 +1,4 @@
-#define PUBLIC_GAME_MODE (ticker ? (ticker.hide_mode == 0 ? GLOB.master_mode : "Secret") : "Unknown")
+#define PUBLIC_GAME_MODE (GLOB.ticker ? (GLOB.ticker.hide_mode == 0 ? GLOB.master_mode : "Secret") : "Unknown")
 
 #define CLAMP01(x) 		(clamp(x, 0, 1))
 

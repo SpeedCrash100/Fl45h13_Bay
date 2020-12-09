@@ -1,4 +1,4 @@
-/var/datum/controller/process/scheduler/scheduler
+GLOBAL_DATUM(scheduler, /datum/controller/process/scheduler)
 
 /************
 * Scheduler *
@@ -10,7 +10,7 @@
 	name = "scheduler"
 	schedule_interval = 3 SECONDS
 	scheduled_tasks = list()
-	scheduler = src
+	GLOB.scheduler = src
 
 /datum/controller/process/scheduler/doWork()
 	for(last_object in scheduled_tasks)
@@ -49,22 +49,22 @@
 
 /proc/schedule_task(var/trigger_time, var/procedure, var/list/arguments)
 	var/datum/scheduled_task/st = new/datum/scheduled_task(trigger_time, procedure, arguments, /proc/destroy_scheduled_task, list())
-	scheduler.schedule(st)
+	GLOB.scheduler.schedule(st)
 	return st
 
 /proc/schedule_task_with_source(var/trigger_time, var/source, var/procedure, var/list/arguments)
 	var/datum/scheduled_task/st = new/datum/scheduled_task/source(trigger_time, source, procedure, arguments, /proc/destroy_scheduled_task, list())
-	scheduler.schedule(st)
+	GLOB.scheduler.schedule(st)
 	return st
 
 /proc/schedule_repeating_task(var/trigger_time, var/repeat_interval, var/procedure, var/list/arguments)
 	var/datum/scheduled_task/st = new/datum/scheduled_task(trigger_time, procedure, arguments, /proc/repeat_scheduled_task, list(repeat_interval))
-	scheduler.schedule(st)
+	GLOB.scheduler.schedule(st)
 	return st
 
 /proc/schedule_repeating_task_with_source(var/trigger_time, var/repeat_interval, var/source, var/procedure, var/list/arguments)
 	var/datum/scheduled_task/st = new/datum/scheduled_task/source(trigger_time, source, procedure, arguments, /proc/repeat_scheduled_task, list(repeat_interval))
-	scheduler.schedule(st)
+	GLOB.scheduler.schedule(st)
 	return st
 
 /*************
@@ -131,4 +131,4 @@
 
 /proc/repeat_scheduled_task(var/trigger_delay, var/datum/scheduled_task/st)
 	st.trigger_time = world.time + trigger_delay
-	scheduler.schedule(st)
+	GLOB.scheduler.schedule(st)

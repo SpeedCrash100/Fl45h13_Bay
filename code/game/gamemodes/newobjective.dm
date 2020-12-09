@@ -22,7 +22,7 @@
 /proc/GenerateAssassinate(var/job,var/datum/mind/traitor)
 	var/list/datum/objective/assassinate/missions = list()
 
-	for(var/datum/mind/target in ticker.minds)
+	for(var/datum/mind/target in GLOB.ticker.minds)
 		if((target != traitor) && istype(target.current, /mob/living/carbon/human))
 			if(target && target.current)
 				var/datum/objective/target_obj = new /datum/objective/assassinate(null,job,target)
@@ -33,7 +33,7 @@
 /proc/GenerateFrame(var/job,var/datum/mind/traitor)
 	var/list/datum/objective/frame/missions = list()
 
-	for(var/datum/mind/target in ticker.minds)
+	for(var/datum/mind/target in GLOB.ticker.minds)
 		if((target != traitor) && istype(target.current, /mob/living/carbon/human))
 			if(target && target.current)
 				var/datum/objective/target_obj = new /datum/objective/frame(null,job,target)
@@ -44,7 +44,7 @@
 /proc/GenerateProtection(var/job,var/datum/mind/traitor)
 	var/list/datum/objective/frame/missions = list()
 
-	for(var/datum/mind/target in ticker.minds)
+	for(var/datum/mind/target in GLOB.ticker.minds)
 		if((target != traitor) && istype(target.current, /mob/living/carbon/human))
 			if(target && target.current)
 				var/datum/objective/target_obj = new /datum/objective/protection(null,job,target)
@@ -253,7 +253,7 @@ datum
 		proc/get_weight(var/job)
 			return INFINITY
 		proc/find_target_by_role(role, role_type=0)//Option sets either to check assigned role or special role. Default to assigned.
-			for(var/datum/mind/possible_target in ticker.minds)
+			for(var/datum/mind/possible_target in GLOB.ticker.minds)
 				if((possible_target != owner) && ishuman(possible_target.current) && ((role_type ? possible_target.special_role : possible_target.assigned_role) == role) )
 					target = possible_target
 					break
@@ -387,7 +387,7 @@ datum
 				return 0
 
 			find_target_by_role(var/role)
-				for(var/datum/mind/possible_target in ticker.minds)
+				for(var/datum/mind/possible_target in GLOB.ticker.minds)
 					if((possible_target != owner) && istype(possible_target.current, /mob/living/carbon/human) && (possible_target.assigned_role == role))
 						target = possible_target
 						break
@@ -403,7 +403,7 @@ datum
 			proc/find_target()
 				var/list/possible_targets = list()
 
-				for(var/datum/mind/possible_target in ticker.minds)
+				for(var/datum/mind/possible_target in GLOB.ticker.minds)
 					if((possible_target != owner) && istype(possible_target.current, /mob/living/carbon/human))
 						possible_targets += possible_target
 
@@ -430,15 +430,15 @@ datum
 			check_completion()
 				if(target && target.current)
 					if(target.current.stat == 2)
-						if(config.require_heads_alive) return 0
+						if(GLOB.config.require_heads_alive) return 0
 					else
 						if(!target.current.handcuffed)
 							return 0
-				else if(config.require_heads_alive) return 0
+				else if(GLOB.config.require_heads_alive) return 0
 				return 1
 
 			find_target_by_role(var/role)
-				for(var/datum/mind/possible_target in ticker.minds)
+				for(var/datum/mind/possible_target in GLOB.ticker.minds)
 					if((possible_target != owner) && istype(possible_target.current, /mob/living/carbon/human) && (possible_target.assigned_role == role))
 						target = possible_target
 						break
@@ -1283,15 +1283,15 @@ datum
 			var/target_amount
 			proc/gen_amount_goal(var/lowbound = 4, var/highbound = 6)
 				target_amount = rand (lowbound,highbound)
-				if (ticker)
+				if (GLOB.ticker)
 					var/n_p = 1 //autowin
-					if (ticker.current_state == GAME_STATE_SETTING_UP)
+					if (GLOB.ticker.current_state == GAME_STATE_SETTING_UP)
 						for(var/mob/new_player/P in world)
 							if(P.client && P.ready && P.mind!=owner)
 								n_p ++
-					else if (ticker.current_state == GAME_STATE_PLAYING)
+					else if (GLOB.ticker.current_state == GAME_STATE_PLAYING)
 						for(var/mob/living/carbon/human/P in world)
-							if(P.client && !(P.mind in ticker.mode.changelings) && P.mind!=owner)
+							if(P.client && !(P.mind in GLOB.ticker.mode.changelings) && P.mind!=owner)
 								n_p ++
 					target_amount = min(target_amount, n_p)
 

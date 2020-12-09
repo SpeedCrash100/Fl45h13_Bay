@@ -1,4 +1,4 @@
-var/datum/antagonist/raider/raiders
+GLOBAL_DATUM(raiders, /datum/antagonist/raider)
 
 /datum/antagonist/raider
 	id = MODE_RAIDER
@@ -103,7 +103,7 @@ var/datum/antagonist/raider/raiders
 
 /datum/antagonist/raider/New()
 	..()
-	raiders = src
+	GLOB.raiders = src
 
 /datum/antagonist/raider/update_access(var/mob/living/player)
 	for(var/obj/item/weapon/storage/wallet/W in player.contents)
@@ -147,7 +147,7 @@ var/datum/antagonist/raider/raiders
 	var/win_msg = ""
 
 	//No objectives, go straight to the feedback.
-	if(config.objectives_disabled == CONFIG_OBJECTIVE_NONE || !global_objectives.len)
+	if(GLOB.config.objectives_disabled == CONFIG_OBJECTIVE_NONE || !global_objectives.len)
 		return
 
 	var/success = global_objectives.len

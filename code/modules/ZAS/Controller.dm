@@ -1,4 +1,4 @@
-var/datum/controller/air_system/air_master
+GLOBAL_DATUM(air_master, /datum/controller/air_system)
 
 GLOBAL_VAR_INIT(tick_multiplier, 2) 
 
@@ -279,7 +279,7 @@ Total Unsimulated GLOB.turfs: [world.maxx*world.maxy*world.maxz - simulated_turf
 	ASSERT(A != B)
 	#endif
 
-	var/block = air_master.air_blocked(A,B)
+	var/block = GLOB.air_master.air_blocked(A,B)
 	if(block & AIR_BLOCKED) return
 
 	var/direct = !(block & ZONE_BLOCKED)

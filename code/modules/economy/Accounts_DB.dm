@@ -26,7 +26,7 @@
 		T.target_name = target
 		T.purpose = reason
 		T.amount = amount
-		T.date = current_date_string
+		T.date = GLOB.current_date_string
 		T.time = stationtime2text()
 		T.source_terminal = machine_id
 		return T
@@ -71,7 +71,7 @@
 	data["machine_id"] = machine_id
 	data["creating_new_account"] = creating_new_account
 	data["detailed_account_view"] = !!detailed_account_view
-	data["station_account_number"] = station_account.account_number
+	data["station_account_number"] = GLOB.station_account.account_number
 	data["transactions"] = null
 	data["accounts"] = null
 
@@ -142,17 +142,17 @@
 				var/account_name = href_list["holder_name"]
 				var/starting_funds = max(text2num(href_list["starting_funds"]), 0)
 
-				starting_funds = clamp(starting_funds, 0, station_account.money)	// Not authorized to put the station in debt.
+				starting_funds = clamp(starting_funds, 0, GLOB.station_account.money)	// Not authorized to put the station in debt.
 				starting_funds = min(starting_funds, fund_cap)						// Not authorized to give more than the fund cap.
 
 				create_account(account_name, starting_funds, src)
 				if(starting_funds > 0)
 					//subtract the money
-					station_account.money -= starting_funds
+					GLOB.station_account.money -= starting_funds
 
 					//create a transaction log entry
 					var/trx = create_transation(account_name, "New account activation", "([starting_funds])")
-					station_account.transaction_log.Add(trx)
+					GLOB.station_account.transaction_log.Add(trx)
 
 					creating_new_account = 0
 					ui.close()
@@ -185,14 +185,14 @@
 
 			if("revoke_payroll")
 				var/funds = detailed_account_view.money
-				var/account_trx = create_transation(station_account.owner_name, "Revoke payroll", "([funds])")
+				var/account_trx = create_transation(GLOB.station_account.owner_name, "Revoke payroll", "([funds])")
 				var/station_trx = create_transation(detailed_account_view.owner_name, "Revoke payroll", funds)
 
-				station_account.money += funds
+				GLOB.station_account.money += funds
 				detailed_account_view.money = 0
 
 				detailed_account_view.transaction_log.Add(account_trx)
-				station_account.transaction_log.Add(station_trx)
+				GLOB.station_account.transaction_log.Add(station_trx)
 
 				callHook("revoke_payroll", list(detailed_account_view))
 

@@ -10,7 +10,7 @@
 */
 //-------------------------------
 
-var/datum/controller/process/wireless/wirelessProcess
+GLOBAL_DATUM(wirelessProcess, /datum/controller/process/wireless)
 
 /datum/controller/process/wireless
 	var/list/receiver_list
@@ -25,7 +25,7 @@ var/datum/controller/process/wireless/wirelessProcess
 	retry_connections = new()
 	failed_connections = new()
 	receiver_list = new()
-	wirelessProcess = src
+	GLOB.wirelessProcess = src
 
 /datum/controller/process/wireless/proc/add_device(var/datum/wifi/receiver/R)
 	if(receiver_list)

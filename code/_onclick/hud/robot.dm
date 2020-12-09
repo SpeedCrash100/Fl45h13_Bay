@@ -1,4 +1,4 @@
-var/obj/screen/robot_inventory
+GLOBAL_DATUM(robot_inventory, /obj/screen)
 
 /mob/living/silicon/robot/instantiate_hud(var/datum/hud/HUD)
 	HUD.robot_hud()
@@ -97,11 +97,11 @@ var/obj/screen/robot_inventory
 	mymob.throw_icon.screen_loc = ui_borg_store
 
 //Inventory
-	robot_inventory = new /obj/screen()
-	robot_inventory.name = "inventory"
-	robot_inventory.icon = 'icons/mob/screen1_robot.dmi'
-	robot_inventory.icon_state = "inventory"
-	robot_inventory.screen_loc = ui_borg_inventory
+	GLOB.robot_inventory = new /obj/screen()
+	GLOB.robot_inventory.name = "inventory"
+	GLOB.robot_inventory.icon = 'icons/mob/screen1_robot.dmi'
+	GLOB.robot_inventory.icon_state = "inventory"
+	GLOB.robot_inventory.screen_loc = ui_borg_inventory
 
 //Temp
 	mymob.bodytemp = new /obj/screen()
@@ -140,7 +140,7 @@ var/obj/screen/robot_inventory
 	mymob.radio_use_icon = new /obj/screen/gun/radio(null)
 
 	mymob.client.screen = list()
-	mymob.client.screen += list(mymob.throw_icon, mymob.zone_sel, mymob.oxygen, mymob.fire, mymob.hands, mymob.healths, mymob:cells, mymob.pullin, robot_inventory, mymob.gun_setting_icon)
+	mymob.client.screen += list(mymob.throw_icon, mymob.zone_sel, mymob.oxygen, mymob.fire, mymob.hands, mymob.healths, mymob:cells, mymob.pullin, GLOB.robot_inventory, mymob.gun_setting_icon)
 	mymob.client.screen += src.adding + src.other
 
 /datum/hud/proc/toggle_show_robot_modules()
@@ -161,7 +161,7 @@ var/obj/screen/robot_inventory
 
 	if(r.shown_robot_modules)
 		//Modules display is shown
-		//r.client.screen += robot_inventory	//"store" icon
+		//r.client.screen += GLOB.robot_inventory	//"store" icon
 
 		if(!r.module)
 			to_chat(usr, "<span class='danger'>No module selected</span>")
@@ -208,7 +208,7 @@ var/obj/screen/robot_inventory
 
 	else
 		//Modules display is hidden
-		//r.client.screen -= robot_inventory	//"store" icon
+		//r.client.screen -= GLOB.robot_inventory	//"store" icon
 		for(var/atom/A in r.module.modules)
 			if( (A != r.module_state_1) && (A != r.module_state_2) && (A != r.module_state_3) )
 				//Module is not currently active

@@ -1,4 +1,4 @@
-var/datum/antagonist/deity/deity
+GLOBAL_DATUM(deity, /datum/antagonist/deity)
 
 /datum/antagonist/deity
 	id = MODE_DEITY
@@ -17,4 +17,4 @@ var/datum/antagonist/deity/deity
 
 /datum/antagonist/deity/New()
 	..()
-	deity = src
+	GLOB.deity = src

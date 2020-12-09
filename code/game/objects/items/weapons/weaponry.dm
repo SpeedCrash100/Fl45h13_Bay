@@ -21,7 +21,7 @@
 		to_chat(M, "<span class='danger'>You've been silenced!</span>")
 		return
 
-	if (!(istype(user, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
+	if (!(istype(user, /mob/living/carbon/human) || GLOB.ticker) && GLOB.ticker.mode.name != "monkey")
 		to_chat(user, "<span class='danger'>You don't have the dexterity to do this!</span>")
 		return
 
@@ -31,9 +31,9 @@
 		user.Paralyse(20)
 		return
 
-	if(cult && iscultist(M))
+	if(GLOB.cult && iscultist(M))
 		M.visible_message("<span class='notice'>\The [user] waves \the [src] over \the [M]'s head.</span>")
-		cult.offer_uncult(M)
+		GLOB.cult.offer_uncult(M)
 		return
 
 	..()

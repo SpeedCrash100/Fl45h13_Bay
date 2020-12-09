@@ -9,10 +9,10 @@ GLOBAL_LIST_EMPTY(escape_pods_by_name)
 /datum/shuttle/ferry/escape_pod/New()
 	if(name in GLOB.escape_pods_by_name)
 		CRASH("An escape pod with the name '[name]' has already been defined.")
-	move_time = evacuation_controller.evac_transit_delay + rand(-30, 60)
+	move_time = GLOB.evacuation_controller.evac_transit_delay + rand(-30, 60)
 	GLOB.escape_pods_by_name[name] = src
 	GLOB.escape_pods += src
-	move_time = round(evacuation_controller.evac_transit_delay/10)
+	move_time = round(GLOB.evacuation_controller.evac_transit_delay/10)
 	..()
 
 /datum/shuttle/ferry/escape_pod/init_docking_controllers()
@@ -57,7 +57,7 @@ GLOBAL_LIST_EMPTY(escape_pods_by_name)
 		"override_enabled" = docking_program.override_enabled,
 		"door_state" = 	docking_program.memory["door_status"]["state"],
 		"door_lock" = 	docking_program.memory["door_status"]["lock"],
-		"can_force" = pod.can_force() || (evacuation_controller.has_evacuated() && pod.can_launch()),	//allow players to manually launch ahead of time if the shuttle leaves
+		"can_force" = pod.can_force() || (GLOB.evacuation_controller.has_evacuated() && pod.can_launch()),	//allow players to manually launch ahead of time if the shuttle leaves
 		"is_armed" = pod.arming_controller.armed,
 	)
 
@@ -78,7 +78,7 @@ GLOBAL_LIST_EMPTY(escape_pods_by_name)
 	if("force_launch")
 		if (pod.can_force())
 			pod.force_launch(src)
-		else if (evacuation_controller.has_evacuated() && pod.can_launch())	//allow players to manually launch ahead of time if the shuttle leaves
+		else if (GLOB.evacuation_controller.has_evacuated() && pod.can_launch())	//allow players to manually launch ahead of time if the shuttle leaves
 			pod.launch(src)
 
 	return 0

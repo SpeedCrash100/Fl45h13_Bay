@@ -1,7 +1,7 @@
 /datum/antagonist
 
 	// Text shown when becoming this antagonist.
-	var/list/restricted_jobs = 		list()   // Jobs that cannot be this antagonist at roundstart (depending on config)
+	var/list/restricted_jobs = 		list()   // Jobs that cannot be this antagonist at roundstart (depending on GLOB.config)
 	var/list/protected_jobs = 		list()   // As above.
 	var/list/blacklisted_jobs =		list()   // Jobs that can NEVER be this antagonist
 
@@ -66,7 +66,7 @@
 	var/list/starting_locations =  list()   // Spawn points.
 	var/list/global_objectives =   list()   // Universal objectives if any.
 	var/list/candidates =          list()   // Potential candidates.
-	var/list/faction_members =     list()   // Semi-antags (in-round revs, borer thralls)
+	var/list/faction_members =     list()   // Semi-antags (in-round GLOB.revs, borer thralls)
 
 	// ID card stuff.
 	var/default_access = list()
@@ -88,7 +88,7 @@
 	get_starting_locations()
 	if(!role_text_plural)
 		role_text_plural = role_text
-	if(config.protect_roles_from_antagonist)
+	if(GLOB.config.protect_roles_from_antagonist)
 		restricted_jobs |= protected_jobs
 	if(antaghud_indicator)
 		if(!GLOB.hud_icon_reference)
@@ -105,10 +105,10 @@
 
 	// Prune restricted status. Broke it up for readability.
 	// Note that this is done before jobs are handed out.
-	for(var/datum/mind/player in ticker.mode.get_players_for_role(role_type, id))
+	for(var/datum/mind/player in GLOB.ticker.mode.get_players_for_role(role_type, id))
 		if(ghosts_only && !(isghostmind(player) || isnewplayer(player.current)))
 			log_debug("[key_name(player)] is not eligible to become a [role_text]: Only ghosts may join as this role!")
-		else if(config.use_age_restriction_for_antags && player.current.client.player_age < minimum_player_age)
+		else if(GLOB.config.use_age_restriction_for_antags && player.current.client.player_age < minimum_player_age)
 			log_debug("[key_name(player)] is not eligible to become a [role_text]: Is only [player.current.client.player_age] day\s old, has to be [minimum_player_age] day\s!")
 		else if(player.special_role)
 			log_debug("[key_name(player)] is not eligible to become a [role_text]: They already have a special role ([player.special_role])!")
@@ -130,7 +130,7 @@
 	// Keeping broken up for readability
 	for(var/datum/mind/player in mode.get_players_for_role(role_type, id))
 		if(ghosts_only && !(isghostmind(player) || isnewplayer(player.current)))
-		else if(config.use_age_restriction_for_antags && player.current.client.player_age < minimum_player_age)
+		else if(GLOB.config.use_age_restriction_for_antags && player.current.client.player_age < minimum_player_age)
 		else if(player.special_role)
 		else if (player in pending_antagonists)
 		else if(!can_become_antag(player))
@@ -209,7 +209,7 @@
 	if(!(flags & ANTAG_OVERRIDE_JOB) && (!player.current || istype(player.current, /mob/new_player)))
 		log_debug("[player.key] was selected for [role_text] by lottery, but they have not joined the game.")
 		return 0
-	if(ticker.current_state >= GAME_STATE_PLAYING && (isghostmind(player) || isnewplayer(player.current)) && !(player in ticker.antag_pool))
+	if(GLOB.ticker.current_state >= GAME_STATE_PLAYING && (isghostmind(player) || isnewplayer(player.current)) && !(player in GLOB.ticker.antag_pool))
 		log_debug("[player.key] was selected for [role_text] by lottery, but they are a ghost not in the antag pool.")
 		return 0
 

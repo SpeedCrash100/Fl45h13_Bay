@@ -618,7 +618,7 @@
 		return
 
 	if(statpanel("Status"))
-		if(ticker && ticker.current_state != GAME_STATE_PREGAME)
+		if(GLOB.ticker && GLOB.ticker.current_state != GAME_STATE_PREGAME)
 			stat("Local Time", stationtime2text())
 			stat("Local Date", stationdate2text())
 			stat("Round Duration", roundduration2text())
@@ -626,8 +626,8 @@
 			stat("Location:", "([x], [y], [z]) [loc]")
 
 	if(client.holder)
-		if(statpanel("Processes") && processScheduler)
-			processScheduler.statProcesses()
+		if(statpanel("Processes") && GLOB.processScheduler)
+			GLOB.processScheduler.statProcesses()
 		if(statpanel("MC"))
 			stat("CPU:","[world.cpu]")
 			stat("Instances:","[world.contents.len]")
@@ -636,8 +636,8 @@
 				Master.stat_entry()
 			else
 				stat("Master Controller:", "ERROR")
-			if(Failsafe)
-				Failsafe.stat_entry()
+			if(GLOB.Failsafe)
+				GLOB.Failsafe.stat_entry()
 			else
 				stat("Failsafe Controller:", "ERROR")
 			if(Master)
@@ -1038,12 +1038,12 @@ mob/proc/yank_out_object()
 	set desc = "Toggles whether or not you will be considered a candidate by an add-antag vote."
 	set category = "OOC"
 	if(isghostmind(src.mind) || isnewplayer(src))
-		if(ticker && ticker.looking_for_antags)
-			if(src.mind in ticker.antag_pool)
-				ticker.antag_pool -= src.mind
+		if(GLOB.ticker && GLOB.ticker.looking_for_antags)
+			if(src.mind in GLOB.ticker.antag_pool)
+				GLOB.ticker.antag_pool -= src.mind
 				to_chat(usr, "You have left the antag pool.")
 			else
-				ticker.antag_pool += src.mind
+				GLOB.ticker.antag_pool += src.mind
 				to_chat(usr, "You have joined the antag pool. Make sure you have the needed role set to high!")
 		else
 			to_chat(usr, "The game is not currently looking for antags.")

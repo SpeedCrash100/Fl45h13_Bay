@@ -31,7 +31,7 @@
 	output +="<hr>"
 	output += "<p><a href='byond://?src=\ref[src];show_preferences=1'>Setup Character</A></p>"
 
-	if(!ticker || ticker.current_state <= GAME_STATE_PREGAME)
+	if(!GLOB.ticker || GLOB.ticker.current_state <= GAME_STATE_PREGAME)
 		if(ready)
 			output += "<p>\[ <span class='linkOn'><b>Ready</b></span> | <a href='byond://?src=\ref[src];ready=0'>Not Ready</a> \]</p>"
 		else
@@ -72,16 +72,16 @@
 /mob/new_player/Stat()
 	. = ..()
 
-	if(statpanel("Lobby") && ticker)
+	if(statpanel("Lobby") && GLOB.ticker)
 		if(check_rights(R_INVESTIGATE, 0, src))
-			stat("Game Mode:", "[ticker.mode || GLOB.master_mode][ticker.hide_mode ? " (Secret)" : ""]")
+			stat("Game Mode:", "[GLOB.ticker.mode || GLOB.master_mode][GLOB.ticker.hide_mode ? " (Secret)" : ""]")
 		else
 			stat("Game Mode:", PUBLIC_GAME_MODE)
 		var/extra_antags = list2params(GLOB.additional_antag_types)
 		stat("Added Antagonists:", extra_antags ? extra_antags : "None")
 
-		if(ticker.current_state == GAME_STATE_PREGAME)
-			stat("Time To Start:", "[ticker.pregame_timeleft][GLOB.round_progressing ? "" : " (DELAYED)"]")
+		if(GLOB.ticker.current_state == GAME_STATE_PREGAME)
+			stat("Time To Start:", "[GLOB.ticker.pregame_timeleft][GLOB.round_progressing ? "" : " (DELAYED)"]")
 			stat("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
 			totalPlayers = 0
 			totalPlayersReady = 0
@@ -101,7 +101,7 @@
 		return 1
 
 	if(href_list["ready"])
-		if(!ticker || ticker.current_state <= GAME_STATE_PREGAME) // Make sure we don't ready up after the round has started
+		if(!GLOB.ticker || GLOB.ticker.current_state <= GAME_STATE_PREGAME) // Make sure we don't ready up after the round has started
 			ready = text2num(href_list["ready"])
 		else
 			ready = 0
@@ -115,7 +115,7 @@
 			to_chat(src, "<span class='warning'>Please wait for server initialization to complete...</span>")
 			return
 
-		if(!config.respawn_delay || client.holder || alert(src,"Are you sure you wish to observe? You will have to wait [config.respawn_delay] minute\s before being able to respawn!","Player Setup","Yes","No") == "Yes")
+		if(!GLOB.config.respawn_delay || client.holder || alert(src,"Are you sure you wish to observe? You will have to wait [GLOB.config.respawn_delay] minute\s before being able to respawn!","Player Setup","Yes","No") == "Yes")
 			if(!client)	return 1
 			var/mob/observer/ghost/observer = new()
 
@@ -145,7 +145,7 @@
 				client.prefs.real_name = random_name(client.prefs.gender)
 			observer.real_name = client.prefs.real_name
 			observer.name = observer.real_name
-			if(!client.holder && !config.antag_hud_allowed)           // For new ghosts we remove the verb from even showing up if it's not allowed.
+			if(!client.holder && !GLOB.config.antag_hud_allowed)           // For new ghosts we remove the verb from even showing up if it's not allowed.
 				observer.verbs -= /mob/observer/ghost/verb/toggle_antagHUD        // Poor guys, don't know what they are missing!
 			observer.key = key
 			qdel(src)
@@ -154,7 +154,7 @@
 
 	if(href_list["late_join"])
 
-		if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
+		if(!GLOB.ticker || GLOB.ticker.current_state != GAME_STATE_PLAYING)
 			to_chat(usr, "<span class='warning'>The round is either not ready, or has already finished...</span>")
 			return
 		LateChoices() //show the latejoin job selection menu
@@ -164,10 +164,10 @@
 
 	if(href_list["SelectedJob"])
 
-		if(!config.enter_allowed)
+		if(!GLOB.config.enter_allowed)
 			to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
 			return
-		else if(ticker && ticker.mode && ticker.mode.explosion_in_progress)
+		else if(GLOB.ticker && GLOB.ticker.mode && GLOB.ticker.mode.explosion_in_progress)
 			to_chat(usr, "<span class='danger'>The [station_name()] is currently exploding. Joining would go poorly.</span>")
 			return
 
@@ -303,13 +303,13 @@
 /mob/new_player/proc/AttemptLateSpawn(rank,var/spawning_at)
 	if(src != usr)
 		return 0
-	if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
+	if(!GLOB.ticker || GLOB.ticker.current_state != GAME_STATE_PLAYING)
 		to_chat(usr, "<span class='warning'>The round is either not ready, or has already finished...</span>")
 		return 0
-	if(!config.enter_allowed)
+	if(!GLOB.config.enter_allowed)
 		to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
 		return 0
-	var/datum/job/job = job_master.GetJob(rank)
+	var/datum/job/job = GLOB.job_master.GetJob(rank)
 	if(!IsJobAvailable(job))
 		alert("[rank] is not available. Please try another.")
 		return 0
@@ -321,7 +321,7 @@
 		return 0
 
 
-	var/datum/spawnpoint/spawnpoint = job_master.get_spawnpoint_for(client, rank)
+	var/datum/spawnpoint/spawnpoint = GLOB.job_master.get_spawnpoint_for(client, rank)
 	var/turf/spawn_turf = pick(spawnpoint.turfs)
 	var/airstatus = IsTurfAtmosUnsafe(spawn_turf)
 	if(airstatus)
@@ -339,13 +339,13 @@
 			to_chat(src, alert("[rank] is not available. Please try another."))
 			return 0
 
-	job_master.AssignRole(src, rank, 1)
+	GLOB.job_master.AssignRole(src, rank, 1)
 
 	var/mob/living/character = create_character(spawn_turf)	//creates the human and transfers vars and mind
 	if(!character)
 		return 0
 
-	character = job_master.EquipRank(character, rank, 1)					//equips the human
+	character = GLOB.job_master.EquipRank(character, rank, 1)					//equips the human
 	UpdateFactionList(character)
 	equip_custom_items(character)
 
@@ -363,18 +363,18 @@
 		A.on_mob_init()
 
 		AnnounceCyborg(character, rank, "has been downloaded to the empty core in \the [character.loc.loc]")
-		ticker.mode.handle_latejoin(character)
+		GLOB.ticker.mode.handle_latejoin(character)
 
 		qdel(C)
 		qdel(src)
 		return
 
-	ticker.mode.handle_latejoin(character)
+	GLOB.ticker.mode.handle_latejoin(character)
 	universe.OnPlayerLatejoin(character)
-	if(job_master.ShouldCreateRecords(rank))
+	if(GLOB.job_master.ShouldCreateRecords(rank))
 		if(character.mind.assigned_role != "Cyborg")
-			data_core.manifest_inject(character)
-			ticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
+			GLOB.data_core.manifest_inject(character)
+			GLOB.ticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
 
 			if(job.announced)
 				AnnounceArrival(character, rank, spawnpoint.msg)
@@ -384,7 +384,7 @@
 
 
 /mob/new_player/proc/AnnounceCyborg(var/mob/living/character, var/rank, var/join_message)
-	if (ticker.current_state == GAME_STATE_PLAYING)
+	if (GLOB.ticker.current_state == GAME_STATE_PLAYING)
 		if(character.mind.role_alt_title)
 			rank = character.mind.role_alt_title
 		// can't use their name here, since cyborg namepicking is done post-spawn, so we'll just say "A new Cyborg has arrived"/"A new Android has arrived"/etc.
@@ -398,16 +398,16 @@
 	dat += "<b>Welcome, [name].<br></b>"
 	dat += "Round Duration: [roundduration2text()]<br>"
 
-	if(evacuation_controller.has_evacuated())
+	if(GLOB.evacuation_controller.has_evacuated())
 		dat += "<font color='red'><b>The [station_name()] has been evacuated.</b></font><br>"
-	else if(evacuation_controller.is_evacuating())
-		if(evacuation_controller.emergency_evacuation) // Emergency shuttle is past the point of no recall
+	else if(GLOB.evacuation_controller.is_evacuating())
+		if(GLOB.evacuation_controller.emergency_evacuation) // Emergency shuttle is past the point of no recall
 			dat += "<font color='red'>The [station_name()] is currently undergoing evacuation procedures.</font><br>"
 		else                                           // Crew transfer initiated
 			dat += "<font color='red'>The [station_name()] is currently undergoing crew transfer procedures.</font><br>"
 
 	dat += "Choose from the following open/valid positions:<br>"
-	for(var/datum/job/job in job_master.occupations)
+	for(var/datum/job/job in GLOB.job_master.occupations)
 		if(job && IsJobAvailable(job))
 			if(job.minimum_character_age && (client.prefs.age < job.minimum_character_age))
 				continue
@@ -436,7 +436,7 @@
 		chosen_species = GLOB.all_species[client.prefs.species]
 
 	if(!spawn_turf)
-		var/datum/spawnpoint/spawnpoint = job_master.get_spawnpoint_for(client, get_rank_pref())
+		var/datum/spawnpoint/spawnpoint = GLOB.job_master.get_spawnpoint_for(client, get_rank_pref())
 		spawn_turf = pick(spawnpoint.turfs)
 
 	if(chosen_species)
@@ -457,7 +457,7 @@
 			if(is_species_lang || ((!(chosen_language.flags & RESTRICTED) || has_admin_rights()) && is_alien_whitelisted(src, chosen_language)))
 				new_character.add_language(lang)
 
-	if(ticker.random_players)
+	if(GLOB.ticker.random_players)
 		new_character.gender = pick(MALE, FEMALE)
 		client.prefs.real_name = random_name(new_character.gender)
 		client.prefs.randomize_appearance_and_body_for(new_character)
@@ -490,7 +490,7 @@
 		new_character.disabilities |= NEARSIGHTED
 
 	// Give them their cortical stack if we're using them.
-	if(config && config.use_cortical_stacks && client && client.prefs.has_cortical_stack /*&& new_character.should_have_organ(BP_BRAIN)*/)
+	if(GLOB.config && GLOB.config.use_cortical_stacks && client && client.prefs.has_cortical_stack /*&& new_character.should_have_organ(BP_BRAIN)*/)
 		new_character.create_stack()
 
 	// Do the initial caching of the player's body icons.
@@ -503,7 +503,7 @@
 
 /mob/new_player/proc/ViewManifest()
 	var/dat = "<div align='center'>"
-	dat += data_core.get_manifest(OOC = 1)
+	dat += GLOB.data_core.get_manifest(OOC = 1)
 	//show_browser(src, dat, "window=manifest;size=370x420;can_close=1")
 	var/datum/browser/popup = new(src, "Crew Manifest", "Crew Manifest", 370, 420, src)
 	popup.set_content(dat)

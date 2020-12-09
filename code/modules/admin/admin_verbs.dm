@@ -329,7 +329,7 @@ GLOBAL_LIST_INIT(admin_verbs_mentor, list(
 		if(holder.rights & R_SERVER)		verbs += GLOB.admin_verbs_server
 		if(holder.rights & R_DEBUG)
 			verbs += GLOB.admin_verbs_debug
-			if(config.debugparanoid && !(holder.rights & R_ADMIN))
+			if(GLOB.config.debugparanoid && !(holder.rights & R_ADMIN))
 				verbs.Remove(GLOB.admin_verbs_paranoid_debug)			//Right now it's just callproc but we can easily add others later on.
 		if(holder.rights & R_POSSESS)		verbs += GLOB.admin_verbs_possess
 		if(holder.rights & R_PERMISSIONS)	verbs += GLOB.admin_verbs_permissions
@@ -469,7 +469,7 @@ GLOBAL_LIST_INIT(admin_verbs_mentor, list(
 	set name = "Display Job bans"
 	set category = "Admin"
 	if(holder)
-		if(config.ban_legacy_system)
+		if(GLOB.config.ban_legacy_system)
 			holder.Jobbans()
 		else
 			holder.DB_ban_panel()
@@ -480,7 +480,7 @@ GLOBAL_LIST_INIT(admin_verbs_mentor, list(
 	set name = "Unban Panel"
 	set category = "Admin"
 	if(holder)
-		if(config.ban_legacy_system)
+		if(GLOB.config.ban_legacy_system)
 			holder.unbanpanel()
 		else
 			holder.DB_ban_panel()
@@ -695,12 +695,12 @@ GLOBAL_LIST_INIT(admin_verbs_mentor, list(
 	set name = "Toggle href logging"
 	set category = "Server"
 	if(!holder)	return
-	if(config)
-		if(config.log_hrefs)
-			config.log_hrefs = 0
+	if(GLOB.config)
+		if(GLOB.config.log_hrefs)
+			GLOB.config.log_hrefs = 0
 			to_chat(src, "<b>Stopped logging hrefs</b>")
 		else
-			config.log_hrefs = 1
+			GLOB.config.log_hrefs = 1
 			to_chat(src, "<b>Started logging hrefs</b>")
 
 /client/proc/check_ai_laws()
@@ -880,7 +880,7 @@ GLOBAL_LIST_INIT(admin_verbs_mentor, list(
 	set category = "Admin"
 	if(holder)
 		var/list/jobs = list()
-		for (var/datum/job/J in job_master.occupations)
+		for (var/datum/job/J in GLOB.job_master.occupations)
 			if (J.current_positions >= J.total_positions && J.total_positions != -1)
 				jobs += J.title
 		if (!jobs.len)
@@ -888,7 +888,7 @@ GLOBAL_LIST_INIT(admin_verbs_mentor, list(
 			return
 		var/job = input("Please select job slot to free", "Free job slot")  as null|anything in jobs
 		if (job)
-			job_master.FreeRole(job)
+			GLOB.job_master.FreeRole(job)
 			message_admins("A job slot for [job] has been opened by [key_name_admin(usr)]")
 			return
 
@@ -896,13 +896,13 @@ GLOBAL_LIST_INIT(admin_verbs_mentor, list(
 	set name = "Toggle ghost writers"
 	set category = "Server"
 	if(!holder)	return
-	if(config)
-		if(config.cult_ghostwriter)
-			config.cult_ghostwriter = 0
+	if(GLOB.config)
+		if(GLOB.config.cult_ghostwriter)
+			GLOB.config.cult_ghostwriter = 0
 			to_chat(src, "<b>Disallowed ghost writers.</b>")
 			message_admins("Admin [key_name_admin(usr)] has disabled ghost writers.", 1)
 		else
-			config.cult_ghostwriter = 1
+			GLOB.config.cult_ghostwriter = 1
 			to_chat(src, "<b>Enabled ghost writers.</b>")
 			message_admins("Admin [key_name_admin(usr)] has enabled ghost writers.", 1)
 
@@ -910,13 +910,13 @@ GLOBAL_LIST_INIT(admin_verbs_mentor, list(
 	set name = "Toggle maintenance drones"
 	set category = "Server"
 	if(!holder)	return
-	if(config)
-		if(config.allow_drone_spawn)
-			config.allow_drone_spawn = 0
+	if(GLOB.config)
+		if(GLOB.config.allow_drone_spawn)
+			GLOB.config.allow_drone_spawn = 0
 			to_chat(src, "<b>Disallowed maint drones.</b>")
 			message_admins("Admin [key_name_admin(usr)] has disabled maint drones.", 1)
 		else
-			config.allow_drone_spawn = 1
+			GLOB.config.allow_drone_spawn = 1
 			to_chat(src, "<b>Enabled maint drones.</b>")
 			message_admins("Admin [key_name_admin(usr)] has enabled maint drones.", 1)
 

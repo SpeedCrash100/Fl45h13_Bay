@@ -2,11 +2,11 @@
 //
 // The datum containing all the chunks.
 
-var/datum/visualnet/camera/cameranet_
+GLOBAL_DATUM(cameranet_, /datum/visualnet/camera)
 /proc/cameranet()
-	if(!cameranet_)
-		cameranet_ = new()
-	return cameranet_
+	if(!GLOB.cameranet_)
+		GLOB.cameranet_ = new()
+	return GLOB.cameranet_
 
 /datum/visualnet/camera
 	// The cameras on the map, no matter if they work or not.

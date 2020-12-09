@@ -308,9 +308,9 @@
 	// if we've changed our name, we also need to update the display name for our PDA
 	setup_PDA()
 
-	// Synths aren't in data_core, but are on manifest. Invalidate old one so the
+	// Synths aren't in GLOB.data_core, but are on manifest. Invalidate old one so the
 	// synth shows up.
-	data_core.ResetPDAManifest()
+	GLOB.data_core.ResetPDAManifest()
 
 	//We also need to update name of internal camera.
 	if (camera)

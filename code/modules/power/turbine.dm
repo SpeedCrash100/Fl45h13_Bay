@@ -180,7 +180,7 @@
 		return
 	if (usr.stat || usr.restrained() )
 		return
-	if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
+	if (!(istype(usr, /mob/living/carbon/human) || GLOB.ticker) && GLOB.ticker.mode.name != "monkey")
 		if(!istype(usr, /mob/living/silicon/ai))
 			to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
 			return

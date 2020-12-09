@@ -40,7 +40,7 @@
 
 /obj/machinery/drone_fabricator/process()
 
-	if(ticker.current_state < GAME_STATE_PLAYING)
+	if(GLOB.ticker.current_state < GAME_STATE_PLAYING)
 		return
 
 	if(stat & NOPOWER || !produce_drones)
@@ -53,14 +53,14 @@
 
 	icon_state = "drone_fab_active"
 	var/elapsed = world.time - time_last_drone
-	drone_progress = round((elapsed/config.drone_build_time)*100)
+	drone_progress = round((elapsed/GLOB.config.drone_build_time)*100)
 
 	if(drone_progress >= 100)
 		visible_message("\The [src] voices a strident beep, indicating a drone chassis is prepared.")
 
 /obj/machinery/drone_fabricator/examine(mob/user)
 	. = ..(user)
-	if(produce_drones && drone_progress >= 100 && isghost(user) && config.allow_drone_spawn && count_drones() < config.max_maint_drones)
+	if(produce_drones && drone_progress >= 100 && isghost(user) && GLOB.config.allow_drone_spawn && count_drones() < GLOB.config.max_maint_drones)
 		to_chat(user, "<BR><B>A drone is prepared. Select 'Join As Drone' from the Ghost tab to spawn as a maintenance drone.</B>")
 
 /obj/machinery/drone_fabricator/proc/create_drone(var/client/player)
@@ -68,7 +68,7 @@
 	if(stat & NOPOWER)
 		return
 
-	if(!produce_drones || !config.allow_drone_spawn || count_drones() >= config.max_maint_drones)
+	if(!produce_drones || !GLOB.config.allow_drone_spawn || count_drones() >= GLOB.config.max_maint_drones)
 		return
 
 	if(!player || !isghost(player.mob))
@@ -94,11 +94,11 @@
 
 /proc/try_drone_spawn(var/mob/user, var/obj/machinery/drone_fabricator/fabricator)
 
-	if(ticker.current_state < GAME_STATE_PLAYING)
+	if(GLOB.ticker.current_state < GAME_STATE_PLAYING)
 		to_chat(user, "<span class='danger'>The game hasn't started yet!</span>")
 		return
 
-	if(!(config.allow_drone_spawn))
+	if(!(GLOB.config.allow_drone_spawn))
 		to_chat(user, "<span class='danger'>That verb is not currently permitted.</span>")
 		return
 
@@ -106,7 +106,7 @@
 		to_chat(user, "<span class='danger'>You are banned from playing synthetics and cannot spawn as a drone.</span>")
 		return
 
-	if(config.use_age_restriction_for_jobs && isnum(user.client.player_age))
+	if(GLOB.config.use_age_restriction_for_jobs && isnum(user.client.player_age))
 		if(user.client.player_age <= 3)
 			to_chat(user, "<span class='danger'> Your account is not old enough to play as a maintenance drone.</span>")
 			return

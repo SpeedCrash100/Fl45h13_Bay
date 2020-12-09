@@ -119,7 +119,7 @@ Class Procs:
 	..(l)
 	if(d)
 		set_dir(d)
-	if(!GLOB.machinery_sort_required && ticker)
+	if(!GLOB.machinery_sort_required && GLOB.ticker)
 		dd_insertObjectList(GLOB.machines, src)
 	else
 		GLOB.machines += src

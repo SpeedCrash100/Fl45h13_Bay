@@ -3,7 +3,7 @@ We can't just insert in HTML into the nanoUI so we need the raw data to play wit
 Instead of creating this list over and over when someone leaves their PDA open to the page
 we'll only update it when it changes.  The GLOB.PDA_Manifest global list is zeroed out upon any change
 using /datum/datacore/proc/manifest_inject( ), or manifest_insert( ). Synth despawns and
-name updates also zero the list; although they are not in data_core, synths are on manifest.
+name updates also zero the list; although they are not in GLOB.data_core, synths are on manifest.
 */
 
 GLOBAL_LIST_EMPTY(PDA_Manifest)
@@ -30,7 +30,7 @@ GLOBAL_LIST_INIT(acting_rank_prefixes, list("acting", "temporary", "interim", "p
 	var/civ[0]
 	var/bot[0]
 	var/misc[0]
-	for(var/datum/data/record/t in data_core.general)
+	for(var/datum/data/record/t in GLOB.data_core.general)
 		var/name = sanitize(t.fields["name"])
 		var/rank = sanitize(t.fields["rank"])
 		var/real_rank = make_list_rank(t.fields["real_rank"])

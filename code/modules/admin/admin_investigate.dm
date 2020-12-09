@@ -39,7 +39,7 @@
 			show_browser(src, F, "window=investigate[subject];size=800x300")
 
 		if("hrefs")				//persistant logs and stuff
-			if(config && config.log_hrefs)
+			if(GLOB.config && GLOB.config.log_hrefs)
 				if(GLOB.href_logfile)
 					show_browser(src, GLOB.href_logfile, "window=investigate[subject];size=800x300")
 				else

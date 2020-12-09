@@ -1,4 +1,4 @@
-var/datum/antagonist/xenos/xenomorphs
+GLOBAL_DATUM(xenomorphs, /datum/antagonist/xenos)
 
 /datum/antagonist/xenos
 	id = MODE_XENOMORPH
@@ -29,10 +29,10 @@ var/datum/antagonist/xenos/xenomorphs
 	spawn_announcement_sound = GLOB.using_map.xenomorph_spawn_sound
 	..()
 	if(!no_reference)
-		xenomorphs = src
+		GLOB.xenomorphs = src
 
 /datum/antagonist/xenos/attempt_random_spawn()
-	if(config.aliens_allowed) ..()
+	if(GLOB.config.aliens_allowed) ..()
 
 /datum/antagonist/xenos/proc/get_vents()
 	var/list/vents = list()

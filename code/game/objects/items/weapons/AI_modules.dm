@@ -34,7 +34,7 @@ AI MODULES
 			to_chat(usr, "You haven't selected an AI to transmit laws to!")
 			return
 
-		if(ticker && ticker.mode && ticker.mode.name == "blob")
+		if(GLOB.ticker && GLOB.ticker.mode && GLOB.ticker.mode.name == "blob")
 			to_chat(usr, "Law uploads have been disabled by [GLOB.using_map.company_name]!")
 			return
 

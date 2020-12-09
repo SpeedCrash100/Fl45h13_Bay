@@ -5,7 +5,7 @@
 
 /datum/shuttle/ferry/emergency/New()
 	. = ..()
-	emergency_controller = evacuation_controller
+	emergency_controller = GLOB.evacuation_controller
 	if(!istype(emergency_controller))
 		CRASH("Escape shuttle created without the appropriate controller type.")
 		return
@@ -126,7 +126,7 @@
 	if (authorized.len >= req_authorizations)
 		return 0 //don't need any more
 
-	if (!evacuation_controller.emergency_evacuation && get_security_level() < SEC_LEVEL_RED)
+	if (!GLOB.evacuation_controller.emergency_evacuation && get_security_level() < SEC_LEVEL_RED)
 		src.visible_message("\The [src] buzzes. It does not appear to be accepting any commands.")
 		return 0
 
@@ -177,7 +177,7 @@
 
 /obj/machinery/computer/shuttle_control/emergency/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
-	var/datum/shuttle/ferry/emergency/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/emergency/shuttle = GLOB.shuttle_controller.shuttles[shuttle_tag]
 	if (!istype(shuttle))
 		return
 

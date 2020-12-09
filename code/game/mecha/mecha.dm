@@ -1212,7 +1212,7 @@
 						<script language='javascript' type='text/javascript'>
 						[GLOB.js_byjax]
 						[GLOB.js_dropdowns]
-						function ticker() {
+						function GLOB.ticker() {
 							setInterval(function(){
 								window.location='byond://?src=\ref[src]&update_content=1';
 							}, 1000);
@@ -1220,7 +1220,7 @@
 
 						window.onload = function() {
 							dropdowns();
-							ticker();
+							GLOB.ticker();
 						}
 						</script>
 						</head>

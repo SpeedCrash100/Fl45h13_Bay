@@ -1,55 +1,54 @@
 GLOBAL_VAR_INIT(CMinutes, null) 
-var/savefile/Banlist
-
+GLOBAL_DATUM(Banlist, /savefile)
 
 /proc/CheckBan(var/ckey, var/id, var/address)
-	if(!Banlist)		// if Banlist cannot be located for some reason
+	if(!GLOB.Banlist)		// if Banlist cannot be located for some reason
 		LoadBans()		// try to load the bans
-		if(!Banlist)	// uh oh, can't find bans!
+		if(!GLOB.Banlist)	// uh oh, can't find bans!
 			return 0	// ABORT ABORT ABORT
 
 	. = list()
 	var/appeal
-	if(config && config.banappeals)
-		appeal = "\nFor more information on your ban, or to appeal, head to <a href='[config.banappeals]'>[config.banappeals]</a>"
-	Banlist.cd = "/base"
-	if( "[ckey][id]" in Banlist.dir )
-		Banlist.cd = "[ckey][id]"
-		if (Banlist["temp"])
-			if (!GetExp(Banlist["minutes"]))
+	if(GLOB.config && GLOB.config.banappeals)
+		appeal = "\nFor more information on your ban, or to appeal, head to <a href='[GLOB.config.banappeals]'>[GLOB.config.banappeals]</a>"
+	GLOB.Banlist.cd = "/base"
+	if( "[ckey][id]" in GLOB.Banlist.dir )
+		GLOB.Banlist.cd = "[ckey][id]"
+		if (GLOB.Banlist["temp"])
+			if (!GetExp(GLOB.Banlist["minutes"]))
 				ClearTempbans()
 				return 0
 			else
-				.["desc"] = "\nReason: [Banlist["reason"]]\nExpires: [GetExp(Banlist["minutes"])]\nBy: [Banlist["bannedby"]][appeal]"
+				.["desc"] = "\nReason: [GLOB.Banlist["reason"]]\nExpires: [GetExp(GLOB.Banlist["minutes"])]\nBy: [GLOB.Banlist["bannedby"]][appeal]"
 		else
-			Banlist.cd	= "/base/[ckey][id]"
-			.["desc"]	= "\nReason: [Banlist["reason"]]\nExpires: <B>PERMENANT</B>\nBy: [Banlist["bannedby"]][appeal]"
+			GLOB.Banlist.cd	= "/base/[ckey][id]"
+			.["desc"]	= "\nReason: [GLOB.Banlist["reason"]]\nExpires: <B>PERMENANT</B>\nBy: [GLOB.Banlist["bannedby"]][appeal]"
 		.["reason"]	= "ckey/id"
 		return .
 	else
-		for (var/A in Banlist.dir)
-			Banlist.cd = "/base/[A]"
+		for (var/A in GLOB.Banlist.dir)
+			GLOB.Banlist.cd = "/base/[A]"
 			var/matches
-			if( ckey == Banlist["key"] )
+			if( ckey == GLOB.Banlist["key"] )
 				matches += "ckey"
-			if( id == Banlist["id"] )
+			if( id == GLOB.Banlist["id"] )
 				if(matches)
 					matches += "/"
 				matches += "id"
-			if( address == Banlist["ip"] )
+			if( address == GLOB.Banlist["ip"] )
 				if(matches)
 					matches += "/"
 				matches += "ip"
 
 			if(matches)
-				if(Banlist["temp"])
-					if (!GetExp(Banlist["minutes"]))
+				if(GLOB.Banlist["temp"])
+					if (!GetExp(GLOB.Banlist["minutes"]))
 						ClearTempbans()
 						return 0
 					else
-						.["desc"] = "\nReason: [Banlist["reason"]]\nExpires: [GetExp(Banlist["minutes"])]\nBy: [Banlist["bannedby"]][appeal]"
+						.["desc"] = "\nReason: [GLOB.Banlist["reason"]]\nExpires: [GetExp(GLOB.Banlist["minutes"])]\nBy: [GLOB.Banlist["bannedby"]][appeal]"
 				else
-					.["desc"] = "\nReason: [Banlist["reason"]]\nExpires: <B>PERMENANT</B>\nBy: [Banlist["bannedby"]][appeal]"
+					.["desc"] = "\nReason: [GLOB.Banlist["reason"]]\nExpires: <B>PERMENANT</B>\nBy: [GLOB.Banlist["bannedby"]][appeal]"
 				.["reason"] = matches
 				return .
 	return 0
@@ -63,17 +62,17 @@ var/savefile/Banlist
 
 /proc/LoadBans()
 
-	Banlist = new("data/banlist.bdb")
+	GLOB.Banlist = new("data/banlist.bdb")
 	log_admin("Loading Banlist")
 
-	if (!length(Banlist.dir)) log_admin("Banlist is empty.")
+	if (!length(GLOB.Banlist.dir)) log_admin("Banlist is empty.")
 
-	if (!Banlist.dir.Find("base"))
+	if (!GLOB.Banlist.dir.Find("base"))
 		log_admin("Banlist missing base dir.")
-		Banlist.dir.Add("base")
-		Banlist.cd = "/base"
-	else if (Banlist.dir.Find("base"))
-		Banlist.cd = "/base"
+		GLOB.Banlist.dir.Add("base")
+		GLOB.Banlist.cd = "/base"
+	else if (GLOB.Banlist.dir.Find("base"))
+		GLOB.Banlist.cd = "/base"
 
 	ClearTempbans()
 	return 1
@@ -81,17 +80,17 @@ var/savefile/Banlist
 /proc/ClearTempbans()
 	UpdateTime()
 
-	Banlist.cd = "/base"
-	for (var/A in Banlist.dir)
-		Banlist.cd = "/base/[A]"
-		if (!Banlist["key"] || !Banlist["id"])
+	GLOB.Banlist.cd = "/base"
+	for (var/A in GLOB.Banlist.dir)
+		GLOB.Banlist.cd = "/base/[A]"
+		if (!GLOB.Banlist["key"] || !GLOB.Banlist["id"])
 			RemoveBan(A)
 			log_admin("Invalid Ban.")
 			message_admins("Invalid Ban.")
 			continue
 
-		if (!Banlist["temp"]) continue
-		if (GLOB.CMinutes >= Banlist["minutes"]) RemoveBan(A)
+		if (!GLOB.Banlist["temp"]) continue
+		if (GLOB.CMinutes >= GLOB.Banlist["minutes"]) RemoveBan(A)
 
 	return 1
 
@@ -104,33 +103,33 @@ var/savefile/Banlist
 		UpdateTime()
 		bantimestamp = GLOB.CMinutes + minutes
 
-	Banlist.cd = "/base"
-	if ( Banlist.dir.Find("[ckey][computerid]") )
+	GLOB.Banlist.cd = "/base"
+	if ( GLOB.Banlist.dir.Find("[ckey][computerid]") )
 		to_chat(usr, "<span class='warning'>Ban already exists.</span>")
 		return 0
 	else
-		Banlist.dir.Add("[ckey][computerid]")
-		Banlist.cd = "/base/[ckey][computerid]"
-		to_save(Banlist["key"], ckey)
-		to_save(Banlist["id"], computerid)
-		to_save(Banlist["ip"], address)
-		to_save(Banlist["reason"], reason)
-		to_save(Banlist["bannedby"], bannedby)
-		to_save(Banlist["temp"], temp)
+		GLOB.Banlist.dir.Add("[ckey][computerid]")
+		GLOB.Banlist.cd = "/base/[ckey][computerid]"
+		to_save(GLOB.Banlist["key"], ckey)
+		to_save(GLOB.Banlist["id"], computerid)
+		to_save(GLOB.Banlist["ip"], address)
+		to_save(GLOB.Banlist["reason"], reason)
+		to_save(GLOB.Banlist["bannedby"], bannedby)
+		to_save(GLOB.Banlist["temp"], temp)
 		if (temp)
-			to_save(Banlist["minutes"], bantimestamp)
+			to_save(GLOB.Banlist["minutes"], bantimestamp)
 	return 1
 
 /proc/RemoveBan(foldername)
 	var/key
 	var/id
 
-	Banlist.cd = "/base/[foldername]"
-	from_save(Banlist["key"], key)
-	from_save(Banlist["id"], id)
-	Banlist.cd = "/base"
+	GLOB.Banlist.cd = "/base/[foldername]"
+	from_save(GLOB.Banlist["key"], key)
+	from_save(GLOB.Banlist["id"], id)
+	GLOB.Banlist.cd = "/base"
 
-	if (!Banlist.dir.Remove(foldername)) return 0
+	if (!GLOB.Banlist.dir.Remove(foldername)) return 0
 
 	if(!usr)
 		log_admin("Ban Expired: [key]")
@@ -141,11 +140,11 @@ var/savefile/Banlist
 		message_admins("[key_name_admin(usr)] unbanned: [key]")
 		feedback_inc("ban_unban",1)
 		usr.client.holder.DB_ban_unban( ckey(key), BANTYPE_ANY_FULLBAN)
-	for (var/A in Banlist.dir)
-		Banlist.cd = "/base/[A]"
-		if (key == Banlist["key"] /*|| id == Banlist["id"]*/)
-			Banlist.cd = "/base"
-			Banlist.dir.Remove(A)
+	for (var/A in GLOB.Banlist.dir)
+		GLOB.Banlist.cd = "/base/[A]"
+		if (key == GLOB.Banlist["key"] /*|| id == Banlist["id"]*/)
+			GLOB.Banlist.cd = "/base"
+			GLOB.Banlist.dir.Remove(A)
 			continue
 
 	return 1
@@ -169,19 +168,19 @@ var/savefile/Banlist
 	var/count = 0
 	var/dat
 	//var/dat = "<HR><B>Unban Player:</B> <span class='notice'>(U) = Unban , (E) = Edit Ban</span> <span class='good'>(Total<HR><table border=1 rules=all frame=void cellspacing=0 cellpadding=3 ></span>"
-	Banlist.cd = "/base"
-	for (var/A in Banlist.dir)
+	GLOB.Banlist.cd = "/base"
+	for (var/A in GLOB.Banlist.dir)
 		count++
-		Banlist.cd = "/base/[A]"
+		GLOB.Banlist.cd = "/base/[A]"
 		var/ref		= "\ref[src]"
-		var/key		= Banlist["key"]
-		var/id		= Banlist["id"]
-		var/ip		= Banlist["ip"]
-		var/reason	= Banlist["reason"]
-		var/by		= Banlist["bannedby"]
+		var/key		= GLOB.Banlist["key"]
+		var/id		= GLOB.Banlist["id"]
+		var/ip		= GLOB.Banlist["ip"]
+		var/reason	= GLOB.Banlist["reason"]
+		var/by		= GLOB.Banlist["bannedby"]
 		var/expiry
-		if(Banlist["temp"])
-			expiry = GetExp(Banlist["minutes"])
+		if(GLOB.Banlist["temp"])
+			expiry = GetExp(GLOB.Banlist["minutes"])
 			if(!expiry)		expiry = "Removal Pending"
 		else				expiry = "Permaban"
 
@@ -204,26 +203,26 @@ var/savefile/Banlist
 		var/a = pick(1,0)
 		var/b = pick(1,0)
 		if(b)
-			Banlist.cd = "/base"
-			Banlist.dir.Add("trash[i]trashid[i]")
-			Banlist.cd = "/base/trash[i]trashid[i]"
-			to_save(Banlist["key"], "trash[i]")
+			GLOB.Banlist.cd = "/base"
+			GLOB.Banlist.dir.Add("trash[i]trashid[i]")
+			GLOB.Banlist.cd = "/base/trash[i]trashid[i]"
+			to_save(GLOB.Banlist["key"], "trash[i]")
 		else
-			Banlist.cd = "/base"
-			Banlist.dir.Add("[last]trashid[i]")
-			Banlist.cd = "/base/[last]trashid[i]"
-			to_save(Banlist["key"], last)
-		to_save(Banlist["id"], "trashid[i]")
-		to_save(Banlist["reason"], "Trashban[i].")
-		to_save(Banlist["temp"], a)
-		to_save(Banlist["minutes"], GLOB.CMinutes + rand(1,2000))
-		to_save(Banlist["bannedby"], "trashmin")
+			GLOB.Banlist.cd = "/base"
+			GLOB.Banlist.dir.Add("[last]trashid[i]")
+			GLOB.Banlist.cd = "/base/[last]trashid[i]"
+			to_save(GLOB.Banlist["key"], last)
+		to_save(GLOB.Banlist["id"], "trashid[i]")
+		to_save(GLOB.Banlist["reason"], "Trashban[i].")
+		to_save(GLOB.Banlist["temp"], a)
+		to_save(GLOB.Banlist["minutes"], GLOB.CMinutes + rand(1,2000))
+		to_save(GLOB.Banlist["bannedby"], "trashmin")
 		last = "trash[i]"
 
-	Banlist.cd = "/base"
+	GLOB.Banlist.cd = "/base"
 
 /proc/ClearAllBans()
-	Banlist.cd = "/base"
-	for (var/A in Banlist.dir)
+	GLOB.Banlist.cd = "/base"
+	for (var/A in GLOB.Banlist.dir)
 		RemoveBan(A)
 

@@ -25,11 +25,11 @@ GLOBAL_VAR_INIT(log_end, world.system_type == UNIX ? ascii2text(13) : "")
 
 /proc/log_admin(text)
 	GLOB.admin_log.Add(text)
-	if (config.log_admin)
+	if (GLOB.config.log_admin)
 		game_log("ADMIN", text)
 
 /proc/log_debug(text)
-	if (config.log_debug)
+	if (GLOB.config.log_debug)
 		game_log("DEBUG", text)
 	to_debug_listeners(text)
 
@@ -47,52 +47,52 @@ GLOBAL_VAR_INIT(log_end, world.system_type == UNIX ? ascii2text(13) : "")
 			to_chat(C, "[prefix]: [text]")
 
 /proc/log_game(text)
-	if (config.log_game)
+	if (GLOB.config.log_game)
 		game_log("GAME", text)
 
 /proc/log_vote(text)
-	if (config.log_vote)
+	if (GLOB.config.log_vote)
 		game_log("VOTE", text)
 
 /proc/log_access(text)
-	if (config.log_access)
+	if (GLOB.config.log_access)
 		game_log("ACCESS", text)
 
 /proc/log_say(text)
-	if (config.log_say)
+	if (GLOB.config.log_say)
 		game_log("SAY", text)
 
 /proc/log_ooc(text)
-	if (config.log_ooc)
+	if (GLOB.config.log_ooc)
 		game_log("OOC", text)
 
 /proc/log_whisper(text)
-	if (config.log_whisper)
+	if (GLOB.config.log_whisper)
 		game_log("WHISPER", text)
 
 /proc/log_emote(text)
-	if (config.log_emote)
+	if (GLOB.config.log_emote)
 		game_log("EMOTE", text)
 
 /proc/log_attack(text)
-	if (config.log_attack)
+	if (GLOB.config.log_attack)
 		game_log("ATTACK", text)
 
 /proc/log_adminsay(text)
-	if (config.log_adminchat)
+	if (GLOB.config.log_adminchat)
 		game_log("ADMINSAY", text)
 
 /proc/log_adminwarn(text)
-	if (config.log_adminwarn)
+	if (GLOB.config.log_adminwarn)
 		game_log("ADMINWARN", text)
 
 /proc/log_pda(text)
-	if (config.log_pda)
+	if (GLOB.config.log_pda)
 		game_log("PDA", text)
 
 /proc/log_to_dd(text)
 	to_world_log(text) //this comes before the config check because it can't possibly runtime
-	if(config.log_world_output)
+	if(GLOB.config.log_world_output)
 		game_log("DD_OUTPUT", text)
 
 /proc/log_misc(text)
@@ -104,7 +104,7 @@ GLOBAL_VAR_INIT(log_end, world.system_type == UNIX ? ascii2text(13) : "")
 
 //This replaces world.log so it displays both in DD and the file
 /proc/log_world(text)
-	if(config && config.log_runtime)
+	if(GLOB.config && GLOB.config.log_runtime)
 		to_world_log(GLOB.runtime_diary)
 		to_world_log(text)
 	to_world_log(null)

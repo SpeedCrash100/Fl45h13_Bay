@@ -82,7 +82,7 @@
 	if(src.resting)
 		Weaken(5)
 
-	if(health < config.health_threshold_dead && src.stat != 2) //die only once
+	if(health < GLOB.config.health_threshold_dead && src.stat != 2) //die only once
 		death()
 
 	if (src.stat != DEAD) //Alive.
@@ -193,7 +193,7 @@
 						src.healths.icon_state = "health3"
 					if(0 to 50)
 						src.healths.icon_state = "health4"
-					if(config.health_threshold_dead to 0)
+					if(GLOB.config.health_threshold_dead to 0)
 						src.healths.icon_state = "health5"
 					else
 						src.healths.icon_state = "health6"
@@ -201,7 +201,7 @@
 			src.healths.icon_state = "health7"
 
 	if (src.syndicate && src.client)
-		for(var/datum/mind/tra in traitors.current_antagonists)
+		for(var/datum/mind/tra in GLOB.traitors.current_antagonists)
 			if(tra.current)
 				// TODO: Update to new antagonist system.
 				var/I = image('icons/mob/mob.dmi', loc = tra.current, icon_state = "traitor")
@@ -211,7 +211,7 @@
 			// TODO: Update to new antagonist system.
 			if(!src.mind.special_role)
 				src.mind.special_role = "traitor"
-				traitors.current_antagonists |= src.mind
+				GLOB.traitors.current_antagonists |= src.mind
 
 	if (src.cells)
 		if (src.cell)

@@ -7,7 +7,7 @@
 
 /datum/unit_test/shuttle/shuttles_shall_have_a_name/start_test()
 	var/failed_shuttles = 0
-	for(var/datum/shuttle/shuttle in shuttle_controller.shuttles)
+	for(var/datum/shuttle/shuttle in GLOB.shuttle_controller.shuttles)
 		if(!shuttle.name)
 			failed_shuttles++
 
@@ -22,8 +22,8 @@
 
 /datum/unit_test/shuttle/shuttles_shall_use_mapped_areas/start_test()
 	var/failed_shuttles = 0
-	for(var/shuttle_name in shuttle_controller.shuttles)
-		var/datum/shuttle/shuttle = shuttle_controller.shuttles[shuttle_name]
+	for(var/shuttle_name in GLOB.shuttle_controller.shuttles)
+		var/datum/shuttle/shuttle = GLOB.shuttle_controller.shuttles[shuttle_name]
 		var/failed = FALSE
 		if(istype(shuttle, /datum/shuttle/ferry))
 			var/datum/shuttle/ferry/f = shuttle
@@ -69,8 +69,8 @@
 
 /datum/unit_test/shuttle/shuttles_shall_use_equally_sized_areas/start_test()
 	var/failed_shuttles = 0
-	for(var/shuttle_name in shuttle_controller.shuttles)
-		var/datum/shuttle/shuttle = shuttle_controller.shuttles[shuttle_name]
+	for(var/shuttle_name in GLOB.shuttle_controller.shuttles)
+		var/datum/shuttle/shuttle = GLOB.shuttle_controller.shuttles[shuttle_name]
 		var/failed = FALSE
 		if(istype(shuttle, /datum/shuttle/ferry))
 			var/datum/shuttle/ferry/f = shuttle
@@ -102,8 +102,8 @@
 
 /datum/unit_test/shuttle/shuttles_shall_use_unique_areas/start_test()
 	var/list/shuttle_areas = list()
-	for(var/shuttle_name in shuttle_controller.shuttles)
-		var/datum/shuttle/shuttle = shuttle_controller.shuttles[shuttle_name]
+	for(var/shuttle_name in GLOB.shuttle_controller.shuttles)
+		var/datum/shuttle/shuttle = GLOB.shuttle_controller.shuttles[shuttle_name]
 		if(istype(shuttle, /datum/shuttle/ferry))
 			var/datum/shuttle/ferry/f = shuttle
 			group_by(shuttle_areas, f.area_station.type, SHUTTLE_NAME_AID(f))

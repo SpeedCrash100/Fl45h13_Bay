@@ -114,9 +114,9 @@ GLOBAL_LIST_EMPTY(additional_antag_types)
 			return
 		var/datum/antagonist/antag = all_antag_types()[choice]
 		if(antag)
-			if(!islist(ticker.mode.antag_templates))
-				ticker.mode.antag_templates = list()
-			ticker.mode.antag_templates |= antag
+			if(!islist(GLOB.ticker.mode.antag_templates))
+				GLOB.ticker.mode.antag_templates = list()
+			GLOB.ticker.mode.antag_templates |= antag
 			message_admins("Admin [key_name_admin(usr)] added [antag.role_text] template to game mode.")
 
 	// I am very sure there's a better way to do this, but I'm not sure what it might be. ~Z
@@ -228,12 +228,12 @@ GLOBAL_LIST_EMPTY(additional_antag_types)
 	for(var/datum/antagonist/antag in antag_templates)
 		antag.post_spawn()
 
-	if(evacuation_controller && auto_recall_shuttle)
-		evacuation_controller.recall = 1
+	if(GLOB.evacuation_controller && auto_recall_shuttle)
+		GLOB.evacuation_controller.recall = 1
 
 	feedback_set_details("round_start","[time2text(world.realtime)]")
-	if(ticker && ticker.mode)
-		feedback_set_details("game_mode","[ticker.mode]")
+	if(GLOB.ticker && GLOB.ticker.mode)
+		feedback_set_details("game_mode","[GLOB.ticker.mode]")
 	feedback_set_details("server_ip","[world.internet_address]:[world.port]")
 	return 1
 
@@ -280,7 +280,7 @@ GLOBAL_LIST_EMPTY(additional_antag_types)
 	command_announcement.Announce("The presence of [pick(reasons)] in the region is tying up all available local emergency resources; emergency response teams cannot be called at this time, and post-evacuation recovery efforts will be substantially delayed.","Emergency Transmission")
 
 /datum/game_mode/proc/check_finished()
-	if(evacuation_controller.round_over() || station_was_nuked)
+	if(GLOB.evacuation_controller.round_over() || station_was_nuked)
 		return 1
 	if(end_on_antag_death && antag_templates && antag_templates.len)
 		var/has_antags = 0
@@ -289,7 +289,7 @@ GLOBAL_LIST_EMPTY(additional_antag_types)
 				has_antags = 1
 				break
 		if(!has_antags)
-			evacuation_controller.recall = 0
+			GLOB.evacuation_controller.recall = 0
 			return 1
 	return 0
 
@@ -342,7 +342,7 @@ GLOBAL_LIST_EMPTY(additional_antag_types)
 	var/text = ""
 	if(surviving_total > 0)
 		text += "<br>There [surviving_total>1 ? "were <b>[surviving_total] survivors</b>" : "was <b>one survivor</b>"]"
-		text += " (<b>[escaped_total>0 ? escaped_total : "none"] [evacuation_controller.emergency_evacuation ? "escaped" : "transferred"]</b>) and <b>[ghosts] ghosts</b>.<br>"
+		text += " (<b>[escaped_total>0 ? escaped_total : "none"] [GLOB.evacuation_controller.emergency_evacuation ? "escaped" : "transferred"]</b>) and <b>[ghosts] ghosts</b>.<br>"
 	else
 		text += "There were <b>no survivors</b> (<b>[ghosts] ghosts</b>)."
 	to_world(text)
@@ -377,7 +377,7 @@ GLOBAL_LIST_EMPTY(additional_antag_types)
 		return candidates
 
 	// If this is being called post-roundstart then it doesn't care about ready status.
-	if(ticker && ticker.current_state == GAME_STATE_PLAYING)
+	if(GLOB.ticker && GLOB.ticker.current_state == GAME_STATE_PLAYING)
 		for(var/mob/player in GLOB.player_list)
 			if(!player.client)
 				continue
@@ -424,7 +424,7 @@ GLOBAL_LIST_EMPTY(additional_antag_types)
 
 /datum/game_mode/proc/create_antagonists()
 
-	if(!config.traitor_scaling)
+	if(!GLOB.config.traitor_scaling)
 		antag_scaling_coeff = 0
 
 	var/list/all_antag_types = all_antag_types()
@@ -511,7 +511,7 @@ proc/get_nt_opposed()
 
 	if(!player || !player.current) return
 
-	if(config.objectives_disabled == CONFIG_OBJECTIVE_NONE || !player.objectives.len)
+	if(GLOB.config.objectives_disabled == CONFIG_OBJECTIVE_NONE || !player.objectives.len)
 		return
 
 	var/obj_count = 1
@@ -524,16 +524,16 @@ proc/get_nt_opposed()
 	set name = "Check Round Info"
 	set category = "OOC"
 
-	if(!ticker || !ticker.mode)
+	if(!GLOB.ticker || !GLOB.ticker.mode)
 		to_chat(usr, "Something is terribly wrong; there is no gametype.")
 		return
 
-	if(!ticker.hide_mode)
-		to_chat(usr, "<b>The roundtype is [capitalize(ticker.mode.name)]</b>")
-		if(ticker.mode.round_description)
-			to_chat(usr, "<i>[ticker.mode.round_description]</i>")
-		if(ticker.mode.extended_round_description)
-			to_chat(usr, "[ticker.mode.extended_round_description]")
+	if(!GLOB.ticker.hide_mode)
+		to_chat(usr, "<b>The roundtype is [capitalize(GLOB.ticker.mode.name)]</b>")
+		if(GLOB.ticker.mode.round_description)
+			to_chat(usr, "<i>[GLOB.ticker.mode.round_description]</i>")
+		if(GLOB.ticker.mode.extended_round_description)
+			to_chat(usr, "[GLOB.ticker.mode.extended_round_description]")
 	else
 		to_chat(usr, "<i>Shhhh</i>. It's a secret.")
 	return

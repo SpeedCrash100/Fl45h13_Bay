@@ -233,8 +233,8 @@
 	if(isliving(user)) return
 
 	if(href_list["preference"] == "open_whitelist_forum")
-		if(config.forumurl)
-			send_link(user, config.forumurl)
+		if(GLOB.config.forumurl)
+			send_link(user, GLOB.config.forumurl)
 		else
 			to_chat(user, "<span class='danger'>The forum URL is not set in the server configuration.</span>")
 			return
@@ -278,7 +278,7 @@
 	if(be_random_name)
 		real_name = random_name(gender,species)
 
-	if(config.humans_need_surnames)
+	if(GLOB.config.humans_need_surnames)
 		var/firstspace = findtext(real_name, " ")
 		var/name_length = length(real_name)
 		if(!firstspace)	//we need a surname
@@ -426,7 +426,7 @@
 	if(S)
 		dat += "<b>Select a character slot to load</b><hr>"
 		var/name
-		for(var/i=1, i<= config.character_slots, i++)
+		for(var/i=1, i<= GLOB.config.character_slots, i++)
 			S.cd = GLOB.using_map.character_load_path(S, i)
 			from_save(S["real_name"], name)
 			if(!name)	name = "Character[i]"

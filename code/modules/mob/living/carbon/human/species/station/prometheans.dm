@@ -1,4 +1,4 @@
-var/datum/species/shapeshifter/promethean/prometheans
+GLOBAL_DATUM(prometheans, /datum/species/shapeshifter/promethean)
 
 // Species definition follows.
 /datum/species/shapeshifter/promethean
@@ -70,7 +70,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 /datum/species/shapeshifter/promethean/New()
 	..()
-	prometheans = src
+	GLOB.prometheans = src
 
 /datum/species/shapeshifter/promethean/hug(var/mob/living/carbon/human/H,var/mob/living/target)
 	var/datum/gender/G = GLOB.gender_datums[target.gender]

@@ -141,6 +141,6 @@
 		C.key = S.shade.key
 		//C.cancel_camera()
 		if(S.is_evil)
-			cult.add_antagonist(C.mind)
+			GLOB.cult.add_antagonist(C.mind)
 		qdel(S)
 		qdel(src)

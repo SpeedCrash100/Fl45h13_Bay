@@ -3,7 +3,7 @@
 GLOBAL_LIST_EMPTY(whitelist)
 
 /hook/startup/proc/loadWhitelist()
-	if(config.usewhitelist)
+	if(GLOB.config.usewhitelist)
 		load_whitelist()
 	return 1
 
@@ -20,8 +20,8 @@ GLOBAL_LIST_EMPTY(whitelist)
 GLOBAL_LIST_EMPTY(alien_whitelist)
 
 /hook/startup/proc/loadAlienWhitelist()
-	if(config.usealienwhitelist)
-		if(config.usealienwhitelistSQL)
+	if(GLOB.config.usealienwhitelist)
+		if(GLOB.config.usealienwhitelistSQL)
 			if(!load_alienwhitelistSQL())
 				to_world_log("Could not load alienwhitelist via SQL")
 		else
@@ -58,7 +58,7 @@ GLOBAL_LIST_EMPTY(alien_whitelist)
 /proc/is_alien_whitelisted(mob/M, var/species)
 	if(!M || !species)
 		return 0
-	if(!config.usealienwhitelist)
+	if(!GLOB.config.usealienwhitelist)
 		return 1
 	if(check_rights(R_ADMIN, 0, M))
 		return 1
@@ -81,7 +81,7 @@ GLOBAL_LIST_EMPTY(alien_whitelist)
 	if(!GLOB.alien_whitelist)
 		return 0
 
-	if(config.usealienwhitelistSQL)
+	if(GLOB.config.usealienwhitelistSQL)
 		//SQL Whitelist
 		if(!(ckey in GLOB.alien_whitelist))
 			return 0;

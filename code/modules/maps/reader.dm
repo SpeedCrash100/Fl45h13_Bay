@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////////////
 
 //global datum that will preload variables on atoms instanciation
-var/global/dmm_suite/preloader/_preloader = null
+GLOBAL_DATUM(_preloader, /dmm_suite/preloader)
 
 
 /**
@@ -166,13 +166,13 @@ var/global/dmm_suite/preloader/_preloader = null
 	//first instance the /area and remove it from the members list
 	index = members.len
 	var/atom/instance
-	_preloader = new(members_attributes[index])//preloader for assigning  set variables on atom creation
+	GLOB._preloader = new(members_attributes[index])//preloader for assigning  set variables on atom creation
 
 	instance = locate(members[index])
 	instance.contents.Add(locate(xcrd,ycrd,zcrd))
 
-	if(_preloader && instance)
-		_preloader.load(instance)
+	if(GLOB._preloader && instance)
+		GLOB._preloader.load(instance)
 
 	members.Remove(members[index])
 
@@ -205,12 +205,12 @@ var/global/dmm_suite/preloader/_preloader = null
 //Instance an atom at (x,y,z) and gives it the variables in attributes
 /dmm_suite/proc/instance_atom(var/path,var/list/attributes, var/x, var/y, var/z)
 	var/atom/instance
-	_preloader = new(attributes, path)
+	GLOB._preloader = new(attributes, path)
 
 	instance = new path (locate(x,y,z))//first preloader pass
 
-	if(_preloader && instance)//second preloader pass, for those atoms that don't ..() in New()
-		_preloader.load(instance)
+	if(GLOB._preloader && instance)//second preloader pass, for those atoms that don't ..() in New()
+		GLOB._preloader.load(instance)
 
 	return instance
 
@@ -304,8 +304,8 @@ var/global/dmm_suite/preloader/_preloader = null
 
 //atom creation method that preloads variables at creation
 /atom/New()
-	if(_preloader && (src.type == _preloader.target_path))//in case the instanciated atom is creating other atoms in New()
-		_preloader.load(src)
+	if(GLOB._preloader && (src.type == GLOB._preloader.target_path))//in case the instanciated atom is creating other atoms in New()
+		GLOB._preloader.load(src)
 
 	. = ..()
 

@@ -1,6 +1,5 @@
 
-var/global/datum/shuttle_controller/shuttle_controller
-
+GLOBAL_DATUM(shuttle_controller, /datum/shuttle_controller)
 
 /datum/shuttle_controller
 	var/list/shuttles	//maps shuttle tags to shuttle datums, so that they can be looked up.

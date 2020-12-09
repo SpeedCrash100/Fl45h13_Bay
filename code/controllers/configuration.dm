@@ -275,244 +275,244 @@ GLOBAL_LIST_EMPTY(gamemode_cache)
 		if(type == "config")
 			switch (name)
 				if ("resource_urls")
-					config.resource_urls = splittext(value, " ")
+					GLOB.config.resource_urls = splittext(value, " ")
 
 				if ("admin_legacy_system")
-					config.admin_legacy_system = 1
+					GLOB.config.admin_legacy_system = 1
 
 				if ("ban_legacy_system")
-					config.ban_legacy_system = 1
+					GLOB.config.ban_legacy_system = 1
 
 				if ("use_age_restriction_for_jobs")
-					config.use_age_restriction_for_jobs = 1
+					GLOB.config.use_age_restriction_for_jobs = 1
 
 				if ("use_age_restriction_for_antags")
-					config.use_age_restriction_for_antags = 1
+					GLOB.config.use_age_restriction_for_antags = 1
 
 				if ("jobs_have_minimal_access")
-					config.jobs_have_minimal_access = 1
+					GLOB.config.jobs_have_minimal_access = 1
 
 				if ("use_recursive_explosions")
 					use_recursive_explosions = 1
 
 				if ("log_ooc")
-					config.log_ooc = 1
+					GLOB.config.log_ooc = 1
 
 				if ("log_access")
-					config.log_access = 1
+					GLOB.config.log_access = 1
 
 				if ("sql_enabled")
-					config.sql_enabled = text2num(value)
+					GLOB.config.sql_enabled = text2num(value)
 
 				if ("log_say")
-					config.log_say = 1
+					GLOB.config.log_say = 1
 
 				if ("debug_paranoid")
-					config.debugparanoid = 1
+					GLOB.config.debugparanoid = 1
 
 				if ("log_admin")
-					config.log_admin = 1
+					GLOB.config.log_admin = 1
 
 				if ("log_debug")
-					config.log_debug = text2num(value)
+					GLOB.config.log_debug = text2num(value)
 
 				if ("log_game")
-					config.log_game = 1
+					GLOB.config.log_game = 1
 
 				if ("log_vote")
-					config.log_vote = 1
+					GLOB.config.log_vote = 1
 
 				if ("log_whisper")
-					config.log_whisper = 1
+					GLOB.config.log_whisper = 1
 
 				if ("log_attack")
-					config.log_attack = 1
+					GLOB.config.log_attack = 1
 
 				if ("log_emote")
-					config.log_emote = 1
+					GLOB.config.log_emote = 1
 
 				if ("log_adminchat")
-					config.log_adminchat = 1
+					GLOB.config.log_adminchat = 1
 
 				if ("log_adminwarn")
-					config.log_adminwarn = 1
+					GLOB.config.log_adminwarn = 1
 
 				if ("log_pda")
-					config.log_pda = 1
+					GLOB.config.log_pda = 1
 
 				if ("log_world_output")
-					config.log_world_output = 1
+					GLOB.config.log_world_output = 1
 
 				if ("log_hrefs")
-					config.log_hrefs = 1
+					GLOB.config.log_hrefs = 1
 
 				if ("log_runtime")
-					config.log_runtime = 1
+					GLOB.config.log_runtime = 1
 					var/newlog = file("data/logs/runtimes/runtime-[time2text(world.realtime, "YYYY-MM-DD")].log")
 					if(GLOB.runtime_diary != newlog)
 						to_world_log("Now logging runtimes to data/logs/runtimes/runtime-[time2text(world.realtime, "YYYY-MM-DD")].log")
 						GLOB.runtime_diary = newlog
 
 				if ("generate_asteroid")
-					config.generate_map = 1
+					GLOB.config.generate_map = 1
 
 				if ("no_click_cooldown")
-					config.no_click_cooldown = 1
+					GLOB.config.no_click_cooldown = 1
 
 				if("allow_admin_ooccolor")
-					config.allow_admin_ooccolor = 1
+					GLOB.config.allow_admin_ooccolor = 1
 
 				if ("allow_vote_restart")
-					config.allow_vote_restart = 1
+					GLOB.config.allow_vote_restart = 1
 
 				if ("allow_vote_mode")
-					config.allow_vote_mode = 1
+					GLOB.config.allow_vote_mode = 1
 
 				if ("allow_admin_jump")
-					config.allow_admin_jump = 1
+					GLOB.config.allow_admin_jump = 1
 
 				if("allow_admin_rev")
-					config.allow_admin_rev = 1
+					GLOB.config.allow_admin_rev = 1
 
 				if ("allow_admin_spawning")
-					config.allow_admin_spawning = 1
+					GLOB.config.allow_admin_spawning = 1
 
 				if ("no_dead_vote")
-					config.vote_no_dead = 1
+					GLOB.config.vote_no_dead = 1
 
 				if ("default_no_vote")
-					config.vote_no_default = 1
+					GLOB.config.vote_no_default = 1
 
 				if ("vote_delay")
-					config.vote_delay = text2num(value)
+					GLOB.config.vote_delay = text2num(value)
 
 				if ("vote_period")
-					config.vote_period = text2num(value)
+					GLOB.config.vote_period = text2num(value)
 
 				if ("vote_autotransfer_initial")
-					config.vote_autotransfer_initial = text2num(value)
+					GLOB.config.vote_autotransfer_initial = text2num(value)
 
 				if ("vote_autotransfer_interval")
-					config.vote_autotransfer_interval = text2num(value)
+					GLOB.config.vote_autotransfer_interval = text2num(value)
 
 				if ("vote_autogamemode_timeleft")
-					config.vote_autogamemode_timeleft = text2num(value)
+					GLOB.config.vote_autogamemode_timeleft = text2num(value)
 
 				if("ert_admin_only")
-					config.ert_admin_call_only = 1
+					GLOB.config.ert_admin_call_only = 1
 
 				if ("allow_ai")
-					config.allow_ai = 1
+					GLOB.config.allow_ai = 1
 
 //				if ("authentication")
-//					config.enable_authentication = 1
+//					GLOB.config.enable_authentication = 1
 
 				if ("respawn_delay")
-					config.respawn_delay = text2num(value)
-					config.respawn_delay = config.respawn_delay > 0 ? config.respawn_delay : 0
+					GLOB.config.respawn_delay = text2num(value)
+					GLOB.config.respawn_delay = GLOB.config.respawn_delay > 0 ? GLOB.config.respawn_delay : 0
 
 				if ("servername")
-					config.server_name = value
+					GLOB.config.server_name = value
 
 				if ("serversuffix")
-					config.server_suffix = 1
+					GLOB.config.server_suffix = 1
 
 				if ("nudge_script_path")
-					config.nudge_script_path = value
+					GLOB.config.nudge_script_path = value
 
 				if ("hostedby")
-					config.hostedby = value
+					GLOB.config.hostedby = value
 
 				if ("serverurl")
-					config.serverurl = value
+					GLOB.config.serverurl = value
 
 				if ("server")
-					config.server = value
+					GLOB.config.server = value
 
 				if ("banappeals")
-					config.banappeals = value
+					GLOB.config.banappeals = value
 
 				if ("wikiurl")
-					config.wikiurl = value
+					GLOB.config.wikiurl = value
 
 				if ("forumurl")
-					config.forumurl = value
+					GLOB.config.forumurl = value
 
 				if ("githuburl")
-					config.githuburl = value
+					GLOB.config.githuburl = value
 
 				if ("issuereporturl")
-					config.issuereporturl = value
+					GLOB.config.issuereporturl = value
 
 				if ("ghosts_can_possess_animals")
-					config.ghosts_can_possess_animals = value
+					GLOB.config.ghosts_can_possess_animals = value
 
 				if ("guest_jobban")
-					config.guest_jobban = 1
+					GLOB.config.guest_jobban = 1
 
 				if ("guest_ban")
-					config.guests_allowed = 0
+					GLOB.config.guests_allowed = 0
 
 				if ("disable_ooc")
-					config.ooc_allowed = 0
-					config.looc_allowed = 0
+					GLOB.config.ooc_allowed = 0
+					GLOB.config.looc_allowed = 0
 
 				if ("disable_aooc")
-					config.aooc_allowed = 0
+					GLOB.config.aooc_allowed = 0
 
 				if ("disable_entry")
-					config.enter_allowed = 0
+					GLOB.config.enter_allowed = 0
 
 				if ("disable_dead_ooc")
-					config.dooc_allowed = 0
+					GLOB.config.dooc_allowed = 0
 
 				if ("disable_dsay")
-					config.dsay_allowed = 0
+					GLOB.config.dsay_allowed = 0
 
 				if ("disable_respawn")
-					config.abandon_allowed = 0
+					GLOB.config.abandon_allowed = 0
 
 				if ("usewhitelist")
-					config.usewhitelist = 1
+					GLOB.config.usewhitelist = 1
 
 				if ("feature_object_spell_system")
-					config.feature_object_spell_system = 1
+					GLOB.config.feature_object_spell_system = 1
 
 				if ("allow_metadata")
-					config.allow_Metadata = 1
+					GLOB.config.allow_Metadata = 1
 
 				if ("traitor_scaling")
-					config.traitor_scaling = 1
+					GLOB.config.traitor_scaling = 1
 
 				if ("aliens_allowed")
-					config.aliens_allowed = 1
+					GLOB.config.aliens_allowed = 1
 
 				if("alien_eggs_allowed")
-					config.alien_eggs_allowed = 1
+					GLOB.config.alien_eggs_allowed = 1
 
 				if ("ninjas_allowed")
-					config.ninjas_allowed = 1
+					GLOB.config.ninjas_allowed = 1
 
 				if ("objectives_disabled")
 					if(!value)
 						log_misc("Could not find value for objectives_disabled in configuration.")
-						config.objectives_disabled = CONFIG_OBJECTIVE_NONE
+						GLOB.config.objectives_disabled = CONFIG_OBJECTIVE_NONE
 					else
 						switch(value)
 							if("none")
-								config.objectives_disabled = CONFIG_OBJECTIVE_NONE
+								GLOB.config.objectives_disabled = CONFIG_OBJECTIVE_NONE
 							if("verb")
-								config.objectives_disabled = CONFIG_OBJECTIVE_VERB
+								GLOB.config.objectives_disabled = CONFIG_OBJECTIVE_VERB
 							if("all")
-								config.objectives_disabled = CONFIG_OBJECTIVE_ALL
+								GLOB.config.objectives_disabled = CONFIG_OBJECTIVE_ALL
 							else
 								log_misc("Incorrect objective disabled definition: [value]")
-								config.objectives_disabled = CONFIG_OBJECTIVE_NONE
+								GLOB.config.objectives_disabled = CONFIG_OBJECTIVE_NONE
 				if("protect_roles_from_antagonist")
-					config.protect_roles_from_antagonist = 1
+					GLOB.config.protect_roles_from_antagonist = 1
 
 				if("use_cortical_stacks")
-					config.use_cortical_stacks = 1
+					GLOB.config.use_cortical_stacks = 1
 
 				if ("probability")
 					var/prob_pos = findtext(value, " ")
@@ -522,57 +522,57 @@ GLOBAL_LIST_EMPTY(gamemode_cache)
 					if (prob_pos)
 						prob_name = lowertext(copytext(value, 1, prob_pos))
 						prob_value = copytext(value, prob_pos + 1)
-						if (prob_name in config.modes)
-							config.probabilities[prob_name] = text2num(prob_value)
+						if (prob_name in GLOB.config.modes)
+							GLOB.config.probabilities[prob_name] = text2num(prob_value)
 						else
 							log_misc("Unknown game mode probability configuration definition: [prob_name].")
 					else
 						log_misc("Incorrect probability configuration definition: [prob_name]  [prob_value].")
 
 				if("allow_random_events")
-					config.allow_random_events = 1
+					GLOB.config.allow_random_events = 1
 
 				if("kick_inactive")
-					config.kick_inactive = text2num(value)
+					GLOB.config.kick_inactive = text2num(value)
 
 				if("mods_can_tempban")
-					config.mods_can_tempban = 1
+					GLOB.config.mods_can_tempban = 1
 
 				if("mods_can_job_tempban")
-					config.mods_can_job_tempban = 1
+					GLOB.config.mods_can_job_tempban = 1
 
 				if("mod_tempban_max")
-					config.mod_tempban_max = text2num(value)
+					GLOB.config.mod_tempban_max = text2num(value)
 
 				if("mod_job_tempban_max")
-					config.mod_job_tempban_max = text2num(value)
+					GLOB.config.mod_job_tempban_max = text2num(value)
 
 				if("load_jobs_from_txt")
 					load_jobs_from_txt = 1
 
 				if("alert_red_upto")
-					config.alert_desc_red_upto = value
+					GLOB.config.alert_desc_red_upto = value
 
 				if("alert_red_downto")
-					config.alert_desc_red_downto = value
+					GLOB.config.alert_desc_red_downto = value
 
 				if("alert_blue_downto")
-					config.alert_desc_blue_downto = value
+					GLOB.config.alert_desc_blue_downto = value
 
 				if("alert_blue_upto")
-					config.alert_desc_blue_upto = value
+					GLOB.config.alert_desc_blue_upto = value
 
 				if("alert_green")
-					config.alert_desc_green = value
+					GLOB.config.alert_desc_green = value
 
 				if("alert_delta")
-					config.alert_desc_delta = value
+					GLOB.config.alert_desc_delta = value
 
 				if("forbid_singulo_possession")
 					forbid_singulo_possession = 1
 
 				if("popup_admin_pm")
-					config.popup_admin_pm = 1
+					GLOB.config.popup_admin_pm = 1
 
 				if("allow_holidays")
 					GLOB.Holiday = 1
@@ -595,9 +595,9 @@ GLOBAL_LIST_EMPTY(gamemode_cache)
 					tick_limit_mc_init = text2num(value)
 
 				if("allow_antag_hud")
-					config.antag_hud_allowed = 1
+					GLOB.config.antag_hud_allowed = 1
 				if("antag_hud_restricted")
-					config.antag_hud_restricted = 1
+					GLOB.config.antag_hud_restricted = 1
 
 				if("socket_talk")
 					socket_talk = text2num(value)
@@ -617,116 +617,116 @@ GLOBAL_LIST_EMPTY(gamemode_cache)
 					alien_to_human_ratio = text2num(value)
 
 				if("assistant_maint")
-					config.assistant_maint = 1
+					GLOB.config.assistant_maint = 1
 
 				if("gateway_delay")
-					config.gateway_delay = text2num(value)
+					GLOB.config.gateway_delay = text2num(value)
 
 				if("continuous_rounds")
-					config.continous_rounds = 1
+					GLOB.config.continous_rounds = 1
 
 				if("ghost_interaction")
-					config.ghost_interaction = 1
+					GLOB.config.ghost_interaction = 1
 
 				if("disable_player_mice")
-					config.disable_player_mice = 1
+					GLOB.config.disable_player_mice = 1
 
 				if("uneducated_mice")
-					config.uneducated_mice = 1
+					GLOB.config.uneducated_mice = 1
 
 				if("comms_password")
-					config.comms_password = value
+					GLOB.config.comms_password = value
 
 				if("ban_comms_password")
-					config.ban_comms_password = value
+					GLOB.config.ban_comms_password = value
 
 				if("login_export_addr")
-					config.login_export_addr = value
+					GLOB.config.login_export_addr = value
 
 				if("irc_bot_host")
-					config.irc_bot_host = value
+					GLOB.config.irc_bot_host = value
 
 				if("main_irc")
-					config.main_irc = value
+					GLOB.config.main_irc = value
 
 				if("admin_irc")
-					config.admin_irc = value
+					GLOB.config.admin_irc = value
 
 				if("announce_shuttle_dock_to_irc")
-					config.announce_shuttle_dock_to_irc = TRUE
+					GLOB.config.announce_shuttle_dock_to_irc = TRUE
 
 				if("python_path")
 					if(value)
-						config.python_path = value
+						GLOB.config.python_path = value
 
 				if("use_lib_nudge")
-					config.use_lib_nudge = 1
+					GLOB.config.use_lib_nudge = 1
 
 				if("allow_cult_ghostwriter")
-					config.cult_ghostwriter = 1
+					GLOB.config.cult_ghostwriter = 1
 
 				if("req_cult_ghostwriter")
-					config.cult_ghostwriter_req_cultists = text2num(value)
+					GLOB.config.cult_ghostwriter_req_cultists = text2num(value)
 
 				if("character_slots")
-					config.character_slots = text2num(value)
+					GLOB.config.character_slots = text2num(value)
 
 				if("allow_drone_spawn")
-					config.allow_drone_spawn = text2num(value)
+					GLOB.config.allow_drone_spawn = text2num(value)
 
 				if("drone_build_time")
-					config.drone_build_time = text2num(value)
+					GLOB.config.drone_build_time = text2num(value)
 
 				if("max_maint_drones")
-					config.max_maint_drones = text2num(value)
+					GLOB.config.max_maint_drones = text2num(value)
 
 				if("expected_round_length")
-					config.expected_round_length = MinutesToTicks(text2num(value))
+					GLOB.config.expected_round_length = MinutesToTicks(text2num(value))
 
 				if("disable_welder_vision")
-					config.welder_vision = 0
+					GLOB.config.welder_vision = 0
 
 				if("allow_extra_antags")
-					config.allow_extra_antags = 1
+					GLOB.config.allow_extra_antags = 1
 
 				if("event_custom_start_mundane")
 					var/values = text2numlist(value, ";")
-					config.event_first_run[EVENT_LEVEL_MUNDANE] = list("lower" = MinutesToTicks(values[1]), "upper" = MinutesToTicks(values[2]))
+					GLOB.config.event_first_run[EVENT_LEVEL_MUNDANE] = list("lower" = MinutesToTicks(values[1]), "upper" = MinutesToTicks(values[2]))
 
 				if("event_custom_start_moderate")
 					var/values = text2numlist(value, ";")
-					config.event_first_run[EVENT_LEVEL_MODERATE] = list("lower" = MinutesToTicks(values[1]), "upper" = MinutesToTicks(values[2]))
+					GLOB.config.event_first_run[EVENT_LEVEL_MODERATE] = list("lower" = MinutesToTicks(values[1]), "upper" = MinutesToTicks(values[2]))
 
 				if("event_custom_start_major")
 					var/values = text2numlist(value, ";")
-					config.event_first_run[EVENT_LEVEL_MAJOR] = list("lower" = MinutesToTicks(values[1]), "upper" = MinutesToTicks(values[2]))
+					GLOB.config.event_first_run[EVENT_LEVEL_MAJOR] = list("lower" = MinutesToTicks(values[1]), "upper" = MinutesToTicks(values[2]))
 
 				if("event_delay_lower")
 					var/values = text2numlist(value, ";")
-					config.event_delay_lower[EVENT_LEVEL_MUNDANE] = MinutesToTicks(values[1])
-					config.event_delay_lower[EVENT_LEVEL_MODERATE] = MinutesToTicks(values[2])
-					config.event_delay_lower[EVENT_LEVEL_MAJOR] = MinutesToTicks(values[3])
+					GLOB.config.event_delay_lower[EVENT_LEVEL_MUNDANE] = MinutesToTicks(values[1])
+					GLOB.config.event_delay_lower[EVENT_LEVEL_MODERATE] = MinutesToTicks(values[2])
+					GLOB.config.event_delay_lower[EVENT_LEVEL_MAJOR] = MinutesToTicks(values[3])
 
 				if("event_delay_upper")
 					var/values = text2numlist(value, ";")
-					config.event_delay_upper[EVENT_LEVEL_MUNDANE] = MinutesToTicks(values[1])
-					config.event_delay_upper[EVENT_LEVEL_MODERATE] = MinutesToTicks(values[2])
-					config.event_delay_upper[EVENT_LEVEL_MAJOR] = MinutesToTicks(values[3])
+					GLOB.config.event_delay_upper[EVENT_LEVEL_MUNDANE] = MinutesToTicks(values[1])
+					GLOB.config.event_delay_upper[EVENT_LEVEL_MODERATE] = MinutesToTicks(values[2])
+					GLOB.config.event_delay_upper[EVENT_LEVEL_MAJOR] = MinutesToTicks(values[3])
 
 				if("starlight")
 					value = text2num(value)
-					config.starlight = value >= 0 ? value : 0
+					GLOB.config.starlight = value >= 0 ? value : 0
 
 				if("ert_species")
-					config.ert_species = splittext(value, ";")
-					if(!config.ert_species.len)
-						config.ert_species += SPECIES_HUMAN
+					GLOB.config.ert_species = splittext(value, ";")
+					if(!GLOB.config.ert_species.len)
+						GLOB.config.ert_species += SPECIES_HUMAN
 
 				if("law_zero")
 					law_zero = value
 
 				if("aggressive_changelog")
-					config.aggressive_changelog = 1
+					GLOB.config.aggressive_changelog = 1
 
 				if("default_language_prefixes")
 					var/list/values = splittext(value, " ")
@@ -734,19 +734,19 @@ GLOBAL_LIST_EMPTY(gamemode_cache)
 						language_prefixes = values
 
 				if("delist_when_no_admins")
-					config.delist_when_no_admins = TRUE
+					GLOB.config.delist_when_no_admins = TRUE
 
 				if("map_switching")
-					config.allow_map_switching = 1
+					GLOB.config.allow_map_switching = 1
 
 				if("auto_map_vote")
-					config.auto_map_vote = 1
+					GLOB.config.auto_map_vote = 1
 
 				if("wait_for_sigusr1")
-					config.wait_for_sigusr1_reboot = 1
+					GLOB.config.wait_for_sigusr1_reboot = 1
 
 				if("autostealth")
-					config.autostealth = text2num(value)
+					GLOB.config.autostealth = text2num(value)
 
 				if("radiation_lower_limit")
 					radiation_lower_limit = text2num(value)
@@ -761,49 +761,49 @@ GLOBAL_LIST_EMPTY(gamemode_cache)
 
 			switch(name)
 				if("health_threshold_dead")
-					config.health_threshold_dead = value
+					GLOB.config.health_threshold_dead = value
 				if("revival_pod_plants")
-					config.revival_pod_plants = value
+					GLOB.config.revival_pod_plants = value
 				if("revival_cloning")
-					config.revival_cloning = value
+					GLOB.config.revival_cloning = value
 				if("revival_brain_life")
-					config.revival_brain_life = value
+					GLOB.config.revival_brain_life = value
 				if("organ_health_multiplier")
-					config.organ_health_multiplier = value / 100
+					GLOB.config.organ_health_multiplier = value / 100
 				if("organ_regeneration_multiplier")
-					config.organ_regeneration_multiplier = value / 100
+					GLOB.config.organ_regeneration_multiplier = value / 100
 				if("organ_damage_spillover_multiplier")
-					config.organ_damage_spillover_multiplier = value / 100
+					GLOB.config.organ_damage_spillover_multiplier = value / 100
 				if("organs_can_decay")
-					config.organs_decay = 1
+					GLOB.config.organs_decay = 1
 				if("bones_can_break")
-					config.bones_can_break = value
+					GLOB.config.bones_can_break = value
 				if("limbs_can_break")
-					config.limbs_can_break = value
+					GLOB.config.limbs_can_break = value
 
 				if("run_speed")
-					config.run_speed = value
+					GLOB.config.run_speed = value
 				if("walk_speed")
-					config.walk_speed = value
+					GLOB.config.walk_speed = value
 
 				if("human_delay")
-					config.human_delay = value
+					GLOB.config.human_delay = value
 				if("robot_delay")
-					config.robot_delay = value
+					GLOB.config.robot_delay = value
 				if("monkey_delay")
-					config.monkey_delay = value
+					GLOB.config.monkey_delay = value
 				if("alien_delay")
-					config.alien_delay = value
+					GLOB.config.alien_delay = value
 				if("slime_delay")
-					config.slime_delay = value
+					GLOB.config.slime_delay = value
 				if("animal_delay")
-					config.animal_delay = value
+					GLOB.config.animal_delay = value
 				if("maximum_mushrooms")
-					config.maximum_mushrooms = value
+					GLOB.config.maximum_mushrooms = value
 
 
 				if("use_loyalty_implants")
-					config.use_loyalty_implants = 1
+					GLOB.config.use_loyalty_implants = 1
 
 				else
 					log_misc("Unknown setting in configuration: '[name]'")
@@ -913,14 +913,14 @@ GLOBAL_LIST_EMPTY(gamemode_cache)
 	var/list/runnable_modes = list()
 	for(var/game_mode in GLOB.gamemode_cache)
 		var/datum/game_mode/M = GLOB.gamemode_cache[game_mode]
-		if(M && !M.startRequirements() && !isnull(config.probabilities[M.config_tag]) && config.probabilities[M.config_tag] > 0)
+		if(M && !M.startRequirements() && !isnull(GLOB.config.probabilities[M.config_tag]) && GLOB.config.probabilities[M.config_tag] > 0)
 			runnable_modes |= M
 	return runnable_modes
 
 /datum/configuration/proc/post_load()
-	//apply a default value to config.python_path, if needed
-	if (!config.python_path)
+	//apply a default value to GLOB.config.python_path, if needed
+	if (!GLOB.config.python_path)
 		if(world.system_type == UNIX)
-			config.python_path = "/usr/bin/env python2"
+			GLOB.config.python_path = "/usr/bin/env python2"
 		else //probably windows, if not this should work anyway
-			config.python_path = "python"
+			GLOB.config.python_path = "python"

@@ -147,7 +147,7 @@
 	next_move = max(world.time + timeout, next_move)
 
 /mob/proc/canClick()
-	if(config.no_click_cooldown || next_move <= world.time)
+	if(GLOB.config.no_click_cooldown || next_move <= world.time)
 		return 1
 	return 0
 
@@ -170,7 +170,7 @@
 
 /mob/living/UnarmedAttack(var/atom/A, var/proximity_flag)
 
-	if(!ticker)
+	if(!GLOB.ticker)
 		to_chat(src, "You cannot attack people before the game has started.")
 		return 0
 

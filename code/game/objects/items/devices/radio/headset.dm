@@ -245,7 +245,7 @@
 
 
 			for(var/ch_name in channels)
-				radio_controller.remove_object(src, GLOB.radiochannels[ch_name])
+				GLOB.radio_controller.remove_object(src, GLOB.radiochannels[ch_name])
 				secure_radio_connections[ch_name] = null
 
 
@@ -335,13 +335,13 @@
 
 
 	for (var/ch_name in channels)
-		if(!radio_controller)
-			sleep(30) // Waiting for the radio_controller to be created.
-		if(!radio_controller)
+		if(!GLOB.radio_controller)
+			sleep(30) // Waiting for the GLOB.radio_controller to be created.
+		if(!GLOB.radio_controller)
 			src.name = "broken radio headset"
 			return
 
-		secure_radio_connections[ch_name] = radio_controller.add_object(src, GLOB.radiochannels[ch_name],  GLOB.RADIO_CHAT)
+		secure_radio_connections[ch_name] = GLOB.radio_controller.add_object(src, GLOB.radiochannels[ch_name],  GLOB.RADIO_CHAT)
 
 	if(setDescription)
 		setupRadioDescription()

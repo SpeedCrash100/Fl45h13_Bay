@@ -180,7 +180,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	var/start_timeofday = REALTIMEOFDAY
 	// Initialize subsystems.
-	current_ticklimit = config.tick_limit_mc_init
+	current_ticklimit = GLOB.config.tick_limit_mc_init
 	for (var/datum/controller/subsystem/SS in subsystems)
 		if (SS.flags & SS_NO_INIT)
 			continue
@@ -205,7 +205,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 #else
 	world.sleep_offline = TRUE
 #endif
-	world.fps = config.fps
+	world.fps = GLOB.config.fps
 	var/initialized_tod = REALTIMEOFDAY
 
 	initializations_finished_with_no_players_logged_in = initialized_tod < REALTIMEOFDAY - 10
@@ -238,7 +238,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	if (rtn2 <= 0)
 		log_game("Failed to recreate MC (Error code: [rtn2]), it's up to the failsafe now")
 		message_admins("Failed to recreate MC (Error code: [rtn2]), it's up to the failsafe now")
-		Failsafe.defcon = 2
+		GLOB.Failsafe.defcon = 2
 
 // Main loop.
 /datum/controller/master/proc/Loop()
@@ -327,7 +327,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			var/datum/controller/subsystem/SS
 			SS.can_fire = 0
 
-		if (!Failsafe || (Failsafe.processing_interval > 0 && (Failsafe.lasttick+(Failsafe.processing_interval*5)) < world.time))
+		if (!GLOB.Failsafe || (GLOB.Failsafe.processing_interval > 0 && (GLOB.Failsafe.lasttick+(GLOB.Failsafe.processing_interval*5)) < world.time))
 			new/datum/controller/failsafe() // (re)Start the failsafe.
 
 		//now do the actual stuff

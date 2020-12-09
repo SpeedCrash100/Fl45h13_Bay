@@ -1,4 +1,4 @@
-var/global/datum/controller/gameticker/ticker
+GLOBAL_DATUM(ticker, /datum/controller/gameticker)
 
 /datum/controller/gameticker
 	var/const/restart_timeout = 600
@@ -60,7 +60,7 @@ var/global/datum/controller/gameticker/ticker
 				vote.process()
 			if(GLOB.round_progressing)
 				pregame_timeleft--
-			if(pregame_timeleft == config.vote_autogamemode_timeleft && !gamemode_voted)
+			if(pregame_timeleft == GLOB.config.vote_autogamemode_timeleft && !gamemode_voted)
 				gamemode_voted = 1
 				if(!vote.time_remaining)
 					vote.autogamemode()	//Quit calling this over and over and over and over.
@@ -80,7 +80,7 @@ var/global/datum/controller/gameticker/ticker
 	else
 		src.hide_mode = 0
 
-	var/list/runnable_modes = config.get_runnable_modes()
+	var/list/runnable_modes = GLOB.config.get_runnable_modes()
 	if((GLOB.master_mode=="random") || (GLOB.master_mode=="secret"))
 		if(!runnable_modes.len)
 			current_state = GAME_STATE_PREGAME
@@ -88,14 +88,14 @@ var/global/datum/controller/gameticker/ticker
 
 			return 0
 		if(GLOB.secret_force_mode != "secret")
-			src.mode = config.pick_mode(GLOB.secret_force_mode)
+			src.mode = GLOB.config.pick_mode(GLOB.secret_force_mode)
 		if(!src.mode)
 			var/list/weighted_modes = list()
 			for(var/datum/game_mode/GM in runnable_modes)
-				weighted_modes[GM.config_tag] = config.probabilities[GM.config_tag]
+				weighted_modes[GM.config_tag] = GLOB.config.probabilities[GM.config_tag]
 			src.mode = GLOB.gamemode_cache[pickweight(weighted_modes)]
 	else
-		src.mode = config.pick_mode(GLOB.master_mode)
+		src.mode = GLOB.config.pick_mode(GLOB.master_mode)
 
 	if(!src.mode)
 		current_state = GAME_STATE_PREGAME
@@ -103,10 +103,10 @@ var/global/datum/controller/gameticker/ticker
 
 		return 0
 
-	job_master.ResetOccupations()
+	GLOB.job_master.ResetOccupations()
 	src.mode.create_antagonists()
 	src.mode.pre_setup()
-	job_master.DivideOccupations() // Apparently important for new antagonist system to register specific job antags properly.
+	GLOB.job_master.DivideOccupations() // Apparently important for new antagonist system to register specific job antags properly.
 
 	var/t = src.mode.startRequirements()
 	if(t)
@@ -115,7 +115,7 @@ var/global/datum/controller/gameticker/ticker
 		current_state = GAME_STATE_PREGAME
 		mode.fail_setup()
 		mode = null
-		job_master.ResetOccupations()
+		GLOB.job_master.ResetOccupations()
 		return 0
 
 	if(hide_mode)
@@ -137,11 +137,11 @@ var/global/datum/controller/gameticker/ticker
 	create_characters() //Create player characters and transfer them
 	collect_minds()
 	equip_characters()
-	data_core.manifest()
+	GLOB.data_core.manifest()
 
 	callHook("roundstart")
 
-	shuttle_controller.setup_shuttle_docks()
+	GLOB.shuttle_controller.setup_shuttle_docks()
 
 	spawn(0)//Forking here so we dont have to wait for this to finish
 		mode.post_setup()
@@ -171,9 +171,9 @@ var/global/datum/controller/gameticker/ticker
 	lighting_controller.process()	//Start processing DynamicAreaLighting updates
 	*/
 
-	processScheduler.start()
+	GLOB.processScheduler.start()
 
-	if(config.sql_enabled)
+	if(GLOB.config.sql_enabled)
 		statistic_cycle() // Polls population totals regularly and stores them in an SQL DB -- TLE
 
 	return 1
@@ -297,7 +297,7 @@ var/global/datum/controller/gameticker/ticker
 	proc/collect_minds()
 		for(var/mob/living/player in GLOB.player_list)
 			if(player.mind)
-				ticker.minds += player.mind
+				GLOB.ticker.minds += player.mind
 
 
 	proc/equip_characters()
@@ -307,7 +307,7 @@ var/global/datum/controller/gameticker/ticker
 				if(player.mind.assigned_role == "Captain")
 					captainless=0
 				if(!player_is_antag(player.mind, only_offstation_roles = 1))
-					job_master.EquipRank(player, player.mind.assigned_role, 0)
+					GLOB.job_master.EquipRank(player, player.mind.assigned_role, 0)
 					UpdateFactionList(player)
 					equip_custom_items(player)
 		if(captainless)
@@ -326,11 +326,11 @@ var/global/datum/controller/gameticker/ticker
 
 		var/game_finished = 0
 		var/mode_finished = 0
-		if (config.continous_rounds)
-			game_finished = (evacuation_controller.round_over() || mode.station_was_nuked)
+		if (GLOB.config.continous_rounds)
+			game_finished = (GLOB.evacuation_controller.round_over() || mode.station_was_nuked)
 			mode_finished = (!post_game && mode.check_finished())
 		else
-			game_finished = (mode.check_finished() || (evacuation_controller.round_over() && evacuation_controller.emergency_evacuation) || GLOB.universe_has_ended)
+			game_finished = (mode.check_finished() || (GLOB.evacuation_controller.round_over() && GLOB.evacuation_controller.emergency_evacuation) || GLOB.universe_has_ended)
 			mode_finished = game_finished
 
 		if(!mode.explosion_in_progress && game_finished && (mode_finished || post_game))
@@ -341,7 +341,7 @@ var/global/datum/controller/gameticker/ticker
 
 
 			spawn(50)
-				if(config.allow_map_switching && config.auto_map_vote && GLOB.all_maps.len > 1)
+				if(GLOB.config.allow_map_switching && GLOB.config.auto_map_vote && GLOB.all_maps.len > 1)
 					vote.automap()
 					while(vote.time_remaining)
 						sleep(50)
@@ -362,8 +362,8 @@ var/global/datum/controller/gameticker/ticker
 
 
 
-				if(blackbox)
-					blackbox.save_all_data_to_sql()
+				if(GLOB.blackbox)
+					GLOB.blackbox.save_all_data_to_sql()
 
 				if(!delay_end)
 					sleep(restart_timeout)
@@ -398,7 +398,7 @@ var/global/datum/controller/gameticker/ticker
 		if(Player.mind && !isnewplayer(Player))
 			if(Player.stat != DEAD)
 				var/turf/playerTurf = get_turf(Player)
-				if(evacuation_controller.round_over() && evacuation_controller.emergency_evacuation)
+				if(GLOB.evacuation_controller.round_over() && GLOB.evacuation_controller.emergency_evacuation)
 					if(isNotAdminLevel(playerTurf.z))
 						to_chat(Player, "<font color='blue'><b>You managed to survive, but were marooned on [station_name()] as [Player.real_name]...</b></font>")
 					else
@@ -461,7 +461,7 @@ var/global/datum/controller/gameticker/ticker
 		var/datum/money_account/max_profit = GLOB.all_money_accounts[1]
 		var/datum/money_account/max_loss = GLOB.all_money_accounts[1]
 		for(var/datum/money_account/D in GLOB.all_money_accounts)
-			if(D == vendor_account) //yes we know you get lots of money
+			if(D == GLOB.vendor_account) //yes we know you get lots of money
 				continue
 			var/saldo = D.get_balance()
 			if(saldo >= max_profit.get_balance())

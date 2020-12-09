@@ -276,11 +276,11 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 				if(!bibledelay)
 
 					var/obj/item/weapon/storage/bible/B = new /obj/item/weapon/storage/bible(src.loc)
-					if(ticker && ( ticker.Bible_icon_state && ticker.Bible_item_state) )
-						B.icon_state = ticker.Bible_icon_state
-						B.item_state = ticker.Bible_item_state
-						B.name = ticker.Bible_name
-						B.deity_name = ticker.Bible_deity_name
+					if(GLOB.ticker && ( GLOB.ticker.Bible_icon_state && GLOB.ticker.Bible_item_state) )
+						B.icon_state = GLOB.ticker.Bible_icon_state
+						B.item_state = GLOB.ticker.Bible_item_state
+						B.name = GLOB.ticker.Bible_name
+						B.deity_name = GLOB.ticker.Bible_deity_name
 
 					bibledelay = 1
 					spawn(30)

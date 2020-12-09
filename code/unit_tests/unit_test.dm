@@ -109,9 +109,9 @@ datum/unit_test/proc/get_space_turf()
 proc/load_unit_test_changes()
 /*
 	//This takes about 60 seconds to run on Travis and is only used for the ZAS vacume check on The Asteroid.
-	if(config.generate_map != 1)
+	if(GLOB.config.generate_map != 1)
 		log_unit_test("Overiding Configuration option for Asteroid Generation to ENABLED")
-		config.generate_map = 1	// The default map requires it, the example config doesn't have this enabled.
+		GLOB.config.generate_map = 1	// The default map requires it, the example config doesn't have this enabled.
  */
 
 
@@ -134,13 +134,13 @@ proc/load_unit_test_changes()
 	//Start the Round.
 	//
 
-	if(!ticker)
+	if(!GLOB.ticker)
 		crash_with("No Ticker")
 		del(world)
 
 	var/said_msg = 0
-	while(ticker.pregame_timeleft && ticker.pregame_timeleft > 160) 	// Make sure the initial startup is complete.
-		if(ticker.pregame_timeleft < 175 && !said_msg)
+	while(GLOB.ticker.pregame_timeleft && GLOB.ticker.pregame_timeleft > 160) 	// Make sure the initial startup is complete.
+		if(GLOB.ticker.pregame_timeleft < 175 && !said_msg)
 			said_msg = 1
 			log_unit_test("Pregame Count down has started, giving it 20 seconds to finish.")
 		sleep(1)
@@ -149,7 +149,7 @@ proc/load_unit_test_changes()
 
 	sleep(1)
 
-	ticker.current_state = GAME_STATE_SETTING_UP
+	GLOB.ticker.current_state = GAME_STATE_SETTING_UP
 
 	log_unit_test("Round has been started.  Waiting 10 seconds to start tests.")
 	sleep(100)

@@ -413,7 +413,7 @@ proc/is_blind(A)
 			mobs += M
 	return mobs
 
-//Announces that a ghost has joined/left, mainly for use with wizards
+//Announces that a ghost has joined/left, mainly for use with GLOB.wizards
 /proc/announce_ghost_joinleave(O, var/joined_ghosts = 1, var/message = "")
 	var/client/C
 	//Accept any type, sort what we want here

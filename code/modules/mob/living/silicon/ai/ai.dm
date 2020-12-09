@@ -196,7 +196,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 
 	to_chat(src, radio_text)
 
-	if (malf && !(mind in malf.current_antagonists))
+	if (GLOB.malf && !(mind in GLOB.malf.current_antagonists))
 		show_laws()
 		to_chat(src, "<b>These laws may be changed by other players, or by you being the traitor.</b>")
 
@@ -254,7 +254,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	if(aiPDA)
 		aiPDA.set_owner_rank_job(pickedName, "AI")
 
-	data_core.ResetPDAManifest()
+	GLOB.data_core.ResetPDAManifest()
 
 /mob/living/silicon/ai/proc/pick_icon()
 	set category = "Silicon Commands"
@@ -495,7 +495,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 
 		var/personnel_list[] = list()
 
-		for(var/datum/data/record/t in data_core.locked)//Look in data core locked.
+		for(var/datum/data/record/t in GLOB.data_core.locked)//Look in data core locked.
 			personnel_list["[t.fields["name"]]: [t.fields["rank"]]"] = t.fields["image"]//Pull names, rank, and image.
 
 		if(personnel_list.len)

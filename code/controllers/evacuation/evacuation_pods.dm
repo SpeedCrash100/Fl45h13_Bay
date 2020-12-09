@@ -72,18 +72,18 @@
 	silicon_allowed = TRUE
 
 /datum/evacuation_option/abandon_ship/execute(mob/user)
-	if (!ticker || !evacuation_controller)
+	if (!GLOB.ticker || !GLOB.evacuation_controller)
 		return
-	if (evacuation_controller.deny)
+	if (GLOB.evacuation_controller.deny)
 		to_chat(user, "Unable to initiate escape procedures.")
 		return
-	if (evacuation_controller.is_on_cooldown())
-		to_chat(user, evacuation_controller.get_cooldown_message())
+	if (GLOB.evacuation_controller.is_on_cooldown())
+		to_chat(user, GLOB.evacuation_controller.get_cooldown_message())
 		return
-	if (evacuation_controller.is_evacuating())
+	if (GLOB.evacuation_controller.is_evacuating())
 		to_chat(user, "Escape procedures already in progress.")
 		return
-	if (evacuation_controller.call_evacuation(user, 1))
+	if (GLOB.evacuation_controller.call_evacuation(user, 1))
 		log_and_message_admins("[user? key_name(user) : "Autotransfer"] has initiated abandonment of the spacecraft.")
 
 /datum/evacuation_option/bluespace_jump
@@ -94,18 +94,18 @@
 	silicon_allowed = TRUE
 
 /datum/evacuation_option/bluespace_jump/execute(mob/user)
-	if (!ticker || !evacuation_controller)
+	if (!GLOB.ticker || !GLOB.evacuation_controller)
 		return
-	if (evacuation_controller.deny)
+	if (GLOB.evacuation_controller.deny)
 		to_chat(user, "Unable to initiate jump preparation.")
 		return
-	if (evacuation_controller.is_on_cooldown())
-		to_chat(user, evacuation_controller.get_cooldown_message())
+	if (GLOB.evacuation_controller.is_on_cooldown())
+		to_chat(user, GLOB.evacuation_controller.get_cooldown_message())
 		return
-	if (evacuation_controller.is_evacuating())
+	if (GLOB.evacuation_controller.is_evacuating())
 		to_chat(user, "Jump preparation already in progress.")
 		return
-	if (evacuation_controller.call_evacuation(user, 0))
+	if (GLOB.evacuation_controller.call_evacuation(user, 0))
 		log_and_message_admins("[user? key_name(user) : "Autotransfer"] has initiated bluespace jump preparation.")
 
 /datum/evacuation_option/cancel_abandon_ship
@@ -116,7 +116,7 @@
 	silicon_allowed = FALSE
 
 /datum/evacuation_option/cancel_abandon_ship/execute(mob/user)
-	if (ticker && evacuation_controller && evacuation_controller.cancel_evacuation())
+	if (GLOB.ticker && GLOB.evacuation_controller && GLOB.evacuation_controller.cancel_evacuation())
 		log_and_message_admins("[key_name(user)] has cancelled abandonment of the spacecraft.")
 
 /datum/evacuation_option/cancel_bluespace_jump
@@ -127,7 +127,7 @@
 	silicon_allowed = FALSE
 
 /datum/evacuation_option/cancel_bluespace_jump/execute(mob/user)
-	if (ticker && evacuation_controller && evacuation_controller.cancel_evacuation())
+	if (GLOB.ticker && GLOB.evacuation_controller && GLOB.evacuation_controller.cancel_evacuation())
 		log_and_message_admins("[key_name(user)] has cancelled the bluespace jump.")
 
 /obj/screen/fullscreen/bluespace_overlay

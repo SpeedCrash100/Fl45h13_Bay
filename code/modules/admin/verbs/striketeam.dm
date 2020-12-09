@@ -10,7 +10,7 @@ GLOBAL_VAR_CONST(commandos_possible, 6) // if more Commandos are needed in the f
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	if(!ticker)
+	if(!GLOB.ticker)
 		to_chat(usr, "<font color='red'>The game hasn't started yet!</font>")
 		return
 
@@ -26,9 +26,9 @@ GLOBAL_VAR_CONST(commandos_possible, 6) // if more Commandos are needed in the f
 
 	switch(choice)
 		if("Heavy Asset Protection")
-			team = deathsquad
+			team = GLOB.deathsquad
 		if("Mercenaries")
-			team = commandos
+			team = GLOB.commandos
 		else
 			return
 

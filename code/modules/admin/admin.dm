@@ -674,8 +674,8 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 		feedback_set_details("end_error","admin reboot - by [usr.key]")
 		feedback_add_details("admin_verb","R") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-		if(blackbox)
-			blackbox.save_all_data_to_sql()
+		if(GLOB.blackbox)
+			GLOB.blackbox.save_all_data_to_sql()
 
 		sleep(50)
 		world.Reboot()
@@ -703,8 +703,8 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 	if(!check_rights(R_ADMIN))
 		return
 
-	config.ooc_allowed = !(config.ooc_allowed)
-	if (config.ooc_allowed)
+	GLOB.config.ooc_allowed = !(GLOB.config.ooc_allowed)
+	if (GLOB.config.ooc_allowed)
 		to_world("<B>The OOC channel has been globally enabled!</B>")
 	else
 		to_world("<B>The OOC channel has been globally disabled!</B>")
@@ -719,8 +719,8 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 	if(!check_rights(R_ADMIN))
 		return
 
-	config.aooc_allowed = !(config.aooc_allowed)
-	if (config.aooc_allowed)
+	GLOB.config.aooc_allowed = !(GLOB.config.aooc_allowed)
+	if (GLOB.config.aooc_allowed)
 		to_world("<B>The AOOC channel has been globally enabled!</B>")
 	else
 		to_world("<B>The AOOC channel has been globally disabled!</B>")
@@ -735,8 +735,8 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 	if(!check_rights(R_ADMIN))
 		return
 
-	config.looc_allowed = !(config.looc_allowed)
-	if (config.looc_allowed)
+	GLOB.config.looc_allowed = !(GLOB.config.looc_allowed)
+	if (GLOB.config.looc_allowed)
 		to_world("<B>The LOOC channel has been globally enabled!</B>")
 	else
 		to_world("<B>The LOOC channel has been globally disabled!</B>")
@@ -752,8 +752,8 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 	if(!check_rights(R_ADMIN))
 		return
 
-	config.dsay_allowed = !(config.dsay_allowed)
-	if (config.dsay_allowed)
+	GLOB.config.dsay_allowed = !(GLOB.config.dsay_allowed)
+	if (GLOB.config.dsay_allowed)
 		to_world("<B>Deadchat has been globally enabled!</B>")
 	else
 		to_world("<B>Deadchat has been globally disabled!</B>")
@@ -768,7 +768,7 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 	if(!check_rights(R_ADMIN))
 		return
 
-	config.dooc_allowed = !( config.dooc_allowed )
+	GLOB.config.dooc_allowed = !( GLOB.config.dooc_allowed )
 	log_admin("[key_name(usr)] toggled Dead OOC.")
 	message_admins("[key_name_admin(usr)] toggled Dead OOC.", 1)
 	feedback_add_details("admin_verb","TDOOC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -792,19 +792,19 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 	set category = "Server"
 	set desc="Toggle traitor scaling"
 	set name="Toggle Traitor Scaling"
-	config.traitor_scaling = !config.traitor_scaling
-	log_admin("[key_name(usr)] toggled Traitor Scaling to [config.traitor_scaling].")
-	message_admins("[key_name_admin(usr)] toggled Traitor Scaling [config.traitor_scaling ? "on" : "off"].", 1)
+	GLOB.config.traitor_scaling = !GLOB.config.traitor_scaling
+	log_admin("[key_name(usr)] toggled Traitor Scaling to [GLOB.config.traitor_scaling].")
+	message_admins("[key_name_admin(usr)] toggled Traitor Scaling [GLOB.config.traitor_scaling ? "on" : "off"].", 1)
 	feedback_add_details("admin_verb","TTS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/startnow()
 	set category = "Server"
 	set desc="Start the round RIGHT NOW"
 	set name="Start Now"
-	if(!ticker)
+	if(!GLOB.ticker)
 		alert("Unable to start the game as it is not set up.")
 		return
-	if(ticker.current_state == GAME_STATE_PREGAME && !(GLOB.initialization_stage & INITIALIZATION_NOW))
+	if(GLOB.ticker.current_state == GAME_STATE_PREGAME && !(GLOB.initialization_stage & INITIALIZATION_NOW))
 		log_admin("[usr.key] has started the game.")
 		message_admins("<font color='blue'>[usr.key] has started the game.</font>")
 		feedback_add_details("admin_verb","SN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -818,8 +818,8 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 	set category = "Server"
 	set desc="People can't enter"
 	set name="Toggle Entering"
-	config.enter_allowed = !(config.enter_allowed)
-	if (!(config.enter_allowed))
+	GLOB.config.enter_allowed = !(GLOB.config.enter_allowed)
+	if (!(GLOB.config.enter_allowed))
 		to_world("<B>New players may no longer enter the game.</B>")
 	else
 		to_world("<B>New players may now enter the game.</B>")
@@ -831,8 +831,8 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 	set category = "Server"
 	set desc="People can't be AI"
 	set name="Toggle AI"
-	config.allow_ai = !( config.allow_ai )
-	if (!( config.allow_ai ))
+	GLOB.config.allow_ai = !( GLOB.config.allow_ai )
+	if (!( GLOB.config.allow_ai ))
 		to_world("<B>The AI job is no longer chooseable.</B>")
 	else
 		to_world("<B>The AI job is chooseable now.</B>")
@@ -844,12 +844,12 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 	set category = "Server"
 	set desc="Respawn basically"
 	set name="Toggle Respawn"
-	config.abandon_allowed = !(config.abandon_allowed)
-	if(config.abandon_allowed)
+	GLOB.config.abandon_allowed = !(GLOB.config.abandon_allowed)
+	if(GLOB.config.abandon_allowed)
 		to_world("<B>You may now respawn.</B>")
 	else
 		to_world("<B>You may no longer respawn :(</B>")
-	log_and_message_admins("toggled respawn to [config.abandon_allowed ? "On" : "Off"].")
+	log_and_message_admins("toggled respawn to [GLOB.config.abandon_allowed ? "On" : "Off"].")
 	world.update_status()
 	feedback_add_details("admin_verb","TR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -860,9 +860,9 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 	if(!check_rights(R_ADMIN))
 		return
 
-	config.aliens_allowed = !config.aliens_allowed
-	log_admin("[key_name(usr)] toggled Aliens to [config.aliens_allowed].")
-	message_admins("[key_name_admin(usr)] toggled Aliens [config.aliens_allowed ? "on" : "off"].", 1)
+	GLOB.config.aliens_allowed = !GLOB.config.aliens_allowed
+	log_admin("[key_name(usr)] toggled Aliens to [GLOB.config.aliens_allowed].")
+	message_admins("[key_name_admin(usr)] toggled Aliens [GLOB.config.aliens_allowed ? "on" : "off"].", 1)
 	feedback_add_details("admin_verb","TA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/toggle_alien_eggs()
@@ -872,9 +872,9 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 
 	if(!check_rights(R_ADMIN))
 		return
-	config.alien_eggs_allowed = !config.alien_eggs_allowed
-	log_admin("[key_name(usr)] toggled Alien Egg Laying to [config.alien_eggs_allowed].")
-	message_admins("[key_name_admin(usr)] toggled Alien Egg Laying [config.alien_eggs_allowed ? "on" : "off"].", 1)
+	GLOB.config.alien_eggs_allowed = !GLOB.config.alien_eggs_allowed
+	log_admin("[key_name(usr)] toggled Alien Egg Laying to [GLOB.config.alien_eggs_allowed].")
+	message_admins("[key_name_admin(usr)] toggled Alien Egg Laying [GLOB.config.alien_eggs_allowed ? "on" : "off"].", 1)
 	feedback_add_details("admin_verb","AEA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 
@@ -885,8 +885,8 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 	if(!check_rights(R_ADMIN))
 		return
 
-	config.ninjas_allowed = !config.ninjas_allowed
-	log_and_message_admins("toggled Space Ninjas [config.ninjas_allowed ? "on" : "off"].")
+	GLOB.config.ninjas_allowed = !GLOB.config.ninjas_allowed
+	log_and_message_admins("toggled Space Ninjas [GLOB.config.ninjas_allowed ? "on" : "off"].")
 	feedback_add_details("admin_verb","TSN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/delay()
@@ -895,9 +895,9 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 	set name="Delay"
 
 	if(!check_rights(R_SERVER))	return
-	if (!ticker || ticker.current_state != GAME_STATE_PREGAME)
-		ticker.delay_end = !ticker.delay_end
-		log_and_message_admins("[ticker.delay_end ? "delayed the round end" : "has made the round end normally"].")
+	if (!GLOB.ticker || GLOB.ticker.current_state != GAME_STATE_PREGAME)
+		GLOB.ticker.delay_end = !GLOB.ticker.delay_end
+		log_and_message_admins("[GLOB.ticker.delay_end ? "delayed the round end" : "has made the round end normally"].")
 		return //alert("Round end delayed", null, null, null, null, null)
 	GLOB.round_progressing = !GLOB.round_progressing
 	if (!GLOB.round_progressing)
@@ -912,24 +912,24 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 	set category = "Server"
 	set desc="Toggle admin jumping"
 	set name="Toggle Jump"
-	config.allow_admin_jump = !(config.allow_admin_jump)
-	log_and_message_admins("Toggled admin jumping to [config.allow_admin_jump].")
+	GLOB.config.allow_admin_jump = !(GLOB.config.allow_admin_jump)
+	log_and_message_admins("Toggled admin jumping to [GLOB.config.allow_admin_jump].")
 	feedback_add_details("admin_verb","TJ") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/adspawn()
 	set category = "Server"
 	set desc="Toggle admin spawning"
 	set name="Toggle Spawn"
-	config.allow_admin_spawning = !(config.allow_admin_spawning)
-	log_and_message_admins("toggled admin item spawning to [config.allow_admin_spawning].")
+	GLOB.config.allow_admin_spawning = !(GLOB.config.allow_admin_spawning)
+	log_and_message_admins("toggled admin item spawning to [GLOB.config.allow_admin_spawning].")
 	feedback_add_details("admin_verb","TAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/adrev()
 	set category = "Server"
 	set desc="Toggle admin revives"
 	set name="Toggle Revive"
-	config.allow_admin_rev = !(config.allow_admin_rev)
-	log_and_message_admins("toggled reviving to [config.allow_admin_rev].")
+	GLOB.config.allow_admin_rev = !(GLOB.config.allow_admin_rev)
+	log_and_message_admins("toggled reviving to [GLOB.config.allow_admin_rev].")
 	feedback_add_details("admin_verb","TAR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/immreboot()
@@ -945,8 +945,8 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 	feedback_set_details("end_error","immediate admin reboot - by [usr.key]")
 	feedback_add_details("admin_verb","IR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-	if(blackbox)
-		blackbox.save_all_data_to_sql()
+	if(GLOB.blackbox)
+		GLOB.blackbox.save_all_data_to_sql()
 
 	world.Reboot()
 
@@ -954,7 +954,7 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 	set category = "Admin"
 	set name = "Unprison"
 	if (M.z == 2)
-		if (config.allow_admin_jump)
+		if (GLOB.config.allow_admin_jump)
 			M.loc = pick(GLOB.latejoin)
 			message_admins("[key_name_admin(usr)] has unprisoned [key_name_admin(M)]", 1)
 			log_admin("[key_name(usr)] has unprisoned [key_name(M)]")
@@ -967,7 +967,7 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////ADMIN HELPER PROCS
 
 /proc/is_special_character(var/character) // returns 1 for special characters and 2 for heroes of gamemode
-	if(!ticker || !ticker.mode)
+	if(!GLOB.ticker || !GLOB.ticker.mode)
 		return 0
 	var/datum/mind/M
 	if (ismob(character))
@@ -977,8 +977,8 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 		M = character
 
 	if(M)
-		if(ticker.mode.antag_templates && ticker.mode.antag_templates.len)
-			for(var/datum/antagonist/antag in ticker.mode.antag_templates)
+		if(GLOB.ticker.mode.antag_templates && GLOB.ticker.mode.antag_templates.len)
+			for(var/datum/antagonist/antag in GLOB.ticker.mode.antag_templates)
 				if(antag.is_antagonist(M))
 					return 2
 		if(M.special_role)
@@ -1111,70 +1111,70 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 	set desc = "Show the current round configuration."
 	set name = "Show Game Mode"
 
-	if(!ticker || !ticker.mode)
+	if(!GLOB.ticker || !GLOB.ticker.mode)
 		alert("Not before roundstart!", "Alert")
 		return
 
-	var/out = "<font size=3><b>Current mode: [ticker.mode.name] (<a href='?src=\ref[ticker.mode];debug_antag=self'>[ticker.mode.config_tag]</a>)</b></font><br/>"
+	var/out = "<font size=3><b>Current mode: [GLOB.ticker.mode.name] (<a href='?src=\ref[GLOB.ticker.mode];debug_antag=self'>[GLOB.ticker.mode.config_tag]</a>)</b></font><br/>"
 	out += "<hr>"
 
-	if(ticker.mode.ert_disabled)
-		out += "<b>Emergency Response Teams:</b> <a href='?src=\ref[ticker.mode];toggle=ert'>disabled</a>"
+	if(GLOB.ticker.mode.ert_disabled)
+		out += "<b>Emergency Response Teams:</b> <a href='?src=\ref[GLOB.ticker.mode];toggle=ert'>disabled</a>"
 	else
-		out += "<b>Emergency Response Teams:</b> <a href='?src=\ref[ticker.mode];toggle=ert'>enabled</a>"
+		out += "<b>Emergency Response Teams:</b> <a href='?src=\ref[GLOB.ticker.mode];toggle=ert'>enabled</a>"
 	out += "<br/>"
 
-	if(ticker.mode.deny_respawn)
-		out += "<b>Respawning:</b> <a href='?src=\ref[ticker.mode];toggle=respawn'>disallowed</a>"
+	if(GLOB.ticker.mode.deny_respawn)
+		out += "<b>Respawning:</b> <a href='?src=\ref[GLOB.ticker.mode];toggle=respawn'>disallowed</a>"
 	else
-		out += "<b>Respawning:</b> <a href='?src=\ref[ticker.mode];toggle=respawn'>allowed</a>"
+		out += "<b>Respawning:</b> <a href='?src=\ref[GLOB.ticker.mode];toggle=respawn'>allowed</a>"
 	out += "<br/>"
 
-	out += "<b>Shuttle delay multiplier:</b> <a href='?src=\ref[ticker.mode];set=shuttle_delay'>[ticker.mode.shuttle_delay]</a><br/>"
+	out += "<b>Shuttle delay multiplier:</b> <a href='?src=\ref[GLOB.ticker.mode];set=shuttle_delay'>[GLOB.ticker.mode.shuttle_delay]</a><br/>"
 
-	if(ticker.mode.auto_recall_shuttle)
-		out += "<b>Shuttle auto-recall:</b> <a href='?src=\ref[ticker.mode];toggle=shuttle_recall'>enabled</a>"
+	if(GLOB.ticker.mode.auto_recall_shuttle)
+		out += "<b>Shuttle auto-recall:</b> <a href='?src=\ref[GLOB.ticker.mode];toggle=shuttle_recall'>enabled</a>"
 	else
-		out += "<b>Shuttle auto-recall:</b> <a href='?src=\ref[ticker.mode];toggle=shuttle_recall'>disabled</a>"
+		out += "<b>Shuttle auto-recall:</b> <a href='?src=\ref[GLOB.ticker.mode];toggle=shuttle_recall'>disabled</a>"
 	out += "<br/><br/>"
 
-	if(ticker.mode.event_delay_mod_moderate)
-		out += "<b>Moderate event time modifier:</b> <a href='?src=\ref[ticker.mode];set=event_modifier_moderate'>[ticker.mode.event_delay_mod_moderate]</a><br/>"
+	if(GLOB.ticker.mode.event_delay_mod_moderate)
+		out += "<b>Moderate event time modifier:</b> <a href='?src=\ref[GLOB.ticker.mode];set=event_modifier_moderate'>[GLOB.ticker.mode.event_delay_mod_moderate]</a><br/>"
 	else
-		out += "<b>Moderate event time modifier:</b> <a href='?src=\ref[ticker.mode];set=event_modifier_moderate'>unset</a><br/>"
+		out += "<b>Moderate event time modifier:</b> <a href='?src=\ref[GLOB.ticker.mode];set=event_modifier_moderate'>unset</a><br/>"
 
-	if(ticker.mode.event_delay_mod_major)
-		out += "<b>Major event time modifier:</b> <a href='?src=\ref[ticker.mode];set=event_modifier_severe'>[ticker.mode.event_delay_mod_major]</a><br/>"
+	if(GLOB.ticker.mode.event_delay_mod_major)
+		out += "<b>Major event time modifier:</b> <a href='?src=\ref[GLOB.ticker.mode];set=event_modifier_severe'>[GLOB.ticker.mode.event_delay_mod_major]</a><br/>"
 	else
-		out += "<b>Major event time modifier:</b> <a href='?src=\ref[ticker.mode];set=event_modifier_severe'>unset</a><br/>"
+		out += "<b>Major event time modifier:</b> <a href='?src=\ref[GLOB.ticker.mode];set=event_modifier_severe'>unset</a><br/>"
 
 	out += "<hr>"
 
-	if(ticker.mode.antag_tags && ticker.mode.antag_tags.len)
+	if(GLOB.ticker.mode.antag_tags && GLOB.ticker.mode.antag_tags.len)
 		out += "<b>Core antag templates:</b></br>"
-		for(var/antag_tag in ticker.mode.antag_tags)
-			out += "<a href='?src=\ref[ticker.mode];debug_antag=[antag_tag]'>[antag_tag]</a>.</br>"
+		for(var/antag_tag in GLOB.ticker.mode.antag_tags)
+			out += "<a href='?src=\ref[GLOB.ticker.mode];debug_antag=[antag_tag]'>[antag_tag]</a>.</br>"
 
-	if(ticker.mode.round_autoantag)
-		out += "<b>Autotraitor <a href='?src=\ref[ticker.mode];toggle=autotraitor'>enabled</a></b>."
-		if(ticker.mode.antag_scaling_coeff > 0)
-			out += " (scaling with <a href='?src=\ref[ticker.mode];set=antag_scaling'>[ticker.mode.antag_scaling_coeff]</a>)"
+	if(GLOB.ticker.mode.round_autoantag)
+		out += "<b>Autotraitor <a href='?src=\ref[GLOB.ticker.mode];toggle=autotraitor'>enabled</a></b>."
+		if(GLOB.ticker.mode.antag_scaling_coeff > 0)
+			out += " (scaling with <a href='?src=\ref[GLOB.ticker.mode];set=antag_scaling'>[GLOB.ticker.mode.antag_scaling_coeff]</a>)"
 		else
-			out += " (not currently scaling, <a href='?src=\ref[ticker.mode];set=antag_scaling'>set a coefficient</a>)"
+			out += " (not currently scaling, <a href='?src=\ref[GLOB.ticker.mode];set=antag_scaling'>set a coefficient</a>)"
 		out += "<br/>"
 	else
-		out += "<b>Autotraitor <a href='?src=\ref[ticker.mode];toggle=autotraitor'>disabled</a></b>.<br/>"
+		out += "<b>Autotraitor <a href='?src=\ref[GLOB.ticker.mode];toggle=autotraitor'>disabled</a></b>.<br/>"
 
 	out += "<b>All antag ids:</b>"
-	if(ticker.mode.antag_templates && ticker.mode.antag_templates.len).
-		for(var/datum/antagonist/antag in ticker.mode.antag_templates)
+	if(GLOB.ticker.mode.antag_templates && GLOB.ticker.mode.antag_templates.len).
+		for(var/datum/antagonist/antag in GLOB.ticker.mode.antag_templates)
 			antag.update_current_antag_max()
-			out += " <a href='?src=\ref[ticker.mode];debug_antag=[antag.id]'>[antag.id]</a>"
+			out += " <a href='?src=\ref[GLOB.ticker.mode];debug_antag=[antag.id]'>[antag.id]</a>"
 			out += " ([antag.get_antag_count()]/[antag.cur_max]) "
-			out += " <a href='?src=\ref[ticker.mode];remove_antag_type=[antag.id]'>\[-\]</a><br/>"
+			out += " <a href='?src=\ref[GLOB.ticker.mode];remove_antag_type=[antag.id]'>\[-\]</a><br/>"
 	else
 		out += " None."
-	out += " <a href='?src=\ref[ticker.mode];add_antag_type=1'>\[+\]</a><br/>"
+	out += " <a href='?src=\ref[GLOB.ticker.mode];add_antag_type=1'>\[+\]</a><br/>"
 
 	show_browser(usr, out, "window=edit_mode[src]")
 	feedback_add_details("admin_verb","SGM")
@@ -1184,8 +1184,8 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 	set category = "Debug"
 	set desc="Reduces view range when wearing welding helmets"
 	set name="Toggle tinted welding helmets."
-	config.welder_vision = !( config.welder_vision )
-	if (config.welder_vision)
+	GLOB.config.welder_vision = !( GLOB.config.welder_vision )
+	if (GLOB.config.welder_vision)
 		to_world("<B>Reduced welder vision has been enabled!</B>")
 	else
 		to_world("<B>Reduced welder vision has been disabled!</B>")
@@ -1196,13 +1196,13 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 	set category = "Server"
 	set desc="Guests can't enter"
 	set name="Toggle guests"
-	config.guests_allowed = !(config.guests_allowed)
-	if (!(config.guests_allowed))
+	GLOB.config.guests_allowed = !(GLOB.config.guests_allowed)
+	if (!(GLOB.config.guests_allowed))
 		to_world("<B>Guests may no longer enter the game.</B>")
 	else
 		to_world("<B>Guests may now enter the game.</B>")
-	log_admin("[key_name(usr)] toggled guests game entering [config.guests_allowed?"":"dis"]allowed.")
-	log_and_message_admins("toggled guests game entering [config.guests_allowed?"":"dis"]allowed.")
+	log_admin("[key_name(usr)] toggled guests game entering [GLOB.config.guests_allowed?"":"dis"]allowed.")
+	log_and_message_admins("toggled guests game entering [GLOB.config.guests_allowed?"":"dis"]allowed.")
 	feedback_add_details("admin_verb","TGU") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/output_ai_laws()
@@ -1369,7 +1369,7 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 		to_chat(usr, "Error: you are not an admin!")
 		return
 
-	if(!ticker || !ticker.mode)
+	if(!GLOB.ticker || !GLOB.ticker.mode)
 		to_chat(usr, "Mode has not started.")
 		return
 
@@ -1394,12 +1394,12 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 		to_chat(usr, "Error: you are not an admin!")
 		return
 
-	if(!ticker || !ticker.mode)
+	if(!GLOB.ticker || !GLOB.ticker.mode)
 		to_chat(usr, "Mode has not started.")
 		return
 
 	log_and_message_admins("attempting to force mode autospawn.")
-	ticker.mode.process_autoantag()
+	GLOB.ticker.mode.process_autoantag()
 
 /datum/admins/proc/paralyze_mob(mob/H as mob in GLOB.player_list)
 	set category = "Admin"

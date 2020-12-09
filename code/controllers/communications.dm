@@ -206,10 +206,10 @@ GLOBAL_VAR_CONST(RADIO_SECBOT, "radio_secbot")
 GLOBAL_VAR_CONST(RADIO_MULEBOT, "radio_mulebot")
 GLOBAL_VAR_CONST(RADIO_MAGNETS, "radio_magnet")
 
-var/global/datum/controller/radio/radio_controller
+GLOBAL_DATUM(radio_controller, /datum/controller/radio)
 
 /hook/startup/proc/createRadioController()
-	radio_controller = new /datum/controller/radio()
+	GLOB.radio_controller = new /datum/controller/radio()
 	return 1
 
 //callback used by objects to react to incoming radio signals

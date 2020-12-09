@@ -7,16 +7,16 @@
 	..()
 	if(!shuttle_tag)
 		shuttle_tag = "Explorer-[z]"
-	if(!shuttle_controller.shuttles[shuttle_tag])
+	if(!GLOB.shuttle_controller.shuttles[shuttle_tag])
 		new/datum/shuttle/ferry/overmap(shuttle_tag, locate(shuttle_area))
 		testing("Exploration shuttle '[shuttle_tag]' at zlevel [z] successfully added.")
 	else
-		var/datum/shuttle/ferry/overmap/S = shuttle_controller.shuttles[shuttle_tag]
+		var/datum/shuttle/ferry/overmap/S = GLOB.shuttle_controller.shuttles[shuttle_tag]
 		shuttle_area = S.area_station.type
 
 /obj/machinery/computer/shuttle_control/explore/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
-	var/datum/shuttle/ferry/overmap/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/overmap/shuttle = GLOB.shuttle_controller.shuttles[shuttle_tag]
 	if (!istype(shuttle))
 		to_chat(usr,"<span class='warning'>Unable to establish link with the shuttle.</span>")
 		return
@@ -69,7 +69,7 @@
 	usr.set_machine(src)
 	src.add_fingerprint(usr)
 
-	var/datum/shuttle/ferry/overmap/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/overmap/shuttle = GLOB.shuttle_controller.shuttles[shuttle_tag]
 	if (!istype(shuttle))
 		return
 

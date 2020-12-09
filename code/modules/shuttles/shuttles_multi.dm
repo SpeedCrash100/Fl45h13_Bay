@@ -84,7 +84,7 @@
 		return
 	src.add_fingerprint(user)
 
-	var/datum/shuttle/multi_shuttle/MS = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/multi_shuttle/MS = GLOB.shuttle_controller.shuttles[shuttle_tag]
 	if(!istype(MS)) return
 
 	var/dat
@@ -160,7 +160,7 @@
 	usr.set_machine(src)
 	src.add_fingerprint(usr)
 
-	var/datum/shuttle/multi_shuttle/MS = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/multi_shuttle/MS = GLOB.shuttle_controller.shuttles[shuttle_tag]
 	if(!istype(MS)) return
 
 //	log_debug("multi_shuttle: last_departed=[MS.last_departed], origin=[MS.origin], interim=[MS.interim], travel_time=[MS.move_time]")

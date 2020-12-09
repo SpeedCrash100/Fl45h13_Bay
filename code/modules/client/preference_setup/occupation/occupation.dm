@@ -52,16 +52,16 @@
 	// so we prune here to make sure we don't spawn as a PFC captain
 	prune_job_prefs_for_rank()
 
-	if(!job_master)
+	if(!GLOB.job_master)
 		return
 
-	for(var/datum/job/job in job_master.occupations)
+	for(var/datum/job/job in GLOB.job_master.occupations)
 		var/alt_title = pref.player_alt_titles[job.title]
 		if(alt_title && !(alt_title in job.alt_titles))
 			pref.player_alt_titles -= job.title
 
 /datum/category_item/player_setup_item/occupation/content(mob/user, limit = 16, list/splitJobs, splitLimit = 1)
-	if(!job_master)
+	if(!GLOB.job_master)
 		return
 
 	var/datum/mil_branch/player_branch = null
@@ -84,12 +84,12 @@
 	. += "<table width='100%' cellpadding='1' cellspacing='0'>"
 	var/index = -1
 	if(splitLimit)
-		limit = round((job_master.occupations.len+1)/2)
+		limit = round((GLOB.job_master.occupations.len+1)/2)
 
 	//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
 	var/datum/job/lastJob
-	if (!job_master)		return
-	for(var/datum/job/job in job_master.occupations)
+	if (!GLOB.job_master)		return
+	for(var/datum/job/job in GLOB.job_master.occupations)
 
 		index += 1
 		if((index >= limit) || (job.title in splitJobs))
@@ -227,11 +227,11 @@
 			return TOPIC_REFRESH
 	else if(href_list["show_branches"])
 		var/rank = href_list["show_branches"]
-		var/datum/job/job = job_master.GetJob(rank)
+		var/datum/job/job = GLOB.job_master.GetJob(rank)
 		to_chat(user, "<span clas='notice'>Valid branches for [rank]: [job.get_branches()]</span>")
 	else if(href_list["show_ranks"])
 		var/rank = href_list["show_ranks"]
-		var/datum/job/job = job_master.GetJob(rank)
+		var/datum/job/job = GLOB.job_master.GetJob(rank)
 		to_chat(user, "<span clas='notice'>Valid ranks for [rank] ([pref.char_branch]): [job.get_ranks(pref.char_branch)]</span>")
 
 	return ..()
@@ -244,7 +244,7 @@
 		pref.player_alt_titles[job.title] = new_title
 
 /datum/category_item/player_setup_item/occupation/proc/SetJob(mob/user, role)
-	var/datum/job/job = job_master.GetJob(role)
+	var/datum/job/job = GLOB.job_master.GetJob(role)
 	if(!job)
 		return 0
 
@@ -299,7 +299,7 @@
  *  This proc goes through all the preferred jobs, and removes the ones incompatible with current rank or branch.
  */
 /datum/category_item/player_setup_item/occupation/proc/prune_job_prefs_for_rank()
-	for(var/datum/job/job in job_master.occupations)
+	for(var/datum/job/job in GLOB.job_master.occupations)
 		if(job.title == pref.job_high)
 			if(!job.is_branch_allowed(pref.char_branch) || !job.is_rank_allowed(pref.char_branch, pref.char_rank))
 				pref.job_high = null

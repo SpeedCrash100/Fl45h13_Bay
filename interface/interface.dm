@@ -3,10 +3,10 @@
 	set name = "wiki"
 	set desc = "Visit the wiki."
 	set hidden = 1
-	if( config.wikiurl )
+	if( GLOB.config.wikiurl )
 		if(alert("This will open the wiki in your browser. Are you sure?",,"Yes","No")=="No")
 			return
-		send_link(src, config.wikiurl)
+		send_link(src, GLOB.config.wikiurl)
 	else
 		to_chat(src, "<span class='warning'>The wiki URL is not set in the server configuration.</span>")
 	return
@@ -15,10 +15,10 @@
 	set name = "forum"
 	set desc = "Visit the forum."
 	set hidden = 1
-	if( config.forumurl )
+	if( GLOB.config.forumurl )
 		if(alert("This will open the forum in your browser. Are you sure?",,"Yes","No")=="No")
 			return
-		send_link(src, config.forumurl)
+		send_link(src, GLOB.config.forumurl)
 	else
 		to_chat(src, "<span class='warning'>The forum URL is not set in the server configuration.</span>")
 	return
@@ -35,10 +35,10 @@
 	set name = "GitHub"
 	set desc = "Visit the GitHub repository."
 	set hidden = 1
-	if( config.githuburl )
+	if( GLOB.config.githuburl )
 		if(alert("This will open GitHub in your browser. Are you sure?",,"Yes","No")=="No")
 			return
-		send_link(src, config.githuburl)
+		send_link(src, GLOB.config.githuburl)
 	else
 		to_chat(src, "<span class='warning'>The github URL is not set in the server configuration.</span>")
 	return
@@ -47,10 +47,10 @@
 	set name = "Bug Report"
 	set desc = "Visit the GitHub repository to report an issue or bug."
 	set hidden = 1
-	if( config.issuereporturl )
+	if( GLOB.config.issuereporturl )
 		if(alert("This will open GitHub in your browser. Are you sure?",,"Yes","No")=="No")
 			return
-		send_link(src, config.issuereporturl)
+		send_link(src, GLOB.config.issuereporturl)
 	else
 		to_chat(src, "<span class='warning'>The issue report URL is not set in the server configuration.</span>")
 	return

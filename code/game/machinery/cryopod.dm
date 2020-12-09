@@ -51,7 +51,7 @@
 
 	var/dat
 
-	if (!( ticker ))
+	if (!( GLOB.ticker ))
 		return
 
 	dat += "<hr/><br/><b>[storage_name]</b><br/>"
@@ -327,7 +327,7 @@
 
 	//Update any existing objectives involving this mob.
 	for(var/datum/objective/O in GLOB.all_objectives)
-		// We don't want revs to get objectives that aren't for heads of staff. Letting
+		// We don't want GLOB.revs to get objectives that aren't for heads of staff. Letting
 		// them win or lose based on cryo is silly so we remove the objective.
 		if(O.target == occupant.mind)
 			if(O.owner && O.owner.current)
@@ -337,27 +337,27 @@
 	//Handle job slot/tater cleanup.
 	if(occupant.mind)
 		var/job = occupant.mind.assigned_role
-		job_master.FreeRole(job)
+		GLOB.job_master.FreeRole(job)
 
 		if(occupant.mind.objectives.len)
 			occupant.mind.objectives = null
 			occupant.mind.special_role = null
 	//else
-		//if(ticker.mode.name == "AutoTraitor")
-			//var/datum/game_mode/traitor/autotraitor/current_mode = ticker.mode
+		//if(GLOB.ticker.mode.name == "AutoTraitor")
+			//var/datum/game_mode/traitor/autotraitor/current_mode = GLOB.ticker.mode
 			//current_mode.possible_traitors.Remove(occupant)
 
 	// Delete them from datacore.
 
 	if(GLOB.PDA_Manifest.len)
 		GLOB.PDA_Manifest.Cut()
-	for(var/datum/data/record/R in data_core.medical)
+	for(var/datum/data/record/R in GLOB.data_core.medical)
 		if ((R.fields["name"] == occupant.real_name))
 			qdel(R)
-	for(var/datum/data/record/T in data_core.security)
+	for(var/datum/data/record/T in GLOB.data_core.security)
 		if ((T.fields["name"] == occupant.real_name))
 			qdel(T)
-	for(var/datum/data/record/G in data_core.general)
+	for(var/datum/data/record/G in GLOB.data_core.general)
 		if ((G.fields["name"] == occupant.real_name))
 			qdel(G)
 

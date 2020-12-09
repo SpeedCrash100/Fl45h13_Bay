@@ -76,10 +76,10 @@ GLOBAL_LIST_INIT(economic_species_modifier, list(
 //Destroyers are medium sized vessels, often used for escorting larger ships but able to go toe-to-toe with them if need be.
 //Frigates are medium sized vessels, often used for escorting larger ships. They will rapidly find themselves outclassed if forced to face heavy warships head on.
 
-var/global/current_date_string
+GLOBAL_VAR(current_date_string)
 
-var/global/datum/money_account/vendor_account
-var/global/datum/money_account/station_account
+GLOBAL_DATUM(vendor_account, /datum/money_account)
+GLOBAL_DATUM(station_account, /datum/money_account)
 GLOBAL_LIST_EMPTY_TYPED(department_accounts, /datum/money_account)
 GLOBAL_VAR_INIT(num_financial_terminals, 1) 
 GLOBAL_VAR_INIT(next_account_number, 0) 
@@ -103,31 +103,31 @@ GLOBAL_VAR_INIT(economy_init, 0)
 	for(var/department in GLOB.station_departments)
 		create_department_account(department)
 	create_department_account("Vendor")
-	vendor_account = GLOB.department_accounts["Vendor"]
+	GLOB.vendor_account = GLOB.department_accounts["Vendor"]
 
-	current_date_string = "[num2text(rand(1,31))] [pick("January","February","March","April","May","June","July","August","September","October","November","December")], [GLOB.game_year]"
+	GLOB.current_date_string = "[num2text(rand(1,31))] [pick("January","February","March","April","May","June","July","August","September","October","November","December")], [GLOB.game_year]"
 
 	GLOB.economy_init = 1
 	return 1
 
 /proc/create_station_account()
-	if(!station_account)
+	if(!GLOB.station_account)
 		GLOB.next_account_number = rand(111111, 999999)
 
-		station_account = new()
-		station_account.owner_name = "[station_name()] Primary Account"
-		station_account.account_number = rand(111111, 999999)
-		station_account.remote_access_pin = rand(1111, 111111)
-		station_account.money = 75000
+		GLOB.station_account = new()
+		GLOB.station_account.owner_name = "[station_name()] Primary Account"
+		GLOB.station_account.account_number = rand(111111, 999999)
+		GLOB.station_account.remote_access_pin = rand(1111, 111111)
+		GLOB.station_account.money = 75000
 
 		//create an entry in the account transaction log for when it was created
-		var/datum/transaction/T = new(station_account.owner_name,"Account creation",75000,"Biesel GalaxyNet Terminal #277")
+		var/datum/transaction/T = new(GLOB.station_account.owner_name,"Account creation",75000,"Biesel GalaxyNet Terminal #277")
 		T.date = "2nd April, 2555"
 		T.time = "11:24"
 
 		//add the account
-		station_account.transaction_log.Add(T)
-		GLOB.all_money_accounts.Add(station_account)
+		GLOB.station_account.transaction_log.Add(T)
+		GLOB.all_money_accounts.Add(GLOB.station_account)
 
 /proc/create_department_account(department)
 	GLOB.next_account_number = rand(111111, 999999)

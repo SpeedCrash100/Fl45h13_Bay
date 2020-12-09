@@ -117,10 +117,10 @@ datum/unit_test/zas_supply_shuttle_moved
 
 datum/unit_test/zas_supply_shuttle_moved/start_test()
 
-	if(!shuttle_controller)
+	if(!GLOB.shuttle_controller)
 		fail("Shuttle Controller not setup at time of test.")
 		return 1
-	if(!shuttle_controller.shuttles.len)
+	if(!GLOB.shuttle_controller.shuttles.len)
 		skip("No shuttles have been setup for this map.")
 		return 1
 

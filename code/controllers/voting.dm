@@ -27,7 +27,7 @@ datum/controller/vote
 		if(mode)
 			// No more change mode votes after the game has started.
 			// 3 is GAME_STATE_PLAYING, but that #define is undefined for some reason
-			if(mode == "gamemode" && ticker.current_state >= GAME_STATE_SETTING_UP)
+			if(mode == "gamemode" && GLOB.ticker.current_state >= GAME_STATE_SETTING_UP)
 				to_world("<b>Voting aborted due to game start.</b>")
 
 				src.reset()
@@ -35,7 +35,7 @@ datum/controller/vote
 
 			// Calculate how much time is remaining by comparing current time, to time of vote start,
 			// plus vote duration
-			time_remaining = round((started_time + config.vote_period - world.time)/10)
+			time_remaining = round((started_time + GLOB.config.vote_period - world.time)/10)
 
 			if(time_remaining < 0)
 				result()
@@ -88,7 +88,7 @@ datum/controller/vote
 		var/total_votes = 0
 
 		//default-vote for everyone who didn't vote
-		if(!config.vote_no_default && choices.len)
+		if(!GLOB.config.vote_no_default && choices.len)
 			var/non_voters = (GLOB.clients.len - total_votes)
 			if(non_voters > 0)
 				if(mode == "restart")
@@ -147,7 +147,7 @@ datum/controller/vote
 		var/thirdChoice
 		if(length(winners[1]) > 0)
 			if(length(winners[1]) > 1)
-				if(mode != "gamemode" || ticker.hide_mode == 0) // Here we are making sure we don't announce potential game modes
+				if(mode != "gamemode" || GLOB.ticker.hide_mode == 0) // Here we are making sure we don't announce potential game modes
 					text = "<b>Vote Tied Between:</b>\n"
 					for(var/option in winners[1])
 						text += "\t[option]\n"
@@ -172,7 +172,7 @@ datum/controller/vote
 				else
 					i++
 
-			if(mode != "gamemode" || (firstChoice == "Extended" || ticker.hide_mode == 0)) // Announce unhidden gamemodes or other results, but not other gamemodes
+			if(mode != "gamemode" || (firstChoice == "Extended" || GLOB.ticker.hide_mode == 0)) // Announce unhidden gamemodes or other results, but not other gamemodes
 				text += "<b>Vote Result: [firstChoice]</b>"
 				if(secondChoice)
 					text += "\nSecond place: [secondChoice]"
@@ -201,7 +201,7 @@ datum/controller/vote
 				if("gamemode")
 					if(GLOB.master_mode != .[1])
 						world.save_mode(.[1])
-						if(ticker && ticker.mode)
+						if(GLOB.ticker && GLOB.ticker.mode)
 							restart = 1
 						else
 							GLOB.master_mode = .[1]
@@ -226,17 +226,17 @@ datum/controller/vote
 								to_world("The random antag in [i]\th place is [.[i]].")
 
 						var/antag_type = antag_names_to_ids()[.[1]]
-						if(ticker.current_state < GAME_STATE_SETTING_UP)
+						if(GLOB.ticker.current_state < GAME_STATE_SETTING_UP)
 							GLOB.additional_antag_types |= antag_type
 						else
 							spawn(0) // break off so we don't hang the vote process
 								var/list/antag_choices = list(all_antag_types()[antag_type], all_antag_types()[antag_names_to_ids()[.[2]]], all_antag_types()[antag_names_to_ids()[.[3]]])
-								if(ticker.attempt_late_antag_spawn(antag_choices))
+								if(GLOB.ticker.attempt_late_antag_spawn(antag_choices))
 									antag_add_finished = 1
 									if(auto_add_antag)
 										auto_add_antag = 0
 										// the buffer will already have an hour added to it, so we'll give it one more
-										transfer_controller.timerbuffer = transfer_controller.timerbuffer + config.vote_autotransfer_interval
+										GLOB.transfer_controller.timerbuffer = GLOB.transfer_controller.timerbuffer + GLOB.config.vote_autotransfer_interval
 								else
 									to_world("<b>No antags were added.</b>")
 
@@ -259,7 +259,7 @@ datum/controller/vote
 			to_world("World restarting due to vote...")
 
 			feedback_set_details("end_error","restart vote")
-			if(blackbox)	blackbox.save_all_data_to_sql()
+			if(GLOB.blackbox)	GLOB.blackbox.save_all_data_to_sql()
 			sleep(50)
 			log_game("Rebooting due to restart vote")
 			world.Reboot()
@@ -268,7 +268,7 @@ datum/controller/vote
 
 	proc/submit_vote(var/ckey, var/vote, var/weight)
 		if(mode)
-			if(config.vote_no_dead && usr.stat == DEAD && !usr.client.holder)
+			if(GLOB.config.vote_no_dead && usr.stat == DEAD && !usr.client.holder)
 				return 0
 			if(vote && vote >= 1 && vote <= choices.len)
 				if(current_high_votes[ckey] && (current_high_votes[ckey] == vote || weight == 3))
@@ -297,7 +297,7 @@ datum/controller/vote
 	proc/initiate_vote(var/vote_type, var/initiator_key, var/automatic = 0)
 		if(!mode)
 			if(started_time != null && !(check_rights(R_ADMIN) || automatic))
-				var/next_allowed_time = (started_time + config.vote_delay)
+				var/next_allowed_time = (started_time + GLOB.config.vote_delay)
 				if(next_allowed_time > world.time)
 					return 0
 
@@ -306,9 +306,9 @@ datum/controller/vote
 				if("restart")
 					choices.Add("Restart Round","Continue Playing")
 				if("gamemode")
-					if(ticker.current_state >= GAME_STATE_SETTING_UP)
+					if(GLOB.ticker.current_state >= GAME_STATE_SETTING_UP)
 						return 0
-					choices.Add(config.votable_modes)
+					choices.Add(GLOB.config.votable_modes)
 					for (var/F in choices)
 						var/datum/game_mode/M = GLOB.gamemode_cache[F]
 						if(!M)
@@ -320,18 +320,18 @@ datum/controller/vote
 					if(check_rights(R_ADMIN|R_MOD, 0))
 						question = "End the shift?"
 						choices.Add("Initiate Crew Transfer", "Continue The Round")
-						if (config.allow_extra_antags && !antag_add_finished)
+						if (GLOB.config.allow_extra_antags && !antag_add_finished)
 							choices.Add("Add Antagonist")
 					else
 						if (get_security_level() == "red" || get_security_level() == "delta")
 							to_chat(initiator_key, "The current alert status is too high to call for a crew transfer!")
 							return 0
-						if(ticker.current_state <= GAME_STATE_SETTING_UP)
+						if(GLOB.ticker.current_state <= GAME_STATE_SETTING_UP)
 							return 0
 							to_chat(initiator_key, "The crew transfer button has been disabled!")
 						question = "End the shift?"
 						choices.Add("Initiate Crew Transfer", "Continue The Round")
-						if (config.allow_extra_antags && is_addantag_allowed(1))
+						if (GLOB.config.allow_extra_antags && is_addantag_allowed(1))
 							choices.Add("Add Antagonist")
 				if("add_antagonist")
 					if(!is_addantag_allowed(automatic))
@@ -339,7 +339,7 @@ datum/controller/vote
 							to_chat(usr, "The add antagonist vote is unavailable at this time. The game may not have started yet, the game mode may disallow adding antagonists, or you don't have required permissions.")
 						return 0
 
-					if(!config.allow_extra_antags)
+					if(!GLOB.config.allow_extra_antags)
 						return 0
 					var/list/all_antag_types = all_antag_types()
 					for(var/antag_type in all_antag_types)
@@ -350,7 +350,7 @@ datum/controller/vote
 					if(!auto_add_antag)
 						choices.Add("None")
 				if("map")
-					if(!config.allow_map_switching)
+					if(!GLOB.config.allow_map_switching)
 						return 0
 					for(var/name in GLOB.all_maps)
 						choices.Add(name)
@@ -371,7 +371,7 @@ datum/controller/vote
 				text += "\n[question]"
 
 			log_vote(text)
-			to_world("<font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='?src=\ref[src]'>here</a> to place your votes.\nYou have [config.vote_period/10] seconds to vote.</font>")
+			to_world("<font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='?src=\ref[src]'>here</a> to place your votes.\nYou have [GLOB.config.vote_period/10] seconds to vote.</font>")
 
 			to_world(sound('sound/ambience/alarm4.ogg', repeat = 0, wait = 0, volume = 50, channel = 3))
 
@@ -380,7 +380,7 @@ datum/controller/vote
 				to_world("<font color='red'><b>Round start has been delayed.</b></font>")
 
 
-			time_remaining = round(config.vote_period/10)
+			time_remaining = round(GLOB.config.vote_period/10)
 			return 1
 		return 0
 
@@ -445,34 +445,34 @@ datum/controller/vote
 		else
 			. += "<h2>Start a vote:</h2><hr><ul><li>"
 			//restart
-			if(trialmin || config.allow_vote_restart)
+			if(trialmin || GLOB.config.allow_vote_restart)
 				. += "<a href='?src=\ref[src];vote=restart'>Restart</a>"
 			else
 				. += "<font color='grey'>Restart (Disallowed)</font>"
 			. += "</li><li>"
-			if(trialmin || config.allow_vote_restart)
+			if(trialmin || GLOB.config.allow_vote_restart)
 				. += "<a href='?src=\ref[src];vote=crew_transfer'>Crew Transfer</a>"
 			else
 				. += "<font color='grey'>Crew Transfer (Disallowed)</font>"
 			if(trialmin)
-				. += "\t(<a href='?src=\ref[src];vote=toggle_restart'>[config.allow_vote_restart?"Allowed":"Disallowed"]</a>)"
+				. += "\t(<a href='?src=\ref[src];vote=toggle_restart'>[GLOB.config.allow_vote_restart?"Allowed":"Disallowed"]</a>)"
 			. += "</li><li>"
 			//gamemode
-			if(trialmin || config.allow_vote_mode)
+			if(trialmin || GLOB.config.allow_vote_mode)
 				. += "<a href='?src=\ref[src];vote=gamemode'>GameMode</a>"
 			else
 				. += "<font color='grey'>GameMode (Disallowed)</font>"
 			if(trialmin)
-				. += "\t(<a href='?src=\ref[src];vote=toggle_gamemode'>[config.allow_vote_mode?"Allowed":"Disallowed"]</a>)"
+				. += "\t(<a href='?src=\ref[src];vote=toggle_gamemode'>[GLOB.config.allow_vote_mode?"Allowed":"Disallowed"]</a>)"
 			. += "</li><li>"
 			//map!
-			if(trialmin && config.allow_map_switching)
+			if(trialmin && GLOB.config.allow_map_switching)
 				. += "<a href='?src=\ref[src];vote=map'>Map</a>"
 			else
 				. += "<font color='grey'>Map (Disallowed)</font>"
 			. += "</li><li>"
 			//extra antagonists
-			if(config.allow_extra_antags && is_addantag_allowed(0))
+			if(GLOB.config.allow_extra_antags && is_addantag_allowed(0))
 				. += "<a href='?src=\ref[src];vote=add_antagonist'>Add Antagonist Type</a>"
 			else
 				. += "<font color='grey'>Add Antagonist (Disallowed)</font>"
@@ -498,24 +498,24 @@ datum/controller/vote
 						reset()
 				if("toggle_restart")
 					if(usr.client.holder)
-						config.allow_vote_restart = !config.allow_vote_restart
+						GLOB.config.allow_vote_restart = !GLOB.config.allow_vote_restart
 				if("toggle_gamemode")
 					if(usr.client.holder)
-						config.allow_vote_mode = !config.allow_vote_mode
+						GLOB.config.allow_vote_mode = !GLOB.config.allow_vote_mode
 				if("restart")
-					if(config.allow_vote_restart || usr.client.holder)
+					if(GLOB.config.allow_vote_restart || usr.client.holder)
 						initiate_vote("restart",usr.key)
 				if("gamemode")
-					if(config.allow_vote_mode || usr.client.holder)
+					if(GLOB.config.allow_vote_mode || usr.client.holder)
 						initiate_vote("gamemode",usr.key)
 				if("crew_transfer")
-					if(config.allow_vote_restart || usr.client.holder)
+					if(GLOB.config.allow_vote_restart || usr.client.holder)
 						initiate_vote("crew_transfer",usr.key)
 				if("add_antagonist")
-					if(config.allow_extra_antags)
+					if(GLOB.config.allow_extra_antags)
 						initiate_vote("add_antagonist",usr.key)
 				if("map")
-					if(config.allow_map_switching && usr.client.holder)
+					if(GLOB.config.allow_map_switching && usr.client.holder)
 						initiate_vote("map", usr.key)
 				if("custom")
 					if(usr.client.holder)
@@ -538,14 +538,14 @@ datum/controller/vote
 // Helper proc for determining whether addantag vote can be called.
 datum/controller/vote/proc/is_addantag_allowed(var/automatic)
 	// Gamemode has to be determined before we can add antagonists, so we can respect gamemode's add antag vote settings.
-	if(!ticker || (ticker.current_state <= 2) || !ticker.mode)
+	if(!GLOB.ticker || (GLOB.ticker.current_state <= 2) || !GLOB.ticker.mode)
 		return 0
 	if(automatic)
-		return (ticker.mode.addantag_allowed & ADDANTAG_AUTO) && !antag_add_finished
+		return (GLOB.ticker.mode.addantag_allowed & ADDANTAG_AUTO) && !antag_add_finished
 	if(check_rights(R_ADMIN, 0))
-		return ticker.mode.addantag_allowed & (ADDANTAG_ADMIN|ADDANTAG_PLAYER)
+		return GLOB.ticker.mode.addantag_allowed & (ADDANTAG_ADMIN|ADDANTAG_PLAYER)
 	else
-		return (ticker.mode.addantag_allowed & ADDANTAG_PLAYER) && !antag_add_finished
+		return (GLOB.ticker.mode.addantag_allowed & ADDANTAG_PLAYER) && !antag_add_finished
 
 
 
