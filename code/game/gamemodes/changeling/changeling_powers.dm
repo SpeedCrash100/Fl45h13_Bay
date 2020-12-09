@@ -55,20 +55,20 @@ GLOBAL_LIST_INIT(possible_changeling_IDs, list("Alpha","Beta","Gamma","Delta","E
 	if(!mind)				return
 	if(!mind.changeling)	mind.changeling = new /datum/changeling(gender)
 
-	GLOB.verbs += /datum/changeling/proc/EvolutionMenu
+	verbs += /datum/changeling/proc/EvolutionMenu
 	add_language("Changeling")
 
 	var/lesser_form = !ishuman(src)
 
-	if(!powerinstances.len)
+	if(!GLOB.powerinstances.len)
 		for(var/P in GLOB.powers)
-			powerinstances += new P()
+			GLOB.powerinstances += new P()
 
 	// Code to auto-purchase free powers.
-	for(var/datum/power/changeling/P in powerinstances)
+	for(var/datum/power/changeling/P in GLOB.powerinstances)
 		if(!P.genomecost) // Is it free?
 			if(!(P in mind.changeling.purchasedpowers)) // Do we not have it already?
-				mind.changeling.purchasePower(mind, P.name, 0)// Purchase it. Don't remake our GLOB.verbs, we're doing it after this.
+				mind.changeling.purchasePower(mind, P.name, 0)// Purchase it. Don't remake our verbs, we're doing it after this.
 
 	for(var/datum/power/changeling/P in mind.changeling.purchasedpowers)
 		if(P.isVerb)
@@ -86,12 +86,12 @@ GLOBAL_LIST_INIT(possible_changeling_IDs, list("Alpha","Beta","Gamma","Delta","E
 
 	return 1
 
-//removes our changeling GLOB.verbs
+//removes our changeling verbs
 /mob/proc/remove_changeling_powers()
 	if(!mind || !mind.changeling)	return
 	for(var/datum/power/changeling/P in mind.changeling.purchasedpowers)
 		if(P.isVerb)
-			GLOB.verbs -= P.verbpath
+			verbs -= P.verbpath
 
 
 //Helper proc. Does all the checks and stuff for us to avoid copypasta
@@ -558,7 +558,7 @@ GLOBAL_LIST_INIT(possible_changeling_IDs, list("Alpha","Beta","Gamma","Delta","E
 
 // HIVE MIND UPLOAD/DOWNLOAD DNA
 
-var/list/datum/absorbed_dna/hivemind_bank = list()
+GLOBAL_LIST_EMPTY_TYPED(hivemind_bank, /datum/absorbed_dna)
 
 /mob/proc/changeling_hiveupload()
 	set category = "Changeling"
@@ -571,7 +571,7 @@ var/list/datum/absorbed_dna/hivemind_bank = list()
 	var/list/names = list()
 	for(var/datum/absorbed_dna/DNA in changeling.absorbed_dna)
 		var/valid = 1
-		for(var/datum/absorbed_dna/DNB in hivemind_bank)
+		for(var/datum/absorbed_dna/DNB in GLOB.hivemind_bank)
 			if(DNA.name == DNB.name)
 				valid = 0
 				break
@@ -590,7 +590,7 @@ var/list/datum/absorbed_dna/hivemind_bank = list()
 		return
 
 	changeling.chem_charges -= 10
-	hivemind_bank += chosen_dna
+	GLOB.hivemind_bank += chosen_dna
 	to_chat(src, "<span class='notice'>We channel the DNA of [S] to the air.</span>")
 	feedback_add_details("changeling_powers","HU")
 	return 1
@@ -604,7 +604,7 @@ var/list/datum/absorbed_dna/hivemind_bank = list()
 	if(!changeling)	return
 
 	var/list/names = list()
-	for(var/datum/absorbed_dna/DNA in hivemind_bank)
+	for(var/datum/absorbed_dna/DNA in GLOB.hivemind_bank)
 		if(!(changeling.GetDNA(DNA.name)))
 			names[DNA.name] = DNA
 

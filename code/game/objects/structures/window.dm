@@ -386,11 +386,11 @@
 //Updates the availabiliy of the rotation GLOB.verbs
 /obj/structure/window/proc/update_verbs()
 	if(anchored)
-		GLOB.verbs -= /obj/structure/window/proc/rotate
-		GLOB.verbs -= /obj/structure/window/proc/revrotate
+		verbs -= /obj/structure/window/proc/rotate
+		verbs -= /obj/structure/window/proc/revrotate
 	else
-		GLOB.verbs += /obj/structure/window/proc/rotate
-		GLOB.verbs += /obj/structure/window/proc/revrotate
+		verbs += /obj/structure/window/proc/rotate
+		verbs += /obj/structure/window/proc/revrotate
 
 //merges adjacent full-tile windows into one (blatant ripoff from game/smoothwall.dm)
 /obj/structure/window/update_icon()

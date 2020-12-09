@@ -260,7 +260,7 @@
 	set desc = "Return your sight to your body."
 	set category = "Abilities"
 
-	GLOB.verbs -= /mob/living/proc/release_eye //regardless of if we have an eye or not we want to get rid of this verb.
+	verbs -= /mob/living/proc/release_eye //regardless of if we have an eye or not we want to get rid of this verb.
 
 	if(!eyeobj)
 		return

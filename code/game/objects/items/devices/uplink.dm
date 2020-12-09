@@ -44,13 +44,13 @@
 	update_nano_data()
 
 	src.uplink_owner = owner
-	world_uplinks += src
+	GLOB.world_uplinks += src
 	uses = telecrystals
 	GLOB.processing_objects += src
 
 /obj/item/device/uplink/Destroy()
 	uplink_owner = null
-	world_uplinks -= src
+	GLOB.world_uplinks -= src
 	GLOB.processing_objects -= src
 	return ..()
 

@@ -85,7 +85,7 @@
 
 	if(!config.alien_eggs_allowed)
 		to_chat(src, "You begin to lay an egg, but hesitate. You suspect it isn't allowed.")
-		GLOB.verbs -= /mob/living/carbon/human/proc/lay_egg
+		verbs -= /mob/living/carbon/human/proc/lay_egg
 		return
 
 	if(locate(/obj/structure/alien/egg) in get_turf(src))

@@ -14,7 +14,7 @@
 
 /datum/category_item/player_setup_item/general/language/content()
 	. += "<b>Languages</b><br>"
-	var/datum/species/S = all_species[pref.species]
+	var/datum/species/S = GLOB.all_species[pref.species]
 	if(S.language)
 		. += "- [S.language]<br>"
 	if(S.default_language && S.default_language != S.language)
@@ -36,14 +36,14 @@
 		pref.alternate_languages.Cut(index, index+1)
 		return TOPIC_REFRESH
 	else if(href_list["add_language"])
-		var/datum/species/S = all_species[pref.species]
+		var/datum/species/S = GLOB.all_species[pref.species]
 		if(pref.alternate_languages.len >= S.num_alternate_languages)
 			alert(user, "You have already selected the maximum number of alternate languages for this species!")
 		else
 			var/preference_mob = preference_mob()
 			var/list/available_languages = S.secondary_langs.Copy()
-			for(var/L in all_languages)
-				var/datum/language/lang = all_languages[L]
+			for(var/L in GLOB.all_languages)
+				var/datum/language/lang = GLOB.all_languages[L]
 				if(is_allowed_language(preference_mob, lang))
 					available_languages |= L
 
@@ -65,7 +65,7 @@
 /datum/category_item/player_setup_item/general/language/proc/is_allowed_language(var/mob/user, var/datum/language/lang)
 	if(!user)
 		return TRUE
-	var/datum/species/S = all_species[pref.species]
+	var/datum/species/S = GLOB.all_species[pref.species]
 	if(lang.name in S.secondary_langs)
 		return TRUE
 	if(!(lang.flags & RESTRICTED) && is_alien_whitelisted(user, lang))
@@ -75,11 +75,11 @@
 /datum/category_item/player_setup_item/general/language/proc/sanitize_alt_languages()
 	var/preference_mob = preference_mob()
 	for(var/L in pref.alternate_languages)
-		var/datum/language/lang = all_languages[L]
+		var/datum/language/lang = GLOB.all_languages[L]
 		if(!lang || !is_allowed_language(preference_mob, lang))
 			pref.alternate_languages -= L
 
-	var/datum/species/S = all_species[pref.species] || all_species[SPECIES_HUMAN]
+	var/datum/species/S = GLOB.all_species[pref.species] || GLOB.all_species[SPECIES_HUMAN]
 	if(pref.alternate_languages.len > S.num_alternate_languages)
 		pref.alternate_languages.Cut(S.num_alternate_languages + 1)
 

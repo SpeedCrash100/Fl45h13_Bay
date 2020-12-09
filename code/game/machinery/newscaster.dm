@@ -98,12 +98,12 @@
 	alert_readers(FC.announcement)
 
 /datum/feed_network/proc/alert_readers(var/annoncement)
-	for(var/obj/machinery/newscaster/NEWSCASTER in allCasters)
+	for(var/obj/machinery/newscaster/NEWSCASTER in GLOB.allCasters)
 		NEWSCASTER.newsAlert(annoncement)
 		NEWSCASTER.update_icon()
 
 	var/list/receiving_pdas = new
-	for (var/obj/item/device/pda/P in PDAs)
+	for (var/obj/item/device/pda/P in GLOB.PDAs)
 		if (!P.owner)
 			continue
 		if (P.toff)
@@ -121,7 +121,7 @@
 
 var/datum/feed_network/news_network = new /datum/feed_network     //The global news-network, which is coincidentally a global list.
 
-var/list/obj/machinery/newscaster/allCasters = list() //Global list that will contain reference to all newscasters in existence.
+GLOBAL_LIST_EMPTY_TYPED(allCasters, /obj/machinery/newscaster) //Global list that will contain reference to all newscasters in existence.
 
 
 /obj/machinery/newscaster
@@ -174,15 +174,15 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	securityCaster = 1
 
 /obj/machinery/newscaster/New()         //Constructor, ho~
-	allCasters += src
+	GLOB.allCasters += src
 	src.paper_remaining = 15            // Will probably change this to something better
-	for(var/obj/machinery/newscaster/NEWSCASTER in allCasters) // Let's give it an appropriate unit number
+	for(var/obj/machinery/newscaster/NEWSCASTER in GLOB.allCasters) // Let's give it an appropriate unit number
 		src.unit_no++
 	src.update_icon() //for any custom ones on the map...
 	..()                                //I just realised the newscasters weren't in the global GLOB.machines list. The superconstructor call will tend to that
 
 /obj/machinery/newscaster/Destroy()
-	allCasters -= src
+	GLOB.allCasters -= src
 	..()
 
 /obj/machinery/newscaster/update_icon()
@@ -610,7 +610,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 			var/choice = alert("Please confirm Wanted Issue removal","Network Security Handler","Confirm","Cancel")
 			if(choice=="Confirm")
 				news_network.wanted_issue = null
-				for(var/obj/machinery/newscaster/NEWSCASTER in allCasters)
+				for(var/obj/machinery/newscaster/NEWSCASTER in GLOB.allCasters)
 					NEWSCASTER.update_icon()
 				src.screen=17
 			src.updateUsrDialog()

@@ -1,4 +1,4 @@
-var/list/obj/machinery/photocopier/faxmachine/allfaxes = list()
+GLOBAL_LIST_EMPTY_TYPED(allfaxes, /obj/machinery/photocopier/faxmachine)
 // GLOBAL_LIST_INIT(admin_departments, list("[GLOB.using_map.boss_name]", "Colonial Marshal Service", "[GLOB.using_map.boss_short] Supply") + GLOB.using_map.map_admin_faxes)
 GLOBAL_LIST_EMPTY(alldepartments)
 
@@ -25,7 +25,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 
 /obj/machinery/photocopier/faxmachine/Initialize(mapload, ...)
 	. = ..()
-	allfaxes += src
+	GLOB.allfaxes += src
 
 	if(admin_departments.len == 0) 
 		admin_departments = list("[GLOB.using_map.boss_name]", "Colonial Marshal Service", "[GLOB.using_map.boss_short] Supply") + GLOB.using_map.map_admin_faxes
@@ -144,7 +144,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 	use_power(200)
 
 	var/success = 0
-	for(var/obj/machinery/photocopier/faxmachine/F in allfaxes)
+	for(var/obj/machinery/photocopier/faxmachine/F in GLOB.allfaxes)
 		if( F.department == destination )
 			success = F.recievefax(copyitem)
 

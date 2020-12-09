@@ -90,7 +90,7 @@ datum/unit_test/species_organ_creation/proc/check_organ_parents(var/mob/living/c
 
 datum/unit_test/species_organ_creation/start_test()
 	var/failcount = 0
-	for(var/datum/species/species in all_species)
+	for(var/datum/species/species in GLOB.all_species)
 		var/mob/living/carbon/human/test_subject = new(null, species.name)
 
 		var/fail = 0
@@ -215,7 +215,7 @@ datum/unit_test/species_organ_lists_update/proc/test_external_organ(var/mob/livi
 
 datum/unit_test/species_organ_lists_update/start_test()
 	var/failcount = 0
-	for(var/datum/species/species in all_species)
+	for(var/datum/species/species in GLOB.all_species)
 		var/mob/living/carbon/human/test_subject = new(null, species.name)
 
 		for(var/O in test_subject.internal_organs)

@@ -23,7 +23,7 @@
 		qdel(src)
 
 
-var/list/image/hazard_overlays
+GLOBAL_LIST_EMPTY_TYPED(hazard_overlays, /image)
 GLOBAL_LIST_EMPTY(tape_roll_applications)
 
 /obj/item/tape
@@ -52,12 +52,12 @@ GLOBAL_LIST_EMPTY(tape_roll_applications)
 
 /obj/item/tape/New()
 	..()
-	if(!hazard_overlays)
-		hazard_overlays = list()
-		hazard_overlays["[NORTH]"]	= new/image('icons/effects/warning_stripes.dmi', icon_state = "N")
-		hazard_overlays["[EAST]"]	= new/image('icons/effects/warning_stripes.dmi', icon_state = "E")
-		hazard_overlays["[SOUTH]"]	= new/image('icons/effects/warning_stripes.dmi', icon_state = "S")
-		hazard_overlays["[WEST]"]	= new/image('icons/effects/warning_stripes.dmi', icon_state = "W")
+	if(!GLOB.hazard_overlays)
+		GLOB.hazard_overlays = list()
+		GLOB.hazard_overlays["[NORTH]"]	= new/image('icons/effects/warning_stripes.dmi', icon_state = "N")
+		GLOB.hazard_overlays["[EAST]"]	= new/image('icons/effects/warning_stripes.dmi', icon_state = "E")
+		GLOB.hazard_overlays["[SOUTH]"]	= new/image('icons/effects/warning_stripes.dmi', icon_state = "S")
+		GLOB.hazard_overlays["[WEST]"]	= new/image('icons/effects/warning_stripes.dmi', icon_state = "W")
 
 /obj/item/taperoll/police
 	name = "police tape"
@@ -271,7 +271,7 @@ GLOBAL_LIST_EMPTY(tape_roll_applications)
 	if (istype(A, /turf/simulated/floor) ||istype(A, /turf/unsimulated/floor))
 		var/turf/F = A
 		var/direction = user.loc == F ? user.dir : turn(user.dir, 180)
-		var/icon/hazard_overlay = hazard_overlays["[direction]"]
+		var/icon/hazard_overlay = GLOB.hazard_overlays["[direction]"]
 		if(GLOB.tape_roll_applications[F] == null)
 			GLOB.tape_roll_applications[F] = 0
 

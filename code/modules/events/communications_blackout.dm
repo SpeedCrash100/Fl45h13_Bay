@@ -16,5 +16,5 @@
 
 
 /datum/event/communications_blackout/start()
-	for(var/obj/machinery/telecomms/T in telecomms_list)
+	for(var/obj/machinery/telecomms/T in GLOB.telecomms_list)
 		T.emp_act(1)

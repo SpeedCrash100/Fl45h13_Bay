@@ -985,7 +985,7 @@
 			blood_DNA[M.dna.unique_enzymes] = M.dna.b_type
 	hand_blood_color = blood_color
 	src.update_inv_gloves()	//handles bloody hands overlays and updating
-	GLOB.verbs += /mob/living/carbon/human/proc/bloody_doodle
+	verbs += /mob/living/carbon/human/proc/bloody_doodle
 	return 1 //we applied blood to the item
 
 /mob/living/carbon/human/clean_blood(var/clean_feet)
@@ -1090,7 +1090,7 @@
 			dna.species = new_species
 
 	// No more invisible screaming wheelchairs because of set_species() typos.
-	if(!all_species[new_species])
+	if(!GLOB.all_species[new_species])
 		new_species = SPECIES_HUMAN
 
 	if(species)
@@ -1105,7 +1105,7 @@
 		species.remove_inherent_verbs(src)
 		holder_type = null
 
-	species = all_species[new_species]
+	species = GLOB.all_species[new_species]
 	species.handle_pre_spawn(src)
 
 	if(species.language)
@@ -1185,7 +1185,7 @@
 		return 0 //something is terribly wrong
 
 	if (!bloody_hands)
-		GLOB.verbs -= /mob/living/carbon/human/proc/bloody_doodle
+		verbs -= /mob/living/carbon/human/proc/bloody_doodle
 
 	if (src.gloves)
 		to_chat(src, "<span class='warning'>Your [src.gloves] are getting in the way.</span>")

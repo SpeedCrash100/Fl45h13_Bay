@@ -96,9 +96,9 @@
 	add_language("Tradeband", 1)
 	add_language("Gutter", 1)
 
-	GLOB.verbs += /mob/living/silicon/pai/proc/choose_chassis
-	GLOB.verbs += /mob/living/silicon/pai/proc/choose_verbs
-	GLOB.verbs -= /mob/living/verb/ghost
+	verbs += /mob/living/silicon/pai/proc/choose_chassis
+	verbs += /mob/living/silicon/pai/proc/choose_verbs
+	verbs -= /mob/living/verb/ghost
 
 	//PDA
 	pda = new(src)
@@ -317,14 +317,14 @@
 		finalized = alert("Look at your sprite. Is this what you wish to use?",,"No","Yes")
 
 	chassis = possible_chassis[choice]
-	GLOB.verbs -= /mob/living/silicon/pai/proc/choose_chassis
-	GLOB.verbs += /mob/living/proc/hide
+	verbs -= /mob/living/silicon/pai/proc/choose_chassis
+	verbs += /mob/living/proc/hide
 
 /mob/living/silicon/pai/proc/choose_verbs()
 	set category = "pAI Commands"
 	set name = "Choose Speech Verbs"
 
-	var/choice = input(usr,"What theme would you like to use for your speech GLOB.verbs? This decision can only be made once.") as null|anything in possible_say_verbs
+	var/choice = input(usr,"What theme would you like to use for your speech verbs? This decision can only be made once.") as null|anything in possible_say_verbs
 	if(!choice) return
 
 	var/list/sayverbs = possible_say_verbs[choice]
@@ -332,7 +332,7 @@
 	speak_exclamation = sayverbs[(sayverbs.len>1 ? 2 : sayverbs.len)]
 	speak_query = sayverbs[(sayverbs.len>2 ? 3 : sayverbs.len)]
 
-	GLOB.verbs -= /mob/living/silicon/pai/proc/choose_verbs
+	verbs -= /mob/living/silicon/pai/proc/choose_verbs
 
 /mob/living/silicon/pai/lay_down()
 	set name = "Rest"

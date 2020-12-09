@@ -164,7 +164,7 @@ GLOBAL_LIST_INIT(debug_verbs, list (
 
 	if(!check_rights(R_DEBUG)) return
 
-	GLOB.verbs += GLOB.debug_verbs
+	verbs += GLOB.debug_verbs
 
 	feedback_add_details("admin_verb","mDV") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -174,7 +174,7 @@ GLOBAL_LIST_INIT(debug_verbs, list (
 
 	if(!check_rights(R_DEBUG)) return
 
-	GLOB.verbs -= GLOB.debug_verbs
+	verbs -= GLOB.debug_verbs
 
 	feedback_add_details("admin_verb","hDV") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

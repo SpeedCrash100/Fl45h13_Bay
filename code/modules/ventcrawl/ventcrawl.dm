@@ -20,7 +20,7 @@ GLOBAL_LIST_INIT(ventcrawl_machinery, list(
 /mob/living/proc/can_ventcrawl()
 	if(!client)
 		return FALSE
-	if(!(/mob/living/proc/ventcrawl in GLOB.verbs))
+	if(!(/mob/living/proc/ventcrawl in verbs))
 		to_chat(src, "<span class='warning'>You don't possess the ability to ventcrawl!</span>")
 		return FALSE
 	if(incapacitated())

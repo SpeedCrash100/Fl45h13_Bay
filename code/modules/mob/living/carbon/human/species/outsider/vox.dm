@@ -77,7 +77,7 @@
 	genders = list(NEUTER)
 
 /datum/species/vox/get_random_name(var/gender)
-	var/datum/language/species_language = all_languages[default_language]
+	var/datum/language/species_language = GLOB.all_languages[default_language]
 	return species_language.get_random_name(gender)
 
 /datum/species/vox/equip_survival_gear(var/mob/living/carbon/human/H)

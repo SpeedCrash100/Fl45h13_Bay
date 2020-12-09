@@ -78,7 +78,7 @@
 			user.drop_item()
 			W.forceMove(src)
 			key = W
-			GLOB.verbs += /obj/vehicle/train/cargo/engine/verb/remove_key
+			verbs += /obj/vehicle/train/cargo/engine/verb/remove_key
 		return
 	..()
 
@@ -129,24 +129,24 @@
 		..()
 		update_stats()
 
-		GLOB.verbs -= /obj/vehicle/train/cargo/engine/verb/stop_engine
-		GLOB.verbs -= /obj/vehicle/train/cargo/engine/verb/start_engine
+		verbs -= /obj/vehicle/train/cargo/engine/verb/stop_engine
+		verbs -= /obj/vehicle/train/cargo/engine/verb/start_engine
 
 		if(on)
-			GLOB.verbs += /obj/vehicle/train/cargo/engine/verb/stop_engine
+			verbs += /obj/vehicle/train/cargo/engine/verb/stop_engine
 		else
-			GLOB.verbs += /obj/vehicle/train/cargo/engine/verb/start_engine
+			verbs += /obj/vehicle/train/cargo/engine/verb/start_engine
 
 /obj/vehicle/train/cargo/engine/turn_off()
 	..()
 
-	GLOB.verbs -= /obj/vehicle/train/cargo/engine/verb/stop_engine
-	GLOB.verbs -= /obj/vehicle/train/cargo/engine/verb/start_engine
+	verbs -= /obj/vehicle/train/cargo/engine/verb/stop_engine
+	verbs -= /obj/vehicle/train/cargo/engine/verb/start_engine
 
 	if(!on)
-		GLOB.verbs += /obj/vehicle/train/cargo/engine/verb/start_engine
+		verbs += /obj/vehicle/train/cargo/engine/verb/start_engine
 	else
-		GLOB.verbs += /obj/vehicle/train/cargo/engine/verb/stop_engine
+		verbs += /obj/vehicle/train/cargo/engine/verb/stop_engine
 
 /obj/vehicle/train/cargo/RunOver(var/mob/living/carbon/human/H)
 	var/list/parts = list(BP_HEAD, BP_CHEST, BP_L_LEG, BP_R_LEG, BP_L_ARM, BP_R_ARM)
@@ -255,7 +255,7 @@
 		usr.put_in_hands(key)
 	key = null
 
-	GLOB.verbs -= /obj/vehicle/train/cargo/engine/verb/remove_key
+	verbs -= /obj/vehicle/train/cargo/engine/verb/remove_key
 
 //-------------------------------------------
 // Loading/unloading procs

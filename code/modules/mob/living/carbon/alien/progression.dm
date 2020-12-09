@@ -13,7 +13,7 @@
 		return
 
 	if(!adult_form)
-		GLOB.verbs -= /mob/living/carbon/alien/verb/evolve
+		verbs -= /mob/living/carbon/alien/verb/evolve
 		return
 
 	if(handcuffed)

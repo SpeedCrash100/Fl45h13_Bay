@@ -123,7 +123,7 @@ GLOBAL_LIST_EMPTY(mob_hat_cache)
 
 	..()
 
-	GLOB.verbs += /mob/living/proc/hide
+	verbs += /mob/living/proc/hide
 	remove_language("Robot Talk")
 	add_language("Robot Talk", 0)
 	add_language("Drone Talk", 1)
@@ -136,7 +136,7 @@ GLOBAL_LIST_EMPTY(mob_hat_cache)
 		var/datum/robot_component/C = components[V]
 		C.max_damage = 10
 
-	GLOB.verbs -= /mob/living/silicon/robot/verb/Namepick
+	verbs -= /mob/living/silicon/robot/verb/Namepick
 	updateicon()
 
 /mob/living/silicon/robot/drone/init()

@@ -27,9 +27,9 @@ GLOBAL_LIST_EMPTY(turfs)						//list of all GLOB.turfs
 #define all_genders_text_list list("Male","Female","Plural","Neuter")
 
 //Languages/species/whitelist.
-var/global/list/all_species[0]
-var/global/list/all_languages[0]
-var/global/list/language_keys[0]					// Table of say codes for all languages
+GLOBAL_LIST_INIT(all_species, new /list(0))
+GLOBAL_LIST_INIT(all_languages, new /list(0))
+GLOBAL_LIST_INIT(language_keys, new /list(0))					// Table of say codes for all languages
 GLOBAL_LIST_INIT(whitelisted_species, list(SPECIES_HUMAN)) // Species that require a whitelist check.
 GLOBAL_LIST_INIT(playable_species, list(SPECIES_HUMAN))    // A list of ALL playable species, whitelisted, latejoin or otherwise.
 
@@ -38,7 +38,7 @@ GLOBAL_LIST_EMPTY(mannequins_)
 GLOBAL_LIST_EMPTY(poster_designs)
 
 // Uplinks
-var/list/obj/item/device/uplink/world_uplinks = list()
+GLOBAL_LIST_EMPTY_TYPED(world_uplinks, /obj/item/device/uplink)
 
 //Preferences stuff
 	//Hairstyles
@@ -56,7 +56,7 @@ GLOBAL_LIST_INIT(backbaglist, list("Nothing", "Backpack", "Satchel", "Brown Satc
 GLOBAL_LIST_INIT(exclude_jobs, list(/datum/job/ai,/datum/job/cyborg))
 
 // Visual nets
-var/list/datum/visualnet/visual_nets = list()
+GLOBAL_LIST_EMPTY_TYPED(visual_nets, /datum/visualnet)
 var/datum/visualnet/camera/cameranet = new()
 
 // Runes
@@ -166,12 +166,12 @@ GLOBAL_LIST_INIT(string_slot_flags, list(
 	paths = typesof(/datum/language)-/datum/language
 	for(var/T in paths)
 		var/datum/language/L = new T
-		all_languages[L.name] = L
+		GLOB.all_languages[L.name] = L
 
-	for (var/language_name in all_languages)
-		var/datum/language/L = all_languages[language_name]
+	for (var/language_name in GLOB.all_languages)
+		var/datum/language/L = GLOB.all_languages[language_name]
 		if(!(L.flags & NONGLOBAL))
-			language_keys[lowertext(L.key)] = L
+			GLOB.language_keys[lowertext(L.key)] = L
 
 	var/rkey = 0
 	paths = typesof(/datum/species)
@@ -185,7 +185,7 @@ GLOBAL_LIST_INIT(string_slot_flags, list(
 
 		S = new T
 		S.race_key = rkey //Used in mob icon caching.
-		all_species[S.name] = S
+		GLOB.all_species[S.name] = S
 
 		if(!(S.spawn_flags & SPECIES_IS_RESTRICTED))
 			GLOB.playable_species += S.name

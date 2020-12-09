@@ -346,7 +346,7 @@
 		to_chat(usr, "Your host is already alive.")
 		return
 
-	GLOB.verbs -= /mob/living/carbon/human/proc/jumpstart
+	verbs -= /mob/living/carbon/human/proc/jumpstart
 	visible_message("<span class='warning'>With a hideous, rattling moan, [src] shudders back to life!</span>")
 
 	rejuvenate()

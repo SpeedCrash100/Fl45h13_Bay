@@ -60,33 +60,33 @@
 		if("Supreme Commander")
 			return get_all_centcom_access()
 
-/var/list/datum/access/priv_all_access_datums
+GLOBAL_LIST_EMPTY_TYPED(priv_all_access_datums, /datum/access)
 /proc/get_all_access_datums()
-	if(!priv_all_access_datums)
-		priv_all_access_datums = init_subtypes(/datum/access)
-		priv_all_access_datums = dd_sortedObjectList(priv_all_access_datums)
+	if(!GLOB.priv_all_access_datums)
+		GLOB.priv_all_access_datums = init_subtypes(/datum/access)
+		GLOB.priv_all_access_datums = dd_sortedObjectList(GLOB.priv_all_access_datums)
 
-	return priv_all_access_datums.Copy()
+	return GLOB.priv_all_access_datums.Copy()
 
-/var/list/datum/access/priv_all_access_datums_id
+GLOBAL_LIST_EMPTY_TYPED(priv_all_access_datums_id, /datum/access)
 /proc/get_all_access_datums_by_id()
-	if(!priv_all_access_datums_id)
-		priv_all_access_datums_id = list()
+	if(!GLOB.priv_all_access_datums_id)
+		GLOB.priv_all_access_datums_id = list()
 		for(var/datum/access/A in get_all_access_datums())
-			priv_all_access_datums_id["[A.id]"] = A
+			GLOB.priv_all_access_datums_id["[A.id]"] = A
 
-	return priv_all_access_datums_id.Copy()
+	return GLOB.priv_all_access_datums_id.Copy()
 
-/var/list/datum/access/priv_all_access_datums_region
+GLOBAL_LIST_EMPTY_TYPED(priv_all_access_datums_region, /datum/access)
 /proc/get_all_access_datums_by_region()
-	if(!priv_all_access_datums_region)
-		priv_all_access_datums_region = list()
+	if(!GLOB.priv_all_access_datums_region)
+		GLOB.priv_all_access_datums_region = list()
 		for(var/datum/access/A in get_all_access_datums())
-			if(!priv_all_access_datums_region[A.region])
-				priv_all_access_datums_region[A.region] = list()
-			priv_all_access_datums_region[A.region] += A
+			if(!GLOB.priv_all_access_datums_region[A.region])
+				GLOB.priv_all_access_datums_region[A.region] = list()
+			GLOB.priv_all_access_datums_region[A.region] += A
 
-	return priv_all_access_datums_region.Copy()
+	return GLOB.priv_all_access_datums_region.Copy()
 
 /proc/get_access_ids(var/access_types = ACCESS_TYPE_ALL)
 	var/list/L = new()
@@ -159,7 +159,7 @@ GLOBAL_LIST_EMPTY(priv_region_access)
 			return "Supply"
 
 /proc/get_access_desc(id)
-	var/list/AS = priv_all_access_datums_id || get_all_access_datums_by_id()
+	var/list/AS = GLOB.priv_all_access_datums_id || get_all_access_datums_by_id()
 	var/datum/access/A = AS["[id]"]
 
 	return A ? A.desc : ""
@@ -168,7 +168,7 @@ GLOBAL_LIST_EMPTY(priv_region_access)
 	return get_access_desc(A)
 
 /proc/get_access_by_id(id)
-	var/list/AS = priv_all_access_datums_id || get_all_access_datums_by_id()
+	var/list/AS = GLOB.priv_all_access_datums_id || get_all_access_datums_by_id()
 	return AS[num2text(id)]
 
 /proc/get_all_jobs()

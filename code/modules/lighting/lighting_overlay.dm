@@ -23,7 +23,7 @@ GLOBAL_VAR_INIT(total_lighting_overlays, 0)
 	var/turf/T = loc //If this runtimes atleast we'll know what's creating overlays outside of GLOB.turfs.
 	if(T.dynamic_lighting)
 		. = ..()
-		GLOB.verbs.Cut()
+		verbs.Cut()
 		GLOB.total_lighting_overlays++
 
 		T.lighting_overlay = src

@@ -138,7 +138,7 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 				for(var/block=1;block<=DNA_SE_LENGTH;block++)
 					if(((block-1)%5)==0)
 						body += "</tr><tr><th>[block-1]</th>"
-					bname = assigned_blocks[block]
+					bname = GLOB.assigned_blocks[block]
 					body += "<td>"
 					if(bname)
 						var/bstate=M.dna.GetSEState(block)
@@ -195,8 +195,8 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 	// language toggles
 	body += "<br><br><b>Languages:</b><br>"
 	var/f = 1
-	for(var/k in all_languages)
-		var/datum/language/L = all_languages[k]
+	for(var/k in GLOB.all_languages)
+		var/datum/language/L = GLOB.all_languages[k]
 		if(!(L.flags & INNATE))
 			if(!f) body += " | "
 			else f = 0
@@ -1426,7 +1426,7 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 	set name = "Send Fax"
 	set desc = "Sends a fax to this machine"
 	var/department = input("Choose a fax", "Fax") as null|anything in GLOB.alldepartments
-	for(var/obj/machinery/photocopier/faxmachine/sendto in allfaxes)
+	for(var/obj/machinery/photocopier/faxmachine/sendto in GLOB.allfaxes)
 		if(sendto.department == department)
 
 			if (!istype(src,/datum/admins))

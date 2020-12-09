@@ -1,7 +1,7 @@
 // READ: Don't use the apostrophe in name or desc. Causes script errors.
 
 GLOBAL_LIST_INIT(powers, typesof(/datum/power/changeling) - /datum/power/changeling)	//needed for the badmin verb for now
-var/list/datum/power/changeling/powerinstances = list()
+GLOBAL_LIST_EMPTY_TYPED(powerinstances, /datum/power/changeling)
 
 /datum/power			//Could be used by other antags too
 	var/name = "Power"
@@ -184,9 +184,9 @@ var/list/datum/power/changeling/powerinstances = list()
 	if(!usr || !usr.mind || !usr.mind.changeling)	return
 	src = usr.mind.changeling
 
-	if(!powerinstances.len)
+	if(!GLOB.powerinstances.len)
 		for(var/P in GLOB.powers)
-			powerinstances += new P()
+			GLOB.powerinstances += new P()
 
 	var/dat = "<html><head><title>Changling Evolution Menu</title></head>"
 
@@ -398,7 +398,7 @@ var/list/datum/power/changeling/powerinstances = list()
 		<table width='560' align='center' cellspacing='0' cellpadding='5' id='maintable_data'>"}
 
 	var/i = 1
-	for(var/datum/power/changeling/P in powerinstances)
+	for(var/datum/power/changeling/P in GLOB.powerinstances)
 		var/ownsthis = 0
 
 		if(P in purchasedpowers)
@@ -465,7 +465,7 @@ var/list/datum/power/changeling/powerinstances = list()
 	var/datum/power/changeling/Thepower = Pname
 
 
-	for (var/datum/power/changeling/P in powerinstances)
+	for (var/datum/power/changeling/P in GLOB.powerinstances)
 //		log_debug("[P] - [Pname] = [P.name == Pname ? "True" : "False"]")
 
 		if(P.name == Pname)

@@ -50,18 +50,18 @@ GLOBAL_VAR_INIT(machinery_sort_required, 0)
 		SCHECK
 
 /datum/controller/process/machinery/proc/internal_process_pipenets()
-	for(last_object in pipe_networks)
+	for(last_object in GLOB.pipe_networks)
 		var/datum/pipe_network/pipeNetwork = last_object
 		if(istype(pipeNetwork) && !QDELETED(pipeNetwork))
 			pipeNetwork.process()
 			SCHECK
 			continue
 
-		pipe_networks.Remove(pipeNetwork)
+		GLOB.pipe_networks.Remove(pipeNetwork)
 
 /datum/controller/process/machinery/statProcess()
 	..()
 	stat(null, "[GLOB.machines.len] GLOB.machines")
 	stat(null, "[GLOB.powernets.len] GLOB.powernets")
-	stat(null, "[pipe_networks.len] pipenets")
+	stat(null, "[GLOB.pipe_networks.len] pipenets")
 	stat(null, "[GLOB.processing_power_items.len] power item\s")

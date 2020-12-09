@@ -1,4 +1,4 @@
-var/list/datum/list_of_ais = list()
+GLOBAL_LIST_EMPTY_TYPED(list_of_ais, /datum)
 
 /datum/controller/process/ai/setup()
 	name = "ai"
@@ -6,19 +6,19 @@ var/list/datum/list_of_ais = list()
 	start_delay = 17
 
 /datum/controller/process/ai/doWork()
-	for(last_object in list_of_ais)
+	for(last_object in GLOB.list_of_ais)
 		var/datum/ai/AI = last_object
 		if(!QDELETED(AI) && istype(AI))
 			try
 				if(AI.process() == PROCESS_KILL)
-					list_of_ais -= AI
+					GLOB.list_of_ais -= AI
 			catch(var/exception/e)
 				catchException(e, AI)
 			SCHECK
 		else
 			catchBadType(AI)
-			list_of_ais -= AI
+			GLOB.list_of_ais -= AI
 
 /datum/controller/process/ai/statProcess()
 	..()
-	stat(null, "[list_of_ais.len] AI\s")
+	stat(null, "[GLOB.list_of_ais.len] AI\s")

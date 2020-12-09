@@ -321,27 +321,27 @@ GLOBAL_LIST_INIT(admin_verbs_mentor, list(
 
 /client/proc/add_admin_verbs()
 	if(holder)
-		GLOB.verbs += GLOB.admin_verbs_default
-		if(holder.rights & R_BUILDMODE)		GLOB.verbs += /client/proc/togglebuildmodeself
-		if(holder.rights & R_ADMIN)			GLOB.verbs += GLOB.admin_verbs_admin
-		if(holder.rights & R_BAN)			GLOB.verbs += GLOB.admin_verbs_ban
-		if(holder.rights & R_FUN)			GLOB.verbs += GLOB.admin_verbs_fun
-		if(holder.rights & R_SERVER)		GLOB.verbs += GLOB.admin_verbs_server
+		verbs += GLOB.admin_verbs_default
+		if(holder.rights & R_BUILDMODE)		verbs += /client/proc/togglebuildmodeself
+		if(holder.rights & R_ADMIN)			verbs += GLOB.admin_verbs_admin
+		if(holder.rights & R_BAN)			verbs += GLOB.admin_verbs_ban
+		if(holder.rights & R_FUN)			verbs += GLOB.admin_verbs_fun
+		if(holder.rights & R_SERVER)		verbs += GLOB.admin_verbs_server
 		if(holder.rights & R_DEBUG)
-			GLOB.verbs += GLOB.admin_verbs_debug
+			verbs += GLOB.admin_verbs_debug
 			if(config.debugparanoid && !(holder.rights & R_ADMIN))
-				GLOB.verbs.Remove(GLOB.admin_verbs_paranoid_debug)			//Right now it's just callproc but we can easily add others later on.
-		if(holder.rights & R_POSSESS)		GLOB.verbs += GLOB.admin_verbs_possess
-		if(holder.rights & R_PERMISSIONS)	GLOB.verbs += GLOB.admin_verbs_permissions
-		if(holder.rights & R_STEALTH)		GLOB.verbs += /client/proc/stealth
-		if(holder.rights & R_REJUVINATE)	GLOB.verbs += GLOB.admin_verbs_rejuv
-		if(holder.rights & R_SOUNDS)		GLOB.verbs += GLOB.admin_verbs_sounds
-		if(holder.rights & R_SPAWN)			GLOB.verbs += GLOB.admin_verbs_spawn
-		if(holder.rights & R_MOD)			GLOB.verbs += GLOB.admin_verbs_mod
-		if(holder.rights & R_MENTOR)		GLOB.verbs += GLOB.admin_verbs_mentor
+				verbs.Remove(GLOB.admin_verbs_paranoid_debug)			//Right now it's just callproc but we can easily add others later on.
+		if(holder.rights & R_POSSESS)		verbs += GLOB.admin_verbs_possess
+		if(holder.rights & R_PERMISSIONS)	verbs += GLOB.admin_verbs_permissions
+		if(holder.rights & R_STEALTH)		verbs += /client/proc/stealth
+		if(holder.rights & R_REJUVINATE)	verbs += GLOB.admin_verbs_rejuv
+		if(holder.rights & R_SOUNDS)		verbs += GLOB.admin_verbs_sounds
+		if(holder.rights & R_SPAWN)			verbs += GLOB.admin_verbs_spawn
+		if(holder.rights & R_MOD)			verbs += GLOB.admin_verbs_mod
+		if(holder.rights & R_MENTOR)		verbs += GLOB.admin_verbs_mentor
 
 /client/proc/remove_admin_verbs()
-	GLOB.verbs.Remove(
+	verbs.Remove(
 		GLOB.admin_verbs_default,
 		/client/proc/togglebuildmodeself,
 		GLOB.admin_verbs_admin,
@@ -362,8 +362,8 @@ GLOBAL_LIST_INIT(admin_verbs_mentor, list(
 	set name = "AdminGLOB.verbs - Hide Most"
 	set category = "Admin"
 
-	GLOB.verbs.Remove(/client/proc/hide_most_verbs, GLOB.admin_verbs_hideable)
-	GLOB.verbs += /client/proc/show_verbs
+	verbs.Remove(/client/proc/hide_most_verbs, GLOB.admin_verbs_hideable)
+	verbs += /client/proc/show_verbs
 
 	to_chat(src, "<span class='interface'>Most of your adminverbs have been hidden.</span>")
 	feedback_add_details("admin_verb","HMV") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -374,7 +374,7 @@ GLOBAL_LIST_INIT(admin_verbs_mentor, list(
 	set category = "Admin"
 
 	remove_admin_verbs()
-	GLOB.verbs += /client/proc/show_verbs
+	verbs += /client/proc/show_verbs
 
 	to_chat(src, "<span class='interface'>Almost all of your adminverbs have been hidden.</span>")
 	feedback_add_details("admin_verb","TAVVH") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -384,7 +384,7 @@ GLOBAL_LIST_INIT(admin_verbs_mentor, list(
 	set name = "AdminGLOB.verbs - Show"
 	set category = "Admin"
 
-	GLOB.verbs -= /client/proc/show_verbs
+	verbs -= /client/proc/show_verbs
 	add_admin_verbs()
 
 	to_chat(src, "<span class='interface'>All of your adminverbs are now visible.</span>")
@@ -676,7 +676,7 @@ GLOBAL_LIST_INIT(admin_verbs_mentor, list(
 		log_admin("[src] re-admined themself.")
 		message_admins("[src] re-admined themself.", 1)
 		to_chat(src, "<span class='interface'>You now have the keys to control the planet, or atleast a small space station</span>")
-		GLOB.verbs -= /client/proc/readmin_self
+		verbs -= /client/proc/readmin_self
 
 /client/proc/deadmin_self()
 	set name = "De-admin self"
@@ -688,7 +688,7 @@ GLOBAL_LIST_INIT(admin_verbs_mentor, list(
 			message_admins("[src] deadmined themself.", 1)
 			deadmin()
 			to_chat(src, "<span class='interface'>You are now a normal player.</span>")
-			GLOB.verbs |= /client/proc/readmin_self
+			verbs |= /client/proc/readmin_self
 	feedback_add_details("admin_verb","DAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/toggle_log_hrefs()
@@ -790,7 +790,7 @@ GLOBAL_LIST_INIT(admin_verbs_mentor, list(
 		set_security_level(sec_level)
 
 
-//---- bs12 GLOB.verbs ----
+//---- bs12 verbs ----
 
 /client/proc/mod_panel()
 	set name = "Moderator Panel"

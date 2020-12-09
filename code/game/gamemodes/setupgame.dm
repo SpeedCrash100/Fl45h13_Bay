@@ -11,8 +11,8 @@
 		return 0
 	var/assigned = pick(blocksLeft)
 	blocksLeft.Remove(assigned)
-	assigned_blocks[assigned]=name
-	dna_activity_bounds[assigned]=activity_bounds
+	GLOB.assigned_blocks[assigned]=name
+	GLOB.dna_activity_bounds[assigned]=activity_bounds
 	//testing("[name] assigned to block #[assigned].")
 	return assigned
 
@@ -75,7 +75,7 @@
 		if(G.block)
 			if(G.block in blocks_assigned)
 				warning("DNA2: Gene [G.name] trying to use already-assigned block [G.block] (used by [english_list(blocks_assigned[G.block])])")
-			dna_genes.Add(G)
+			GLOB.dna_genes.Add(G)
 			var/list/assignedToBlock[0]
 			if(blocks_assigned[G.block])
 				assignedToBlock=blocks_assigned[G.block]

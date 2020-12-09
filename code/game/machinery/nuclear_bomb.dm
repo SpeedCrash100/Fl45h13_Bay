@@ -404,7 +404,7 @@ var/bomb_set
 
 /obj/machinery/nuclearbomb/station/initialize()
 	..()
-	GLOB.verbs -= /obj/machinery/nuclearbomb/verb/toggle_deployable
+	verbs -= /obj/machinery/nuclearbomb/verb/toggle_deployable
 	for(var/turf/simulated/floor/T in trange(1, src))
 		T.set_flooring(get_flooring_data(/decl/flooring/reinforced/circuit/red))
 		flash_tiles += T

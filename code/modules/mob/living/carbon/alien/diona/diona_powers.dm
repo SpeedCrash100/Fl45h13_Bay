@@ -36,8 +36,8 @@
 	H.status_flags |= PASSEMOTES
 	to_chat(src, "You feel your being twine with that of \the [H] as you merge with its biomass.")
 	loc = H
-	GLOB.verbs += /mob/living/carbon/alien/diona/proc/split
-	GLOB.verbs -= /mob/living/carbon/alien/diona/proc/merge
+	verbs += /mob/living/carbon/alien/diona/proc/split
+	verbs -= /mob/living/carbon/alien/diona/proc/merge
 	return 1
 
 /mob/living/carbon/alien/diona/proc/split()

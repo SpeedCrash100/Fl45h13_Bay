@@ -85,8 +85,8 @@
 		S.add_ion_law(law)
 		S.show_laws()
 
-	if(message_servers)
-		for (var/obj/machinery/message_server/MS in message_servers)
+	if(GLOB.message_servers)
+		for (var/obj/machinery/message_server/MS in GLOB.message_servers)
 			MS.spamfilter.Cut()
 			var/i
 			for (i = 1, i <= MS.spamfilter_limit, i++)

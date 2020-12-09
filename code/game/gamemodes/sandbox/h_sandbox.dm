@@ -23,7 +23,7 @@ mob
 				sandbox.owner = src.ckey
 				if(src.client.holder)
 					sandbox.admin = 1
-				GLOB.verbs += new/mob/proc/sandbox_panel
+				verbs += new/mob/proc/sandbox_panel
 		sandbox_panel()
 			if(sandbox)
 				sandbox.update()

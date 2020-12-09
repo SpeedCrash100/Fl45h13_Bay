@@ -56,9 +56,9 @@
 
 		if(holder.dna)
 			dna = holder.dna.Clone()
-			species = all_species[dna.species]
+			species = GLOB.all_species[dna.species]
 		else
-			species = all_species[SPECIES_HUMAN]
+			species = GLOB.all_species[SPECIES_HUMAN]
 			log_debug("[src] spawned in [holder] without a proper DNA.")
 
 	if(dna)
@@ -78,7 +78,7 @@
 			blood_DNA = list()
 		blood_DNA.Cut()
 		blood_DNA[dna.unique_enzymes] = dna.b_type
-		species = all_species[new_dna.species]
+		species = GLOB.all_species[new_dna.species]
 
 /obj/item/organ/proc/die()
 	damage = max_damage

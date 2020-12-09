@@ -226,7 +226,7 @@
 /obj/item/clothing/mask/rubber/species/New()
 	..()
 	visible_name = species
-	var/datum/species/S = all_species[species]
+	var/datum/species/S = GLOB.all_species[species]
 	if(istype(S))
 		visible_name = S.get_random_name(pick(MALE,FEMALE))
 

@@ -10,9 +10,9 @@
 	hacked_apcs = list()
 	recalc_cpu()
 
-	GLOB.verbs += new/datum/game_mode/malfunction/verb/ai_select_hardware()
-	GLOB.verbs += new/datum/game_mode/malfunction/verb/ai_select_research()
-	GLOB.verbs += new/datum/game_mode/malfunction/verb/ai_help()
+	verbs += new/datum/game_mode/malfunction/verb/ai_select_hardware()
+	verbs += new/datum/game_mode/malfunction/verb/ai_select_research()
+	verbs += new/datum/game_mode/malfunction/verb/ai_help()
 
 	log_ability_use(src, "became malfunctioning AI")
 	// And greet user with some OOC info.
