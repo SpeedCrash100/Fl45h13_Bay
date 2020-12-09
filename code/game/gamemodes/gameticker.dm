@@ -41,16 +41,16 @@ var/global/datum/controller/gameticker/ticker
 			pregame_timeleft = 180
 		else
 			pregame_timeleft = 15
-			if(!isnull(secondary_mode))
-				master_mode = secondary_mode
-				secondary_mode = null
-			else if(!isnull(tertiary_mode))
-				master_mode = tertiary_mode
-				tertiary_mode = null
+			if(!isnull(GLOB.secondary_mode))
+				GLOB.master_mode = GLOB.secondary_mode
+				GLOB.secondary_mode = null
+			else if(!isnull(GLOB.tertiary_mode))
+				GLOB.master_mode = GLOB.tertiary_mode
+				GLOB.tertiary_mode = null
 			else
-				master_mode = "extended"
+				GLOB.master_mode = "extended"
 
-		to_world("<b>Trying to start [master_mode]...</b>")
+		to_world("<b>Trying to start [GLOB.master_mode]...</b>")
 		to_world("<B><FONT color='blue'>Welcome to the pre-game lobby!</FONT></B>")
 		to_world("Please, setup your character and select ready. Game will start in [pregame_timeleft] seconds")
 
@@ -58,7 +58,7 @@ var/global/datum/controller/gameticker/ticker
 			for(var/i=0, i<10, i++)
 				sleep(1)
 				vote.process()
-			if(round_progressing)
+			if(GLOB.round_progressing)
 				pregame_timeleft--
 			if(pregame_timeleft == config.vote_autogamemode_timeleft && !gamemode_voted)
 				gamemode_voted = 1
@@ -68,34 +68,34 @@ var/global/datum/controller/gameticker/ticker
 						for(var/i=0, i<10, i++)
 							sleep(1)
 							vote.process()
-			if(pregame_timeleft <= 0 || ((initialization_stage & INITIALIZATION_NOW_AND_COMPLETE) == INITIALIZATION_NOW_AND_COMPLETE))
+			if(pregame_timeleft <= 0 || ((GLOB.initialization_stage & INITIALIZATION_NOW_AND_COMPLETE) == INITIALIZATION_NOW_AND_COMPLETE))
 				current_state = GAME_STATE_SETTING_UP
 	while (!setup())
 
 
 /datum/controller/gameticker/proc/setup()
 	//Create and announce mode
-	if(master_mode=="secret")
+	if(GLOB.master_mode=="secret")
 		src.hide_mode = 1
 	else
 		src.hide_mode = 0
 
 	var/list/runnable_modes = config.get_runnable_modes()
-	if((master_mode=="random") || (master_mode=="secret"))
+	if((GLOB.master_mode=="random") || (GLOB.master_mode=="secret"))
 		if(!runnable_modes.len)
 			current_state = GAME_STATE_PREGAME
 			to_world("<B>Unable to choose playable game mode.</B> Reverting to pre-game lobby.")
 
 			return 0
-		if(secret_force_mode != "secret")
-			src.mode = config.pick_mode(secret_force_mode)
+		if(GLOB.secret_force_mode != "secret")
+			src.mode = config.pick_mode(GLOB.secret_force_mode)
 		if(!src.mode)
 			var/list/weighted_modes = list()
 			for(var/datum/game_mode/GM in runnable_modes)
 				weighted_modes[GM.config_tag] = config.probabilities[GM.config_tag]
 			src.mode = GLOB.gamemode_cache[pickweight(weighted_modes)]
 	else
-		src.mode = config.pick_mode(master_mode)
+		src.mode = config.pick_mode(GLOB.master_mode)
 
 	if(!src.mode)
 		current_state = GAME_STATE_PREGAME
@@ -330,7 +330,7 @@ var/global/datum/controller/gameticker/ticker
 			game_finished = (evacuation_controller.round_over() || mode.station_was_nuked)
 			mode_finished = (!post_game && mode.check_finished())
 		else
-			game_finished = (mode.check_finished() || (evacuation_controller.round_over() && evacuation_controller.emergency_evacuation) || universe_has_ended)
+			game_finished = (mode.check_finished() || (evacuation_controller.round_over() && evacuation_controller.emergency_evacuation) || GLOB.universe_has_ended)
 			mode_finished = game_finished
 
 		if(!mode.explosion_in_progress && game_finished && (mode_finished || post_game))
@@ -347,7 +347,7 @@ var/global/datum/controller/gameticker/ticker
 						sleep(50)
 
 				callHook("roundend")
-				if (universe_has_ended)
+				if (GLOB.universe_has_ended)
 					if(mode.station_was_nuked)
 						feedback_set_details("end_proper","nuke")
 					else

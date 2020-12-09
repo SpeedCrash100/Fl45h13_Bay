@@ -44,12 +44,12 @@ datum/controller/game_controller/proc/setup()
 	transfer_controller = new
 
 	report_progress("Initializations complete")
-	initialization_stage |= INITIALIZATION_COMPLETE
+	GLOB.initialization_stage |= INITIALIZATION_COMPLETE
 
 #ifdef UNIT_TEST
 #define CHECK_SLEEP_MASTER // For unit tests we don't care about a smooth lobby screen experience. We care about speed.
 #else
-#define CHECK_SLEEP_MASTER if(!(initialization_stage & INITIALIZATION_NOW) && ++initialized_objects > 500) { initialized_objects=0;sleep(world.tick_lag); }
+#define CHECK_SLEEP_MASTER if(!(GLOB.initialization_stage & INITIALIZATION_NOW) && ++initialized_objects > 500) { initialized_objects=0;sleep(world.tick_lag); }
 #endif
 
 datum/controller/game_controller/proc/setup_objects()
@@ -62,7 +62,7 @@ datum/controller/game_controller/proc/setup_objects()
 	//Set up spawn points.
 	populate_spawn_points()
 
-	initialization_stage |= INITIALIZATION_HAS_BEGUN
+	GLOB.initialization_stage |= INITIALIZATION_HAS_BEGUN
 
 	report_progress("Initializing turbolifts")
 	for(var/thing in GLOB.turbolifts)

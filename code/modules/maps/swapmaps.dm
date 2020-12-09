@@ -141,7 +141,7 @@ swapmap
 	New(_id,x,y,z)
 		if(isnull(_id)) return
 		id=_id
-		mode=swapmaps_mode
+		mode=GLOB.swapmaps_mode
 		if(isturf(x) && isturf(y))
 			/*
 				Special format: Defines a map as an existing set of GLOB.turfs;
@@ -540,11 +540,11 @@ proc/SwapMaps_Load(id)
 	if(!M)
 		var/savefile/S
 		var/text=0
-		if(swapmaps_mode==GLOB.SWAPMAPS_TEXT && fexists("map_[id].txt"))
+		if(GLOB.swapmaps_mode==GLOB.SWAPMAPS_TEXT && fexists("map_[id].txt"))
 			text=1
 		else if(fexists("map_[id].sav"))
 			S=new("map_[id].sav")
-		else if(swapmaps_mode!=GLOB.SWAPMAPS_TEXT && fexists("map_[id].txt"))
+		else if(GLOB.swapmaps_mode!=GLOB.SWAPMAPS_TEXT && fexists("map_[id].txt"))
 			text=1
 		else return	// no file found
 		if(text)
@@ -581,11 +581,11 @@ proc/SwapMaps_CreateFromTemplate(template_id)
 	var/swapmap/M=new
 	var/savefile/S
 	var/text=0
-	if(swapmaps_mode==GLOB.SWAPMAPS_TEXT && fexists("map_[template_id].txt"))
+	if(GLOB.swapmaps_mode==GLOB.SWAPMAPS_TEXT && fexists("map_[template_id].txt"))
 		text=1
 	else if(fexists("map_[template_id].sav"))
 		S=new("map_[template_id].sav")
-	else if(swapmaps_mode!=GLOB.SWAPMAPS_TEXT && fexists("map_[template_id].txt"))
+	else if(GLOB.swapmaps_mode!=GLOB.SWAPMAPS_TEXT && fexists("map_[template_id].txt"))
 		text=1
 	else
 		to_world_log("SwapMaps error in SwapMaps_CreateFromTemplate(): map_[template_id] file not found.")
@@ -608,11 +608,11 @@ proc/SwapMaps_LoadChunk(chunk_id,turf/locorner)
 	var/swapmap/M=new
 	var/savefile/S
 	var/text=0
-	if(swapmaps_mode==GLOB.SWAPMAPS_TEXT && fexists("map_[chunk_id].txt"))
+	if(GLOB.swapmaps_mode==GLOB.SWAPMAPS_TEXT && fexists("map_[chunk_id].txt"))
 		text=1
 	else if(fexists("map_[chunk_id].sav"))
 		S=new("map_[chunk_id].sav")
-	else if(swapmaps_mode!=GLOB.SWAPMAPS_TEXT && fexists("map_[chunk_id].txt"))
+	else if(GLOB.swapmaps_mode!=GLOB.SWAPMAPS_TEXT && fexists("map_[chunk_id].txt"))
 		text=1
 	else
 		to_world_log("SwapMaps error in SwapMaps_LoadChunk(): map_[chunk_id] file not found.")
@@ -646,7 +646,7 @@ proc/SwapMaps_SaveChunk(chunk_id,turf/corner1,turf/corner2)
 	M.x2=max(corner1.x,corner2.x)
 	M.y2=max(corner1.y,corner2.y)
 	M.z2=max(corner1.z,corner2.z)
-	M.mode=swapmaps_mode
+	M.mode=GLOB.swapmaps_mode
 	M.Save()
 	while(M.locked) sleep(1)
 	qdel(M)
@@ -655,11 +655,11 @@ proc/SwapMaps_SaveChunk(chunk_id,turf/corner1,turf/corner2)
 proc/SwapMaps_GetSize(id)
 	var/savefile/S
 	var/text=0
-	if(swapmaps_mode==GLOB.SWAPMAPS_TEXT && fexists("map_[id].txt"))
+	if(GLOB.swapmaps_mode==GLOB.SWAPMAPS_TEXT && fexists("map_[id].txt"))
 		text=1
 	else if(fexists("map_[id].sav"))
 		S=new("map_[id].sav")
-	else if(swapmaps_mode!=GLOB.SWAPMAPS_TEXT && fexists("map_[id].txt"))
+	else if(GLOB.swapmaps_mode!=GLOB.SWAPMAPS_TEXT && fexists("map_[id].txt"))
 		text=1
 	else
 		to_world_log("SwapMaps error in SwapMaps_GetSize(): map_[id] file not found.")

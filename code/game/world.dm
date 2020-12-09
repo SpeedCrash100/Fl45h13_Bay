@@ -2,21 +2,21 @@ GLOBAL_VAR_INIT(server_name, "Baystation 12")
 
 GLOBAL_VAR_INIT(game_id, null) 
 /hook/global_init/proc/generate_gameid()
-	if(game_id != null)
+	if(GLOB.game_id != null)
 		return
-	game_id = ""
+	GLOB.game_id = ""
 
 	var/list/c = list("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0")
 	var/l = c.len
 
 	var/t = world.timeofday
 	for(var/_ = 1 to 4)
-		game_id = "[c[(t % l) + 1]][game_id]"
+		GLOB.game_id = "[c[(t % l) + 1]][GLOB.game_id]"
 		t = round(t / l)
-	game_id = "-[game_id]"
+	GLOB.game_id = "-[GLOB.game_id]"
 	t = round(world.realtime / (10 * 60 * 60 * 24))
 	for(var/_ = 1 to 3)
-		game_id = "[c[(t % l) + 1]][game_id]"
+		GLOB.game_id = "[c[(t % l) + 1]][GLOB.game_id]"
 		t = round(t / l)
 	return 1
 
@@ -67,14 +67,14 @@ GLOBAL_VAR_INIT(game_id, null)
 #define RECOMMENDED_VERSION 511
 /world/New()
 	//set window title
-	name = "[server_name] - [GLOB.using_map.full_name]"
+	name = "[GLOB.server_name] - [GLOB.using_map.full_name]"
 
 	//logs
 	var/date_string = time2text(world.realtime, "YYYY/MM-Month/DD-Day")
-	href_logfile = file("data/logs/[date_string] hrefs.htm")
-	diary = file("data/logs/[date_string].log")
-	to_file(diary, "[log_end]\n[log_end]\nStarting up. (ID: [game_id]) [time2text(world.timeofday, "hh:mm.ss")][log_end]\n---------------------[log_end]")
-	changelog_hash = md5('html/changelog.html')					//used for telling if the changelog has changed recently
+	GLOB.href_logfile = file("data/logs/[date_string] hrefs.htm")
+	GLOB.diary = file("data/logs/[date_string].log")
+	to_file(GLOB.diary, "[GLOB.log_end]\n[GLOB.log_end]\nStarting up. (ID: [GLOB.game_id]) [time2text(world.timeofday, "hh:mm.ss")][GLOB.log_end]\n---------------------[GLOB.log_end]")
+	GLOB.changelog_hash = md5('html/changelog.html')					//used for telling if the changelog has changed recently
 
 	if(byond_version < RECOMMENDED_VERSION)
 		to_world_log("Your server's byond version does not meet the recommended requirements for this server. Please update BYOND")
@@ -88,8 +88,8 @@ GLOBAL_VAR_INIT(game_id, null)
 		config.server_name += " #[(world.port % 1000) / 100]"
 
 	if(config && config.log_runtime)
-		var/runtime_log = file("data/logs/runtime/[date_string]_[time2text(world.timeofday, "hh:mm")]_[game_id].log")
-		to_file(runtime_log, "Game [game_id] starting up at [time2text(world.timeofday, "hh:mm.ss")]")
+		var/runtime_log = file("data/logs/runtime/[date_string]_[time2text(world.timeofday, "hh:mm")]_[GLOB.game_id].log")
+		to_file(runtime_log, "Game [GLOB.game_id] starting up at [time2text(world.timeofday, "hh:mm.ss")]")
 		log = runtime_log
 
 	callHook("startup")
@@ -147,7 +147,7 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 
 /world/Topic(T, addr, master, key)
 	TGS_TOPIC	//redirect to server tools if necessary
-	to_file(diary, "TOPIC: \"[T]\", from:[addr], master:[master], key:[key][log_end]")
+	to_file(GLOB.diary, "TOPIC: \"[T]\", from:[addr], master:[master], key:[key][GLOB.log_end]")
 
 	if (T == "ping")
 		var/x = 1
@@ -165,7 +165,7 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 	else if (copytext(T,1,7) == "status")
 		var/input[] = params2list(T)
 		var/list/s = list()
-		s["version"] = game_version
+		s["version"] = GLOB.game_version
 		s["mode"] = PUBLIC_GAME_MODE
 		s["respawn"] = config.abandon_allowed
 		s["enter"] = config.enter_allowed
@@ -230,7 +230,7 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 
 	else if(T == "revision")
 		var/list/L = list()
-		L["gameid"] = game_id
+		L["gameid"] = GLOB.game_id
 		L["dm_version"] = DM_VERSION // DreamMaker version compiled in
 		L["dd_version"] = world.byond_version // DreamDaemon version running on
 
@@ -246,14 +246,14 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 	else if(copytext(T,1,5) == "laws")
 		var/input[] = params2list(T)
 		if(input["key"] != config.comms_password)
-			if(world_topic_spam_protect_ip == addr && abs(world_topic_spam_protect_time - world.time) < 50)
+			if(GLOB.world_topic_spam_protect_ip == addr && abs(GLOB.world_topic_spam_protect_time - world.time) < 50)
 
 				spawn(50)
-					world_topic_spam_protect_time = world.time
+					GLOB.world_topic_spam_protect_time = world.time
 					return "Bad Key (Throttled)"
 
-			world_topic_spam_protect_time = world.time
-			world_topic_spam_protect_ip = addr
+			GLOB.world_topic_spam_protect_time = world.time
+			GLOB.world_topic_spam_protect_ip = addr
 
 			return "Bad Key"
 
@@ -296,14 +296,14 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 	else if(copytext(T,1,5) == "info")
 		var/input[] = params2list(T)
 		if(input["key"] != config.comms_password)
-			if(world_topic_spam_protect_ip == addr && abs(world_topic_spam_protect_time - world.time) < 50)
+			if(GLOB.world_topic_spam_protect_ip == addr && abs(GLOB.world_topic_spam_protect_time - world.time) < 50)
 
 				spawn(50)
-					world_topic_spam_protect_time = world.time
+					GLOB.world_topic_spam_protect_time = world.time
 					return "Bad Key (Throttled)"
 
-			world_topic_spam_protect_time = world.time
-			world_topic_spam_protect_ip = addr
+			GLOB.world_topic_spam_protect_time = world.time
+			GLOB.world_topic_spam_protect_ip = addr
 
 			return "Bad Key"
 
@@ -364,14 +364,14 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 
 		var/input[] = params2list(T)
 		if(input["key"] != config.comms_password)
-			if(world_topic_spam_protect_ip == addr && abs(world_topic_spam_protect_time - world.time) < 50)
+			if(GLOB.world_topic_spam_protect_ip == addr && abs(GLOB.world_topic_spam_protect_time - world.time) < 50)
 
 				spawn(50)
-					world_topic_spam_protect_time = world.time
+					GLOB.world_topic_spam_protect_time = world.time
 					return "Bad Key (Throttled)"
 
-			world_topic_spam_protect_time = world.time
-			world_topic_spam_protect_ip = addr
+			GLOB.world_topic_spam_protect_time = world.time
+			GLOB.world_topic_spam_protect_ip = addr
 
 			return "Bad Key"
 
@@ -414,14 +414,14 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 		*/
 		var/input[] = params2list(T)
 		if(input["key"] != config.comms_password)
-			if(world_topic_spam_protect_ip == addr && abs(world_topic_spam_protect_time - world.time) < 50)
+			if(GLOB.world_topic_spam_protect_ip == addr && abs(GLOB.world_topic_spam_protect_time - world.time) < 50)
 
 				spawn(50)
-					world_topic_spam_protect_time = world.time
+					GLOB.world_topic_spam_protect_time = world.time
 					return "Bad Key (Throttled)"
 
-			world_topic_spam_protect_time = world.time
-			world_topic_spam_protect_ip = addr
+			GLOB.world_topic_spam_protect_time = world.time
+			GLOB.world_topic_spam_protect_ip = addr
 			return "Bad Key"
 
 		return show_player_info_irc(ckey(input["notes"]))
@@ -429,13 +429,13 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 	else if(copytext(T,1,4) == "age")
 		var/input[] = params2list(T)
 		if(input["key"] != config.comms_password)
-			if(world_topic_spam_protect_ip == addr && abs(world_topic_spam_protect_time - world.time) < 50)
+			if(GLOB.world_topic_spam_protect_ip == addr && abs(GLOB.world_topic_spam_protect_time - world.time) < 50)
 				spawn(50)
-					world_topic_spam_protect_time = world.time
+					GLOB.world_topic_spam_protect_time = world.time
 					return "Bad Key (Throttled)"
 
-			world_topic_spam_protect_time = world.time
-			world_topic_spam_protect_ip = addr
+			GLOB.world_topic_spam_protect_time = world.time
+			GLOB.world_topic_spam_protect_ip = addr
 			return "Bad Key"
 
 		var/age = get_player_age(input["age"])
@@ -452,13 +452,13 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 		if(!config.ban_comms_password)
 			return "Not enabled"
 		if(input["bankey"] != config.ban_comms_password)
-			if(world_topic_spam_protect_ip == addr && abs(world_topic_spam_protect_time - world.time) < 50)
+			if(GLOB.world_topic_spam_protect_ip == addr && abs(GLOB.world_topic_spam_protect_time - world.time) < 50)
 				spawn(50)
-					world_topic_spam_protect_time = world.time
+					GLOB.world_topic_spam_protect_time = world.time
 					return "Bad Key (Throttled)"
 
-			world_topic_spam_protect_time = world.time
-			world_topic_spam_protect_ip = addr
+			GLOB.world_topic_spam_protect_time = world.time
+			GLOB.world_topic_spam_protect_ip = addr
 			return "Bad Key"
 
 		var/target = ckey(input["target"])
@@ -516,8 +516,8 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 	var/list/Lines = file2list("data/mode.txt")
 	if(Lines.len)
 		if(Lines[1])
-			master_mode = Lines[1]
-			log_misc("Saved mode is '[master_mode]'")
+			GLOB.master_mode = Lines[1]
+			log_misc("Saved mode is '[GLOB.master_mode]'")
 
 /world/proc/save_mode(var/the_mode)
 	var/F = file("data/mode.txt")
@@ -529,7 +529,7 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 	return 1
 
 /world/proc/load_motd()
-	join_motd = file2text("config/motd.txt")
+	GLOB.join_motd = file2text("config/motd.txt")
 
 
 /proc/load_configuration()
@@ -594,7 +594,7 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 	s += "<b>[station_name()]</b>";
 	s += " ("
 	s += "<a href=\"http://\">" //Change this to wherever you want the hub to link to.
-//	s += "[game_version]"
+//	s += "[GLOB.game_version]"
 	s += "Default"  //Replace this with something else. Or ever better, delete it and uncomment the game version.
 	s += "</a>"
 	s += ")"
@@ -602,8 +602,8 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 	var/list/features = list()
 
 	if(ticker)
-		if(master_mode)
-			features += master_mode
+		if(GLOB.master_mode)
+			features += GLOB.master_mode
 	else
 		features += "<b>STARTING</b>"
 
@@ -664,31 +664,31 @@ GLOBAL_VAR_INIT(failed_old_db_connections, 0)
 
 proc/setup_database_connection()
 
-	if(failed_db_connections > FAILED_DB_CONNECTION_CUTOFF)	//If it failed to establish a connection more than 5 times in a row, don't bother attempting to conenct anymore.
+	if(GLOB.failed_db_connections > FAILED_DB_CONNECTION_CUTOFF)	//If it failed to establish a connection more than 5 times in a row, don't bother attempting to conenct anymore.
 		return 0
 
 	if(!dbcon)
 		dbcon = new()
 
-	var/user = sqlfdbklogin
-	var/pass = sqlfdbkpass
-	var/db = sqlfdbkdb
-	var/address = sqladdress
-	var/port = sqlport
+	var/user = GLOB.sqlfdbklogin
+	var/pass = GLOB.sqlfdbkpass
+	var/db = GLOB.sqlfdbkdb
+	var/address = GLOB.sqladdress
+	var/port = GLOB.sqlport
 
 	dbcon.Connect("dbi:mysql:[db]:[address]:[port]","[user]","[pass]")
 	. = dbcon.IsConnected()
 	if ( . )
-		failed_db_connections = 0	//If this connection succeeded, reset the failed connections counter.
+		GLOB.failed_db_connections = 0	//If this connection succeeded, reset the failed connections counter.
 	else
-		failed_db_connections++		//If it failed, increase the failed connections counter.
+		GLOB.failed_db_connections++		//If it failed, increase the failed connections counter.
 		to_world_log(dbcon.ErrorMsg())
 
 	return .
 
 //This proc ensures that the connection to the feedback database (global variable dbcon) is established
 proc/establish_db_connection()
-	if(failed_db_connections > FAILED_DB_CONNECTION_CUTOFF)
+	if(GLOB.failed_db_connections > FAILED_DB_CONNECTION_CUTOFF)
 		return 0
 
 	if(!dbcon || !dbcon.IsConnected())
@@ -707,31 +707,31 @@ proc/establish_db_connection()
 //These two procs are for the old database, while it's being phased out. See the tgstation.sql file in the SQL folder for more information.
 proc/setup_old_database_connection()
 
-	if(failed_old_db_connections > FAILED_DB_CONNECTION_CUTOFF)	//If it failed to establish a connection more than 5 times in a row, don't bother attempting to conenct anymore.
+	if(GLOB.failed_old_db_connections > FAILED_DB_CONNECTION_CUTOFF)	//If it failed to establish a connection more than 5 times in a row, don't bother attempting to conenct anymore.
 		return 0
 
 	if(!dbcon_old)
 		dbcon_old = new()
 
-	var/user = sqllogin
-	var/pass = sqlpass
-	var/db = sqldb
-	var/address = sqladdress
-	var/port = sqlport
+	var/user = GLOB.sqllogin
+	var/pass = GLOB.sqlpass
+	var/db = GLOB.sqldb
+	var/address = GLOB.sqladdress
+	var/port = GLOB.sqlport
 
 	dbcon_old.Connect("dbi:mysql:[db]:[address]:[port]","[user]","[pass]")
 	. = dbcon_old.IsConnected()
 	if ( . )
-		failed_old_db_connections = 0	//If this connection succeeded, reset the failed connections counter.
+		GLOB.failed_old_db_connections = 0	//If this connection succeeded, reset the failed connections counter.
 	else
-		failed_old_db_connections++		//If it failed, increase the failed connections counter.
+		GLOB.failed_old_db_connections++		//If it failed, increase the failed connections counter.
 		to_world_log(dbcon.ErrorMsg())
 
 	return .
 
 //This proc ensures that the connection to the feedback database (global variable dbcon) is established
 proc/establish_old_db_connection()
-	if(failed_old_db_connections > FAILED_DB_CONNECTION_CUTOFF)
+	if(GLOB.failed_old_db_connections > FAILED_DB_CONNECTION_CUTOFF)
 		return 0
 
 	if(!dbcon_old || !dbcon_old.IsConnected())

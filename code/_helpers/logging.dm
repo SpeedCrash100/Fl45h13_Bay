@@ -9,19 +9,19 @@ GLOBAL_VAR_INIT(log_end, world.system_type == UNIX ? ascii2text(13) : "")
 
 
 /proc/error(msg)
-	to_world_log("## ERROR: [msg][log_end]")
+	to_world_log("## ERROR: [msg][GLOB.log_end]")
 
 #define WARNING(MSG) warning("[MSG] in [__FILE__] at line [__LINE__] src: [src] usr: [usr].")
 //print a warning message to world.log
 /proc/warning(msg)
-	to_world_log("## WARNING: [msg][log_end]")
+	to_world_log("## WARNING: [msg][GLOB.log_end]")
 
 //print a testing-mode debug message to world.log
 /proc/testing(msg)
-	to_world_log("## TESTING: [msg][log_end]")
+	to_world_log("## TESTING: [msg][GLOB.log_end]")
 
 /proc/game_log(category, text)
-	to_file(diary, "\[[time_stamp()]] [game_id] [category]: [text][log_end]")
+	to_file(GLOB.diary, "\[[time_stamp()]] [GLOB.game_id] [category]: [text][GLOB.log_end]")
 
 /proc/log_admin(text)
 	GLOB.admin_log.Add(text)

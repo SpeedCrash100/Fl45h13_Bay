@@ -42,10 +42,10 @@ GLOBAL_VAR_INIT(ascii_yellow, "")
 GLOBAL_VAR_INIT(ascii_reset, "") 
 #else
 GLOBAL_VAR_INIT(ascii_esc, ascii2text(27)) 
-GLOBAL_VAR_INIT(ascii_red, "[ascii_esc]\[31m") 
-GLOBAL_VAR_INIT(ascii_green, "[ascii_esc]\[32m") 
-GLOBAL_VAR_INIT(ascii_yellow, "[ascii_esc]\[33m") 
-GLOBAL_VAR_INIT(ascii_reset, "[ascii_esc]\[0m") 
+GLOBAL_VAR_INIT(ascii_red, "[GLOB.ascii_esc]\[31m") 
+GLOBAL_VAR_INIT(ascii_green, "[GLOB.ascii_esc]\[32m") 
+GLOBAL_VAR_INIT(ascii_yellow, "[GLOB.ascii_esc]\[33m") 
+GLOBAL_VAR_INIT(ascii_reset, "[GLOB.ascii_esc]\[0m") 
 #endif
 
 
@@ -63,25 +63,25 @@ datum/unit_test
 	var/space_landmark
 
 datum/unit_test/proc/log_debug(var/message)
-	log_unit_test("[ascii_yellow]---  DEBUG  --- \[[name]\]: [message][ascii_reset]")
+	log_unit_test("[GLOB.ascii_yellow]---  DEBUG  --- \[[name]\]: [message][GLOB.ascii_reset]")
 
 datum/unit_test/proc/log_bad(var/message)
-	log_unit_test("[ascii_red]\[[name]\]: [message][ascii_reset]")
+	log_unit_test("[GLOB.ascii_red]\[[name]\]: [message][GLOB.ascii_reset]")
 
 datum/unit_test/proc/fail(var/message)
-	all_unit_tests_passed = 0
-	failed_unit_tests++
+	GLOB.all_unit_tests_passed = 0
+	GLOB.failed_unit_tests++
 	reported = 1
-	log_unit_test("[ascii_red]!!! FAILURE !!! \[[name]\]: [message][ascii_reset]")
+	log_unit_test("[GLOB.ascii_red]!!! FAILURE !!! \[[name]\]: [message][GLOB.ascii_reset]")
 
 datum/unit_test/proc/pass(var/message)
 	reported = 1
-	log_unit_test("[ascii_green]*** SUCCESS *** \[[name]\]: [message][ascii_reset]")
+	log_unit_test("[GLOB.ascii_green]*** SUCCESS *** \[[name]\]: [message][GLOB.ascii_reset]")
 
 datum/unit_test/proc/skip(var/message)
-	skipped_unit_tests++
+	GLOB.skipped_unit_tests++
 	reported = 1
-	log_unit_test("[ascii_yellow]--- SKIPPED --- \[[name]\]: [message][ascii_reset]")
+	log_unit_test("[GLOB.ascii_yellow]--- SKIPPED --- \[[name]\]: [message][GLOB.ascii_reset]")
 
 datum/unit_test/proc/start_test()
 	fail("No test proc.")
@@ -121,11 +121,11 @@ proc/load_unit_test_changes()
 	set waitfor = 0
 	#ifndef UNIT_TEST_COLOURED
 	if(world.system_type != UNIX) // Not a Unix/Linux/etc system, we probably don't want to print color escapes (unless UNIT_TEST_COLOURED was defined to force escapes)
-		ascii_esc = ""
-		ascii_red = ""
-		ascii_green = ""
-		ascii_yellow = ""
-		ascii_reset = ""
+		GLOB.ascii_esc = ""
+		GLOB.ascii_red = ""
+		GLOB.ascii_green = ""
+		GLOB.ascii_yellow = ""
+		GLOB.ascii_reset = ""
 	#endif
 
 	log_unit_test("Initializing Unit Testing")
@@ -160,18 +160,18 @@ proc/load_unit_test_changes()
 
 	var/list/test_datums = get_test_datums()
 	run_unit_tests(test_datums)
-	log_unit_test("Caught [total_runtimes] Runtime\s.")
+	log_unit_test("Caught [GLOB.total_runtimes] Runtime\s.")
 	del(world)
 
 /proc/run_unit_tests(var/list/test_datums, var/skip_disabled_tests = TRUE)
-	if(currently_running_tests)
+	if(GLOB.currently_running_tests)
 		log_unit_test("Already running unit tests")
 		return
-	currently_running_tests = 1
+	GLOB.currently_running_tests = 1
 
-	all_unit_tests_passed = 1
-	failed_unit_tests = 0
-	total_unit_tests = 0
+	GLOB.all_unit_tests_passed = 1
+	GLOB.failed_unit_tests = 0
+	GLOB.total_unit_tests = 0
 
 	var/list/async_test = list()
 	var/list/started_tests = list()
@@ -184,10 +184,10 @@ proc/load_unit_test_changes()
 		var/datum/unit_test/d = new test()
 
 		if(d.disabled && skip_disabled_tests)
-			d.pass("[ascii_red]Check Disabled: [d.why_disabled]")
+			d.pass("[GLOB.ascii_red]Check Disabled: [d.why_disabled]")
 			continue
 
-		total_unit_tests++
+		GLOB.total_unit_tests++
 		started_tests.Add(d)
 
 		if(world.time > end_unit_tests)
@@ -232,14 +232,14 @@ proc/load_unit_test_changes()
 			test.fail("Test failed to report a result.")
 
 	var/skipped_message = ""
-	if(skipped_unit_tests)
-		skipped_message = "| \[[skipped_unit_tests]\\[total_unit_tests]\] Unit Tests Skipped "
+	if(GLOB.skipped_unit_tests)
+		skipped_message = "| \[[GLOB.skipped_unit_tests]\\[GLOB.total_unit_tests]\] Unit Tests Skipped "
 
-	if(all_unit_tests_passed)
-		log_unit_test("[ascii_green]**** All Unit Tests Passed \[[total_unit_tests]\] [skipped_message]****[ascii_reset]")
+	if(GLOB.all_unit_tests_passed)
+		log_unit_test("[GLOB.ascii_green]**** All Unit Tests Passed \[[GLOB.total_unit_tests]\] [skipped_message]****[GLOB.ascii_reset]")
 	else
-		log_unit_test("[ascii_red]**** \[[failed_unit_tests]\\[total_unit_tests]\] Unit Tests Failed [skipped_message]****[ascii_reset]")
-	currently_running_tests = 0
+		log_unit_test("[GLOB.ascii_red]**** \[[GLOB.failed_unit_tests]\\[GLOB.total_unit_tests]\] Unit Tests Failed [skipped_message]****[GLOB.ascii_reset]")
+	GLOB.currently_running_tests = 0
 
 /proc/get_test_datums()
 	var/list/tests = list()

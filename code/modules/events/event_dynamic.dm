@@ -12,7 +12,7 @@
 			if(!event)
 				//CARN: checks to see if random events are enabled.
 				if(config.allow_random_events)
-					hadevent = event()
+					GLOB.hadevent = event()
 				else
 					Holiday_Random_Event()
 			else
@@ -50,7 +50,7 @@ GLOBAL_LIST_EMPTY(event_last_fired)
 	possibleEvents[/datum/event/mundane_news] = 300
 
 	possibleEvents[/datum/event/money_lotto] = max(min(5, GLOB.player_list.len), 50)
-	if(account_hack_attempted)
+	if(GLOB.account_hack_attempted)
 		possibleEvents[/datum/event/money_hacker] = max(min(25, GLOB.player_list.len) * 4, 200)
 
 
@@ -66,7 +66,7 @@ GLOBAL_LIST_EMPTY(event_last_fired)
 	possibleEvents[/datum/event/electrical_storm] = 15 * active_with_role["Janitor"] + 5 * active_with_role["Engineer"]
 	possibleEvents[/datum/event/wallrot] = 30 * active_with_role["Engineer"] + 50 * active_with_role["Gardener"]
 
-	if(!spacevines_spawned)
+	if(!GLOB.spacevines_spawned)
 		possibleEvents[/datum/event/spacevine] = 10 + 5 * active_with_role["Engineer"]
 	if(minutes_passed >= 30) // Give engineers time to set up engine
 		possibleEvents[/datum/event/meteor_wave] = 10 * active_with_role["Engineer"]
@@ -78,7 +78,7 @@ GLOBAL_LIST_EMPTY(event_last_fired)
 
 	possibleEvents[/datum/event/prison_break] = active_with_role["Security"] * 50
 	if(active_with_role["Security"] > 0)
-		if(!sent_spiders_to_station)
+		if(!GLOB.sent_spiders_to_station)
 			possibleEvents[/datum/event/spider_infestation] = max(active_with_role["Security"], 5) + 5
 		possibleEvents[/datum/event/random_antag] = max(active_with_role["Security"], 5) + 2.5
 
@@ -127,7 +127,7 @@ GLOBAL_LIST_EMPTY(event_last_fired)
 			base_chance = 1.1
 
 	// Trigger the event based on how likely it currently is.
-	if(!prob(chance * eventchance * base_chance / 100))
+	if(!prob(chance * GLOB.eventchance * base_chance / 100))
 		return 0*/
 
 	/*switch(picked_event)

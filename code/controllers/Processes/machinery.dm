@@ -13,8 +13,8 @@ GLOBAL_VAR_INIT(machinery_sort_required, 0)
 	internal_process_power_drain()
 
 /datum/controller/process/machinery/proc/internal_sort()
-	if(machinery_sort_required)
-		machinery_sort_required = 0
+	if(GLOB.machinery_sort_required)
+		GLOB.machinery_sort_required = 0
 		GLOB.machines = dd_sortedObjectList(GLOB.machines)
 
 /datum/controller/process/machinery/proc/internal_process_machinery()

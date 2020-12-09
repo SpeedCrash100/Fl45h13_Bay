@@ -8,7 +8,7 @@ GLOBAL_VAR_INIT(sent_spiders_to_station, 0)
 /datum/event/spider_infestation/setup()
 	announceWhen = rand(announceWhen, announceWhen + 60)
 	spawncount = rand(4 * severity, 6 * severity)	//spiderlings only have a 50% chance to grow big and strong
-	sent_spiders_to_station = 0
+	GLOB.sent_spiders_to_station = 0
 
 /datum/event/spider_infestation/announce()
 	GLOB.using_map.unidentified_lifesigns_announcement()

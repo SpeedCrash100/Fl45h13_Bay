@@ -31,9 +31,9 @@
 		fail("[missing_states] eye icon state\s [missing_states == 1 ? "is" : "are"] missing.")
 		var/list/difference = uniquemergelist(original_valid_states, valid_states)
 		if(difference.len)
-			log_unit_test("[ascii_yellow]---  DEBUG  --- ICON STATES AT START: " + jointext(original_valid_states, ",") + "[ascii_reset]")
-			log_unit_test("[ascii_yellow]---  DEBUG  --- ICON STATES AT END: "   + jointext(valid_states, ",") + "[ascii_reset]")
-			log_unit_test("[ascii_yellow]---  DEBUG  --- UNIQUE TO EACH LIST: " + jointext(difference, ",") + "[ascii_reset]")
+			log_unit_test("[GLOB.ascii_yellow]---  DEBUG  --- ICON STATES AT START: " + jointext(original_valid_states, ",") + "[GLOB.ascii_reset]")
+			log_unit_test("[GLOB.ascii_yellow]---  DEBUG  --- ICON STATES AT END: "   + jointext(valid_states, ",") + "[GLOB.ascii_reset]")
+			log_unit_test("[GLOB.ascii_yellow]---  DEBUG  --- UNIQUE TO EACH LIST: " + jointext(difference, ",") + "[GLOB.ascii_reset]")
 	else
 		pass("All related eye icon states exists.")
 	return 1

@@ -220,11 +220,11 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 	icon_dead = "chicken_[body_color]_dead"
 	pixel_x = rand(-6, 6)
 	pixel_y = rand(0, 10)
-	chicken_count += 1
+	GLOB.chicken_count += 1
 
 /mob/living/simple_animal/chicken/death(gibbed, deathmessage, show_dead_message)
 	..(gibbed, deathmessage, show_dead_message)
-	chicken_count -= 1
+	GLOB.chicken_count -= 1
 
 /mob/living/simple_animal/chicken/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/weapon/reagent_containers/food/snacks/grown)) //feedin' dem chickens
@@ -252,7 +252,7 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 		var/obj/item/weapon/reagent_containers/food/snacks/egg/E = new(get_turf(src))
 		E.pixel_x = rand(-6,6)
 		E.pixel_y = rand(-6,6)
-		if(chicken_count < GLOB.MAX_CHICKENS && prob(10))
+		if(GLOB.chicken_count < GLOB.MAX_CHICKENS && prob(10))
 			GLOB.processing_objects.Add(E)
 
 /obj/item/weapon/reagent_containers/food/snacks/egg/var/amount_grown = 0

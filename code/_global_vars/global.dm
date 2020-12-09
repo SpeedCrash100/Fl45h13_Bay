@@ -40,7 +40,7 @@ GLOBAL_VAR_INIT(secondary_mode, "extended")
 GLOBAL_VAR_INIT(tertiary_mode, "extended") 
 GLOBAL_VAR_INIT(secret_force_mode, "secret") // if this is anything but "secret", the secret rotation will forceably choose this mode.
 
-GLOBAL_VAR_INIT(host, null) //only here until check @ code\modules\ghosttrap\trap.dm:112 is fixed
+GLOBAL_VAR_INIT(hostName, null) //only here until check @ code\modules\ghosttrap\trap.dm:112 is fixed
 
 // GLOBAL_LIST_EMPTY(jobMax)
 GLOBAL_LIST_EMPTY(bombers)

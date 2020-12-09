@@ -76,8 +76,8 @@
 	else
 		T.source_terminal = source_db.machine_id
 
-		M.account_number = next_account_number
-		next_account_number += rand(1,25)
+		M.account_number = GLOB.next_account_number
+		GLOB.next_account_number += rand(1,25)
 
 		//create a sealed package containing the account details
 		var/obj/item/smallDelivery/P = new /obj/item/smallDelivery(source_db.loc)

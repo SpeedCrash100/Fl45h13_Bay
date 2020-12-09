@@ -11,7 +11,7 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0) // The ifdef needs to be down here, s
 		return ..()
 	if(!GLOB.error_last_seen) // A runtime is occurring too early in start-up initialization
 		return ..()
-	total_runtimes++
+	GLOB.total_runtimes++
 
 	var/erroruid = "[e.file][e.line]"
 	var/last_seen = GLOB.error_last_seen[erroruid]
@@ -21,7 +21,7 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0) // The ifdef needs to be down here, s
 		last_seen = world.time
 	if(cooldown < 0)
 		GLOB.error_cooldown[erroruid]-- // Used to keep track of skip count for this error
-		total_runtimes_skipped++
+		GLOB.total_runtimes_skipped++
 		return // Error is currently silenced, skip handling it
 
 	// Handle cooldowns and silencing spammy errors

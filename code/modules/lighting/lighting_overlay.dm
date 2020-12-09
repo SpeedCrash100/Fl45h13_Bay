@@ -24,7 +24,7 @@ GLOBAL_VAR_INIT(total_lighting_overlays, 0)
 	if(T.dynamic_lighting)
 		. = ..()
 		verbs.Cut()
-		total_lighting_overlays++
+		GLOB.total_lighting_overlays++
 
 		T.lighting_overlay = src
 		T.luminosity = 0
@@ -117,7 +117,7 @@ GLOBAL_VAR_INIT(total_lighting_overlays, 0)
 	return
 
 /atom/movable/lighting_overlay/Destroy()
-	total_lighting_overlays--
+	GLOB.total_lighting_overlays--
 	global.GLOB.lighting_update_overlays     -= src
 	global.GLOB.lighting_update_overlays_old -= src
 

@@ -71,11 +71,11 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 	name = "[department] Requests Console"
 	allConsoles += src
 	if (departmentType & RC_ASSIST)
-		req_console_assistance |= department
+		GLOB.req_console_assistance |= department
 	if (departmentType & RC_SUPPLY)
-		req_console_supplies |= department
+		GLOB.req_console_supplies |= department
 	if (departmentType & RC_INFO)
-		req_console_information |= department
+		GLOB.req_console_information |= department
 
 	set_light(1)
 
@@ -88,11 +88,11 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 			break
 	if(lastDeptRC)
 		if (departmentType & RC_ASSIST)
-			req_console_assistance -= department
+			GLOB.req_console_assistance -= department
 		if (departmentType & RC_SUPPLY)
-			req_console_supplies -= department
+			GLOB.req_console_supplies -= department
 		if (departmentType & RC_INFO)
-			req_console_information -= department
+			GLOB.req_console_information -= department
 	..()
 
 /obj/machinery/requests_console/attack_hand(user as mob)
@@ -110,9 +110,9 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 	data["silent"] = silent
 	data["announcementConsole"] = announcementConsole
 
-	data["assist_dept"] = req_console_assistance
-	data["supply_dept"] = req_console_supplies
-	data["info_dept"]   = req_console_information
+	data["assist_dept"] = GLOB.req_console_assistance
+	data["supply_dept"] = GLOB.req_console_supplies
+	data["info_dept"]   = GLOB.req_console_information
 
 	data["message"] = message
 	data["recipient"] = recipient

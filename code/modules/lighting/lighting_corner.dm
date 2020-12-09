@@ -32,7 +32,7 @@ GLOBAL_LIST_INIT(LIGHTING_CORNER_DIAGONAL, list(NORTHEAST, SOUTHEAST, SOUTHWEST,
 /datum/lighting_corner/New(var/turf/new_turf, var/diagonal)
 	. = ..()
 
-	total_lighting_corners++
+	GLOB.total_lighting_corners++
 
 	masters[new_turf] = turn(diagonal, 180)
 	z = new_turf.z

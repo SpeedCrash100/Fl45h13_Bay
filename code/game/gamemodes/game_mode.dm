@@ -142,7 +142,7 @@ GLOBAL_LIST_EMPTY(additional_antag_types)
 			antag_summary += "[antag.role_text_plural]"
 			i++
 		antag_summary += "."
-		if(antag_templates.len > 1 && master_mode != "secret")
+		if(antag_templates.len > 1 && GLOB.master_mode != "secret")
 			to_world("[antag_summary]")
 		else
 			message_admins("[antag_summary]")

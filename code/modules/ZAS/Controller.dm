@@ -134,7 +134,7 @@ Total Unsimulated GLOB.turfs: [world.maxx*world.maxy*world.maxz - simulated_turf
 
 	while(1)
 		Tick()
-		sleep(max(5,update_delay*tick_multiplier))
+		sleep(max(5,update_delay*GLOB.tick_multiplier))
 
 
 /datum/controller/air_system/proc/Tick()

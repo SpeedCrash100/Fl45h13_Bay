@@ -37,7 +37,7 @@ GLOBAL_VAR_INIT(photo_count, 0)
 	var/photo_size = 3
 
 /obj/item/weapon/photo/New()
-	id = photo_count++
+	id = GLOB.photo_count++
 
 /obj/item/weapon/photo/attack_self(mob/user as mob)
 	user.examinate(src)

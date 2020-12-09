@@ -43,7 +43,7 @@
 			area_good = 0
 
 		if(!A.air_vent_info.len && !(exemptions & GLOB.using_map.NO_VENT))
-			log_bad("[bad_msg] lacks an air vent.[ascii_reset]")
+			log_bad("[bad_msg] lacks an air vent.[GLOB.ascii_reset]")
 			area_good = 0
 		else if(A.air_vent_info.len && (exemptions & GLOB.using_map.NO_VENT))
 			log_bad("[bad_msg] is not supposed to have an air vent.")
@@ -84,7 +84,7 @@
 		cable_turfs |= get_turf(C)
 
 	for(T in cable_turfs)
-		var/bad_msg = "[ascii_red]--------------- [T.name] \[[T.x] / [T.y] / [T.z]\]"
+		var/bad_msg = "[GLOB.ascii_red]--------------- [T.name] \[[T.x] / [T.y] / [T.z]\]"
 		dirs_checked.Cut()
 		for(C in T)
 			wire_test_count++
@@ -139,8 +139,8 @@
 			for(var/atom/movable/AM in C.contents)
 				total_content_size += C.content_size(AM)
 			if(total_content_size > C.storage_capacity)
-				var/bad_msg = "[ascii_red]--------------- [C.name] \[[C.x] / [C.y] / [C.z]\]"
-				log_unit_test("[bad_msg] Contains more objects than able to hold ([total_content_size] / [C.storage_capacity]). [ascii_reset]")
+				var/bad_msg = "[GLOB.ascii_red]--------------- [C.name] \[[C.x] / [C.y] / [C.z]\]"
+				log_unit_test("[bad_msg] Contains more objects than able to hold ([total_content_size] / [C.storage_capacity]). [GLOB.ascii_reset]")
 				bad_tests++
 
 	if(bad_tests)
@@ -160,7 +160,7 @@
 
 	for(var/obj/item/weapon/storage/S in world)
 		if(isPlayerLevel(S.z))
-			var/bad_msg = "[ascii_red]--------------- [S.name] \[[S.type]\] \[[S.x] / [S.y] / [S.z]\]"
+			var/bad_msg = "[GLOB.ascii_red]--------------- [S.name] \[[S.type]\] \[[S.x] / [S.y] / [S.z]\]"
 			bad_tests += test_storage_capacity(S, bad_msg)
 
 	if(bad_tests)

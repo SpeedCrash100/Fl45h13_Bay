@@ -8,7 +8,7 @@
 		air_master.Setup()
 
 /datum/controller/process/air/doWork()
-	if(!air_processing_killed)
+	if(!GLOB.air_processing_killed)
 		if(!air_master.Tick()) //Runtimed.
 			air_master.failed_ticks++
 
@@ -20,5 +20,5 @@
 				message_admins("ZASALERT: Shutting down! status: [air_master.tick_progress]")
 				log_admin("ZASALERT: Shutting down! status: [air_master.tick_progress]")
 
-				air_processing_killed = TRUE
+				GLOB.air_processing_killed = TRUE
 				air_master.failed_ticks = 0

@@ -99,7 +99,7 @@
 GLOBAL_VAR_INIT(last_chew, 0) 
 /mob/living/carbon/human/RestrainedClickOn(var/atom/A)
 	if (A != src) return ..()
-	if (last_chew + 26 > world.time) return
+	if (GLOB.last_chew + 26 > world.time) return
 
 	var/mob/living/carbon/human/H = A
 	if (!H.handcuffed) return
@@ -116,7 +116,7 @@ GLOBAL_VAR_INIT(last_chew, 0)
 
 	O.take_damage(3,0, DAM_SHARP|DAM_EDGE ,"teeth marks")
 
-	last_chew = world.time
+	GLOB.last_chew = world.time
 
 /obj/item/weapon/handcuffs/cable
 	name = "cable restraints"

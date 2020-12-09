@@ -62,8 +62,8 @@
 	data["isAI"] = issilicon(usr)
 	data["authenticated"] = is_autenthicated(user)
 	data["boss_short"] = GLOB.using_map.boss_short
-	data["current_security_level"] = security_level
-	data["current_security_level_title"] = num2seclevel(security_level)
+	data["current_security_level"] = get_security_level()
+	data["current_security_level_title"] = num2seclevel(get_security_level())
 
 	data["def_SEC_LEVEL_DELTA"] = SEC_LEVEL_DELTA
 	data["def_SEC_LEVEL_BLUE"] = SEC_LEVEL_BLUE
@@ -207,15 +207,15 @@
 				var/current_level = text2num(href_list["target"])
 				var/confirm = alert("Are you sure you want to change alert level to [num2seclevel(current_level)]?", name, "No", "Yes")
 				if(confirm == "Yes" && can_still_topic())
-					var/old_level = security_level
+					var/old_level = get_security_level()
 					if(!current_level) current_level = SEC_LEVEL_GREEN
 					if(current_level < SEC_LEVEL_GREEN) current_level = SEC_LEVEL_GREEN
 					if(current_level > SEC_LEVEL_BLUE) current_level = SEC_LEVEL_BLUE //Cannot engage delta with this
 					set_security_level(current_level)
-					if(security_level != old_level)
+					if(get_security_level() != old_level)
 						log_game("[key_name(usr)] has changed the security level to [get_security_level()].")
 						message_admins("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
-						switch(security_level)
+						switch(get_security_level())
 							if(SEC_LEVEL_GREEN)
 								feedback_inc("alert_comms_green",1)
 							if(SEC_LEVEL_BLUE)
@@ -260,8 +260,8 @@ var/datum/comm_message_listener/global_message_listener = new //May be used by a
 GLOBAL_VAR_INIT(last_message_id, 0) 
 
 /proc/get_comm_message_id()
-	last_message_id = last_message_id + 1
-	return last_message_id
+	GLOB.last_message_id = GLOB.last_message_id + 1
+	return GLOB.last_message_id
 
 /proc/post_comm_message(var/message_title, var/message_text)
 	var/list/message = list()

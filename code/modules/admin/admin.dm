@@ -608,7 +608,7 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 		<center><B>Game Panel</B></center><hr>\n
 		<A href='?src=\ref[src];c_mode=1'>Change Game Mode</A><br>
 		"}
-	if(master_mode == "secret")
+	if(GLOB.master_mode == "secret")
 		dat += "<A href='?src=\ref[src];f_secret=1'>(Force Secret Mode)</A><br>"
 
 	dat += {"
@@ -804,11 +804,11 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 	if(!ticker)
 		alert("Unable to start the game as it is not set up.")
 		return
-	if(ticker.current_state == GAME_STATE_PREGAME && !(initialization_stage & INITIALIZATION_NOW))
+	if(ticker.current_state == GAME_STATE_PREGAME && !(GLOB.initialization_stage & INITIALIZATION_NOW))
 		log_admin("[usr.key] has started the game.")
 		message_admins("<font color='blue'>[usr.key] has started the game.</font>")
 		feedback_add_details("admin_verb","SN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-		initialization_stage |= INITIALIZATION_NOW
+		GLOB.initialization_stage |= INITIALIZATION_NOW
 		return 1
 	else
 		to_chat(usr, "<span class='warning'>Error: Start Now: Game has already started.</span>")
@@ -899,8 +899,8 @@ GLOBAL_VAR_INIT(floorIsLava, 0) ////////////////////////////////
 		ticker.delay_end = !ticker.delay_end
 		log_and_message_admins("[ticker.delay_end ? "delayed the round end" : "has made the round end normally"].")
 		return //alert("Round end delayed", null, null, null, null, null)
-	round_progressing = !round_progressing
-	if (!round_progressing)
+	GLOB.round_progressing = !GLOB.round_progressing
+	if (!GLOB.round_progressing)
 		to_world("<b>The game start has been delayed.</b>")
 		log_admin("[key_name(usr)] delayed the game.")
 	else

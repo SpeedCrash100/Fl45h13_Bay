@@ -40,7 +40,7 @@
 		"}
 
 /obj/machinery/computer/account_database/New()
-	machine_id = "[station_name()] Acc. DB #[num_financial_terminals++]"
+	machine_id = "[station_name()] Acc. DB #[GLOB.num_financial_terminals++]"
 	..()
 
 /obj/machinery/computer/account_database/attackby(obj/O, mob/user)

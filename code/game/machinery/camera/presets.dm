@@ -104,11 +104,11 @@
 	assembly.upgrades.Add(new /obj/item/device/assembly/prox_sensor(assembly))
 	setPowerUsage()
 	if(!(src in GLOB.machines))
-		if(!machinery_sort_required && ticker)
+		if(!GLOB.machinery_sort_required && ticker)
 			dd_insertObjectList(GLOB.machines, src)
 		else
 			GLOB.machines += src
-			machinery_sort_required = 1
+			GLOB.machinery_sort_required = 1
 	update_coverage()
 
 /obj/machinery/camera/proc/setPowerUsage()

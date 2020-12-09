@@ -26,7 +26,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/admin_ghost,			//allows us to ghost/reenter body at will,
 	/client/proc/toggle_view_range,		//changes how far we can see,
 	/client/proc/fetch_server_logs,		//fetch logfiles from data/logs,
-	/client/proc/fetch_current_log,		//fetch the server log (diary) for today,
+	/client/proc/fetch_current_log,		//fetch the server log (GLOB.diary) for today,
 	/client/proc/fetch_attack_log,		//fetch the server combat-log, doesn't do anything presently,
 	/client/proc/cmd_admin_pm_context,	//right-click adminPM interface,
 	/client/proc/cmd_admin_pm_panel,	//admin-pm list,
@@ -658,11 +658,11 @@ var/list/admin_verbs_mentor = list(
 	set category = "Debug"
 	set name = "Kill Air"
 	set desc = "Toggle Air Processing"
-	if(air_processing_killed)
-		air_processing_killed = 0
+	if(GLOB.air_processing_killed)
+		GLOB.air_processing_killed = 0
 		to_chat(usr, "<b>Enabled air processing.</b>")
 	else
-		air_processing_killed = 1
+		GLOB.air_processing_killed = 1
 		to_chat(usr, "<b>Disabled air processing.</b>")
 	feedback_add_details("admin_verb","KA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_and_message_admins("used 'kill air'.")

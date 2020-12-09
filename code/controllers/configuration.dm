@@ -575,7 +575,7 @@ GLOBAL_LIST_EMPTY(gamemode_cache)
 					config.popup_admin_pm = 1
 
 				if("allow_holidays")
-					Holiday = 1
+					GLOB.Holiday = 1
 
 				if("use_irc_bot")
 					use_irc_bot = 1
@@ -838,23 +838,23 @@ GLOBAL_LIST_EMPTY(gamemode_cache)
 
 		switch (name)
 			if ("address")
-				sqladdress = value
+				GLOB.sqladdress = value
 			if ("port")
-				sqlport = value
+				GLOB.sqlport = value
 			if ("database")
-				sqldb = value
+				GLOB.sqldb = value
 			if ("login")
-				sqllogin = value
+				GLOB.sqllogin = value
 			if ("password")
-				sqlpass = value
+				GLOB.sqlpass = value
 			if ("feedback_database")
-				sqlfdbkdb = value
+				GLOB.sqlfdbkdb = value
 			if ("feedback_login")
-				sqlfdbklogin = value
+				GLOB.sqlfdbklogin = value
 			if ("feedback_password")
-				sqlfdbkpass = value
+				GLOB.sqlfdbkpass = value
 			if ("enable_stat_tracking")
-				sqllogging = 1
+				GLOB.sqllogging = 1
 			else
 				log_misc("Unknown setting in configuration: '[name]'")
 
@@ -884,19 +884,19 @@ GLOBAL_LIST_EMPTY(gamemode_cache)
 
 		switch (name)
 			if ("address")
-				forumsqladdress = value
+				GLOB.forumsqladdress = value
 			if ("port")
-				forumsqlport = value
+				GLOB.forumsqlport = value
 			if ("database")
-				forumsqldb = value
+				GLOB.forumsqldb = value
 			if ("login")
-				forumsqllogin = value
+				GLOB.forumsqllogin = value
 			if ("password")
-				forumsqlpass = value
+				GLOB.forumsqlpass = value
 			if ("activatedgroup")
-				forum_activated_group = value
+				GLOB.forum_activated_group = value
 			if ("authenticatedgroup")
-				forum_authenticated_group = value
+				GLOB.forum_authenticated_group = value
 			else
 				log_misc("Unknown setting in configuration: '[name]'")
 

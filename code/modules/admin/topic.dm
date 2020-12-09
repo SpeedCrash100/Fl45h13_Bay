@@ -291,12 +291,12 @@
 			if("Yes")
 				temp = 1
 				var/mins = 0
-				if(minutes > CMinutes)
-					mins = minutes - CMinutes
+				if(minutes > GLOB.CMinutes)
+					mins = minutes - GLOB.CMinutes
 				mins = input(usr,"How long (in minutes)? (Default: 1440)","Ban time",mins ? mins : 1440) as num|null
 				if(!mins)	return
 				mins = min(525599,mins)
-				minutes = CMinutes + mins
+				minutes = GLOB.CMinutes + mins
 				duration = GetExp(minutes)
 				reason = sanitize(input(usr,"Reason?","reason",reason2) as text|null)
 				if(!reason)	return
@@ -840,7 +840,7 @@
 			dat += {"<A href='?src=\ref[src];c_mode2=[mode]'>[config.mode_names[mode]]</A><br>"}
 		dat += {"<A href='?src=\ref[src];c_mode2=secret'>Secret</A><br>"}
 		dat += {"<A href='?src=\ref[src];c_mode2=random'>Random</A><br>"}
-		dat += {"Now: [master_mode]"}
+		dat += {"Now: [GLOB.master_mode]"}
 		show_browser(usr, dat, "window=c_mode")
 
 	else if(href_list["f_secret"])
@@ -848,13 +848,13 @@
 
 		if(ticker && ticker.mode)
 			return alert(usr, "The game has already started.", null, null, null, null)
-		if(master_mode != "secret")
+		if(GLOB.master_mode != "secret")
 			return alert(usr, "The game mode has to be secret!", null, null, null, null)
 		var/dat = {"<B>What game mode do you want to force secret to be? Use this if you want to change the game mode, but want the players to believe it's secret. This will only work if the current game mode is secret.</B><HR>"}
 		for(var/mode in config.modes)
 			dat += {"<A href='?src=\ref[src];f_secret2=[mode]'>[config.mode_names[mode]]</A><br>"}
 		dat += {"<A href='?src=\ref[src];f_secret2=secret'>Random (default)</A><br>"}
-		dat += {"Now: [secret_force_mode]"}
+		dat += {"Now: [GLOB.secret_force_mode]"}
 		show_browser(usr, dat, "window=f_secret")
 
 	else if(href_list["c_mode2"])
@@ -862,11 +862,11 @@
 
 		if (ticker && ticker.mode)
 			return alert(usr, "The game has already started.", null, null, null, null)
-		master_mode = href_list["c_mode2"]
-		log_and_message_admins("set the mode as [master_mode].")
-		to_world("<span class='notice'><b>The mode is now: [master_mode]</b></span>")
+		GLOB.master_mode = href_list["c_mode2"]
+		log_and_message_admins("set the mode as [GLOB.master_mode].")
+		to_world("<span class='notice'><b>The mode is now: [GLOB.master_mode]</b></span>")
 		Game() // updates the main game menu
-		world.save_mode(master_mode)
+		world.save_mode(GLOB.master_mode)
 		.(href, list("c_mode"=1))
 
 	else if(href_list["f_secret2"])
@@ -874,10 +874,10 @@
 
 		if(ticker && ticker.mode)
 			return alert(usr, "The game has already started.", null, null, null, null)
-		if(master_mode != "secret")
+		if(GLOB.master_mode != "secret")
 			return alert(usr, "The game mode has to be secret!", null, null, null, null)
-		secret_force_mode = href_list["f_secret2"]
-		log_and_message_admins("set the forced secret mode as [secret_force_mode].")
+		GLOB.secret_force_mode = href_list["f_secret2"]
+		log_and_message_admins("set the forced secret mode as [GLOB.secret_force_mode].")
 		Game() // updates the main game menu
 		.(href, list("f_secret"=1))
 
@@ -1274,13 +1274,13 @@
 		if(alert(src.owner, "Are you sure you wish to hit [key_name(M)] with Blue Space Artillery?",  "Confirm Firing?" , "Yes" , "No") != "Yes")
 			return
 
-		if(BSACooldown)
+		if(GLOB.BSACooldown)
 			to_chat(src.owner, "Standby!  Reload cycle in progress!  Gunnary crews ready in five seconds!")
 			return
 
-		BSACooldown = 1
+		GLOB.BSACooldown = 1
 		spawn(50)
-			BSACooldown = 0
+			GLOB.BSACooldown = 0
 
 		to_chat(M, "You've been hit by bluespace artillery!")
 		log_admin("[key_name(M)] has been hit by Bluespace Artillery fired by [src.owner]")

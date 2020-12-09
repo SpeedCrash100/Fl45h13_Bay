@@ -27,8 +27,8 @@ GLOBAL_VAR_INIT(ntnet_card_uid, 1)
 
 /obj/item/weapon/computer_hardware/network_card/New(var/l)
 	..(l)
-	identification_id = ntnet_card_uid
-	ntnet_card_uid++
+	identification_id = GLOB.ntnet_card_uid
+	GLOB.ntnet_card_uid++
 
 /obj/item/weapon/computer_hardware/network_card/advanced
 	name = "advanced NTNet network card"

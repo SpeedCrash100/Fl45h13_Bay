@@ -20,7 +20,7 @@ var/can_call_ert
 	if(ticker.current_state == 1)
 		to_chat(usr, "<span class='danger'>The round hasn't started yet!</span>")
 		return
-	if(send_emergency_team)
+	if(GLOB.send_emergency_team)
 		to_chat(usr, "<span class='danger'>[GLOB.using_map.boss_name] has already dispatched an emergency response team!</span>")
 		return
 	if(alert("Do you want to dispatch an Emergency Response Team?",,"Yes","No") != "Yes")
@@ -29,7 +29,7 @@ var/can_call_ert
 		switch(alert("Red alert is not set. Do you still want to dispatch a response team?",,"Yes","No"))
 			if("No")
 				return
-	if(send_emergency_team)
+	if(GLOB.send_emergency_team)
 		to_chat(usr, "<span class='danger'>Looks like somebody beat you to it!</span>")
 		return
 
@@ -47,7 +47,7 @@ client/verb/JoinResponseTeam()
 		return
 
 	if(isghost(usr) || isnewplayer(usr))
-		if(!send_emergency_team)
+		if(!GLOB.send_emergency_team)
 			to_chat(usr, "No emergency response team is currently being sent.")
 			return
 		if(jobban_isbanned(usr, MODE_ERT) || jobban_isbanned(usr, "Security Officer"))
@@ -87,25 +87,25 @@ proc/percentage_antagonists()
 // Increments the ERT chance automatically, so that the later it is in the round,
 // the more likely an ERT is to be able to be called.
 proc/increment_ert_chance()
-	while(send_emergency_team == 0) // There is no ERT at the time.
+	while(GLOB.send_emergency_team == 0) // There is no ERT at the time.
 		if(get_security_level() == "green")
-			ert_base_chance += 1
+			GLOB.ert_base_chance += 1
 		if(get_security_level() == "blue")
-			ert_base_chance += 2
+			GLOB.ert_base_chance += 2
 		if(get_security_level() == "red")
-			ert_base_chance += 3
+			GLOB.ert_base_chance += 3
 		if(get_security_level() == "delta")
-			ert_base_chance += 10           // Need those big guns
+			GLOB.ert_base_chance += 10           // Need those big guns
 		sleep(600 * 3) // Minute * Number of Minutes
 
 
 proc/trigger_armed_response_team(var/force = 0)
 	if(!can_call_ert && !force)
 		return
-	if(send_emergency_team)
+	if(GLOB.send_emergency_team)
 		return
 
-	var/send_team_chance = ert_base_chance // Is incremented by increment_ert_chance.
+	var/send_team_chance = GLOB.ert_base_chance // Is incremented by increment_ert_chance.
 	send_team_chance += 2*percentage_dead() // the more people are dead, the higher the chance
 	send_team_chance += percentage_antagonists() // the more antagonists, the higher the chance
 	send_team_chance = min(send_team_chance, 100)
@@ -122,10 +122,10 @@ proc/trigger_armed_response_team(var/force = 0)
 	evacuation_controller.add_can_call_predicate(new/datum/evacuation_predicate/ert())
 
 	can_call_ert = 0 // Only one call per round, gentleman.
-	send_emergency_team = 1
+	GLOB.send_emergency_team = 1
 
 	sleep(600 * 5)
-	send_emergency_team = 0 // Can no longer join the ERT.
+	GLOB.send_emergency_team = 0 // Can no longer join the ERT.
 
 /datum/evacuation_predicate/ert
 	var/prevent_until

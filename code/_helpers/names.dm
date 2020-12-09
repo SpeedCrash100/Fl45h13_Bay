@@ -1,5 +1,6 @@
-GLOBAL_VAR_INIT(church_name, null) 
 /proc/church_name()
+	var/static/church_name = null
+
 	if (church_name)
 		return church_name
 
@@ -15,24 +16,25 @@ GLOBAL_VAR_INIT(church_name, null)
 
 	return name
 
-GLOBAL_VAR_INIT(command_name, null) 
+GLOBAL_VAR_INIT(command_name, null)
 /proc/command_name()
-	if (command_name)
-		return command_name
+	if (GLOB.command_name)
+		return GLOB.command_name
 
 	var/name = "[GLOB.using_map.boss_name]"
 
-	command_name = name
+	GLOB.command_name = name
 	return name
 
 /proc/change_command_name(var/name)
 
-	command_name = name
+	GLOB.command_name = name
 
 	return name
 
-GLOBAL_VAR_INIT(religion_name, null) 
 /proc/religion_name()
+	var/static/religion_name = null
+
 	if (religion_name)
 		return religion_name
 
@@ -57,7 +59,7 @@ GLOBAL_VAR_INIT(religion_name, null)
 
 /proc/station_name()
 	if(!GLOB.using_map)
-		return station_name
+		return GLOB.station_name
 	if (GLOB.using_map.station_name)
 		return GLOB.using_map.station_name
 
@@ -70,7 +72,7 @@ GLOBAL_VAR_INIT(religion_name, null)
 		GLOB.using_map.station_name = name + " "
 
 	// Prefix
-	switch(Holiday)
+	switch(GLOB.Holiday)
 		//get normal name
 		if(null,"",0)
 			name = pick("", "Stanford", "Dorf", "Alium", "Prefix", "Clowning", "Aegis", "Ishimura", "Scaredy", "Death-World", "Mime", "Honk", "Rogue", "MacRagge", "Ultrameens", "Safety", "Paranoia", "Explosive", "Neckbear", "Donk", "Muppet", "North", "West", "East", "South", "Slant-ways", "Widdershins", "Rimward", "Expensive", "Procreatory", "Imperial", "Unidentified", "Immoral", "Carp", "Ork", "Pete", "Control", "Nettle", "Aspie", "Class", "Crab", "Fist","Corrogated","Skeleton","Race", "Fatguy", "Gentleman", "Capitalist", "Communist", "Bear", "Beard", "Derp", "Space", "Spess", "Star", "Moon", "System", "Mining", "Neckbeard", "Research", "Supply", "Military", "Orbital", "Battle", "Science", "Asteroid", "Home", "Production", "Transport", "Delivery", "Extraplanetary", "Orbital", "Correctional", "Robot", "Hats", "Pizza")
@@ -84,8 +86,8 @@ GLOBAL_VAR_INIT(religion_name, null)
 			random = 13
 		else
 			//get the first word of the Holiday and use that
-			var/i = findtext(Holiday," ",1,0)
-			name = copytext(Holiday,1,i)
+			var/i = findtext(GLOB.Holiday," ",1,0)
+			name = copytext(GLOB.Holiday,1,i)
 			GLOB.using_map.station_name += name + " "
 
 	// Suffix
@@ -125,8 +127,9 @@ GLOBAL_VAR_INIT(religion_name, null)
 
 	return name
 
-GLOBAL_VAR_INIT(syndicate_name, null) 
 /proc/syndicate_name()
+	var/static/syndicate_name = null
+
 	if (syndicate_name)
 		return syndicate_name
 

@@ -26,7 +26,7 @@ GLOBAL_LIST_EMPTY(lighting_update_overlays_old)    // List of lighting overlays 
 	schedule_interval = 0 // run as fast as you possibly can
 	sleep_interval = 10
 	create_all_lighting_overlays()
-	lighting_overlays_initialised = TRUE
+	GLOB.lighting_overlays_initialised = TRUE
 
 	// Pre-process lighting once before the round starts. Wait 30 seconds so the away mission has time to load.
 	spawn(300)
@@ -92,6 +92,6 @@ GLOBAL_LIST_EMPTY(lighting_update_overlays_old)    // List of lighting overlays 
 
 /datum/controller/process/lighting/statProcess()
 	..()
-	stat(null, "[total_lighting_sources] sources, [total_lighting_corners] corners, [total_lighting_overlays] overlays")
+	stat(null, "[GLOB.total_lighting_sources] sources, [GLOB.total_lighting_corners] corners, [GLOB.total_lighting_overlays] overlays")
 	for(var/stat_type in stats_lists)
 		stat(null, "[stat_type] updates: [jointext(stats_lists[stat_type], " | ")]")

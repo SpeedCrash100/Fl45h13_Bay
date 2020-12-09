@@ -89,10 +89,10 @@ GLOBAL_VAR_INIT(message_delay, 0) // To make sure restarting the recentmessages 
 							  signal.data["realname"], signal.data["vname"], 4, signal.data["compression"], signal.data["level"], signal.frequency,
 							  signal.data["verb"], signal.data["language"])
 
-		if(!message_delay)
-			message_delay = 1
+		if(!GLOB.message_delay)
+			GLOB.message_delay = 1
 			spawn(10)
-				message_delay = 0
+				GLOB.message_delay = 0
 				GLOB.recentmessages = list()
 
 		/* --- Do a snazzy animation! --- */
@@ -100,8 +100,8 @@ GLOBAL_VAR_INIT(message_delay, 0) // To make sure restarting the recentmessages 
 
 /obj/machinery/telecomms/broadcaster/Destroy()
 	// In case message_delay is left on 1, otherwise it won't reset the list and people can't say the same thing twice anymore.
-	if(message_delay)
-		message_delay = 0
+	if(GLOB.message_delay)
+		GLOB.message_delay = 0
 	..()
 
 

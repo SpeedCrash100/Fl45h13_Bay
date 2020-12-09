@@ -23,7 +23,7 @@
 
 /atom/movable/New()
 	..()
-	if(auto_init && (initialization_stage & INITIALIZATION_HAS_BEGUN))
+	if(auto_init && (GLOB.initialization_stage & INITIALIZATION_HAS_BEGUN))
 		initialize()
 
 /atom/movable/Destroy()

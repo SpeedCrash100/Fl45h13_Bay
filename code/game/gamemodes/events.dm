@@ -12,9 +12,9 @@
 			if(!event)
 				//CARN: checks to see if random events are enabled.
 				if(config.allow_random_events)
-					if(prob(eventchance))
+					if(prob(GLOB.eventchance))
 						event()
-						hadevent = 1
+						GLOB.hadevent = 1
 					else
 						Holiday_Random_Event()
 			else

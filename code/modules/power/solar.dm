@@ -125,7 +125,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 		if(powernet == control.powernet)//check if the panel is still connected to the computer
 			if(obscured) //get no light from the sun, so don't generate power
 				return
-			var/sgen = solar_gen_rate * sunfrac
+			var/sgen = GLOB.solar_gen_rate * sunfrac
 			add_avail(sgen)
 			control.gen += sgen
 		else //if we're no longer on the same powernet, remove from control computer

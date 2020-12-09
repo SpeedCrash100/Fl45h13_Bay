@@ -1112,7 +1112,7 @@ FIRE ALARM
 
 /obj/machinery/firealarm/initialize()
 	if(z in GLOB.using_map.contact_levels)
-		set_security_level(security_level? get_security_level() : "green")
+		set_security_level( get_security_level() ? get_security_level() : "green")
 
 /*
 FIRE ALARM CIRCUIT

@@ -94,8 +94,8 @@ datum/controller/vote
 				if(mode == "restart")
 					choices["Continue Playing"] += non_voters
 				else if(mode == "gamemode")
-					if(master_mode in choices)
-						choices[master_mode] += non_voters
+					if(GLOB.master_mode in choices)
+						choices[GLOB.master_mode] += non_voters
 				else if(mode == "crew_transfer")
 					var/factor = 0.5
 					switch(world.time / (10 * 60)) // minutes
@@ -199,14 +199,14 @@ datum/controller/vote
 					if(.[1] == "Restart Round")
 						restart = 1
 				if("gamemode")
-					if(master_mode != .[1])
+					if(GLOB.master_mode != .[1])
 						world.save_mode(.[1])
 						if(ticker && ticker.mode)
 							restart = 1
 						else
-							master_mode = .[1]
-					secondary_mode = .[2]
-					tertiary_mode = .[3]
+							GLOB.master_mode = .[1]
+					GLOB.secondary_mode = .[2]
+					GLOB.tertiary_mode = .[3]
 				if("crew_transfer")
 					if(.[1] == "Initiate Crew Transfer")
 						init_autotransfer()
@@ -250,8 +250,8 @@ datum/controller/vote
 					text2file(M.path, "use_map")
 
 		if(mode == "gamemode") //fire this even if the vote fails.
-			if(!round_progressing)
-				round_progressing = 1
+			if(!GLOB.round_progressing)
+				GLOB.round_progressing = 1
 				to_world("<font color='red'><b>The round will start soon.</b></font>")
 
 
@@ -375,8 +375,8 @@ datum/controller/vote
 
 			to_world(sound('sound/ambience/alarm4.ogg', repeat = 0, wait = 0, volume = 50, channel = 3))
 
-			if(mode == "gamemode" && round_progressing)
-				round_progressing = 0
+			if(mode == "gamemode" && GLOB.round_progressing)
+				GLOB.round_progressing = 0
 				to_world("<font color='red'><b>Round start has been delayed.</b></font>")
 
 

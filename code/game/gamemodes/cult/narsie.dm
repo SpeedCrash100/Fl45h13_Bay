@@ -48,10 +48,10 @@ GLOBAL_LIST_EMPTY(narsie_list)
 
 	narsie_spawn_animation()
 
-	if(!narsie_cometh)//so we don't initiate Hell more than one time.
+	if(!GLOB.narsie_cometh)//so we don't initiate Hell more than one time.
 		if(cause_hell)
 			SetUniversalState(/datum/universal_state/hell)
-		narsie_cometh = 1
+		GLOB.narsie_cometh = 1
 
 		spawn(10 SECONDS)
 			if(evacuation_controller)
@@ -158,12 +158,12 @@ GLOBAL_LIST_EMPTY(narsie_list)
 
 /obj/singularity/narsie/large/consume(const/atom/A) //Has its own consume proc because it doesn't need energy and I don't want BoHs to explode it. --NEO
 //NEW BEHAVIOUR
-	if(narsie_behaviour == "CultStation13")
+	if(GLOB.narsie_behaviour == "CultStation13")
 	//MOB PROCESSING
 		new_narsie(A)
 
 //OLD BEHAVIOUR
-	else if(narsie_behaviour == "Nar-Singulo")
+	else if(GLOB.narsie_behaviour == "Nar-Singulo")
 		old_narsie(A)
 
 /obj/singularity/narsie/proc/new_narsie(const/atom/A)

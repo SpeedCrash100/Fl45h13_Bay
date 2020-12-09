@@ -55,7 +55,7 @@ var/savefile/Banlist
 	return 0
 
 /proc/UpdateTime() //No idea why i made this a proc.
-	CMinutes = (world.realtime / 10) / 60
+	GLOB.CMinutes = (world.realtime / 10) / 60
 	return 1
 
 /hook/startup/proc/loadBans()
@@ -91,7 +91,7 @@ var/savefile/Banlist
 			continue
 
 		if (!Banlist["temp"]) continue
-		if (CMinutes >= Banlist["minutes"]) RemoveBan(A)
+		if (GLOB.CMinutes >= Banlist["minutes"]) RemoveBan(A)
 
 	return 1
 
@@ -102,7 +102,7 @@ var/savefile/Banlist
 
 	if (temp)
 		UpdateTime()
-		bantimestamp = CMinutes + minutes
+		bantimestamp = GLOB.CMinutes + minutes
 
 	Banlist.cd = "/base"
 	if ( Banlist.dir.Find("[ckey][computerid]") )
@@ -152,7 +152,7 @@ var/savefile/Banlist
 
 /proc/GetExp(minutes as num)
 	UpdateTime()
-	var/exp = minutes - CMinutes
+	var/exp = minutes - GLOB.CMinutes
 	if (exp <= 0)
 		return 0
 	else
@@ -216,7 +216,7 @@ var/savefile/Banlist
 		to_save(Banlist["id"], "trashid[i]")
 		to_save(Banlist["reason"], "Trashban[i].")
 		to_save(Banlist["temp"], a)
-		to_save(Banlist["minutes"], CMinutes + rand(1,2000))
+		to_save(Banlist["minutes"], GLOB.CMinutes + rand(1,2000))
 		to_save(Banlist["bannedby"], "trashmin")
 		last = "trash[i]"
 

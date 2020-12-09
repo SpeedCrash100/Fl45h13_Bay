@@ -5,7 +5,7 @@ GLOBAL_VAR_INIT(warrant_uid, 0)
 
 /datum/data/record/warrant/New()
 	..()
-	warrant_id = warrant_uid++
+	warrant_id = GLOB.warrant_uid++
 
 
 /datum/computer_file/program/digitalwarrant

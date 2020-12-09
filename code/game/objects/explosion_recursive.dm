@@ -9,7 +9,7 @@ GLOBAL_VAR_INIT(explosion_in_progress, 0)
 
 proc/explosion_rec(turf/epicenter, power, shaped)
 	var/loopbreak = 0
-	while(explosion_in_progress)
+	while(GLOB.explosion_in_progress)
 		if(loopbreak >= 15) return
 		sleep(10)
 		loopbreak++
@@ -18,7 +18,7 @@ proc/explosion_rec(turf/epicenter, power, shaped)
 	epicenter = get_turf(epicenter)
 	if(!epicenter) return
 
-	explosion_in_progress = 1
+	GLOB.explosion_in_progress = 1
 	GLOB.explosion_turfs = list()
 
 	GLOB.explosion_turfs[epicenter] = power
@@ -58,7 +58,7 @@ proc/explosion_rec(turf/epicenter, power, shaped)
 			if(AM && AM.simulated)	AM.ex_act(severity)
 
 	GLOB.explosion_turfs.Cut()
-	explosion_in_progress = 0
+	GLOB.explosion_in_progress = 0
 
 
 //Code-wise, a safe value for power is something up to ~25 or ~30.. This does quite a bit of damage to the station.

@@ -74,14 +74,14 @@
 
 	if(statpanel("Lobby") && ticker)
 		if(check_rights(R_INVESTIGATE, 0, src))
-			stat("Game Mode:", "[ticker.mode || master_mode][ticker.hide_mode ? " (Secret)" : ""]")
+			stat("Game Mode:", "[ticker.mode || GLOB.master_mode][ticker.hide_mode ? " (Secret)" : ""]")
 		else
 			stat("Game Mode:", PUBLIC_GAME_MODE)
 		var/extra_antags = list2params(GLOB.additional_antag_types)
 		stat("Added Antagonists:", extra_antags ? extra_antags : "None")
 
 		if(ticker.current_state == GAME_STATE_PREGAME)
-			stat("Time To Start:", "[ticker.pregame_timeleft][round_progressing ? "" : " (DELAYED)"]")
+			stat("Time To Start:", "[ticker.pregame_timeleft][GLOB.round_progressing ? "" : " (DELAYED)"]")
 			stat("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
 			totalPlayers = 0
 			totalPlayersReady = 0
@@ -111,7 +111,7 @@
 		new_player_panel_proc()
 
 	if(href_list["observe"])
-		if(!(initialization_stage&INITIALIZATION_COMPLETE))
+		if(!(GLOB.initialization_stage&INITIALIZATION_COMPLETE))
 			to_chat(src, "<span class='warning'>Please wait for server initialization to complete...</span>")
 			return
 
@@ -486,7 +486,7 @@
 	new_character.sync_organ_dna()
 	if(client.prefs.disabilities)
 		// Set defer to 1 if you add more crap here so it only recalculates struc_enzymes once. - N3X
-		new_character.dna.SetSEState(GLASSESBLOCK,1,0)
+		new_character.dna.SetSEState(GLOB.GLASSESBLOCK,1,0)
 		new_character.disabilities |= NEARSIGHTED
 
 	// Give them their cortical stack if we're using them.

@@ -31,7 +31,7 @@ GLOBAL_VAR_INIT(total_lighting_sources, 0) // This is where the fun begins.
 	var/force_update
 
 /datum/light_source/New(var/atom/owner, var/atom/top)
-	total_lighting_sources++
+	GLOB.total_lighting_sources++
 	source_atom = owner // Set our new owner.
 	if(!source_atom.light_sources)
 		source_atom.light_sources = list()
@@ -61,7 +61,7 @@ GLOBAL_VAR_INIT(total_lighting_sources, 0) // This is where the fun begins.
 
 // Kill ourselves.
 /datum/light_source/proc/destroy()
-	total_lighting_sources--
+	GLOB.total_lighting_sources--
 	destroyed = TRUE
 	force_update()
 	if(source_atom && source_atom.light_sources)

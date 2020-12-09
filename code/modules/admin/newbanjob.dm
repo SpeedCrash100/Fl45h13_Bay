@@ -50,7 +50,7 @@ var/savefile/Banlistjob
 		//	continue
 
 		if (!Banlistjob["temp"]) continue
-		if (CMinutes >= Banlistjob["minutes"]) RemoveBanjob(A)
+		if (GLOB.CMinutes >= Banlistjob["minutes"]) RemoveBanjob(A)
 
 	return 1
 
@@ -60,7 +60,7 @@ var/savefile/Banlistjob
 	var/bantimestamp
 	if (temp)
 		UpdateTime()
-		bantimestamp = CMinutes + minutes
+		bantimestamp = GLOB.CMinutes + minutes
 	if(rank == "Heads")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Head of Personnel")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Captain")
@@ -190,7 +190,7 @@ var/savefile/Banlistjob
 
 /proc/GetBanExpjob(minutes as num)
 	UpdateTime()
-	var/exp = minutes - CMinutes
+	var/exp = minutes - GLOB.CMinutes
 	if (exp <= 0)
 		return 0
 	else
@@ -260,7 +260,7 @@ var/savefile/Banlistjob
 		to_save(Banlistjob["id"], "trashid[i]")
 		to_save(Banlistjob["reason"], "Trashban[i].")
 		to_save(Banlistjob["temp"], a)
-		to_save(Banlistjob["minutes"], CMinutes + rand(1,2000))
+		to_save(Banlistjob["minutes"], GLOB.CMinutes + rand(1,2000))
 		to_save(Banlistjob["bannedby"], "trashmin")
 		last = "trash[i]"
 

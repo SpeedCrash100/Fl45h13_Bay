@@ -24,8 +24,8 @@ GLOBAL_VAR_INIT(nttransfer_uid, 0)
 	var/upload_menu = 0									// Whether we show the program list and upload menu
 
 /datum/computer_file/program/nttransfer/New()
-	unique_token = nttransfer_uid
-	nttransfer_uid++
+	unique_token = GLOB.nttransfer_uid
+	GLOB.nttransfer_uid++
 	..()
 
 /datum/computer_file/program/nttransfer/process_tick()

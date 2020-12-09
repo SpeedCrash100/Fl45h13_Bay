@@ -10,7 +10,7 @@ GLOBAL_VAR_INIT(account_hack_attempted, 0)
 	if(GLOB.all_money_accounts.len)
 		affected_account = pick(GLOB.all_money_accounts)
 
-		account_hack_attempted = 1
+		GLOB.account_hack_attempted = 1
 	else
 		kill()
 

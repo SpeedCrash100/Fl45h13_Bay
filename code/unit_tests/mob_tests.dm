@@ -59,13 +59,13 @@ proc/create_test_mob_with_mind(var/turf/mobloc = null, var/mobtype = /mob/living
 	var/list/test_result = list("result" = FAILURE, "msg"    = "", "mobref" = null)
 
 	if(isnull(mobloc))
-		if(!default_mobloc)
+		if(!GLOB.default_mobloc)
 			for(var/turf/simulated/floor/tiled/T in world)
 				var/pressure = T.zone.air.return_pressure()
 				if(90 < pressure && pressure < 120) // Find a turf between 90 and 120
-					default_mobloc = T
+					GLOB.default_mobloc = T
 					break
-		mobloc = default_mobloc
+		mobloc = GLOB.default_mobloc
 	if(!mobloc)
 		test_result["msg"] = "Unable to find a location to create test mob"
 		return test_result
@@ -465,9 +465,9 @@ datum/unit_test/robot_module_icons/start_test()
 		return 1
 
 	for(var/i=1, i<=robot_modules.len, i++)
-		var/bad_msg = "[ascii_red]--------------- [robot_modules[i]]"
+		var/bad_msg = "[GLOB.ascii_red]--------------- [robot_modules[i]]"
 		if(!(lowertext(robot_modules[i]) in valid_states))
-			log_unit_test("[bad_msg] does not contain a valid icon state in [icon_file][ascii_reset]")
+			log_unit_test("[bad_msg] does not contain a valid icon state in [icon_file][GLOB.ascii_reset]")
 			failed=1
 
 	if(failed)

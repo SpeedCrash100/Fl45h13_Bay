@@ -38,7 +38,7 @@
 	hacked_apcs = null
 	// Stop the delta alert, and, if applicable, self-destruct timer.
 	bombing_station = 0
-	if(security_level == SEC_LEVEL_DELTA)
+	if(get_security_level() == SEC_LEVEL_DELTA)
 		set_security_level(SEC_LEVEL_RED)
 	// Reset our verbs
 	src.verbs.Cut()

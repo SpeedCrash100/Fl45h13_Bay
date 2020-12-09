@@ -87,7 +87,7 @@ GLOBAL_LIST_EMPTY(all_money_accounts)
 GLOBAL_VAR_INIT(economy_init, 0) 
 
 /proc/setup_economy()
-	if(economy_init)
+	if(GLOB.economy_init)
 		return 2
 
 	news_network.CreateFeedChannel("Nyx Daily", "SolGov Minister of Information", 1, 1)
@@ -105,14 +105,14 @@ GLOBAL_VAR_INIT(economy_init, 0)
 	create_department_account("Vendor")
 	vendor_account = department_accounts["Vendor"]
 
-	current_date_string = "[num2text(rand(1,31))] [pick("January","February","March","April","May","June","July","August","September","October","November","December")], [game_year]"
+	current_date_string = "[num2text(rand(1,31))] [pick("January","February","March","April","May","June","July","August","September","October","November","December")], [GLOB.game_year]"
 
-	economy_init = 1
+	GLOB.economy_init = 1
 	return 1
 
 /proc/create_station_account()
 	if(!station_account)
-		next_account_number = rand(111111, 999999)
+		GLOB.next_account_number = rand(111111, 999999)
 
 		station_account = new()
 		station_account.owner_name = "[station_name()] Primary Account"
@@ -130,7 +130,7 @@ GLOBAL_VAR_INIT(economy_init, 0)
 		GLOB.all_money_accounts.Add(station_account)
 
 /proc/create_department_account(department)
-	next_account_number = rand(111111, 999999)
+	GLOB.next_account_number = rand(111111, 999999)
 
 	var/datum/money_account/department_account = new()
 	department_account.owner_name = "[department] Account"

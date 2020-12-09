@@ -35,7 +35,7 @@
 
 /mob/living/silicon/robot/proc/use_power()
 	// Debug only
-//	log_debug(life.dm line 35: cyborg use_power() called at tick [controller_iteration]")
+//	log_debug(life.dm line 35: cyborg use_power() called at tick [GLOB.controller_iteration]")
 
 	used_power_this_tick = 0
 	for(var/V in components)
