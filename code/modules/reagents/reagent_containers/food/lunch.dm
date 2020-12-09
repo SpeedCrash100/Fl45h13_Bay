@@ -74,29 +74,29 @@ GLOBAL_LIST_INIT(lunchables_ethanol_reagents_, list(/datum/reagent/ethanol/acid_
 											 /datum/reagent/ethanol/toxins_special))
 
 /proc/lunchables_lunches()
-	if(!(lunchables_lunches_[lunchables_lunches_[1]]))
-		lunchables_lunches_ = init_lunchable_list(lunchables_lunches_)
-	return lunchables_lunches_
+	if(!(GLOB.lunchables_lunches_[GLOB.lunchables_lunches_[1]]))
+		GLOB.lunchables_lunches_ = init_lunchable_list(GLOB.lunchables_lunches_)
+	return GLOB.lunchables_lunches_
 
 /proc/lunchables_snacks()
-	if(!(lunchables_snacks_[lunchables_snacks_[1]]))
-		lunchables_snacks_ = init_lunchable_list(lunchables_snacks_)
-	return lunchables_snacks_
+	if(!(GLOB.lunchables_snacks_[GLOB.lunchables_snacks_[1]]))
+		GLOB.lunchables_snacks_ = init_lunchable_list(GLOB.lunchables_snacks_)
+	return GLOB.lunchables_snacks_
 
 /proc/lunchables_drinks()
-	if(!(lunchables_drinks_[lunchables_drinks_[1]]))
-		lunchables_drinks_ = init_lunchable_list(lunchables_drinks_)
-	return lunchables_drinks_
+	if(!(GLOB.lunchables_drinks_[GLOB.lunchables_drinks_[1]]))
+		GLOB.lunchables_drinks_ = init_lunchable_list(GLOB.lunchables_drinks_)
+	return GLOB.lunchables_drinks_
 
 /proc/lunchables_drink_reagents()
-	if(!(lunchables_drink_reagents_[lunchables_drink_reagents_[1]]))
-		lunchables_drink_reagents_ = init_lunchable_reagent_list(lunchables_drink_reagents_, /datum/reagent/drink)
-	return lunchables_drink_reagents_
+	if(!(GLOB.lunchables_drink_reagents_[GLOB.lunchables_drink_reagents_[1]]))
+		GLOB.lunchables_drink_reagents_ = init_lunchable_reagent_list(GLOB.lunchables_drink_reagents_, /datum/reagent/drink)
+	return GLOB.lunchables_drink_reagents_
 
 /proc/lunchables_ethanol_reagents()
-	if(!(lunchables_ethanol_reagents_[lunchables_ethanol_reagents_[1]]))
-		lunchables_ethanol_reagents_ = init_lunchable_reagent_list(lunchables_ethanol_reagents_, /datum/reagent/ethanol)
-	return lunchables_ethanol_reagents_
+	if(!(GLOB.lunchables_ethanol_reagents_[GLOB.lunchables_ethanol_reagents_[1]]))
+		GLOB.lunchables_ethanol_reagents_ = init_lunchable_reagent_list(GLOB.lunchables_ethanol_reagents_, /datum/reagent/ethanol)
+	return GLOB.lunchables_ethanol_reagents_
 
 /proc/init_lunchable_list(var/list/lunches)
 	. = list()

@@ -7,7 +7,7 @@
 	ckey = key
 
 GLOBAL_LIST_INIT(ai_status_emotions, list(
-	"Very Happy" 				= new /datum/ai_emotion("ai_veryhappy")),
+	"Very Happy" 				= new /datum/ai_emotion("ai_veryhappy"),
 	"Happy" 					= new /datum/ai_emotion("ai_happy"),
 	"Neutral" 					= new /datum/ai_emotion("ai_neutral"),
 	"Unsure" 					= new /datum/ai_emotion("ai_unsure"),
@@ -26,12 +26,12 @@ GLOBAL_LIST_INIT(ai_status_emotions, list(
 	"Tribunal" 					= new /datum/ai_emotion("ai_tribunal", "serithi"),
 	"Tribunal Malfunctioning"	= new /datum/ai_emotion("ai_tribunal_malf", "serithi"),
 	"Ship Scan" 				= new /datum/ai_emotion("ai_shipscan")
-	)
+	))
 
 /proc/get_ai_emotions(var/ckey)
 	var/list/emotions = new
-	for(var/emotion_name in ai_status_emotions)
-		var/datum/ai_emotion/emotion = ai_status_emotions[emotion_name]
+	for(var/emotion_name in GLOB.ai_status_emotions)
+		var/datum/ai_emotion/emotion = GLOB.ai_status_emotions[emotion_name]
 		if(!emotion.ckey || emotion.ckey == ckey)
 			emotions += emotion_name
 
@@ -87,7 +87,7 @@ GLOBAL_LIST_INIT(ai_status_emotions, list(
 		if(0) //Blank
 			overlays.Cut()
 		if(1) // AI emoticon
-			var/datum/ai_emotion/ai_emotion = ai_status_emotions[emotion]
+			var/datum/ai_emotion/ai_emotion = GLOB.ai_status_emotions[emotion]
 			set_picture(ai_emotion.overlay)
 		if(2) // BSOD
 			set_picture("ai_bsod")

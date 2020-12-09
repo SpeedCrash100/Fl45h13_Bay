@@ -141,7 +141,7 @@ GLOBAL_LIST_INIT(radiochannels, list(
 	"Entertainment" = GLOB.ENT_FREQ,
 	"Medical(I))"	= GLOB.MED_I_FREQ,
 	"Security(I)"	= GLOB.SEC_I_FREQ
-)
+))
 
 // central command channels, i.e deathsquid & response teams
 GLOBAL_LIST_INIT(CENT_FREQS, list(ERT_FREQ, GLOB.DTH_FREQ))

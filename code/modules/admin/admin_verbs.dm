@@ -94,7 +94,7 @@ GLOBAL_LIST_INIT(admin_verbs_admin, list(
 	/client/proc/add_trader,
 	/client/proc/remove_trader,
 	/datum/admins/proc/sendFax
-)
+))
 GLOBAL_LIST_INIT(admin_verbs_ban, list(
 	/client/proc/unban_panel,
 	/client/proc/jobbans
@@ -321,40 +321,40 @@ GLOBAL_LIST_INIT(admin_verbs_mentor, list(
 
 /client/proc/add_admin_verbs()
 	if(holder)
-		verbs += admin_verbs_default
+		verbs += GLOB.admin_verbs_default
 		if(holder.rights & R_BUILDMODE)		verbs += /client/proc/togglebuildmodeself
-		if(holder.rights & R_ADMIN)			verbs += admin_verbs_admin
-		if(holder.rights & R_BAN)			verbs += admin_verbs_ban
-		if(holder.rights & R_FUN)			verbs += admin_verbs_fun
-		if(holder.rights & R_SERVER)		verbs += admin_verbs_server
+		if(holder.rights & R_ADMIN)			verbs += GLOB.admin_verbs_admin
+		if(holder.rights & R_BAN)			verbs += GLOB.admin_verbs_ban
+		if(holder.rights & R_FUN)			verbs += GLOB.admin_verbs_fun
+		if(holder.rights & R_SERVER)		verbs += GLOB.admin_verbs_server
 		if(holder.rights & R_DEBUG)
-			verbs += admin_verbs_debug
+			verbs += GLOB.admin_verbs_debug
 			if(config.debugparanoid && !(holder.rights & R_ADMIN))
-				verbs.Remove(admin_verbs_paranoid_debug)			//Right now it's just callproc but we can easily add others later on.
-		if(holder.rights & R_POSSESS)		verbs += admin_verbs_possess
-		if(holder.rights & R_PERMISSIONS)	verbs += admin_verbs_permissions
+				verbs.Remove(GLOB.admin_verbs_paranoid_debug)			//Right now it's just callproc but we can easily add others later on.
+		if(holder.rights & R_POSSESS)		verbs += GLOB.admin_verbs_possess
+		if(holder.rights & R_PERMISSIONS)	verbs += GLOB.admin_verbs_permissions
 		if(holder.rights & R_STEALTH)		verbs += /client/proc/stealth
-		if(holder.rights & R_REJUVINATE)	verbs += admin_verbs_rejuv
-		if(holder.rights & R_SOUNDS)		verbs += admin_verbs_sounds
-		if(holder.rights & R_SPAWN)			verbs += admin_verbs_spawn
-		if(holder.rights & R_MOD)			verbs += admin_verbs_mod
-		if(holder.rights & R_MENTOR)		verbs += admin_verbs_mentor
+		if(holder.rights & R_REJUVINATE)	verbs += GLOB.admin_verbs_rejuv
+		if(holder.rights & R_SOUNDS)		verbs += GLOB.admin_verbs_sounds
+		if(holder.rights & R_SPAWN)			verbs += GLOB.admin_verbs_spawn
+		if(holder.rights & R_MOD)			verbs += GLOB.admin_verbs_mod
+		if(holder.rights & R_MENTOR)		verbs += GLOB.admin_verbs_mentor
 
 /client/proc/remove_admin_verbs()
 	verbs.Remove(
-		admin_verbs_default,
+		GLOB.admin_verbs_default,
 		/client/proc/togglebuildmodeself,
-		admin_verbs_admin,
-		admin_verbs_ban,
-		admin_verbs_fun,
-		admin_verbs_server,
-		admin_verbs_debug,
-		admin_verbs_possess,
-		admin_verbs_permissions,
+		GLOB.admin_verbs_admin,
+		GLOB.admin_verbs_ban,
+		GLOB.admin_verbs_fun,
+		GLOB.admin_verbs_server,
+		GLOB.admin_verbs_debug,
+		GLOB.admin_verbs_possess,
+		GLOB.admin_verbs_permissions,
 		/client/proc/stealth,
-		admin_verbs_rejuv,
-		admin_verbs_sounds,
-		admin_verbs_spawn,
+		GLOB.admin_verbs_rejuv,
+		GLOB.admin_verbs_sounds,
+		GLOB.admin_verbs_spawn,
 		debug_verbs
 		)
 
@@ -362,7 +362,7 @@ GLOBAL_LIST_INIT(admin_verbs_mentor, list(
 	set name = "Adminverbs - Hide Most"
 	set category = "Admin"
 
-	verbs.Remove(/client/proc/hide_most_verbs, admin_verbs_hideable)
+	verbs.Remove(/client/proc/hide_most_verbs, GLOB.admin_verbs_hideable)
 	verbs += /client/proc/show_verbs
 
 	to_chat(src, "<span class='interface'>Most of your adminverbs have been hidden.</span>")

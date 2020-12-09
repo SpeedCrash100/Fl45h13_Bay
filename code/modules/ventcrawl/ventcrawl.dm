@@ -68,7 +68,7 @@ GLOBAL_LIST_INIT(ventcrawl_machinery, list(
 	return TRUE
 
 /mob/living/AltClickOn(var/atom/A)
-	if(is_type_in_list(A,ventcrawl_machinery))
+	if(is_type_in_list(A,GLOB.ventcrawl_machinery))
 		handle_ventcrawl(A)
 		return 1
 	return ..()
@@ -77,7 +77,7 @@ GLOBAL_LIST_INIT(ventcrawl_machinery, list(
 	var/atom/pipe
 	var/list/pipes = list()
 	for(var/obj/machinery/atmospherics/unary/U in range(1))
-		if(is_type_in_list(U,ventcrawl_machinery) && Adjacent(U) && U.can_crawl_through())
+		if(is_type_in_list(U,GLOB.ventcrawl_machinery) && Adjacent(U) && U.can_crawl_through())
 			pipes |= U
 	if(!pipes || !pipes.len)
 		to_chat(src, "There are no pipes that you can ventcrawl into within range!")
@@ -104,7 +104,7 @@ GLOBAL_LIST_INIT(ventcrawl_machinery, list(
 
 	if(!vent_found)
 		for(var/obj/machinery/atmospherics/machine in range(1,src))
-			if(is_type_in_list(machine, ventcrawl_machinery))
+			if(is_type_in_list(machine, GLOB.ventcrawl_machinery))
 				vent_found = machine
 
 			if(!vent_found || !vent_found.can_crawl_through())

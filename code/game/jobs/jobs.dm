@@ -39,7 +39,7 @@ GLOBAL_LIST_EMPTY(support_positions)
 
 
 /proc/guest_jobbans(var/job)
-	return ((job in GLOB.command_positions) || (job in nonhuman_positions) || (job in GLOB.security_positions))
+	return ((job in GLOB.command_positions) || (job in GLOB.nonhuman_positions) || (job in GLOB.security_positions))
 
 /proc/get_job_datums()
 	var/list/occupations = list()

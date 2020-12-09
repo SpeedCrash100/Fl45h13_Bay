@@ -57,11 +57,11 @@
 /datum/event/meteor_wave/proc/get_meteors()
 	switch(severity)
 		if(EVENT_LEVEL_MAJOR)
-			return meteors_major
+			return GLOB.meteors_major
 		if(EVENT_LEVEL_MODERATE)
-			return meteors_moderate
+			return GLOB.meteors_moderate
 		else
-			return meteors_minor
+			return GLOB.meteors_minor
 
 GLOBAL_LIST_INIT(meteors_minor, list(
 	/obj/effect/meteor/medium     = 80,

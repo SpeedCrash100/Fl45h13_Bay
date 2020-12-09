@@ -74,7 +74,7 @@ GLOBAL_LIST_INIT(slot_equipment_priority, list( \
 /mob/proc/equip_to_appropriate_slot(obj/item/W)
 	if(!istype(W)) return 0
 
-	for(var/slot in slot_equipment_priority)
+	for(var/slot in GLOB.slot_equipment_priority)
 		if(equip_to_slot_if_possible(W, slot, del_on_fail=0, disable_warning=1, redraw_mob=1))
 			return 1
 

@@ -264,7 +264,7 @@ GLOBAL_LIST_INIT(artefact_feedback, list(/obj/structure/closet/wizard/armor = 		
 		var/spell/S = path
 		feedback_add_details("wizard_spell_learned","[initial(S.feedback)]")
 	else if(ispath(path,/obj))
-		feedback_add_details("wizard_spell_learned","[artefact_feedback[path]]")
+		feedback_add_details("wizard_spell_learned","[GLOB.artefact_feedback[path]]")
 
 
 /obj/item/weapon/spellbook/proc/add_spell(var/mob/user, var/spell_path)

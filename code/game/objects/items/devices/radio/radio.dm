@@ -1,9 +1,9 @@
 // Access check is of the type requires one. These have been carefully selected to avoid allowing the janitor to see channels he shouldn't
 GLOBAL_LIST_INIT(default_medbay_channels, list(
-	num2text(GLOB.PUB_FREQ)) = list(),
+	num2text(GLOB.PUB_FREQ) = list(),
 	num2text(GLOB.MED_FREQ) = list(GLOB.access_medical_equip),
 	num2text(GLOB.MED_I_FREQ) = list(GLOB.access_medical_equip)
-)
+))
 
 /obj/item/device/radio
 	icon = 'icons/obj/radio.dmi'
@@ -56,7 +56,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	if(radio_controller)
 		radio_controller.remove_object(src, frequency)
 		for (var/ch_name in channels)
-			radio_controller.remove_object(src, radiochannels[ch_name])
+			radio_controller.remove_object(src, GLOB.radiochannels[ch_name])
 	return ..()
 
 
@@ -67,7 +67,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	set_frequency(frequency)
 
 	for (var/ch_name in channels)
-		secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  GLOB.RADIO_CHAT)
+		secure_radio_connections[ch_name] = radio_controller.add_object(src, GLOB.radiochannels[ch_name],  GLOB.RADIO_CHAT)
 
 /obj/item/device/radio/attack_self(mob/user as mob)
 	user.set_machine(src)
@@ -117,7 +117,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		var/chan_stat = channels[ch_name]
 		var/listening = !!(chan_stat & FREQ_LISTENING) != 0
 
-		dat.Add(list(list("chan" = ch_name, "display_name" = ch_name, "secure_channel" = 1, "sec_channel_listen" = !listening, "chan_span" = frequency_span_class(radiochannels[ch_name]))))
+		dat.Add(list(list("chan" = ch_name, "display_name" = ch_name, "secure_channel" = 1, "sec_channel_listen" = !listening, "chan_span" = frequency_span_class(GLOB.radiochannels[ch_name]))))
 
 	return dat
 
@@ -587,7 +587,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 
 			for(var/ch_name in channels)
-				radio_controller.remove_object(src, radiochannels[ch_name])
+				radio_controller.remove_object(src, GLOB.radiochannels[ch_name])
 				secure_radio_connections[ch_name] = null
 
 
@@ -645,7 +645,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 			src.name = "broken radio"
 			return
 
-		secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  GLOB.RADIO_CHAT)
+		secure_radio_connections[ch_name] = radio_controller.add_object(src, GLOB.radiochannels[ch_name],  GLOB.RADIO_CHAT)
 
 	return
 
@@ -717,12 +717,12 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 /obj/item/device/radio/proc/config(op)
 	if(radio_controller)
 		for (var/ch_name in channels)
-			radio_controller.remove_object(src, radiochannels[ch_name])
+			radio_controller.remove_object(src, GLOB.radiochannels[ch_name])
 	secure_radio_connections = new
 	channels = op
 	if(radio_controller)
 		for (var/ch_name in op)
-			secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  GLOB.RADIO_CHAT)
+			secure_radio_connections[ch_name] = radio_controller.add_object(src, GLOB.radiochannels[ch_name],  GLOB.RADIO_CHAT)
 	return
 
 /obj/item/device/radio/off
@@ -758,7 +758,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 /obj/item/device/radio/phone/medbay/Initialize()
 	..()
-	internal_channels = default_medbay_channels.Copy()
+	internal_channels = GLOB.default_medbay_channels.Copy()
 
 /obj/item/device/radio/CouldUseTopic(var/mob/user)
 	..()

@@ -16,6 +16,6 @@
 	if(url)
 		to_chat(listener, url)
 	if(license)
-		var/license_url = license_to_url[license]
+		var/license_url = GLOB.license_to_url[license]
 		to_chat(listener, "<span class='good'>License: [license_url ? "<a href='[license_url]'>[license]</a>" : license]</span>")
 	sound_to(listener, sound(song, repeat = 1, wait = 0, volume = 85, channel = 1))

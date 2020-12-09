@@ -5,7 +5,7 @@ GLOBAL_LIST_INIT(ALL_ANTIGENS, list(
 	))
 
 /hook/startup/proc/randomise_antigens_order()
-	ALL_ANTIGENS = shuffle(ALL_ANTIGENS)
+	GLOB.ALL_ANTIGENS = shuffle(GLOB.ALL_ANTIGENS)
 	return 1
 
 // iterate over the list of antigens and see what matches
@@ -16,7 +16,7 @@ GLOBAL_LIST_INIT(ALL_ANTIGENS, list(
 		return none
 
 	var/code = ""
-	for(var/V in ALL_ANTIGENS)
+	for(var/V in GLOB.ALL_ANTIGENS)
 		if(V in antigens)
 			code += V
 

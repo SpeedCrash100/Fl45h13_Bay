@@ -17,7 +17,7 @@ GLOBAL_LIST_INIT(hidden_skill_types, list(\
 
 proc/setup_skills()
 	if(GLOB.SKILLS.len == 0)
-		for(var/T in (typesof(/datum/skill)-hidden_skill_types))
+		for(var/T in (typesof(/datum/skill)-GLOB.hidden_skill_types))
 			var/datum/skill/S = new T
 			if(S.ID != "none")
 				if(!GLOB.SKILLS.Find(S.field))

@@ -69,7 +69,7 @@
 		if((dir & check_dirs) == dir)
 			//check that they are connected by the corner turf
 			var/connected_dirs = get_zone_neighbours(get_step(src, dir))
-			if(connected_dirs && (dir & reverse_dir[connected_dirs]) == dir)
+			if(connected_dirs && (dir & GLOB.reverse_dir[connected_dirs]) == dir)
 				unconnected_dirs &= ~dir //they are, so unflag the cardinals in question
 
 	//it is safe to remove src from the zone if all cardinals are connected by corner GLOB.turfs
@@ -160,7 +160,7 @@
 		if(istype(unsim, /turf/simulated))
 
 			var/turf/simulated/sim = unsim
-			sim.open_directions |= reverse_dir[d]
+			sim.open_directions |= GLOB.reverse_dir[d]
 
 			if(air_master.has_valid_zone(sim))
 

@@ -7,7 +7,7 @@ GLOBAL_LIST_EMPTY(mob_hat_cache)
 		t_state = hat.item_state
 	var/key = "[t_state]_[offset_x]_[offset_y]"
 	if(!GLOB.mob_hat_cache[key])            // Not ideal as there's no guarantee all hat icon_states
-		var/t_icon = default_onmob_icons[slot_head_str] // are unique across multiple dmis, but whatever.
+		var/t_icon = GLOB.default_onmob_icons[slot_head_str] // are unique across multiple dmis, but whatever.
 		if(hat.icon_override)
 			t_icon = hat.icon_override
 		else if(hat.item_icons && (slot_head_str in hat.item_icons))

@@ -246,10 +246,10 @@ proc/check_panel(mob/M)
 	..()
 
 	if(clone.l_hand)
-		if(!(locate(clone.l_hand) in non_fakeattack_weapons))
+		if(!(locate(clone.l_hand) in GLOB.non_fakeattack_weapons))
 			weapon_name = clone.l_hand.name
 	else if(clone.r_hand)
-		if(!(locate(clone.r_hand) in non_fakeattack_weapons))
+		if(!(locate(clone.r_hand) in GLOB.non_fakeattack_weapons))
 			weapon_name = clone.r_hand.name
 
 	name = clone.name

@@ -81,10 +81,10 @@ GLOBAL_LIST_EMPTY(default_pai_software)
 
 	// Emotions
 	var/emotions[0]
-	for(var/name in pai_emotions)
+	for(var/name in GLOB.pai_emotions)
 		var/emote[0]
 		emote["name"] = name
-		emote["id"] = pai_emotions[name]
+		emote["id"] = GLOB.pai_emotions[name]
 		emotions[++emotions.len] = emote
 
 	data["emotions"] = emotions
@@ -126,6 +126,6 @@ GLOBAL_LIST_EMPTY(default_pai_software)
 
 	else if(href_list["image"])
 		var/img = text2num(href_list["image"])
-		if(1 <= img && img <= pai_emotions.len)
+		if(1 <= img && img <= GLOB.pai_emotions.len)
 			card.setEmotion(img)
 		return 1

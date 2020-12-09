@@ -163,8 +163,8 @@ GLOBAL_LIST_INIT(status_icons_to_colour, list(
 	if(!picture || picture_state != state)
 		picture_state = state
 		picture = image('icons/obj/status_display.dmi', icon_state=picture_state)
-	if(picture_state && status_icons_to_colour[picture_state])
-		set_light(l_range = 2, l_power = 2, l_color = status_icons_to_colour[picture_state])
+	if(picture_state && GLOB.status_icons_to_colour[picture_state])
+		set_light(l_range = 2, l_power = 2, l_color = GLOB.status_icons_to_colour[picture_state])
 	overlays |= picture
 
 /obj/machinery/status_display/proc/update_display(line1, line2)

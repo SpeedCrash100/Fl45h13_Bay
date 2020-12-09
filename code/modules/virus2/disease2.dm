@@ -30,8 +30,8 @@
 		else
 			infectionchance = rand(60,90)
 
-	antigen = list(pick(ALL_ANTIGENS))
-	antigen |= pick(ALL_ANTIGENS)
+	antigen = list(pick(GLOB.ALL_ANTIGENS))
+	antigen |= pick(GLOB.ALL_ANTIGENS)
 	spreadtype = prob(70) ? "Airborne" : "Contact"
 
 	if(all_species.len)
@@ -142,8 +142,8 @@
 	effects += get_random_virus2_effect(effect_stage, badness, exclude)
 
 	if (prob(5))
-		antigen = list(pick(ALL_ANTIGENS))
-		antigen |= pick(ALL_ANTIGENS)
+		antigen = list(pick(GLOB.ALL_ANTIGENS))
+		antigen |= pick(GLOB.ALL_ANTIGENS)
 
 	if (prob(5) && all_species.len)
 		affected_species = get_infectable_species()

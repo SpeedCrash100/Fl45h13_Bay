@@ -464,9 +464,9 @@ datum/unit_test/robot_module_icons/start_test()
 	if(!valid_states.len)
 		return 1
 
-	for(var/i=1, i<=robot_modules.len, i++)
-		var/bad_msg = "[GLOB.ascii_red]--------------- [robot_modules[i]]"
-		if(!(lowertext(robot_modules[i]) in valid_states))
+	for(var/i=1, i<=GLOB.robot_modules.len, i++)
+		var/bad_msg = "[GLOB.ascii_red]--------------- [GLOB.robot_modules[i]]"
+		if(!(lowertext(GLOB.robot_modules[i]) in valid_states))
 			log_unit_test("[bad_msg] does not contain a valid icon state in [icon_file][GLOB.ascii_reset]")
 			failed=1
 

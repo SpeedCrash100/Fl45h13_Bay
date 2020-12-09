@@ -22,7 +22,7 @@ GLOBAL_LIST_INIT(integrated_circuit_blacklist, list(/obj/item/integrated_circuit
 /obj/machinery/integrated_circuit_printer/New()
 	..()
 	if(!recipe_list)
-		recipe_list = list("Circuits" = typesof(/obj/item/integrated_circuit) - integrated_circuit_blacklist,
+		recipe_list = list("Circuits" = typesof(/obj/item/integrated_circuit) - GLOB.integrated_circuit_blacklist,
 						"Assemblies" = typesof(/obj/item/device/electronic_assembly))
 
 	component_parts = list()

@@ -313,8 +313,8 @@ GLOBAL_LIST_INIT(slot_flags_enumeration, list(
 		return 0
 
 	//First check if the item can be equipped to the desired slot.
-	if("[slot]" in slot_flags_enumeration)
-		var/req_flags = slot_flags_enumeration["[slot]"]
+	if("[slot]" in GLOB.slot_flags_enumeration)
+		var/req_flags = GLOB.slot_flags_enumeration["[slot]"]
 		if(!(req_flags & slot_flags))
 			return 0
 
@@ -690,5 +690,5 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	else if(item_icons && item_icons[slot])
 		mob_icon = item_icons[slot]
 	else
-		mob_icon = default_onmob_icons[slot]
+		mob_icon = GLOB.default_onmob_icons[slot]
 	return overlay_image(mob_icon,mob_state,color,RESET_COLOR)
