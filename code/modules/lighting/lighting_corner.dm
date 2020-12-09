@@ -1,4 +1,4 @@
-/var/total_lighting_corners = 0
+GLOBAL_VAR_INIT(total_lighting_corners, 0) 
 /var/datum/lighting_corner/dummy/dummy_lighting_corner = new
 // Because we can control each corner of every lighting overlay.
 // And corners get shared between multiple GLOB.turfs (unless you're on the corners of the map, then 1 corner doesn't).

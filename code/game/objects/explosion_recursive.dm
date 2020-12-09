@@ -4,7 +4,7 @@
 
 GLOBAL_LIST_EMPTY(explosion_turfs)
 
-var/explosion_in_progress = 0
+GLOBAL_VAR_INIT(explosion_in_progress, 0) 
 
 
 proc/explosion_rec(turf/epicenter, power, shaped)

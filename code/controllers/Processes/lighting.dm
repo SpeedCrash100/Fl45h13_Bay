@@ -1,4 +1,4 @@
-/var/lighting_overlays_initialised = FALSE
+GLOBAL_VAR_INIT(lighting_overlays_initialised, FALSE) 
 
 GLOBAL_LIST_EMPTY(lighting_update_lights)    // List of lighting sources  queued for update.
 GLOBAL_LIST_EMPTY(lighting_update_corners)    // List of lighting corners  queued for update.

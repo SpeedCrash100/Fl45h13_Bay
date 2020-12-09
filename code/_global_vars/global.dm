@@ -27,20 +27,20 @@ GLOBAL_LIST_EMPTY(global_map)
 GLOBAL_LIST_INIT(hit_appends, list("-OOF", "-ACK", "-UGH", "-HRNK", "-HURGH", "-GLORF"))
 
 
-var/diary               = null
-var/href_logfile        = null
-var/game_version        = "Baystation12"
-var/changelog_hash      = ""
-var/game_year           = (text2num(time2text(world.realtime, "YYYY")) + 544)
-var/station_name 		= "Baystation12"
+GLOBAL_VAR_INIT(diary, null) 
+GLOBAL_VAR_INIT(href_logfile, null) 
+GLOBAL_VAR_INIT(game_version, "Baystation12") 
+GLOBAL_VAR_INIT(changelog_hash, "") 
+GLOBAL_VAR_INIT(game_year, (text2num(time2text(world.realtime, "YYYY")) + 544)) 
+GLOBAL_VAR_INIT(station_name, "Baystation12") 
 
-var/round_progressing = 1
-var/master_mode       = "extended" // "extended"
-var/secondary_mode    = "extended"
-var/tertiary_mode     = "extended"
-var/secret_force_mode = "secret"   // if this is anything but "secret", the secret rotation will forceably choose this mode.
+GLOBAL_VAR_INIT(round_progressing, 1) 
+GLOBAL_VAR_INIT(master_mode, "extended") // "extended"
+GLOBAL_VAR_INIT(secondary_mode, "extended") 
+GLOBAL_VAR_INIT(tertiary_mode, "extended") 
+GLOBAL_VAR_INIT(secret_force_mode, "secret") // if this is anything but "secret", the secret rotation will forceably choose this mode.
 
-var/host = null //only here until check @ code\modules\ghosttrap\trap.dm:112 is fixed
+GLOBAL_VAR_INIT(host, null) //only here until check @ code\modules\ghosttrap\trap.dm:112 is fixed
 
 // GLOBAL_LIST_EMPTY(jobMax)
 GLOBAL_LIST_EMPTY(bombers)
@@ -92,11 +92,11 @@ var/datum/sun/sun                   = null
 
 GLOBAL_LIST_EMPTY(powernets)
 
-var/Debug2 = 0
+GLOBAL_VAR_INIT(Debug2, 0) 
 
-var/gravity_is_on = 1
+GLOBAL_VAR_INIT(gravity_is_on, 1) 
 
-var/join_motd = null
+GLOBAL_VAR_INIT(join_motd, null) 
 
 var/datum/nanomanager/nanomanager		= new() // NanoManager, the manager for Nano UIs.
 var/datum/event_manager/event_manager	= new() // Event Manager, the manager for events.
@@ -104,34 +104,28 @@ var/datum/event_manager/event_manager	= new() // Event Manager, the manager for 
 GLOBAL_LIST_EMPTY(awaydestinations) // Away missions. A list of landmarks that the warpgate can take you to.
 
 // MySQL configuration
-var/sqladdress = "localhost"
-var/sqlport    = "3306"
-var/sqldb      = "tgstation"
-var/sqllogin   = "root"
-var/sqlpass    = ""
-
-// Feedback gathering sql connection
-var/sqlfdbkdb    = "test"
-var/sqlfdbklogin = "root"
-var/sqlfdbkpass  = ""
-var/sqllogging   = 0 // Should we log deaths, population stats, etc.?
+GLOBAL_VAR_INIT(sqladdress, "localhost") 
+GLOBAL_VAR_INIT(sqlport, "3306") 
+GLOBAL_VAR_INIT(sqldb, "tgstation") 
+GLOBAL_VAR_INIT(sqllogin, "root") 
+GLOBAL_VAR_INIT(sqlpass, "") // Feedback gathering sql connection
+GLOBAL_VAR_INIT(sqlfdbkdb, "test") 
+GLOBAL_VAR_INIT(sqlfdbklogin, "root") 
+GLOBAL_VAR_INIT(sqlfdbkpass, "") 
+GLOBAL_VAR_INIT(sqllogging, 0) // Should we log deaths, population stats, etc.?
 
 // Forum MySQL configuration. (for use with forum account/key authentication)
 // These are all default values that will load should the forumdbconfig.txt file fail to read for whatever reason.
-var/forumsqladdress = "localhost"
-var/forumsqlport    = "3306"
-var/forumsqldb      = "tgstation"
-var/forumsqllogin   = "root"
-var/forumsqlpass    = ""
-var/forum_activated_group     = "2"
-var/forum_authenticated_group = "10"
-
-// For FTP requests. (i.e. downloading runtime logs.)
+GLOBAL_VAR_INIT(forumsqladdress, "localhost") 
+GLOBAL_VAR_INIT(forumsqlport, "3306") 
+GLOBAL_VAR_INIT(forumsqldb, "tgstation") 
+GLOBAL_VAR_INIT(forumsqllogin, "root") 
+GLOBAL_VAR_INIT(forumsqlpass, "") 
+GLOBAL_VAR_INIT(forum_activated_group, "2") 
+GLOBAL_VAR_INIT(forum_authenticated_group, "10") // For FTP requests. (i.e. downloading runtime logs.)
 // However it'd be ok to use for accessing attack logs and such too, which are even laggier.
-var/fileaccess_timer = 0
-var/custom_event_msg = null
-
-// Database connections. A connection is established on world creation.
+GLOBAL_VAR_INIT(fileaccess_timer, 0) 
+GLOBAL_VAR_INIT(custom_event_msg, null) // Database connections. A connection is established on world creation.
 // Ideally, the connection dies when the server restarts (After feedback logging.).
 var/DBConnection/dbcon     = new() // Feedback    database (New database)
 var/DBConnection/dbcon_old = new() // /tg/station database (Old database) -- see the files in the SQL folder for information on what goes where.
@@ -172,9 +166,7 @@ var/static/list/scarySounds = list(
 )
 
 // Bomb cap!
-var/max_explosion_range = 14
-
-// Announcer intercom, because too much stuff creates an intercom for one message then hard del()s it. Also headset, for things that should be affected by comms outages.
+GLOBAL_VAR_INIT(max_explosion_range, 14) // Announcer intercom, because too much stuff creates an intercom for one message then hard del()s it. Also headset, for things that should be affected by comms outages.
 GLOBAL_DATUM_INIT(global_announcer, /obj/item/device/radio/announcer, new)
 GLOBAL_DATUM_INIT(global_headset, /obj/item/device/radio/announcer/subspace, new)
 

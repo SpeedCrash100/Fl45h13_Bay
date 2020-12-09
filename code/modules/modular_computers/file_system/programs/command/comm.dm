@@ -257,7 +257,7 @@ General message handling stuff
 */
 GLOBAL_LIST_EMPTY(comm_message_listeners) //We first have to initialize list then we can use it.
 var/datum/comm_message_listener/global_message_listener = new //May be used by admins
-var/last_message_id = 0
+GLOBAL_VAR_INIT(last_message_id, 0) 
 
 /proc/get_comm_message_id()
 	last_message_id = last_message_id + 1

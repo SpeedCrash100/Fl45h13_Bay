@@ -1,4 +1,4 @@
-var/global/universe_has_ended = 0
+GLOBAL_VAR_INIT(universe_has_ended, 0) 
 
 
 /datum/universal_state/supermatter_cascade

@@ -1,6 +1,6 @@
-/var/server_name = "Baystation 12"
+GLOBAL_VAR_INIT(server_name, "Baystation 12") 
 
-/var/game_id = null
+GLOBAL_VAR_INIT(game_id, null) 
 /hook/global_init/proc/generate_gameid()
 	if(game_id != null)
 		return
@@ -142,8 +142,8 @@
 
 #undef RECOMMENDED_VERSION
 
-var/world_topic_spam_protect_ip = "0.0.0.0"
-var/world_topic_spam_protect_time = world.timeofday
+GLOBAL_VAR_INIT(world_topic_spam_protect_ip, "0.0.0.0") 
+GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday) 
 
 /world/Topic(T, addr, master, key)
 	TGS_TOPIC	//redirect to server tools if necessary
@@ -652,8 +652,8 @@ var/world_topic_spam_protect_time = world.timeofday
 	return
 
 #define FAILED_DB_CONNECTION_CUTOFF 5
-var/failed_db_connections = 0
-var/failed_old_db_connections = 0
+GLOBAL_VAR_INIT(failed_db_connections, 0) 
+GLOBAL_VAR_INIT(failed_old_db_connections, 0) 
 
 /hook/startup/proc/connectDB()
 	if(!setup_database_connection())

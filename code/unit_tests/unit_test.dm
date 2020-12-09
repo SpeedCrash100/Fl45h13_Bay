@@ -27,27 +27,25 @@
 
 #define MAX_UNIT_TEST_RUN_TIME 2 MINUTES
 
-var/all_unit_tests_passed = 1
-var/failed_unit_tests = 0
-var/skipped_unit_tests = 0
-var/total_unit_tests = 0
-var/currently_running_tests = 0
-
-// For console out put in Linux/Bash makes the output green or red.
+GLOBAL_VAR_INIT(all_unit_tests_passed, 1) 
+GLOBAL_VAR_INIT(failed_unit_tests, 0) 
+GLOBAL_VAR_INIT(skipped_unit_tests, 0) 
+GLOBAL_VAR_INIT(total_unit_tests, 0) 
+GLOBAL_VAR_INIT(currently_running_tests, 0) // For console out put in Linux/Bash makes the output green or red.
 // Should probably only be used for unit tests/Travis since some special folks use winders to host servers.
 // if you want plain output, use dm.sh -DUNIT_TEST -DUNIT_TEST_PLAIN baystation12.dme
 #ifdef UNIT_TEST_PLAIN
-var/ascii_esc = ""
-var/ascii_red = ""
-var/ascii_green = ""
-var/ascii_yellow = ""
-var/ascii_reset = ""
+GLOBAL_VAR_INIT(ascii_esc, "") 
+GLOBAL_VAR_INIT(ascii_red, "") 
+GLOBAL_VAR_INIT(ascii_green, "") 
+GLOBAL_VAR_INIT(ascii_yellow, "") 
+GLOBAL_VAR_INIT(ascii_reset, "") 
 #else
-var/ascii_esc = ascii2text(27)
-var/ascii_red = "[ascii_esc]\[31m"
-var/ascii_green = "[ascii_esc]\[32m"
-var/ascii_yellow = "[ascii_esc]\[33m"
-var/ascii_reset = "[ascii_esc]\[0m"
+GLOBAL_VAR_INIT(ascii_esc, ascii2text(27)) 
+GLOBAL_VAR_INIT(ascii_red, "[ascii_esc]\[31m") 
+GLOBAL_VAR_INIT(ascii_green, "[ascii_esc]\[32m") 
+GLOBAL_VAR_INIT(ascii_yellow, "[ascii_esc]\[33m") 
+GLOBAL_VAR_INIT(ascii_reset, "[ascii_esc]\[0m") 
 #endif
 
 

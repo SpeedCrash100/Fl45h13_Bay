@@ -502,7 +502,7 @@ GLOBAL_LIST_EMPTY(swapmaps_iconcache)
 // preferred mode; sav or text
 GLOBAL_VAR_CONST(SWAPMAPS_SAV, 0)
 GLOBAL_VAR_CONST(SWAPMAPS_TEXT, 1)
-var/swapmaps_mode=GLOB.SWAPMAPS_SAV
+GLOBAL_VAR_INIT(swapmaps_mode, GLOB.SWAPMAPS_SAV) 
 
 var/swapmaps_compiled_maxx
 var/swapmaps_compiled_maxy

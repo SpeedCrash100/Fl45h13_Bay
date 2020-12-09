@@ -2,12 +2,12 @@
 #define SPECOPS_MOVETIME 600	//Time to station is milliseconds. 60 seconds, enough time for everyone to be on the shuttle before it leaves.
 #define SPECOPS_RETURN_DELAY 6000 //Time between the shuttle is capable of moving.
 
-var/specops_shuttle_moving_to_station = 0
-var/specops_shuttle_moving_to_centcom = 0
-var/specops_shuttle_at_station = 0
-var/specops_shuttle_can_send = 1
-var/specops_shuttle_time = 0
-var/specops_shuttle_timeleft = 0
+GLOBAL_VAR_INIT(specops_shuttle_moving_to_station, 0) 
+GLOBAL_VAR_INIT(specops_shuttle_moving_to_centcom, 0) 
+GLOBAL_VAR_INIT(specops_shuttle_at_station, 0) 
+GLOBAL_VAR_INIT(specops_shuttle_can_send, 1) 
+GLOBAL_VAR_INIT(specops_shuttle_time, 0) 
+GLOBAL_VAR_INIT(specops_shuttle_timeleft, 0) 
 
 /obj/machinery/computer/specops_shuttle
 	name = "special operations shuttle control console"

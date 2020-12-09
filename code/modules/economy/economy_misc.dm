@@ -81,10 +81,10 @@ var/global/current_date_string
 var/global/datum/money_account/vendor_account
 var/global/datum/money_account/station_account
 var/global/list/datum/money_account/department_accounts = list()
-var/global/num_financial_terminals = 1
-var/global/next_account_number = 0
+GLOBAL_VAR_INIT(num_financial_terminals, 1) 
+GLOBAL_VAR_INIT(next_account_number, 0) 
 GLOBAL_LIST_EMPTY(all_money_accounts)
-var/global/economy_init = 0
+GLOBAL_VAR_INIT(economy_init, 0) 
 
 /proc/setup_economy()
 	if(economy_init)

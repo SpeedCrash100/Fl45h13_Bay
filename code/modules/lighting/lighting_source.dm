@@ -1,5 +1,4 @@
-/var/total_lighting_sources = 0
-// This is where the fun begins.
+GLOBAL_VAR_INIT(total_lighting_sources, 0) // This is where the fun begins.
 // These are the main datums that emit light.
 
 /datum/light_source
