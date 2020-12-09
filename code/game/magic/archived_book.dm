@@ -46,7 +46,7 @@ datum/book_manager/proc/freeid()
 
 	if(BOOKS_USE_SQL && config.sql_enabled)
 		var/DBConnection/dbcon = new()
-		dbcon.Connect("dbi:mysql:[GLOB.sqldb]:[GLOB.sqladdress]:[GLOB.sqlport]","[GLOB.sqllogin]","[GLOB.sqlpass]")
+		dbcon.Connect("dbi:mysql:[sqldb]:[sqladdress]:[sqlport]","[sqllogin]","[sqlpass]")
 		if(!dbcon.IsConnected())
 			alert("Connection to Archive has been severed. Aborting.")
 		else

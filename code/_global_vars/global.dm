@@ -104,25 +104,25 @@ var/datum/event_manager/event_manager	= new() // Event Manager, the manager for 
 GLOBAL_LIST_EMPTY(awaydestinations) // Away missions. A list of landmarks that the warpgate can take you to.
 
 // MySQL configuration
-GLOBAL_VAR_INIT(sqladdress, "localhost") 
-GLOBAL_VAR_INIT(sqlport, "3306") 
-GLOBAL_VAR_INIT(sqldb, "tgstation") 
-GLOBAL_VAR_INIT(sqllogin, "root") 
-GLOBAL_VAR_INIT(sqlpass, "") // Feedback gathering sql connection
-GLOBAL_VAR_INIT(sqlfdbkdb, "test") 
-GLOBAL_VAR_INIT(sqlfdbklogin, "root") 
-GLOBAL_VAR_INIT(sqlfdbkpass, "") 
-GLOBAL_VAR_INIT(sqllogging, 0) // Should we log deaths, population stats, etc.?
+GLOBAL_REAL_VAR(sqladdress) = "localhost"
+GLOBAL_REAL_VAR(sqlport) = "3306"
+GLOBAL_REAL_VAR(sqldb) = "tgstation"
+GLOBAL_REAL_VAR(sqllogin) = "root"
+GLOBAL_REAL_VAR(sqlpass) = "" // Feedback gathering sql connection
+GLOBAL_REAL_VAR(sqlfdbkdb) = "test"
+GLOBAL_REAL_VAR(sqlfdbklogin) = "root"
+GLOBAL_REAL_VAR(sqlfdbkpass) = ""
+GLOBAL_REAL_VAR(sqllogging) = 0 // Should we log deaths, population stats, etc.?
 
 // Forum MySQL configuration. (for use with forum account/key authentication)
 // These are all default values that will load should the forumdbconfig.txt file fail to read for whatever reason.
-GLOBAL_VAR_INIT(forumsqladdress, "localhost") 
-GLOBAL_VAR_INIT(forumsqlport, "3306") 
-GLOBAL_VAR_INIT(forumsqldb, "tgstation") 
-GLOBAL_VAR_INIT(forumsqllogin, "root") 
-GLOBAL_VAR_INIT(forumsqlpass, "") 
-GLOBAL_VAR_INIT(forum_activated_group, "2") 
-GLOBAL_VAR_INIT(forum_authenticated_group, "10") // For FTP requests. (i.e. downloading runtime logs.)
+GLOBAL_REAL_VAR(forumsqladdress) = "localhost"
+GLOBAL_REAL_VAR(forumsqlport) = "3306"
+GLOBAL_REAL_VAR(forumsqldb) = "tgstation"
+GLOBAL_REAL_VAR(forumsqllogin) = "root"
+GLOBAL_REAL_VAR(forumsqlpass) = ""
+GLOBAL_REAL_VAR(forum_activated_group) = "2"
+GLOBAL_REAL_VAR(forum_authenticated_group) = "10" // For FTP requests. (i.e. downloading runtime logs.)
 // However it'd be ok to use for accessing attack logs and such too, which are even laggier.
 GLOBAL_VAR_INIT(fileaccess_timer, 0) 
 GLOBAL_VAR_INIT(custom_event_msg, null) // Database connections. A connection is established on world creation.

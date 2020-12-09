@@ -838,23 +838,23 @@ GLOBAL_LIST_EMPTY(gamemode_cache)
 
 		switch (name)
 			if ("address")
-				GLOB.sqladdress = value
+				sqladdress = value
 			if ("port")
-				GLOB.sqlport = value
+				sqlport = value
 			if ("database")
-				GLOB.sqldb = value
+				sqldb = value
 			if ("login")
-				GLOB.sqllogin = value
+				sqllogin = value
 			if ("password")
-				GLOB.sqlpass = value
+				sqlpass = value
 			if ("feedback_database")
-				GLOB.sqlfdbkdb = value
+				sqlfdbkdb = value
 			if ("feedback_login")
-				GLOB.sqlfdbklogin = value
+				sqlfdbklogin = value
 			if ("feedback_password")
-				GLOB.sqlfdbkpass = value
+				sqlfdbkpass = value
 			if ("enable_stat_tracking")
-				GLOB.sqllogging = 1
+				sqllogging = 1
 			else
 				log_misc("Unknown setting in configuration: '[name]'")
 
@@ -884,19 +884,19 @@ GLOBAL_LIST_EMPTY(gamemode_cache)
 
 		switch (name)
 			if ("address")
-				GLOB.forumsqladdress = value
+				forumsqladdress = value
 			if ("port")
-				GLOB.forumsqlport = value
+				forumsqlport = value
 			if ("database")
-				GLOB.forumsqldb = value
+				forumsqldb = value
 			if ("login")
-				GLOB.forumsqllogin = value
+				forumsqllogin = value
 			if ("password")
-				GLOB.forumsqlpass = value
+				forumsqlpass = value
 			if ("activatedgroup")
-				GLOB.forum_activated_group = value
+				forum_activated_group = value
 			if ("authenticatedgroup")
-				GLOB.forum_authenticated_group = value
+				forum_authenticated_group = value
 			else
 				log_misc("Unknown setting in configuration: '[name]'")
 

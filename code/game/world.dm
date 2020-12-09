@@ -670,11 +670,11 @@ proc/setup_database_connection()
 	if(!dbcon)
 		dbcon = new()
 
-	var/user = GLOB.sqlfdbklogin
-	var/pass = GLOB.sqlfdbkpass
-	var/db = GLOB.sqlfdbkdb
-	var/address = GLOB.sqladdress
-	var/port = GLOB.sqlport
+	var/user = sqlfdbklogin
+	var/pass = sqlfdbkpass
+	var/db = sqlfdbkdb
+	var/address = sqladdress
+	var/port = sqlport
 
 	dbcon.Connect("dbi:mysql:[db]:[address]:[port]","[user]","[pass]")
 	. = dbcon.IsConnected()
@@ -713,11 +713,11 @@ proc/setup_old_database_connection()
 	if(!dbcon_old)
 		dbcon_old = new()
 
-	var/user = GLOB.sqllogin
-	var/pass = GLOB.sqlpass
-	var/db = GLOB.sqldb
-	var/address = GLOB.sqladdress
-	var/port = GLOB.sqlport
+	var/user = sqllogin
+	var/pass = sqlpass
+	var/db = sqldb
+	var/address = sqladdress
+	var/port = sqlport
 
 	dbcon_old.Connect("dbi:mysql:[db]:[address]:[port]","[user]","[pass]")
 	. = dbcon_old.IsConnected()
