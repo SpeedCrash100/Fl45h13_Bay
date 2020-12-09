@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(endgame_safespawns)
 GLOBAL_LIST_INIT(syndicate_access, list(access_maint_tunnels, GLOB.access_syndicate, GLOB.access_external_airlocks))
 
 // Strings which corraspond to bodypart covering flags, useful for outputting what something covers.
-var/global/list/string_part_flags = list(
+GLOBAL_LIST_INIT(string_part_flags, list(
 	"head" = HEAD,
 	"face" = FACE,
 	"eyes" = EYES,
@@ -77,10 +77,10 @@ var/global/list/string_part_flags = list(
 	"feet" = FEET,
 	"arms" = ARMS,
 	"hands" = HANDS
-)
+))
 
 // Strings which corraspond to slot flags, useful for outputting what slot something is.
-var/global/list/string_slot_flags = list(
+GLOBAL_LIST_INIT(string_slot_flags, list(
 	"back" = SLOT_BACK,
 	"face" = SLOT_MASK,
 	"waist" = SLOT_BELT,
@@ -94,7 +94,7 @@ var/global/list/string_slot_flags = list(
 	"body" = SLOT_ICLOTHING,
 	"uniform" = SLOT_TIE,
 	"holster" = SLOT_HOLSTER
-)
+))
 
 //////////////////////////
 /////Initial Building/////

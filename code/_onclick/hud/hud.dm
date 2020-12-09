@@ -3,11 +3,11 @@
 	Uses the same visual objects for all players.
 */
 var/datum/global_hud/global_hud = new()
-var/list/global_huds = list(
+GLOBAL_LIST_INIT(global_huds, list(
 		global_hud.nvg,
 		global_hud.thermal,
 		global_hud.meson,
-		global_hud.science)
+		global_hud.science))
 
 /datum/global_hud
 	var/obj/screen/nvg

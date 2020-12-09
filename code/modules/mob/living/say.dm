@@ -1,4 +1,4 @@
-var/list/department_radio_keys = list(
+GLOBAL_LIST_INIT(department_radio_keys, list(
 	  ":r" = "right ear",	".r" = "right ear",
 	  ":l" = "left ear",	".l" = "left ear",
 	  ":i" = "intercom",	".i" = "intercom",
@@ -69,7 +69,7 @@ var/list/department_radio_keys = list(
 	  ":м" = "Service",		".м" = "Service",
 	  ":з" = "AI Private",	".з" = "AI Private",
 	  ":я" = "Entertainment",".я" = "Entertainment"
-)
+))
 
 
 var/list/channel_to_radio_key = new

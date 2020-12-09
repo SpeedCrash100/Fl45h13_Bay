@@ -215,7 +215,7 @@
 	8 - things that take up an entire turf, like wall girders or door assemblies
 */
 
-var/list/default_onmob_icons = list(
+GLOBAL_LIST_INIT(default_onmob_icons, list(
 		slot_l_hand_str = 'icons/mob/items/lefthand.dmi',
 		slot_r_hand_str = 'icons/mob/items/righthand.dmi',
 		slot_belt_str = 'icons/mob/belt.dmi',
@@ -234,4 +234,4 @@ var/list/default_onmob_icons = list(
 		slot_gloves_str = 'icons/mob/hands.dmi',
 		slot_s_store_str = 'icons/mob/belt_mirror.dmi',
 		slot_tie_str = 'icons/mob/ties.dmi'
-		)
+		))

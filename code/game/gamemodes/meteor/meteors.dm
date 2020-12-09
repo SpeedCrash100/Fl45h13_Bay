@@ -7,7 +7,7 @@ GLOBAL_VAR_CONST(meteor_wave_delay, 1 MINUTE) // minimum wait between waves in t
 GLOBAL_LIST_INIT(meteors_dust, list(/obj/effect/meteor/dust))
 
 // Standard meteors, used during early stages of the meteor gamemode.
-/var/list/meteors_normal = list(\
+GLOBAL_LIST_INIT(meteors_normal, list(\
 		/obj/effect/meteor/medium=8,\
 		/obj/effect/meteor/dust=3,\
 		/obj/effect/meteor/irradiated=3,\
@@ -15,10 +15,10 @@ GLOBAL_LIST_INIT(meteors_dust, list(/obj/effect/meteor/dust))
 		/obj/effect/meteor/flaming=1,\
 		/obj/effect/meteor/golden=1,\
 		/obj/effect/meteor/silver=1\
-		)
+		))
 
 // Threatening meteors, used during the meteor gamemode.
-/var/list/meteors_threatening = list(\
+GLOBAL_LIST_INIT(meteors_threatening, list(\
 		/obj/effect/meteor/big=10,\
 		/obj/effect/meteor/medium=5,\
 		/obj/effect/meteor/golden=3,\
@@ -26,10 +26,10 @@ GLOBAL_LIST_INIT(meteors_dust, list(/obj/effect/meteor/dust))
 		/obj/effect/meteor/flaming=3,\
 		/obj/effect/meteor/irradiated=3,\
 		/obj/effect/meteor/emp=3\
-		)
+		))
 
 // Catastrophic meteors, pretty dangerous without shields and used during the meteor gamemode.
-/var/list/meteors_catastrophic = list(\
+GLOBAL_LIST_INIT(meteors_catastrophic, list(\
 		/obj/effect/meteor/big=75,\
 		/obj/effect/meteor/flaming=10,\
 		/obj/effect/meteor/irradiated=10,\
@@ -38,10 +38,10 @@ GLOBAL_LIST_INIT(meteors_dust, list(/obj/effect/meteor/dust))
 		/obj/effect/meteor/golden=4,\
 		/obj/effect/meteor/silver=4,\
 		/obj/effect/meteor/tunguska=1\
-		)
+		))
 
 // Armageddon meteors, very dangerous, and currently used only during the meteor gamemode.
-/var/list/meteors_armageddon = list(\
+GLOBAL_LIST_INIT(meteors_armageddon, list(\
 		/obj/effect/meteor/big=25,\
 		/obj/effect/meteor/flaming=10,\
 		/obj/effect/meteor/irradiated=10,\
@@ -50,10 +50,10 @@ GLOBAL_LIST_INIT(meteors_dust, list(/obj/effect/meteor/dust))
 		/obj/effect/meteor/tunguska=3,\
 		/obj/effect/meteor/golden=2,\
 		/obj/effect/meteor/silver=2\
-		)
+		))
 
 // Cataclysm meteor selection. Very very dangerous and effective even against shields. Used in late game meteor gamemode only.
-/var/list/meteors_cataclysm = list(\
+GLOBAL_LIST_INIT(meteors_cataclysm, list(\
 		/obj/effect/meteor/big=40,\
 		/obj/effect/meteor/emp=20,\
 		/obj/effect/meteor/tunguska=20,\
@@ -62,7 +62,7 @@ GLOBAL_LIST_INIT(meteors_dust, list(/obj/effect/meteor/dust))
 		/obj/effect/meteor/silver=10,\
 		/obj/effect/meteor/flaming=10,\
 		/obj/effect/meteor/supermatter=1\
-		)
+		))
 
 
 

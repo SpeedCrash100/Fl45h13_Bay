@@ -63,7 +63,7 @@
 		else
 			return meteors_minor
 
-/var/list/meteors_minor = list(
+GLOBAL_LIST_INIT(meteors_minor, list(
 	/obj/effect/meteor/medium     = 80,
 	/obj/effect/meteor/dust       = 30,
 	/obj/effect/meteor/irradiated = 30,
@@ -71,9 +71,9 @@
 	/obj/effect/meteor/flaming    = 10,
 	/obj/effect/meteor/golden     = 10,
 	/obj/effect/meteor/silver     = 10,
-)
+))
 
-/var/list/meteors_moderate = list(
+GLOBAL_LIST_INIT(meteors_moderate, list(
 	/obj/effect/meteor/medium     = 80,
 	/obj/effect/meteor/big        = 30,
 	/obj/effect/meteor/dust       = 30,
@@ -82,9 +82,9 @@
 	/obj/effect/meteor/golden     = 10,
 	/obj/effect/meteor/silver     = 10,
 	/obj/effect/meteor/emp        = 10,
-)
+))
 
-/var/list/meteors_major = list(
+GLOBAL_LIST_INIT(meteors_major, list(
 	/obj/effect/meteor/medium     = 80,
 	/obj/effect/meteor/big        = 30,
 	/obj/effect/meteor/dust       = 30,
@@ -94,7 +94,7 @@
 	/obj/effect/meteor/golden     = 10,
 	/obj/effect/meteor/silver     = 10,
 	/obj/effect/meteor/tunguska   = 1,
-)
+))
 
 /datum/event/meteor_wave/overmap
 	next_meteor_lower = 5

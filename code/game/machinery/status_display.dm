@@ -3,11 +3,11 @@
 #define FONT_STYLE "Arial Black"
 #define SCROLL_SPEED 2
 
-var/list/status_icons_to_colour = list(
+GLOBAL_LIST_INIT(status_icons_to_colour, list(
 	"redalert" = COLOR_RED,
 	"greenalert" = COLOR_GREEN,
 	"bluealert" = COLOR_BLUE
-	)
+	))
 
 // Status display
 // (formerly Countdown timer display)

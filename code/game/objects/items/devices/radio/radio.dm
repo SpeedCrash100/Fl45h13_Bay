@@ -1,6 +1,6 @@
 // Access check is of the type requires one. These have been carefully selected to avoid allowing the janitor to see channels he shouldn't
-var/global/list/default_medbay_channels = list(
-	num2text(GLOB.PUB_FREQ) = list(),
+GLOBAL_LIST_INIT(default_medbay_channels, list(
+	num2text(GLOB.PUB_FREQ)) = list(),
 	num2text(GLOB.MED_FREQ) = list(GLOB.access_medical_equip),
 	num2text(GLOB.MED_I_FREQ) = list(GLOB.access_medical_equip)
 )

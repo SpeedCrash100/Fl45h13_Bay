@@ -47,7 +47,7 @@
 #define GEAR_EVA 15
 
 //Note that you have to specify each subspecies individually. Shouldn't be a big deal.
-/var/list/economic_species_modifier = list(
+GLOBAL_LIST_INIT(economic_species_modifier, list(
 												/datum/species/human             = 10,
 												/datum/species/human/gravworlder = 10,
 												/datum/species/human/spacer      = 10,
@@ -57,7 +57,7 @@
 												/datum/species/unathi            = 7,
 												/datum/species/machine           = 7,
 												/datum/species/diona             = 5
-											)
+											))
 
 //---- The following corporations are friendly with NanoTrasen and loosely enable trade and travel:
 //Corporation NanoTrasen - Generalised / high tech research and phoron exploitation.

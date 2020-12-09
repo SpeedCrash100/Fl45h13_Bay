@@ -904,14 +904,14 @@ proc/get_mob_with_client_list()
 
 
 //Quick type checks for some tools
-var/global/list/common_tools = list(
+GLOBAL_LIST_INIT(common_tools, list(
 /obj/item/stack/cable_coil,
 /obj/item/weapon/wrench,
 /obj/item/weapon/weldingtool,
 /obj/item/weapon/screwdriver,
 /obj/item/weapon/wirecutters,
 /obj/item/device/multitool,
-/obj/item/weapon/crowbar)
+/obj/item/weapon/crowbar))
 
 /proc/istool(O)
 	if(O && is_type_in_list(O, common_tools))
@@ -1076,14 +1076,14 @@ proc/is_hot(obj/item/W as obj)
 /*
 Checks if that loc and dir has a item on the wall
 */
-var/list/WALLITEMS = list(
+GLOBAL_LIST_INIT(WALLITEMS, list(
 	/obj/machinery/power/apc, /obj/machinery/alarm, /obj/item/device/radio/intercom,
 	/obj/structure/extinguisher_cabinet, /obj/structure/reagent_dispensers/peppertank,
 	/obj/machinery/status_display, /obj/machinery/requests_console, /obj/machinery/light_switch, /obj/structure/sign,
 	/obj/machinery/newscaster, /obj/machinery/firealarm, /obj/structure/noticeboard,
 	/obj/item/weapon/storage/secure/safe, /obj/machinery/door_timer, /obj/machinery/flasher, /obj/machinery/keycard_auth,
 	/obj/structure/mirror, /obj/structure/fireaxecabinet
-	)
+	))
 /proc/gotwallitem(loc, dir)
 	for(var/obj/O in loc)
 		for(var/item in WALLITEMS)

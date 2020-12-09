@@ -1,8 +1,8 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
 GLOBAL_VAR_INIT(hsboxspawn, 1) 
-var/list/hrefs = list(
-					"hsbsuit" = "Suit Up (Space Travel Gear)",
+GLOBAL_LIST_INIT(hrefs, list(
+					"hsbsuit" = "Suit Up (Space Travel Gear))",
 					"hsbmetal" = "Spawn 50 Metal",
 					"hsbglass" = "Spawn 50 Glass",
 					"hsbairlock" = "Spawn Airlock",

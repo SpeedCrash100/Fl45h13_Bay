@@ -2,7 +2,7 @@
 #define AI_CHECK_RADIO 2
 
 GLOBAL_LIST_EMPTY(ai_list)
-var/list/ai_verbs_default = list(
+GLOBAL_LIST_INIT(ai_verbs_default, list(
 	/mob/living/silicon/ai/proc/ai_announcement,
 	/mob/living/silicon/ai/proc/ai_call_shuttle,
 	// /mob/living/silicon/ai/proc/ai_recall_shuttle,
@@ -28,7 +28,7 @@ var/list/ai_verbs_default = list(
 	/mob/living/silicon/ai/proc/toggle_hologram_movement,
 	/mob/living/silicon/ai/proc/ai_power_override,
 	/mob/living/silicon/ai/proc/ai_shutdown
-)
+))
 
 //Not sure why this is necessary...
 /proc/AutoUpdateAI(obj/subject)

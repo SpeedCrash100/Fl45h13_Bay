@@ -124,7 +124,7 @@ GLOBAL_VAR_CONST(SUP_FREQ, 1347)
 GLOBAL_VAR_CONST(MED_I_FREQ, 1485)
 GLOBAL_VAR_CONST(SEC_I_FREQ, 1475)
 
-var/list/radiochannels = list(
+GLOBAL_LIST_INIT(radiochannels, list(
 	"Common"		= GLOB.PUB_FREQ,
 	"Science"		= GLOB.SCI_FREQ,
 	"Command"		= GLOB.COMM_FREQ,
@@ -139,7 +139,7 @@ var/list/radiochannels = list(
 	"Service" 		= GLOB.SRV_FREQ,
 	"AI Private"	= GLOB.AI_FREQ,
 	"Entertainment" = GLOB.ENT_FREQ,
-	"Medical(I)"	= GLOB.MED_I_FREQ,
+	"Medical(I))"	= GLOB.MED_I_FREQ,
 	"Security(I)"	= GLOB.SEC_I_FREQ
 )
 

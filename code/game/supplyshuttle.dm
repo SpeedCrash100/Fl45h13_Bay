@@ -7,7 +7,7 @@
 
 var/datum/controller/supply/supply_controller = new()
 
-var/list/mechtoys = list(
+GLOBAL_LIST_INIT(mechtoys, list(
 	/obj/item/toy/prize/ripley,
 	/obj/item/toy/prize/fireripley,
 	/obj/item/toy/prize/deathripley,
@@ -19,7 +19,7 @@ var/list/mechtoys = list(
 	/obj/item/toy/prize/mauler,
 	/obj/item/toy/prize/odysseus,
 	/obj/item/toy/prize/phazon
-)
+))
 
 /obj/item/weapon/paper/manifest
 	name = "supply manifest"
@@ -110,14 +110,14 @@ var/list/mechtoys = list(
 	var/reason = null
 	var/orderedrank = null //used for supply console printing
 
-var/list/point_source_descriptions = list(
+GLOBAL_LIST_INIT(point_source_descriptions, list(
 	"time" = "Base station supply",
 	"manifest" = "From exported manifests",
 	"crate" = "From exported crates",
 	"phoron" = "From exported phoron",
 	"platinum" = "From exported platinum",
 	"total" = "Total" // If you're adding additional point sources, add it here in a new line. Don't forget to put a comma after the old last line.
-	)
+	))
 
 //Adds the points from different sources together and saves them for the export overview
 /datum/controller/supply/proc/add_points_from_source(amount, source)

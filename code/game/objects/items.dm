@@ -278,7 +278,7 @@
 		M.r_hand.update_twohanding()
 
 //Defines which slots correspond to which slot flags
-var/global/list/slot_flags_enumeration = list(
+GLOBAL_LIST_INIT(slot_flags_enumeration, list(
 	"[slot_wear_mask]" = SLOT_MASK,
 	"[slot_back]" = SLOT_BACK,
 	"[slot_wear_suit]" = SLOT_OCLOTHING,
@@ -292,7 +292,7 @@ var/global/list/slot_flags_enumeration = list(
 	"[slot_w_uniform]" = SLOT_ICLOTHING,
 	"[slot_wear_id]" = SLOT_ID,
 	"[slot_tie]" = SLOT_TIE,
-	)
+	))
 
 //the mob M is attempting to equip this item into the slot passed through as 'slot'. Return 1 if it can do this and 0 if it can't.
 //If you are making custom procs but would like to retain partial or complete functionality of this one, include a 'return ..()' to where you want this to happen.

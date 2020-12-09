@@ -27,9 +27,9 @@ GLOBAL_LIST_EMPTY(civilian_positions)
 
 GLOBAL_LIST_EMPTY(security_positions)
 
-var/list/nonhuman_positions = list(
+GLOBAL_LIST_INIT(nonhuman_positions, list(
 	"pAI"
-)
+))
 
 GLOBAL_LIST_EMPTY(service_positions)
 

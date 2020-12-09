@@ -1,5 +1,5 @@
 //admin verb groups - They can overlap if you so wish. Only one of each verb will exist in the verbs list regardless
-var/list/admin_verbs_default = list(
+GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/datum/admins/proc/show_player_panel,	//shows an interface for individual players, with various links (links require additional flags,
 	/client/proc/player_panel,
 	/client/proc/secrets,
@@ -11,8 +11,8 @@ var/list/admin_verbs_default = list(
 //	/client/proc/check_antagonists,		//shows all antags,
 	/client/proc/cmd_mentor_check_new_players
 //	/client/proc/deadchat				//toggles deadchat on/off,
-	)
-var/list/admin_verbs_admin = list(
+	))
+GLOBAL_LIST_INIT(admin_verbs_admin, list(
 	/client/proc/player_panel_new,		//shows an interface for all players, with links to various panels,
 	/client/proc/invisimin,				//allows our mob to go invisible/visible,
 //	/datum/admins/proc/show_traitor_panel,	//interface which shows a mob's mind, -Removed due to rare practical use. Moved to debug verbs ~Errorage,
@@ -26,7 +26,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/admin_ghost,			//allows us to ghost/reenter body at will,
 	/client/proc/toggle_view_range,		//changes how far we can see,
 	/client/proc/fetch_server_logs,		//fetch logfiles from data/logs,
-	/client/proc/fetch_current_log,		//fetch the server log (GLOB.diary) for today,
+	/client/proc/fetch_current_log,		//fetch the server log (GLOB.diary)) for today,
 	/client/proc/fetch_attack_log,		//fetch the server combat-log, doesn't do anything presently,
 	/client/proc/cmd_admin_pm_context,	//right-click adminPM interface,
 	/client/proc/cmd_admin_pm_panel,	//admin-pm list,
@@ -95,17 +95,17 @@ var/list/admin_verbs_admin = list(
 	/client/proc/remove_trader,
 	/datum/admins/proc/sendFax
 )
-var/list/admin_verbs_ban = list(
+GLOBAL_LIST_INIT(admin_verbs_ban, list(
 	/client/proc/unban_panel,
 	/client/proc/jobbans
-	)
-var/list/admin_verbs_sounds = list(
+	))
+GLOBAL_LIST_INIT(admin_verbs_sounds, list(
 	/client/proc/play_local_sound,
 	/client/proc/play_sound,
 	/client/proc/play_server_sound
-	)
+	))
 
-var/list/admin_verbs_fun = list(
+GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/object_talk,
 	/datum/admins/proc/cmd_admin_dress,
 	/client/proc/cmd_admin_gib_self,
@@ -125,9 +125,9 @@ var/list/admin_verbs_fun = list(
 	/datum/admins/proc/call_drop_pod,
 	/client/proc/create_dungeon,
 	/datum/admins/proc/ai_hologram_set
-	)
+	))
 
-var/list/admin_verbs_spawn = list(
+GLOBAL_LIST_INIT(admin_verbs_spawn, list(
 	/datum/admins/proc/spawn_fruit,
 	/datum/admins/proc/spawn_custom_item,
 	/datum/admins/proc/check_custom_items,
@@ -136,8 +136,8 @@ var/list/admin_verbs_spawn = list(
 	/client/proc/respawn_character,
 	/client/proc/virus2_editor,
 	/client/proc/spawn_chemdisp_cartridge
-	)
-var/list/admin_verbs_server = list(
+	))
+GLOBAL_LIST_INIT(admin_verbs_server, list(
 	/datum/admins/proc/capture_map_part,
 	/client/proc/Set_Holiday,
 	/client/proc/ToRban,
@@ -160,8 +160,8 @@ var/list/admin_verbs_server = list(
 	/client/proc/toggle_random_events,
 	/client/proc/check_customitem_activity,
 	/client/proc/nanomapgen_DumpImage
-	)
-var/list/admin_verbs_debug = list(
+	))
+GLOBAL_LIST_INIT(admin_verbs_debug, list(
 	/client/proc/cmd_admin_list_open_jobs,
 	/client/proc/Debug2,
 	/client/proc/kill_air,
@@ -198,27 +198,27 @@ var/list/admin_verbs_debug = list(
 	/turf/proc/update_chunk,
 	/datum/admins/proc/capture_map,
 	/datum/admins/proc/view_runtimes
-	)
+	))
 
-var/list/admin_verbs_paranoid_debug = list(
+GLOBAL_LIST_INIT(admin_verbs_paranoid_debug, list(
 	/client/proc/callproc,
 	/client/proc/callproc_target,
 	/client/proc/debug_controller
-	)
+	))
 
-var/list/admin_verbs_possess = list(
+GLOBAL_LIST_INIT(admin_verbs_possess, list(
 	/proc/possess,
 	/proc/release
-	)
-var/list/admin_verbs_permissions = list(
+	))
+GLOBAL_LIST_INIT(admin_verbs_permissions, list(
 	/client/proc/edit_admin_permissions
-	)
-var/list/admin_verbs_rejuv = list(
+	))
+GLOBAL_LIST_INIT(admin_verbs_rejuv, list(
 	/client/proc/respawn_character
-	)
+	))
 
 //verbs which can be hidden - needs work
-var/list/admin_verbs_hideable = list(
+GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	/client/proc/deadmin_self,
 //	/client/proc/deadchat,
 	/datum/admins/proc/show_traitor_panel,
@@ -287,8 +287,8 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/roll_dices,
 	/proc/possess,
 	/proc/release
-	)
-var/list/admin_verbs_mod = list(
+	))
+GLOBAL_LIST_INIT(admin_verbs_mod, list(
 	/client/proc/cmd_admin_pm_context,	// right-click adminPM interface,
 	/client/proc/cmd_admin_pm_panel,	// admin-pm list,
 	/client/proc/debug_variables,		// allows us to -see- the variables of any instance in the game.,
@@ -306,9 +306,9 @@ var/list/admin_verbs_mod = list(
 	/client/proc/aooc,
 	/datum/admins/proc/sendFax
 
-)
+))
 
-var/list/admin_verbs_mentor = list(
+GLOBAL_LIST_INIT(admin_verbs_mentor, list(
 	/client/proc/cmd_admin_pm_context,
 	/client/proc/cmd_admin_pm_panel,
 	/datum/admins/proc/PlayerNotes,
@@ -317,7 +317,7 @@ var/list/admin_verbs_mentor = list(
 	/datum/admins/proc/show_player_info,
 //	/client/proc/dsay,
 	/client/proc/cmd_admin_subtle_message
-)
+))
 
 /client/proc/add_admin_verbs()
 	if(holder)

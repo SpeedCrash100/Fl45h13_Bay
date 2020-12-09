@@ -5,14 +5,14 @@ GLOBAL_VAR_CONST(SKILL_EXPERT, 3)
 
 // Specific skill typepaths that won't show up on the skills panel.
 // This is used to hide the category subtypes, without having to use special variable.
-var/list/hidden_skill_types = list(\
+GLOBAL_LIST_INIT(hidden_skill_types, list(\
 	/datum/skill,\
 	/datum/skill/secondary,\
 	/datum/skill/security,\
 	/datum/skill/engineering,\
 	/datum/skill/research,\
 	/datum/skill/medical\
-	)
+	))
 
 
 proc/setup_skills()

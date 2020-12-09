@@ -74,11 +74,11 @@ GLOBAL_LIST_INIT(cardinalz, list(NORTH, SOUTH, EAST, WEST, UP, DOWN))
 GLOBAL_LIST_INIT(cornerdirs, list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
 GLOBAL_LIST_INIT(cornerdirsz, list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST, NORTH|UP, EAST|UP, WEST|UP, SOUTH|UP, NORTH|DOWN, EAST|DOWN, WEST|DOWN, SOUTH|DOWN))
 GLOBAL_LIST_INIT(alldirs, list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
-var/list/reverse_dir = list( // reverse_dir[dir] = reverse of dir
+GLOBAL_LIST_INIT(reverse_dir, list( // reverse_dir[dir] = reverse of dir
 	 2,  1,  3,  8, 10,  9, 11,  4,  6,  5,  7, 12, 14, 13, 15, 32, 34, 33, 35, 40, 42,
 	41, 43, 36, 38, 37, 39, 44, 46, 45, 47, 16, 18, 17, 19, 24, 26, 25, 27, 20, 22, 21,
 	23, 28, 30, 29, 31, 48, 50, 49, 51, 56, 58, 57, 59, 52, 54, 53, 55, 60, 62, 61, 63
-)
+))
 
 GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768))
 
@@ -138,11 +138,11 @@ GLOBAL_LIST_INIT(alphabet_uppercase, list("A","B","C","D","E","F","G","H","I","J
 
 
 // Used by robots and robot preferences.
-var/list/robot_module_types = list(
+GLOBAL_LIST_INIT(robot_module_types, list(
 	"Standard", "Engineering", "Surgeon",  "Crisis",
 	"Miner",    "Janitor",     "Service",      "Clerical", "Security",
 	"Research"
-)
+))
 
 // Some scary sounds.
 var/static/list/scarySounds = list(

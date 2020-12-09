@@ -12,23 +12,23 @@
 		seen_religions    |= M.client.prefs.religion*/
 	return
 
-var/global/list/citizenship_choices = list(
+GLOBAL_LIST_INIT(citizenship_choices, list(
 	"Earth",
 	"Mars",
 	"Moghes",
 	"Ahdomai",
 	"Qerrbalak"
-	)
+	))
 
-var/global/list/home_system_choices = list(
+GLOBAL_LIST_INIT(home_system_choices, list(
 	"Sol",
 	"Nyx",
 	"Tau Ceti",
 	"Epsilon Ursae Minoris",
 	"S'randarr"
-	)
+	))
 
-var/global/list/faction_choices = list(
+GLOBAL_LIST_INIT(faction_choices, list(
 	"Sol Central Government",
 	"Vey Med",
 	"Einstein Engines",
@@ -40,9 +40,9 @@ var/global/list/faction_choices = list(
 	"Aether Atmospherics",
 	"Zeng-Hu Pharmaceuticals",
 	"Hephaestus Industries"
-	)
+	))
 
-var/global/list/religion_choices = list(
+GLOBAL_LIST_INIT(religion_choices, list(
 	"Unitarianism",
 	"Hinduism",
 	"Buddhist",
@@ -50,4 +50,4 @@ var/global/list/religion_choices = list(
 	"Christian",
 	"Agnostic",
 	"Deist"
-	)
+	))
