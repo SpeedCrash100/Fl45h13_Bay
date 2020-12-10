@@ -24,7 +24,7 @@ GLOBAL_VAR_INIT(warrant_uid, 0)
 	name = "Warrant Assistant"
 	var/datum/data/record/warrant/activewarrant
 
-/datum/nano_module/program/digitalwarrant/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
+/datum/nano_module/program/digitalwarrant/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = GLOB.default_state)
 	var/list/data = host.initial_data()
 
 	if(activewarrant)
@@ -104,7 +104,7 @@ GLOBAL_VAR_INIT(warrant_uid, 0)
 	if(href_list["addwarrant"])
 		. = 1
 		var/datum/data/record/warrant/W = new()
-		if(CanInteract(user, default_state))
+		if(CanInteract(user, GLOB.default_state))
 			if(href_list["addwarrant"] == "arrest")
 				W.fields["namewarrant"] = "Unknown"
 				W.fields["charges"] = "No charges present"
@@ -139,7 +139,7 @@ GLOBAL_VAR_INIT(warrant_uid, 0)
 		for(var/datum/data/record/t in GLOB.data_core.general)
 			namelist += t.fields["name"]
 		var/new_name = sanitize(input(usr, "Please input name") as null|anything in namelist)
-		if(CanInteract(user, default_state))
+		if(CanInteract(user, GLOB.default_state))
 			if (!new_name || !activewarrant)
 				return
 			activewarrant.fields["namewarrant"] = new_name
@@ -147,7 +147,7 @@ GLOBAL_VAR_INIT(warrant_uid, 0)
 	if(href_list["editwarrantnamecustom"])
 		. = 1
 		var/new_name = sanitize(input("Please input name") as null|text)
-		if(CanInteract(user, default_state))
+		if(CanInteract(user, GLOB.default_state))
 			if (!new_name || !activewarrant)
 				return
 			activewarrant.fields["namewarrant"] = new_name
@@ -155,7 +155,7 @@ GLOBAL_VAR_INIT(warrant_uid, 0)
 	if(href_list["editwarrantcharges"])
 		. = 1
 		var/new_charges = sanitize(input("Please input charges", "Charges", activewarrant.fields["charges"]) as null|text)
-		if(CanInteract(user, default_state))
+		if(CanInteract(user, GLOB.default_state))
 			if (!new_charges || !activewarrant)
 				return
 			activewarrant.fields["charges"] = new_charges

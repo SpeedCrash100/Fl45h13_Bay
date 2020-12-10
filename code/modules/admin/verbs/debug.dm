@@ -502,4 +502,4 @@
 	if(!check_rights(R_DEBUG))
 		return
 
-	error_cache.showTo(usr)
+	GLOB.error_cache.showTo(usr)

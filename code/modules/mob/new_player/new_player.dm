@@ -370,7 +370,7 @@
 		return
 
 	GLOB.ticker.mode.handle_latejoin(character)
-	universe.OnPlayerLatejoin(character)
+	GLOB.universe.OnPlayerLatejoin(character)
 	if(GLOB.job_master.ShouldCreateRecords(rank))
 		if(character.mind.assigned_role != "Cyborg")
 			GLOB.data_core.manifest_inject(character)
@@ -378,7 +378,7 @@
 
 			if(job.announced)
 				AnnounceArrival(character, rank, spawnpoint.msg)
-		matchmaker.do_matchmaking()
+		GLOB.matchmaker.do_matchmaking()
 	log_and_message_admins("has joined the round as [character.mind.assigned_role].", character)
 	qdel(src)
 
@@ -473,7 +473,7 @@
 			mind.store_memory(client.prefs.memory)
 		if(client.prefs.relations.len)
 			for(var/T in client.prefs.relations)
-				var/TT = matchmaker.relation_types[T]
+				var/TT = GLOB.matchmaker.relation_types[T]
 				var/datum/relation/R = new TT
 				R.holder = mind
 				R.info = client.prefs.relations_info[T]

@@ -312,7 +312,7 @@
 				M.flash_eyes()
 				if(prob(50))
 					M.Stun(5)
-		radiation_repository.flat_radiate(src, 25, 200)
+		GLOB.radiation_repository.flat_radiate(src, 25, 200)
 	//Add some rubble,  you did just clear out a big chunk of rock.
 
 	var/turf/simulated/floor/asteroid/N = ChangeTurf(mined_turf)

@@ -242,7 +242,7 @@
 	if(!z || (z in GLOB.using_map.sealed_levels))
 		return
 
-	if(!universe.OnTouchMapEdge(src))
+	if(!GLOB.universe.OnTouchMapEdge(src))
 		return
 
 	if(GLOB.using_map.use_overmap)

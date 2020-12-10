@@ -4,7 +4,7 @@
 /datum/controller/process/radiation/setup()
 	name = "radiation controller"
 	schedule_interval = 20 // every 2 seconds
-	linked = radiation_repository
+	linked = GLOB.radiation_repository
 
 /datum/controller/process/radiation/doWork()
 	sources_decay()

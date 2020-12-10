@@ -22,7 +22,7 @@
 	var/list/category_contents
 	var/emagged = FALSE	// TODO: Implement synchronisation with modular computer framework.
 
-/datum/nano_module/supply/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, state = default_state)
+/datum/nano_module/supply/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, state = GLOB.default_state)
 	var/list/data = host.initial_data()
 	var/is_admin = check_access(user, GLOB.access_cargo)
 	if(!category_names || !category_contents)

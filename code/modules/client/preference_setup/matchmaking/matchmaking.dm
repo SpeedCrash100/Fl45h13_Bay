@@ -1,7 +1,7 @@
-var/global/datum/matchmaker/matchmaker = new()
+GLOBAL_DATUM_INIT(matchmaker, /datum/matchmaker, new)
 
 /hook/roundstart/proc/matchmaking()
-	matchmaker.do_matchmaking()
+	GLOB.matchmaker.do_matchmaking()
 	return TRUE
 
 /datum/matchmaker
@@ -47,11 +47,11 @@ var/global/datum/matchmaker/matchmaker = new()
 	..()
 	if(!can_connect_to)
 		can_connect_to = list(name)
-	matchmaker.relations += src
+	GLOB.matchmaker.relations += src
 
 /datum/relation/proc/get_candidates()
 	.= list()
-	for(var/datum/relation/R in matchmaker.relations)
+	for(var/datum/relation/R in GLOB.matchmaker.relations)
 		if(!valid_candidate(R.holder) || !can_connect(R))
 			continue
 		. += R
@@ -70,7 +70,7 @@ var/global/datum/matchmaker/matchmaker = new()
 	return TRUE
 
 /datum/relation/proc/can_connect(var/datum/relation/R)
-	for(var/datum/relation/D in matchmaker.relations) //have to check all connections between us and them
+	for(var/datum/relation/D in GLOB.matchmaker.relations) //have to check all connections between us and them
 		if(D.holder == R.holder && D.other && D.other.holder == holder)
 			if(D.name in incompatible)
 				return 0
@@ -99,8 +99,8 @@ var/global/datum/matchmaker/matchmaker = new()
 	to_chat(holder.current,"<span class='warning'>Your connection with [other.holder] is no more.</span>")
 	to_chat(other.holder.current,"<span class='warning'>Your connection with [holder] is no more.</span>")
 	other.other = null
-	matchmaker.relations -= other
-	matchmaker.relations -= src
+	GLOB.matchmaker.relations -= other
+	GLOB.matchmaker.relations -= src
 	qdel(other)
 	other = null
 	qdel(src)
@@ -148,7 +148,7 @@ var/global/datum/matchmaker/matchmaker = new()
 	set desc = "See what connections between people you know of."
 	set category = "IC"
 
-	var/list/relations = matchmaker.get_relationships(mind)
+	var/list/relations = GLOB.matchmaker.get_relationships(mind)
 	var/list/dat = list()
 	var/editable = 0
 	if(mind.gen_relations_info)
@@ -199,7 +199,7 @@ var/global/datum/matchmaker/matchmaker = new()
 		var/ok = "Close anyway"
 		ok = alert("HEY! You have some non-finalized relationships. You can terminate them if they do not fit your character, or edit the info tidbit that the other party is given. THIS IS YOUR ONLY CHANCE to do so - after you close the window, they won't be editable.","Finalize relationships","Return to edit", "Close anyway")
 		if(ok == "Close anyway")
-			var/list/relations = matchmaker.get_relationships(mind)
+			var/list/relations = GLOB.matchmaker.get_relationships(mind)
 			for(var/datum/relation/R in relations)
 				R.finalize()
 			show_browser(usr,null, "window=relations")

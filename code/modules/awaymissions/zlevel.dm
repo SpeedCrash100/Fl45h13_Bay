@@ -43,7 +43,7 @@ proc/createRandomZlevel()
 		var/map = pick(potentialRandomZlevels)
 		var/file = file(map)
 		if(isfile(file))
-			maploader.load_map(file)
+			GLOB.maploader.load_map(file)
 			log_debug("away mission loaded: [map]")
 
 		for(var/obj/effect/landmark/L in GLOB.landmarks_list)

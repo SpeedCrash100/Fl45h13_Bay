@@ -27,13 +27,13 @@
 				AI.ai_actual_track(H)
 		return 1
 
-/datum/nano_module/crew_monitor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
+/datum/nano_module/crew_monitor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = GLOB.default_state)
 	var/list/data = host.initial_data()
 
 	data["isAI"] = isAI(user)
 	data["crewmembers"] = list()
 	for(var/z_level in GLOB.using_map.map_levels)
-		data["crewmembers"] += crew_repository.health_data(z_level)
+		data["crewmembers"] += GLOB.crew_repository.health_data(z_level)
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)

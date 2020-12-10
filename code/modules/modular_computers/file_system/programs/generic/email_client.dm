@@ -76,7 +76,7 @@
 	var/datum/computer_file/data/email_message/current_message = null
 
 /datum/nano_module/email_client/proc/log_in()
-	for(var/datum/computer_file/data/email_account/account in ntnet_global.email_accounts)
+	for(var/datum/computer_file/data/email_account/account in GLOB.ntnet_global.email_accounts)
 		if(!account.can_login)
 			continue
 		if(account.login == stored_login)
@@ -119,7 +119,7 @@
 	last_message_count = 0
 	read_message_count = 0
 
-/datum/nano_module/email_client/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
+/datum/nano_module/email_client/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = GLOB.default_state)
 	var/list/data = host.initial_data()
 
 	// Password has been changed by other client connected to this email account
@@ -145,7 +145,7 @@
 		data["current_account"] = current_account.login
 		if(addressbook)
 			var/list/all_accounts = list()
-			for(var/datum/computer_file/data/email_account/account in ntnet_global.email_accounts)
+			for(var/datum/computer_file/data/email_account/account in GLOB.ntnet_global.email_accounts)
 				if(!account.can_login)
 					continue
 				all_accounts.Add(list(list(

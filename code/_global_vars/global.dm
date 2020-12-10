@@ -19,7 +19,7 @@ GLOBAL_LIST_EMPTY(listening_objects) // List of objects that need to be able to 
 
 // GLOBAL_LIST_EMPTY(global_mutations) // List of hidden mutation things.
 
-var/global/datum/universal_state/universe = new
+GLOBAL_DATUM_INIT(universe, /datum/universal_state, new)
 
 GLOBAL_LIST_EMPTY(global_map)
 
@@ -145,7 +145,7 @@ GLOBAL_LIST_INIT(robot_module_types, list(
 ))
 
 // Some scary sounds.
-var/static/list/scarySounds = list(
+GLOBAL_LIST_INIT(scarySounds, list(
 	'sound/weapons/thudswoosh.ogg',
 	'sound/weapons/Taser.ogg',
 	'sound/weapons/armbomb.ogg',
@@ -163,7 +163,7 @@ var/static/list/scarySounds = list(
 	'sound/machines/airlock.ogg',
 	'sound/effects/clownstep1.ogg',
 	'sound/effects/clownstep2.ogg'
-)
+))
 
 // Bomb cap!
 GLOBAL_VAR_INIT(max_explosion_range, 14) // Announcer intercom, because too much stuff creates an intercom for one message then hard del()s it. Also headset, for things that should be affected by comms outages.

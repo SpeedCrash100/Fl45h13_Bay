@@ -39,7 +39,7 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0) // The ifdef needs to be down here, s
 			GLOB.error_cooldown[erroruid] = 0
 			if(skipcount > 0)
 				log_to_dd("\[[time_stamp()]] Skipped [skipcount] runtimes in [e.file],[e.line].")
-				error_cache.logError(e, skipCount = skipcount)
+				GLOB.error_cache.logError(e, skipCount = skipcount)
 	GLOB.error_last_seen[erroruid] = world.time
 	GLOB.error_cooldown[erroruid] = cooldown
 
@@ -97,8 +97,8 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0) // The ifdef needs to be down here, s
 	log_to_dd("\[[time_stamp()]] Runtime in [e.file],[e.line]: [e]")
 	for(var/line in desclines)
 		log_to_dd(line)
-	if(error_cache)
-		error_cache.logError(e, desclines, e_src = e_src)
+	if(GLOB.error_cache)
+		GLOB.error_cache.logError(e, desclines, e_src = e_src)
 
 #endif
 

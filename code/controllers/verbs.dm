@@ -24,7 +24,7 @@
 
 	switch(controller)
 		if("Master")
-			debug_variables(master_controller)
+			debug_variables(GLOB.master_controller)
 			feedback_add_details("admin_verb","DMC")
 		if("Ticker")
 			debug_variables(GLOB.ticker)

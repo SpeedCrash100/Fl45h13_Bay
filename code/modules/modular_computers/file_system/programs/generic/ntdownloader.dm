@@ -30,7 +30,7 @@
 	if(downloaded_file)
 		return 0
 
-	var/datum/computer_file/program/PRG = ntnet_global.find_ntnet_file_by_name(filename)
+	var/datum/computer_file/program/PRG = GLOB.ntnet_global.find_ntnet_file_by_name(filename)
 
 	if(!PRG || !istype(PRG))
 		return 0
@@ -44,10 +44,10 @@
 
 	ui_header = "downloader_running.gif"
 
-	if(PRG in ntnet_global.available_station_software)
+	if(PRG in GLOB.ntnet_global.available_station_software)
 		generate_network_log("Began downloading file [PRG.filename].[PRG.filetype] from NTNet Software Repository.")
 		hacked_download = 0
-	else if(PRG in ntnet_global.available_antag_software)
+	else if(PRG in GLOB.ntnet_global.available_antag_software)
 		generate_network_log("Began downloading file **ENCRYPTED**.[PRG.filetype] from unspecified server.")
 		hacked_download = 1
 	else
@@ -112,7 +112,7 @@
 	name = "Network Downloader"
 	var/obj/item/modular_computer/my_computer = null
 
-/datum/nano_module/program/computer_ntnetdownload/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
+/datum/nano_module/program/computer_ntnetdownload/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = GLOB.default_state)
 	if(program)
 		my_computer = program.computer
 
@@ -140,7 +140,7 @@
 		data["disk_size"] = my_computer.hard_drive.max_capacity
 		data["disk_used"] = my_computer.hard_drive.used_capacity
 		var/list/all_entries[0]
-		for(var/datum/computer_file/program/P in ntnet_global.available_station_software)
+		for(var/datum/computer_file/program/P in GLOB.ntnet_global.available_station_software)
 			// Only those programs our user can run will show in the list
 			if(!P.can_run(user) && P.requires_access_to_download)
 				continue
@@ -153,7 +153,7 @@
 		data["hackedavailable"] = 0
 		if(prog.computer_emagged) // If we are running on emagged computer we have access to some "bonus" software
 			var/list/hacked_programs[0]
-			for(var/datum/computer_file/program/P in ntnet_global.available_antag_software)
+			for(var/datum/computer_file/program/P in GLOB.ntnet_global.available_antag_software)
 				data["hackedavailable"] = 1
 				hacked_programs.Add(list(list(
 				"filename" = P.filename,

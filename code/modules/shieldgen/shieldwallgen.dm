@@ -19,7 +19,7 @@
 	use_power = 0	//Draws directly from power net. Does not use APC power.
 	active_power_usage = 1200
 
-/obj/machinery/shieldwallgen/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
+/obj/machinery/shieldwallgen/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = GLOB.default_state)
 	var/list/data = list()
 	data["draw"] = round(power_draw)
 	data["power"] = round(storedpower)

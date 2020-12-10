@@ -120,14 +120,14 @@ GLOBAL_VAR_INIT(game_id, null)
 	populate_robolimb_list()
 
 	GLOB.processScheduler = new
-	master_controller = new /datum/controller/game_controller()
+	GLOB.master_controller = new /datum/controller/game_controller()
 
 	Master.Initialize(10, FALSE)
 
 	spawn(1)
 		GLOB.processScheduler.deferSetupFor(/datum/controller/process/ticker)
 		GLOB.processScheduler.setup()
-		master_controller.setup()
+		GLOB.master_controller.setup()
 #ifdef UNIT_TEST
 		initialize_unit_tests()
 #endif
@@ -234,10 +234,10 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 		L["dm_version"] = DM_VERSION // DreamMaker version compiled in
 		L["dd_version"] = world.byond_version // DreamDaemon version running on
 
-		if(revdata.revision)
-			L["revision"] = revdata.revision
-			L["branch"] = revdata.branch
-			L["date"] = revdata.date
+		if(GLOB.revdata.revision)
+			L["revision"] = GLOB.revdata.revision
+			L["branch"] = GLOB.revdata.branch
+			L["date"] = GLOB.revdata.date
 		else
 			L["revision"] = "unknown"
 

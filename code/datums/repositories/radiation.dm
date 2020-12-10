@@ -1,4 +1,4 @@
-var/global/repository/radiation/radiation_repository = new()
+GLOBAL_DATUM_INIT(radiation_repository, /repository/radiation, new)
 
 /repository/radiation
 	var/list/sources = list()			// all radiation source datums
@@ -16,9 +16,9 @@ var/global/repository/radiation/radiation_repository = new()
 	var/range					// Cached maximum range, used for quick checks against mobs.
 
 /datum/radiation_source/Destroy()
-	radiation_repository.sources -= src
-	if(radiation_repository.sources_assoc[src.source_turf] == src)
-		radiation_repository.sources -= src.source_turf
+	GLOB.radiation_repository.sources -= src
+	if(GLOB.radiation_repository.sources_assoc[src.source_turf] == src)
+		GLOB.radiation_repository.sources -= src.source_turf
 	src.source_turf = null
 	. = ..()
 
@@ -118,10 +118,10 @@ var/global/repository/radiation/radiation_repository = new()
 			if(!M)	continue
 			cached_rad_resistance += M.weight
 	// Looks like storing the contents length is meant to be a basic check if the cache is stale due to items enter/exiting.  Better than nothing so I'm leaving it as is. ~Leshana
-	radiation_repository.resistance_cache[src] = (length(contents) + 1)
+	GLOB.radiation_repository.resistance_cache[src] = (length(contents) + 1)
 
 /turf/simulated/wall/calc_rad_resistance()
-	radiation_repository.resistance_cache[src] = (length(contents) + 1)
+	GLOB.radiation_repository.resistance_cache[src] = (length(contents) + 1)
 	cached_rad_resistance = (density ? material.weight : 0)
 
 /obj

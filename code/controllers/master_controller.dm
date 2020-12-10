@@ -2,7 +2,7 @@
 //It ensures master_controller.process() is never doubled up by killing the MC (hence terminating any of its sleeping procs)
 //WIP, needs lots of work still
 
-var/global/datum/controller/game_controller/master_controller //Set in world.New()
+GLOBAL_DATUM(master_controller, /datum/controller/game_controller)
 
 GLOBAL_VAR_INIT(controller_iteration, 0) 
 GLOBAL_VAR_INIT(last_tick_duration, 0) 
@@ -18,11 +18,11 @@ datum/controller/game_controller
 
 datum/controller/game_controller/New()
 	//There can be only one master_controller. Out with the old and in with the new.
-	if(master_controller != src)
+	if(GLOB.master_controller != src)
 		log_debug("Rebuilding Master Controller")
-		if(istype(master_controller))
-			qdel(master_controller)
-		master_controller = src
+		if(istype(GLOB.master_controller))
+			qdel(GLOB.master_controller)
+		GLOB.master_controller = src
 
 	if(!GLOB.job_master)
 		GLOB.job_master = new /datum/controller/occupations()

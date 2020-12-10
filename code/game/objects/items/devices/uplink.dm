@@ -113,7 +113,7 @@
 /*
 	NANO UI FOR UPLINK WOOP WOOP
 */
-/obj/item/device/uplink/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/uistate = inventory_state)
+/obj/item/device/uplink/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/uistate = GLOB.inventory_state)
 	var/title = "Remote Uplink"
 	var/data[0]
 
@@ -255,5 +255,5 @@
 	..()
 	hidden_uplink = new(src)
 
-/obj/item/device/uplink/contained/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/uistate = inventory_state)
-	return ..(user,ui_key,ui,force_open, contained_state)
+/obj/item/device/uplink/contained/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/uistate = GLOB.inventory_state)
+	return ..(user,ui_key,ui,force_open, GLOB.contained_state)

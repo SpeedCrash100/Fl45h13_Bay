@@ -36,7 +36,7 @@
 	if(href_list["PRG_joinchannel"])
 		. = 1
 		var/datum/ntnet_conversation/C
-		for(var/datum/ntnet_conversation/chan in ntnet_global.chat_channels)
+		for(var/datum/ntnet_conversation/chan in GLOB.ntnet_global.chat_channels)
 			if(chan.id == text2num(href_list["PRG_joinchannel"]))
 				C = chan
 				break
@@ -181,8 +181,8 @@
 /datum/nano_module/program/computer_chatclient
 	name = "NTNet Relay Chat Client"
 
-/datum/nano_module/program/computer_chatclient/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
-	if(!ntnet_global || !ntnet_global.chat_channels)
+/datum/nano_module/program/computer_chatclient/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = GLOB.default_state)
+	if(!GLOB.ntnet_global || !GLOB.ntnet_global.chat_channels)
 		return
 
 	var/list/data = list()
@@ -213,7 +213,7 @@
 
 	else // Channel selection screen
 		var/list/all_channels[0]
-		for(var/datum/ntnet_conversation/conv in ntnet_global.chat_channels)
+		for(var/datum/ntnet_conversation/conv in GLOB.ntnet_global.chat_channels)
 			if(conv && conv.title)
 				all_channels.Add(list(list(
 					"chan" = conv.title,

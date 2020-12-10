@@ -72,7 +72,7 @@ GLOBAL_VAR_INIT(ntnet_card_uid, 1)
 	if(ethernet) // Computer is connected via wired connection.
 		return 3
 
-	if(!ntnet_global || !ntnet_global.check_function(specific_action)) // NTNet is down and we are not connected via wired connection. No signal.
+	if(!GLOB.ntnet_global || !GLOB.ntnet_global.check_function(specific_action)) // NTNet is down and we are not connected via wired connection. No signal.
 		return 0
 
 	if(holder2)

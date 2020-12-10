@@ -210,7 +210,7 @@
 /obj/item/integrated_circuit/logic/unary/access_verifier/attack_self(var/mob/user)
 	ui_interact(user)
 
-/obj/item/integrated_circuit/logic/unary/access_verifier/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, datum/topic_state/state = hands_state)
+/obj/item/integrated_circuit/logic/unary/access_verifier/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, datum/topic_state/state = GLOB.hands_state)
 	var/list/data = ui_data()
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)

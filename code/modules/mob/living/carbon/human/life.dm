@@ -527,7 +527,7 @@
 			var/total_phoronloss = 0
 			for(var/obj/item/I in src)
 				if(I.contaminated)
-					total_phoronloss += vsc.plc.CONTAMINATION_LOSS
+					total_phoronloss += GLOB.vsc.plc.CONTAMINATION_LOSS
 			if(!(status_flags & GODMODE)) adjustToxLoss(total_phoronloss)
 
 	if(status_flags & GODMODE)	return 0	//godmode
@@ -922,7 +922,7 @@
 	if(isturf(loc) && rand(1,1000) == 1)
 		var/turf/T = loc
 		if(T.get_lumcount() <= LIGHTING_SOFT_THRESHOLD)
-			playsound_local(src,pick(scarySounds),50, 1, -1)
+			playsound_local(src,pick(GLOB.scarySounds),50, 1, -1)
 
 	var/area/A = get_area(src)
 	if(client && world.time >= client.played + 600)

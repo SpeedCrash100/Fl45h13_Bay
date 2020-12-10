@@ -246,7 +246,7 @@
 	if(!total_radiation)
 		return
 
-	radiation_repository.radiate(src, total_radiation)
+	GLOB.radiation_repository.radiate(src, total_radiation)
 	return total_radiation
 
 /turf/simulated/wall/proc/burn(temperature)

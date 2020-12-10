@@ -60,7 +60,7 @@
 		old_fire.RemoveFire()
 
 	if(tell_universe)
-		universe.OnTurfChange(W)
+		GLOB.universe.OnTurfChange(W)
 
 	if(GLOB.air_master)
 		GLOB.air_master.mark_for_update(src) //handle the addition of the new turf.

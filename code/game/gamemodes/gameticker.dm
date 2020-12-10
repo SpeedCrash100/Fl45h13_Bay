@@ -167,7 +167,7 @@ GLOBAL_DATUM(ticker, /datum/controller/gameticker)
 		send2adminirc("Round has started with no admins online.")
 
 /*	supply_controller.process() 		//Start the supply shuttle regenerating points -- TLE // handled in scheduler
-	master_controller.process()		//Start master_controller.process()
+	GLOB.master_controller.process()		//Start master_controller.process()
 	lighting_controller.process()	//Start processing DynamicAreaLighting updates
 	*/
 

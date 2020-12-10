@@ -472,7 +472,7 @@
 	ui_interact(user)
 	wires.Interact(user)
 
-/obj/machinery/alarm/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, var/master_ui = null, var/datum/topic_state/state = default_state)
+/obj/machinery/alarm/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, var/master_ui = null, var/datum/topic_state/state = GLOB.default_state)
 	var/data[0]
 	var/remote_connection = 0
 	var/remote_access = 0
@@ -1076,7 +1076,7 @@ FIRE ALARM
 		return
 	var/area/area = get_area(src)
 	for(var/obj/machinery/firealarm/FA in area)
-		fire_alarm.clearAlarm(loc, FA)
+		GLOB.fire_alarm.clearAlarm(loc, FA)
 	update_icon()
 	return
 
@@ -1085,7 +1085,7 @@ FIRE ALARM
 		return
 	var/area/area = get_area(src)
 	for(var/obj/machinery/firealarm/FA in area)
-		fire_alarm.triggerAlarm(loc, FA, duration)
+		GLOB.fire_alarm.triggerAlarm(loc, FA, duration)
 	update_icon()
 	//playsound(src.loc, 'sound/ambience/signal.ogg', 75, 0)
 	return

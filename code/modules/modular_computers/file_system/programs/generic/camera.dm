@@ -37,7 +37,7 @@
 	var/obj/machinery/camera/current_camera = null
 	var/current_network = null
 
-/datum/nano_module/camera_monitor/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, state = default_state)
+/datum/nano_module/camera_monitor/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, state = GLOB.default_state)
 	var/list/data = host.initial_data()
 
 	data["current_camera"] = current_camera ? current_camera.nano_structure() : null

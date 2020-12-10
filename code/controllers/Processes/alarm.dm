@@ -1,10 +1,10 @@
 // We manually initialize the alarm handlers instead of looping over all existing types
 // to make it possible to write: camera.triggerAlarm() rather than alarm_manager.managers[datum/alarm_handler/camera].triggerAlarm() or a variant thereof.
-/var/global/datum/alarm_handler/atmosphere/atmosphere_alarm	= new()
-/var/global/datum/alarm_handler/camera/camera_alarm			= new()
-/var/global/datum/alarm_handler/fire/fire_alarm				= new()
-/var/global/datum/alarm_handler/motion/motion_alarm			= new()
-/var/global/datum/alarm_handler/power/power_alarm			= new()
+GLOBAL_DATUM_INIT(atmosphere_alarm, /datum/alarm_handler/atmosphere, new)
+GLOBAL_DATUM_INIT(camera_alarm, /datum/alarm_handler/camera, new)
+GLOBAL_DATUM_INIT(fire_alarm, /datum/alarm_handler/fire, new)
+GLOBAL_DATUM_INIT(motion_alarm, /datum/alarm_handler/motion, new)
+GLOBAL_DATUM_INIT(power_alarm, /datum/alarm_handler/power, new)
 
 // Alarm Manager, the manager for alarms.
 GLOBAL_DATUM(alarm_manager, /datum/controller/process/alarm)
@@ -15,7 +15,7 @@ GLOBAL_DATUM(alarm_manager, /datum/controller/process/alarm)
 /datum/controller/process/alarm/setup()
 	name = "alarm"
 	schedule_interval = 20 // every 2 seconds
-	all_handlers = list(atmosphere_alarm, camera_alarm, fire_alarm, motion_alarm, power_alarm)
+	all_handlers = list(GLOB.atmosphere_alarm, GLOB.camera_alarm, GLOB.fire_alarm, GLOB.motion_alarm, GLOB.power_alarm)
 	GLOB.alarm_manager = src
 
 /datum/controller/process/alarm/doWork()

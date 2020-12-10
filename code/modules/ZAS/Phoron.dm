@@ -78,21 +78,21 @@ obj/var/contaminated = 0
 	//Handles all the bad things phoron can do.
 
 	//Contamination
-	if(vsc.plc.CLOTH_CONTAMINATION) contaminate()
+	if(GLOB.vsc.plc.CLOTH_CONTAMINATION) contaminate()
 
 	//Anything else requires them to not be dead.
 	if(stat >= 2)
 		return
 
 	//Burn skin if exposed.
-	if(vsc.plc.SKIN_BURNS)
+	if(GLOB.vsc.plc.SKIN_BURNS)
 		if(!pl_head_protected() || !pl_suit_protected())
 			burn_skin(0.75)
 			if(prob(20)) to_chat(src, "<span class='danger'>Your skin burns!</span>")
 			updatehealth()
 
 	//Burn eyes if exposed.
-	if(vsc.plc.EYE_BURNS)
+	if(GLOB.vsc.plc.EYE_BURNS)
 		if(!head)
 			if(!wear_mask)
 				burn_eyes()
@@ -108,8 +108,8 @@ obj/var/contaminated = 0
 						burn_eyes()
 
 	//Genetic Corruption
-	if(vsc.plc.GENETIC_CORRUPTION)
-		if(rand(1,10000) < vsc.plc.GENETIC_CORRUPTION)
+	if(GLOB.vsc.plc.GENETIC_CORRUPTION)
+		if(rand(1,10000) < GLOB.vsc.plc.GENETIC_CORRUPTION)
 			randmutb(src)
 			to_chat(src, "<span class='danger'>High levels of toxins cause you to spontaneously mutate!</span>")
 			domutcheck(src,null)
@@ -128,7 +128,7 @@ obj/var/contaminated = 0
 /mob/living/carbon/human/proc/pl_head_protected()
 	//Checks if the head is adequately sealed.
 	if(head)
-		if(vsc.plc.PHORONGUARD_ONLY)
+		if(GLOB.vsc.plc.PHORONGUARD_ONLY)
 			if(head.flags & PHORONGUARD)
 				return 1
 		else if(head.body_parts_covered & EYES)
@@ -141,11 +141,11 @@ obj/var/contaminated = 0
 	for(var/obj/item/protection in list(wear_suit, gloves, shoes))
 		if(!protection)
 			continue
-		if(vsc.plc.PHORONGUARD_ONLY && !(protection.flags & PHORONGUARD))
+		if(GLOB.vsc.plc.PHORONGUARD_ONLY && !(protection.flags & PHORONGUARD))
 			return 0
 		coverage |= protection.body_parts_covered
 
-	if(vsc.plc.PHORONGUARD_ONLY)
+	if(GLOB.vsc.plc.PHORONGUARD_ONLY)
 		return 1
 
 	return BIT_TEST_ALL(coverage, UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS)
@@ -160,7 +160,7 @@ obj/var/contaminated = 0
 turf/Entered(obj/item/I)
 	. = ..()
 	//Items that are in phoron, but not on a mob, can still be contaminated.
-	if(istype(I) && vsc && vsc.plc.CLOTH_CONTAMINATION && I.can_contaminate())
+	if(istype(I) && GLOB.vsc && GLOB.vsc.plc.CLOTH_CONTAMINATION && I.can_contaminate())
 		var/datum/gas_mixture/env = return_air(1)
 		if(!env)
 			return

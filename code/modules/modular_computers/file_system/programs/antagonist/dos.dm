@@ -40,8 +40,8 @@
 /datum/nano_module/program/computer_dos
 	name = "DoS Traffic Generator"
 
-/datum/nano_module/program/computer_dos/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
-	if(!ntnet_global)
+/datum/nano_module/program/computer_dos/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = GLOB.default_state)
+	if(!GLOB.ntnet_global)
 		return
 	var/datum/computer_file/program/ntnet_dos/PRG = program
 	var/list/data = list()
@@ -68,7 +68,7 @@
 		data["dos_strings"] = strings
 	else
 		var/list/relays[0]
-		for(var/obj/machinery/ntnet_relay/R in ntnet_global.relays)
+		for(var/obj/machinery/ntnet_relay/R in GLOB.ntnet_global.relays)
 			relays.Add(R.uid)
 		data["relays"] = relays
 		data["focus"] = PRG.target ? PRG.target.uid : null
@@ -85,7 +85,7 @@
 	if(..())
 		return 1
 	if(href_list["PRG_target_relay"])
-		for(var/obj/machinery/ntnet_relay/R in ntnet_global.relays)
+		for(var/obj/machinery/ntnet_relay/R in GLOB.ntnet_global.relays)
 			if("[R.uid]" == href_list["PRG_target_relay"])
 				target = R
 		return 1
@@ -100,7 +100,7 @@
 		if(target)
 			executed = 1
 			target.dos_sources.Add(src)
-			if(ntnet_global.intrusion_detection_enabled)
-				ntnet_global.add_log("IDS WARNING - Excess traffic flood targeting relay [target.uid] detected from device: [computer.network_card.get_network_tag()]")
-				ntnet_global.intrusion_detection_alarm = 1
+			if(GLOB.ntnet_global.intrusion_detection_enabled)
+				GLOB.ntnet_global.add_log("IDS WARNING - Excess traffic flood targeting relay [target.uid] detected from device: [computer.network_card.get_network_tag()]")
+				GLOB.ntnet_global.intrusion_detection_alarm = 1
 		return 1

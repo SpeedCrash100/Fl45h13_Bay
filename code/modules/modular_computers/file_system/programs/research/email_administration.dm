@@ -18,7 +18,7 @@
 	var/datum/computer_file/data/email_message/current_message = null
 	var/error = ""
 
-/datum/nano_module/email_administration/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
+/datum/nano_module/email_administration/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = GLOB.default_state)
 	var/list/data = host.initial_data()
 
 	if(error)
@@ -43,7 +43,7 @@
 		data["messagecount"] = all_messages.len
 	else
 		var/list/all_accounts = list()
-		for(var/datum/computer_file/data/email_account/account in ntnet_global.email_accounts)
+		for(var/datum/computer_file/data/email_account/account in GLOB.ntnet_global.email_accounts)
 			if(!account.can_login)
 				continue
 			all_accounts.Add(list(list(
@@ -90,7 +90,7 @@
 			return 1
 
 		current_account.suspended = !current_account.suspended
-		ntnet_global.add_log_with_ids_check("EMAIL LOG: SA-EDIT Account [current_account.login] has been [current_account.suspended ? "" : "un" ]suspended by SA [I.registered_name] ([I.assignment]).")
+		GLOB.ntnet_global.add_log_with_ids_check("EMAIL LOG: SA-EDIT Account [current_account.login] has been [current_account.suspended ? "" : "un" ]suspended by SA [I.registered_name] ([I.assignment]).")
 		error = "Account [current_account.login] has been [current_account.suspended ? "" : "un" ]suspended."
 		return 1
 
@@ -102,7 +102,7 @@
 		if(!newpass)
 			return 1
 		current_account.password = newpass
-		ntnet_global.add_log_with_ids_check("EMAIL LOG: SA-EDIT Password for account [current_account.login] has been changed by SA [I.registered_name] ([I.assignment]).")
+		GLOB.ntnet_global.add_log_with_ids_check("EMAIL LOG: SA-EDIT Password for account [current_account.login] has been changed by SA [I.registered_name] ([I.assignment]).")
 		return 1
 
 	if(href_list["viewmail"])
@@ -116,7 +116,7 @@
 		return 1
 
 	if(href_list["viewaccount"])
-		for(var/datum/computer_file/data/email_account/email_account in ntnet_global.email_accounts)
+		for(var/datum/computer_file/data/email_account/email_account in GLOB.ntnet_global.email_accounts)
 			if(email_account.uid == text2num(href_list["viewaccount"]))
 				current_account = email_account
 				break
@@ -131,7 +131,7 @@
 			return 1
 
 		var/complete_login = "[newlogin]@[newdomain]"
-		if(ntnet_global.does_email_exist(complete_login))
+		if(GLOB.ntnet_global.does_email_exist(complete_login))
 			error = "Error creating account: An account with same address already exists."
 			return 1
 

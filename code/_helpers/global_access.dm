@@ -21,8 +21,6 @@
 			return global.admin_pm_repository;
 		if("admin_secrets")
 			return global.admin_secrets;
-		if("admin_state")
-			return global.admin_state;
 		if("air_alarm_topic")
 			return global.air_alarm_topic;
 		if("air_blocked")
@@ -41,14 +39,10 @@
 			return global.asset_cache;
 		if("assigned")
 			return global.assigned;
-		if("atmosphere_alarm")
-			return global.atmosphere_alarm;
 		if("attack_log_repository")
 			return global.attack_log_repository;
 		if("blocked")
 			return global.blocked;
-		if("camera_alarm")
-			return global.camera_alarm;
 		if("camera_repository")
 			return global.camera_repository;
 		if("cameranet")
@@ -63,16 +57,10 @@
 			return global.client_repository;
 		if("command_announcement")
 			return global.command_announcement;
-		if("conscious_state")
-			return global.conscious_state;
-		if("contained_state")
-			return global.contained_state;
 		if("contamination_overlay")
 			return global.contamination_overlay;
 		if("created")
 			return global.created;
-		if("crew_repository")
-			return global.crew_repository;
 		if("dbcon")
 			return global.dbcon;
 		if("dbcon_old")
@@ -81,12 +69,8 @@
 			return global.death_event;
 		if("decls_repository")
 			return global.decls_repository;
-		if("deep_inventory_state")
-			return global.deep_inventory_state;
 		if("default_ai_icon")
 			return global.default_ai_icon;
-		if("default_state")
-			return global.default_state;
 		if("density_set_event")
 			return global.density_set_event;
 		if("destroyed_event")
@@ -97,14 +81,10 @@
 			return global.dummy_lighting_corner;
 		if("entered_event")
 			return global.entered_event;
-		if("error_cache")
-			return global.error_cache;
 		if("event_manager")
 			return global.event_manager;
 		if("exited_event")
 			return global.exited_event;
-		if("fire_alarm")
-			return global.fire_alarm;
 		if("follow_repository")
 			return global.follow_repository;
 		if("forced_ambiance_list")
@@ -129,18 +109,10 @@
 			return global.global_message_listener;
 		if("global_underwear")
 			return global.global_underwear;
-		if("hands_state")
-			return global.hands_state;
 		if("image_repository")
 			return global.image_repository;
-		if("init")
-			return global.init;
-		if("interactive_state")
-			return global.interactive_state;
 		if("invalid_zone")
 			return global.invalid_zone;
-		if("inventory_state")
-			return global.inventory_state;
 		if("item_equipped_event")
 			return global.item_equipped_event;
 		if("item_unequipped_event")
@@ -157,14 +129,8 @@
 			return global.logged_in_event;
 		if("logged_out_event")
 			return global.logged_out_event;
-		if("maploader")
-			return global.maploader;
 		if("mark")
 			return global.mark;
-		if("master_controller")
-			return global.master_controller;
-		if("matchmaker")
-			return global.matchmaker;
 		if("merged")
 			return global.merged;
 		if("mil_branches")
@@ -177,38 +143,22 @@
 			return global.mob_repository;
 		if("mob_unequipped_event")
 			return global.mob_unequipped_event;
-		if("motion_alarm")
-			return global.motion_alarm;
 		if("moved_event")
 			return global.moved_event;
 		if("nanomanager")
 			return global.nanomanager;
 		if("news_network")
 			return global.news_network;
-		if("ntnet_global")
-			return global.ntnet_global;
 		if("opacity_set_event")
 			return global.opacity_set_event;
-		if("outside_state")
-			return global.outside_state;
 		if("overmap_event_handler")
 			return global.overmap_event_handler;
 		if("paiController")
 			return global.paiController;
-		if("physical_state")
-			return global.physical_state;
 		if("plant_controller")
 			return global.plant_controller;
-		if("power_alarm")
-			return global.power_alarm;
 		if("priority_announcement")
 			return global.priority_announcement;
-		if("radiation_repository")
-			return global.radiation_repository;
-		if("revdata")
-			return global.revdata;
-		if("scarySounds")
-			return global.scarySounds;
 		if("security_announcement_down")
 			return global.security_announcement_down;
 		if("security_announcement_up")
@@ -217,8 +167,6 @@
 			return global.see_in_dark_set_event;
 		if("see_invisible_set_event")
 			return global.see_invisible_set_event;
-		if("self_state")
-			return global.self_state;
 		if("sight_set_event")
 			return global.sight_set_event;
 		if("sortInstance")
@@ -257,18 +205,12 @@
 			return global.turf_changed_event;
 		if("uniqueness_repository")
 			return global.uniqueness_repository;
-		if("universe")
-			return global.universe;
 		if("uplink")
 			return global.uplink;
 		if("uplink_purchase_repository")
 			return global.uplink_purchase_repository;
 		if("vote")
 			return global.vote;
-		if("vsc")
-			return global.vsc;
-		if("z_state")
-			return global.z_state;
 		if("zone_blocked")
 			return global.zone_blocked;
 		
@@ -294,8 +236,6 @@
 			global.admin_pm_repository=newval;
 		if("admin_secrets")
 			global.admin_secrets=newval;
-		if("admin_state")
-			global.admin_state=newval;
 		if("air_alarm_topic")
 			global.air_alarm_topic=newval;
 		if("air_blocked")
@@ -314,14 +254,10 @@
 			global.asset_cache=newval;
 		if("assigned")
 			global.assigned=newval;
-		if("atmosphere_alarm")
-			global.atmosphere_alarm=newval;
 		if("attack_log_repository")
 			global.attack_log_repository=newval;
 		if("blocked")
 			global.blocked=newval;
-		if("camera_alarm")
-			global.camera_alarm=newval;
 		if("camera_repository")
 			global.camera_repository=newval;
 		if("cameranet")
@@ -336,16 +272,10 @@
 			global.client_repository=newval;
 		if("command_announcement")
 			global.command_announcement=newval;
-		if("conscious_state")
-			global.conscious_state=newval;
-		if("contained_state")
-			global.contained_state=newval;
 		if("contamination_overlay")
 			global.contamination_overlay=newval;
 		if("created")
 			global.created=newval;
-		if("crew_repository")
-			global.crew_repository=newval;
 		if("dbcon")
 			global.dbcon=newval;
 		if("dbcon_old")
@@ -354,12 +284,8 @@
 			global.death_event=newval;
 		if("decls_repository")
 			global.decls_repository=newval;
-		if("deep_inventory_state")
-			global.deep_inventory_state=newval;
 		if("default_ai_icon")
 			global.default_ai_icon=newval;
-		if("default_state")
-			global.default_state=newval;
 		if("density_set_event")
 			global.density_set_event=newval;
 		if("destroyed_event")
@@ -370,14 +296,10 @@
 			global.dummy_lighting_corner=newval;
 		if("entered_event")
 			global.entered_event=newval;
-		if("error_cache")
-			global.error_cache=newval;
 		if("event_manager")
 			global.event_manager=newval;
 		if("exited_event")
 			global.exited_event=newval;
-		if("fire_alarm")
-			global.fire_alarm=newval;
 		if("follow_repository")
 			global.follow_repository=newval;
 		if("forced_ambiance_list")
@@ -402,18 +324,10 @@
 			global.global_message_listener=newval;
 		if("global_underwear")
 			global.global_underwear=newval;
-		if("hands_state")
-			global.hands_state=newval;
 		if("image_repository")
 			global.image_repository=newval;
-		if("init")
-			global.init=newval;
-		if("interactive_state")
-			global.interactive_state=newval;
 		if("invalid_zone")
 			global.invalid_zone=newval;
-		if("inventory_state")
-			global.inventory_state=newval;
 		if("item_equipped_event")
 			global.item_equipped_event=newval;
 		if("item_unequipped_event")
@@ -430,14 +344,8 @@
 			global.logged_in_event=newval;
 		if("logged_out_event")
 			global.logged_out_event=newval;
-		if("maploader")
-			global.maploader=newval;
 		if("mark")
 			global.mark=newval;
-		if("master_controller")
-			global.master_controller=newval;
-		if("matchmaker")
-			global.matchmaker=newval;
 		if("merged")
 			global.merged=newval;
 		if("mil_branches")
@@ -450,38 +358,22 @@
 			global.mob_repository=newval;
 		if("mob_unequipped_event")
 			global.mob_unequipped_event=newval;
-		if("motion_alarm")
-			global.motion_alarm=newval;
 		if("moved_event")
 			global.moved_event=newval;
 		if("nanomanager")
 			global.nanomanager=newval;
 		if("news_network")
 			global.news_network=newval;
-		if("ntnet_global")
-			global.ntnet_global=newval;
 		if("opacity_set_event")
 			global.opacity_set_event=newval;
-		if("outside_state")
-			global.outside_state=newval;
 		if("overmap_event_handler")
 			global.overmap_event_handler=newval;
 		if("paiController")
 			global.paiController=newval;
-		if("physical_state")
-			global.physical_state=newval;
 		if("plant_controller")
 			global.plant_controller=newval;
-		if("power_alarm")
-			global.power_alarm=newval;
 		if("priority_announcement")
 			global.priority_announcement=newval;
-		if("radiation_repository")
-			global.radiation_repository=newval;
-		if("revdata")
-			global.revdata=newval;
-		if("scarySounds")
-			global.scarySounds=newval;
 		if("security_announcement_down")
 			global.security_announcement_down=newval;
 		if("security_announcement_up")
@@ -490,8 +382,6 @@
 			global.see_in_dark_set_event=newval;
 		if("see_invisible_set_event")
 			global.see_invisible_set_event=newval;
-		if("self_state")
-			global.self_state=newval;
 		if("sight_set_event")
 			global.sight_set_event=newval;
 		if("sortInstance")
@@ -530,18 +420,12 @@
 			global.turf_changed_event=newval;
 		if("uniqueness_repository")
 			global.uniqueness_repository=newval;
-		if("universe")
-			global.universe=newval;
 		if("uplink")
 			global.uplink=newval;
 		if("uplink_purchase_repository")
 			global.uplink_purchase_repository=newval;
 		if("vote")
 			global.vote=newval;
-		if("vsc")
-			global.vsc=newval;
-		if("z_state")
-			global.z_state=newval;
 		if("zone_blocked")
 			global.zone_blocked=newval;
 		
@@ -556,7 +440,6 @@
 	"_all_globals",
 	"admin_pm_repository",
 	"admin_secrets",
-	"admin_state",
 	"air_alarm_topic",
 	"air_blocked",
 	"all_observable_events",
@@ -566,10 +449,8 @@
 	"area_repository",
 	"asset_cache",
 	"assigned",
-	"atmosphere_alarm",
 	"attack_log_repository",
 	"blocked",
-	"camera_alarm",
 	"camera_repository",
 	"cameranet",
 	"captain_announcement",
@@ -577,27 +458,20 @@
 	"cargo_supply_packs",
 	"client_repository",
 	"command_announcement",
-	"conscious_state",
-	"contained_state",
 	"contamination_overlay",
 	"created",
-	"crew_repository",
 	"dbcon",
 	"dbcon_old",
 	"death_event",
 	"decls_repository",
-	"deep_inventory_state",
 	"default_ai_icon",
-	"default_state",
 	"density_set_event",
 	"destroyed_event",
 	"dir_set_event",
 	"dummy_lighting_corner",
 	"entered_event",
-	"error_cache",
 	"event_manager",
 	"exited_event",
-	"fire_alarm",
 	"follow_repository",
 	"forced_ambiance_list",
 	"forum_activated_group",
@@ -610,12 +484,8 @@
 	"global_hud",
 	"global_message_listener",
 	"global_underwear",
-	"hands_state",
 	"image_repository",
-	"init",
-	"interactive_state",
 	"invalid_zone",
-	"inventory_state",
 	"item_equipped_event",
 	"item_unequipped_event",
 	"jobban_keylist",
@@ -624,37 +494,25 @@
 	"lobby_image",
 	"logged_in_event",
 	"logged_out_event",
-	"maploader",
 	"mark",
-	"master_controller",
-	"matchmaker",
 	"merged",
 	"mil_branches",
 	"minor_announcement",
 	"mob_equipped_event",
 	"mob_repository",
 	"mob_unequipped_event",
-	"motion_alarm",
 	"moved_event",
 	"nanomanager",
 	"news_network",
-	"ntnet_global",
 	"opacity_set_event",
-	"outside_state",
 	"overmap_event_handler",
 	"paiController",
-	"physical_state",
 	"plant_controller",
-	"power_alarm",
 	"priority_announcement",
-	"radiation_repository",
-	"revdata",
-	"scarySounds",
 	"security_announcement_down",
 	"security_announcement_up",
 	"see_in_dark_set_event",
 	"see_invisible_set_event",
-	"self_state",
 	"sight_set_event",
 	"sortInstance",
 	"sound_player",
@@ -674,10 +532,7 @@
 	"tgs",
 	"turf_changed_event",
 	"uniqueness_repository",
-	"universe",
 	"uplink",
 	"uplink_purchase_repository",
 	"vote",
-	"vsc",
-	"z_state",
 	"zone_blocked")

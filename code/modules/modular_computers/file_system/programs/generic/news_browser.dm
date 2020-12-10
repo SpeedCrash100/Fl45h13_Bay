@@ -49,7 +49,7 @@
 		if(downloading || loaded_article)
 			return 1
 
-		for(var/datum/computer_file/data/news_article/N in ntnet_global.available_news)
+		for(var/datum/computer_file/data/news_article/N in GLOB.ntnet_global.available_news)
 			if(N.uid == text2num(href_list["PRG_openarticle"]))
 				loaded_article = N.clone()
 				downloading = 1
@@ -87,7 +87,7 @@
 /datum/nano_module/program/computer_newsbrowser
 	name = "NTNet/ExoNet News Browser"
 
-/datum/nano_module/program/computer_newsbrowser/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
+/datum/nano_module/program/computer_newsbrowser/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = GLOB.default_state)
 
 	var/datum/computer_file/program/newsbrowser/PRG
 	var/list/data = list()
@@ -109,7 +109,7 @@
 		data["download_rate"] = PRG.download_netspeed
 	else										// Viewing list of articles
 		var/list/all_articles[0]
-		for(var/datum/computer_file/data/news_article/F in ntnet_global.available_news)
+		for(var/datum/computer_file/data/news_article/F in GLOB.ntnet_global.available_news)
 			if(!PRG.show_archived && F.archived)
 				continue
 			all_articles.Add(list(list(

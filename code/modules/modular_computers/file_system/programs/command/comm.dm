@@ -38,7 +38,7 @@
 	..()
 	crew_announcement.newscast = 1
 
-/datum/nano_module/program/comm/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
+/datum/nano_module/program/comm/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = GLOB.default_state)
 
 	var/list/data = host.initial_data()
 
@@ -331,7 +331,7 @@ GLOBAL_VAR_INIT(last_message_id, 0)
 	if(isnull(emergency))
 		emergency = 1
 
-	if(!universe.OnShuttleCall(usr))
+	if(!GLOB.universe.OnShuttleCall(usr))
 		to_chat(user, "<span class='notice'>Cannot establish a bluespace connection.</span>")
 		return
 

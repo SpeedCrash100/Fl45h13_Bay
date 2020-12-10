@@ -76,7 +76,7 @@ GLOBAL_VAR_INIT(nttransfer_uid, 0)
 /datum/nano_module/program/computer_nttransfer
 	name = "NTNet P2P Transfer Client"
 
-/datum/nano_module/program/computer_nttransfer/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
+/datum/nano_module/program/computer_nttransfer/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = GLOB.default_state)
 	if(!program)
 		return
 	var/datum/computer_file/program/nttransfer/PRG = program
@@ -110,7 +110,7 @@ GLOBAL_VAR_INIT(nttransfer_uid, 0)
 		data["upload_filelist"] = all_files
 	else
 		var/list/all_servers[0]
-		for(var/datum/computer_file/program/nttransfer/P in ntnet_global.fileservers)
+		for(var/datum/computer_file/program/nttransfer/P in GLOB.ntnet_global.fileservers)
 			if(!P.provided_file)
 				continue
 			all_servers.Add(list(list(
@@ -133,7 +133,7 @@ GLOBAL_VAR_INIT(nttransfer_uid, 0)
 	if(..())
 		return 1
 	if(href_list["PRG_downloadfile"])
-		for(var/datum/computer_file/program/nttransfer/P in ntnet_global.fileservers)
+		for(var/datum/computer_file/program/nttransfer/P in GLOB.ntnet_global.fileservers)
 			if("[P.unique_token]" == href_list["PRG_downloadfile"])
 				remote = P
 				break
@@ -151,8 +151,8 @@ GLOBAL_VAR_INIT(nttransfer_uid, 0)
 		error = ""
 		upload_menu = 0
 		finalize_download()
-		if(src in ntnet_global.fileservers)
-			ntnet_global.fileservers.Remove(src)
+		if(src in GLOB.ntnet_global.fileservers)
+			GLOB.ntnet_global.fileservers.Remove(src)
 		for(var/datum/computer_file/program/nttransfer/T in connected_clients)
 			T.crash_download("Remote server has forcibly closed the connection")
 		provided_file = null
@@ -173,7 +173,7 @@ GLOBAL_VAR_INIT(nttransfer_uid, 0)
 					error = "I/O Error: File locked."
 					return
 				provided_file = F
-				ntnet_global.fileservers.Add(src)
+				GLOB.ntnet_global.fileservers.Add(src)
 				return
 		error = "I/O Error: Unable to locate file on hard drive."
 		return 1

@@ -24,7 +24,7 @@
 	ui_interact(user)
 
 
-/obj/item/weapon/airlock_electronics/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, datum/topic_state/state = hands_state)
+/obj/item/weapon/airlock_electronics/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, datum/topic_state/state = GLOB.hands_state)
 	var/list/data = ui_data()
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
@@ -109,7 +109,7 @@
 	locked = FALSE
 	lockable = FALSE
 
-/obj/item/weapon/airlock_electronics/brace/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, datum/topic_state/state = deep_inventory_state)
+/obj/item/weapon/airlock_electronics/brace/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, datum/topic_state/state = GLOB.deep_inventory_state)
 	var/list/data = ui_data()
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)

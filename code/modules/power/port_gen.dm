@@ -402,7 +402,7 @@
 /obj/machinery/power/port_gen/pacman/super/UseFuel()
 	//produces a tiny amount of radiation when in use
 	if (prob(2*power_output))
-		radiation_repository.radiate(src, 4)
+		GLOB.radiation_repository.radiate(src, 4)
 	..()
 
 /obj/machinery/power/port_gen/pacman/super/update_icon()
@@ -422,7 +422,7 @@
 /obj/machinery/power/port_gen/pacman/super/explode()
 	//a nice burst of radiation
 	var/rads = 50 + (sheets + sheet_left)*1.5
-	radiation_repository.radiate(src, (max(20, rads)))
+	GLOB.radiation_repository.radiate(src, (max(20, rads)))
 
 	explosion(src.loc, 3, 3, 5, 3)
 	qdel(src)
