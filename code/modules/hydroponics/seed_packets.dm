@@ -12,15 +12,15 @@ GLOBAL_LIST_EMPTY(plant_seed_sprites)
 	var/modified = 0
 
 /obj/item/seeds/New()
-	while(!plant_controller)
+	while(!GLOB.plant_controller)
 		sleep(30)
 	update_seed()
 	..()
 
 //Grabs the appropriate seed datum from the global list.
 /obj/item/seeds/proc/update_seed()
-	if(!seed && seed_type && !isnull(plant_controller.seeds) && plant_controller.seeds[seed_type])
-		seed = plant_controller.seeds[seed_type]
+	if(!seed && seed_type && !isnull(GLOB.plant_controller.seeds) && GLOB.plant_controller.seeds[seed_type])
+		seed = GLOB.plant_controller.seeds[seed_type]
 	update_appearance()
 
 //Updates strings and icon appropriately based on seed datum.
@@ -76,7 +76,7 @@ GLOBAL_LIST_EMPTY(plant_seed_sprites)
 	seed_type = null
 
 /obj/item/seeds/random/New()
-	seed = plant_controller.create_random_seed()
+	seed = GLOB.plant_controller.create_random_seed()
 	seed_type = seed.name
 	update_seed()
 

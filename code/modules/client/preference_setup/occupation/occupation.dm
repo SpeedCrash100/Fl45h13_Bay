@@ -41,11 +41,11 @@
 	if(!pref.player_alt_titles) pref.player_alt_titles = new()
 
 	if((GLOB.using_map.flags & GLOB.MAP_HAS_BRANCH)\
-	   && (!pref.char_branch || !mil_branches.is_spawn_branch(pref.char_branch)))
+	   && (!pref.char_branch || !GLOB.mil_branches.is_spawn_branch(pref.char_branch)))
 		pref.char_branch = "None"
 
 	if((GLOB.using_map.flags & GLOB.MAP_HAS_RANK)\
-	   && (!pref.char_rank || !mil_branches.is_spawn_rank(pref.char_branch, pref.char_rank)))
+	   && (!pref.char_rank || !GLOB.mil_branches.is_spawn_rank(pref.char_branch, pref.char_rank)))
 		pref.char_rank = "None"
 
 	// We could have something like Captain set to high while on a non-rank map,
@@ -72,11 +72,11 @@
 	. += "<b>Choose occupation chances</b><br>Unavailable occupations are crossed out.<br>"
 	if(GLOB.using_map.flags & GLOB.MAP_HAS_BRANCH)
 
-		player_branch = mil_branches.get_branch(pref.char_branch)
+		player_branch = GLOB.mil_branches.get_branch(pref.char_branch)
 
 		. += "Branch of Service: <a href='?src=\ref[src];char_branch=1'>[pref.char_branch]</a>	"
 	if(GLOB.using_map.flags & GLOB.MAP_HAS_RANK)
-		player_rank = mil_branches.get_rank(pref.char_branch, pref.char_rank)
+		player_rank = GLOB.mil_branches.get_rank(pref.char_branch, pref.char_rank)
 
 		. += "Rank: <a href='?src=\ref[src];char_rank=1'>[pref.char_rank]</a>	"
 	. += "<br>"
@@ -207,7 +207,7 @@
 		if(SetJob(user, href_list["set_job"])) return (pref.equip_preview_mob ? TOPIC_REFRESH_UPDATE_PREVIEW : TOPIC_REFRESH)
 
 	else if(href_list["char_branch"])
-		var/choice = input(user, "Choose your branch of service.", "Character Preference", pref.char_branch) as null|anything in mil_branches.spawn_branches
+		var/choice = input(user, "Choose your branch of service.", "Character Preference", pref.char_branch) as null|anything in GLOB.mil_branches.spawn_branches
 		if(choice && CanUseTopic(user))
 			pref.char_branch = choice
 			pref.char_rank = "None"
@@ -216,7 +216,7 @@
 
 	else if(href_list["char_rank"])
 		var/choice = null
-		var/datum/mil_branch/current_branch = mil_branches.get_branch(pref.char_branch)
+		var/datum/mil_branch/current_branch = GLOB.mil_branches.get_branch(pref.char_branch)
 
 		if(current_branch)
 			choice = input(user, "Choose your rank.", "Character Preference", pref.char_rank) as null|anything in current_branch.spawn_ranks

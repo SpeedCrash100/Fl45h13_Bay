@@ -366,7 +366,7 @@
 	character.all_underwear.Cut()
 	character.all_underwear_metadata.Cut()
 	for(var/underwear_category_name in all_underwear)
-		var/datum/category_group/underwear/underwear_category = global_underwear.categories_by_name[underwear_category_name]
+		var/datum/category_group/underwear/underwear_category = GLOB.global_underwear.categories_by_name[underwear_category_name]
 		if(underwear_category)
 			var/underwear_item_name = all_underwear[underwear_category_name]
 			character.all_underwear[underwear_category_name] = underwear_category.items_by_name[underwear_item_name]
@@ -385,8 +385,8 @@
 	character.update_hair(0)
 	character.update_icons()
 
-	character.char_branch = mil_branches.get_branch(char_branch)
-	character.char_rank = mil_branches.get_rank(char_branch, char_rank)
+	character.char_branch = GLOB.mil_branches.get_branch(char_branch)
+	character.char_rank = GLOB.mil_branches.get_rank(char_branch, char_rank)
 
 	if(is_preview_copy)
 		return

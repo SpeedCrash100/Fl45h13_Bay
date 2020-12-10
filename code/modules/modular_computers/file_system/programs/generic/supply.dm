@@ -30,7 +30,7 @@
 
 	data["is_admin"] = is_admin
 	data["screen"] = screen
-	data["credits"] = "[supply_controller.points]"
+	data["credits"] = "[GLOB.supply_controller.points]"
 	switch(screen)
 		if(1)// Main ordering menu
 			data["categories"] = category_names
@@ -39,16 +39,16 @@
 				data["possible_purchases"] = category_contents[selected_category]
 
 		if(2)// Statistics screen with credit overview
-			data["total_credits"] = supply_controller.point_sources["total"] ? supply_controller.point_sources["total"] : 0
-			data["credits_passive"] = supply_controller.point_sources["time"] ? supply_controller.point_sources["time"] : 0
-			data["credits_crates"] = supply_controller.point_sources["crate"] ? supply_controller.point_sources["crate"] : 0
-			data["credits_phoron"] = supply_controller.point_sources["phoron"] ? supply_controller.point_sources["phoron"] : 0
-			data["credits_platinum"] = supply_controller.point_sources["platinum"] ? supply_controller.point_sources["platinum"] : 0
-			data["credits_paperwork"] = supply_controller.point_sources["manifest"] ? supply_controller.point_sources["manifest"] : 0
+			data["total_credits"] = GLOB.supply_controller.point_sources["total"] ? GLOB.supply_controller.point_sources["total"] : 0
+			data["credits_passive"] = GLOB.supply_controller.point_sources["time"] ? GLOB.supply_controller.point_sources["time"] : 0
+			data["credits_crates"] = GLOB.supply_controller.point_sources["crate"] ? GLOB.supply_controller.point_sources["crate"] : 0
+			data["credits_phoron"] = GLOB.supply_controller.point_sources["phoron"] ? GLOB.supply_controller.point_sources["phoron"] : 0
+			data["credits_platinum"] = GLOB.supply_controller.point_sources["platinum"] ? GLOB.supply_controller.point_sources["platinum"] : 0
+			data["credits_paperwork"] = GLOB.supply_controller.point_sources["manifest"] ? GLOB.supply_controller.point_sources["manifest"] : 0
 			data["can_print"] = can_print()
 
 		if(3)// Shuttle monitoring and control
-			var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
+			var/datum/shuttle/ferry/supply/shuttle = GLOB.supply_controller.shuttle
 			if(istype(shuttle))
 				data["shuttle_location"] = shuttle.at_station() ? GLOB.using_map.name : "Remote location"
 			else
@@ -61,17 +61,17 @@
 			var/list/cart[0]
 			var/list/requests[0]
 			var/list/done[0]
-			for(var/datum/supply_order/SO in supply_controller.shoppinglist)
+			for(var/datum/supply_order/SO in GLOB.supply_controller.shoppinglist)
 				cart.Add(order_to_nanoui(SO))
-			for(var/datum/supply_order/SO in supply_controller.requestlist)
+			for(var/datum/supply_order/SO in GLOB.supply_controller.requestlist)
 				requests.Add(order_to_nanoui(SO))
-			for(var/datum/supply_order/SO in supply_controller.donelist)
+			for(var/datum/supply_order/SO in GLOB.supply_controller.donelist)
 				done.Add(order_to_nanoui(SO))
 			data["cart"] = cart
 			data["requests"] = requests
 			data["done"] = done
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "supply.tmpl", name, 1050, 800, state = state)
 		ui.set_auto_update(1)
@@ -92,7 +92,7 @@
 		return 1
 
 	if(href_list["order"])
-		var/decl/hierarchy/supply_pack/P = locate(href_list["order"]) in supply_controller.master_supply_list
+		var/decl/hierarchy/supply_pack/P = locate(href_list["order"]) in GLOB.supply_controller.master_supply_list
 		if(!istype(P) || P.is_category())
 			return 1
 
@@ -112,16 +112,16 @@
 		else if(issilicon(user))
 			idname = user.real_name
 
-		supply_controller.ordernum++
+		GLOB.supply_controller.ordernum++
 
 		var/datum/supply_order/O = new /datum/supply_order()
-		O.ordernum = supply_controller.ordernum
+		O.ordernum = GLOB.supply_controller.ordernum
 		O.object = P
 		O.orderedby = idname
 		O.reason = reason
 		O.orderedrank = idrank
 		O.comment = "#[O.ordernum]"
-		supply_controller.requestlist += O
+		GLOB.supply_controller.requestlist += O
 
 		if(can_print() && alert(user, "Would you like to print a confirmation receipt?", "Print receipt?", "Yes", "No") == "Yes")
 			print_order(O, user)
@@ -137,7 +137,7 @@
 		return 1
 
 	if(href_list["launch_shuttle"])
-		var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
+		var/datum/shuttle/ferry/supply/shuttle = GLOB.supply_controller.shuttle
 		if(!shuttle)
 			to_chat(user, "<span class='warning'>Error connecting to the shuttle.</span>")
 			return
@@ -161,47 +161,47 @@
 
 	if(href_list["approve_order"])
 		var/id = text2num(href_list["approve_order"])
-		for(var/datum/supply_order/SO in supply_controller.requestlist)
+		for(var/datum/supply_order/SO in GLOB.supply_controller.requestlist)
 			if(SO.ordernum != id)
 				continue
-			if(SO.object.cost > supply_controller.points)
+			if(SO.object.cost > GLOB.supply_controller.points)
 				to_chat(usr, "<span class='warning'>Not enough points to purchase \the [SO.object.name]!</span>")
 				return 1
-			supply_controller.requestlist -= SO
-			supply_controller.shoppinglist += SO
-			supply_controller.points -= SO.object.cost
+			GLOB.supply_controller.requestlist -= SO
+			GLOB.supply_controller.shoppinglist += SO
+			GLOB.supply_controller.points -= SO.object.cost
 			break
 		return 1
 
 	if(href_list["deny_order"])
 		var/id = text2num(href_list["deny_order"])
-		for(var/datum/supply_order/SO in supply_controller.requestlist)
+		for(var/datum/supply_order/SO in GLOB.supply_controller.requestlist)
 			if(SO.ordernum == id)
-				supply_controller.requestlist -= SO
+				GLOB.supply_controller.requestlist -= SO
 				break
 		return 1
 
 	if(href_list["cancel_order"])
 		var/id = text2num(href_list["cancel_order"])
-		for(var/datum/supply_order/SO in supply_controller.shoppinglist)
+		for(var/datum/supply_order/SO in GLOB.supply_controller.shoppinglist)
 			if(SO.ordernum == id)
-				supply_controller.shoppinglist -= SO
-				supply_controller.points += SO.object.cost
+				GLOB.supply_controller.shoppinglist -= SO
+				GLOB.supply_controller.points += SO.object.cost
 				break
 		return 1
 
 	if(href_list["delete_order"])
 		var/id = text2num(href_list["delete_order"])
-		for(var/datum/supply_order/SO in supply_controller.donelist)
+		for(var/datum/supply_order/SO in GLOB.supply_controller.donelist)
 			if(SO.ordernum == id)
-				supply_controller.donelist -= SO
+				GLOB.supply_controller.donelist -= SO
 				break
 		return 1
 
 /datum/nano_module/supply/proc/generate_categories()
 	category_names = list()
 	category_contents = list()
-	for(var/decl/hierarchy/supply_pack/sp in cargo_supply_pack_root.children)
+	for(var/decl/hierarchy/supply_pack/sp in GLOB.cargo_supply_pack_root.children)
 		if(sp.is_category())
 			category_names.Add(sp.name)
 			var/list/category[0]
@@ -216,7 +216,7 @@
 			category_contents[sp.name] = category
 
 /datum/nano_module/supply/proc/get_shuttle_status()
-	var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
+	var/datum/shuttle/ferry/supply/shuttle = GLOB.supply_controller.shuttle
 	if(!istype(shuttle))
 		return "No Connection"
 
@@ -263,7 +263,7 @@
 	var/t = ""
 	t += "<center><BR><b><large>[GLOB.using_map.station_name]</large></b><BR><i>[GLOB.station_date]</i><BR><i>Export overview<field></i></center><hr>"
 	for(var/source in GLOB.point_source_descriptions)
-		t += "[GLOB.point_source_descriptions[source]]: [supply_controller.point_sources[source] || 0]<br>"
+		t += "[GLOB.point_source_descriptions[source]]: [GLOB.supply_controller.point_sources[source] || 0]<br>"
 	print_text(t, user)
 
 /datum/nano_module/supply/proc/print_text(var/text, var/mob/user)

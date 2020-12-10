@@ -36,9 +36,9 @@ GLOBAL_LIST_EMPTY(alien_whitelist)
 		GLOB.alien_whitelist = splittext(text, "\n")
 		return 1
 /proc/load_alienwhitelistSQL()
-	var/DBQuery/query = dbcon_old.NewQuery("SELECT * FROM whitelist")
+	var/DBQuery/query = GLOB.dbcon_old.NewQuery("SELECT * FROM whitelist")
 	if(!query.Execute())
-		to_world_log(dbcon_old.ErrorMsg())
+		to_world_log(GLOB.dbcon_old.ErrorMsg())
 		return 0
 	else
 		while(query.NextRow())

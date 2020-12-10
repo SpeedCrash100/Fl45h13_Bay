@@ -174,7 +174,7 @@
 						#ifdef ZASDBG
 						if(verbose) log_debug("[d] is zone blocked.")
 
-						//dbg(zone_blocked, d)
+						//dbg(GLOB.zone_blocked, d)
 						#endif
 
 						//Postpone this tile rather than exit, since a connection can still be made.

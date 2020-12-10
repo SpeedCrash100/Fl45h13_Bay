@@ -125,7 +125,7 @@ Class Procs:
 	GLOB.air_master.remove_zone(src)
 	#ifdef ZASDBG
 	for(var/turf/simulated/T in contents)
-		T.dbg(invalid_zone)
+		T.dbg(GLOB.invalid_zone)
 	#endif
 
 /zone/proc/rebuild()
@@ -133,7 +133,7 @@ Class Procs:
 	c_invalidate()
 	for(var/turf/simulated/T in contents)
 		T.update_graphic(graphic_remove = air.graphic) //we need to remove the overlays so they're not doubled when the zone is rebuilt
-		//T.dbg(invalid_zone)
+		//T.dbg(GLOB.invalid_zone)
 		T.needs_air_update = 0 //Reset the marker so that it will be added to the list.
 		GLOB.air_master.mark_for_update(T)
 

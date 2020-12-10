@@ -2,12 +2,12 @@
 	The global hud:
 	Uses the same visual objects for all players.
 */
-var/datum/global_hud/global_hud = new()
+GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new())
 GLOBAL_LIST_INIT(global_huds, list(
-		global_hud.nvg,
-		global_hud.thermal,
-		global_hud.meson,
-		global_hud.science))
+		GLOB.global_hud.nvg,
+		GLOB.global_hud.thermal,
+		GLOB.global_hud.meson,
+		GLOB.global_hud.science))
 
 /datum/global_hud
 	var/obj/screen/nvg

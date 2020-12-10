@@ -1,16 +1,16 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
-var/jobban_runonce			// Updates legacy bans with new info
-var/jobban_keylist[0]		//to store the keys & ranks
+GLOBAL_VAR(jobban_runonce)			// Updates legacy bans with new info
+GLOBAL_LIST_INIT(jobban_keylist, new/list(0))		//to store the keys & ranks
 
 /proc/jobban_fullban(mob/M, rank, reason)
 	if (!M || !M.key) return
-	jobban_keylist.Add(text("[M.ckey] - [rank] ## [reason]"))
+	GLOB.jobban_keylist.Add(text("[M.ckey] - [rank] ## [reason]"))
 	jobban_savebanfile()
 
 /proc/jobban_client_fullban(ckey, rank)
 	if (!ckey || !rank) return
-	jobban_keylist.Add(text("[ckey] - [rank]"))
+	GLOB.jobban_keylist.Add(text("[ckey] - [rank]"))
 	jobban_savebanfile()
 
 //returns a reason if M is banned from rank, returns 0 otherwise
@@ -26,7 +26,7 @@ var/jobban_keylist[0]		//to store the keys & ranks
 			if(GLOB.config.usewhitelist && !check_whitelist(M))
 				return "Whitelisted Job"
 
-		for (var/s in jobban_keylist)
+		for (var/s in GLOB.jobban_keylist)
 			if( findtext(s,"[M.ckey] - [rank]") == 1 )
 				var/startpos = findtext(s, "## ")+3
 				if(startpos && startpos<length(s))
@@ -41,7 +41,7 @@ DEBUG
 /mob/verb/list_all_jobbans()
 	set name = "list all jobbans"
 
-	for(var/s in jobban_keylist)
+	for(var/s in GLOB.jobban_keylist)
 		log_debug(s)
 
 /mob/verb/reload_jobbans()
@@ -57,12 +57,12 @@ DEBUG
 /proc/jobban_loadbanfile()
 	if(GLOB.config.ban_legacy_system)
 		var/savefile/S=new("data/job_full.ban")
-		from_save(S["keys[0]"], jobban_keylist)
+		from_save(S["keys[0]"], GLOB.jobban_keylist)
 		log_admin("Loading jobban_rank")
-		from_save(S["runonce"], jobban_runonce)
+		from_save(S["runonce"], GLOB.jobban_runonce)
 
-		if (!length(jobban_keylist))
-			jobban_keylist=list()
+		if (!length(GLOB.jobban_keylist))
+			GLOB.jobban_keylist=list()
 			log_admin("jobban_keylist was empty")
 	else
 		if(!establish_db_connection())
@@ -73,28 +73,28 @@ DEBUG
 			return
 
 		//Job permabans
-		var/DBQuery/query = dbcon.NewQuery("SELECT ckey, job FROM erro_ban WHERE bantype = 'JOB_PERMABAN' AND isnull(unbanned)")
+		var/DBQuery/query = GLOB.dbcon.NewQuery("SELECT ckey, job FROM erro_ban WHERE bantype = 'JOB_PERMABAN' AND isnull(unbanned)")
 		query.Execute()
 
 		while(query.NextRow())
 			var/ckey = query.item[1]
 			var/job = query.item[2]
 
-			jobban_keylist.Add("[ckey] - [job]")
+			GLOB.jobban_keylist.Add("[ckey] - [job]")
 
 		//Job tempbans
-		var/DBQuery/query1 = dbcon.NewQuery("SELECT ckey, job FROM erro_ban WHERE bantype = 'JOB_TEMPBAN' AND isnull(unbanned) AND expiration_time > Now()")
+		var/DBQuery/query1 = GLOB.dbcon.NewQuery("SELECT ckey, job FROM erro_ban WHERE bantype = 'JOB_TEMPBAN' AND isnull(unbanned) AND expiration_time > Now()")
 		query1.Execute()
 
 		while(query1.NextRow())
 			var/ckey = query1.item[1]
 			var/job = query1.item[2]
 
-			jobban_keylist.Add("[ckey] - [job]")
+			GLOB.jobban_keylist.Add("[ckey] - [job]")
 
 /proc/jobban_savebanfile()
 	var/savefile/S=new("data/job_full.ban")
-	to_save(S["keys[0]"], jobban_keylist)
+	to_save(S["keys[0]"], GLOB.jobban_keylist)
 
 /proc/jobban_unban(mob/M, rank)
 	jobban_remove("[M.ckey] - [rank]")
@@ -106,9 +106,9 @@ DEBUG
 
 
 /proc/jobban_remove(X)
-	for (var/i = 1; i <= length(jobban_keylist); i++)
-		if( findtext(jobban_keylist[i], "[X]") )
-			jobban_keylist.Remove(jobban_keylist[i])
+	for (var/i = 1; i <= length(GLOB.jobban_keylist); i++)
+		if( findtext(GLOB.jobban_keylist[i], "[X]") )
+			GLOB.jobban_keylist.Remove(GLOB.jobban_keylist[i])
 			jobban_savebanfile()
 			return 1
 	return 0

@@ -37,7 +37,7 @@
 	data["priority_alarms"] = major_alarms
 	data["minor_alarms"] = minor_alarms
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "atmos_alert.tmpl", src.name, 500, 500)
 		ui.set_initial_data(data)
@@ -68,11 +68,11 @@
 				var/obj/machinery/alarm/air_alarm = alarm_source.source
 				if(istype(air_alarm))
 					var/list/new_ref = list("atmos_reset" = 1)
-					air_alarm.Topic(href, new_ref, state = air_alarm_topic)
+					air_alarm.Topic(href, new_ref, state = GLOB.air_alarm_topic)
 		return 1
 
 
-var/datum/topic_state/air_alarm_topic/air_alarm_topic = new()
+GLOBAL_DATUM_INIT(air_alarm_topic, /datum/topic_state/air_alarm_topic, new())
 
 /datum/topic_state/air_alarm_topic/href_list(var/mob/user)
 	var/list/extra_href = list()

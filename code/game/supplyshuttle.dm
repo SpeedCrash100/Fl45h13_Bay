@@ -5,7 +5,7 @@
 //Supply packs are in /code/defines/obj/supplypacks.dm
 //Computers are in /code/game/machinery/computer/supply.dm
 
-var/datum/controller/supply/supply_controller = new()
+GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 GLOBAL_LIST_INIT(mechtoys, list(
 	/obj/item/toy/prize/ripley,
@@ -150,7 +150,7 @@ GLOBAL_LIST_INIT(point_source_descriptions, list(
 		ordernum = rand(1,9000)
 
 		//Build master supply list
-		for(var/decl/hierarchy/supply_pack/sp in cargo_supply_pack_root.children)
+		for(var/decl/hierarchy/supply_pack/sp in GLOB.cargo_supply_pack_root.children)
 			if(sp.is_category())
 				for(var/decl/hierarchy/supply_pack/spc in sp.children)
 					master_supply_list += spc

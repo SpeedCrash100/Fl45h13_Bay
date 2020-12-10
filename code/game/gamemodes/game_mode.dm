@@ -1,4 +1,4 @@
-var/global/antag_add_finished // Used in antag type voting.
+GLOBAL_VAR(antag_add_finished) // Used in antag type voting.
 GLOBAL_LIST_EMPTY(additional_antag_types)
 
 /datum/game_mode
@@ -186,12 +186,12 @@ GLOBAL_LIST_EMPTY(additional_antag_types)
 
 /datum/game_mode/proc/refresh_event_modifiers()
 	if(event_delay_mod_moderate || event_delay_mod_major)
-		event_manager.report_at_round_end = 1
+		GLOB.event_manager.report_at_round_end = 1
 		if(event_delay_mod_moderate)
-			var/datum/event_container/EModerate = event_manager.event_containers[EVENT_LEVEL_MODERATE]
+			var/datum/event_container/EModerate = GLOB.event_manager.event_containers[EVENT_LEVEL_MODERATE]
 			EModerate.delay_modifier = event_delay_mod_moderate
 		if(event_delay_mod_moderate)
-			var/datum/event_container/EMajor = event_manager.event_containers[EVENT_LEVEL_MAJOR]
+			var/datum/event_container/EMajor = GLOB.event_manager.event_containers[EVENT_LEVEL_MAJOR]
 			EMajor.delay_modifier = event_delay_mod_major
 
 /datum/game_mode/proc/pre_setup()
@@ -277,7 +277,7 @@ GLOBAL_LIST_EMPTY(additional_antag_types)
 		"radical Skrellian transevolutionaries",
 		"classified security operations"
 		)
-	command_announcement.Announce("The presence of [pick(reasons)] in the region is tying up all available local emergency resources; emergency response teams cannot be called at this time, and post-evacuation recovery efforts will be substantially delayed.","Emergency Transmission")
+	GLOB.command_announcement.Announce("The presence of [pick(reasons)] in the region is tying up all available local emergency resources; emergency response teams cannot be called at this time, and post-evacuation recovery efforts will be substantially delayed.","Emergency Transmission")
 
 /datum/game_mode/proc/check_finished()
 	if(GLOB.evacuation_controller.round_over() || station_was_nuked)
@@ -315,7 +315,7 @@ GLOBAL_LIST_EMPTY(additional_antag_types)
 		antag.print_player_summary()
 	sleep(2)
 
-	uplink_purchase_repository.print_entries()
+	GLOB.uplink_purchase_repository.print_entries()
 
 	var/clients = 0
 	var/surviving_humans = 0

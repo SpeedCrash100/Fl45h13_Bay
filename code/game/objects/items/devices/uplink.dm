@@ -70,7 +70,7 @@
 
 		discount_item = new_discount_item
 		update_nano_data()
-		nanomanager.update_uis(src)
+		GLOB.nanomanager.update_uis(src)
 
 /obj/item/device/uplink/proc/is_improper_item(var/datum/uplink_item/new_discount_item, discount_amount)
 	if(!new_discount_item)
@@ -128,7 +128,7 @@
 	data += nanoui_data
 
 	// update the ui if it exists, returns null if no ui is passed/found
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)	// No auto-refresh
 		ui = new(user, src, ui_key, "uplink.tmpl", title, 450, 600, state = uistate)
 		ui.set_initial_data(data)
@@ -151,11 +151,11 @@
 
 	var/mob/user = usr
 	if(href_list["buy_item"])
-		var/datum/uplink_item/UI = (locate(href_list["buy_item"]) in uplink.items)
+		var/datum/uplink_item/UI = (locate(href_list["buy_item"]) in GLOB.uplink.items)
 		UI.buy(src, usr)
 	else if(href_list["lock"])
 		toggle()
-		var/datum/nanoui/ui = nanomanager.get_open_ui(user, src, "main")
+		var/datum/nanoui/ui = GLOB.nanomanager.get_open_ui(user, src, "main")
 		ui.close()
 	else if(href_list["return"])
 		nanoui_menu = round(nanoui_menu/10)
@@ -164,7 +164,7 @@
 		if(href_list["id"])
 			exploit_id = href_list["id"]
 		if(href_list["category"])
-			category = locate(href_list["category"]) in uplink.categories
+			category = locate(href_list["category"]) in GLOB.uplink.categories
 
 	update_nano_data()
 	return 1
@@ -172,7 +172,7 @@
 /obj/item/device/uplink/proc/update_nano_data()
 	if(nanoui_menu == 0)
 		var/categories[0]
-		for(var/datum/uplink_category/category in uplink.categories)
+		for(var/datum/uplink_category/category in GLOB.uplink.categories)
 			if(category.can_view(src))
 				categories[++categories.len] = list("name" = category.name, "ref" = "\ref[category]")
 		nanoui_data["categories"] = categories

@@ -34,7 +34,7 @@
 		neighbors |= floor
 
 	if(neighbors.len)
-		plant_controller.add_plant(src) //if we have neighbours again, start processing
+		GLOB.plant_controller.add_plant(src) //if we have neighbours again, start processing
 
 	// Update all of our friends.
 	var/turf/T = get_turf(src)
@@ -109,7 +109,7 @@
 	// We shouldn't have spawned if the controller doesn't exist.
 	check_health()
 	if(buckled_mob || neighbors.len)
-		plant_controller.add_plant(src)
+		GLOB.plant_controller.add_plant(src)
 
 //spreading vines aren't created on their final turf.
 //Instead, they are created at their parent and then move to their destination.
@@ -160,7 +160,7 @@
 			continue
 		for(var/obj/effect/plant/neighbor in check_turf.contents)
 			neighbor.neighbors |= check_turf
-			plant_controller.add_plant(neighbor)
+			GLOB.plant_controller.add_plant(neighbor)
 	spawn(1) if(src) qdel(src)
 
 #undef NEIGHBOR_REFRESH_TIME

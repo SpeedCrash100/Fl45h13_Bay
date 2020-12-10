@@ -67,15 +67,15 @@
 	cycles_before_converted = initial(cycles_before_converted)
 	GLOB.processing_objects |= src
 	target = L
-	destroyed_event.register(L,src,/obj/structure/deity/altar/proc/remove_target)
-	moved_event.register(L, src, /obj/structure/deity/altar/proc/remove_target)
-	death_event.register(L, src, /obj/structure/deity/altar/proc/remove_target)
+	GLOB.destroyed_event.register(L,src,/obj/structure/deity/altar/proc/remove_target)
+	GLOB.moved_event.register(L, src, /obj/structure/deity/altar/proc/remove_target)
+	GLOB.death_event.register(L, src, /obj/structure/deity/altar/proc/remove_target)
 
 /obj/structure/deity/altar/proc/remove_target()
 	GLOB.processing_objects -= src
-	destroyed_event.unregister(target, src)
-	moved_event.unregister(target, src)
-	death_event.unregister(target, src)
+	GLOB.destroyed_event.unregister(target, src)
+	GLOB.moved_event.unregister(target, src)
+	GLOB.death_event.unregister(target, src)
 	target = null
 
 /obj/structure/deity/altar/Topic(var/href, var/list/href_list)

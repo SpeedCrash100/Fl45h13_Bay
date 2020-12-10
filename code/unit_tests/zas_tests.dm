@@ -124,12 +124,12 @@ datum/unit_test/zas_supply_shuttle_moved/start_test()
 		skip("No shuttles have been setup for this map.")
 		return 1
 
-	shuttle = supply_controller.shuttle
+	shuttle = GLOB.supply_controller.shuttle
 	if(isnull(shuttle))
 		return 1
 
 	// Initiate the Move.
-	supply_controller.movetime = 5 // Speed up the shuttle movement.
+	GLOB.supply_controller.movetime = 5 // Speed up the shuttle movement.
 	shuttle.short_jump(shuttle.area_offsite, shuttle.area_station)
 
 	return 1

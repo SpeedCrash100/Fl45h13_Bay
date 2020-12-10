@@ -12,7 +12,7 @@ datum/controller/transfer_controller/Destroy()
 
 datum/controller/transfer_controller/proc/process()
 	if (time_till_transfer_vote() <= 0)
-		vote.autotransfer()
+		GLOB.vote.autotransfer()
 		timerbuffer += GLOB.config.vote_autotransfer_interval
 
 datum/controller/transfer_controller/proc/time_till_transfer_vote()

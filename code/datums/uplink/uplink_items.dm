@@ -1,4 +1,4 @@
-var/datum/uplink/uplink = new()
+GLOBAL_DATUM_INIT(uplink, /datum/uplink, new())
 
 /datum/uplink
 	var/list/items_assoc
@@ -109,7 +109,7 @@ var/datum/uplink/uplink = new()
 	feedback_add_details("traitor_uplink_items_bought", "[src]")
 	log_and_message_admins("used \the [U.loc] to buy \a [src]")
 	if(user)
-		uplink_purchase_repository.add_entry(user.mind, src, cost)
+		GLOB.uplink_purchase_repository.add_entry(user.mind, src, cost)
 
 datum/uplink_item/dd_SortValue()
 	return cost(INFINITY, null)

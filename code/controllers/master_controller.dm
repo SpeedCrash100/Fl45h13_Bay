@@ -81,7 +81,7 @@ datum/controller/game_controller/proc/setup_objects()
 
 	if(GLOB.using_map.use_overmap)
 		report_progress("Initializing overmap events")
-		overmap_event_handler.create_events(GLOB.using_map.overmap_z, GLOB.using_map.overmap_size, GLOB.using_map.overmap_event_areas)
+		GLOB.overmap_event_handler.create_events(GLOB.using_map.overmap_z, GLOB.using_map.overmap_size, GLOB.using_map.overmap_event_areas)
 		CHECK_SLEEP_MASTER
 
 	report_progress("Initializing pipe networks")

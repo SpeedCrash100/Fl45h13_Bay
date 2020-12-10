@@ -184,7 +184,7 @@
 
 	if(CanUseTopic(user, GLOB.hands_state) != STATUS_INTERACTIVE)
 		return FALSE
-	command_announcement.Announce(message, title, msg_sanitized = 1)
+	GLOB.command_announcement.Announce(message, title, msg_sanitized = 1)
 	return TRUE
 
 /*********************************

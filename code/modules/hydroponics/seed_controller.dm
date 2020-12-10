@@ -12,14 +12,14 @@
 
 	if(!holder)	return
 
-	if(!plant_controller || !plant_controller.gene_tag_masks)
+	if(!GLOB.plant_controller || !GLOB.plant_controller.gene_tag_masks)
 		to_chat(usr, "Gene masks not set.")
 		return
 
-	for(var/mask in plant_controller.gene_tag_masks)
-		to_chat(usr, "[mask]: [plant_controller.gene_tag_masks[mask]]")
+	for(var/mask in GLOB.plant_controller.gene_tag_masks)
+		to_chat(usr, "[mask]: [GLOB.plant_controller.gene_tag_masks[mask]]")
 
-var/global/datum/controller/plants/plant_controller // Set in New().
+GLOBAL_DATUM(plant_controller, /datum/controller/plants) // Set in New().
 
 /datum/controller/plants
 
@@ -37,10 +37,10 @@ var/global/datum/controller/plants/plant_controller // Set in New().
 	var/list/plant_gene_datums = list()		// Stored datum versions of the gene masked list.
 
 /datum/controller/plants/New()
-	if(plant_controller && plant_controller != src)
+	if(GLOB.plant_controller && GLOB.plant_controller != src)
 		log_debug("Rebuilding plant controller.")
-		qdel(plant_controller)
-	plant_controller = src
+		qdel(GLOB.plant_controller)
+	GLOB.plant_controller = src
 	setup()
 	process()
 
@@ -85,7 +85,7 @@ var/global/datum/controller/plants/plant_controller // Set in New().
 		S.update_seed()
 
 	//Might as well mask the gene types while we're at it.
-	var/list/gene_datums = decls_repository.decls_of_subtype(/decl/plantgene)
+	var/list/gene_datums = GLOB.decls_repository.decls_of_subtype(/decl/plantgene)
 	var/list/used_masks = list()
 	var/list/plant_traits = ALL_GENES
 	while(plant_traits && plant_traits.len)
@@ -112,7 +112,7 @@ var/global/datum/controller/plants/plant_controller // Set in New().
 /datum/controller/plants/proc/create_random_seed(var/survive_on_station)
 	var/datum/seed/seed = new()
 	seed.randomize()
-	seed.uid = plant_controller.seeds.len + 1
+	seed.uid = GLOB.plant_controller.seeds.len + 1
 	seed.name = "[seed.uid]"
 	seeds[seed.name] = seed
 

@@ -57,17 +57,17 @@ GLOBAL_DATUM(ticker, /datum/controller/gameticker)
 		while(current_state == GAME_STATE_PREGAME)
 			for(var/i=0, i<10, i++)
 				sleep(1)
-				vote.process()
+				GLOB.vote.process()
 			if(GLOB.round_progressing)
 				pregame_timeleft--
 			if(pregame_timeleft == GLOB.config.vote_autogamemode_timeleft && !gamemode_voted)
 				gamemode_voted = 1
-				if(!vote.time_remaining)
-					vote.autogamemode()	//Quit calling this over and over and over and over.
-					while(vote.time_remaining)
+				if(!GLOB.vote.time_remaining)
+					GLOB.vote.autogamemode()	//Quit calling this over and over and over and over.
+					while(GLOB.vote.time_remaining)
 						for(var/i=0, i<10, i++)
 							sleep(1)
-							vote.process()
+							GLOB.vote.process()
 			if(pregame_timeleft <= 0 || ((GLOB.initialization_stage & INITIALIZATION_NOW_AND_COMPLETE) == INITIALIZATION_NOW_AND_COMPLETE))
 				current_state = GAME_STATE_SETTING_UP
 	while (!setup())
@@ -166,7 +166,7 @@ GLOBAL_DATUM(ticker, /datum/controller/gameticker)
 	if(admins_number == 0)
 		send2adminirc("Round has started with no admins online.")
 
-/*	supply_controller.process() 		//Start the supply shuttle regenerating points -- TLE // handled in scheduler
+/*	GLOB.supply_controller.process() 		//Start the supply shuttle regenerating points -- TLE // handled in scheduler
 	GLOB.master_controller.process()		//Start master_controller.process()
 	lighting_controller.process()	//Start processing DynamicAreaLighting updates
 	*/
@@ -342,8 +342,8 @@ GLOBAL_DATUM(ticker, /datum/controller/gameticker)
 
 			spawn(50)
 				if(GLOB.config.allow_map_switching && GLOB.config.auto_map_vote && GLOB.all_maps.len > 1)
-					vote.automap()
-					while(vote.time_remaining)
+					GLOB.vote.automap()
+					while(GLOB.vote.time_remaining)
 						sleep(50)
 
 				callHook("roundend")
@@ -387,7 +387,7 @@ GLOBAL_DATUM(ticker, /datum/controller/gameticker)
 					to_world("<span class='danger'>The round has ended!</span>")
 
 					round_end_announced = 1
-				vote.autotransfer()
+				GLOB.vote.autotransfer()
 
 		return 1
 
@@ -474,7 +474,7 @@ GLOBAL_DATUM(ticker, /datum/controller/gameticker)
 	mode.declare_completion()//To declare normal completion.
 
 	//Ask the event manager to print round end information
-	event_manager.RoundEnd()
+	GLOB.event_manager.RoundEnd()
 
 	//Print a list of antagonists to the server log
 	var/list/total_antagonists = list()

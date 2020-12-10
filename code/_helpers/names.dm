@@ -22,8 +22,8 @@ GLOBAL_VAR_INIT(command_name, null)
 		return GLOB.command_name
 
 	var/name = "[GLOB.using_map.boss_name]"
-
 	GLOB.command_name = name
+
 	return name
 
 /proc/change_command_name(var/name)

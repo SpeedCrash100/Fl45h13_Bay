@@ -74,17 +74,17 @@
 /datum/nanomanager/proc/get_open_ui(var/mob/user, src_object, ui_key)
 	var/src_object_key = "\ref[src_object]"
 	if (isnull(open_uis[src_object_key]) || !istype(open_uis[src_object_key], /list))
-		//testing("nanomanager/get_open_ui mob [user.name] [src_object:name] [ui_key] - there are no uis open")
+		//testing("GLOB.nanomanager/get_open_ui mob [user.name] [src_object:name] [ui_key] - there are no uis open")
 		return null
 	else if (isnull(open_uis[src_object_key][ui_key]) || !istype(open_uis[src_object_key][ui_key], /list))
-		//testing("nanomanager/get_open_ui mob [user.name] [src_object:name] [ui_key] - there are no uis open for this object")
+		//testing("GLOB.nanomanager/get_open_ui mob [user.name] [src_object:name] [ui_key] - there are no uis open for this object")
 		return null
 
 	for (var/datum/nanoui/ui in open_uis[src_object_key][ui_key])
 		if (ui.user == user)
 			return ui
 
-	//testing("nanomanager/get_open_ui mob [user.name] [src_object:name] [ui_key] - ui not found")
+	//testing("GLOB.nanomanager/get_open_ui mob [user.name] [src_object:name] [ui_key] - ui not found")
 	return null
 
  /**
@@ -229,7 +229,7 @@
 
 //
 /datum/nanomanager/proc/user_logout(var/mob/user)
-	//testing("nanomanager/user_logout user [user.name]")
+	//testing("GLOB.nanomanager/user_logout user [user.name]")
 	return close_user_uis(user)
 
  /**

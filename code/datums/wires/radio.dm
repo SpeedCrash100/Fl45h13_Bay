@@ -24,7 +24,7 @@ GLOBAL_VAR_CONST(WIRE_TRANSMIT, 4)
 
 		if(GLOB.WIRE_TRANSMIT)
 			R.broadcasting = !R.broadcasting && !IsIndexCut(GLOB.WIRE_SIGNAL)
-	nanomanager.update_uis(holder)
+	GLOB.nanomanager.update_uis(holder)
 
 /datum/wires/radio/UpdateCut(var/index, var/mended)
 	var/obj/item/device/radio/R = holder
@@ -38,4 +38,4 @@ GLOBAL_VAR_CONST(WIRE_TRANSMIT, 4)
 
 		if(GLOB.WIRE_TRANSMIT)
 			R.broadcasting = mended && !IsIndexCut(GLOB.WIRE_SIGNAL)
-	nanomanager.update_uis(holder)
+	GLOB.nanomanager.update_uis(holder)

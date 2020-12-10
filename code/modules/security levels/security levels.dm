@@ -4,8 +4,8 @@ GLOBAL_VAR_INIT(security_level, 0) //0 = code green
 //3 = code delta
 
 //config.alert_desc_blue_downto
-/var/datum/announcement/priority/security/security_announcement_up = new(do_log = 0, do_newscast = 1, new_sound = sound('sound/misc/notice1.ogg'))
-/var/datum/announcement/priority/security/security_announcement_down = new(do_log = 0, do_newscast = 1)
+GLOBAL_DATUM_INIT(security_announcement_up, /datum/announcement/priority/security, new(do_log = 0, do_newscast = 1, new_sound = sound('sound/misc/notice1.ogg')))
+GLOBAL_DATUM_INIT(security_announcement_down, /datum/announcement/priority/security, new(do_log = 0, do_newscast = 1))
 
 /proc/set_security_level(var/level)
 	switch(level)
@@ -22,25 +22,25 @@ GLOBAL_VAR_INIT(security_level, 0) //0 = code green
 	if(level >= SEC_LEVEL_GREEN && level <= SEC_LEVEL_DELTA && level != GLOB.security_level)
 		switch(level)
 			if(SEC_LEVEL_GREEN)
-				security_announcement_down.Announce("[GLOB.config.alert_desc_green]", "Attention! Security level lowered to green")
+				GLOB.security_announcement_down.Announce("[GLOB.config.alert_desc_green]", "Attention! Security level lowered to green")
 				GLOB.security_level = SEC_LEVEL_GREEN
 				post_status("alert", "greenalert")
 			if(SEC_LEVEL_BLUE)
 				if(GLOB.security_level < SEC_LEVEL_BLUE)
-					security_announcement_up.Announce("[GLOB.config.alert_desc_blue_upto]", "Attention! Security level elevated to blue")
+					GLOB.security_announcement_up.Announce("[GLOB.config.alert_desc_blue_upto]", "Attention! Security level elevated to blue")
 				else
-					security_announcement_down.Announce("[GLOB.config.alert_desc_blue_downto]", "Attention! Security level lowered to blue")
+					GLOB.security_announcement_down.Announce("[GLOB.config.alert_desc_blue_downto]", "Attention! Security level lowered to blue")
 				GLOB.security_level = SEC_LEVEL_BLUE
 				post_status("alert", "bluealert")
 			if(SEC_LEVEL_RED)
 				if(GLOB.security_level < SEC_LEVEL_RED)
-					security_announcement_up.Announce("[GLOB.config.alert_desc_red_upto]", "Attention! Code red!")
+					GLOB.security_announcement_up.Announce("[GLOB.config.alert_desc_red_upto]", "Attention! Code red!")
 				else
-					security_announcement_down.Announce("[GLOB.config.alert_desc_red_downto]", "Attention! Code red!")
+					GLOB.security_announcement_down.Announce("[GLOB.config.alert_desc_red_downto]", "Attention! Code red!")
 				GLOB.security_level = SEC_LEVEL_RED
 				post_status("alert", "redalert")
 			if(SEC_LEVEL_DELTA)
-				security_announcement_up.Announce("[GLOB.config.alert_desc_delta]", "Attention! Delta security level reached!", new_sound = 'sound/effects/siren.ogg')
+				GLOB.security_announcement_up.Announce("[GLOB.config.alert_desc_delta]", "Attention! Delta security level reached!", new_sound = 'sound/effects/siren.ogg')
 				GLOB.security_level = SEC_LEVEL_DELTA
 				post_status("alert", "deltaalert")
 

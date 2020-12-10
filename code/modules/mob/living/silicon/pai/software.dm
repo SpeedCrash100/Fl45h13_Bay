@@ -90,7 +90,7 @@ GLOBAL_LIST_EMPTY(default_pai_software)
 	data["emotions"] = emotions
 	data["current_emotion"] = card.current_emotion
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "pai_interface.tmpl", "pAI Software Interface", 450, 600)
 		ui.set_initial_data(data)

@@ -1,6 +1,6 @@
 GLOBAL_VAR_CONST(NO_CLIENT_CKEY, "*no ckey*")
 
-var/repository/client/client_repository = new()
+GLOBAL_DATUM_INIT(client_repository, /repository/client, new())
 
 /repository/client
 	var/list/clients_

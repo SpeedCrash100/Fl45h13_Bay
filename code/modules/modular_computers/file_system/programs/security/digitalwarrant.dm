@@ -54,7 +54,7 @@ GLOBAL_VAR_INIT(warrant_uid, 0)
 		data["searchwarrants"] = searchwarrants.len ? searchwarrants : null
 		data["archivedwarrants"] = archivedwarrants.len? archivedwarrants :null
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "digitalwarrant.tmpl", name, 700, 450, state = state)
 		ui.auto_update_layout = 1

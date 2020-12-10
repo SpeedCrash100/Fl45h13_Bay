@@ -1,4 +1,4 @@
-/var/obj/effect/lobby_image = new/obj/effect/lobby_image()
+GLOBAL_DATUM_INIT(lobby_image, /obj/effect, new/obj/effect/lobby_image())
 
 /obj/effect/lobby_image
 	name = "Baystation12"
@@ -30,7 +30,7 @@
 		mind.current = src
 
 	loc = null
-	client.screen += lobby_image
+	client.screen += GLOB.lobby_image
 	my_client = client
 	set_sight(sight|SEE_TURFS)
 	GLOB.player_list |= src

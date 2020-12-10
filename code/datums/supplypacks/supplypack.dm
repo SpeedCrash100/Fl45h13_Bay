@@ -1,5 +1,5 @@
-var/decl/hierarchy/supply_pack/cargo_supply_pack_root = new()
-var/decl/hierarchy/supply_pack/cargo_supply_packs	// Non-category supply packs
+GLOBAL_DATUM_INIT(cargo_supply_pack_root, /decl/hierarchy/supply_pack, new())
+GLOBAL_DATUM(cargo_supply_packs, /decl/hierarchy/supply_pack)	// Non-category supply packs
 
 /decl/hierarchy/supply_pack
 	name = "Supply Packs"
@@ -19,8 +19,8 @@ var/decl/hierarchy/supply_pack/cargo_supply_packs	// Non-category supply packs
 	if(is_hidden_category())
 		return	// Don't init the manifest for category entries
 
-	if(!cargo_supply_packs) cargo_supply_packs = list()
-	dd_insertObjectList(cargo_supply_packs, src)	// Add all non-category supply packs to the list
+	if(!GLOB.cargo_supply_packs) GLOB.cargo_supply_packs = list()
+	dd_insertObjectList(GLOB.cargo_supply_packs, src)	// Add all non-category supply packs to the list
 
 	if(!num_contained)
 		for(var/entry in contains)

@@ -22,7 +22,7 @@
 		if(EVENT_LEVEL_MAJOR)
 			GLOB.using_map.meteors_detected_announcement()
 		else
-			command_announcement.Announce("The [station_name()] is now in a meteor shower.", "[station_name()] Sensor Array")
+			GLOB.command_announcement.Announce("The [station_name()] is now in a meteor shower.", "[station_name()] Sensor Array")
 
 /datum/event/meteor_wave/tick()
 	// Begin sending the alarm signals to shield diffusers so the field is already regenerated (if it exists) by the time actual meteors start flying around.
@@ -50,9 +50,9 @@
 /datum/event/meteor_wave/end()
 	switch(severity)
 		if(EVENT_LEVEL_MAJOR)
-			command_announcement.Announce("The [station_name()] has cleared the meteor storm.", "[station_name()] Sensor Array")
+			GLOB.command_announcement.Announce("The [station_name()] has cleared the meteor storm.", "[station_name()] Sensor Array")
 		else
-			command_announcement.Announce("The [station_name()] has cleared the meteor shower", "[station_name()] Sensor Array")
+			GLOB.command_announcement.Announce("The [station_name()] has cleared the meteor shower", "[station_name()] Sensor Array")
 
 /datum/event/meteor_wave/proc/get_meteors()
 	switch(severity)

@@ -14,3 +14,7 @@ GLOBAL_LIST_INIT(default_internal_channels,
 		num2text(GLOB.SUP_FREQ) = list(GLOB.access_cargo),
 		num2text(GLOB.SRV_FREQ) = list(GLOB.access_janitor, GLOB.access_hydroponics)
 	))
+
+GLOBAL_DATUM_INIT(priority_announcement, /datum/announcement/priority, new(do_log = 0))
+GLOBAL_DATUM_INIT(command_announcement, /datum/announcement/priority/command, new(do_log = 0, do_newscast = 1))
+GLOBAL_DATUM_INIT(minor_announcement, /datum/announcement/minor, new(new_sound = 'sound/AI/commandreport.ogg',))

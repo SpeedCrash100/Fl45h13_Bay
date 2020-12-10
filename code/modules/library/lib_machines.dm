@@ -44,7 +44,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 			<A href='?src=\ref[src];search=1'>\[Start Search\]</A><BR>"}
 		if(1)
 			establish_old_db_connection()
-			if(!dbcon_old.IsConnected())
+			if(!GLOB.dbcon_old.IsConnected())
 				dat += "<font color=red><b>ERROR</b>: Unable to contact External Archive. Please contact your system administrator for assistance.</font><BR>"
 			else if(!SQLquery)
 				dat += "<font color=red><b>ERROR</b>: Malformed search request. Please contact your system administrator for assistance.</font><BR>"
@@ -52,7 +52,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 				dat += {"<table>
 				<tr><td>AUTHOR</td><td>TITLE</td><td>CATEGORY</td><td>SS<sup>13</sup>BN</td></tr>"}
 
-				var/DBQuery/query = dbcon_old.NewQuery(SQLquery)
+				var/DBQuery/query = GLOB.dbcon_old.NewQuery(SQLquery)
 				query.Execute()
 
 				while(query.NextRow())
@@ -191,13 +191,13 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 		if(4)
 			dat += "<h3>External Archive</h3>"
 			establish_old_db_connection()
-			if(!dbcon_old.IsConnected())
+			if(!GLOB.dbcon_old.IsConnected())
 				dat += "<font color=red><b>ERROR</b>: Unable to contact External Archive. Please contact your system administrator for assistance.</font>"
 			else
 				dat += {"<A href='?src=\ref[src];orderbyid=1'>(Order book by SS<sup>13</sup>BN)</A><BR><BR>
 				<table>
 				<tr><td><A href='?src=\ref[src];sort=author'>AUTHOR</A></td><td><A href='?src=\ref[src];sort=title'>TITLE</A></td><td><A href='?src=\ref[src];sort=category'>CATEGORY</A></td><td></td></tr>"}
-				var/DBQuery/query = dbcon_old.NewQuery("SELECT id, author, title, category FROM library ORDER BY [sortby]")
+				var/DBQuery/query = GLOB.dbcon_old.NewQuery("SELECT id, author, title, category FROM library ORDER BY [sortby]")
 				query.Execute()
 
 				while(query.NextRow())
@@ -336,20 +336,20 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 						alert("This book has been rejected from the database. Aborting!")
 					else
 						establish_old_db_connection()
-						if(!dbcon_old.IsConnected())
+						if(!GLOB.dbcon_old.IsConnected())
 							alert("Connection to Archive has been severed. Aborting.")
 						else
 							/*
-							var/sqltitle = dbcon.Quote(scanner.cache.name)
-							var/sqlauthor = dbcon.Quote(scanner.cache.author)
-							var/sqlcontent = dbcon.Quote(scanner.cache.dat)
-							var/sqlcategory = dbcon.Quote(upload_category)
+							var/sqltitle = GLOB.dbcon.Quote(scanner.cache.name)
+							var/sqlauthor = GLOB.dbcon.Quote(scanner.cache.author)
+							var/sqlcontent = GLOB.dbcon.Quote(scanner.cache.dat)
+							var/sqlcategory = GLOB.dbcon.Quote(upload_category)
 							*/
 							var/sqltitle = sanitizeSQL(scanner.cache.name)
 							var/sqlauthor = sanitizeSQL(scanner.cache.author)
 							var/sqlcontent = sanitizeSQL(scanner.cache.dat)
 							var/sqlcategory = sanitizeSQL(upload_category)
-							var/DBQuery/query = dbcon_old.NewQuery("INSERT INTO library (author, title, content, category) VALUES ('[sqlauthor]', '[sqltitle]', '[sqlcontent]', '[sqlcategory]')")
+							var/DBQuery/query = GLOB.dbcon_old.NewQuery("INSERT INTO library (author, title, content, category) VALUES ('[sqlauthor]', '[sqltitle]', '[sqlcontent]', '[sqlcategory]')")
 							if(!query.Execute())
 								to_chat(usr, query.ErrorMsg())
 							else
@@ -360,7 +360,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 	if(href_list["targetid"])
 		var/sqlid = sanitizeSQL(href_list["targetid"])
 		establish_old_db_connection()
-		if(!dbcon_old.IsConnected())
+		if(!GLOB.dbcon_old.IsConnected())
 			alert("Connection to Archive has been severed. Aborting.")
 		if(bibledelay)
 			for (var/mob/V in hearers(src))
@@ -369,7 +369,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 			bibledelay = 1
 			spawn(30)
 				bibledelay = 0
-			var/DBQuery/query = dbcon_old.NewQuery("SELECT * FROM library WHERE id=[sqlid]")
+			var/DBQuery/query = GLOB.dbcon_old.NewQuery("SELECT * FROM library WHERE id=[sqlid]")
 			query.Execute()
 
 			while(query.NextRow())

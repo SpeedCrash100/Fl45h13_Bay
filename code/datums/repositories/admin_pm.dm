@@ -1,4 +1,4 @@
-var/repository/admin_pm/admin_pm_repository = new()
+GLOBAL_DATUM_INIT(admin_pm_repository, /repository/admin_pm, new())
 
 /repository/admin_pm
 	var/list/admin_pms_
@@ -12,14 +12,14 @@ var/repository/admin_pm/admin_pm_repository = new()
 /repository/admin_pm/proc/store_pm(var/client/sender, var/client/receiver, var/message)
 	if(receiver)
 		if(istype(receiver))
-			receiver = client_repository.get_lite_client(receiver)
+			receiver = GLOB.client_repository.get_lite_client(receiver)
 		else if(starts_with(receiver, "IRC-"))
 			receiver = get_irc_client(receiver)
 		else
 			CRASH("Invalid receiver: [log_info_line(receiver)]")
 
 	// Newest messages first
-	admin_pms_.Insert(1, new/datum/admin_privat_message(client_repository.get_lite_client(sender), receiver, message))
+	admin_pms_.Insert(1, new/datum/admin_privat_message(GLOB.client_repository.get_lite_client(sender), receiver, message))
 
 /repository/admin_pm/proc/get_irc_client(key)
 	var/datum/client_lite/cl = irc_clients_by_name[key]

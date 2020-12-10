@@ -376,7 +376,7 @@ What a mess.*/
 					if("mil_branch")
 						if(has_write_access)
 							var/list/options = list("<h5>Branch:</h5><ul>")
-							for(var/branch in mil_branches.branches)
+							for(var/branch in GLOB.mil_branches.branches)
 								options += "<li><a href='?src=\ref[src];choice=change_mil_branch;mil_branch=[branch]'>[branch]</a></li>"
 							options += "</ul>"
 
@@ -385,7 +385,7 @@ What a mess.*/
 							alert(usr, "You do not have the required access to change the branch field.")
 					if("mil_rank")
 						if(has_write_access)
-							var/datum/mil_branch/branch = mil_branches.get_branch(active1.fields["mil_branch"])
+							var/datum/mil_branch/branch = GLOB.mil_branches.get_branch(active1.fields["mil_branch"])
 							if(!istype(branch))
 								alert(usr, "There is currently no branch set.")
 							else
@@ -418,7 +418,7 @@ What a mess.*/
 								if(GLOB.PDA_Manifest.len)
 									GLOB.PDA_Manifest.Cut()
 						if("change_mil_branch")
-							if(has_write_access && mil_branches.get_branch(href_list["mil_branch"]))  // Check for name validity
+							if(has_write_access && GLOB.mil_branches.get_branch(href_list["mil_branch"]))  // Check for name validity
 								active1.fields["mil_branch"] = href_list["mil_branch"]
 								active1.fields["mil_rank"] = null  // Previous entry may be invalid for new branch
 
@@ -426,7 +426,7 @@ What a mess.*/
 									GLOB.PDA_Manifest.Cut()
 
 						if("change_mil_rank")
-							if(has_write_access && mil_branches.get_rank(active1.fields["mil_branch"], href_list["mil_rank"]))
+							if(has_write_access && GLOB.mil_branches.get_rank(active1.fields["mil_branch"], href_list["mil_rank"]))
 								active1.fields["mil_rank"] = href_list["mil_rank"]
 
 								if(GLOB.PDA_Manifest.len)

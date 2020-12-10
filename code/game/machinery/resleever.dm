@@ -96,7 +96,7 @@ obj/machinery/resleever/process()
 		"ready" = occupant && lace && !resleeving
 	)
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "resleever.tmpl", "Neural Lace Resleever", 300, 370)
 		ui.set_initial_data(data)

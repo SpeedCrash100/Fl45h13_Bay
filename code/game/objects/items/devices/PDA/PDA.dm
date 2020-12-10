@@ -355,7 +355,7 @@ GLOBAL_LIST_EMPTY_TYPED(PDAs, /obj/item/device/pda)
 
 /obj/item/device/pda/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	ui_tick++
-	var/datum/nanoui/old_ui = nanomanager.get_open_ui(user, src, "main")
+	var/datum/nanoui/old_ui = GLOB.nanomanager.get_open_ui(user, src, "main")
 	var/auto_update = 1
 	if(mode in no_auto_update)
 		auto_update = 0
@@ -491,12 +491,12 @@ GLOBAL_LIST_EMPTY_TYPED(PDAs, /obj/item/device/pda)
 	if(mode==6)
 		if(has_reception)
 			feeds.Cut()
-			for(var/datum/feed_channel/channel in news_network.network_channels)
+			for(var/datum/feed_channel/channel in GLOB.news_network.network_channels)
 				feeds[++feeds.len] = list("name" = channel.channel_name, "censored" = channel.censored)
 		data["feedChannels"] = feeds
 	if(mode==61)
 		var/datum/feed_channel/FC
-		for(FC in news_network.network_channels)
+		for(FC in GLOB.news_network.network_channels)
 			if(FC.channel_name == active_feed["name"])
 				break
 
@@ -535,7 +535,7 @@ GLOBAL_LIST_EMPTY_TYPED(PDAs, /obj/item/device/pda)
 	nanoUI = data
 	// update the ui if it exists, returns null if no ui is passed/found
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if (!ui)
 		// the ui does not exist, so we'll create a new() one
@@ -573,7 +573,7 @@ GLOBAL_LIST_EMPTY_TYPED(PDAs, /obj/item/device/pda)
 
 	..()
 	var/mob/user = usr
-	var/datum/nanoui/ui = nanomanager.get_open_ui(user, src, "main")
+	var/datum/nanoui/ui = GLOB.nanomanager.get_open_ui(user, src, "main")
 	var/mob/living/U = usr
 	//Looking for master was kind of pointless since PDAs don't appear to have one.
 	//if ((src in U.contents) || ( istype(loc, /turf) && in_range(src, U) ) )
@@ -1024,7 +1024,7 @@ GLOBAL_LIST_EMPTY_TYPED(PDAs, /obj/item/device/pda)
 					ai.show_message("<i>Intercepted message from <b>[who]</b>: [t]</i>")
 
 		P.new_message_from_pda(src, t)
-		nanomanager.update_user_uis(U, src) // Update the sending user's PDA UI so that they can see the new message
+		GLOB.nanomanager.update_user_uis(U, src) // Update the sending user's PDA UI so that they can see the new message
 
 /obj/item/device/pda/proc/new_info(var/beep_silent, var/message_tone, var/reception_message)
 	if (!beep_silent)
@@ -1042,7 +1042,7 @@ GLOBAL_LIST_EMPTY_TYPED(PDAs, /obj/item/device/pda)
 	if(L)
 		if(reception_message)
 			to_chat(L, reception_message)
-		nanomanager.update_user_uis(L, src) // Update the receiving user's PDA UI so that they can see the new message
+		GLOB.nanomanager.update_user_uis(L, src) // Update the receiving user's PDA UI so that they can see the new message
 
 /obj/item/device/pda/proc/new_news(var/message)
 	new_info(news_silent, newstone, news_silent ? "" : "\icon[src] <b>[message]</b>")
@@ -1089,7 +1089,7 @@ GLOBAL_LIST_EMPTY_TYPED(PDAs, /obj/item/device/pda)
 
 	if(can_use(usr))
 		mode = 0
-		nanomanager.update_uis(src)
+		GLOB.nanomanager.update_uis(src)
 		to_chat(usr, "<span class='notice'>You press the reset button on \the [src].</span>")
 	else
 		to_chat(usr, "<span class='notice'>You cannot do this while restrained.</span>")
@@ -1192,7 +1192,7 @@ GLOBAL_LIST_EMPTY_TYPED(PDAs, /obj/item/device/pda)
 		user.drop_item()
 		cartridge.loc = src
 		to_chat(user, "<span class='notice'>You insert [cartridge] into [src].</span>")
-		nanomanager.update_uis(src) // update all UIs attached to src
+		GLOB.nanomanager.update_uis(src) // update all UIs attached to src
 		if(cartridge.radio)
 			cartridge.radio.hostpda = src
 
@@ -1218,7 +1218,7 @@ GLOBAL_LIST_EMPTY_TYPED(PDAs, /obj/item/device/pda)
 		C.loc = src
 		pai = C
 		to_chat(user, "<span class='notice'>You slot \the [C] into [src].</span>")
-		nanomanager.update_uis(src) // update all UIs attached to src
+		GLOB.nanomanager.update_uis(src) // update all UIs attached to src
 	else if(istype(C, /obj/item/weapon/pen))
 		var/obj/item/weapon/pen/O = locate() in src
 		if(O)

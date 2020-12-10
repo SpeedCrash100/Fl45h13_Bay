@@ -98,7 +98,7 @@
 
 	log_admin("PM: [key_name(src)]->[key_name(C)]: [msg]")
 	adminmsg2adminirc(src, C, html_decode(msg))
-	admin_pm_repository.store_pm(src, C, msg)
+	GLOB.admin_pm_repository.store_pm(src, C, msg)
 
 	//we don't use message_admins here because the sender/receiver might get it too
 	for(var/client/X in GLOB.admins)
@@ -125,7 +125,7 @@
 
 	log_admin("PM: [key_name(src)]->IRC-[sender]: [msg]")
 	adminmsg2adminirc(src, sender, html_decode(msg))
-	admin_pm_repository.store_pm(src, "IRC-[sender]", msg)
+	GLOB.admin_pm_repository.store_pm(src, "IRC-[sender]", msg)
 
 	to_chat(src, "<span class='pm'><span class='out'>" + create_text_tag("pm_out_alt", "PM", src) + " to <span class='name'>[sender]</span>: <span class='message'>[msg]</span></span></span>")
 	for(var/client/X in GLOB.admins)

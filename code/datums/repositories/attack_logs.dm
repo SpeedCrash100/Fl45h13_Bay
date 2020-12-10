@@ -1,4 +1,4 @@
-var/repository/attack_logs/attack_log_repository = new()
+GLOBAL_DATUM_INIT(attack_log_repository, /repository/attack_logs, new())
 
 /repository/attack_logs
 	var/list/attack_logs_
@@ -22,8 +22,8 @@ var/repository/attack_logs/attack_log_repository = new()
 /datum/attack_log/New(var/mob/mob_attacker, var/mob/mob_victim, var/action_message)
 	station_time = time_stamp()
 
-	attacker = mob_repository.get_lite_mob(mob_attacker)
-	victim = mob_repository.get_lite_mob(mob_victim)
+	attacker = GLOB.mob_repository.get_lite_mob(mob_attacker)
+	victim = GLOB.mob_repository.get_lite_mob(mob_victim)
 
 	if(mob_attacker && mob_victim)
 		message = "[attacker.name] [action_message] [victim.name]"

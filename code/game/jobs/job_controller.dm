@@ -328,7 +328,7 @@ GLOBAL_DATUM(job_master, /datum/controller/occupations)
 			if(player.client.prefs.alternate_option == BE_ASSISTANT)
 				Debug("AC2 Assistant located, Player: [player]")
 				if(GLOB.using_map.flags & GLOB.MAP_HAS_BRANCH)
-					var/datum/mil_branch/branch = mil_branches.get_branch(player.get_branch_pref())
+					var/datum/mil_branch/branch = GLOB.mil_branches.get_branch(player.get_branch_pref())
 					AssignRole(player, branch.assistant_job)
 				else
 					AssignRole(player, "Assistant")
@@ -465,7 +465,7 @@ GLOBAL_DATUM(job_master, /datum/controller/occupations)
 					return H
 				if("Captain")
 					var/sound/announce_sound = (GLOB.ticker.current_state <= GAME_STATE_SETTING_UP)? null : sound('sound/misc/boatswain.ogg', volume=20)
-					captain_announcement.Announce("All hands, Captain [H.real_name] on deck!", new_sound=announce_sound)
+					GLOB.captain_announcement.Announce("All hands, Captain [H.real_name] on deck!", new_sound=announce_sound)
 
 			//Deferred item spawning.
 			for(var/thing in spawn_in_storage)

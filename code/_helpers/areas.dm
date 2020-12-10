@@ -102,5 +102,5 @@ GLOBAL_LIST_INIT(is_player_but_not_space_or_shuttle_area, list(/proc/is_player_a
 /*
 	Misc Helpers
 */
-#define teleportlocs area_repository.get_areas_by_name_and_coords(GLOB.is_player_but_not_space_or_shuttle_area)
-#define stationlocs area_repository.get_areas_by_name(GLOB.is_player_but_not_space_or_shuttle_area)
+#define teleportlocs GLOB.area_repository.get_areas_by_name_and_coords(GLOB.is_player_but_not_space_or_shuttle_area)
+#define stationlocs GLOB.area_repository.get_areas_by_name(GLOB.is_player_but_not_space_or_shuttle_area)

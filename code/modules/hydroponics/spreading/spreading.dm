@@ -5,7 +5,7 @@
 	spawn() //to stop the secrets panel hanging
 		var/turf/T = pick_subarea_turf(/area/hallway , list(/proc/is_station_turf, /proc/not_turf_contains_dense_objects))
 		if(T)
-			var/datum/seed/seed = plant_controller.create_random_seed(1)
+			var/datum/seed/seed = GLOB.plant_controller.create_random_seed(1)
 			seed.set_trait(TRAIT_SPREAD,2)             // So it will function properly as vines.
 			seed.set_trait(TRAIT_POTENCY,rand(potency_min, potency_max)) // 70-100 potency will help guarantee a wide spread and powerful effects.
 			seed.set_trait(TRAIT_MATURATION,rand(maturation_min, maturation_max))
@@ -63,10 +63,10 @@
 	var/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/plant
 
 /obj/effect/plant/Destroy()
-	if(plant_controller)
-		plant_controller.remove_plant(src)
+	if(GLOB.plant_controller)
+		GLOB.plant_controller.remove_plant(src)
 	for(var/obj/effect/plant/neighbor in range(1,src))
-		plant_controller.add_plant(neighbor)
+		GLOB.plant_controller.add_plant(neighbor)
 	return ..()
 
 /obj/effect/plant/single
@@ -80,16 +80,16 @@
 	else
 		parent = newparent
 
-	if(!plant_controller)
+	if(!GLOB.plant_controller)
 		sleep(250) // ugly hack, should mean roundstart plants are fine. TODO initialize perhaps?
-	if(!plant_controller)
+	if(!GLOB.plant_controller)
 		log_error("<span class='danger'>Plant controller does not exist and [src] requires it. Aborting.</span>")
 
 		qdel(src)
 		return
 
 	if(!istype(newseed))
-		newseed = plant_controller.seeds[DEFAULT_SEED]
+		newseed = GLOB.plant_controller.seeds[DEFAULT_SEED]
 	seed = newseed
 	if(!seed)
 		qdel(src)
@@ -129,7 +129,7 @@
 /obj/effect/plant/proc/finish_spreading()
 	set_dir(calc_dir())
 	update_icon()
-	plant_controller.add_plant(src)
+	GLOB.plant_controller.add_plant(src)
 	// Some plants eat through plating.
 	if(islist(seed.chems) && !isnull(seed.chems["pacid"]))
 		var/turf/T = get_turf(src)
@@ -234,7 +234,7 @@
 /obj/effect/plant/attackby(var/obj/item/weapon/W, var/mob/user)
 
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-	plant_controller.add_plant(src)
+	GLOB.plant_controller.add_plant(src)
 
 	if(istype(W, /obj/item/weapon/wirecutters) || istype(W, /obj/item/weapon/scalpel))
 		if(sampled)

@@ -107,7 +107,7 @@ GLOBAL_VAR_INIT(game_id, null)
 #endif
 
 	// Set up roundstart seed list.
-	plant_controller = new()
+	GLOB.plant_controller = new()
 
 	if(GLOB.config.generate_map)
 		if(GLOB.using_map.perform_map_generation())
@@ -667,8 +667,8 @@ proc/setup_database_connection()
 	if(GLOB.failed_db_connections > FAILED_DB_CONNECTION_CUTOFF)	//If it failed to establish a connection more than 5 times in a row, don't bother attempting to conenct anymore.
 		return 0
 
-	if(!dbcon)
-		dbcon = new()
+	if(!GLOB.dbcon)
+		GLOB.dbcon = new()
 
 	var/user = sqlfdbklogin
 	var/pass = sqlfdbkpass
@@ -676,13 +676,13 @@ proc/setup_database_connection()
 	var/address = sqladdress
 	var/port = sqlport
 
-	dbcon.Connect("dbi:mysql:[db]:[address]:[port]","[user]","[pass]")
-	. = dbcon.IsConnected()
+	GLOB.dbcon.Connect("dbi:mysql:[db]:[address]:[port]","[user]","[pass]")
+	. = GLOB.dbcon.IsConnected()
 	if ( . )
 		GLOB.failed_db_connections = 0	//If this connection succeeded, reset the failed connections counter.
 	else
 		GLOB.failed_db_connections++		//If it failed, increase the failed connections counter.
-		to_world_log(dbcon.ErrorMsg())
+		to_world_log(GLOB.dbcon.ErrorMsg())
 
 	return .
 
@@ -691,7 +691,7 @@ proc/establish_db_connection()
 	if(GLOB.failed_db_connections > FAILED_DB_CONNECTION_CUTOFF)
 		return 0
 
-	if(!dbcon || !dbcon.IsConnected())
+	if(!GLOB.dbcon || !GLOB.dbcon.IsConnected())
 		return setup_database_connection()
 	else
 		return 1
@@ -710,8 +710,8 @@ proc/setup_old_database_connection()
 	if(GLOB.failed_old_db_connections > FAILED_DB_CONNECTION_CUTOFF)	//If it failed to establish a connection more than 5 times in a row, don't bother attempting to conenct anymore.
 		return 0
 
-	if(!dbcon_old)
-		dbcon_old = new()
+	if(!GLOB.dbcon_old)
+		GLOB.dbcon_old = new()
 
 	var/user = sqllogin
 	var/pass = sqlpass
@@ -719,13 +719,13 @@ proc/setup_old_database_connection()
 	var/address = sqladdress
 	var/port = sqlport
 
-	dbcon_old.Connect("dbi:mysql:[db]:[address]:[port]","[user]","[pass]")
-	. = dbcon_old.IsConnected()
+	GLOB.dbcon_old.Connect("dbi:mysql:[db]:[address]:[port]","[user]","[pass]")
+	. = GLOB.dbcon_old.IsConnected()
 	if ( . )
 		GLOB.failed_old_db_connections = 0	//If this connection succeeded, reset the failed connections counter.
 	else
 		GLOB.failed_old_db_connections++		//If it failed, increase the failed connections counter.
-		to_world_log(dbcon.ErrorMsg())
+		to_world_log(GLOB.dbcon.ErrorMsg())
 
 	return .
 
@@ -734,7 +734,7 @@ proc/establish_old_db_connection()
 	if(GLOB.failed_old_db_connections > FAILED_DB_CONNECTION_CUTOFF)
 		return 0
 
-	if(!dbcon_old || !dbcon_old.IsConnected())
+	if(!GLOB.dbcon_old || !GLOB.dbcon_old.IsConnected())
 		return setup_old_database_connection()
 	else
 		return 1

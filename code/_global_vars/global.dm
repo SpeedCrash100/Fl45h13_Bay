@@ -98,8 +98,8 @@ GLOBAL_VAR_INIT(gravity_is_on, 1)
 
 GLOBAL_VAR_INIT(join_motd, null) 
 
-var/datum/nanomanager/nanomanager		= new() // NanoManager, the manager for Nano UIs.
-var/datum/event_manager/event_manager	= new() // Event Manager, the manager for events.
+GLOBAL_DATUM_INIT(nanomanager, /datum/nanomanager, new()) // NanoManager, the manager for Nano UIs.
+GLOBAL_DATUM_INIT(event_manager, /datum/event_manager, new()) // Event Manager, the manager for events.
 
 GLOBAL_LIST_EMPTY(awaydestinations) // Away missions. A list of landmarks that the warpgate can take you to.
 
@@ -127,8 +127,8 @@ GLOBAL_REAL_VAR(forum_authenticated_group) = "10" // For FTP requests. (i.e. dow
 GLOBAL_VAR_INIT(fileaccess_timer, 0) 
 GLOBAL_VAR_INIT(custom_event_msg, null) // Database connections. A connection is established on world creation.
 // Ideally, the connection dies when the server restarts (After feedback logging.).
-var/DBConnection/dbcon     = new() // Feedback    database (New database)
-var/DBConnection/dbcon_old = new() // /tg/station database (Old database) -- see the files in the SQL folder for information on what goes where.
+GLOBAL_DATUM_INIT(dbcon, /DBConnection, new()) // Feedback    database (New database)
+GLOBAL_DATUM_INIT(dbcon_old, /DBConnection, new()) // /tg/station database (Old database) -- see the files in the SQL folder for information on what goes where.
 
 // Reference list for disposal sort junctions. Filled up by sorting junction's New()
 GLOBAL_LIST_EMPTY(tagger_locations)

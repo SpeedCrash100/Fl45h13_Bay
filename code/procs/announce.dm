@@ -1,6 +1,3 @@
-/var/datum/announcement/priority/priority_announcement = new(do_log = 0)
-/var/datum/announcement/priority/command/command_announcement = new(do_log = 0, do_newscast = 1)
-/var/datum/announcement/minor/minor_announcement = new(new_sound = 'sound/AI/commandreport.ogg',)
 
 /datum/announcement
 	var/title = "Attention"
@@ -24,8 +21,14 @@
 	log = do_log
 	newscast = do_newscast
 
+/datum/announcement/proc/Initialize()
+	return
+
 /datum/announcement/priority/command/New(var/do_log = 1, var/new_sound = 'sound/misc/notice2.ogg', var/do_newscast = 0)
 	..(do_log, new_sound, do_newscast)
+	
+
+/datum/announcement/priority/command/Initialize()
 	title = "[command_name()] Update"
 	announcement_type = "[command_name()] Update"
 
@@ -101,7 +104,7 @@ datum/announcement/proc/NewsCast(message as text, message_title as text)
 	GLOB.using_map.level_x_biohazard_announcement(7)
 
 /proc/ion_storm_announcement()
-	command_announcement.Announce("It has come to our attention that the [station_name()] passed through an ion storm.  Please monitor all electronic equipment for malfunctions.", "Anomaly Alert")
+	GLOB.command_announcement.Announce("It has come to our attention that the [station_name()] passed through an ion storm.  Please monitor all electronic equipment for malfunctions.", "Anomaly Alert")
 
 /proc/AnnounceArrival(var/mob/living/carbon/human/character, var/rank, var/join_message)
 	if (GLOB.ticker.current_state == GAME_STATE_PLAYING)

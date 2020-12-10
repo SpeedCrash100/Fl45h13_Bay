@@ -240,7 +240,7 @@
 		M.set_emergency_lighting(enable)
 
 
-var/list/mob/living/forced_ambiance_list = new
+GLOBAL_DATUM_INIT(forced_ambiance_list, /list/mob/living, new)
 
 /area/Entered(A)
 	if(!istype(A,/mob/living))	return
@@ -266,9 +266,9 @@ var/list/mob/living/forced_ambiance_list = new
 
 
 	// If we previously were in an area with force-played ambiance, stop it.
-	if(L in forced_ambiance_list)
+	if(L in GLOB.forced_ambiance_list)
 		sound_to(L, sound(null, channel = 1))
-		forced_ambiance_list -= L
+		GLOB.forced_ambiance_list -= L
 
 	var/turf/T = get_turf(L)
 	var/hum = 0
@@ -289,7 +289,7 @@ var/list/mob/living/forced_ambiance_list = new
 
 	if(forced_ambience)
 		if(forced_ambience.len)
-			forced_ambiance_list |= L
+			GLOB.forced_ambiance_list |= L
 			L.playsound_local(T,sound(pick(forced_ambience), repeat = 1, wait = 0, volume = 25, channel = 1))
 		else
 			sound_to(L, sound(null, channel = 1))

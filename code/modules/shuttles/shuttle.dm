@@ -27,15 +27,15 @@
 	if(flags & SHUTTLE_FLAGS_PROCESS)
 		GLOB.shuttle_controller.process_shuttles += src
 	if(flags & SHUTTLE_FLAGS_SUPPLY)
-		if(supply_controller.shuttle)
+		if(GLOB.supply_controller.shuttle)
 			CRASH("A supply shuttle is already defined.")
-		supply_controller.shuttle = src
+		GLOB.supply_controller.shuttle = src
 
 /datum/shuttle/Destroy()
 	GLOB.shuttle_controller.shuttles -= src.name
 	GLOB.shuttle_controller.process_shuttles -= src
-	if(supply_controller.shuttle == src)
-		supply_controller.shuttle = null
+	if(GLOB.supply_controller.shuttle == src)
+		GLOB.supply_controller.shuttle = null
 	. = ..()
 
 /datum/shuttle/proc/init_docking_controllers()

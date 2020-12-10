@@ -90,8 +90,8 @@ GLOBAL_VAR_INIT(economy_init, 0)
 	if(GLOB.economy_init)
 		return 2
 
-	news_network.CreateFeedChannel("Nyx Daily", "SolGov Minister of Information", 1, 1)
-	news_network.CreateFeedChannel("The Gibson Gazette", "Editor Mike Hammers", 1, 1)
+	GLOB.news_network.CreateFeedChannel("Nyx Daily", "SolGov Minister of Information", 1, 1)
+	GLOB.news_network.CreateFeedChannel("The Gibson Gazette", "Editor Mike Hammers", 1, 1)
 
 	for(var/loc_type in typesof(/datum/trade_destination) - /datum/trade_destination)
 		var/datum/trade_destination/D = new loc_type

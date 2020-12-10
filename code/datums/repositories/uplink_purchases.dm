@@ -1,4 +1,4 @@
-var/repository/uplink_purchases/uplink_purchase_repository = new()
+GLOBAL_DATUM_INIT(uplink_purchase_repository, /repository/uplink_purchases, new())
 
 /repository/uplink_purchases
 	var/list/purchases_by_mind
@@ -29,7 +29,7 @@ var/repository/uplink_purchases/uplink_purchase_repository = new()
 
 
 /proc/debug_print()
-	uplink_purchase_repository.print_entries()
+	GLOB.uplink_purchase_repository.print_entries()
 
 /uplink_purchase_entry
 	var/total_cost

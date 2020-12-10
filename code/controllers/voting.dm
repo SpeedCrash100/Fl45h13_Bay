@@ -1,4 +1,4 @@
-var/datum/controller/vote/vote = new()
+GLOBAL_DATUM_INIT(vote, /datum/controller/vote, new())
 
 datum/controller/vote
 	var/initiator = null
@@ -18,10 +18,10 @@ datum/controller/vote
 	var/auto_add_antag = 0
 
 	New()
-		if(vote != src)
-			if(istype(vote))
-				qdel(vote)
-			vote = src
+		if(GLOB.vote != src)
+			if(istype(GLOB.vote))
+				qdel(GLOB.vote)
+			GLOB.vote = src
 
 	proc/process()	//called by master_controller
 		if(mode)
@@ -46,7 +46,7 @@ datum/controller/vote
 			else
 				for(var/client/C in voting)
 					if(C)
-						show_browser(C, vote.interface(C), "window=vote")
+						show_browser(C, GLOB.vote.interface(C), "window=vote")
 
 				voting.Cut()
 
@@ -184,7 +184,7 @@ datum/controller/vote
 		else
 			text += "<b>Vote Result: Inconclusive - No Votes!</b>"
 			if(mode == "add_antagonist")
-				antag_add_finished = 1
+				GLOB.antag_add_finished = 1
 		log_vote(text)
 		to_world("<font color='purple'>[text]</font>")
 
@@ -215,7 +215,7 @@ datum/controller/vote
 							autoaddantag()
 				if("add_antagonist")
 					if(isnull(.[1]) || .[1] == "None")
-						antag_add_finished = 1
+						GLOB.antag_add_finished = 1
 					else
 						choices -= "Random"
 						if(!auto_add_antag)
@@ -232,7 +232,7 @@ datum/controller/vote
 							spawn(0) // break off so we don't hang the vote process
 								var/list/antag_choices = list(all_antag_types()[antag_type], all_antag_types()[antag_names_to_ids()[.[2]]], all_antag_types()[antag_names_to_ids()[.[3]]])
 								if(GLOB.ticker.attempt_late_antag_spawn(antag_choices))
-									antag_add_finished = 1
+									GLOB.antag_add_finished = 1
 									if(auto_add_antag)
 										auto_add_antag = 0
 										// the buffer will already have an hour added to it, so we'll give it one more
@@ -320,7 +320,7 @@ datum/controller/vote
 					if(check_rights(R_ADMIN|R_MOD, 0))
 						question = "End the shift?"
 						choices.Add("Initiate Crew Transfer", "Continue The Round")
-						if (GLOB.config.allow_extra_antags && !antag_add_finished)
+						if (GLOB.config.allow_extra_antags && !GLOB.antag_add_finished)
 							choices.Add("Add Antagonist")
 					else
 						if (get_security_level() == "red" || get_security_level() == "delta")
@@ -541,11 +541,11 @@ datum/controller/vote/proc/is_addantag_allowed(var/automatic)
 	if(!GLOB.ticker || (GLOB.ticker.current_state <= 2) || !GLOB.ticker.mode)
 		return 0
 	if(automatic)
-		return (GLOB.ticker.mode.addantag_allowed & ADDANTAG_AUTO) && !antag_add_finished
+		return (GLOB.ticker.mode.addantag_allowed & ADDANTAG_AUTO) && !GLOB.antag_add_finished
 	if(check_rights(R_ADMIN, 0))
 		return GLOB.ticker.mode.addantag_allowed & (ADDANTAG_ADMIN|ADDANTAG_PLAYER)
 	else
-		return (GLOB.ticker.mode.addantag_allowed & ADDANTAG_PLAYER) && !antag_add_finished
+		return (GLOB.ticker.mode.addantag_allowed & ADDANTAG_PLAYER) && !GLOB.antag_add_finished
 
 
 
@@ -553,5 +553,5 @@ datum/controller/vote/proc/is_addantag_allowed(var/automatic)
 	set category = "OOC"
 	set name = "Vote"
 
-	if(vote)
-		show_browser(src, vote.interface(client), "window=vote")
+	if(GLOB.vote)
+		show_browser(src, GLOB.vote.interface(client), "window=vote")

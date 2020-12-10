@@ -1,9 +1,9 @@
 //Remember, every codebase is different, you probably have better methods for these defines than the ones given here
 #define TGS_EXTERNAL_CONFIGURATION
 #define TGS_V3_API
-#define TGS_DEFINE_AND_SET_GLOBAL(Name, Value) var/global/##Name = ##Value
-#define TGS_READ_GLOBAL(Name) global.##Name
-#define TGS_WRITE_GLOBAL(Name, Value) global.##Name = ##Value
+#define TGS_DEFINE_AND_SET_GLOBAL(Name, Value) GLOBAL_VAR_INIT(##Name, ##Value)
+#define TGS_READ_GLOBAL(Name) GLOB.##Name
+#define TGS_WRITE_GLOBAL(Name, Value) GLOB.##Name = ##Value
 #define TGS_WORLD_ANNOUNCE(message) to_world(##message)
 #define TGS_INFO_LOG(message) log_game("TGS Info: [##message]")
 #define TGS_WARNING_LOG(message) log_warning("TGS Warn: [##message]")

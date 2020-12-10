@@ -37,11 +37,11 @@
 		unwet_task.trigger_task_in(8 SECONDS)
 	else
 		unwet_task = schedule_task_in(8 SECONDS)
-		task_triggered_event.register(unwet_task, src, /turf/simulated/proc/task_unwet_floor)
+		GLOB.task_triggered_event.register(unwet_task, src, /turf/simulated/proc/task_unwet_floor)
 
 /turf/simulated/proc/task_unwet_floor(var/triggered_task, var/check_very_wet = TRUE)
 	if(triggered_task == unwet_task)
-		task_triggered_event.unregister(unwet_task, src, /turf/simulated/proc/task_unwet_floor)
+		GLOB.task_triggered_event.unregister(unwet_task, src, /turf/simulated/proc/task_unwet_floor)
 		unwet_task = null
 		unwet_floor(check_very_wet)
 
@@ -49,7 +49,7 @@
 	if(check_very_wet && wet >= 2)
 		wet--
 		unwet_task = schedule_task_in(8 SECONDS)
-		task_triggered_event.register(unwet_task, src, /turf/simulated/proc/task_unwet_floor)
+		GLOB.task_triggered_event.register(unwet_task, src, /turf/simulated/proc/task_unwet_floor)
 		return
 
 	wet = 0

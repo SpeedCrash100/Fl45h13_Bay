@@ -68,9 +68,9 @@
 
 #define isairlock(A) istype(A, /obj/machinery/door/airlock)
 
-#define sequential_id(key) uniqueness_repository.Generate(/datum/uniqueness_generator/id_sequential, key)
+#define sequential_id(key) GLOB.uniqueness_repository.Generate(/datum/uniqueness_generator/id_sequential, key)
 
-#define random_id(key,min_id,max_id) uniqueness_repository.Generate(/datum/uniqueness_generator/id_random, key, min_id, max_id)
+#define random_id(key,min_id,max_id) GLOB.uniqueness_repository.Generate(/datum/uniqueness_generator/id_random, key, min_id, max_id)
 
 /// General I/O helpers
 #define to_target(target, payload)            target << (payload)
