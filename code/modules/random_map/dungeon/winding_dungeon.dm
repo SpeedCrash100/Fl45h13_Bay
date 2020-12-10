@@ -53,7 +53,7 @@
 	var/list/loot_uncommon = list()
 	var/list/loot_rare = list()
 
-	var/list/monster_available = list()//GLOB.turfs that monsters can spawn on. Pregenerated to guard against lag.
+	var/list/monster_available = list()//turfs that monsters can spawn on. Pregenerated to guard against lag.
 
 	var/list/rooms = list()
 	var/log = 0 //if set will log information to dd
@@ -123,7 +123,7 @@
 		if(!priority_process)
 			sleep(-1)
 		if(!monster_available || !monster_available.len)
-			logging("There are no available GLOB.turfs left.")
+			logging("There are no available turfs left.")
 			num_of_monsters = 0
 			continue
 		var/turf/T = pick(monster_available)

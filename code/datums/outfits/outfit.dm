@@ -1,6 +1,6 @@
-GLOBAL_LIST_EMPTY(outfits_decls_)
-GLOBAL_LIST_EMPTY(outfits_decls_root_)
-GLOBAL_LIST_EMPTY(outfits_decls_by_type_)
+GLOBAL_LIST(outfits_decls_)
+GLOBAL_LIST(outfits_decls_root_)
+GLOBAL_LIST(outfits_decls_by_type_)
 
 /proc/outfit_by_type(var/outfit_type)
 	if(!GLOB.outfits_decls_root_)

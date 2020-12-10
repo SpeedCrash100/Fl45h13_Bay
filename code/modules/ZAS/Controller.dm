@@ -8,7 +8,7 @@ Overview:
 	The air controller does everything. There are tons of procs in here.
 
 Class Vars:
-	zones - All zones currently holding one or more GLOB.turfs.
+	zones - All zones currently holding one or more turfs.
 	edges - All processing edges.
 
 	tiles_to_update - Tiles scheduled to update next tick.
@@ -29,12 +29,12 @@ Class Procs:
 
 	air_blocked(turf/A, turf/B)
 		Returns a bitflag consisting of:
-		AIR_BLOCKED - The connection between GLOB.turfs is physically blocked. No air can pass.
-		ZONE_BLOCKED - There is a door between the GLOB.turfs, so zones cannot cross. Air may or may not be permeable.
+		AIR_BLOCKED - The connection between turfs is physically blocked. No air can pass.
+		ZONE_BLOCKED - There is a door between the turfs, so zones cannot cross. Air may or may not be permeable.
 
 	has_valid_zone(turf/T)
 		Checks the presence and validity of T's zone.
-		May be called on unsimulated GLOB.turfs, returning 0.
+		May be called on unsimulated turfs, returning 0.
 
 	merge(zone/A, zone/B)
 		Called when zones have a direct connection and equivalent pressure and temperature.
@@ -111,11 +111,11 @@ Class Procs:
 
 	admin_notice({"<span class='danger'>Geometry initialized in [round(0.1*(world.timeofday-start_time),0.1)] seconds.</span>
 <span class='info'>
-Total Simulated GLOB.turfs: [simulated_turf_count]
+Total Simulated turfs: [simulated_turf_count]
 Total Zones: [zones.len]
 Total Edges: [edges.len]
 Total Active Edges: [active_edges.len ? "<span class='danger'>[active_edges.len]</span>" : "None"]
-Total Unsimulated GLOB.turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_count]
+Total Unsimulated turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_count]
 </span>"}, R_DEBUG)
 
 
@@ -155,12 +155,12 @@ Total Unsimulated GLOB.turfs: [world.maxx*world.maxy*world.maxz - simulated_turf
 		var/updated = 0
 		#endif
 
-		//defer updating of self-zone-blocked GLOB.turfs until after all other GLOB.turfs have been updated.
-		//this hopefully ensures that non-self-zone-blocked GLOB.turfs adjacent to self-zone-blocked ones
-		//have valid zones when the self-zone-blocked GLOB.turfs update.
+		//defer updating of self-zone-blocked turfs until after all other turfs have been updated.
+		//this hopefully ensures that non-self-zone-blocked turfs adjacent to self-zone-blocked ones
+		//have valid zones when the self-zone-blocked turfs update.
 
 		//This ensures that doorways don't form their own single-turf zones, since doorways are self-zone-blocked and
-		//can merge with an adjacent zone, whereas zones that are formed on adjacent GLOB.turfs cannot merge with the doorway.
+		//can merge with an adjacent zone, whereas zones that are formed on adjacent turfs cannot merge with the doorway.
 		var/list/deferred = list()
 
 		for(var/turf/T in updating)

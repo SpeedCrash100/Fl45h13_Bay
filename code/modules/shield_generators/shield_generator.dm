@@ -439,7 +439,7 @@
 					. |= TN
 					continue
 
-// Returns a list of GLOB.turfs from which a field will propagate. If multi-Z mode is enabled, this will return a "column" of GLOB.turfs above and below the generator.
+// Returns a list of turfs from which a field will propagate. If multi-Z mode is enabled, this will return a "column" of turfs above and below the generator.
 /obj/machinery/power/shield_generator/proc/get_base_turfs()
 	var/list/turfs = list()
 	var/turf/T = get_turf(src)

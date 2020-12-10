@@ -103,9 +103,9 @@
 	chemholder.create_reagents(500)
 
 //Sets up the chem smoke effect
-// Calculates the max range smoke can travel, then gets all GLOB.turfs in that view range.
-// Culls the selected GLOB.turfs to a (roughly) circle shape, then calls smokeFlow() to make
-// sure the smoke can actually path to the GLOB.turfs. This culls any GLOB.turfs it can't reach.
+// Calculates the max range smoke can travel, then gets all turfs in that view range.
+// Culls the selected turfs to a (roughly) circle shape, then calls smokeFlow() to make
+// sure the smoke can actually path to the turfs. This culls any turfs it can't reach.
 /datum/effect/effect/system/smoke_spread/chem/set_up(var/datum/reagents/carry = null, n = 10, c = 0, loca, direct)
 	range = n * 0.3
 	cardinals = c
@@ -122,7 +122,7 @@
 
 	//build affected area list
 	for(var/turf/T in view(range, location))
-		//cull GLOB.turfs to circle
+		//cull turfs to circle
 		if(sqrt((T.x - location.x)**2 + (T.y - location.y)**2) <= range)
 			targetTurfs += T
 
@@ -241,7 +241,7 @@
 	..(T, I, smoke_duration, dist, passed_smoke=spores)
 
 
-/datum/effect/effect/system/smoke_spread/chem/proc/smokeFlow() // Smoke pathfinder. Uses a flood fill method based on zones to quickly check what GLOB.turfs the smoke (airflow) can actually reach.
+/datum/effect/effect/system/smoke_spread/chem/proc/smokeFlow() // Smoke pathfinder. Uses a flood fill method based on zones to quickly check what turfs the smoke (airflow) can actually reach.
 
 	var/list/pending = new()
 	var/list/complete = new()

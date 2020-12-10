@@ -15,7 +15,7 @@
 	attackby(obj/item/weapon/W as obj, mob/user as mob)
 		return
 
-	New()
+	Initialize(mapload, ...)
 		var/datum/reagents/R = new/datum/reagents(initial_capacity)
 		reagents = R
 		R.my_atom = src
@@ -29,7 +29,7 @@
 				var/reagent_ratio = initial_reagent_list[reagent]
 				reagents.add_reagent(reagent, reagent_ratio * initial_capacity)
 
-		..()
+		return ..()
 
 	examine(mob/user)
 		if(!..(user, 2))

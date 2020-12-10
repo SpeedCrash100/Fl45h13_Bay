@@ -9,7 +9,7 @@
 	return cardinal_neighbors
 
 /obj/effect/plant/proc/update_neighbors()
-	// Update our list of valid neighboring GLOB.turfs.
+	// Update our list of valid neighboring turfs.
 	neighbors = list()
 	for(var/turf/simulated/floor in get_cardinal_neighbors())
 		if(get_dist(parent, floor) > spread_distance)
@@ -96,7 +96,7 @@
 					entangle(M)
 
 	if(is_mature() && neighbors.len && prob(spread_chance))
-		//spread to 1-3 adjacent GLOB.turfs depending on yield trait.
+		//spread to 1-3 adjacent turfs depending on yield trait.
 		var/max_spread = between(1, round(seed.get_trait(TRAIT_YIELD)*3/14), 3)
 
 		for(var/i in 1 to max_spread)

@@ -666,7 +666,7 @@ GLOBAL_LIST_EMPTY_TYPED(hivemind_bank, /datum/absorbed_dna)
 	if(!isturf(src.loc) || !isturf(M.loc))
 		to_chat(src, "<span class='warning'>We cannot reach \the [M] with a sting!</span>")
 		return 0 //One is inside, the other is outside something.
-	// Maximum queued GLOB.turfs set to 25; I don't *think* anything raises sting_range above 2, but if it does the 25 may need raising
+	// Maximum queued turfs set to 25; I don't *think* anything raises sting_range above 2, but if it does the 25 may need raising
 	if(!AStar(src.loc, M.loc, /turf/proc/AdjacentTurfs, /turf/proc/Distance, max_nodes=25, max_node_depth=sting_range)) //If we can't find a path, fail
 		to_chat(src, "<span class='warning'>We cannot find a path to sting \the [M] by!</span>")
 		return 0

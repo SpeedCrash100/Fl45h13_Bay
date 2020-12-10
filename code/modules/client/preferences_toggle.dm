@@ -1,4 +1,4 @@
-GLOBAL_LIST_EMPTY(client_preference_stats_)
+GLOBAL_LIST(client_preference_stats_)
 /proc/client_preference_stats_for_usr(var/mob/user = usr)
 	. = list()
 	if(!user)

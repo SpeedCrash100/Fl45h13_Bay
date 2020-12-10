@@ -41,14 +41,14 @@
 /obj/item/modular_computer/proc/install_default_programs()
 	return 1
 
-/obj/item/modular_computer/New()
+/obj/item/modular_computer/Initialize(mapload, ...)
 	GLOB.processing_objects.Add(src)
 	install_default_hardware()
 	if(hard_drive)
 		install_default_programs()
 	update_icon()
 	update_verbs()
-	..()
+	return ..()
 
 /obj/item/modular_computer/Destroy()
 	kill_program(1)

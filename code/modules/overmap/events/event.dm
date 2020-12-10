@@ -8,7 +8,7 @@ GLOBAL_DATUM_INIT(overmap_event_handler, /decl/overmap_event_handler, new())
 	event_turfs_by_z_level = list()
 
 /decl/overmap_event_handler/proc/create_events(var/z_level, var/overmap_size, var/number_of_events)
-	// Acquire the list of not-yet utilized overmap GLOB.turfs on this Z-level
+	// Acquire the list of not-yet utilized overmap turfs on this Z-level
 	var/list/events_by_turf = get_event_turfs_by_z_level(z_level)
 	var/list/candidate_turfs = block(locate(OVERMAP_EDGE, OVERMAP_EDGE, z_level),locate(overmap_size - OVERMAP_EDGE, overmap_size - OVERMAP_EDGE,z_level))
 	candidate_turfs -= events_by_turf

@@ -211,8 +211,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	ignitermes = "<span class='notice'>USER fiddles with FLAME, and manages to light their NAME.</span>"
 	brand = "\improper Trans-Stellar Duty-free"
 
-/obj/item/clothing/mask/smokable/cigarette/New()
-	..()
+/obj/item/clothing/mask/smokable/cigarette/Initialize()
+	. = ..()
+	if(!reagents)
+		create_reagents(5)
 	reagents.add_reagent("nicotine", 1)
 
 /obj/item/clothing/mask/smokable/cigarette/update_icon()
@@ -247,8 +249,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/weapon/cigbutt/menthol
 	icon_state = "cigbuttmentol"
 
-/obj/item/clothing/mask/smokable/cigarette/menthol/New()
-	..()
+/obj/item/clothing/mask/smokable/cigarette/menthol/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("nicotine", 1)
 	reagents.add_reagent("menthol", 1)
 
@@ -355,8 +357,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	weldermes = "<span class='notice'>USER insults NAME by lighting it with FLAME.</span>"
 	ignitermes = "<span class='notice'>USER fiddles with FLAME, and manages to light their NAME with the power of science.</span>"
 
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 		reagents.add_reagent("nicotine", 5)
 
 /obj/item/clothing/mask/smokable/cigarette/cigar/cohiba
@@ -373,8 +375,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	smoketime = 3000
 	chem_volume = 20
 
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 		reagents.add_reagent("nicotine", 10)
 
 /obj/item/weapon/cigbutt

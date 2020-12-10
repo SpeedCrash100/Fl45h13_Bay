@@ -1171,7 +1171,10 @@ About the new airlock wires panel:
 	return ..(M)
 
 /obj/machinery/door/airlock/New(var/newloc, var/obj/structure/door_assembly/assembly=null)
-	..()
+	..(newloc, assembly)
+
+/obj/machinery/door/airlock/Initialize(mapload, var/obj/structure/door_assembly/assembly)
+	. = ..()
 
 	//if assembly is given, create the new door from the assembly
 	if (assembly && istype(assembly))
@@ -1199,7 +1202,7 @@ About the new airlock wires panel:
 		set_dir(assembly.dir)
 
 	//wires
-	var/turf/T = get_turf(newloc)
+	var/turf/T = get_turf(src.loc)
 	if(T && (T.z in GLOB.using_map.admin_levels))
 		secured_wires = 1
 	if (secured_wires)

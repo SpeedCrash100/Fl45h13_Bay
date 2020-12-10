@@ -60,7 +60,7 @@
 	var/is_origin_turf = isturf(loc)
 	var/is_destination_turf = isturf(destination)
 	// It is a new area if:
-	//  Both the origin and destination are GLOB.turfs with different areas.
+	//  Both the origin and destination are turfs with different areas.
 	//  When either origin or destination is a turf and the other is not.
 	var/is_new_area = (is_origin_turf ^ is_destination_turf) || (is_origin_turf && is_destination_turf && loc.loc != destination.loc)
 

@@ -1,7 +1,7 @@
 GLOBAL_LIST_EMPTY_TYPED(supply_drop, /datum/supply_drop_loot)
 
 /proc/supply_drop_random_loot_types()
-	if(!GLOB.supply_drop)
+	if(!GLOB.supply_drop.len)
 		GLOB.supply_drop = init_subtypes(/datum/supply_drop_loot)
 		GLOB.supply_drop = dd_sortedObjectList(GLOB.supply_drop)
 	return GLOB.supply_drop

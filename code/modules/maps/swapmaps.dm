@@ -62,13 +62,13 @@
 	SwapMaps_LoadChunk(id,turf/locorner)
 		Load a swapmap as a "chunk", at a specific place. A new datum is
 		created but it's not added to the list of maps to save or unload.
-		The new datum can be safely deleted without affecting the GLOB.turfs
+		The new datum can be safely deleted without affecting the turfs
 		it loaded. The purpose of this is to load a map file onto part of
 		another swapmap or an existing part of the world.
 		locorner is the corner turf with the lowest x,y,z values.
 	SwapMaps_SaveChunk(id,turf/corner1,turf/corner2)
 		Save a piece of the world as a "chunk". A new datum is created
-		for the chunk, but it can be deleted without destroying any GLOB.turfs.
+		for the chunk, but it can be deleted without destroying any turfs.
 		The chunk file can be reloaded as a swapmap all its own, or loaded
 		via SwapMaps_LoadChunk() to become part of another map.
 	SwapMaps_GetSize(id)
@@ -100,7 +100,7 @@
 	swapmap.SetID(id)
 		Change the map's id and make changes to the lookup list
 	swapmap.AllTurfs(z)
-		Returns a block of GLOB.turfs encompassing the entire map, or on just
+		Returns a block of turfs encompassing the entire map, or on just
 		 one z-level
 		z is in world coordinates; it is optional
 	swapmap.Contains(turf/T)
@@ -121,9 +121,9 @@
 	swapmap.BuildRectangle(turf/corner1,turf/corner2,item)
 		Builds an unfilled rectangle of item from one corner turf to
 		 the other, on multiple z-levels if necessary.
-	swapmap.BuildInTurfs(list/GLOB.turfs,item)
-		Builds item on all of the GLOB.turfs listed. The list need not
-		 contain only GLOB.turfs, or even only atoms.
+	swapmap.BuildInTurfs(list/turfs,item)
+		Builds item on all of the turfs listed. The list need not
+		 contain only turfs, or even only atoms.
  */
 
 swapmap
@@ -144,9 +144,9 @@ swapmap
 		mode=GLOB.swapmaps_mode
 		if(isturf(x) && isturf(y))
 			/*
-				Special format: Defines a map as an existing set of GLOB.turfs;
+				Special format: Defines a map as an existing set of turfs;
 				this is useful for saving a compiled map in swapmap format.
-				Because this is a compiled-in map, its GLOB.turfs are not deleted
+				Because this is a compiled-in map, its turfs are not deleted
 				when the datum is deleted.
 			 */
 			x1=min(x:x,y:x);x2=max(x:x,y:x)
@@ -416,7 +416,7 @@ swapmap
 		return locate(x2,y2,z)
 
 
-	//	Build procs: Take 2 GLOB.turfs as corners, plus an item type.
+	//	Build procs: Take 2 turfs as corners, plus an item type.
 	//	An item may be like:
 	//
 	//	/turf/wall
@@ -445,11 +445,11 @@ swapmap
 			for(T in block(locate(T2.x,T1.y+1,T1.z),locate(T2.x,T2.y-1,T2.z))) new item(T)
 
 	/*
-		Supplementary build proc: Takes a list of GLOB.turfs, plus an item
-		type. Actually the list doesn't have to be just GLOB.turfs.
+		Supplementary build proc: Takes a list of turfs, plus an item
+		type. Actually the list doesn't have to be just turfs.
 	 */
-	proc/BuildInTurfs(list/GLOB.turfs,item)
-		for(var/T in GLOB.turfs) new item(T)
+	proc/BuildInTurfs(list/turfs,item)
+		for(var/T in turfs) new item(T)
 
 atom
 	Write(savefile/S)
@@ -497,7 +497,7 @@ atom
 //     'monster.dmi'="monster",\
 //     ...
 //     'item.dmi'="item")
-GLOBAL_LIST_EMPTY(swapmaps_iconcache)
+GLOBAL_LIST(swapmaps_iconcache)
 
 // preferred mode; sav or text
 GLOBAL_VAR_CONST(SWAPMAPS_SAV, 0)

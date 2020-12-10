@@ -34,13 +34,14 @@
 		return I
 	return GLOB.uplink.items_assoc[/datum/uplink_item/item/stealthy_weapons/soap]
 
-GLOBAL_LIST_EMPTY(uplink_random_selections_)
 /proc/get_uplink_random_selection_by_type(var/uplist_selection_type)
-	if(!GLOB.uplink_random_selections_)
-		GLOB.uplink_random_selections_ = init_subtypes(/datum/uplink_random_selection)
-		for(var/datum/entry in GLOB.uplink_random_selections_)
-			GLOB.uplink_random_selections_[entry.type] = entry
-	return GLOB.uplink_random_selections_[uplist_selection_type]
+	var/static/list/uplink_random_selections_
+
+	if(!uplink_random_selections_)
+		uplink_random_selections_ = init_subtypes(/datum/uplink_random_selection)
+		for(var/datum/entry in uplink_random_selections_)
+			uplink_random_selections_[entry.type] = entry
+	return uplink_random_selections_[uplist_selection_type]
 
 /datum/uplink_random_selection/default/New()
 	..()

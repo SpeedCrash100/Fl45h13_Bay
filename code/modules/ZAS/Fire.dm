@@ -106,7 +106,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 	return 0
 
 /obj/fire
-	//Icon for fire on GLOB.turfs.
+	//Icon for fire on turfs.
 
 	anchored = 1
 	mouse_opacity = 0

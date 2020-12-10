@@ -41,8 +41,8 @@
 /obj/item/organ/proc/update_health()
 	return
 
-/obj/item/organ/New(var/mob/living/carbon/holder)
-	..(holder)
+/obj/item/organ/Initialize(mapload, var/mob/living/carbon/holder)
+	. = ..(mapload, holder)
 
 	if(max_damage)
 		min_broken_damage = Floor(max_damage / 2)

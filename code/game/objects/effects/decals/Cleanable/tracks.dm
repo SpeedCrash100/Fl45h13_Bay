@@ -13,9 +13,6 @@
 // 5 seconds
 #define TRACKS_CRUSTIFY_TIME   50
 
-// color-dir-dry
-GLOBAL_LIST_EMPTY_TYPED(fluidtrack_cache, /image)
-
 /datum/fluidtrack
 	var/direction=0
 	var/basecolor="#A10808"

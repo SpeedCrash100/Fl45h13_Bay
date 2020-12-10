@@ -105,7 +105,7 @@
 
 /datum/controller/process/New(var/datum/controller/processScheduler/scheduler)
 	..()
-	main = GLOB.scheduler
+	main = scheduler
 	previousStatus = "idle"
 	idle()
 	name = "process"

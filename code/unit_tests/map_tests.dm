@@ -95,7 +95,7 @@
 			dirs_checked.Add(combined_dir)
 
 	if(bad_tests)
-		fail("\[[bad_tests] / [wire_test_count]\] Some GLOB.turfs had overlapping wires going the same direction.")
+		fail("\[[bad_tests] / [wire_test_count]\] Some turfs had overlapping wires going the same direction.")
 	else
 		pass("All \[[wire_test_count]\] wires had no overlapping cables going the same direction.")
 
@@ -201,11 +201,11 @@ datum/unit_test/correct_allowed_spawn_test/start_test()
 	for(var/spawn_name in GLOB.using_map.allowed_spawns)
 		var/datum/spawnpoint/spawnpoint = GLOB.spawntypes[spawn_name]
 		if(!spawnpoint.turfs.len)
-			log_unit_test("Map allows spawning in [spawn_name], but [spawn_name] has no associated spawn GLOB.turfs.")
+			log_unit_test("Map allows spawning in [spawn_name], but [spawn_name] has no associated spawn turfs.")
 			failed = TRUE
 
 	if(failed)
-		fail("Some of the entries in allowed_spawns have no spawnpoint GLOB.turfs.")
+		fail("Some of the entries in allowed_spawns have no spawnpoint turfs.")
 	else
 		pass("All entries in allowed_spawns have spawnpoints.")
 

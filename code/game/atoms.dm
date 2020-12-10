@@ -39,8 +39,8 @@
 		if(argument_list || do_initialize == INITIALIZATION_INSSATOMS_LATE)
 			created[src] = argument_list
 
-	// if(atom_flags & ATOM_FLAG_CLIMBABLE)
-	// 	verbs += /atom/proc/climb_on
+	if(flags & OBJ_CLIMBABLE)
+		verbs += /atom/proc/climb_on
 
 //Called after New if the map is being loaded. mapload = TRUE
 //Called from base of New if the map is not being loaded. mapload = FALSE
@@ -423,11 +423,6 @@ its easier to just keep the beam vertical.
 		user.visible_message("<span class='warning'>[user.name] shakes \the [src].</span>", \
 					"<span class='notice'>You shake \the [src].</span>")
 		object_shaken()
-
-/atom/New()
-	..()
-	if(flags & OBJ_CLIMBABLE)
-		verbs += /atom/proc/climb_on
 
 /atom/proc/climb_on()
 

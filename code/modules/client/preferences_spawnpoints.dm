@@ -9,7 +9,7 @@ GLOBAL_LIST_EMPTY(spawntypes)
 
 /datum/spawnpoint
 	var/msg          //Message to display on the arrivals computer.
-	var/list/turfs   //List of GLOB.turfs to spawn on.
+	var/list/turfs   //List of turfs to spawn on.
 	var/display_name //Name used in preference setup.
 	var/always_visible = FALSE	// Whether this spawn point is always visible in selection, ignoring map-specific settings.
 	var/list/restrict_job = null
@@ -30,7 +30,7 @@ GLOBAL_LIST_EMPTY(spawntypes)
 
 /datum/spawnpoint/arrivals/New()
 	..()
-	GLOB.turfs = GLOB.latejoin
+	turfs = GLOB.latejoin
 
 /datum/spawnpoint/gateway
 	display_name = "Gateway"
@@ -38,7 +38,7 @@ GLOBAL_LIST_EMPTY(spawntypes)
 
 /datum/spawnpoint/gateway/New()
 	..()
-	GLOB.turfs = GLOB.latejoin_gateway
+	turfs = GLOB.latejoin_gateway
 
 /datum/spawnpoint/cryo
 	display_name = "Cryogenic Storage"
@@ -47,7 +47,7 @@ GLOBAL_LIST_EMPTY(spawntypes)
 
 /datum/spawnpoint/cryo/New()
 	..()
-	GLOB.turfs = GLOB.latejoin_cryo
+	turfs = GLOB.latejoin_cryo
 
 /datum/spawnpoint/cyborg
 	display_name = "Cyborg Storage"
@@ -56,7 +56,7 @@ GLOBAL_LIST_EMPTY(spawntypes)
 
 /datum/spawnpoint/cyborg/New()
 	..()
-	GLOB.turfs = GLOB.latejoin_cyborg
+	turfs = GLOB.latejoin_cyborg
 
 /datum/spawnpoint/default
 	display_name = DEFAULT_SPAWNPOINT_ID

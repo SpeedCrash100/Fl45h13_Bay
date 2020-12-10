@@ -73,7 +73,7 @@ client/proc/Test_ZAS_Connection(var/turf/simulated/T as turf)
 			to_chat(mob, "The other turf can connect, but not the initial turf. :/")
 
 		else
-			to_chat(mob, "Both GLOB.turfs can connect! :)")
+			to_chat(mob, "Both turfs can connect! :)")
 
 	to_chat(mob, "Additionally, \...")
 
@@ -86,7 +86,7 @@ client/proc/Test_ZAS_Connection(var/turf/simulated/T as turf)
 		if(t_block & ZONE_BLOCKED)
 			to_chat(mob, "the initial turf cannot merge.")
 		else
-			to_chat(mob, "both GLOB.turfs can merge.")
+			to_chat(mob, "both turfs can merge.")
 
 client/proc/ZASSettings()
 	set category = "Debug"

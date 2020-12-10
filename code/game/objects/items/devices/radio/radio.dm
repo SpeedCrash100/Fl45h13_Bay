@@ -57,7 +57,8 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		GLOB.radio_controller.remove_object(src, frequency)
 		for (var/ch_name in channels)
 			GLOB.radio_controller.remove_object(src, GLOB.radiochannels[ch_name])
-	return ..()
+	..()
+	return QDEL_HINT_HARDDEL
 
 
 /obj/item/device/radio/initialize()
@@ -757,7 +758,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	frequency = GLOB.MED_I_FREQ
 
 /obj/item/device/radio/phone/medbay/Initialize()
-	..()
+	. = ..()
 	internal_channels = GLOB.default_medbay_channels.Copy()
 
 /obj/item/device/radio/CouldUseTopic(var/mob/user)

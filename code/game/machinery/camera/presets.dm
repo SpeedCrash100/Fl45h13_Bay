@@ -41,12 +41,18 @@
 
 /obj/machinery/camera/motion/New()
 	..()
+
+/obj/machinery/camera/motion/Initialize(mapload, d)
+	. = ..()
 	upgradeMotion()
 
 // ALL UPGRADES
 
 /obj/machinery/camera/all/New()
 	..()
+
+/obj/machinery/camera/all/Initialize(mapload, d)
+	. = ..()
 	upgradeEmpProof()
 	upgradeXRay()
 	upgradeMotion()

@@ -21,6 +21,10 @@
 	if(locate(/obj/structure/grille, T))
 		return
 
+	// We don't need dirt in the space or unsimulated turfs!
+	if(istype(T, /turf/space) || istype(T, /turf/unsimulated) )
+		return
+
 	var/cardinal_turfs = T.CardinalTurfs()
 
 	T.dirt = get_dirt_amount()

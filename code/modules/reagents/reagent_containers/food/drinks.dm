@@ -121,8 +121,8 @@
 	icon_state = "milk"
 	item_state = "carton"
 	center_of_mass = "x=16;y=9"
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 		reagents.add_reagent("milk", 50)
 
 /obj/item/weapon/reagent_containers/food/drinks/soymilk
@@ -131,24 +131,24 @@
 	icon_state = "soymilk"
 	item_state = "carton"
 	center_of_mass = "x=16;y=9"
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 		reagents.add_reagent("soymilk", 50)
 
 /obj/item/weapon/reagent_containers/food/drinks/milk/smallcarton
 	name = "small milk carton"
 	volume = 30
 	icon_state = "mini-milk"
-/obj/item/weapon/reagent_containers/food/drinks/milk/smallcarton/New()
-	..()
+/obj/item/weapon/reagent_containers/food/drinks/milk/smallcarton/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("milk", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/milk/smallcarton/chocolate
 	name = "small chocolate milk carton"
 	desc = "It's milk! This one is in delicious chocolate flavour."
 
-/obj/item/weapon/reagent_containers/food/drinks/milk/smallcarton/chocolate/New()
-	..()
+/obj/item/weapon/reagent_containers/food/drinks/milk/smallcarton/chocolate/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("chocolate_milk", 30)
 
 
@@ -157,8 +157,8 @@
 	desc = "Careful, the beverage you're about to enjoy is extremely hot."
 	icon_state = "coffee"
 	center_of_mass = "x=15;y=10"
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 		reagents.add_reagent("coffee", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/tea
@@ -167,8 +167,8 @@
 	icon_state = "teacup"
 	item_state = "coffee"
 	center_of_mass = "x=16;y=14"
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 		reagents.add_reagent("tea", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/ice
@@ -176,8 +176,8 @@
 	desc = "Careful, cold ice, do not chew."
 	icon_state = "coffee"
 	center_of_mass = "x=15;y=10"
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 		reagents.add_reagent("ice", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/h_chocolate
@@ -186,8 +186,8 @@
 	icon_state = "hot_coco"
 	item_state = "coffee"
 	center_of_mass = "x=15;y=13"
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 		reagents.add_reagent("hot_coco", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/dry_ramen
@@ -196,8 +196,8 @@
 	desc = "Just add 10ml water, self heats! A taste that reminds you of your school years."
 	icon_state = "ramen"
 	center_of_mass = "x=16;y=11"
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 		reagents.add_reagent("dry_ramen", 30)
 
 
@@ -208,8 +208,8 @@
 	possible_transfer_amounts = null
 	volume = 10
 	center_of_mass = "x=16;y=12"
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 	on_reagent_change()
 		if(reagents.total_volume)
 			icon_state = "water_cup"

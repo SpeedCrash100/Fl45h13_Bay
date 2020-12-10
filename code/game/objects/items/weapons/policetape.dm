@@ -52,7 +52,7 @@ GLOBAL_LIST_EMPTY(tape_roll_applications)
 
 /obj/item/tape/New()
 	..()
-	if(!GLOB.hazard_overlays)
+	if(!GLOB.hazard_overlays.len)
 		GLOB.hazard_overlays = list()
 		GLOB.hazard_overlays["[NORTH]"]	= new/image('icons/effects/warning_stripes.dmi', icon_state = "N")
 		GLOB.hazard_overlays["[EAST]"]	= new/image('icons/effects/warning_stripes.dmi', icon_state = "E")

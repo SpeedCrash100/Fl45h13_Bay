@@ -156,13 +156,13 @@
 	var/status = 1 		//Whether the welder is secured or unsecured (able to attach rods to it to make a flamethrower)
 	var/max_fuel = 20 	//The max amount of fuel the welder can hold
 
-/obj/item/weapon/weldingtool/New()
+/obj/item/weapon/weldingtool/Initialize(mapload, ...)
 //	var/random_fuel = min(rand(10,20),max_fuel)
 	var/datum/reagents/R = new/datum/reagents(max_fuel)
 	reagents = R
 	R.my_atom = src
 	R.add_reagent("fuel", max_fuel)
-	..()
+	return ..()
 
 /obj/item/weapon/weldingtool/Destroy()
 	if(welding)

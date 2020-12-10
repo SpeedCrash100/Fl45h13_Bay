@@ -270,7 +270,7 @@
 
 	if(!proximity) return //Not adjacent.
 
-	//We only want to deal with using this on GLOB.turfs. Specific items aren't important.
+	//We only want to deal with using this on turfs. Specific items aren't important.
 	var/turf/T = get_turf(target)
 	if(!istype(T))
 		return

@@ -1,7 +1,5 @@
 #define DRYING_TIME 5 * 60*10                        //for 1 unit of depth in puddle (amount var)
 
-GLOBAL_LIST_EMPTY_TYPED(splatter_cache, /image)
-
 /obj/effect/decal/cleanable/blood
 	name = "blood"
 	var/dryname = "dried blood"

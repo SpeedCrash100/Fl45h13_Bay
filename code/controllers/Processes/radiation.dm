@@ -53,4 +53,4 @@
 
 /datum/controller/process/radiation/statProcess()
 	..()
-	stat(null, "[linked.sources.len] sources, [linked.resistance_cache.len] cached GLOB.turfs")
+	stat(null, "[linked.sources.len] sources, [linked.resistance_cache.len] cached turfs")

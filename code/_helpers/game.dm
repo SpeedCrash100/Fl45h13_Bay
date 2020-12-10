@@ -106,10 +106,10 @@
 		if(dx*dx + dy*dy <= rsq)
 			atoms += A
 
-	//GLOB.turfs += centerturf
+	//turfs += centerturf
 	return atoms
 
-/proc/trange(rad = 0, turf/centre = null) //alternative to range (ONLY processes GLOB.turfs and thus less intensive)
+/proc/trange(rad = 0, turf/centre = null) //alternative to range (ONLY processes turfs and thus less intensive)
 	if(!centre)
 		return
 

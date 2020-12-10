@@ -14,10 +14,10 @@
 	var/name = "Normal"
 	var/desc = "Nothing seems awry."
 
-	// Sets world.turf, replaces all GLOB.turfs of type /turf/space.
+	// Sets world.turf, replaces all turfs of type /turf/space.
 	var/space_type         = /turf/space
 
-	// Replaces all GLOB.turfs of type /turf/space/transit
+	// Replaces all turfs of type /turf/space/transit
 	var/transit_space_type = /turf/space/transit
 
 	// Chance of a floor or wall getting damaged [0-100]

@@ -11,11 +11,9 @@ GLOBAL_LIST_EMPTY(plant_seed_sprites)
 	var/datum/seed/seed
 	var/modified = 0
 
-/obj/item/seeds/New()
-	while(!GLOB.plant_controller)
-		sleep(30)
+/obj/item/seeds/Initialize(mapload, ...)
+	. = ..()
 	update_seed()
-	..()
 
 //Grabs the appropriate seed datum from the global list.
 /obj/item/seeds/proc/update_seed()

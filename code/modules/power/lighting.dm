@@ -190,8 +190,10 @@ GLOBAL_LIST_EMPTY(light_type_cache)
 
 // create a new lighting fixture
 /obj/machinery/light/New(atom/newloc, obj/machinery/light_construct/construct = null)
-	..(newloc)
+	..(newloc, construct)
 
+/obj/machinery/light/Initialize(mapload, var/obj/machinery/light_construct/construct)
+	. = ..()
 	s.set_up(1, 1, src)
 
 	if(construct)
@@ -207,6 +209,7 @@ GLOBAL_LIST_EMPTY(light_type_cache)
 
 	on = powered()
 	update(0)
+
 
 /obj/machinery/light/Destroy()
 	var/area/A = get_area(src)

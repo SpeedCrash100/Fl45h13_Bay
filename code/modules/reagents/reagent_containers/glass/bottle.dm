@@ -65,8 +65,8 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle-4"
 
-/obj/item/weapon/reagent_containers/glass/bottle/inaprovaline/New()
-	..()
+/obj/item/weapon/reagent_containers/glass/bottle/inaprovaline/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("inaprovaline", 60)
 	update_icon()
 
@@ -77,8 +77,8 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle-3"
 
-/obj/item/weapon/reagent_containers/glass/bottle/toxin/New()
-	..()
+/obj/item/weapon/reagent_containers/glass/bottle/toxin/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("toxin", 60)
 	update_icon()
 
@@ -89,8 +89,8 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle-3"
 
-/obj/item/weapon/reagent_containers/glass/bottle/cyanide/New()
-	..()
+/obj/item/weapon/reagent_containers/glass/bottle/cyanide/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("cyanide", 30) //volume changed to match chloral
 	update_icon()
 
@@ -101,8 +101,8 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle-3"
 
-/obj/item/weapon/reagent_containers/glass/bottle/stoxin/New()
-	..()
+/obj/item/weapon/reagent_containers/glass/bottle/stoxin/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("stoxin", 60)
 	update_icon()
 
@@ -113,8 +113,8 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle-3"
 
-/obj/item/weapon/reagent_containers/glass/bottle/chloralhydrate/New()
-	..()
+/obj/item/weapon/reagent_containers/glass/bottle/chloralhydrate/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("chloralhydrate", 30)		//Intentionally low since it is so strong. Still enough to knock someone out.
 	update_icon()
 
@@ -125,8 +125,8 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle-4"
 
-/obj/item/weapon/reagent_containers/glass/bottle/antitoxin/New()
-	..()
+/obj/item/weapon/reagent_containers/glass/bottle/antitoxin/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("anti_toxin", 60)
 	update_icon()
 
@@ -137,8 +137,8 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle-1"
 
-/obj/item/weapon/reagent_containers/glass/bottle/mutagen/New()
-	..()
+/obj/item/weapon/reagent_containers/glass/bottle/mutagen/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("mutagen", 60)
 	update_icon()
 
@@ -149,8 +149,8 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle-1"
 
-/obj/item/weapon/reagent_containers/glass/bottle/ammonia/New()
-	..()
+/obj/item/weapon/reagent_containers/glass/bottle/ammonia/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("ammonia", 60)
 	update_icon()
 
@@ -161,8 +161,8 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle-4"
 
-/obj/item/weapon/reagent_containers/glass/bottle/eznutrient/New()
-	..()
+/obj/item/weapon/reagent_containers/glass/bottle/eznutrient/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("eznutrient", 60)
 	update_icon()
 
@@ -173,8 +173,8 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle-4"
 
-/obj/item/weapon/reagent_containers/glass/bottle/left4zed/New()
-	..()
+/obj/item/weapon/reagent_containers/glass/bottle/left4zed/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("left4zed", 60)
 	update_icon()
 
@@ -185,8 +185,8 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle-4"
 
-/obj/item/weapon/reagent_containers/glass/bottle/robustharvest/New()
-	..()
+/obj/item/weapon/reagent_containers/glass/bottle/robustharvest/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("robustharvest", 60)
 	update_icon()
 
@@ -197,8 +197,8 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle-4"
 
-/obj/item/weapon/reagent_containers/glass/bottle/diethylamine/New()
-	..()
+/obj/item/weapon/reagent_containers/glass/bottle/diethylamine/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("diethylamine", 60)
 	update_icon()
 
@@ -209,8 +209,8 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle-4"
 
-/obj/item/weapon/reagent_containers/glass/bottle/pacid/New()
-	..()
+/obj/item/weapon/reagent_containers/glass/bottle/pacid/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("pacid", 60)
 	update_icon()
 
@@ -222,8 +222,8 @@
 	icon_state = "holyflask"
 
 
-/obj/item/weapon/reagent_containers/glass/bottle/adminordrazine/New()
-	..()
+/obj/item/weapon/reagent_containers/glass/bottle/adminordrazine/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("adminordrazine", 60)
 	update_icon()
 
@@ -234,8 +234,8 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle-4"
 
-/obj/item/weapon/reagent_containers/glass/bottle/capsaicin/New()
-	..()
+/obj/item/weapon/reagent_containers/glass/bottle/capsaicin/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("capsaicin", 60)
 	update_icon()
 
@@ -246,7 +246,7 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle-4"
 
-/obj/item/weapon/reagent_containers/glass/bottle/frostoil/New()
-	..()
+/obj/item/weapon/reagent_containers/glass/bottle/frostoil/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("frostoil", 60)
 	update_icon()

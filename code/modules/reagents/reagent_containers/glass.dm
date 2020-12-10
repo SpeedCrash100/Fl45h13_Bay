@@ -189,14 +189,14 @@
 	flags = OPENCONTAINER
 
 /obj/item/weapon/reagent_containers/glass/beaker/cryoxadone
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 		reagents.add_reagent("cryoxadone", 30)
 		update_icon()
 
 /obj/item/weapon/reagent_containers/glass/beaker/sulphuric
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 		reagents.add_reagent("sacid", 60)
 		update_icon()
 

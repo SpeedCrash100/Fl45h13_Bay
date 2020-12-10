@@ -885,7 +885,7 @@ proc/generate_image(var/tx as num, var/ty as num, var/tz as num, var/range as nu
 				else
 					turfstocapture.Add(T)
 			else
-				//Capture includes non-existan GLOB.turfs
+				//Capture includes non-existan turfs
 				if(!suppress_errors)
 					return
 	//Lines below determine what objects will be rendered

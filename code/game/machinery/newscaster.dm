@@ -119,7 +119,7 @@
 
 			PDA.new_news(annoncement)
 
-GLOBAL_DATUM_INIT(news_network, /datum/feed_network, new) /datum/feed_network     //The global news-network, which is coincidentally a global list.
+GLOBAL_DATUM_INIT(news_network, /datum/feed_network, new /datum/feed_network)    //The global news-network, which is coincidentally a global list.
 
 GLOBAL_LIST_EMPTY_TYPED(allCasters, /obj/machinery/newscaster) //Global list that will contain reference to all newscasters in existence.
 

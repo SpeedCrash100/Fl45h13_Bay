@@ -199,7 +199,7 @@ GLOBAL_LIST_INIT(meteors_cataclysm, list(\
 		T.ex_act(hitpwr)
 
 //process getting 'hit' by colliding with a dense object
-//or randomly when ramming GLOB.turfs
+//or randomly when ramming turfs
 /obj/effect/meteor/proc/get_hit()
 	hits--
 	if(hits <= 0)

@@ -96,7 +96,7 @@
 				if(!search_neighbors_for(FLOOR_CHAR,x,y) && !search_neighbors_for(DOOR_CHAR,x,y) && !(x == 1 || y == 1 || x == limit_x || y == limit_y))
 					map[current_cell] = EMPTY_CHAR
 
-	// Prune exposed floor GLOB.turfs away from the edges.
+	// Prune exposed floor turfs away from the edges.
 	var/changed = 1
 	while(changed)
 		for(var/x = 1, x <= limit_x, x++)

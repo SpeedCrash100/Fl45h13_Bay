@@ -31,6 +31,8 @@
 			return global.forumsqlpass;
 		if("forumsqlport")
 			return global.forumsqlport;
+		if("init")
+			return global.init;
 		if("sqladdress")
 			return global.sqladdress;
 		if("sqldb")
@@ -82,6 +84,8 @@
 			global.forumsqlpass=newval;
 		if("forumsqlport")
 			global.forumsqlport=newval;
+		if("init")
+			global.init=newval;
 		if("sqladdress")
 			global.sqladdress=newval;
 		if("sqldb")
@@ -117,6 +121,7 @@
 	"forumsqllogin",
 	"forumsqlpass",
 	"forumsqlport",
+	"init",
 	"sqladdress",
 	"sqldb",
 	"sqlfdbkdb",

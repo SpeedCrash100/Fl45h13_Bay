@@ -16,7 +16,7 @@ GLOBAL_DATUM_INIT(attack_log_repository, /repository/attack_logs, new())
 	var/intent
 	var/datum/mob_lite/attacker      // We don't store the proper mob in case it gets deleted
 	var/datum/mob_lite/victim
-	var/turf/location                // GLOB.turfs are forever
+	var/turf/location                // turfs are forever
 	var/message
 
 /datum/attack_log/New(var/mob/mob_attacker, var/mob/mob_victim, var/action_message)

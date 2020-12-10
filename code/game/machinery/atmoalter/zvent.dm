@@ -18,7 +18,7 @@
 			if (istype(zturf_conn))
 				var/obj/machinery/zvent/zvent_conn= locate(/obj/machinery/zvent) in zturf_conn
 				if (istype(zvent_conn))
-					//both floors have simulated GLOB.turfs, share()
+					//both floors have simulated turfs, share()
 					var/turf/simulated/myturf = loc
 					var/datum/gas_mixture/conn_air = zturf_conn.zone.air //TODO: pop culture reference
 					var/datum/gas_mixture/my_air = myturf.air

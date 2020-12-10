@@ -29,7 +29,7 @@ dmm_suite{
 			- Another turf representing the other corner of the same grid (Required).
 			- Any, or a combination, of several bit flags (Optional, see documentation).
 
-		The order in which the GLOB.turfs are supplied does not matter, the /dmm_writer will
+		The order in which the turfs are supplied does not matter, the /dmm_writer will
 		determine the grid containing both, in much the same way as DM's block() function.
 		write_map() will then return a string representing the saved map in dmm format;
 		this string can then be saved to a file, or used for any other purose.

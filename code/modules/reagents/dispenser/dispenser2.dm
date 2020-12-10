@@ -21,8 +21,8 @@
 	anchored = 1
 	flags = OBJ_ANCHORABLE
 
-/obj/machinery/chemical_dispenser/New()
-	..()
+/obj/machinery/chemical_dispenser/Initialize(mapload, d)
+	. = ..()
 
 	if(spawn_cartridges)
 		for(var/type in spawn_cartridges)

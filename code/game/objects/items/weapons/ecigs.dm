@@ -141,8 +141,8 @@
 	name = "high nicotine tobacco flavour cartridge"
 	desc = "A small cartridge. Contains the liquid used in electronic cigarettes. Tobacco flavour with high content of nicotine. "
 
-/obj/item/weapon/reagent_containers/ecig_cartridge/high_nicotine/New()
-	..()
+/obj/item/weapon/reagent_containers/ecig_cartridge/high_nicotine/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("nicotine", 10)
 	reagents.add_reagent("water", 10)
 
@@ -150,8 +150,8 @@
 	name = "orange flavour cartridge"
 	desc = "A small cartridge. Contains the liquid used in electronic cigarettes. Orange flavuor. "
 
-/obj/item/weapon/reagent_containers/ecig_cartridge/orange/New()
-	..()
+/obj/item/weapon/reagent_containers/ecig_cartridge/orange/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("nicotine", 5)
 	reagents.add_reagent("water", 10)
 	reagents.add_reagent("orangejuice", 5)
@@ -160,8 +160,8 @@
 	name = "mint flavour cartridge"
 	desc = "A small cartridge. Contains the liquid used in electronic cigarettes. Mint flavuor. "
 
-/obj/item/weapon/reagent_containers/ecig_cartridge/mint/New()
-	..()
+/obj/item/weapon/reagent_containers/ecig_cartridge/mint/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("nicotine", 5)
 	reagents.add_reagent("water", 10)
 	reagents.add_reagent("menthol", 5)
@@ -170,8 +170,8 @@
 	name = "watermelon flavour cartridge"
 	desc = "A small cartridge. Contains the liquid used in electronic cigarettes. Watermelon flavuor. "
 
-/obj/item/weapon/reagent_containers/ecig_cartridge/watermelon/New()
-	..()
+/obj/item/weapon/reagent_containers/ecig_cartridge/watermelon/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("nicotine", 5)
 	reagents.add_reagent("water", 10)
 	reagents.add_reagent("watermelonjuice", 5)
@@ -181,8 +181,8 @@
 	desc = "A small cartridge. Contains the liquid used in electronic cigarettes. Grape flavuor. "
 
 
-/obj/item/weapon/reagent_containers/ecig_cartridge/grape/New()
-	..()
+/obj/item/weapon/reagent_containers/ecig_cartridge/grape/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("nicotine", 5)
 	reagents.add_reagent("water", 10)
 	reagents.add_reagent("grapejuice", 5)

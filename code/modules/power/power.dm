@@ -159,7 +159,7 @@
 // Powernet handling helpers
 //////////////////////////////////////////
 
-//returns all the cables WITHOUT a powernet in neighbors GLOB.turfs,
+//returns all the cables WITHOUT a powernet in neighbors turfs,
 //pointing towards the turf the machine is located at
 /obj/machinery/power/proc/get_connections()
 
@@ -178,7 +178,7 @@
 				. += C
 	return .
 
-//returns all the cables in neighbors GLOB.turfs,
+//returns all the cables in neighbors turfs,
 //pointing towards the turf the machine is located at
 /obj/machinery/power/proc/get_marked_connections()
 

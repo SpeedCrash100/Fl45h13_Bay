@@ -117,7 +117,7 @@
 	if(!isturf(loc)) // This is going to stop you from telekinesing from inside a closet, but I don't shed many tears for that
 		return
 
-	//Atoms on GLOB.turfs (not on your person)
+	//Atoms on turfs (not on your person)
 	// A is a turf or is on a turf, or in something on a turf (pen in a box); but not something in something on a turf (pen in a box in a backpack)
 	sdepth = A.storage_depth_turf()
 	if(isturf(A) || isturf(A.loc) || (sdepth != -1 && sdepth <= 1))

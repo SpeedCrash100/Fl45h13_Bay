@@ -8,8 +8,12 @@
 	var/surface_accessible = FALSE
 	var/relative_size = 25   // Relative size of the organ. Roughly % of space they take in the target projection :D
 
-/obj/item/organ/internal/New(var/mob/living/carbon/holder)
-	..()
+/obj/item/organ/internal/New(newloc, var/mob/living/carbon/holder)
+	..(newloc, holder)
+
+/obj/item/organ/internal/Initialize(mapload, var/mob/living/carbon/holder)
+	. = ..()
+
 	if(istype(holder))
 		holder.internal_organs |= src
 

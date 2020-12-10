@@ -102,24 +102,24 @@
 	desc = "BLAM!-brand non-foaming space cleaner!"
 	volume = 50
 
-/obj/item/weapon/reagent_containers/spray/cleaner/New()
-	..()
+/obj/item/weapon/reagent_containers/spray/cleaner/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("cleaner", volume)
 
 /obj/item/weapon/reagent_containers/spray/sterilizine
 	name = "sterilizine"
 	desc = "Great for hiding incriminating bloodstains and sterilizing scalpels."
 
-/obj/item/weapon/reagent_containers/spray/sterilizine/New()
-	..()
+/obj/item/weapon/reagent_containers/spray/sterilizine/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("sterilizine", volume)
 
 /obj/item/weapon/reagent_containers/spray/hair_remover
 	name = "hair remover"
 	desc = "Very effective at removing hair, feathers, spines and horns."
 
-/obj/item/weapon/reagent_containers/spray/hair_remover/New()
-	..()
+/obj/item/weapon/reagent_containers/spray/hair_remover/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("hair_remover", volume)
 
 /obj/item/weapon/reagent_containers/spray/pepper
@@ -132,8 +132,8 @@
 	volume = 40
 	var/safety = 1
 
-/obj/item/weapon/reagent_containers/spray/pepper/New()
-	..()
+/obj/item/weapon/reagent_containers/spray/pepper/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("condensedcapsaicin", 40)
 
 /obj/item/weapon/reagent_containers/spray/pepper/examine(mob/user)
@@ -160,8 +160,8 @@
 	possible_transfer_amounts = null
 	volume = 10
 
-/obj/item/weapon/reagent_containers/spray/waterflower/New()
-	..()
+/obj/item/weapon/reagent_containers/spray/waterflower/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("water", 10)
 
 /obj/item/weapon/reagent_containers/spray/chemsprayer
@@ -204,8 +204,8 @@
 	item_state = "plantbgone"
 	volume = 100
 
-/obj/item/weapon/reagent_containers/spray/plantbgone/New()
-	..()
+/obj/item/weapon/reagent_containers/spray/plantbgone/Initialize(mapload, ...)
+	. = ..()
 	reagents.add_reagent("plantbgone", 100)
 
 /obj/item/weapon/reagent_containers/spray/plantbgone/afterattack(atom/A as mob|obj, mob/user as mob, proximity)

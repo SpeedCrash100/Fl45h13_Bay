@@ -1,4 +1,3 @@
-
 GLOBAL_DATUM_INIT(using_map, /datum/map, new USING_MAP_DATUM)
 GLOBAL_LIST_EMPTY(all_maps)
 

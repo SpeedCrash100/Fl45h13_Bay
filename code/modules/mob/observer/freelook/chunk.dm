@@ -2,7 +2,7 @@
 
 // CHUNK
 //
-// A 16x16 grid of the map with a list of GLOB.turfs that can be seen, are visible and are dimmed.
+// A 16x16 grid of the map with a list of turfs that can be seen, are visible and are dimmed.
 // Allows the Eye to stream these chunks and know what it can and cannot see.
 
 /datum/obfuscation
@@ -62,14 +62,14 @@
 
 	for(var/turf/t in range(10, locate(x + 8, y + 8, z)))
 		if(t.x >= x && t.y >= y && t.x < x + 16 && t.y < y + 16)
-			GLOB.turfs[t] = t
+			turfs[t] = t
 
 	add_sources(visualnet.sources)
 	acquire_visible_turfs(visibleTurfs)
 
-	// Removes turf that isn't in GLOB.turfs.
-	visibleTurfs &= GLOB.turfs
-	obscuredTurfs = GLOB.turfs - visibleTurfs
+	// Removes turf that isn't in turfs.
+	visibleTurfs &= turfs
+	obscuredTurfs = turfs - visibleTurfs
 
 	for(var/turf in obscuredTurfs)
 		var/turf/t = turf
@@ -138,14 +138,14 @@
 	var/list/newVisibleTurfs = new()
 	acquire_visible_turfs(newVisibleTurfs)
 
-	// Removes turf that isn't in GLOB.turfs.
-	newVisibleTurfs &= GLOB.turfs
+	// Removes turf that isn't in turfs.
+	newVisibleTurfs &= turfs
 
 	var/list/visAdded = newVisibleTurfs - visibleTurfs
 	var/list/visRemoved = visibleTurfs - newVisibleTurfs
 
 	visibleTurfs = newVisibleTurfs
-	obscuredTurfs = GLOB.turfs - newVisibleTurfs
+	obscuredTurfs = turfs - newVisibleTurfs
 
 	for(var/turf in visAdded)
 		var/turf/t = turf

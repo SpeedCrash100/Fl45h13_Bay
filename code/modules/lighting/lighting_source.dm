@@ -103,7 +103,7 @@ GLOBAL_VAR_INIT(total_lighting_sources, 0) // This is where the fun begins.
 
 	effect_update(null)
 
-// Will cause the light source to recalculate GLOB.turfs that were removed or added to visibility only.
+// Will cause the light source to recalculate turfs that were removed or added to visibility only.
 /datum/light_source/proc/vis_update()
 	vis_update = 1
 

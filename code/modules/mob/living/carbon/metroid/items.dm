@@ -26,8 +26,8 @@
 			enhanced = 1
 			qdel(O)
 
-/obj/item/slime_extract/New()
-	..()
+/obj/item/slime_extract/Initialize(mapload, ...)
+	. = ..()
 	create_reagents(100)
 	reagents.add_reagent("slimejelly", 30)
 

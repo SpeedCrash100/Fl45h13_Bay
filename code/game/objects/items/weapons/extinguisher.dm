@@ -34,10 +34,10 @@
 	max_water = 1000
 	sprite_name = "miniFE"
 
-/obj/item/weapon/extinguisher/New()
+/obj/item/weapon/extinguisher/Initialize(mapload, ...)
+	. = ..()
 	create_reagents(max_water)
 	reagents.add_reagent("water", max_water)
-	..()
 
 /obj/item/weapon/extinguisher/examine(mob/user)
 	if(..(user, 0))

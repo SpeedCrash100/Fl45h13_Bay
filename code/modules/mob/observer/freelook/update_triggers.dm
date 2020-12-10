@@ -1,6 +1,6 @@
 //UPDATE TRIGGERS, when the chunk (and the surrounding chunks) should update.
 
-// GLOB.turfs
+// turfs
 
 /proc/updateVisibility(atom/A, var/opacity_check = 1)
 	if(GLOB.ticker)

@@ -252,7 +252,7 @@
 	traitor_frequency = 1445
 
 /obj/item/device/radio/headset/uplink/Initialize()
-	..()
+	. = ..()
 	hidden_uplink = new(src)
 
 /obj/item/device/uplink/contained/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/uistate = GLOB.inventory_state)

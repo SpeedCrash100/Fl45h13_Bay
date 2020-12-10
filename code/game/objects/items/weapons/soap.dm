@@ -11,8 +11,8 @@
 	throw_range = 20
 	var/key_data
 
-/obj/item/weapon/soap/New()
-	..()
+/obj/item/weapon/soap/Initialize(mapload, ...)
+	. = ..()
 	create_reagents(10)
 	wet()
 

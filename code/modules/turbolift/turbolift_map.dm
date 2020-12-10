@@ -4,7 +4,7 @@
 	icon = 'icons/obj/turbolift_preview_3x3.dmi'
 	dir = SOUTH         // Direction of the holder determines the placement of the lift control panel and doors.
 	var/depth = 1       // Number of floors to generate, including the initial floor.
-	var/lift_size_x = 2 // Number of GLOB.turfs on each axis to generate in addition to the first
+	var/lift_size_x = 2 // Number of turfs on each axis to generate in addition to the first
 	var/lift_size_y = 2 // ie. a 3x3 lift would have a value of 2 in each of these variables.
 
 	// Various turf and door types used when generating the turbolift floors.
@@ -18,11 +18,9 @@
 	GLOB.turbolifts -= src
 	return ..()
 
-/obj/turbolift_map_holder/New()
+/obj/turbolift_map_holder/Initialize(mapload, ...)
 	GLOB.turbolifts += src
-	..()
-
-/obj/turbolift_map_holder/initialize()
+	. = ..()
 
 	// Create our system controller.
 	var/datum/turbolift/lift = new()
@@ -131,7 +129,7 @@
 		lift.floors += cfloor
 
 		var/list/floor_turfs = list()
-		// Update the appropriate GLOB.turfs.
+		// Update the appropriate turfs.
 		for(var/tx = ux to ex)
 			for(var/ty = uy to ey)
 

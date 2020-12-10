@@ -1,5 +1,5 @@
 /*
-Conjure spells spawn things (mobs, objs, GLOB.turfs) in their summon_type
+Conjure spells spawn things (mobs, objs, turfs) in their summon_type
 How they spawn stuff is decided by behaviour vars, which are explained below
 */
 

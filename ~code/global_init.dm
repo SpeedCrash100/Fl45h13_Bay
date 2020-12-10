@@ -7,7 +7,7 @@
 	5. The gameticker is created.
 */
 
-GLOBAL_DATUM_INIT(init, /datum/global_init, new)
+GLOBAL_REAL(init, /datum/global_init) = new
 
 /*
 	Pre-map initialization stuff should go here.

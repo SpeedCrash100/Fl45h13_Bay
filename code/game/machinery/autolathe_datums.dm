@@ -1,5 +1,5 @@
-GLOBAL_LIST_EMPTY(autolathe_recipes)
-GLOBAL_LIST_EMPTY(autolathe_categories)
+GLOBAL_LIST(autolathe_recipes)
+GLOBAL_LIST(autolathe_categories)
 
 /proc/populate_lathe_recipes()
 

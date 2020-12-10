@@ -62,7 +62,7 @@
 
 GLOBAL_LIST_EMPTY_TYPED(priv_all_access_datums, /datum/access)
 /proc/get_all_access_datums()
-	if(!GLOB.priv_all_access_datums)
+	if(GLOB.priv_all_access_datums.len == 0)
 		GLOB.priv_all_access_datums = init_subtypes(/datum/access)
 		GLOB.priv_all_access_datums = dd_sortedObjectList(GLOB.priv_all_access_datums)
 
@@ -70,7 +70,7 @@ GLOBAL_LIST_EMPTY_TYPED(priv_all_access_datums, /datum/access)
 
 GLOBAL_LIST_EMPTY_TYPED(priv_all_access_datums_id, /datum/access)
 /proc/get_all_access_datums_by_id()
-	if(!GLOB.priv_all_access_datums_id)
+	if(GLOB.priv_all_access_datums_id.len == 0)
 		GLOB.priv_all_access_datums_id = list()
 		for(var/datum/access/A in get_all_access_datums())
 			GLOB.priv_all_access_datums_id["[A.id]"] = A
@@ -79,7 +79,7 @@ GLOBAL_LIST_EMPTY_TYPED(priv_all_access_datums_id, /datum/access)
 
 GLOBAL_LIST_EMPTY_TYPED(priv_all_access_datums_region, /datum/access)
 /proc/get_all_access_datums_by_region()
-	if(!GLOB.priv_all_access_datums_region)
+	if(GLOB.priv_all_access_datums_region.len == 0)
 		GLOB.priv_all_access_datums_region = list()
 		for(var/datum/access/A in get_all_access_datums())
 			if(!GLOB.priv_all_access_datums_region[A.region])
@@ -95,7 +95,7 @@ GLOBAL_LIST_EMPTY_TYPED(priv_all_access_datums_region, /datum/access)
 			L += A.id
 	return L
 
-GLOBAL_LIST_EMPTY(priv_all_access)
+GLOBAL_LIST(priv_all_access)
 
 /proc/get_all_accesses()
 	if(!GLOB.priv_all_access)
@@ -103,28 +103,28 @@ GLOBAL_LIST_EMPTY(priv_all_access)
 
 	return GLOB.priv_all_access.Copy()
 
-GLOBAL_LIST_EMPTY(priv_station_access)
+GLOBAL_LIST(priv_station_access)
 /proc/get_all_station_access()
 	if(!GLOB.priv_station_access)
 		GLOB.priv_station_access = get_access_ids(ACCESS_TYPE_STATION)
 
 	return GLOB.priv_station_access.Copy()
 
-GLOBAL_LIST_EMPTY(priv_centcom_access)
+GLOBAL_LIST(priv_centcom_access)
 /proc/get_all_centcom_access()
 	if(!GLOB.priv_centcom_access)
 		GLOB.priv_centcom_access = get_access_ids(ACCESS_TYPE_CENTCOM)
 
 	return GLOB.priv_centcom_access.Copy()
 
-GLOBAL_LIST_EMPTY(priv_syndicate_access)
+GLOBAL_LIST(priv_syndicate_access)
 /proc/get_all_syndicate_access()
 	if(!GLOB.priv_syndicate_access)
 		GLOB.priv_syndicate_access = get_access_ids(ACCESS_TYPE_SYNDICATE)
 
 	return GLOB.priv_syndicate_access.Copy()
 
-GLOBAL_LIST_EMPTY(priv_region_access)
+GLOBAL_LIST(priv_region_access)
 /proc/get_region_accesses(var/code)
 	if(code == ACCESS_REGION_ALL)
 		return get_all_station_access()

@@ -46,7 +46,7 @@
 			continue
 		D.deploy()
 
-	// Overwrite GLOB.turfs.
+	// Overwrite turfs.
 	var/turf/origin = get_turf(src)
 	origin.ChangeTurf(/turf/simulated/floor/reinforced)
 	origin.set_light(0) // Forcing updates

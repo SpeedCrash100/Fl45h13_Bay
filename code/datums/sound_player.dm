@@ -69,9 +69,9 @@ GLOBAL_DATUM_INIT(sound_player, /decl/sound_player, new())
 /datum/sound_token
 	var/atom/source    // Where the sound originates from
 	var/channel        // The current sound channel
-	var/falloff        // How many GLOB.turfs away the sound will still play at full volume
+	var/falloff        // How many turfs away the sound will still play at full volume
 	var/list/listeners // Assoc: Atoms hearing this sound, and their sound datum
-	var/range          // How many GLOB.turfs away the sound will stop playing completely
+	var/range          // How many turfs away the sound will stop playing completely
 	var/prefer_mute    // If sound should be muted instead of stopped when mob moves out of range. In the general case this should be avoided because listeners will remain tracked.
 	var/sound          // Sound file, not sound datum
 	var/sound_id       // The associated sound id, used for cleanup

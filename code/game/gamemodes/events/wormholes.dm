@@ -9,7 +9,7 @@
 			//All ready. Announce that bad juju is afoot.
 			GLOB.using_map.space_time_anomaly_detected_annoncement()
 
-			//prob(20) can be approximated to 1 wormhole every 5 GLOB.turfs!
+			//prob(20) can be approximated to 1 wormhole every 5 turfs!
 			//admittedly less random but totally worth it >_<
 			var/event_duration = 3000	//~5 minutes in ticks
 			var/number_of_selections = (pick_turfs.len/5)+1	//+1 to avoid division by zero!
@@ -29,7 +29,7 @@
 
 					return
 				if( !pick_turfs.len )
-//					log_debug("we've run out of GLOB.turfs to pick. End the event")
+//					log_debug("we've run out of turfs to pick. End the event")
 
 					return
 
@@ -40,7 +40,7 @@
 
 				//get our enter and exit locations
 				var/turf/simulated/floor/enter = pick_turfs[i]
-				pick_turfs -= enter							//remove it from pickable GLOB.turfs list
+				pick_turfs -= enter							//remove it from pickable turfs list
 				if( !enter || !istype(enter) )	continue	//sanity
 
 				var/turf/simulated/floor/exit = pick(pick_turfs)

@@ -1,4 +1,4 @@
-//room theme is basically the GLOB.turfs that which a dungeon defaults to making a room out of.
+//room theme is basically the turfs that which a dungeon defaults to making a room out of.
 /datum/room_theme
 	var/wall_type
 	var/floor_type

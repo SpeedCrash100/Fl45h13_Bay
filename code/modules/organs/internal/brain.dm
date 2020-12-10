@@ -42,13 +42,16 @@
 	. = ..()
 	icon_state = "brain-prosthetic"
 
-/obj/item/organ/internal/brain/New(var/mob/living/carbon/holder)
-	..()
-	max_damage = species.total_health
+/obj/item/organ/internal/brain/Initialize(mapload, var/mob/living/carbon/holder)
+	. = ..()
+	if (species)
+		max_damage = species.total_health
+	else
+		max_damage = 200
 	min_bruised_damage = max_damage*0.25
 	min_broken_damage = max_damage*0.75
 
-	damage_threshold_value = round(species.total_health / damage_threshold_count)
+	damage_threshold_value = round(max_damage / damage_threshold_count)
 	spawn(5)
 		if(brainmob && brainmob.client)
 			brainmob.client.screen.len = null //clear the hud

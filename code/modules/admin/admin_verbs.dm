@@ -4,8 +4,8 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/player_panel,
 	/client/proc/secrets,
 	/client/proc/deadmin_self,			//destroys our own admin datum so we can play as a regular player,
-	/client/proc/hide_verbs,			//hides all our adminGLOB.verbs,
-	/client/proc/hide_most_verbs,		//hides all our hideable adminGLOB.verbs,
+	/client/proc/hide_verbs,			//hides all our adminverbs,
+	/client/proc/hide_most_verbs,		//hides all our hideable adminverbs,
 	/client/proc/debug_variables,		//allows us to -see- the variables of any instance in the game. +VAREDIT needed to modify,
 	/client/proc/debug_global_variables,//as above but for global variables,
 //	/client/proc/check_antagonists,		//shows all antags,
@@ -359,7 +359,7 @@ GLOBAL_LIST_INIT(admin_verbs_mentor, list(
 		)
 
 /client/proc/hide_most_verbs()//Allows you to keep some functionality while hiding some verbs
-	set name = "AdminGLOB.verbs - Hide Most"
+	set name = "Adminverbs - Hide Most"
 	set category = "Admin"
 
 	verbs.Remove(/client/proc/hide_most_verbs, GLOB.admin_verbs_hideable)
@@ -370,7 +370,7 @@ GLOBAL_LIST_INIT(admin_verbs_mentor, list(
 	return
 
 /client/proc/hide_verbs()
-	set name = "AdminGLOB.verbs - Hide All"
+	set name = "Adminverbs - Hide All"
 	set category = "Admin"
 
 	remove_admin_verbs()
@@ -381,7 +381,7 @@ GLOBAL_LIST_INIT(admin_verbs_mentor, list(
 	return
 
 /client/proc/show_verbs()
-	set name = "AdminGLOB.verbs - Show"
+	set name = "Adminverbs - Show"
 	set category = "Admin"
 
 	verbs -= /client/proc/show_verbs

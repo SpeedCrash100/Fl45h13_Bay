@@ -290,8 +290,8 @@
 /obj/item/weapon/reagent_containers/syringe/inaprovaline
 	name = "Syringe (inaprovaline)"
 	desc = "Contains inaprovaline - used to stabilize patients."
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 		reagents.add_reagent("inaprovaline", 15)
 		mode = SYRINGE_INJECT
 		update_icon()
@@ -299,8 +299,8 @@
 /obj/item/weapon/reagent_containers/syringe/antitoxin
 	name = "Syringe (anti-toxin)"
 	desc = "Contains anti-toxins."
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 		reagents.add_reagent("anti_toxin", 15)
 		mode = SYRINGE_INJECT
 		update_icon()
@@ -308,8 +308,8 @@
 /obj/item/weapon/reagent_containers/syringe/antiviral
 	name = "Syringe (spaceacillin)"
 	desc = "Contains antiviral agents."
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 		reagents.add_reagent("spaceacillin", 15)
 		mode = SYRINGE_INJECT
 		update_icon()
@@ -317,8 +317,8 @@
 /obj/item/weapon/reagent_containers/syringe/drugs
 	name = "Syringe (drugs)"
 	desc = "Contains aggressive drugs meant for torture."
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 		reagents.add_reagent("space_drugs",  5)
 		reagents.add_reagent("mindbreaker",  5)
 		reagents.add_reagent("cryptobiolin", 5)
@@ -326,8 +326,8 @@
 		update_icon()
 
 /obj/item/weapon/reagent_containers/syringe/ld50_syringe/choral
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 		reagents.add_reagent("chloralhydrate", 60)
 		mode = SYRINGE_INJECT
 		update_icon()
@@ -335,8 +335,8 @@
 /obj/item/weapon/reagent_containers/syringe/steroid
 	name = "Syringe (anabolic steroids)"
 	desc = "Contains drugs for muscle growth."
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 		reagents.add_reagent("adrenaline",5)
 		reagents.add_reagent("hyperzine",10)
 

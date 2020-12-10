@@ -14,8 +14,8 @@
 	icon_state = "bottle-4"
 	reagent = "inaprovaline"
 
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 		reagents.add_reagent("inaprovaline", 60)
 		update_icon()
 
@@ -27,8 +27,8 @@
 	icon_state = "bottle-4"
 	reagent = "anti_toxin"
 
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 		reagents.add_reagent("anti_toxin", 60)
 		update_icon()
 

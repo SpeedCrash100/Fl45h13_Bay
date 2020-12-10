@@ -211,7 +211,7 @@
 	4 - large items - the largest things you can fit in a backpack
 	5 - bulky items - backpacks are this size, for reference
 	6 - human sized objects
-	7 - things that are large enough to contain humans, like closets, but smaller than entire GLOB.turfs
+	7 - things that are large enough to contain humans, like closets, but smaller than entire turfs
 	8 - things that take up an entire turf, like wall girders or door assemblies
 */
 

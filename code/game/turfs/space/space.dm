@@ -35,7 +35,7 @@
 		new_area.contents.Add(src)
 	ChangeTurf(GLOB.using_map.base_floor_type)
 
-// override for space GLOB.turfs, since they should never hide anything
+// override for space turfs, since they should never hide anything
 /turf/space/levelupdate()
 	for(var/obj/O in src)
 		O.hide(0)
@@ -207,7 +207,7 @@
 /turf/space/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_lighting_update = 0)
 	return ..(N, tell_universe, 1)
 
-//Bluespace GLOB.turfs for shuttles and possible future transit use
+//Bluespace turfs for shuttles and possible future transit use
 /turf/space/bluespace
 	name = "bluespace"
 	icon_state = "bluespace"

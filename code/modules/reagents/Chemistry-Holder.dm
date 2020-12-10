@@ -12,7 +12,7 @@
 	my_atom = A
 
 	//I dislike having these here but map-objects are initialised before world/New() is called. >_>
-	if(!GLOB.chemical_reagents_list)
+	if(!GLOB.chemical_reagents_list.len)
 		//Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id
 		var/paths = typesof(/datum/reagent) - /datum/reagent
 		GLOB.chemical_reagents_list = list()
@@ -382,7 +382,7 @@
 		. = trans_to_holder(R, amount, multiplier, copy)
 		R.touch_mob(target)
 
-/datum/reagents/proc/trans_to_turf(var/turf/target, var/amount = 1, var/multiplier = 1, var/copy = 0) // GLOB.turfs don't have any reagents (at least, for now). Just touch it.
+/datum/reagents/proc/trans_to_turf(var/turf/target, var/amount = 1, var/multiplier = 1, var/copy = 0) // turfs don't have any reagents (at least, for now). Just touch it.
 	if(!target || !target.simulated)
 		return
 

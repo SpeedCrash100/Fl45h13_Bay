@@ -1,8 +1,8 @@
 /*
 plot_vector is a helper datum for plotting a path in a straight line towards a target turf.
 This datum converts from world space (turf.x and turf.y) to pixel space, which the datum keeps track of itself. This
-should work with any size GLOB.turfs (i.e. 32x32, 64x64) as it references world.icon_size (note: not actually tested with
-anything other than 32x32 GLOB.turfs).
+should work with any size turfs (i.e. 32x32, 64x64) as it references world.icon_size (note: not actually tested with
+anything other than 32x32 turfs).
 
 setup()
 	This should be called after creating a new instance of a plot_vector datum.
@@ -80,7 +80,7 @@ return_location()
 	// calculate the angle
 	angle = Atan2(dx, dy) + angle_offset
 
-	// and some rounding to stop the increments jumping whole GLOB.turfs - because byond favours certain angles
+	// and some rounding to stop the increments jumping whole turfs - because byond favours certain angles
 	if(angle > -135 && angle < 45)
 		angle = Ceiling(angle)
 	else

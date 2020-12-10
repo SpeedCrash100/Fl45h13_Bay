@@ -125,21 +125,21 @@
 	name = "Universal Enzyme"
 	desc = "Used in cooking various dishes."
 	icon_state = "enzyme"
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 		reagents.add_reagent("enzyme", 50)
 
 /obj/item/weapon/reagent_containers/food/condiment/barbecue
 	name = "Barbecue Sauce"
 	desc = "Barbecue sauce, it's labeled 'sweet and spicy'"
 	icon_state = "barbecue"
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 		reagents.add_reagent("barbecue", 50)
 
 /obj/item/weapon/reagent_containers/food/condiment/sugar
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 		reagents.add_reagent("sugar", 50)
 
 /obj/item/weapon/reagent_containers/food/condiment/small
@@ -155,8 +155,8 @@
 	desc = "Salt. From space oceans, presumably."
 	icon_state = "saltshakersmall"
 	center_of_mass = "x=16;y=9"
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 		reagents.add_reagent("sodiumchloride", 20)
 
 /obj/item/weapon/reagent_containers/food/condiment/small/peppermill
@@ -164,8 +164,8 @@
 	desc = "Often used to flavor food or make people sneeze."
 	icon_state = "peppermillsmall"
 	center_of_mass = "x=16;y=8"
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 		reagents.add_reagent("blackpepper", 20)
 
 /obj/item/weapon/reagent_containers/food/condiment/small/sugar
@@ -173,8 +173,8 @@
 	desc = "Sweetness in a bottle"
 	icon_state = "sugarsmall"
 	center_of_mass = "x=17;y=9"
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 		reagents.add_reagent("sugar", 20)
 
 /obj/item/weapon/reagent_containers/food/condiment/flour
@@ -185,6 +185,6 @@
 	item_state = "flour"
 	on_reagent_change()	return
 	randpixel = 10
-	New()
-		..()
+	Initialize(mapload, ...)
+		. = ..()
 		reagents.add_reagent("flour", 30)

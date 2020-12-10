@@ -6,6 +6,7 @@
 #define ICECREAM_BANANA 6
 #define CONE_WAFFLE 7
 #define CONE_CHOC 8
+#define ICECREAM_SIZE 8 // Update if changed defines
 
 // Ported wholesale from Apollo Station.
 
@@ -64,7 +65,7 @@
 /obj/machinery/icecream_vat/initialize()
 	..()
 	create_reagents(100)
-	while(product_types.len < 6)
+	while(product_types.len < ICECREAM_SIZE)
 		product_types.Add(5)
 	reagents.add_reagent("milk", 5)
 	reagents.add_reagent("flour", 5)
@@ -190,7 +191,8 @@
 	var/ice_creamed = 0
 	var/cone_type
 
-/obj/item/weapon/reagent_containers/food/snacks/icecream/New()
+/obj/item/weapon/reagent_containers/food/snacks/icecream/Initialize(mapload, ...)
+	. = ..()
 	create_reagents(20)
 	reagents.add_reagent("nutriment", 5)
 
@@ -208,3 +210,4 @@
 #undef ICECREAM_BANANA
 #undef CONE_WAFFLE
 #undef CONE_CHOC
+#undef ICECREAM_SIZE

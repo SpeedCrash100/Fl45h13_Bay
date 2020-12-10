@@ -383,7 +383,7 @@
 	for(var/obj/structure/window/W in orange(src, 1))
 		W.update_icon()
 
-//Updates the availabiliy of the rotation GLOB.verbs
+//Updates the availabiliy of the rotation verbs
 /obj/structure/window/proc/update_verbs()
 	if(anchored)
 		verbs -= /obj/structure/window/proc/rotate

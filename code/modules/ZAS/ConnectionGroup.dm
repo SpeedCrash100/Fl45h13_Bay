@@ -11,7 +11,7 @@ Class Vars:
 
 	A - This always holds a zone. In unsimulated edges, it holds the only zone.
 
-	connecting_turfs - This holds a list of connected GLOB.turfs, mainly for the sake of airflow.
+	connecting_turfs - This holds a list of connected turfs, mainly for the sake of airflow.
 
 	coefficent - This is a marker for how many connections are on this edge. Used to determine the ratio of flow.
 
@@ -108,7 +108,7 @@ Class Procs:
 			M:airflow_stun()
 
 		if(M.check_airflow_movable(differential))
-			//Check for things that are in range of the midpoint GLOB.turfs.
+			//Check for things that are in range of the midpoint turfs.
 			var/list/close_turfs = list()
 			for(var/turf/U in connecting_turfs)
 				if(get_dist(M,U) < world.view) close_turfs += U

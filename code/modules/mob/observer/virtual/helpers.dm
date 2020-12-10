@@ -42,7 +42,7 @@
 * Hear Helpers *
 ***************/
 // A mob hears another mob if they have direct line of sight, ignoring turf luminosity.
-// If there is an opaque object beteween the mobs then they cannot hear each other, even if their respective GLOB.turfs can be seen.
+// If there is an opaque object beteween the mobs then they cannot hear each other, even if their respective turfs can be seen.
 // Thus, unlike viewing hearing is communicative. I.e. if Mob A can hear Mob B then Mob B can also hear Mob A.
 
 // Gets the hosts of all the virtual mobs that can hear the given movable atom (or rather, it's virtual mob or turf in that existence order)

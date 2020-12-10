@@ -61,9 +61,9 @@
 			return 1
 	return 0
 
-GLOBAL_LIST_EMPTY(all_antag_types_)
-GLOBAL_LIST_EMPTY(all_antag_spawnpoints_)
-GLOBAL_LIST_EMPTY(antag_names_to_ids_)
+GLOBAL_LIST(all_antag_types_)
+GLOBAL_LIST(all_antag_spawnpoints_)
+GLOBAL_LIST(antag_names_to_ids_)
 
 /proc/all_antag_types()
 	populate_antag_type_list()

@@ -26,8 +26,8 @@
 	else
 		return ..()
 
-/obj/item/weapon/reagent_containers/glass/paint/New()
-	..()
+/obj/item/weapon/reagent_containers/glass/paint/Initialize(mapload, ...)
+	. = ..()
 	if(paint_hex && length(paint_hex) > 0)
 		reagents.add_reagent("paint", volume, paint_hex)
 

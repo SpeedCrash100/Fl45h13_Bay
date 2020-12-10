@@ -148,7 +148,7 @@
 			eshot_sound = 'sound/weapons/Laser.ogg'
 			egun = 1
 
-GLOBAL_LIST_EMPTY(turret_icons)
+GLOBAL_LIST(turret_icons)
 /obj/machinery/porta_turret/update_icon()
 	if(!GLOB.turret_icons)
 		GLOB.turret_icons = list()

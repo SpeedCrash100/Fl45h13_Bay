@@ -41,7 +41,7 @@
 		T.overlays.Remove(unsorted_overlays)
 		T.zone = null
 
-	to_chat(usr, "\[4/5\] - All GLOB.turfs reset to roundstart values.")
+	to_chat(usr, "\[4/5\] - All turfs reset to roundstart values.")
 
 	qdel(GLOB.air_master)
 	GLOB.air_master = new

@@ -5,7 +5,7 @@ GLOBAL_VAR_INIT(universe_has_ended, 0)
 	name = "Supermatter Cascade"
 	desc = "Unknown harmonance affecting universal substructure, converting nearby matter to supermatter."
 
-	decay_rate = 5 // 5% chance of a turf decaying on lighting update/airflow (there's no actual tick for GLOB.turfs)
+	decay_rate = 5 // 5% chance of a turf decaying on lighting update/airflow (there's no actual tick for turfs)
 
 /datum/universal_state/supermatter_cascade/OnShuttleCall(var/mob/user)
 	if(user)

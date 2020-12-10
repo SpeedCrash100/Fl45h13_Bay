@@ -21,7 +21,7 @@ GLOBAL_LIST_EMPTY(side_effects)				//list of all medical sideeffects types by th
 GLOBAL_LIST_EMPTY(mechas_list)				//list of all mechs. Used by hostile mobs target tracking.
 GLOBAL_LIST_EMPTY(joblist)					//list of all jobstypes, minus borg and AI
 
-GLOBAL_LIST_EMPTY(turfs)						//list of all GLOB.turfs
+GLOBAL_LIST_EMPTY(turfs)						//list of all turfs
 
 #define all_genders_define_list list(MALE,FEMALE,PLURAL,NEUTER)
 #define all_genders_text_list list("Male","Female","Plural","Neuter")
@@ -33,7 +33,7 @@ GLOBAL_LIST_INIT(language_keys, new /list(0))					// Table of say codes for all 
 GLOBAL_LIST_INIT(whitelisted_species, list(SPECIES_HUMAN)) // Species that require a whitelist check.
 GLOBAL_LIST_INIT(playable_species, list(SPECIES_HUMAN))    // A list of ALL playable species, whitelisted, latejoin or otherwise.
 
-GLOBAL_LIST_EMPTY(mannequins_)
+GLOBAL_LIST(mannequins_)
 // Posters
 GLOBAL_LIST_EMPTY(poster_designs)
 

@@ -69,8 +69,8 @@
 #define INCLUDEUSER		0x40	//does the spell include the caster in its target selection?
 #define SELECTABLE		0x80	//can you select each target for the spell?
 //AOE spells
-#define IGNOREDENSE		0x40	//are dense GLOB.turfs ignored in selection?
-#define IGNORESPACE		0x80	//are space GLOB.turfs ignored in selection?
+#define IGNOREDENSE		0x40	//are dense turfs ignored in selection?
+#define IGNORESPACE		0x80	//are space turfs ignored in selection?
 //End split flags
 #define CONSTRUCT_CHECK	0x100	//used by construct spells - checks for nullrods
 #define NO_BUTTON		0x200	//spell won't show up in the HUD with this

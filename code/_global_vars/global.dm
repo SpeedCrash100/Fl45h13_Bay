@@ -21,7 +21,7 @@ GLOBAL_LIST_EMPTY(listening_objects) // List of objects that need to be able to 
 
 GLOBAL_DATUM_INIT(universe, /datum/universal_state, new)
 
-GLOBAL_LIST_EMPTY(global_map)
+GLOBAL_LIST(global_map)
 
 // Noises made when hit while typing.
 GLOBAL_LIST_INIT(hit_appends, list("-OOF", "-ACK", "-UGH", "-HRNK", "-HURGH", "-GLORF"))
@@ -172,4 +172,4 @@ GLOBAL_DATUM_INIT(global_headset, /obj/item/device/radio/announcer/subspace, new
 
 GLOBAL_LIST_INIT(station_departments, list("Command", "Medical", "Engineering", "Science", "Security", "Cargo", "Civilian"))
 
-GLOBAL_LIST_EMPTY(registered_macros_by_ckey_)
+GLOBAL_LIST(registered_macros_by_ckey_)

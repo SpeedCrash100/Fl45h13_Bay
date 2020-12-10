@@ -116,7 +116,10 @@ Class Procs:
 	var/clickvol = 40		// sound played on succesful interface use
 
 /obj/machinery/New(l, d=0)
-	..(l)
+	..(l, d)
+
+/obj/machinery/Initialize(mapload, var/d)
+	. = ..()
 	if(d)
 		set_dir(d)
 	if(!GLOB.machinery_sort_required && GLOB.ticker)

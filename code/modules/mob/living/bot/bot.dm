@@ -367,7 +367,7 @@
 // Used for A-star pathfinding
 
 
-// Returns the surrounding cardinal GLOB.turfs with open links
+// Returns the surrounding cardinal turfs with open links
 // Including through doors openable with the ID
 /turf/proc/CardinalTurfsWithAccess(var/obj/item/weapon/card/id/ID)
 	var/L[] = new()

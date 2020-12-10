@@ -260,7 +260,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 					"Eyebot" = "eyebot-medical"
 					)
 
-/obj/item/weapon/robot_module/medical/crisis/New()
+/obj/item/weapon/robot_module/medical/crisis/Initialize(mapload, ...)
 	src.modules += new /obj/item/weapon/crowbar(src)
 	src.modules += new /obj/item/device/flash(src)
 	src.modules += new /obj/item/borg/sight/hud/med(src)
@@ -297,7 +297,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	src.modules += B
 	src.modules += S
 
-	..()
+	return ..()
 
 /obj/item/weapon/robot_module/medical/crisis/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
 	var/obj/item/weapon/reagent_containers/syringe/S = locate() in src.modules
@@ -492,7 +492,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 					"Eyebot" = "eyebot-standard"
 					)
 
-/obj/item/weapon/robot_module/clerical/butler/New()
+/obj/item/weapon/robot_module/clerical/butler/Initialize(mapload, ...)
 	src.modules += new /obj/item/device/flash(src)
 	src.modules += new /obj/item/weapon/gripper/service(src)
 	src.modules += new /obj/item/weapon/reagent_containers/glass/bucket(src)
@@ -523,7 +523,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	R.my_atom = src.emag
 	R.add_reagent("beer2", 50)
 	src.emag.name = "Mickey Finn's Special Brew"
-	..()
+	return..()
 
 /obj/item/weapon/robot_module/clerical/general
 	name = "clerical robot module"

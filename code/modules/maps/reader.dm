@@ -159,8 +159,8 @@ GLOBAL_DATUM(_preloader, /dmm_suite/preloader)
 
 	//The next part of the code assumes there's ALWAYS an /area AND a /turf on a given tile
 
-	//in case of multiples GLOB.turfs on one tile,
-	//will contains the images of all underlying GLOB.turfs, to simulate the DMM multiple tiles piling
+	//in case of multiples turfs on one tile,
+	//will contains the images of all underlying turfs, to simulate the DMM multiple tiles piling
 	var/list/turfs_underlays = list()
 
 	//first instance the /area and remove it from the members list
@@ -294,7 +294,7 @@ GLOBAL_DATUM(_preloader, /dmm_suite/preloader)
 
 	return to_return
 
-//simulates the DM multiple GLOB.turfs on one tile underlaying
+//simulates the DM multiple turfs on one tile underlaying
 /dmm_suite/proc/add_underlying_turf(var/turf/placed,var/turf/underturf, var/list/turfs_underlays)
 	if(underturf.density)
 		placed.set_density(1)

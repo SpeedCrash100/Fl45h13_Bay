@@ -368,7 +368,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	. = list()	// this will be a list of all connected power objects
 	var/turf/T
 
-	// Handle standard cables in adjacent GLOB.turfs
+	// Handle standard cables in adjacent turfs
 	for(var/cable_dir in list(d1, d2))
 		if(cable_dir == 0)
 			continue

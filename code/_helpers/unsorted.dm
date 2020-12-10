@@ -124,7 +124,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 	if(destination)//If there is a destination.
 		if(errorx||errory)//If errorx or y were specified.
-			var/destination_list[] = list()//To add GLOB.turfs to list.
+			var/destination_list[] = list()//To add turfs to list.
 			//destination_list = new()
 			/*This will draw a block around the target turf, given what the error is.
 			Specifying the values above will basically draw a different sort of block.
@@ -227,7 +227,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	return line
 
 #define LOCATE_COORDS(X, Y, Z) locate(between(1, X, world.maxx), between(1, Y, world.maxy), Z)
-/proc/getcircle(turf/center, var/radius) //Uses a fast Bresenham rasterization algorithm to return the GLOB.turfs in a thin circle.
+/proc/getcircle(turf/center, var/radius) //Uses a fast Bresenham rasterization algorithm to return the turfs in a thin circle.
 	if(!radius) return list(center)
 
 	var/x = 0
@@ -612,7 +612,7 @@ proc/GaussRandRound(var/sigma,var/roundto)
 	return areas
 
 //Takes: Area type as text string or as typepath OR an instance of the area.
-//Returns: A list of all atoms	(objs, GLOB.turfs, mobs) in areas of that type of that type in the world.
+//Returns: A list of all atoms	(objs, turfs, mobs) in areas of that type of that type in the world.
 /proc/get_area_all_atoms(var/areatype)
 	if(!areatype) return null
 	if(istext(areatype)) areatype = text2path(areatype)
@@ -650,7 +650,7 @@ proc/GaussRandRound(var/sigma,var/roundto)
 	var/trg_min_x = A.x
 	var/trg_min_y = A.y
 
-	//obtain all the source GLOB.turfs and their relative coords,
+	//obtain all the source turfs and their relative coords,
 	//then use that to find corresponding targets
 	for(var/turf/source in turfs_src)
 		if(check_solid && !source.is_solid_structure())
@@ -665,7 +665,7 @@ proc/GaussRandRound(var/sigma,var/roundto)
 
 		transport_turf_contents(source, target, direction)
 
-	//change the old GLOB.turfs
+	//change the old turfs
 	for(var/turf/source in turfs_src)
 		if(turftoleave)
 			source.ChangeTurf(turftoleave, 1, 1)
@@ -722,7 +722,7 @@ proc/DuplicateObject(obj/original, var/perfectcopy = 0 , var/sameloc = 0)
 	//       Movement based on lower left corner. Tiles that do not fit
 	//		 into the new area will not be moved.
 
-	// Does *not* affect gases etc; copied GLOB.turfs will be changed via ChangeTurf, and the dir, icon, and icon_state copied. All other vars will remain default.
+	// Does *not* affect gases etc; copied turfs will be changed via ChangeTurf, and the dir, icon, and icon_state copied. All other vars will remain default.
 
 	if(!A || !src) return 0
 

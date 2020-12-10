@@ -139,7 +139,7 @@
 			if(chained)
 				overlays = "chain_s1"
 			visible_message("<span class='notice'>The singularity has shrunk to a rather pitiful size.</span>")
-		if (STAGE_TWO) //1 to 3 does not check for the GLOB.turfs if you put the gens right next to a 1x1 then its going to eat them.
+		if (STAGE_TWO) //1 to 3 does not check for the turfs if you put the gens right next to a 1x1 then its going to eat them.
 			name = "gravitational singularity"
 			desc = "A gravitational singularity."
 			current_size = STAGE_TWO

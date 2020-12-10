@@ -10,7 +10,9 @@
 	var/obj/item/weapon/rig/wearing_rig // This is very not good, but it's much much better than calling get_rig() every update_canmove() call.
 
 /mob/living/carbon/human/New(var/new_loc, var/new_species = null)
+	..()
 
+/mob/living/carbon/human/Initialize(mapload, var/new_species)
 	if(!dna)
 		dna = new /datum/dna(null)
 		// Species name is handled by set_species()
@@ -39,7 +41,7 @@
 	hud_list[STATUS_HUD_OOC]  = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudhealthy")
 
 	GLOB.human_mob_list |= src
-	..()
+	. = ..()
 
 	if(dna)
 		dna.ready_dna(src)

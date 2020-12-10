@@ -12,8 +12,8 @@
 	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
 	title = "Repairs and Construction"
 
-/obj/item/weapon/book/manual/engineering_construction/New()
-	..()
+/obj/item/weapon/book/manual/engineering_construction/Initialize(mapload, ...)
+	. = ..()
 	dat = {"
 
 		<html><head>
@@ -33,8 +33,8 @@
 	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
 	title = "Particle Accelerator User's Guide"
 
-/obj/item/weapon/book/manual/engineering_particle_accelerator/New()
-	..()
+/obj/item/weapon/book/manual/engineering_particle_accelerator/Initialize(mapload, ...)
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -80,8 +80,8 @@
 	author = "Central Engineering Division"
 	title = "Supermatter Engine Operating Manual"
 
-/obj/item/weapon/book/manual/supermatter_engine/New()
-	..()
+/obj/item/weapon/book/manual/supermatter_engine/Initialize(mapload, ...)
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -155,8 +155,8 @@
 	author = "Cindy Crawfish"
 	title = "R-UST Operating Manual"
 
-/obj/item/weapon/book/manual/rust_engine/New()
-	..()
+/obj/item/weapon/book/manual/rust_engine/Initialize(mapload, ...)
+	. = ..()
 	name = "<s>WetSkrell Magazine, March 2553</s> [name]"
 	dat = {"<html>
 				<head>
@@ -197,8 +197,8 @@
 	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
 	title = "Hacking"
 
-/obj/item/weapon/book/manual/engineering_hacking/New()
-	..()
+/obj/item/weapon/book/manual/engineering_hacking/Initialize(mapload, ...)
+	. = ..()
 	dat = {"
 
 		<html><head>
@@ -754,8 +754,8 @@
 	author = "The Company"
 	title = "Corporate Regulations"
 
-/obj/item/weapon/book/manual/security_space_law/New()
-	..()
+/obj/item/weapon/book/manual/security_space_law/Initialize(mapload, ...)
+	. = ..()
 	dat = {"
 
 		<html><head>
@@ -777,8 +777,8 @@
 	author = "The Sol Central Government"
 	title = "Sol Central Government Law"
 
-/obj/item/weapon/book/manual/solgov_law/New()
-	..()
+/obj/item/weapon/book/manual/solgov_law/Initialize(mapload, ...)
+	. = ..()
 	dat = {"
 
 		<html><head>
@@ -800,8 +800,8 @@
 	author = "The Sol Central Government"
 	title = "The Sol Code of Military Justice"
 
-/obj/item/weapon/book/manual/military_law/New()
-	..()
+/obj/item/weapon/book/manual/military_law/Initialize(mapload, ...)
+	. = ..()
 	dat = {"
 
 		<html><head>
@@ -822,8 +822,8 @@
 	author = "NanoTrasen"
 	title = "NanoTrasen Regulations"
 
-/obj/item/weapon/book/manual/nt_regs/New()
-	..()
+/obj/item/weapon/book/manual/nt_regs/Initialize(mapload, ...)
+	. = ..()
 	dat = {"
 
 		<html><head>
@@ -845,8 +845,8 @@
 	author = "Medical Department"
 	title = "Medical Diagnostics Manual"
 
-/obj/item/weapon/book/manual/medical_diagnostics_manual/New()
-	..()
+/obj/item/weapon/book/manual/medical_diagnostics_manual/Initialize(mapload, ...)
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -892,8 +892,8 @@
 	author = "Engineering Encyclopedia"
 	title = "Engineering Textbook"
 
-/obj/item/weapon/book/manual/engineering_guide/New()
-	..()
+/obj/item/weapon/book/manual/engineering_guide/Initialize(mapload, ...)
+	. = ..()
 	dat = {"
 
 		<html><head>

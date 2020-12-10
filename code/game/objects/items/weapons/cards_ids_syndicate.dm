@@ -187,7 +187,7 @@
 	// Always update the UI, or buttons will spin indefinitely
 	GLOB.nanomanager.update_uis(src)
 
-GLOBAL_LIST_EMPTY(id_card_states)
+GLOBAL_LIST(id_card_states)
 
 /proc/id_card_states()
 	if(!GLOB.id_card_states)

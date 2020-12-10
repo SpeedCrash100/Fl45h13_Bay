@@ -44,6 +44,9 @@
 /// Create a typed list global with an initializer expression
 #define GLOBAL_LIST_INIT_TYPED(X, Typepath, InitValue) GLOBAL_RAW(/list##Typepath/X); GLOBAL_MANAGED(X, InitValue)
 
+/// Create a typed list global with an null
+#define GLOBAL_LIST_TYPED(X, Typepath) GLOBAL_RAW(/list##Typepath/X); GLOBAL_MANAGED(X, null)
+
 /// Create a typed list global that is initialized as an empty list
 #define GLOBAL_LIST_EMPTY_TYPED(X, Typepath) GLOBAL_LIST_INIT_TYPED(X, Typepath, list())
 

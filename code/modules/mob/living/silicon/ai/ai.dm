@@ -236,7 +236,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			custom_sprite = 1
 			selected_sprite = new/datum/ai_icon("Custom", "[src.ckey]-ai", "4", "[ckey]-ai-crash", "#FFFFFF", "#FFFFFF", "#FFFFFF")
 		else
-			selected_sprite = GLOB.default_ai_icon
+			selected_sprite = new GLOB.DEFAULT_AI_ICON_TYPE
 	updateicon()
 
 /mob/living/silicon/ai/pointed(atom/A as mob|obj|turf in view())
@@ -650,7 +650,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	to_chat(src, "<span class='notice'>Multitool mode: [multitool_mode ? "E" : "Dise"]ngaged</span>")
 
 /mob/living/silicon/ai/updateicon()
-	if(!selected_sprite) selected_sprite = GLOB.default_ai_icon
+	if(!selected_sprite) selected_sprite = new GLOB.DEFAULT_AI_ICON_TYPE
 
 	if(stat == DEAD)
 		icon_state = selected_sprite.dead_icon

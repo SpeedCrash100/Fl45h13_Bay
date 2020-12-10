@@ -109,8 +109,8 @@
 /obj/item/ammo_magazine/box
 	w_class = ITEM_SIZE_NORMAL
 
-/obj/item/ammo_magazine/New()
-	..()
+/obj/item/ammo_magazine/Initialize(mapload, ...)
+	. = ..()
 	if(multiple_sprites)
 		initialize_magazine_icondata(src)
 
