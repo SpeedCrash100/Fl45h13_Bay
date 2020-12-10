@@ -1,4 +1,4 @@
-GLOBAL_VAR_INIT(create_object_html, null) 
+GLOBAL_VAR_INIT(create_object_html, null)
 
 /datum/admins/proc/create_object(var/mob/user)
 	if (!GLOB.create_object_html)

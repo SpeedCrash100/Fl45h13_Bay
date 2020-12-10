@@ -27,7 +27,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 	. = ..()
 	GLOB.allfaxes += src
 
-	if(admin_departments.len == 0) 
+	if(admin_departments.len == 0)
 		admin_departments = list("[GLOB.using_map.boss_name]", "Colonial Marshal Service", "[GLOB.using_map.boss_short] Supply") + GLOB.using_map.map_admin_faxes
 	if(!destination) destination = "[GLOB.using_map.boss_name]"
 	if( !(("[department]" in GLOB.alldepartments) || ("[department]" in admin_departments)) )

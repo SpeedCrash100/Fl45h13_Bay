@@ -1,4 +1,4 @@
-GLOBAL_LIST_INIT(default_internal_channels, 
+GLOBAL_LIST_INIT(default_internal_channels,
 	list(
 		num2text(GLOB.PUB_FREQ) = list(),
 		num2text(GLOB.AI_FREQ)  = list(GLOB.access_synth),

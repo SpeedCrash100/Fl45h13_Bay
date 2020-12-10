@@ -1,4 +1,4 @@
-GLOBAL_LIST_EMPTY(flooring_types) 
+GLOBAL_LIST_EMPTY(flooring_types)
 /proc/get_flooring_data(var/flooring_path)
 	if(!GLOB.flooring_types)
 		GLOB.flooring_types = list()

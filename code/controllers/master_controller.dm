@@ -4,13 +4,13 @@
 
 GLOBAL_DATUM(master_controller, /datum/controller/game_controller)
 
-GLOBAL_VAR_INIT(controller_iteration, 0) 
-GLOBAL_VAR_INIT(last_tick_duration, 0) 
+GLOBAL_VAR_INIT(controller_iteration, 0)
+GLOBAL_VAR_INIT(last_tick_duration, 0)
 
-GLOBAL_VAR_INIT(air_processing_killed, 0) 
-GLOBAL_VAR_INIT(pipe_processing_killed, 0) 
+GLOBAL_VAR_INIT(air_processing_killed, 0)
+GLOBAL_VAR_INIT(pipe_processing_killed, 0)
 
-GLOBAL_VAR_INIT(initialization_stage, 0) 
+GLOBAL_VAR_INIT(initialization_stage, 0)
 
 datum/controller/game_controller
 	var/list/shuttle_list	                    // For debugging and VV

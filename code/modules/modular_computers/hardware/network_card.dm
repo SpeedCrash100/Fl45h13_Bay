@@ -1,4 +1,4 @@
-GLOBAL_VAR_INIT(ntnet_card_uid, 1) 
+GLOBAL_VAR_INIT(ntnet_card_uid, 1)
 
 /obj/item/weapon/computer_hardware/network_card/
 	name = "basic NTNet network card"

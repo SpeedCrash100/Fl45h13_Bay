@@ -21,7 +21,7 @@
 /********
 * photo *
 ********/
-GLOBAL_VAR_INIT(photo_count, 0) 
+GLOBAL_VAR_INIT(photo_count, 0)
 
 /obj/item/weapon/photo
 	name = "photo"

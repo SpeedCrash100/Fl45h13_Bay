@@ -34,7 +34,7 @@
 		return I
 	return GLOB.uplink.items_assoc[/datum/uplink_item/item/stealthy_weapons/soap]
 
-GLOBAL_LIST_EMPTY(uplink_random_selections_) 
+GLOBAL_LIST_EMPTY(uplink_random_selections_)
 /proc/get_uplink_random_selection_by_type(var/uplist_selection_type)
 	if(!GLOB.uplink_random_selections_)
 		GLOB.uplink_random_selections_ = init_subtypes(/datum/uplink_random_selection)

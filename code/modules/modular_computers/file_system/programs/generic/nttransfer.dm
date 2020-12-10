@@ -1,4 +1,4 @@
-GLOBAL_VAR_INIT(nttransfer_uid, 0) 
+GLOBAL_VAR_INIT(nttransfer_uid, 0)
 
 /datum/computer_file/program/nttransfer
 	filename = "nttransfer"

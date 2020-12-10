@@ -1,4 +1,4 @@
-GLOBAL_VAR_INIT(CMinutes, null) 
+GLOBAL_VAR_INIT(CMinutes, null)
 GLOBAL_DATUM(Banlist, /savefile)
 
 /proc/CheckBan(var/ckey, var/id, var/address)

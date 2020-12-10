@@ -42,7 +42,7 @@ GLOBAL_DATUM(cargo_supply_packs, /decl/hierarchy/supply_pack)	// Non-category su
 //NEW NOTE: Do NOT set the price of any crates below 7 points. Doing so allows infinite points.
 */
 
-GLOBAL_LIST_EMPTY(supply_methods_) 
+GLOBAL_LIST_EMPTY(supply_methods_)
 /proc/get_supply_method(var/method_type)
 	if(!GLOB.supply_methods_)
 		GLOB.supply_methods_ = list()

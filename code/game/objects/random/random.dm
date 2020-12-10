@@ -1073,7 +1073,7 @@ something, make sure it's not in one of the other lists.*/
 /*
 	Selects one spawn point out of a group of points with the same ID and asks it to generate its items
 */
-GLOBAL_LIST_EMPTY(multi_point_spawns) 
+GLOBAL_LIST_EMPTY(multi_point_spawns)
 /obj/random_multi
 	name = "random object spawn point"
 	desc = "This item type is used to spawn random objects at round-start. Only one spawn point for a given group id is selected."

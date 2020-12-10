@@ -27,17 +27,17 @@ GLOBAL_LIST_EMPTY(global_map)
 GLOBAL_LIST_INIT(hit_appends, list("-OOF", "-ACK", "-UGH", "-HRNK", "-HURGH", "-GLORF"))
 
 
-GLOBAL_VAR_INIT(diary, null) 
-GLOBAL_VAR_INIT(href_logfile, null) 
-GLOBAL_VAR_INIT(game_version, "Baystation12") 
-GLOBAL_VAR_INIT(changelog_hash, "") 
-GLOBAL_VAR_INIT(game_year, (text2num(time2text(world.realtime, "YYYY")) + 544)) 
-GLOBAL_VAR_INIT(station_name, "Baystation12") 
+GLOBAL_VAR_INIT(diary, null)
+GLOBAL_VAR_INIT(href_logfile, null)
+GLOBAL_VAR_INIT(game_version, "Baystation12")
+GLOBAL_VAR_INIT(changelog_hash, "")
+GLOBAL_VAR_INIT(game_year, (text2num(time2text(world.realtime, "YYYY")) + 544))
+GLOBAL_VAR_INIT(station_name, "Baystation12")
 
-GLOBAL_VAR_INIT(round_progressing, 1) 
+GLOBAL_VAR_INIT(round_progressing, 1)
 GLOBAL_VAR_INIT(master_mode, "extended") // "extended"
-GLOBAL_VAR_INIT(secondary_mode, "extended") 
-GLOBAL_VAR_INIT(tertiary_mode, "extended") 
+GLOBAL_VAR_INIT(secondary_mode, "extended")
+GLOBAL_VAR_INIT(tertiary_mode, "extended")
 GLOBAL_VAR_INIT(secret_force_mode, "secret") // if this is anything but "secret", the secret rotation will forceably choose this mode.
 
 GLOBAL_VAR_INIT(hostName, null) //only here until check @ code\modules\ghosttrap\trap.dm:112 is fixed
@@ -92,11 +92,11 @@ GLOBAL_DATUM(sun, /datum/sun)
 
 GLOBAL_LIST_EMPTY(powernets)
 
-GLOBAL_VAR_INIT(Debug2, 0) 
+GLOBAL_VAR_INIT(Debug2, 0)
 
-GLOBAL_VAR_INIT(gravity_is_on, 1) 
+GLOBAL_VAR_INIT(gravity_is_on, 1)
 
-GLOBAL_VAR_INIT(join_motd, null) 
+GLOBAL_VAR_INIT(join_motd, null)
 
 GLOBAL_DATUM_INIT(nanomanager, /datum/nanomanager, new()) // NanoManager, the manager for Nano UIs.
 GLOBAL_DATUM_INIT(event_manager, /datum/event_manager, new()) // Event Manager, the manager for events.
@@ -124,7 +124,7 @@ GLOBAL_REAL_VAR(forumsqlpass) = ""
 GLOBAL_REAL_VAR(forum_activated_group) = "2"
 GLOBAL_REAL_VAR(forum_authenticated_group) = "10" // For FTP requests. (i.e. downloading runtime logs.)
 // However it'd be ok to use for accessing attack logs and such too, which are even laggier.
-GLOBAL_VAR_INIT(fileaccess_timer, 0) 
+GLOBAL_VAR_INIT(fileaccess_timer, 0)
 GLOBAL_VAR_INIT(custom_event_msg, null) // Database connections. A connection is established on world creation.
 // Ideally, the connection dies when the server restarts (After feedback logging.).
 GLOBAL_DATUM_INIT(dbcon, /DBConnection, new()) // Feedback    database (New database)
@@ -172,4 +172,4 @@ GLOBAL_DATUM_INIT(global_headset, /obj/item/device/radio/announcer/subspace, new
 
 GLOBAL_LIST_INIT(station_departments, list("Command", "Medical", "Engineering", "Science", "Security", "Cargo", "Civilian"))
 
-GLOBAL_LIST_EMPTY(registered_macros_by_ckey_) 
+GLOBAL_LIST_EMPTY(registered_macros_by_ckey_)

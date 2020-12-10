@@ -23,7 +23,7 @@
 
 */
 GLOBAL_VAR_INIT(eventchance, 10) // Percent chance per 5 minutes.
-GLOBAL_VAR_INIT(hadevent, 0) 
+GLOBAL_VAR_INIT(hadevent, 0)
 
 /proc/appendicitis()
 	for(var/mob/living/carbon/human/H in shuffle(GLOB.living_mob_list_))

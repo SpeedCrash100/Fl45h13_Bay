@@ -161,7 +161,7 @@
 	if(GLOB.config.ert_admin_call_only) return 1
 	return GLOB.ticker.mode && GLOB.ticker.mode.ert_disabled
 
-GLOBAL_VAR_INIT(maint_all_access, 0) 
+GLOBAL_VAR_INIT(maint_all_access, 0)
 
 /proc/make_maint_all_access()
 	GLOB.maint_all_access = 1

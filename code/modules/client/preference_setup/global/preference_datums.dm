@@ -1,6 +1,6 @@
-GLOBAL_LIST_EMPTY(_client_preferences) 
-GLOBAL_LIST_EMPTY(_client_preferences_by_key) 
-GLOBAL_LIST_EMPTY(_client_preferences_by_type) 
+GLOBAL_LIST_EMPTY(_client_preferences)
+GLOBAL_LIST_EMPTY(_client_preferences_by_key)
+GLOBAL_LIST_EMPTY(_client_preferences_by_type)
 
 /proc/get_client_preferences()
 	if(!GLOB._client_preferences)

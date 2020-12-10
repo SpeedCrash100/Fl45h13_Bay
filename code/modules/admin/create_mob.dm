@@ -1,4 +1,4 @@
-GLOBAL_VAR_INIT(create_mob_html, null) 
+GLOBAL_VAR_INIT(create_mob_html, null)
 /datum/admins/proc/create_mob(var/mob/user)
 	if (!GLOB.create_mob_html)
 		var/mobjs = null

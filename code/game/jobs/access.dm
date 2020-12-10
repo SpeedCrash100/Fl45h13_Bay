@@ -103,28 +103,28 @@ GLOBAL_LIST_EMPTY(priv_all_access)
 
 	return GLOB.priv_all_access.Copy()
 
-GLOBAL_LIST_EMPTY(priv_station_access) 
+GLOBAL_LIST_EMPTY(priv_station_access)
 /proc/get_all_station_access()
 	if(!GLOB.priv_station_access)
 		GLOB.priv_station_access = get_access_ids(ACCESS_TYPE_STATION)
 
 	return GLOB.priv_station_access.Copy()
 
-GLOBAL_LIST_EMPTY(priv_centcom_access) 
+GLOBAL_LIST_EMPTY(priv_centcom_access)
 /proc/get_all_centcom_access()
 	if(!GLOB.priv_centcom_access)
 		GLOB.priv_centcom_access = get_access_ids(ACCESS_TYPE_CENTCOM)
 
 	return GLOB.priv_centcom_access.Copy()
 
-GLOBAL_LIST_EMPTY(priv_syndicate_access) 
+GLOBAL_LIST_EMPTY(priv_syndicate_access)
 /proc/get_all_syndicate_access()
 	if(!GLOB.priv_syndicate_access)
 		GLOB.priv_syndicate_access = get_access_ids(ACCESS_TYPE_SYNDICATE)
 
 	return GLOB.priv_syndicate_access.Copy()
 
-GLOBAL_LIST_EMPTY(priv_region_access) 
+GLOBAL_LIST_EMPTY(priv_region_access)
 /proc/get_region_accesses(var/code)
 	if(code == ACCESS_REGION_ALL)
 		return get_all_station_access()

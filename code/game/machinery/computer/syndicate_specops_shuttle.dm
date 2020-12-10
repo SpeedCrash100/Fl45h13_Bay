@@ -1,12 +1,12 @@
 //Config stuff
 #define SYNDICATE_ELITE_MOVETIME 600	//Time to station is milliseconds. 60 seconds, enough time for everyone to be on the shuttle before it leaves.
 
-GLOBAL_VAR_INIT(syndicate_elite_shuttle_moving_to_station, 0) 
-GLOBAL_VAR_INIT(syndicate_elite_shuttle_moving_to_mothership, 0) 
-GLOBAL_VAR_INIT(syndicate_elite_shuttle_at_station, 0) 
-GLOBAL_VAR_INIT(syndicate_elite_shuttle_can_send, 1) 
-GLOBAL_VAR_INIT(syndicate_elite_shuttle_time, 0) 
-GLOBAL_VAR_INIT(syndicate_elite_shuttle_timeleft, 0) 
+GLOBAL_VAR_INIT(syndicate_elite_shuttle_moving_to_station, 0)
+GLOBAL_VAR_INIT(syndicate_elite_shuttle_moving_to_mothership, 0)
+GLOBAL_VAR_INIT(syndicate_elite_shuttle_at_station, 0)
+GLOBAL_VAR_INIT(syndicate_elite_shuttle_can_send, 1)
+GLOBAL_VAR_INIT(syndicate_elite_shuttle_time, 0)
+GLOBAL_VAR_INIT(syndicate_elite_shuttle_timeleft, 0)
 
 /obj/machinery/computer/syndicate_elite_shuttle
 	name = "elite syndicate squad shuttle control console"

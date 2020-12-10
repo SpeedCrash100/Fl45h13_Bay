@@ -1,6 +1,6 @@
 GLOBAL_DATUM(air_master, /datum/controller/air_system)
 
-GLOBAL_VAR_INIT(tick_multiplier, 2) 
+GLOBAL_VAR_INIT(tick_multiplier, 2)
 
 /*
 

@@ -29,8 +29,8 @@
 	return wtime + (time_offset + wusage) * world.tick_lag
 
 GLOBAL_VAR(roundstart_hour)
-GLOBAL_VAR_INIT(station_date, "") 
-GLOBAL_VAR_INIT(next_station_date_change, 1 DAY) 
+GLOBAL_VAR_INIT(station_date, "")
+GLOBAL_VAR_INIT(next_station_date_change, 1 DAY)
 
 #define duration2stationtime(time) time2text(station_time_in_ticks + time, "hh:mm")
 #define worldtime2stationtime(time) time2text(GLOB.roundstart_hour HOURS + time, "hh:mm")
@@ -66,9 +66,9 @@ proc/isDay(var/month, var/day)
 		//else
 			//return 1
 
-GLOBAL_VAR_INIT(next_duration_update, 0) 
-GLOBAL_VAR_INIT(last_round_duration, 0) 
-GLOBAL_VAR_INIT(round_start_time, 0) 
+GLOBAL_VAR_INIT(next_duration_update, 0)
+GLOBAL_VAR_INIT(last_round_duration, 0)
+GLOBAL_VAR_INIT(round_start_time, 0)
 
 /hook/roundstart/proc/start_timer()
 	GLOB.round_start_time = world.time
@@ -101,8 +101,8 @@ GLOBAL_VAR_INIT(round_start_time, 0)
 	GLOB.roundstart_hour = pick(2,7,12,17)
 	return 1
 
-GLOBAL_VAR_INIT(midnight_rollovers, 0) 
-GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0) 
+GLOBAL_VAR_INIT(midnight_rollovers, 0)
+GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
 /proc/update_midnight_rollover()
 	if (world.timeofday < GLOB.rollovercheck_last_timeofday) //TIME IS GOING BACKWARDS!
 		return GLOB.midnight_rollovers++

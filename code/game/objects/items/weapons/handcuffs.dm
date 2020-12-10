@@ -96,7 +96,7 @@
 	target.equip_to_slot(cuffs,slot_handcuffed)
 	return 1
 
-GLOBAL_VAR_INIT(last_chew, 0) 
+GLOBAL_VAR_INIT(last_chew, 0)
 /mob/living/carbon/human/RestrainedClickOn(var/atom/A)
 	if (A != src) return ..()
 	if (GLOB.last_chew + 26 > world.time) return

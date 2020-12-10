@@ -17,9 +17,9 @@
 #define RCS_MESSAUTH 7	// Authentication before sending
 #define RCS_ANNOUNCE 8	// Send announcement
 
-GLOBAL_VAR_INIT(req_console_assistance, list()) 
-GLOBAL_VAR_INIT(req_console_supplies, list()) 
-GLOBAL_VAR_INIT(req_console_information, list()) 
+GLOBAL_VAR_INIT(req_console_assistance, list())
+GLOBAL_VAR_INIT(req_console_supplies, list())
+GLOBAL_VAR_INIT(req_console_information, list())
 GLOBAL_LIST_EMPTY_TYPED(allConsoles, /obj/machinery/requests_console)
 
 /obj/machinery/requests_console

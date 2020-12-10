@@ -185,7 +185,7 @@
 			qdel(src)
 
 GLOBAL_VAR_CONST(MAX_CHICKENS, 50)
-GLOBAL_VAR_INIT(chicken_count, 0) 
+GLOBAL_VAR_INIT(chicken_count, 0)
 
 /mob/living/simple_animal/chicken
 	name = "\improper chicken"

@@ -1,4 +1,4 @@
-GLOBAL_VAR_INIT(warrant_uid, 0) 
+GLOBAL_VAR_INIT(warrant_uid, 0)
 /datum/datacore/var/list/warrants[] = list()
 /datum/data/record/warrant
 	var/warrant_id
