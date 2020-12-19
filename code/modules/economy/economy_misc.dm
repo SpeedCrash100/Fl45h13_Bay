@@ -66,7 +66,7 @@ GLOBAL_LIST_INIT(economic_species_modifier, list(
 //Corporation Second Red Cross Society - 26th century Red Cross reborn as a dominating economic force in biomedical science (research and materials).
 //Corporation Blue Industries - High tech and high energy research, in particular into the mysteries of bluespace manipulation and power generation.
 //Corporation Kusanagi Robotics - Founded by robotics legend Kaito Kusanagi in the 2070s, they have been on the forefront of mechanical augmentation and robotics development ever since.
-//Corporation Free GLOB.traders - Not so much a corporation as a loose coalition of spacers, Free GLOB.traders are a roving band of smugglers, GLOB.traders and fringe elements following a rigid (if informal) code of loyalty and honour. Mistrusted by most corporations, they are tolerated because of their uncanny ability to smell out a profit.
+//Corporation Free traders - Not so much a corporation as a loose coalition of spacers, Free traders are a roving band of smugglers, traders and fringe elements following a rigid (if informal) code of loyalty and honour. Mistrusted by most corporations, they are tolerated because of their uncanny ability to smell out a profit.
 
 //---- Descriptions of destination types
 //Space stations can be purpose built for a number of different things, but generally require regular shipments of essential supplies.

@@ -12,7 +12,7 @@ GLOBAL_LIST_EMPTY(processing_power_items)
 GLOBAL_LIST_EMPTY(med_hud_users) // List of all entities using a medical HUD.
 GLOBAL_LIST_EMPTY(sec_hud_users) // List of all entities using a security HUD.
 GLOBAL_LIST_EMPTY(hud_icon_reference)
-GLOBAL_LIST_EMPTY(traders) //List of all nearby GLOB.traders
+GLOBAL_LIST_EMPTY(traders) //List of all nearby traders
 
 GLOBAL_LIST_EMPTY(listening_objects) // List of objects that need to be able to hear, used to avoid recursive searching through contents.
 

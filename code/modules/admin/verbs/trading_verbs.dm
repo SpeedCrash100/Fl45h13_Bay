@@ -1,7 +1,7 @@
 /client/proc/list_traders()
 	set category = "Debug"
-	set name = "List GLOB.traders"
-	set desc = "Lists all the current GLOB.traders"
+	set name = "List traders"
+	set desc = "Lists all the current traders"
 
 	for(var/a in GLOB.traders)
 		var/datum/trader/T = a

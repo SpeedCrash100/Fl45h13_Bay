@@ -161,7 +161,7 @@
 	if(href_list["PRG_merchant_list"])
 		if(GLOB.traders.len == 0)
 			. = 0
-			temp = "Cannot find any GLOB.traders within broadcasting range."
+			temp = "Cannot find any traders within broadcasting range."
 		else
 			. = 1
 			current_merchant = 1
