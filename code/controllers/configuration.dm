@@ -2,6 +2,7 @@ GLOBAL_LIST_EMPTY(gamemode_cache)
 
 /datum/configuration
 	var/server_name = null				// server name (for world name / status)
+	var/hub = FALSE						// server should be in the byond hub
 	var/server_suffix = 0				// generate numeric suffix based on server port
 
 	var/nudge_script_path = "nudge.py"  // where the nudge.py script is located
@@ -413,6 +414,9 @@ GLOBAL_LIST_EMPTY(gamemode_cache)
 
 				if ("servername")
 					GLOB.config.server_name = value
+
+				if ("hub")
+					GLOB.config.hub = TRUE
 
 				if ("serversuffix")
 					GLOB.config.server_suffix = 1

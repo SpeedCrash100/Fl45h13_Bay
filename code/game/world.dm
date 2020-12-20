@@ -639,6 +639,11 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 	if (src.status != s)
 		src.status = s
 
+/world/proc/set_hub_visibility(var/display_in_hub)
+	if(visibility == display_in_hub)
+		return
+	visibility = display_in_hub
+
 /world/proc/change_fps(new_value = 20)
 	if(new_value <= 0)
 		CRASH("change_fps() called with [new_value] new_value.")
