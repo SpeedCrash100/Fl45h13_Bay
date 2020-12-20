@@ -109,11 +109,7 @@ GLOBAL_VAR_INIT(command_name, null)
 		if(13)
 			GLOB.using_map.station_name += pick("13","XIII","Thirteen")
 
-
-	if (GLOB.config && GLOB.config.server_name)
-		world.name = "[GLOB.config.server_name]: [name]"
-	else
-		world.name = GLOB.using_map.station_name
+	world_name(GLOB.using_map.station_name)
 
 	return GLOB.using_map.station_name
 

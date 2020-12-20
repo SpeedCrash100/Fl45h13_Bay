@@ -66,8 +66,6 @@ GLOBAL_VAR_INIT(game_id, null)
 
 #define RECOMMENDED_VERSION 511
 /world/New()
-	//set window title
-	name = "[GLOB.server_name] - [GLOB.using_map.full_name]"
 
 	//logs
 	var/date_string = time2text(world.realtime, "YYYY/MM-Month/DD-Day")

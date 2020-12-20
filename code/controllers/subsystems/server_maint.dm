@@ -16,3 +16,4 @@ SUBSYSTEM_DEF(server_maint)
 /datum/controller/subsystem/server_maint/Initialize(start_timeofday)
 	. = ..()
 	world.set_hub_visibility(GLOB.config?.hub)
+	world.name = GLOB.config.server_name + " - " + GLOB.using_map.station_name
