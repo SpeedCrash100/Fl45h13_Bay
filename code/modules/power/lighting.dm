@@ -166,6 +166,7 @@ GLOBAL_LIST_EMPTY(light_type_cache)
 	var/brightness_power
 	var/brightness_color
 	var/list/lighting_modes
+	var/light_icon_suffix
 
 	var/current_mode = null
 
@@ -225,15 +226,15 @@ GLOBAL_LIST_EMPTY(light_type_cache)
 
 	switch(status)		// set icon_states
 		if(LIGHT_OK)
-			icon_state = "[base_state][on]"
+			icon_state = "[base_state][on][light_icon_suffix]"
 		if(LIGHT_EMPTY)
 			icon_state = "[base_state]-empty"
 			on = 0
 		if(LIGHT_BURNED)
-			icon_state = "[base_state]-burned"
+			icon_state = "[base_state][light_icon_suffix]-burned"
 			on = 0
 		if(LIGHT_BROKEN)
-			icon_state = "[base_state]-broken"
+			icon_state = "[base_state][light_icon_suffix]-broken"
 			on = 0
 	return
 
@@ -291,10 +292,42 @@ GLOBAL_LIST_EMPTY(light_type_cache)
 /obj/machinery/light/proc/set_emergency_lighting(var/enable)
 	if(enable)
 		if("emergency_lighting" in lighting_modes)
+			light_icon_suffix = "-emergency"
 			set_mode("emergency_lighting")
 			power_channel = ENVIRON
 	else
 		if(current_mode == "emergency_lighting")
+			// Restore state
+			var/obj/item/weapon/light/L = get_light_type_instance(light_type)
+			update_from_bulb(L)
+			set_mode(null)
+			power_channel = initial(power_channel)
+
+/obj/machinery/light/proc/set_fire_lighting(var/enable)
+	if(enable)
+		if("fire_lighting" in lighting_modes)
+			light_icon_suffix = "-emergency"
+			set_mode("fire_lighting")
+			power_channel = ENVIRON
+	else
+		if(current_mode == "fire_lighting")
+			// Restore state
+			var/obj/item/weapon/light/L = get_light_type_instance(light_type)
+			update_from_bulb(L)
+			set_mode(null)
+			power_channel = initial(power_channel)
+
+/obj/machinery/light/proc/set_evacuate_lighting(var/enable)
+	if(enable)
+		if("evacuate_lighting" in lighting_modes)
+			light_icon_suffix = "-emergency"
+			set_mode("evacuate_lighting")
+			power_channel = ENVIRON
+	else
+		if(current_mode == "evacuate_lighting")
+			// Restore state
+			var/obj/item/weapon/light/L = get_light_type_instance(light_type)
+			update_from_bulb(L)
 			set_mode(null)
 			power_channel = initial(power_channel)
 
@@ -330,6 +363,7 @@ GLOBAL_LIST_EMPTY(light_type_cache)
 	brightness_power = L.brightness_power
 	brightness_color = L.brightness_color
 	lighting_modes = L.lighting_modes.Copy()
+	light_icon_suffix = L.light_icon_suffix
 
 // attack with item - insert light (if right type), otherwise try to break the light
 
@@ -596,6 +630,7 @@ obj/machinery/light/proc/burn_out()
 	var/brightness_power = 1
 	var/brightness_color = "#FFFFFF"
 	var/list/lighting_modes = list()
+	var/light_icon_suffix = ""
 
 /obj/item/weapon/light/tube
 	name = "light tube"
@@ -610,6 +645,8 @@ obj/machinery/light/proc/burn_out()
 	brightness_color = "#FFFFFF"
 	lighting_modes = list(
 		"emergency_lighting" = list(l_range = 4, l_power = 1, l_color = "#da0205"),
+		"fire_lighting" = list(l_range = 6, l_power = 2, l_color = "#da0205"),
+		"evacuate_lighting" = list(l_range = 6, l_power = 2, l_color = "#da0205")
 		)
 
 /obj/item/weapon/light/tube/large
@@ -632,6 +669,8 @@ obj/machinery/light/proc/burn_out()
 	brightness_color = "#a0a080"
 	lighting_modes = list(
 		"emergency_lighting" = list(l_range = 3, l_power = 1, l_color = "#da0205"),
+		"fire_lighting" = list(l_range = 4, l_power = 2, l_color = "#da0205"),
+		"evacuate_lighting" = list(l_range = 6, l_power = 2, l_color = "#da0205")
 		)
 
 /obj/item/weapon/light/bulb/red

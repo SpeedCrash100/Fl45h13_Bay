@@ -97,6 +97,7 @@
 /area/proc/fire_alert()
 	if(!fire)
 		fire = 1	//used for firedoor checks
+		set_fire_lighting(TRUE)
 		updateicon()
 		mouse_opacity = 0
 		if(!all_doors)
@@ -112,6 +113,7 @@
 /area/proc/fire_reset()
 	if (fire)
 		fire = 0	//used for firedoor checks
+		set_fire_lighting(FALSE)
 		updateicon()
 		mouse_opacity = 0
 		if(!all_doors)
@@ -127,12 +129,14 @@
 /area/proc/readyalert()
 	if(!eject)
 		eject = 1
+		set_evacuate_lighting(TRUE)
 		updateicon()
 	return
 
 /area/proc/readyreset()
 	if(eject)
 		eject = 0
+		set_evacuate_lighting(FALSE)
 		updateicon()
 	return
 
@@ -160,11 +164,11 @@
 /area/proc/updateicon()
 	if ((fire || eject || party) && (!requires_power||power_environ))//If it doesn't require power, can still activate this proc.
 		if(fire && !eject && !party)
-			icon_state = "blue"
+			icon_state = null // We use lighting instead zone icon
 		/*else if(atmosalm && !fire && !eject && !party)
 			icon_state = "bluenew"*/
 		else if(!fire && eject && !party)
-			icon_state = "red"
+			icon_state = null
 		else if(party && !fire && !eject)
 			icon_state = "party"
 		else
@@ -239,6 +243,13 @@
 	for(var/obj/machinery/light/M in src)
 		M.set_emergency_lighting(enable)
 
+/area/proc/set_fire_lighting(var/enable)
+	for(var/obj/machinery/light/M in src)
+		M.set_fire_lighting(enable)
+
+/area/proc/set_evacuate_lighting(var/enable)
+	for(var/obj/machinery/light/M in src)
+		M.set_evacuate_lighting(enable)
 
 GLOBAL_DATUM_INIT(forced_ambiance_list, /list/mob/living, new)
 
