@@ -1734,7 +1734,6 @@
 	},
 /obj/machinery/door/window/westleft{
 	dir = 2;
-	layer = 3.1;
 	name = "laser testing";
 	req_access = list(65)
 	},
@@ -1784,7 +1783,6 @@
 /area/outpost/abandoned)
 "dX" = (
 /obj/machinery/status_display{
-	layer = 4;
 	pixel_x = 0;
 	pixel_y = 0
 	},
@@ -2202,7 +2200,6 @@
 /area/outpost/research/lab)
 "eP" = (
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = 0;
 	pixel_y = -27
 	},
@@ -2969,7 +2966,6 @@
 /obj/item/clothing/gloves/latex,
 /obj/structure/window/reinforced,
 /obj/machinery/status_display{
-	layer = 4;
 	pixel_x = 32;
 	pixel_y = 0
 	},
@@ -4181,7 +4177,6 @@
 "iD" = (
 /obj/structure/closet/emcloset,
 /obj/machinery/status_display{
-	layer = 4;
 	pixel_x = 0;
 	pixel_y = -32
 	},
@@ -5308,7 +5303,6 @@
 /obj/item/weapon/storage/excavation,
 /obj/item/weapon/pickaxe,
 /obj/machinery/status_display{
-	layer = 4;
 	pixel_x = 32;
 	pixel_y = 0
 	},
@@ -9024,7 +9018,6 @@
 /obj/structure/table/rack,
 /obj/machinery/firealarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/machinery/camera/network/engineering_outpost{
@@ -10430,7 +10423,6 @@
 	},
 /obj/machinery/firealarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled,
@@ -11412,7 +11404,6 @@
 "wE" = (
 /obj/machinery/recharge_station,
 /obj/machinery/status_display{
-	layer = 4;
 	pixel_x = 0;
 	pixel_y = 32
 	},
@@ -12320,7 +12311,6 @@
 	dir = 8
 	},
 /obj/machinery/status_display{
-	layer = 4;
 	pixel_x = 32;
 	pixel_y = 10
 	},
@@ -12483,7 +12473,6 @@
 /area/outpost/mining_main/east_hall)
 "yI" = (
 /obj/machinery/status_display{
-	layer = 4;
 	pixel_x = 0;
 	pixel_y = 32
 	},
@@ -12582,7 +12571,6 @@
 /area/outpost/mining_main/maintenance)
 "yR" = (
 /obj/machinery/status_display{
-	layer = 4;
 	pixel_x = -32;
 	pixel_y = 0
 	},
@@ -12748,7 +12736,6 @@
 /area/outpost/mining_main/east_hall)
 "zk" = (
 /obj/machinery/status_display{
-	layer = 4;
 	pixel_x = 0;
 	pixel_y = 32
 	},
