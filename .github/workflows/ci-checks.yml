@@ -12,7 +12,7 @@ jobs:
       TEST: MAP
       MAP_PATH: ${{matrix.MAP_PATH}}
       BYOND_MAJOR: 513
-      BYOND_MINOR: 1536
+      BYOND_MINOR: 1539
     steps:
       - uses: actions/checkout@v2
 
