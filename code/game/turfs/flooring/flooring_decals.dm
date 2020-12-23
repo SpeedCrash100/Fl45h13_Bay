@@ -6,7 +6,6 @@ GLOBAL_LIST_EMPTY(floor_decals)
 /obj/effect/floor_decal
 	name = "floor decal"
 	icon = 'icons/turf/flooring/decals.dmi'
-	plane = ABOVE_TURF_PLANE
 	layer = DECAL_LAYER
 	var/supplied_dir
 
@@ -19,14 +18,11 @@ GLOBAL_LIST_EMPTY(floor_decals)
 	if(supplied_dir) set_dir(supplied_dir)
 	var/turf/T = get_turf(src)
 	if(istype(T, /turf/simulated/floor) || istype(T, /turf/unsimulated/floor))
-		plane = T.is_plating() ? ABOVE_PLATING_PLANE : ABOVE_TURF_PLANE
+		layer = T.is_plating() ? DECAL_PLATING_LAYER : DECAL_LAYER
 		var/cache_key = "[alpha]-[color]-[dir]-[icon_state]-[plane]-[layer]"
 		if(!GLOB.floor_decals[cache_key])
 			var/image/I = image(icon = src.icon, icon_state = src.icon_state, dir = src.dir)
-			if(plane == ABOVE_PLATING_PLANE)
-				I.plating_decal_layerise()
-			else
-				I.turf_decal_layerise()
+			I.layer = layer
 			I.color = src.color
 			I.alpha = src.alpha
 			GLOB.floor_decals[cache_key] = I

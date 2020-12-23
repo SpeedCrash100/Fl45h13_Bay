@@ -35,7 +35,6 @@ GLOBAL_LIST_EMPTY(possible_cable_coil_colours)
 	var/d1 = 0
 	var/d2 = 1
 
-	plane = ABOVE_TURF_PLANE
 	layer = EXPOSED_WIRE_LAYER
 
 	color = COLOR_RED
@@ -43,7 +42,6 @@ GLOBAL_LIST_EMPTY(possible_cable_coil_colours)
 
 /obj/structure/cable/hide(var/do_hide)
 	if(do_hide && level == 1)
-		plane = ABOVE_PLATING_PLANE
 		layer = WIRE_LAYER
 	else
 		reset_plane_and_layer()

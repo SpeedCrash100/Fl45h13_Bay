@@ -315,7 +315,6 @@ GLOBAL_LIST_EMPTY(tape_roll_applications)
 
 /obj/item/tape/proc/lift(time)
 	lifted = 1
-	plane = ABOVE_HUMAN_PLANE
 	layer = ABOVE_HUMAN_LAYER
 	spawn(time)
 		lifted = 0

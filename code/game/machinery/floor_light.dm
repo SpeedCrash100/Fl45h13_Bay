@@ -5,7 +5,6 @@ GLOBAL_LIST_EMPTY(floor_light_cache)
 	icon = 'icons/obj/machines/floor_light.dmi'
 	icon_state = "base"
 	desc = "A backlit floor panel."
-	plane = ABOVE_TURF_PLANE
 	layer = ABOVE_TILE_LAYER
 	anchored = 0
 	use_power = 2

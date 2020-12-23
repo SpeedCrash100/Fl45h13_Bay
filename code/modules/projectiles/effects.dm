@@ -1,7 +1,6 @@
 /obj/effect/projectile
 	icon = 'icons/effects/projectiles.dmi'
 	icon_state = "bolt"
-	plane = EFFECTS_BELOW_LIGHTING_PLANE
 	layer = PROJECTILE_LAYER
 
 /obj/effect/projectile/New(var/turf/location)

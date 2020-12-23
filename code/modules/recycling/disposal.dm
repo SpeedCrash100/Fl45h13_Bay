@@ -649,7 +649,6 @@
 	var/dpdir = 0		// bitmask of pipe directions
 	dir = 0				// dir will contain dominant direction for junction pipes
 	var/health = 10 	// health points 0-10
-	plane = ABOVE_PLATING_PLANE
 	layer = DISPOSALS_PIPE_LAYER
 	var/base_icon_state	// initial icon state on map
 	var/sortType = ""

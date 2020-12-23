@@ -6,7 +6,6 @@ GLOBAL_LIST_EMPTY(navbeacons)
 	name = "navigation beacon"
 	desc = "A radio beacon used for bot navigation."
 	level = 1
-	plane = ABOVE_PLATING_PLANE
 	layer = ABOVE_WIRE_LAYER
 	anchored = 1
 
