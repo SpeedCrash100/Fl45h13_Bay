@@ -52,7 +52,6 @@
 /obj/machinery/access_button{
 	command = "cycle_interior";
 	frequency = 1379;
-	layer = 7;
 	master_tag = "sub_sec_airlock";
 	name = "interior access button";
 	pixel_x = 25;
@@ -2193,7 +2192,6 @@
 /obj/machinery/access_button{
 	command = "cycle_interior";
 	frequency = 1379;
-	layer = 7;
 	master_tag = "sub_research_airlock";
 	name = "interior access button";
 	pixel_x = -25;

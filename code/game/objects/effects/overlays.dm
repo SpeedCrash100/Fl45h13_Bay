@@ -17,7 +17,6 @@
 	icon = 'icons/misc/beach2.dmi'
 	icon_state = "palm1"
 	density = 1
-	plane = ABOVE_HUMAN_PLANE
 	layer = ABOVE_HUMAN_LAYER
 	anchored = 1
 
@@ -26,7 +25,6 @@
 	icon = 'icons/misc/beach2.dmi'
 	icon_state = "palm2"
 	density = 1
-	plane = ABOVE_HUMAN_PLANE
 	layer = ABOVE_HUMAN_LAYER
 	anchored = 1
 
@@ -48,7 +46,6 @@
 	icon = 'icons/effects/wallrot.dmi'
 	anchored = 1
 	density = 1
-	plane = ABOVE_TURF_PLANE
 	layer = ABOVE_TILE_LAYER
 	mouse_opacity = 0
 
@@ -62,7 +59,6 @@
 	desc = "You find yourself carrying an overwhelming urge to report the observability of this overlay to the bug tracker. Mention a \"cultwall\"."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "cultwall"
-	plane = ABOVE_TURF_PLANE
 	layer = ABOVE_TILE_LAYER
 	mouse_opacity = 0
 /obj/effect/overlay/cult/wallspawn/New()
@@ -74,7 +70,6 @@
 	icon = 'icons/effects/effects.dmi'
 	desc = "You find yourself carrying an overwhelming urge to report the observability of this overlay to the bug tracker. Mention a \"cultfloor\"."
 	icon_state = "cultfloor"
-	plane = ABOVE_TURF_PLANE
 	layer = ABOVE_TILE_LAYER
 	mouse_opacity = 0
 

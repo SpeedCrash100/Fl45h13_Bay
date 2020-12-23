@@ -84,7 +84,6 @@
 
 	set_dir(direction)
 	if(dir != NORTH)
-		plane = ABOVE_HUMAN_PLANE
 		layer = ABOVE_HUMAN_LAYER
 	flags &= ~OBJ_CLIMBABLE //flipping tables allows them to be used as makeshift barriers
 	flipped = 1

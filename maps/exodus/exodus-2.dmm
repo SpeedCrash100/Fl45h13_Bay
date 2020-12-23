@@ -11125,7 +11125,6 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/machinery/computer/cryopod{
 	density = 0;
-	layer = 4;
 	pixel_y = 32
 	},
 /obj/machinery/light_switch{

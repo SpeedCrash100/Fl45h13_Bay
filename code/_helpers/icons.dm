@@ -204,7 +204,6 @@ obj/effect/overlayTest
 	icon_state = "blue"
 	pixel_x = -24
 	pixel_y = 24
-	plane = ABOVE_TURF_PLANE
 	layer = HOLOMAP_LAYER
 
 world

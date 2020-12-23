@@ -196,8 +196,8 @@ function run_code_tests {
     pip install --user beautifulsoup4 -q
     shopt -s globstar
     run_test_fail "maps contain no step_[xy]" "grep 'step_[xy]' maps/**/*.dmm"
-#    run_test_fail "maps contain no layer adjustments" "grep 'layer = ' maps/**/*.dmm"
-#    run_test_fail "maps contain no plane adjustments" "grep 'plane = ' maps/**/*.dmm"
+    run_test_fail "maps contain no layer adjustments" "grep 'layer = ' maps/**/*.dmm"
+    run_test_fail "maps contain no plane adjustments" "grep 'plane = ' maps/**/*.dmm"
     run_test_fail "ensure nanoui templates unique" "find nano/templates/ -type f -exec md5sum {} + | sort | uniq -D -w 32 | grep nano"
     run_test_fail "no invalid spans" "grep -En \"<\s*span\s+class\s*=\s*('[^'>]+|[^'>]+')\s*>\" **/*.dm"
     run_test "code quality checks" "tools/scripts/check-paths.sh"

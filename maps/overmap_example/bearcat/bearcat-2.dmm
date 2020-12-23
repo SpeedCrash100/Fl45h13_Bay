@@ -39,7 +39,6 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	icon_state = "off";
 	dir = 4;
-	layer = 2.4;
 	level = 2
 	},
 /obj/item/toy/figure/captain,
@@ -315,7 +314,6 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
 	icon_state = "off";
-	layer = 2.4;
 	level = 2
 	},
 /turf/simulated/floor/wood,
@@ -329,7 +327,6 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
 	icon_state = "off";
-	layer = 2.4;
 	level = 2
 	},
 /turf/simulated/floor/tiled,
@@ -559,7 +556,6 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
 	icon_state = "off";
-	layer = 2.4;
 	level = 2
 	},
 /turf/simulated/floor/tiled,
@@ -572,7 +568,6 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	icon_state = "off";
 	dir = 4;
-	layer = 2.4;
 	level = 2
 	},
 /turf/simulated/floor/tiled,
@@ -1274,7 +1269,6 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	icon_state = "off";
 	dir = 2;
-	layer = 2.4;
 	level = 2
 	},
 /turf/simulated/floor/tiled/freezer,
@@ -1362,7 +1356,6 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	icon_state = "off";
 	dir = 2;
-	layer = 2.4;
 	level = 2
 	},
 /obj/effect/landmark{
@@ -1477,7 +1470,6 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	icon_state = "off";
 	dir = 4;
-	layer = 2.4;
 	level = 2
 	},
 /turf/simulated/floor/tiled,
@@ -1710,7 +1702,6 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	icon_state = "off";
 	dir = 4;
-	layer = 2.4;
 	level = 2
 	},
 /obj/structure/bed/chair/comfy/brown{
@@ -1884,7 +1875,6 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	icon_state = "off";
 	dir = 2;
-	layer = 2.4;
 	level = 2
 	},
 /obj/effect/floor_decal/corner/red/diagonal,
@@ -2026,9 +2016,7 @@
 /obj/item/weapon/reagent_containers/food/condiment/small/peppermill{
 	pixel_x = 3
 	},
-/obj/item/weapon/reagent_containers/food/condiment/enzyme{
-	layer = 5
-	},
+/obj/item/weapon/reagent_containers/food/condiment/enzyme,
 /turf/simulated/floor/tiled,
 /area/ship/scrap/crew/kitchen)
 "dB" = (
@@ -2143,7 +2131,6 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	icon_state = "off";
 	dir = 2;
-	layer = 2.4;
 	level = 2
 	},
 /turf/simulated/floor/tiled/white,
@@ -2596,7 +2583,6 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	icon_state = "off";
 	dir = 4;
-	layer = 2.4;
 	level = 2
 	},
 /turf/simulated/floor/tiled,
@@ -3043,7 +3029,6 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	icon_state = "off";
 	dir = 8;
-	layer = 2.4;
 	level = 2
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
@@ -3293,7 +3278,6 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
 	icon_state = "off";
-	layer = 2.4;
 	level = 2
 	},
 /turf/simulated/floor/tiled/freezer,
@@ -3353,7 +3337,6 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	icon_state = "off";
 	dir = 8;
-	layer = 2.4;
 	level = 2
 	},
 /turf/simulated/floor/plating,
@@ -3524,7 +3507,6 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	icon_state = "off";
 	dir = 2;
-	layer = 2.4;
 	level = 2
 	},
 /turf/simulated/floor/tiled,
@@ -3971,7 +3953,6 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
 	icon_state = "off";
-	layer = 2.4;
 	level = 2
 	},
 /turf/simulated/floor/plating,
@@ -4242,7 +4223,6 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	icon_state = "off";
 	dir = 2;
-	layer = 2.4;
 	level = 2
 	},
 /obj/structure/closet/secure_closet/engineering_electrical,
@@ -4693,7 +4673,6 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
 	icon_state = "off";
-	layer = 2.4;
 	level = 2
 	},
 /obj/structure/closet/secure_closet/engineering_welding,
@@ -6071,7 +6050,6 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
 	icon_state = "off";
-	layer = 2.4;
 	level = 2
 	},
 /turf/simulated/floor/tiled/dark,
