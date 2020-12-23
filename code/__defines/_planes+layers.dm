@@ -62,6 +62,7 @@ What is the naming convention for planes or layers?
 
 #define CLICKCATCHER_PLANE 			-100
 #define SPACE_PLANE 				-99
+	#define SPACE_LAYER		1
 
 #define DEFAULT_PLANE				0
 	//Plating
