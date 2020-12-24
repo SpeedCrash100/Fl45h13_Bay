@@ -35,7 +35,7 @@
 		var/icon/I = icon(value)
 		var/rnd = rand(1,10000)
 		var/rname = "tmp[REF(I)][rnd].png"
-		usr << browse_rsc(I, rname)
+		send_rsc(usr, I, rname)
 		item = "[name_part] = (<span class='value'>[value]</span>) <img class=icon src=\"[rname]\">"
 		#else
 		item = "[name_part] = /icon (<span class='value'>[value]</span>)"

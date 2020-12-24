@@ -31,7 +31,7 @@
 		sprite = getFlatIcon(D)
 		if(sprite)
 			hash = md5(sprite)
-			src << browse_rsc(sprite, "vv[hash].png")
+			send_rsc(src, sprite, "vv[hash].png")
 		else
 			no_icon = TRUE
 
@@ -266,7 +266,7 @@ datumrefresh=[refid];[HrefToken()]'>Refresh</a>
 	</body>
 </html>
 "}
-	src << browse(html, "window=variables[refid];size=475x650")
+	show_browser(src, html, "window=variables[refid];size=475x650")
 
 /client/proc/vv_update_display(datum/D, span, content)
-	src << output("[span]:[content]", "variables[REF(D)].browser:replace_span")
+	send_output(src, "[span]:[content]", "variables[REF(D)].browser:replace_span")
