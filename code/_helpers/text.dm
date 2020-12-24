@@ -396,3 +396,13 @@ GLOBAL_DATUM_INIT(text_tag_icons, /icon, new('./icons/chattags.dmi'))
 	newKey += pick("diamond", "beer", "mushroom", "assistant", "clown", "captain", "twinkie", "security", "nuke", "small", "big", "escape", "yellow", "gloves", "monkey", "engine", "nuclear", "ai")
 	newKey += pick("1", "2", "3", "4", "5", "6", "7", "8", "9", "0")
 	return newKey
+
+/// Used to get a properly sanitized input, of max_length
+/// no_trim is self explanatory but it prevents the input from being trimed if you intend to parse newlines or whitespace.
+/proc/stripped_input(mob/user, message = "", title = "", default = "", max_length=MAX_MESSAGE_LEN, no_trim=FALSE)
+	var/name = input(user, message, title, default) as text|null
+
+	if(no_trim)
+		return copytext(html_encode(name), 1, max_length)
+	else
+		return trim(html_encode(name), max_length) //trim is "outside" because html_encode can expand single symbols into multiple symbols (such as turning < into &lt;)

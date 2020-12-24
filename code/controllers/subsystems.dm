@@ -224,14 +224,3 @@
 
 /datum/controller/subsystem/VV_static()
 	return ..() + list("queued_priority")
-
-/decl/vv_set_handler/subsystem_handler
-	handled_type = /datum/controller/subsystem
-	handled_vars = list("can_fire")
-	predicates = list(/proc/is_num_predicate)
-
-/decl/vv_set_handler/subsystem_handler/handle_set_var(var/datum/controller/subsystem/SS, variable, var_value, client)
-	var_value = !!var_value
-	if (var_value)
-		SS.next_fire = world.time + SS.wait
-	SS.can_fire = var_value

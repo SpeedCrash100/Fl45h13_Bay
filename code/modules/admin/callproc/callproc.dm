@@ -5,6 +5,8 @@
 	set category = "Debug"
 	set name = "Advanced ProcCall"
 
+/client/proc/callproc_blocking(list/get_retval)
+
 	if(!check_rights(R_DEBUG)) return
 	if(GLOB.config.debugparanoid && !check_rights(R_ADMIN)) return
 
