@@ -4,12 +4,13 @@
 	. = list()
 	for(var/type in types)
 		var/typename = "[type]"
+		//longest paths comes first
 		var/static/list/TYPES_SHORTCUTS = list(
 			/obj/effect/decal/cleanable = "CLEANABLE",
 			/obj/item/device/radio/headset = "HEADSET",
 			/obj/item/clothing/head/helmet/space = "SPESSHELMET",
 			/obj/item/weapon/book/manual = "MANUAL",
-			/obj/item/weapon/reagent_containers/food/drinks = "DRINK", //longest paths comes first
+			/obj/item/weapon/reagent_containers/food/drinks = "DRINK",
 			/obj/item/weapon/reagent_containers/food = "FOOD",
 			/obj/item/weapon/reagent_containers = "REAGENT_CONTAINERS",
 			/obj/machinery/atmospherics = "ATMOS_MECH",
