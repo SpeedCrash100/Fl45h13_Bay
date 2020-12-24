@@ -1,4 +1,4 @@
-/datum    
+/datum
 	/// Datum level flags
 	var/datum_flags = NONE
 
