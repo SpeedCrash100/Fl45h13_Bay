@@ -254,7 +254,7 @@ GLOBAL_LIST_INIT(artefact_feedback, list(/obj/structure/closet/wizard/armor = 		
 
 /obj/item/weapon/spellbook/Destroy()
 	GLOB.processing_objects -= src
-	..()
+	. = ..()
 
 /obj/item/weapon/spellbook/proc/send_feedback(var/path)
 	if(ispath(path,/datum/spellbook))

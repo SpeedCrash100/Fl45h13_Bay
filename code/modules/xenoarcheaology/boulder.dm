@@ -19,7 +19,7 @@
 /obj/structure/boulder/Destroy()
 	qdel(geological_data)
 	qdel(artifact_find)
-	..()
+	. = ..()
 
 /obj/structure/boulder/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/device/core_sampler))

@@ -94,4 +94,4 @@ GLOBAL_VAR_INIT(ntnet_card_uid, 1)
 /obj/item/weapon/computer_hardware/network_card/Destroy()
 	if(holder2 && (holder2.network_card == src))
 		holder2.network_card = null
-	..()
+	. = ..()

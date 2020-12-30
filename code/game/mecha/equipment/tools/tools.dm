@@ -609,7 +609,7 @@
 	Destroy()
 		qdel(pr_repair_droid)
 		pr_repair_droid = null
-		..()
+		return ..()
 
 	attach(obj/mecha/M as obj)
 		..()
@@ -702,7 +702,7 @@
 	Destroy()
 		qdel(pr_energy_relay)
 		pr_energy_relay = null
-		..()
+		return ..()
 
 	detach()
 		pr_energy_relay.stop()
@@ -790,7 +790,7 @@
 	Destroy()
 		qdel(pr_mech_generator)
 		pr_mech_generator = null
-		..()
+		return ..()
 
 	proc/init()
 		fuel = new /obj/item/stack/material/phoron(src)

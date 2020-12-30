@@ -12,7 +12,7 @@
 obj/machinery/embedded_controller/radio/Destroy()
 	if(GLOB.radio_controller)
 		GLOB.radio_controller.remove_object(src,frequency)
-	..()
+	return ..()
 
 /obj/machinery/embedded_controller/proc/post_signal(datum/signal/signal, comm_line)
 	return 0

@@ -49,7 +49,7 @@
 /turf/Destroy()
 	GLOB.turfs -= src
 	remove_cleanables()
-	..()
+	. = ..()
 	return QDEL_HINT_IWILLGC
 
 /turf/ex_act(severity)

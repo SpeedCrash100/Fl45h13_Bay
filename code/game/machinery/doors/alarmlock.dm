@@ -16,7 +16,7 @@
 /obj/machinery/door/airlock/alarmlock/Destroy()
 	if(GLOB.radio_controller)
 		GLOB.radio_controller.remove_object(src,air_frequency)
-	..()
+	return ..()
 
 /obj/machinery/door/airlock/alarmlock/initialize()
 	..()

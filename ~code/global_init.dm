@@ -23,4 +23,4 @@ GLOBAL_REAL(init, /datum/global_init) = new
 	qdel(src) //we're done
 
 /datum/global_init/Destroy()
-	return 1
+	return QDEL_HINT_LETMELIVE

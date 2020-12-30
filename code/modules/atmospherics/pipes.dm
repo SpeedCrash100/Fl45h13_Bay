@@ -718,7 +718,7 @@
 	if(node4)
 		node4.disconnect(src)
 
-	..()
+	. = ..()
 
 /obj/machinery/atmospherics/pipe/manifold4w/disconnect(obj/machinery/atmospherics/reference)
 	if(reference == node1)
@@ -972,7 +972,7 @@
 	if(node)
 		node.disconnect(src)
 
-	..()
+	. = ..()
 
 /obj/machinery/atmospherics/pipe/cap/disconnect(obj/machinery/atmospherics/reference)
 	if(reference == node)
@@ -1093,7 +1093,7 @@
 	if(node1)
 		node1.disconnect(src)
 
-	..()
+	. = ..()
 
 /obj/machinery/atmospherics/pipe/tank/pipeline_expansion()
 	return list(node1)
@@ -1263,7 +1263,7 @@
 	if(node1)
 		node1.disconnect(src)
 
-	..()
+	. = ..()
 
 /obj/machinery/atmospherics/pipe/vent/pipeline_expansion()
 	return list(node1)

@@ -195,7 +195,7 @@
 
 /obj/item/weapon/melee/energy/blade/Destroy()
 	GLOB.processing_objects -= src
-	..()
+	. = ..()
 
 /obj/item/weapon/melee/energy/blade/get_storage_cost()
 	return ITEM_SIZE_NO_CONTAINER

@@ -239,7 +239,7 @@
 /obj/effect/blob/shield/Destroy()
 	set_density(0)
 	update_nearby_tiles()
-	..()
+	. = ..()
 
 /obj/effect/blob/shield/update_icon()
 	if(health > maxHealth * 2 / 3)

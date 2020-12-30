@@ -87,7 +87,7 @@
 	qdel(radio)
 	camera = null
 	radio = null
-	..()
+	. = ..()
 
 //Assembly by roboticist
 

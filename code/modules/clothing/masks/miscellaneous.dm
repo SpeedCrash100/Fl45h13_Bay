@@ -151,7 +151,7 @@
 			disengage_mask(eye.owner)
 		qdel(eye)
 		eye = null
-	..()
+	. = ..()
 
 /obj/item/clothing/mask/ai/attack_self(var/mob/user)
 	if(user.incapacitated())

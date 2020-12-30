@@ -32,7 +32,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 
 /obj/machinery/power/solar/Destroy()
 	unset_control() //remove from control computer
-	..()
+	. = ..()
 
 //set the control of the panel to a given computer if closer than SOLAR_MAX_DIST
 /obj/machinery/power/solar/proc/set_control(var/obj/machinery/power/solar_control/SC)
@@ -303,7 +303,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 		M.unset_control()
 	if(connected_tracker)
 		connected_tracker.unset_control()
-	..()
+	. = ..()
 
 /obj/machinery/power/solar_control/disconnect_from_network()
 	..()

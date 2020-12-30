@@ -16,7 +16,7 @@ datum/objective
 
 	Destroy()
 		GLOB.all_objectives -= src
-		..()
+		return ..()
 
 	proc/check_completion()
 		return completed

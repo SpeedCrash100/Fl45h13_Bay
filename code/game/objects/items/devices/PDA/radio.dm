@@ -155,4 +155,4 @@
 /obj/item/radio/integrated/signal/Destroy()
 	if(GLOB.radio_controller)
 		GLOB.radio_controller.remove_object(src, frequency)
-	..()
+	. = ..()

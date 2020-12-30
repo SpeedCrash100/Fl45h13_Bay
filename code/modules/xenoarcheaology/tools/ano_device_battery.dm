@@ -191,7 +191,7 @@
 
 /obj/item/weapon/anodevice/Destroy()
 	GLOB.processing_objects.Remove(src)
-	..()
+	. = ..()
 
 /obj/item/weapon/anodevice/attack(mob/living/M as mob, mob/living/user as mob, def_zone)
 	if (!istype(M))

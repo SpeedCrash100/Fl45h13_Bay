@@ -138,7 +138,7 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/machinery/telecomms)
 	for(var/obj/machinery/telecomms/comm in GLOB.telecomms_list)
 		comm.links -= src
 	links = list()
-	..()
+	return ..()
 
 // Used in auto linking
 /obj/machinery/telecomms/proc/add_link(var/obj/machinery/telecomms/T)

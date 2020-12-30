@@ -78,7 +78,7 @@ GLOBAL_LIST_EMPTY_TYPED(message_servers, /obj/machinery/message_server)
 
 /obj/machinery/message_server/Destroy()
 	GLOB.message_servers -= src
-	..()
+	. = ..()
 	return
 
 /obj/machinery/message_server/process()
@@ -272,7 +272,7 @@ GLOBAL_DATUM(blackbox, /obj/machinery/blackbox_recorder)
 		BR.messages_admin = messages_admin
 		if(GLOB.blackbox != BR)
 			GLOB.blackbox = BR
-	..()
+	. = ..()
 
 /obj/machinery/blackbox_recorder/proc/find_feedback_datum(var/variable)
 	for(var/datum/feedback_variable/FV in feedback)

@@ -183,7 +183,7 @@ GLOBAL_LIST_EMPTY_TYPED(allCasters, /obj/machinery/newscaster) //Global list tha
 
 /obj/machinery/newscaster/Destroy()
 	GLOB.allCasters -= src
-	..()
+	return ..()
 
 /obj/machinery/newscaster/update_icon()
 	if(inoperable())
