@@ -1803,6 +1803,21 @@
 					to_chat(usr, "Failed to add language '[lang2toggle]' from \the [M]!")
 
 			show_player_panel(M)
+	else if(href_list["showrelatedacc"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/client/C = locate(href_list["client"]) in GLOB.clients
+		var/thing_to_check
+		if(href_list["showrelatedacc"] == "cid")
+			thing_to_check = C.related_accounts_cid
+		else
+			thing_to_check = C.related_accounts_ip
+		thing_to_check = splittext(thing_to_check, ", ")
+
+
+		var/list/dat = list("Related accounts by [uppertext(href_list["showrelatedacc"])]:")
+		dat += thing_to_check
+		show_browser(usr, dat.Join("<br>"), "window=related_[C];size=420x300")
 
 	// player info stuff
 
