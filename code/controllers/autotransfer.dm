@@ -9,6 +9,7 @@ datum/controller/transfer_controller/New()
 
 datum/controller/transfer_controller/Destroy()
 	GLOB.processing_objects -= src
+	return ..()
 
 datum/controller/transfer_controller/proc/process()
 	if (time_till_transfer_vote() <= 0)

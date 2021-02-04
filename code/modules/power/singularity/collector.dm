@@ -23,7 +23,7 @@ GLOBAL_LIST_EMPTY(rad_collectors)
 
 /obj/machinery/power/rad_collector/Destroy()
 	GLOB.rad_collectors -= src
-	..()
+	. = ..()
 
 /obj/machinery/power/rad_collector/process()
 	//so that we don't zero out the meter if the SM is processed first.

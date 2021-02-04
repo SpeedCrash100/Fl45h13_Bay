@@ -16,7 +16,7 @@
 				T.pinned_target = null
 				T.set_density(1)
 				break
-		..() // delete target
+		return ..() // delete target
 
 	Move()
 		..()

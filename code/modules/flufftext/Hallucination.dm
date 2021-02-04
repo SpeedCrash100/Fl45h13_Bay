@@ -281,7 +281,7 @@ proc/check_panel(mob/M)
 	qdel_null(down)
 	if(my_target)
 		my_target.hallucinations -= src
-	..()
+	. = ..()
 
 /obj/effect/fake_attacker/attackby(var/obj/item/weapon/P as obj, mob/user as mob)
 	step_away(src, my_target, 2)

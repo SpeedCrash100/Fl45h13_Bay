@@ -57,7 +57,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		GLOB.radio_controller.remove_object(src, frequency)
 		for (var/ch_name in channels)
 			GLOB.radio_controller.remove_object(src, GLOB.radiochannels[ch_name])
-	..()
+	. = ..()
 	return QDEL_HINT_HARDDEL
 
 
@@ -737,7 +737,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 /obj/item/device/radio/announcer/Destroy()
 	crash_with("attempt to delete a [src.type] detected, and prevented.")
-	return 1
+	return QDEL_HINT_LETMELIVE
 
 /obj/item/device/radio/announcer/initialize()
 	..()

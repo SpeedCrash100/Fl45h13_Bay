@@ -11,7 +11,7 @@
 
 /obj/structure/alien/node/Destroy()
 	GLOB.processing_objects -= src
-	..()
+	. = ..()
 
 /obj/structure/alien/node/process()
 	if(locate(/obj/effect/plant) in loc)

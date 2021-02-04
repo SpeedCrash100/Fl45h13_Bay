@@ -35,7 +35,7 @@
 
 /obj/item/weapon/reagent_containers/glass/rag/Destroy()
 	GLOB.processing_objects -= src //so we don't continue turning to ash while gc'd
-	..()
+	. = ..()
 
 /obj/item/weapon/reagent_containers/glass/rag/attack_self(mob/user as mob)
 	if(on_fire)

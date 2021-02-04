@@ -38,7 +38,7 @@ GLOBAL_DATUM(Failsafe, /datum/controller/failsafe)
 
 /datum/controller/failsafe/Destroy()
 	running = FALSE
-	..()
+	. = ..()
 	return QDEL_HINT_HARDDEL_NOW
 
 /datum/controller/failsafe/proc/Loop()

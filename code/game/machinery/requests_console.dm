@@ -93,7 +93,7 @@ GLOBAL_LIST_EMPTY_TYPED(allConsoles, /obj/machinery/requests_console)
 			GLOB.req_console_supplies -= department
 		if (departmentType & RC_INFO)
 			GLOB.req_console_information -= department
-	..()
+	return ..()
 
 /obj/machinery/requests_console/attack_hand(user as mob)
 	if(..(user))

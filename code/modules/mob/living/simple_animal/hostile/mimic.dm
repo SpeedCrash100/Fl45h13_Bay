@@ -131,7 +131,7 @@ GLOBAL_LIST_INIT(protected_objects, list(/obj/structure/table, /obj/structure/ca
 /mob/living/simple_animal/hostile/mimic/Destroy()
 	copy_of = null
 	creator = null
-	..()
+	. = ..()
 
 /mob/living/simple_animal/hostile/mimic/sleeping
 	wander = 0
